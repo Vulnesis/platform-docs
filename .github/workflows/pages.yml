@@ -195,3 +195,28 @@ jobs:
 
       - name: Submit to IndexNow
         run: node scripts/indexnow.mjs
+
+  # Ask Context7 to re-index the docs once they are live (README, "Search
+  # engines and AI crawlers"). Skipped until the CONTEXT7_API_KEY secret exists.
+  context7:
+    needs: deploy
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    steps:
+      - name: Refresh the Context7 library
+        env:
+          CONTEXT7_API_KEY: ${{ secrets.CONTEXT7_API_KEY }}
+          LIBRARY: ${{ vars.CONTEXT7_LIBRARY || '/vulnetix/platform-docs' }}
+        run: |
+          if [ -z "$CONTEXT7_API_KEY" ]; then
+            echo "::notice::CONTEXT7_API_KEY is not set; skipping the Context7 refresh."
+            exit 0
+          fi
+          code=$(curl -sS -o body.json -w '%{http_code}' -X POST https://context7.com/api/v1/refresh \
+            -H "Authorization: Bearer $CONTEXT7_API_KEY" -H 'Content-Type: application/json' \
+            --data "{\"libraryName\":\"$LIBRARY\"}") || code=000
+          echo "Context7 refresh of $LIBRARY: HTTP $code"; cat body.json 2>/dev/null; echo
+          case "$code" in
+            2??) ;;
+            429|5??|000) echo "::warning::Context7 did not take the refresh (HTTP $code); it re-indexes on its own schedule." ;;
+            *) echo "::error::Context7 refused the refresh (HTTP $code): check CONTEXT7_API_KEY and CONTEXT7_LIBRARY."; exit 1 ;;
+          esac
