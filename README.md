@@ -31,8 +31,9 @@ Each HTML page names its twin in `<meta name="markdown">` and `<link rel="altern
 
 `/llms.txt` (llmstxt.org format, `src/pages/llms.txt.ts`) lists every product and its sections with absolute links to their Markdown twins. It and `/index.md` are built from one list in `src/lib/site-index.mjs`.
 
-## Search engines
+## Search engines and AI crawlers
 
+- **robots.txt.** `public/robots.txt` welcomes search engines, AI search, AI agents and AI training: `Content-Signal: search=yes, ai-input=yes, ai-train=yes`, one group that names every search and AI crawler (Googlebot, bingbot, OAI-SearchBot, GPTBot, Claude-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, Amazon, Meta, Mistral, DuckAssistBot, ExaSearchBot, Kagibot, CCBot and others) with `Allow: /`, and `User-agent: *` with `Allow: /`. Nothing is disallowed. The crawlers are named so that a preference a proxy prepends cannot shadow them: the site is on GitHub Pages, not behind Cloudflare, today. `test/robots.test.mjs` checks it.
 - **Sitemap.** `scripts/sitemap.mjs` writes `sitemap-index.xml` and `sitemap-0.xml` from the built pages (not redirect stubs, not the `.md` twins); `robots.txt` points at it, which is how Google finds it. Each page's `<lastmod>` is its front matter `updated` (Doc.astro writes it as `<meta property="article:modified_time">`), else the date of the last commit to its source file, else left out. The build job checks out full history for the git fallback; in a shallow clone those pages get no `<lastmod>`.
 - **IndexNow.** `scripts/indexnow.mjs` sends every sitemap URL on docs.vulnetix.com to `api.indexnow.org`, Bing and Yandex, which share it with Seznam, Naver, Mojeek and DuckDuckGo. It runs in the `indexnow` job of `pages.yml` after each deploy, and daily at 07:00 UTC through `seo.yml` (also run by hand with `gh workflow run seo.yml`). `--dry-run` prints the payload without sending. The key is public by design: `public/<key>.txt` holds it as the proof of ownership and must match `KEY` in the script. A run fails only when every endpoint refuses.
 
