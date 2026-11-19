@@ -4,7 +4,7 @@
 # the same script with the same routes.
 ignore redirects/*
 # Redirect maps for the retired Vulnetix doc hosts: file names are those hosts (data).
-ignore migration/*
+ignore migration/redirects/*
 # The redirects Worker is generated from those maps plus this host table; all
 # three describe the retired Vulnetix hosts, so they stay together as data.
 ignore scripts/lib/redirects.mjs
