@@ -77,6 +77,6 @@ test('the committed Worker answers an alias host from its target host map', asyn
       assert.equal(await go(`https://${alias}${path}`), await go(`https://${host}${path}`), `${alias}${path}`);
     }
   }
-  assert.equal(await go('https://ai-docs.vulnes.is/terms/'), 'https://www.vulnes.is/terms');
+  assert.equal(await go('https://ai-docs.vulnetix.com/terms/'), 'https://www.vulnetix.com/terms');
   assert.equal((await worker.fetch(new Request('https://example.com/'))).status, 404);
 });
