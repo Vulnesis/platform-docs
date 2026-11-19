@@ -13,3 +13,5 @@ ignore redirects/worker.js
 # rule does not treat as strings.
 rewrite (?:Vulnetix|Resolve) [Cc]onsole => (?:Vulnesis|Vulnetix|Resolve) [Cc]onsole
 rewrite /^# Vulnetix documentation => /^# Vulnesis documentation
+# Its tests exercise that retired-host data.
+ignore test/migration.test.mjs
