@@ -18,7 +18,7 @@ const ROOT = join(import.meta.dirname, '..');
 const DIRS = ['src/content/docs', 'src/segments', 'src/pages', 'src/layouts', 'src/lib'];
 const GENERATORS = ['migration/generators/kind-notes.mjs', 'migration/generators/kind-reference.mjs', 'scripts/gen-reference.mjs'];
 const SKIP = [/^src\/content\/docs\/sast\/rules\//, /^src\/content\/docs\/platform-iac\/kinds\//];
-const BANNED = /\b[Tt]he console\b(?!\.\w|\()|\b(?:Vulnetix|Resolve) [Cc]onsole\b|\bconsole (?:session|pages?|only|edit|tab)\b|\bconsole-only\b/;
+const BANNED = /\b[Tt]he console\b(?!\.\w|\()|\b(?:Vulnesis|Vulnetix|Resolve) [Cc]onsole\b|\bconsole (?:session|pages?|only|edit|tab)\b|\bconsole-only\b/;
 
 const walk = (dir) => readdirSync(dir).flatMap((n) => {
   const p = join(dir, n);

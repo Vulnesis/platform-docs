@@ -91,7 +91,7 @@ test('latest() sends the bearer token only when a token env var is set', () => w
 
 test('latest() throws naming the repo on a non-semver or missing tag', () => withStubs(async () => {
   globalThis.fetch = async () => ({ json: async () => ({ tag_name: 'main' }) });
-  await assert.rejects(latest('Vulnesis/cli'), /Vulnetix\/cli: no release/);
+  await assert.rejects(latest('Vulnesis/cli'), /Vulnesis\/cli: no release/);
   globalThis.fetch = async () => ({ json: async () => ({}) });
   await assert.rejects(latest('Vulnesis/config-schemas'), /Vulnetix\/config-schemas: no release/);
 }));

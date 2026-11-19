@@ -2,7 +2,7 @@
 // path maps. Shared by scripts/build-redirects.mjs and the migration tests.
 //
 // Each TSV is named <old-host>--<segment>.tsv and holds "<old path>\t<new path>"
-// lines, one per URL of the old site's sitemap. A new path is a docs.vulnes.is
+// lines, one per URL of the old site's sitemap. A new path is a docs.vulnetix.com
 // path, or an absolute https:// URL for a page that does not belong on the docs
 // site (the old Pix site's terms of service, for example).
 
@@ -15,18 +15,18 @@ const SEGMENTS = join(ROOT, 'src/segments');
 
 // Where an unmapped path on each retired host goes.
 export const FALLBACK = {
-  'docs.cli.vulnes.is': '/cli/',
-  'docs.guardrails.vulnes.is': '/ai-firewall/',
-  'docs.mcp.vulnes.is': '/mcp-server/',
-  'ai-docs.vulnes.is': '/pix/',
-  'docs.code.vulnes.is': '/vscode/',
+  'docs.cli.vulnetix.com': '/cli/',
+  'docs.guardrails.vulnetix.com': '/ai-firewall/',
+  'docs.mcp.vulnetix.com': '/mcp-server/',
+  'ai-docs.vulnetix.com': '/pix/',
+  'docs.code.vulnetix.com': '/vscode/',
 };
 
-// Hosts that serve another host's map. claude-docs.vdb.vulnes.is was the
-// Pix site's first name; it used to 301 to ai-docs.vulnes.is, which then
+// Hosts that serve another host's map. claude-docs.vdb.vulnetix.com was the
+// Pix site's first name; it used to 301 to ai-docs.vulnetix.com, which then
 // redirected again. Serving it from the same map makes that one hop.
 export const ALIASES = {
-  'claude-docs.vdb.vulnes.is': 'ai-docs.vulnes.is',
+  'claude-docs.vdb.vulnetix.com': 'ai-docs.vulnetix.com',
 };
 
 export const isAbsolute = (target) => /^https?:\/\//.test(target);

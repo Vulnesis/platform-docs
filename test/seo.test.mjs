@@ -97,7 +97,7 @@ const groups = [{
 
 test('llms.txt is the llmstxt.org shape, every link absolute and to a Markdown twin', () => {
   const txt = llmsTxt(groups);
-  assert.match(txt, /^# Vulnetix documentation\n\n> /);
+  assert.match(txt, /^# Vulnesis documentation\n\n> /);
   assert.match(txt, /\n## Scanners\n\n- \[SCA\]\(https:\/\/docs\.vulnes\.is\/sca\.md\): Dependencies\.\n {2}- \[Get started\]/);
   const links = [...txt.matchAll(/\]\(([^)]+)\)/g)].map((m) => m[1]);
   assert.equal(links.length, 3);
