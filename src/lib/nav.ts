@@ -27,7 +27,7 @@ const SOFTWARE_FACTORY: Segment = {
     summary: 'Workflows, agents, hosts and evidence for automated software delivery, and the Belai CLI that runs the work.',
     home: 'software-factory/get-started/overview',
     reference: 'software-factory/reference/settings',
-    console: 'https://www.vulnetix.com/resolve/factory',
+    console: 'https://www.vulnes.is/resolve/factory',
     sections: [
       { id: 'get-started', title: 'Get started' },
       { id: 'control', title: 'Control' },
@@ -72,8 +72,8 @@ export const SEGMENT_GROUPS: { title: string; segments: Segment[] }[] = [
   { title: 'More', segments: SEGMENTS.filter((s) => !ORDER.includes(s.id)) },
 ].filter((g) => g.segments.length);
 
-export const REPO_URL = 'https://github.com/Vulnetix/platform-docs';
-export const CONSOLE_URL = 'https://www.vulnetix.com/';
+export const REPO_URL = 'https://github.com/Vulnesis/platform-docs';
+export const CONSOLE_URL = 'https://www.vulnes.is/';
 
 // The site home (the product directory) has this id; it is not a content page.
 export const HOME_ID = 'index';

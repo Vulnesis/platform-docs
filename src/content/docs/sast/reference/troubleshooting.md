@@ -14,7 +14,7 @@ Use this page when `vulnetix sast` stops with an error, warns and carries on, or
 
 | Symptom or message | Cause | Fix |
 |---|---|---|
-| `invalid rule reference "<value>": expected org/repo` | `--rule` was given a bare name, a URL or a path | Pass `org/repo`, for example `--rule Vulnetix/opa-gosec`. Put a different host in `--rule-registry`. See [Custom rules](/sast/guides/custom-rules/#loading-packs). |
+| `invalid rule reference "<value>": expected org/repo` | `--rule` was given a bare name, a URL or a path | Pass `org/repo`, for example `--rule Vulnesis/opa-gosec`. Put a different host in `--rule-registry`. See [Custom rules](/sast/guides/custom-rules/#loading-packs). |
 | `--fail-on: unknown rule "<value>" (valid: low, medium, high, critical, ...)` | A misspelt severity, or a value from another command | Use `low`, `medium`, `high` or `critical`. The other listed values gate dependencies and never fire on SAST. |
 | `cannot infer output format for "<path>": use .cdx.json for CycloneDX or .sarif for SARIF` | `-o` was given a file name with no recognised extension | End the name in `.sarif`, `.sarif.json` or `.report.json`. See [Output formats](/sast/reference/output-formats/). |
 | `nothing to explain: no finding matches "<query>". ...` | `--explain` named a rule that did not fire, a file with no findings, or a rule from a pack that was not loaded | Repeat the `--path`, `--depth`, `--exclude` and `--rule` flags of the run you are explaining. See [Explain one rule or file](/sast/guides/reading-results/#explain-one-rule-or-file). |

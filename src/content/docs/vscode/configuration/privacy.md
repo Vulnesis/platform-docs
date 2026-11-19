@@ -14,11 +14,11 @@ Scanning is local. File contents, paths and repository names are not sent anywhe
 
 | Request | From | To | Carries | When |
 |---|---|---|---|---|
-| CLI download | Extension host | `github.com/Vulnetix/cli/releases/download` or `vulnetix.cli.downloadBaseUrl` | The asset name | First run, or **Vulnetix: Install CLI** |
-| Bulk dependency check | `vulnetix lsp` | `api.vdb.vulnetix.com` | Package URLs (name, version, ecosystem) | Server start, manifest save, manifest changed on disk |
-| Safe Harbour versions | `vulnetix lsp` | `api.vdb.vulnetix.com` | Package URLs of the vulnerable packages in one manifest | When you open that manifest |
+| CLI download | Extension host | `github.com/Vulnetix/cli/releases/download` or `vulnetix.cli.downloadBaseUrl` | The asset name | First run, or **Vulnesis: Install CLI** |
+| Bulk dependency check | `vulnetix lsp` | `api.vdb.vulnes.is` | Package URLs (name, version, ecosystem) | Server start, manifest save, manifest changed on disk |
+| Safe Harbour versions | `vulnetix lsp` | `api.vdb.vulnes.is` | Package URLs of the vulnerable packages in one manifest | When you open that manifest |
 
-Set `vulnetix.sca.enabled` to `false` and the server makes no VDB requests; everything else keeps working offline. Point the server at another API with `vulnetix.api.baseUrl` (sets `VULNETIX_API_URL` in its environment). `vulnetix.api.webUrl` sets `VULNETIX_WEB_URL`; nothing in the extension uses it yet.
+Set `vulnetix.sca.enabled` to `false` and the server makes no VDB requests; everything else keeps working offline. Point the server at another API with `vulnetix.api.baseUrl` (sets `VULNESIS_API_URL` in its environment). `vulnetix.api.webUrl` sets `VULNESIS_WEB_URL`; nothing in the extension uses it yet.
 
 The server never polls GitHub for CLI updates: `vulnetix lsp` skips the update check. CLI analytics are switched off by the `--no-analytics` flag the extension always passes.
 
@@ -29,7 +29,7 @@ The extension itself sends no telemetry. For the server process:
 | Condition | What the extension does |
 |---|---|
 | Always (from 0.3.1) | Passes `--no-analytics` |
-| `telemetry.telemetryLevel` is `off`, or `vulnetix.telemetry.enabled` is `false` | Also sets `VULNETIX_NO_ANALYTICS=1` and `DO_NOT_TRACK=1` in its environment |
+| `telemetry.telemetryLevel` is `off`, or `vulnetix.telemetry.enabled` is `false` | Also sets `VULNESIS_NO_ANALYTICS=1` and `DO_NOT_TRACK=1` in its environment |
 
 `vulnetix.telemetry.enabled` can only turn things further off. It cannot re-enable telemetry the editor has disabled.
 
@@ -43,12 +43,12 @@ There is no setting for an API key and no sign-in command. The server resolves c
 
 | Order | Source |
 |---|---|
-| 1 | `VULNETIX_API_TOKEN` (`VULNETIX_ORG_ID` optional) |
-| 2 | `VULNETIX_API_KEY` with `VULNETIX_ORG_ID` |
+| 1 | `VULNESIS_API_TOKEN` (`VULNESIS_ORG_ID` optional) |
+| 2 | `VULNESIS_API_KEY` with `VULNESIS_ORG_ID` |
 | 3 | `VVD_ORG` with `VVD_SECRET` |
 | 4 | `.vulnetix/credentials.json` in the server's working directory (the workspace folder) |
 | 5 | `~/.vulnetix/credentials.json`, written by `vulnetix auth login` |
-| 6 | The Package Firewall entry for `packages.vulnetix.com` in `~/.netrc` |
+| 6 | The Package Firewall entry for `packages.vulnes.is` in `~/.netrc` |
 | 7 | Built-in community credentials |
 
 So `vulnetix auth login` in a terminal is how you sign the editor in today. See [Authentication](/cli/).

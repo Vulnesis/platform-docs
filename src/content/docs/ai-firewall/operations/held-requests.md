@@ -32,7 +32,7 @@ A family (tools, MCP servers, skills or clients) that has any `*_allow` rule is 
 
 | Where | What |
 |---|---|
-| Resolve Platform | Govern tab of the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall#govern), **Held now** list. Each entry shows the identity, its kind, the client it came from, the time left before the timeout, and a **Review** link. |
+| Resolve Platform | Govern tab of the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall#govern), **Held now** list. Each entry shows the identity, its kind, the client it came from, the time left before the timeout, and a **Review** link. |
 | Software Factory | Each new hold publishes a `capability.held` source event; a workflow can turn it into a review card. The Resolve Platform links to workflow templates matching "ai capability" and to [Checkpoints](/software-factory/decisions/checkpoints/). |
 | Guardian | Each hold is forwarded to the SIEM as a product event |
 | API | `GET /ai-firewall/holds?state=held` |
@@ -66,7 +66,7 @@ Each settled hold publishes `capability.hold_expired`. The expiry is fixed when 
 
 ## API
 
-Session-authenticated, under `https://www.vulnetix.com/api/site/v1`:
+Session-authenticated, under `https://www.vulnes.is/api/site/v1`:
 
 | Request | Body or parameters | Notes |
 |---|---|---|
@@ -76,13 +76,13 @@ Session-authenticated, under `https://www.vulnetix.com/api/site/v1`:
 | `POST /ai-firewall/capabilities/review` | `{"kind", "identity", "client", "decision"}` | Owner or admin. `kind` is `tool`, `mcp_server`, `skill` or `client`; `decision` is `approve` or `deny`; `identity` at most 300 characters; `client` defaults to `unknown`. |
 
 ```bash
-curl -s -X POST https://www.vulnetix.com/api/site/v1/ai-firewall/capabilities/review \
+curl -s -X POST https://www.vulnes.is/api/site/v1/ai-firewall/capabilities/review \
   -H "Content-Type: application/json" \
-  -b "$VULNETIX_SESSION_COOKIE" \
+  -b "$VULNESIS_SESSION_COOKIE" \
   -d '{"kind":"mcp_server","identity":"github","client":"claude-code","decision":"approve"}'
 ```
 
-`$VULNETIX_SESSION_COOKIE` is the signed-in browser session; the Resolve Platform API has no token authentication.
+`$VULNESIS_SESSION_COOKIE` is the signed-in browser session; the Resolve Platform API has no token authentication.
 
 ## Related
 

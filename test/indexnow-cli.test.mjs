@@ -13,7 +13,7 @@ import { runScript } from './cli.mjs';
 const modPath = fileURLToPath(new URL('../scripts/indexnow.mjs', import.meta.url));
 const runCli = (fetchImpl, argv = []) => runScript(modPath, fetchImpl, argv);
 
-const SITEMAP = '<urlset><url><loc>https://docs.vulnetix.com/</loc></url></urlset>';
+const SITEMAP = '<urlset><url><loc>https://docs.vulnes.is/</loc></url></urlset>';
 // Serves the sitemap from an XML fixture, then answers each endpoint call in
 // turn with the given expression.
 const endpointRun = (xml, endpoint) => runCli(`(() => {
@@ -46,7 +46,7 @@ test('a non-ok sitemap fetch stops the run with its HTTP status', () => {
 });
 
 test('a sitemap with no pages on this host stops the run', () => {
-  const r = runCli(`async (url) => ({ ok: true, text: async () => '<urlset><url><loc>https://www.vulnetix.com/</loc></url></urlset>' })`);
+  const r = runCli(`async (url) => ({ ok: true, text: async () => '<urlset><url><loc>https://www.vulnes.is/</loc></url></urlset>' })`);
   assert.equal(r.status, 1, r.stderr);
   assert.match(r.stderr, /\[indexnow\] ERROR: the sitemap lists no pages on this host/);
 });

@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The messaging centre (**Configuration › Messaging**, `/resolve/messaging`) sends Vulnetix events to the tools your team uses. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned and which **template** words the message.
+The messaging centre (**Configuration › Messaging**, `/resolve/messaging`) sends Vulnesis events to the tools your team uses. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned and which **template** words the message.
 
 Messaging is Pro and above. Members can read every tab; owners create and change connections, routes and templates, send tests, retry deliveries, and see sensitive events.
 
@@ -20,7 +20,7 @@ Messaging is Pro and above. Members can read every tab; owners create and change
 | Discord | A channel webhook URL | An embed. Mentions are limited to the people you chose, so `@everyone` never fires. |
 | Google Chat | A space webhook URL | A card |
 | Jira Cloud | `https://<site>.atlassian.net`, an account email and an API token | An issue; a repeat comments on the open issue |
-| GitHub Issues | The Vulnetix GitHub App, installed from Integrations | An issue with labels; a repeat comments on the open issue |
+| GitHub Issues | The Vulnesis GitHub App, installed from Integrations | An issue with labels; a repeat comments on the open issue |
 | Signed webhook | Any public https endpoint | JSON signed per [Standard Webhooks](https://www.standardwebhooks.com/). See [Signed webhooks](/organization/integrations/signed-webhooks/). |
 
 Slack and GitHub connections come from Integrations. The others are added on the Connections tab (`POST /v1/messaging/connections` with `provider`, `label`, `url`, or `jira: {siteUrl, email, apiToken, defaultProjectKey, defaultIssueType}`).
@@ -34,7 +34,7 @@ Slack and GitHub connections come from Integrations. The others are added on the
 
 Every URL you give is fetched over https only, with no redirects, and only to public addresses. A Jira connection is saved only after Jira accepts the email and token.
 
-Every credential (bot token, webhook URL, API token, signing secret) is stored in the [secrets vault](/organization/security/secrets-vault/) as a connector entry. It is never shown again after you save it, and only Vulnetix's own services open it. Removing a connection revokes its vault entry.
+Every credential (bot token, webhook URL, API token, signing secret) is stored in the [secrets vault](/organization/security/secrets-vault/) as a connector entry. It is never shown again after you save it, and only Vulnesis's own services open it. Removing a connection revokes its vault entry.
 
 ## Events
 
@@ -58,7 +58,7 @@ Event types are `<domain>.<entity>.<verb>`. A route listens for one type, a fami
 **Sensitive events** (`security.*`, `vault.*` and the admin-only sandbox events):
 
 - They show a reduced form: the action, who it was about and when. Email addresses are masked unless the route includes personal data (`includePII`).
-- They go to a GitHub repository only if Vulnetix knows it is private.
+- They go to a GitHub repository only if Vulnesis knows it is private.
 - They go to a signed webhook only if the route sets `allowSensitiveWebhook`.
 - Only owners can route them or see them in the activity log.
 - They are recorded even with no route, because they are also your history of sensitive activity, and are kept 180 days.

@@ -15,7 +15,7 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-Written for whoever has to approve the server. Questions and objections go to [GitHub issues](https://github.com/Vulnetix/mcp-server/issues); security reports follow `SECURITY.md`.
+Written for whoever has to approve the server. Questions and objections go to [GitHub issues](https://github.com/Vulnesis/mcp-server/issues); security reports follow `SECURITY.md`.
 
 ## The credential is relayed, not interpreted
 
@@ -29,7 +29,7 @@ A tool result reaches the model, the conversation history, the client's logs and
 
 ### The device code is encrypted, not only signed
 
-In the CLI's device login, the secret `device_code` never leaves your machine. Over MCP it must cross the wire so the client can poll with it, and the Vulnetix device-login token endpoint is unauthenticated: holding the `device_code` is the whole authentication. Someone reading a leaked transcript within the 5-minute window could redeem it first and receive your organisation's key.
+In the CLI's device login, the secret `device_code` never leaves your machine. Over MCP it must cross the wire so the client can poll with it, and the Vulnesis device-login token endpoint is unauthenticated: holding the `device_code` is the whole authentication. Someone reading a leaked transcript within the 5-minute window could redeem it first and receive your organisation's key.
 
 So `vulnetix_auth_start` returns a `handle` that seals the `device_code` with AES-256-GCM. The key is derived with HKDF-SHA256 from the server's `MCP_AEAD_KEY` secret, with the purpose string `device-grant` as HKDF info, so a handle sealed for one purpose cannot be opened by another. The expiry is inside the sealed body. The client holds ciphertext it cannot read.
 

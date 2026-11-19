@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 status: available
 ---
 
-The extension activates on `onStartupFinished`, and also when the workspace contains a manifest, a Dockerfile, a `.tf` file or `.vulnetix/memory.yaml`. With no folder open it only shows **Vulnetix** in the status bar with the tooltip "Open a folder to scan it".
+The extension activates on `onStartupFinished`, and also when the workspace contains a manifest, a Dockerfile, a `.tf` file or `.vulnetix/memory.yaml`. With no folder open it only shows **Vulnesis** in the status bar with the tooltip "Open a folder to scan it".
 
 ## 1. Find a CLI
 
@@ -25,13 +25,13 @@ A candidate is usable when it is executable and `vulnetix lsp --version` prints 
 
 ## 2. Download, if needed
 
-The prompt reads "Vulnetix needs the Vulnetix CLI to scan. Download it now?" with three buttons:
+The prompt reads "Vulnesis needs the Vulnesis CLI to scan. Download it now?" with three buttons:
 
 | Button | Effect |
 |---|---|
-| **Download** | Fetches `checksums.txt`, then the asset for your platform from `https://github.com/Vulnetix/cli/releases/download/v3.100.0/`, verifies SHA-256, and moves it into place |
+| **Download** | Fetches `checksums.txt`, then the asset for your platform from `https://github.com/Vulnesis/cli/releases/download/v3.100.0/`, verifies SHA-256, and moves it into place |
 | **Set Path** | Opens a file picker and writes the chosen file to `vulnetix.cli.path` in user settings |
-| **Not Now** | Does nothing. The status bar tooltip says "The Vulnetix CLI is not installed". Run **Vulnetix: Install CLI** later. |
+| **Not Now** | Does nothing. The status bar tooltip says "The Vulnesis CLI is not installed". Run **Vulnesis: Install CLI** later. |
 
 The download shows progress in a notification and can be cancelled. A checksum mismatch, a missing entry in `checksums.txt`, or an unparseable line in it discards the file and shows an error. There is no setting to skip verification.
 
@@ -65,13 +65,13 @@ Only the first workspace folder is analysed. Multi-root workspaces are not suppo
 
 | Text | Meaning |
 |---|---|
-| `Vulnetix` with tooltip "No findings · CLI 3.x.y" | Server running, nothing found |
-| `Vulnetix` plus an error count and a warning count | Server running; info findings are counted in the tooltip only |
-| `Vulnetix`, tooltip "The language server is turned off in settings" | `vulnetix.lsp.enabled` is `false` |
+| `Vulnesis` with tooltip "No findings · CLI 3.x.y" | Server running, nothing found |
+| `Vulnesis` plus an error count and a warning count | Server running; info findings are counted in the tooltip only |
+| `Vulnesis`, tooltip "The language server is turned off in settings" | `vulnetix.lsp.enabled` is `false` |
 | Error icon, "The configured CLI cannot be used" | `vulnetix.cli.path` failed; see the notification |
-| Error icon, "The language server could not start" | See **Vulnetix: Show Output** |
+| Error icon, "The language server could not start" | See **Vulnesis: Show Output** |
 
-Clicking the status bar item runs **Vulnetix: Show Output**. The log records the extension version, the protocol and CLI range it expects, the binary it chose and where it came from, and every server message.
+Clicking the status bar item runs **Vulnesis: Show Output**. The log records the extension version, the protocol and CLI range it expects, the binary it chose and where it came from, and every server message.
 
 ## Next
 

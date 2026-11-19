@@ -12,7 +12,7 @@ updated: 02 Nov 2026
 
 | Path | Mode | When |
 |---|---|---|
-| `~/.vulnetix/` (or `VULNETIX_CREDENTIALS_DIR`, or `--store-dir`) | `0700` | Created by `auth login` |
+| `~/.vulnetix/` (or `VULNESIS_CREDENTIALS_DIR`, or `--store-dir`) | `0700` | Created by `auth login` |
 | `~/.vulnetix/credentials.json` | `0600` | Every write |
 | `./.vulnetix/credentials.json` | `0600` | Every write |
 | `~/.netrc` | `0600` | Every write by `package-firewall`, and checked on every read |
@@ -38,7 +38,7 @@ printf '.vulnetix/\n' >> .dockerignore
 
 ## Linux
 
-Prefer `--store keyring` on a desktop session with GNOME Keyring or KWallet. On a server without a Secret Service, keep the home file at `0600` and consider a `tmpfs` directory with `VULNETIX_CREDENTIALS_DIR` (see [Custom directory](/cli/authentication/storage/#custom-directory)).
+Prefer `--store keyring` on a desktop session with GNOME Keyring or KWallet. On a server without a Secret Service, keep the home file at `0600` and consider a `tmpfs` directory with `VULNESIS_CREDENTIALS_DIR` (see [Custom directory](/cli/authentication/storage/#custom-directory)).
 
 Extended ACLs can grant access the mode bits do not show. Remove them:
 
@@ -82,25 +82,25 @@ In order of preference:
 2. **A secret file mounted on tmpfs**, exported into the environment by the entrypoint:
    ```sh
    docker run --rm --read-only --tmpfs /tmp \
-     -e HOME=/tmp -e VULNETIX_ORG_ID \
+     -e HOME=/tmp -e VULNESIS_ORG_ID \
      -v "$PWD/secrets/vulnetix_api_key:/run/secrets/vulnetix_api_key:ro" \
      -v "$PWD:/workspace" -w /workspace \
      registry.example.com/ci/vulnetix:3.154.0 \
-     sh -c 'VULNETIX_API_KEY="$(cat /run/secrets/vulnetix_api_key)" exec vulnetix scan'
+     sh -c 'VULNESIS_API_KEY="$(cat /run/secrets/vulnetix_api_key)" exec vulnetix scan'
    ```
 3. **A BuildKit secret during `docker build`**, never stored in a layer:
    ```dockerfile
    # syntax=docker/dockerfile:1
    RUN --mount=type=secret,id=vulnetix_api_key \
-       VULNETIX_API_KEY="$(cat /run/secrets/vulnetix_api_key)" vulnetix scan --fail-on high
+       VULNESIS_API_KEY="$(cat /run/secrets/vulnetix_api_key)" vulnetix scan --fail-on high
    ```
-   `docker build --secret id=vulnetix_api_key,src=./api_key.txt --build-arg VULNETIX_ORG_ID=... .`
+   `docker build --secret id=vulnetix_api_key,src=./api_key.txt --build-arg VULNESIS_ORG_ID=... .`
 4. **Your own credential bind-mounted read-only**, for local use only: `-v "$HOME/.vulnetix:/home/app/.vulnetix:ro"`, and run as your own user (`--user "$(id -u):$(id -g)"`), not root.
 
 Never:
 
-- `ENV VULNETIX_API_KEY=...` in a Dockerfile: it is in `docker history` and every derived image.
-- `--build-arg VULNETIX_API_KEY=...`: recorded in the image metadata.
+- `ENV VULNESIS_API_KEY=...` in a Dockerfile: it is in `docker history` and every derived image.
+- `--build-arg VULNESIS_API_KEY=...`: recorded in the image metadata.
 - `COPY .vulnetix/ ...`: puts the credential in a layer.
 
 ## Shell history and argv
@@ -109,13 +109,13 @@ A key passed as a flag is visible in `ps` and `/proc/<pid>/cmdline` while the co
 
 ```sh
 # bash, zsh: with HISTCONTROL=ignorespace a leading space keeps the line out of history
- export VULNETIX_API_KEY=6e40f1c3...
-export VULNETIX_ORG_ID=8ff8f1e4-0000-4000-8000-000000000000
+ export VULNESIS_API_KEY=6e40f1c3...
+export VULNESIS_ORG_ID=8ff8f1e4-0000-4000-8000-000000000000
 vulnetix auth login --noninteractive --store keyring
 ```
 
 `--noninteractive` reads both values from the environment, so the key never appears in argv. Look for keys that already leaked, and rotate any you find:
 
 ```sh
-grep -nE 'VULNETIX_(API_KEY|API_TOKEN)|VVD_SECRET|--api-key|--secret' ~/.bash_history ~/.zsh_history 2>/dev/null
+grep -nE 'VULNESIS_(API_KEY|API_TOKEN)|VVD_SECRET|--api-key|--secret' ~/.bash_history ~/.zsh_history 2>/dev/null
 ```

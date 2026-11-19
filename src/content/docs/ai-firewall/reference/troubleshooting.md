@@ -28,18 +28,18 @@ It shows the providers with their policy and key state, the guardrails, every AI
 
 | Error | Cause | Fix |
 |---|---|---|
-| `unsupported authentication method: token` | You are signed in with `VULNETIX_API_TOKEN`. `status`, `install`, `snippet`, `apply` and `export` need the Vulnetix API key itself, to write it into configs or check `metadata.org`, and only API-key and SigV4 credentials provide one. | Unset `VULNETIX_API_TOKEN` and use `VULNETIX_API_KEY` with `VULNETIX_ORG_ID`, or run `vulnetix auth login` with an API key. |
-| `no credentials found` | Neither a stored login nor environment credentials | `vulnetix auth login`, or export both `VULNETIX_API_KEY` and `VULNETIX_ORG_ID` |
-| Signed in as the wrong org in CI | `VULNETIX_API_KEY` without `VULNETIX_ORG_ID` is ignored, and the CLI falls through to SigV4 variables or a credentials file | Set both variables |
+| `unsupported authentication method: token` | You are signed in with `VULNESIS_API_TOKEN`. `status`, `install`, `snippet`, `apply` and `export` need the Vulnesis API key itself, to write it into configs or check `metadata.org`, and only API-key and SigV4 credentials provide one. | Unset `VULNESIS_API_TOKEN` and use `VULNESIS_API_KEY` with `VULNESIS_ORG_ID`, or run `vulnetix auth login` with an API key. |
+| `no credentials found` | Neither a stored login nor environment credentials | `vulnetix auth login`, or export both `VULNESIS_API_KEY` and `VULNESIS_ORG_ID` |
+| Signed in as the wrong org in CI | `VULNESIS_API_KEY` without `VULNESIS_ORG_ID` is ignored, and the CLI falls through to SigV4 variables or a credentials file | Set both variables |
 | `saving to the secrets vault needs an API key sign-in` | `kiro login` with a non-API-key credential | `vulnetix auth login` with an API key |
-| `AI firewall configuration requires an authenticated Vulnetix org` (403) | The CLI is using the shared community org | Sign in to your own organisation |
+| `AI firewall configuration requires an authenticated Vulnesis org` (403) | The CLI is using the shared community org | Sign in to your own organisation |
 
 ## 401 invalid_api_key
 
 | Message | Fix |
 |---|---|
-| `invalid Vulnetix API key` | The client is sending a provider key (`sk-…`, `sk-ant-…`). Point its key variable at `$VULNETIX_API_KEY`. Or the key belongs to a different principal than the UUID in the URL: a Business member must use its own principal UUID. |
-| `missing Vulnetix API key` | The variable is not exported in the process the client runs in. For Anthropic SDKs, `ANTHROPIC_API_KEY` sends `x-api-key` and `ANTHROPIC_AUTH_TOKEN` sends `Authorization: Bearer`; both work, but only if set. |
+| `invalid Vulnesis API key` | The client is sending a provider key (`sk-…`, `sk-ant-…`). Point its key variable at `$VULNESIS_API_KEY`. Or the key belongs to a different principal than the UUID in the URL: a Business member must use its own principal UUID. |
+| `missing Vulnesis API key` | The variable is not exported in the process the client runs in. For Anthropic SDKs, `ANTHROPIC_API_KEY` sends `x-api-key` and `ANTHROPIC_AUTH_TOKEN` sends `Authorization: Bearer`; both work, but only if set. |
 | `unknown organisation` | The org segment is wrong or not a UUID |
 | `missing organisation` | The base URL has no org segment |
 
@@ -63,10 +63,10 @@ Nothing errors and nothing is screened. In `status`:
 
 - **`points elsewhere`** (`bypasses_firewall`): the client's base URL is not the gateway. Run `vulnetix ai-firewall install <client>`.
 - **The shell block was written but not loaded.** `status` reads the process environment, which is what an SDK sees. Open a new shell or source the rc file.
-- **`key_env_unset`**: the base URL points at the gateway and the key variable is empty. Export `VULNETIX_API_KEY`.
+- **`key_env_unset`**: the base URL points at the gateway and the key variable is empty. Export `VULNESIS_API_KEY`.
 - **The SDK does not read a base-URL variable for this provider.** Only `OPENAI_BASE_URL`, `OPENAI_API_BASE`, `ANTHROPIC_BASE_URL` and (unverified) `GROQ_BASE_URL` are read by SDKs. For Mistral, DeepSeek, xAI, OpenRouter, Together and Fireworks, set `base_url` in code: `vulnetix ai-firewall snippet --provider mistral`.
 - **Vercel AI SDK** ignores `OPENAI_BASE_URL`: `vulnetix ai-firewall snippet --lang ts --sdk vercel-ai`.
-- **`.env` with `${VULNETIX_API_KEY}`** expands under python-dotenv and direnv but not plain Node `dotenv`. Export the variable instead.
+- **`.env` with `${VULNESIS_API_KEY}`** expands under python-dotenv and direnv but not plain Node `dotenv`. Export the variable instead.
 - **Cursor and Windsurf** keep the base URL in application settings; `install` prints what to paste. See [Cursor](/ai-firewall/clients/cursor/) for the traffic Cursor never routes through a custom key.
 
 Prove the path end to end with a canary rule: [Verify](/ai-firewall/get-started/verify/).

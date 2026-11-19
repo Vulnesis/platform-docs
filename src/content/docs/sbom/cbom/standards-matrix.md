@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 ---
 Approval status per standards body, drawn from published post-quantum guidance. An empty cell means the body has not specified a status for that algorithm in the catalog.
 
-> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.
+> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.
 
 | Algorithm | ACSC | AIVD | BSI | CCCS | CNSA 2.0 | KpqC | NCSC | NIST | NUKIB |
 |-----------|------|------|------|------|------|------|------|------|------|

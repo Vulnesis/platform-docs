@@ -33,8 +33,8 @@ import (
 
 func main() {
 	client := openai.NewClient(
-		option.WithBaseURL("https://guardrails.vulnetix.com/openai/"+os.Getenv("VULNETIX_ORG_ID")+"/v1"),
-		option.WithAPIKey(os.Getenv("VULNETIX_API_KEY")), // the Vulnetix key, not an OpenAI key
+		option.WithBaseURL("https://guardrails.vulnes.is/openai/"+os.Getenv("VULNESIS_ORG_ID")+"/v1"),
+		option.WithAPIKey(os.Getenv("VULNESIS_API_KEY")), // the Vulnesis key, not an OpenAI key
 	)
 
 	resp, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
@@ -82,6 +82,6 @@ A refusal is decided before the stream opens, so it comes back from `stream.Err(
 
 - Another `chat` provider: change the slug and model, for example `/groq/<uuid>/v1` with `llama-3.3-70b-versatile`.
 - `client.Responses.New(...)` works against `openai`.
-- For the Anthropic surface use `github.com/anthropics/anthropic-sdk-go` with `option.WithBaseURL("https://guardrails.vulnetix.com/anthropic/<uuid>")` (no `/v1`) and `option.WithAuthToken(os.Getenv("VULNETIX_API_KEY"))`.
+- For the Anthropic surface use `github.com/anthropics/anthropic-sdk-go` with `option.WithBaseURL("https://guardrails.vulnes.is/anthropic/<uuid>")` (no `/v1`) and `option.WithAuthToken(os.Getenv("VULNESIS_API_KEY"))`.
 
 Error codes: [Errors](/ai-firewall/reference/errors/).

@@ -14,7 +14,7 @@ Claude Desktop adds remote MCP servers as custom connectors, and local ones thro
 ## Option 1: custom connector
 
 1. Settings, Connectors, Add custom connector.
-2. Name `Vulnetix`, URL `https://mcp.vulnetix.com/mcp`.
+2. Name `Vulnesis`, URL `https://mcp.vulnes.is/mcp`.
 3. If the dialog offers custom request headers, add `Authorization` with `ApiKey <orgId>:<hex>`.
 4. Save, then quit Claude Desktop fully and reopen it.
 
@@ -36,11 +36,11 @@ The server has no OAuth authorization server, so leave any OAuth client fields e
       "command": "npx",
       "args": [
         "-y", "mcp-remote",
-        "https://mcp.vulnetix.com/mcp",
-        "--header", "Authorization:${VULNETIX_AUTH_HEADER}"
+        "https://mcp.vulnes.is/mcp",
+        "--header", "Authorization:${VULNESIS_AUTH_HEADER}"
       ],
       "env": {
-        "VULNETIX_AUTH_HEADER": "ApiKey <orgId>:<hex>"
+        "VULNESIS_AUTH_HEADER": "ApiKey <orgId>:<hex>"
       }
     }
   }
@@ -54,7 +54,7 @@ Keep the value in `env` and the `--header` argument free of spaces: `mcp-remote`
 
 ## Check it
 
-The tools menu in the message box lists the Vulnetix tools. Then:
+The tools menu in the message box lists the Vulnesis tools. Then:
 
 ```text
 Look up CVE-2021-44228 and tell me whether it is in the CISA KEV catalogue.

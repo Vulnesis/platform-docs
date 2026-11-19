@@ -17,7 +17,7 @@ Both paths refuse an exec in the kernel, before it runs, for programs that a blo
 
 ```bash
 vulnetix-sensor tetragon-policy \
-  --feed https://vulnetix.com/feeds/<org-uuid>/<sigma-feed-uuid> \
+  --feed https://vulnes.is/feeds/<org-uuid>/<sigma-feed-uuid> \
   > vulnetix-exec-block.yaml
 kubectl apply -f vulnetix-exec-block.yaml
 ```
@@ -25,7 +25,7 @@ kubectl apply -f vulnetix-exec-block.yaml
 | Flag | Default | |
 |---|---|---|
 | `--feed` | required, repeatable | A published feed's base URL |
-| `--feed-key` | `VULNETIX_FEED_KEY`, else the pinned key | Required: the command refuses to run with no key, because an unverified rule never blocks |
+| `--feed-key` | `VULNESIS_FEED_KEY`, else the pinned key | Required: the command refuses to run with no key, because an unverified rule never blocks |
 
 The policy goes to stdout. Each rule it could not use is listed on stderr as `skipped <rule-uuid>: <reason>`.
 
@@ -92,7 +92,7 @@ The sensor can load its own BPF LSM program on `bprm_check_security` instead of 
 
 ```bash
 sudo vulnetix-sensor --mode guard --bpf-lsm \
-  --feed https://vulnetix.com/feeds/<org-uuid>/<sigma-feed-uuid>
+  --feed https://vulnes.is/feeds/<org-uuid>/<sigma-feed-uuid>
 ```
 
 | | |

@@ -18,7 +18,7 @@ A `CLOUDFLARE_WAF` feed publishes `cloudflare-expressions.txt`: one Cloudflare R
 # (http.request.uri.path eq "/admin/debug")
 ```
 
-The expressions use only fields from a vetted list, so a typo cannot slip through and silently never match. Each expression becomes the `expression` of a custom rule; Vulnetix does not publish a ruleset JSON.
+The expressions use only fields from a vetted list, so a typo cannot slip through and silently never match. Each expression becomes the `expression` of a custom rule; Vulnesis does not publish a ruleset JSON.
 
 `vulnetix defend --for cloudflare` saves one expression as `<id>-cloudflare-expression.txt`.
 

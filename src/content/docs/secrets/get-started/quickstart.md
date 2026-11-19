@@ -7,7 +7,7 @@ checked: [cli@2449840]
 updated: 02 Nov 2026
 ---
 
-You need the Vulnetix CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)). No sign-in is needed: without credentials the scan runs and reports locally.
+You need the Vulnesis CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)). No sign-in is needed: without credentials the scan runs and reports locally.
 
 ## 1. Scan
 
@@ -69,8 +69,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0          # the history pass needs the commits
-      - name: Install the Vulnetix CLI
-        run: curl -fsSL https://cli.vulnetix.com/install.sh | sh
+      - name: Install the Vulnesis CLI
+        run: curl -fsSL https://cli.vulnes.is/install.sh | sh
       - name: Scan for secrets
         run: vulnetix secrets --depth 10 --fail-on high -o secrets.sarif
 ```

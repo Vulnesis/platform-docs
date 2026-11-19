@@ -14,7 +14,7 @@ System One is the set of fast classifier models that [decision steps](/software-
 
 | Adapter | Model | Available when |
 |---|---|---|
-| `clef-flash` | Workers AI Clef Flash | Vulnetix's Cloudflare connection is configured. The tenant default. |
+| `clef-flash` | Workers AI Clef Flash | Vulnesis's Cloudflare connection is configured. The tenant default. |
 | `clef` | Workers AI Clef | Same as `clef-flash` |
 | `jev` | Jev | Jev is configured and enforcing. Shadow mode counts as not configured, because the factory acts on what it is told. |
 | `tev1` | stub | Never. It always answers "not configured". |

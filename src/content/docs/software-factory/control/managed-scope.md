@@ -50,7 +50,7 @@ A repository appears once it has at least one **signal**:
 | Signal | Meaning |
 |---|---|
 | `app` | A GitHub App installation covers it. |
-| `scanned` | Vulnetix scanners have results for it. |
+| `scanned` | Vulnesis scanners have results for it. |
 | `pix` | It is cloned in one of your Pix Sandboxes. |
 | `kanban` | A board is bound to it. |
 | `tea` | Releases of it are published to TEA. |

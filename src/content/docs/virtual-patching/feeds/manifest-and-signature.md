@@ -1,6 +1,6 @@
 ---
 title: Manifest and signature
-description: Check a downloaded feed file against the manifest and the manifest against its Ed25519 signature, the same checks the Vulnetix sensor makes.
+description: Check a downloaded feed file against the manifest and the manifest against its Ed25519 signature, the same checks the Vulnesis sensor makes.
 order: 3
 nav: Manifest and signature
 sources: [vdb-site/api/internal/handler/detection_rule_feeds_publish.go, vdb-site/api/internal/handler/detection_rule_feeds_sensor.go, cli/internal/sensor/feed/feed.go, cli/cmd/vulnetix-sensor/main.go, cli/.github/workflows/release.yml]
@@ -24,14 +24,14 @@ Feed files are public, so anyone who can change what a URL serves could change y
     {
       "ruleType": "SURICATA",
       "filename": "suricata.rules",
-      "url": "https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>/suricata.rules",
+      "url": "https://vulnes.is/feeds/<org-uuid>/<feed-uuid>/suricata.rules",
       "sha256": "…",
       "ruleCount": 12
     },
     {
       "ruleType": "",
       "filename": "rules.json",
-      "url": "https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>/rules.json",
+      "url": "https://vulnes.is/feeds/<org-uuid>/<feed-uuid>/rules.json",
       "sha256": "…",
       "ruleCount": 12
     }
@@ -43,16 +43,16 @@ Feed files are public, so anyone who can change what a URL serves could change y
 
 ## `manifest.json.sig`
 
-The base64 of an Ed25519 signature over the exact bytes of `manifest.json`. Vulnetix signs every publish when its signing key is configured. A feed published without it has no `.sig` file.
+The base64 of an Ed25519 signature over the exact bytes of `manifest.json`. Vulnesis signs every publish when its signing key is configured. A feed published without it has no `.sig` file.
 
-The public key is a base64 string of the raw 32 bytes. Release builds of `vulnetix-sensor` have it pinned, so the sensor verifies without being told. Pass `--feed-key` (or set `VULNETIX_FEED_KEY`) only to override it, for example during a key rotation.
+The public key is a base64 string of the raw 32 bytes. Release builds of `vulnetix-sensor` have it pinned, so the sensor verifies without being told. Pass `--feed-key` (or set `VULNESIS_FEED_KEY`) only to override it, for example during a key rotation.
 
 ## Verify by hand
 
 With OpenSSL 3:
 
 ```bash
-FEED="https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>"
+FEED="https://vulnes.is/feeds/<org-uuid>/<feed-uuid>"
 KEY="<base64 Ed25519 public key>"
 
 curl -fsSLO "$FEED/manifest.json"

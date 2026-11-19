@@ -11,8 +11,8 @@ updated: 02 Nov 2026
 ---
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/models" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY"
+curl -s "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/models" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY"
 ```
 
 `GET /{provider}/{orgUuid}/v1/models` lists the active catalog models at a provider, filtered by the organisation's [model policy](/ai-firewall/policy/models/): denied models are left out, and in allowlist mode only allowed models are listed. Clients that build a model picker from this endpoint, Claude Desktop among them, therefore only offer models the gateway will accept.
@@ -47,8 +47,8 @@ OpenAI shape (`created` is Unix seconds):
 Anthropic shape (`created_at` is RFC 3339; `first_id` and `last_id` are omitted when the list is empty):
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/anthropic/$VULNETIX_ORG_ID/v1/models" \
-  -H "x-api-key: $VULNETIX_API_KEY"
+curl -s "https://guardrails.vulnes.is/anthropic/$VULNESIS_ORG_ID/v1/models" \
+  -H "x-api-key: $VULNESIS_API_KEY"
 ```
 
 ```json

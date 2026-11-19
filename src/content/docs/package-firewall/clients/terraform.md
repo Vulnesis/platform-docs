@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Base URL | `https://packages.vulnetix.com/terraform` |
+| Base URL | `https://packages.vulnes.is/terraform` |
 | Ecosystem ID | `terraform` |
 | Plan | Add-on |
 | Mode | filter: `versions` lists are filtered; `.../download` requests are checked |
@@ -27,8 +27,8 @@ Override the services Terraform discovers for `registry.terraform.io`, and give 
 ```hcl
 host "registry.terraform.io" {
   services = {
-    "providers.v1" = "https://packages.vulnetix.com/terraform/v1/providers/",
-    "modules.v1"   = "https://packages.vulnetix.com/terraform/v1/modules/"
+    "providers.v1" = "https://packages.vulnes.is/terraform/v1/providers/",
+    "modules.v1"   = "https://packages.vulnes.is/terraform/v1/modules/"
   }
 }
 

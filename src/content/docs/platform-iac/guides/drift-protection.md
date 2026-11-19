@@ -153,7 +153,7 @@ Drift protection stops the Resolve Platform and the legacy APIs from changing a 
 - **Finding triage is not guarded.** Marking a finding a false positive can leave a Resolve Platform `Suppression` rule as a side effect, and that is not blocked. Only `POST /findings/bulk/suppress`, which exists to write rules, is guarded.
 - **The SIEM kinds are not covered yet.** `SavedSearch`, `DetectionRule`, `AlertTrigger`, `ScheduledReport` and `LogSource` are written in Guardian, not in the site API, so the guard never sees their writes.
 - **A person's own state is not guarded:** their password, MFA, API key, identity links and notification preferences.
-- **Tests, previews, dry runs, syncs and refreshes change nothing a kind declares,** so they pass. So do legacy tables no kind writes, and `/admin/*`, which is Vulnetix staff tooling.
+- **Tests, previews, dry runs, syncs and refreshes change nothing a kind declares,** so they pass. So do legacy tables no kind writes, and `/admin/*`, which is Vulnesis staff tooling.
 - **`PUT /v1/account` is guarded only when its body carries `companyEmailDomain`.** The rest of that route is the person's own profile.
 - **`LicensePolicy` and `LicenseExceptions` are validate only,** and `VexSource` and `TeaPublicationTarget` are written only through the engine, so there is no Resolve Platform write to guard.
 

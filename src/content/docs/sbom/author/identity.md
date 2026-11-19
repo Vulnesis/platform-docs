@@ -40,12 +40,12 @@ The first source that answers wins:
 | Order | Source |
 |---|---|
 | 1 | `--bom-manufacturer` |
-| 2 | `VULNETIX_BOM_MANUFACTURER` |
+| 2 | `VULNESIS_BOM_MANUFACTURER` |
 | 3 | `metadata.manufacturer` in the last overlay that has one |
 | 4 | The repository owner the CI provider states (GitHub, GitLab, Azure DevOps, Bitbucket, Jenkins) |
 | 5 | The owner in the git remote |
 
-When none answers, `metadata.manufacturer` is left out. The organisation id the CLI authenticated as (`--org-id` or `VULNETIX_ORG_ID`) never names a manufacturer by itself. When a name resolves, the id is added as the manufacturer's `bom-ref`, `urn:uuid:<org id>`, so the document can be tied to your Vulnetix organisation.
+When none answers, `metadata.manufacturer` is left out. The organisation id the CLI authenticated as (`--org-id` or `VULNESIS_ORG_ID`) never names a manufacturer by itself. When a name resolves, the id is added as the manufacturer's `bom-ref`, `urn:uuid:<org id>`, so the document can be tied to your Vulnesis organisation.
 
 The owner URL from the git remote becomes `metadata.manufacturer.url`, unless `--bom-manufacturer-url` replaces it.
 
@@ -100,5 +100,5 @@ See [Overlay files](/sbom/author/overlay/).
 | Writes | Identity |
 |---|---|
 | `vulnetix image` | No manufacturer |
-| `vulnetix triage --vex-format cdx`, `vulnetix jail --vex-format cyclonedx` | VEX documents with `metadata.authors` of `Vulnetix`, because they carry decisions recorded in Vulnetix. No manufacturer. |
+| `vulnetix triage --vex-format cdx`, `vulnetix jail --vex-format cyclonedx` | VEX documents with `metadata.authors` of `Vulnesis`, because they carry decisions recorded in Vulnetix. No manufacturer. |
 | `bom enrich`, `bom import` | The input's identity, unchanged. The command appends itself to `metadata.tools`. |

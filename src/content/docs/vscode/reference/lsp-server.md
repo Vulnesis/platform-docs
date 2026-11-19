@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 status: available
 ---
 
-`vulnetix lsp` runs the Vulnetix CLI as a Language Server Protocol server over stdin and stdout. The VS Code extension starts it for you; any other LSP client can start it the same way.
+`vulnetix lsp` runs the Vulnesis CLI as a Language Server Protocol server over stdin and stdout. The VS Code extension starts it for you; any other LSP client can start it the same way.
 
 Nothing is written to stdout except protocol messages. Logs go to stderr, or to `--log-file`.
 

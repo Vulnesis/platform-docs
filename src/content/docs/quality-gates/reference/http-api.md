@@ -7,9 +7,9 @@ checked: [vdb-site@d2ea72f23]
 updated: 04 Nov 2026
 ---
 
-The Quality Gate and the EOL severities are one record per organisation, read and written at `/v1/quality-gate`. The Resolve Platform's [Quality Gate page](https://www.vulnetix.com/resolve/quality-gate) uses these routes. For automation, prefer the [`QualityGate`](/platform-iac/kinds/quality-gate/) kind with `vulnetix config apply`, which takes an API key. There is no separate EOL policy route: the EOL severities are fields of this record.
+The Quality Gate and the EOL severities are one record per organisation, read and written at `/v1/quality-gate`. The Resolve Platform's [Quality Gate page](https://www.vulnes.is/resolve/quality-gate) uses these routes. For automation, prefer the [`QualityGate`](/platform-iac/kinds/quality-gate/) kind with `vulnetix config apply`, which takes an API key. There is no separate EOL policy route: the EOL severities are fields of this record.
 
-Base URL: `https://www.vulnetix.com/api/site/v1/`.
+Base URL: `https://www.vulnes.is/api/site/v1/`.
 
 | Method | Path | Who |
 |---|---|---|
@@ -47,7 +47,7 @@ The first nine are the enforcement settings. `null` means the organisation has n
 ## GET /v1/quality-gate
 
 ```bash
-curl -s https://www.vulnetix.com/api/site/v1/quality-gate \
+curl -s https://www.vulnes.is/api/site/v1/quality-gate \
   -H "Authorization: Bearer $SESSION_JWT"
 ```
 
@@ -76,7 +76,7 @@ An organisation that has never saved a quality gate gets `404` `{"error": "not f
 ## PUT /v1/quality-gate
 
 ```bash
-curl -s -X PUT https://www.vulnetix.com/api/site/v1/quality-gate \
+curl -s -X PUT https://www.vulnes.is/api/site/v1/quality-gate \
   -H "Authorization: Bearer $SESSION_JWT" \
   -H 'Content-Type: application/json' \
   -d '{"severity": "high", "blockMalware": true, "cooldown": 3,

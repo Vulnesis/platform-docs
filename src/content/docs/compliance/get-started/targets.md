@@ -8,7 +8,7 @@ checked: [vdb-site@7b71e88, saas@0b6936a9, config-schemas@v1.11.1]
 updated: 03 Nov 2026
 ---
 
-A **compliance target** is an obligation your organisation holds itself to and how often Vulnetix measures it. Open **Reports › Compliance Targets** (`/resolve/compliance-targets`).
+A **compliance target** is an obligation your organisation holds itself to and how often Vulnesis measures it. Open **Reports › Compliance Targets** (`/resolve/compliance-targets`).
 
 ## Report targets
 
@@ -22,8 +22,8 @@ Three targets make no report. Each run stores an evaluation and its checks, and 
 
 | Target | What it checks |
 |---|---|
-| `slsa` | The evidence for a SLSA Build level, 1 to 3. Level 1: build provenance exists. Level 2 adds provenance verified against the source repository and commit, and signed published artifacts. Level 3 adds signatures recorded in a transparency log and verified attestations. Every level also checks that the Software Factory's minimum SLSA level is at least the target. Vulnetix cannot inspect a build platform, so a pass means the evidence a hardened platform leaves is present. |
-| `ssdf` | Fourteen practices of NIST SP 800-218 that Vulnetix holds evidence for, in the groups PO, PS, PW and RV: for example branch protection, signed releases, SBOMs, threat models, code review, scanning, a remediation policy and triage. A practice with no evidence is shown as not evidenced and is left out of the percentage. You set which groups count and the percentage that must be met. It measures what Vulnetix can see and is not a conformance claim. |
+| `slsa` | The evidence for a SLSA Build level, 1 to 3. Level 1: build provenance exists. Level 2 adds provenance verified against the source repository and commit, and signed published artifacts. Level 3 adds signatures recorded in a transparency log and verified attestations. Every level also checks that the Software Factory's minimum SLSA level is at least the target. Vulnesis cannot inspect a build platform, so a pass means the evidence a hardened platform leaves is present. |
+| `ssdf` | Fourteen practices of NIST SP 800-218 that Vulnesis holds evidence for, in the groups PO, PS, PW and RV: for example branch protection, signed releases, SBOMs, threat models, code review, scanning, a remediation policy and triage. A practice with no evidence is shown as not evidenced and is left out of the percentage. You set which groups count and the percentage that must be met. It measures what Vulnesis can see and is not a conformance claim. |
 | `crypto-policy` | A cryptography policy you write as a [CEL](/platform-iac/reference/cel/) expression over the components of your Cryptography Bill of Materials. |
 
 ### Cryptography policy

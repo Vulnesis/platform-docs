@@ -62,4 +62,4 @@ Anything else returns an error result that lists the allowed prefixes.
 
 `vdb_request` uses the same credential, quota reporting, size guards and 12-call budget as every other tool.
 
-If you call it often for the same endpoint, that is a missing tool: [open an issue](https://github.com/Vulnetix/mcp-server/issues).
+If you call it often for the same endpoint, that is a missing tool: [open an issue](https://github.com/Vulnesis/mcp-server/issues).

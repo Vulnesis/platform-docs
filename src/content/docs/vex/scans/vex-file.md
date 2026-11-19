@@ -62,7 +62,7 @@ A declared source is best effort, unlike `--vex`. A `path` that does not exist, 
 
 ### Statements the Resolve Platform holds
 
-A `VexSource` of type `tea`, `s3` or `git` is fetched by the Resolve Platform on its refresh. Each statement that is a decision, a not-affected statement or a decision not to fix, becomes a `Suppression` rule keyed by the vulnerability and the product. From CLI v4.4.0 an authenticated scan reads those rules with the statement behind them (the vulnerability, product, justification, status and source) and applies them in the same VEX pass as the documents: the same matching, the same annotation, and the same total, suppressed and effective counts. The annotation names the source as `Vulnetix VexSource/<name>`, and the summary line counts them apart: `12 statement(s) from 1 document(s) and 4 from Vulnetix`.
+A `VexSource` of type `tea`, `s3` or `git` is fetched by the Resolve Platform on its refresh. Each statement that is a decision, a not-affected statement or a decision not to fix, becomes a `Suppression` rule keyed by the vulnerability and the product. From CLI v4.4.0 an authenticated scan reads those rules with the statement behind them (the vulnerability, product, justification, status and source) and applies them in the same VEX pass as the documents: the same matching, the same annotation, and the same total, suppressed and effective counts. The annotation names the source as `Vulnesis VexSource/<name>`, and the summary line counts them apart: `12 statement(s) from 1 document(s) and 4 from Vulnesis`.
 
 | | |
 |---|---|
@@ -73,7 +73,7 @@ A `VexSource` of type `tea`, `s3` or `git` is fetched by the Resolve Platform on
 | Community mode | Applies none from the Resolve Platform. The shared community credential has no organization to hold rules, and the scan asks for nothing. |
 | Unmatched | Not counted in the "matched no finding" note: most of an organization's statements are about other products. |
 
-A Resolve Platform statement is dropped when a `--vex` document, a `path` or `urls` source or another Resolve Platform rule already says the same: the same vulnerability or an alias of it, the same status, and the same product, or the same package with no version, which speaks about every version. A local statement about one version does not cover a Resolve Platform statement about all of them. Nothing the Resolve Platform holds is sent back to Vulnetix; only the local documents are.
+A Resolve Platform statement is dropped when a `--vex` document, a `path` or `urls` source or another Resolve Platform rule already says the same: the same vulnerability or an alias of it, the same status, and the same product, or the same package with no version, which speaks about every version. A local statement about one version does not cover a Resolve Platform statement about all of them. Nothing the Resolve Platform holds is sent back to Vulnesis; only the local documents are.
 
 A rule a `VexSource` made belongs to that source, whose refresh writes and removes it, so the CLI does not change it:
 
@@ -88,7 +88,7 @@ Replies are bounded at 1000 ordinary rules and 5000 VexSource rules per request.
 
 ### Offline and without a login
 
-Reading VEX from documents needs no Vulnetix credentials and no VDB request. A file, a directory or a `path` source works offline; a URL needs the network for itself only. Without an authenticated session the scan applies those statements and prints the summary, and sends nothing. The Resolve Platform's statements need a session.
+Reading VEX from documents needs no Vulnesis credentials and no VDB request. A file, a directory or a `path` source works offline; a URL needs the network for itself only. Without an authenticated session the scan applies those statements and prints the summary, and sends nothing. The Resolve Platform's statements need a session.
 
 ## Where it is applied
 
@@ -107,11 +107,11 @@ VEX: 12 statement(s) from 1 document(s), 12 hidden as VEX not affected, 0 effect
   1 packages | 0 vulnerabilities | 12 hidden as VEX not affected
 ```
 
-The label is "VEX not affected" or "VEX fixed", never "suppressed by rule". A VEX statement is its author's assertion, not an ignore rule your team wrote, and these findings are not reported to Vulnetix as rule applications.
+The label is "VEX not affected" or "VEX fixed", never "suppressed by rule". A VEX statement is its author's assertion, not an ignore rule your team wrote, and these findings are not reported to Vulnesis as rule applications.
 
-## What is sent to Vulnetix
+## What is sent to Vulnesis
 
-When the scan is authenticated, every VEX document the scan applied, whether it came from `--vex-file`, `--vex` or a declared `path` or `urls` source, is sent with origin `scan_vex_file`, tied to this run's SCA snapshot. The VEX files the scan's own reconciliation wrote under `.vulnetix/` are sent with origin `reconcile`. See [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/).
+When the scan is authenticated, every VEX document the scan applied, whether it came from `--vex-file`, `--vex` or a declared `path` or `urls` source, is sent with origin `scan_vex_file`, tied to this run's SCA snapshot. The VEX files the scan's own reconciliation wrote under `.vulnetix/` are sent with origin `reconcile`. See [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/).
 
 ## In CI
 
@@ -119,8 +119,8 @@ When the scan is authenticated, every VEX document the scan applied, whether it 
 - name: Scan, honouring vendor VEX
   run: vulnetix scan --vex-file .vulnetix/vendor-vex/ --severity high
   env:
-    VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-    VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+    VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+    VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 On GitHub, the `vex` input of the [sca](/sca/github-actions/sca/), [sast](/sast/github-actions/sast/), [secrets](/secrets/github-actions/secrets/), [iac](/iac-scanning/github-actions/iac/) and [containers](/sca/github-actions/containers/) actions and of the [root action](/cli/ci-cd/github-actions/#the-root-action) passes one `--vex` per line (CLI v4.3.0). An authenticated CI scan (CLI v4.4.0) also applies the statements the Resolve Platform holds, including those of `tea`, `s3` and `git` sources, so the `vex` input is for extra or local documents only.

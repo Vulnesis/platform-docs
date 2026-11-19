@@ -11,8 +11,8 @@ A client with a custom **OpenAI-compatible provider** setting (a base URL field 
 
 | Field | Value |
 |---|---|
-| Base URL | `https://guardrails.vulnetix.com/<provider>/<uuid>/v1` |
-| API key | Your Vulnetix API key |
+| Base URL | `https://guardrails.vulnes.is/<provider>/<uuid>/v1` |
+| API key | Your Vulnesis API key |
 | Model | The provider's own model name: `gpt-4o-mini` on `openai`, `openai/gpt-4o-mini` on `openrouter` |
 
 Conditions:
@@ -20,7 +20,7 @@ Conditions:
 1. Include `/v1`. Only Anthropic-shaped clients leave it off.
 2. `<provider>` must serve `chat`. Every built-in provider except `anthropic` and `kiro` does. An OpenAI-shaped client cannot reach `anthropic`.
 3. The organisation must have a stored key for `<provider>`, or the gateway answers `403 provider_key_missing`.
-4. The key field is often labelled "OpenAI API key". It still takes your Vulnetix key.
+4. The key field is often labelled "OpenAI API key". It still takes your Vulnesis key.
 
 ## Known to take this recipe
 

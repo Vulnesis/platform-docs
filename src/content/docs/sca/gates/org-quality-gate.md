@@ -17,7 +17,7 @@ An organisation's [quality gate](/quality-gates/) is the policy for every scan i
 
 | Scan context | Gate applied |
 |---|---|
-| Signed in to an organisation (`vulnetix auth login`, or `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`) | yes |
+| Signed in to an organisation (`vulnetix auth login`, or `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`) | yes |
 | Community credentials, or none | no: flags only |
 | The lookup fails, or the org has no gate configured | no: flags only |
 

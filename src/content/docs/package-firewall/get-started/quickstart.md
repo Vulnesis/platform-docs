@@ -16,7 +16,7 @@ vulnetix auth login
 vulnetix auth status
 ```
 
-npm needs the Package Firewall add-on, or the Enterprise plan, which includes it. The pkg.go.dev API (`go-dev`) and the AUR (`aur`) are free on every plan. See [Billing](https://www.vulnetix.com/resolve/billing#addons).
+npm needs the Package Firewall add-on, or the Enterprise plan, which includes it. The pkg.go.dev API (`go-dev`) and the AUR (`aur`) are free on every plan. See [Billing](https://www.vulnes.is/resolve/billing#addons).
 
 ## 2. Configure npm
 
@@ -31,7 +31,7 @@ This writes `~/.netrc`, `~/.npmrc` and `~/.yarnrc.yml`. Check it took:
 
 ```bash
 npm config get registry
-# https://packages.vulnetix.com/npm/
+# https://packages.vulnes.is/npm/
 npm cache clean --force
 npm install lodash
 ```
@@ -54,11 +54,11 @@ Changes reach the proxy within 60 seconds.
 Request a package directly and read the firewall headers:
 
 ```bash
-AUTH=$(printf '%s:%s' "$VULNETIX_ORG_ID" "$VULNETIX_API_KEY" | base64 -w0)
-curl -s -o /dev/null -D - -H "Authorization: Basic $AUTH" https://packages.vulnetix.com/npm/lodash | grep -i '^x-vulnetix'
+AUTH=$(printf '%s:%s' "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY" | base64 -w0)
+curl -s -o /dev/null -D - -H "Authorization: Basic $AUTH" https://packages.vulnes.is/npm/lodash | grep -i '^x-vulnetix'
 ```
 
-An allowed request prints nothing here, or only `X-Vulnetix-Firewall-Mode` when the org is not in `enforce` mode. A blocked request carries `X-Vulnetix-Firewall: blocked` and a reason; see [Block responses](/package-firewall/reference/responses/). Every decision is listed in the Resolve Platform at [www.vulnetix.com/resolve/logs#package](https://www.vulnetix.com/resolve/logs#package).
+An allowed request prints nothing here, or only `X-Vulnetix-Firewall-Mode` when the org is not in `enforce` mode. A blocked request carries `X-Vulnetix-Firewall: blocked` and a reason; see [Block responses](/package-firewall/reference/responses/). Every decision is listed in the Resolve Platform at [www.vulnes.is/resolve/logs#package](https://www.vulnes.is/resolve/logs#package).
 
 ## Next
 

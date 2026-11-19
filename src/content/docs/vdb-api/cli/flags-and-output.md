@@ -15,10 +15,10 @@ Every `vulnetix vdb` command takes these.
 | Flag | Default | What it does |
 |---|---|---|
 | `--org-id <uuid>` | | Organisation id. Overrides the environment |
-| `--api-key <hex>` | | API key. Overrides `VULNETIX_API_KEY` |
+| `--api-key <hex>` | | API key. Overrides `VULNESIS_API_KEY` |
 | `--secret <secret>` | | SigV4 secret. Overrides `VVD_SECRET` |
 | `--method apikey\|sigv4` | from the flags given | Auth method |
-| `--base-url <url>` | `https://api.vdb.vulnetix.com` | API host |
+| `--base-url <url>` | `https://api.vdb.vulnes.is` | API host |
 | `-V, --api-version v2\|v1` | `v2` | `v1` is deprecated and prints a notice |
 | `-o, --output json\|yaml\|pretty` | `pretty` | Output format. On commands that write files, any other value is a file path |
 | `--compact`, `--comfortable`, `--sparse` | `--comfortable` | JSON indent of 2, 4 or 8 spaces. Only with `-o json`, and only one of them |
@@ -30,7 +30,7 @@ Every `vulnetix vdb` command takes these.
 | `-v`, `-vv` | | `-v` adds rate-limit, cache and auth diagnostics on stderr; `-vv` adds raw evidence |
 | `--silent` | | Only the final result, no logs |
 
-`vdb` also takes memory-context flags, which the Vulnetix coding-agent plugins pass so each lookup is recorded against the repository, branch and package manager it was made for. They do not change what the API returns. `--disable-memory` turns the memory record off.
+`vdb` also takes memory-context flags, which the Vulnesis coding-agent plugins pass so each lookup is recorded against the repository, branch and package manager it was made for. They do not change what the API returns. `--disable-memory` turns the memory record off.
 
 | Flag | Records |
 |---|---|
@@ -51,12 +51,12 @@ The CLI uses the first source that has a complete credential:
 | Order | Source | Method |
 |---|---|---|
 | 1 | `--org-id` with `--api-key` or `--secret` | API key or SigV4 |
-| 2 | `VULNETIX_API_TOKEN` (with optional `VULNETIX_ORG_ID`) | Bearer API token |
-| 3 | `VULNETIX_API_KEY` with `VULNETIX_ORG_ID` | API key |
+| 2 | `VULNESIS_API_TOKEN` (with optional `VULNESIS_ORG_ID`) | Bearer API token |
+| 3 | `VULNESIS_API_KEY` with `VULNESIS_ORG_ID` | API key |
 | 4 | `VVD_ORG` with `VVD_SECRET` | SigV4 |
 | 5 | `.vulnetix/credentials.json` in the current directory | Whatever it holds |
 | 6 | `~/.vulnetix/credentials.json` | Whatever it holds |
-| 7 | netrc entry `machine packages.vulnetix.com` (`~/.netrc`, `%USERPROFILE%\_netrc` on Windows) | API key: `login` is the org id, `password` the key |
+| 7 | netrc entry `machine packages.vulnes.is` (`~/.netrc`, `%USERPROFILE%\_netrc` on Windows) | API key: `login` is the org id, `password` the key |
 | 8 | The built-in Community key | Shared Community quota. `--no-community` disables it |
 
 The credentials file:

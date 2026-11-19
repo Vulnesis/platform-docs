@@ -1,7 +1,7 @@
 ---
 title: Secret detection
 nav: Overview
-description: What vulnetix secrets finds, where it looks, what it sends to Vulnetix, and which pages cover each part.
+description: What vulnetix secrets finds, where it looks, what it sends to Vulnesis, and which pages cover each part.
 order: 1
 sources: [cli/cmd/specialized_scans.go, cli/cmd/scan.go, cli/internal/sast/kinds.go, cli/internal/sast/engine.go, cli/internal/sast/input.go, cli/internal/secretscan/inspect.go, cli/cmd/sarif_persist.go, cli/cmd/config_documents.go]
 checked: [cli@2449840]
@@ -28,7 +28,7 @@ vulnetix scan --only secrets
 3. Reads up to 500 commits of git history, newest first, and adds up to 5,000 past file versions of up to 4 MiB each.
 4. Evaluates the rules. Each rule checks for a keyword or prefix first, extracts the token with a regular expression, drops documented example and placeholder values, and for most rules requires a minimum Shannon entropy.
 5. Prints the report grouped by credential, writes `.vulnetix/sast.sarif` and `.vulnetix/memory.yaml`, and exits `1` if a `--fail-on` gate is breached.
-6. When you are authenticated, submits the findings to Vulnetix and prints a snapshot link.
+6. When you are authenticated, submits the findings to Vulnesis and prints a snapshot link.
 
 [What gets scanned](/secrets/guides/what-gets-scanned/) has the detail and the known blind spots.
 

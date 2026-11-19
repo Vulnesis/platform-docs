@@ -8,9 +8,9 @@ checked: [vdb-site@9cf42d7, vdb-lock-runner@3a1e09e, saas@29dc0ead, config-schem
 updated: 03 Nov 2026
 ---
 
-A scan can only match what it can read. When your dependencies come from a private npm registry, PyPI index, Maven repository or container registry, a **registry connection** tells Vulnetix where that registry is, which packages it serves, and what credential to use.
+A scan can only match what it can read. When your dependencies come from a private npm registry, PyPI index, Maven repository or container registry, a **registry connection** tells Vulnesis where that registry is, which packages it serves, and what credential to use.
 
-Open **Configuration › Private Registries** (`/resolve/registries`). This is not the paid container registry logins on the Integrations page: those let Vulnetix catalogue images you use. A registry connection is your own registry.
+Open **Configuration › Private Registries** (`/resolve/registries`). This is not the paid container registry logins on the Integrations page: those let Vulnesis catalogue images you use. A registry connection is your own registry.
 
 ## A connection
 
@@ -28,9 +28,9 @@ Open **Configuration › Private Registries** (`/resolve/registries`). This is n
 
 The credential is kept in your [secrets vault](/organization/security/secrets-vault/) as a connector entry, never in the connection. It is not shown again after you save it, not exported, and not returned by any route. Saving a new secret stores a new version of the entry, and deleting the connection revokes it.
 
-Before it stores a new or changed credential, Vulnetix checks it with the registry: npm registries are asked who you are, PyPI and Maven registries are asked for their index, and OCI registries go through the registry's token flow. A credential the registry refuses is not stored, and the message names the registry and whether to check the password or the token. **Test** on a saved connection repeats the check and records when it last passed or why it failed.
+Before it stores a new or changed credential, Vulnesis checks it with the registry: npm registries are asked who you are, PyPI and Maven registries are asked for their index, and OCI registries go through the registry's token flow. A credential the registry refuses is not stored, and the message names the registry and whether to check the password or the token. **Test** on a saved connection repeats the check and records when it last passed or why it failed.
 
-The check is made from Vulnetix's side, so the registry must be reachable from the internet. Vulnetix only connects to public addresses and drops the credential on any redirect.
+The check is made from Vulnesis's side, so the registry must be reachable from the internet. Vulnesis only connects to public addresses and drops the credential on any redirect.
 
 ## Who can change them
 
@@ -50,7 +50,7 @@ spec:
   url: https://artifactory.acme.example/artifactory/api/npm/npm-local/
   scope: ["@acme"]
   username: vulnetix-scanner
-  secret: { env: VULNETIX_ARTIFACTORY_PASSWORD }
+  secret: { env: VULNESIS_ARTIFACTORY_PASSWORD }
 ```
 
 Download as code on the page produces this document for a connection, with a placeholder variable for the secret. Leave `secret` out of a later apply and the stored credential is kept.
@@ -71,7 +71,7 @@ Either way, a credential reaches a process for one request, for the organisation
 
 ### Lockfile resolution for the manifest curator
 
-When the manifest curator sends a job to the lock runner, Vulnetix adds your own registries to that one request, so a lockfile can be resolved for packages that are not public. For each job it:
+When the manifest curator sends a job to the lock runner, Vulnesis adds your own registries to that one request, so a lockfile can be resolved for packages that are not public. For each job it:
 
 1. does nothing for a package manager that takes no private registry, or for an organisation whose plan lacks registry credentials. Go, Cargo, Bundler and Composer take none, and neither do **Poetry and pip-tools**, which may build a source distribution with the login readable. npm, Yarn, pnpm, Bun, pip, uv and Maven are served;
 2. takes the connections of the organisation that made the plan, never a value from the request;
@@ -106,12 +106,12 @@ What the runner does with a login:
 
 ### Container images with the CLI
 
-`vulnetix image` reads a private image with your own connection when you are signed in. This is in the CLI release after v4.5.0; v4.5.0 and earlier read a registry with your own Docker credentials only. The CLI asks Vulnetix, with `POST /v1/scan-registries/oci-token`, for a pull token for the one repository it is about to read. Vulnetix does the registry's own token exchange and returns that token, which the registry expires within minutes and which reads only that repository. The stored login never reaches the machine.
+`vulnetix image` reads a private image with your own connection when you are signed in. This is in the CLI release after v4.5.0; v4.5.0 and earlier read a registry with your own Docker credentials only. The CLI asks Vulnesis, with `POST /v1/scan-registries/oci-token`, for a pull token for the one repository it is about to read. Vulnesis does the registry's own token exchange and returns that token, which the registry expires within minutes and which reads only that repository. The stored login never reaches the machine.
 
 - The caller must be an owner, admin or member of the organisation, on a plan with registry credentials. The connection must be an enabled `oci` connection on exactly that host whose scope serves the repository. Anything else, including a host you have not connected and another organisation's host, answers `403 no_connection` without opening the vault.
 - A registry that has no token service (it asks for basic authentication, as a bare `registry:2` with an htpasswd file does) and a connection that stores a bearer token cannot issue a short-lived token. They answer `409 no_ephemeral_credential`, and the CLI uses your own `docker login`. The long-lived login is not handed out to make that work.
 - Any other failure, such as being offline, falls back to your Docker credentials the same way, so the feature can add access and never removes it.
-- The route is limited to 30 requests a minute and counts against the same hourly allowance. The registry is reached from Vulnetix, over public addresses only, and the login is sent only to the token service the registry names, over `https`.
+- The route is limited to 30 requests a minute and counts against the same hourly allowance. The registry is reached from Vulnesis, over public addresses only, and the login is sent only to the token service the registry names, over `https`.
 - The request names the registry and the repository, so a run with `--no-upload` and a community run, which have no account, do not make it.
 
 ### What has not been verified

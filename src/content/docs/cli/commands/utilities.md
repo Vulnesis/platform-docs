@@ -14,9 +14,9 @@ updated: 02 Nov 2026
 vulnetix
 ```
 
-Runs an authentication health check. Each source is checked against the API in turn: `VULNETIX_API_KEY` + `VULNETIX_ORG_ID`, `VVD_ORG` + `VVD_SECRET`, `./.vulnetix/credentials.json`, `$HOME/.vulnetix/credentials.json` and the netrc entry, followed by the always-available community fallback. Each line ends with a check mark and the organisation, a cross and the error, or `not set` / `not found`.
+Runs an authentication health check. Each source is checked against the API in turn: `VULNESIS_API_KEY` + `VULNESIS_ORG_ID`, `VVD_ORG` + `VVD_SECRET`, `./.vulnetix/credentials.json`, `$HOME/.vulnetix/credentials.json` and the netrc entry, followed by the always-available community fallback. Each line ends with a check mark and the organisation, a cross and the error, or `not set` / `not found`.
 
-It does not look at `VULNETIX_API_TOKEN`, keychain-held secrets or `VULNETIX_CREDENTIALS_DIR`. `vulnetix auth status` and `vulnetix auth verify` cover those.
+It does not look at `VULNESIS_API_TOKEN`, keychain-held secrets or `VULNESIS_CREDENTIALS_DIR`. `vulnetix auth status` and `vulnetix auth verify` cover those.
 
 ## version
 

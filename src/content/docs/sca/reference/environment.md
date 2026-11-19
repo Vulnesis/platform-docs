@@ -12,19 +12,19 @@ updated: 02 Nov 2026
 
 | Variable | Default | Effect |
 |---|---|---|
-| `VULNETIX_SCA_CONCURRENCY` | `6` | `/v2/cli.sca` batches sent in parallel, clamped 1 to 16. `1` sends them one at a time. |
-| `VULNETIX_SCA_TIMEOUT` | `75` | Seconds allowed per `/v2/cli.sca` request, clamped 10 to 300 |
-| `VULNETIX_REACHABILITY_CONCURRENCY` | `GOMAXPROCS` | Files parsed in parallel by reachability, clamped 1 to 32 |
-| `VULNETIX_NO_TOKEN_CACHE` | unset | `1` keeps exchanged API tokens in memory only |
-| `VULNETIX_NO_LICENSE_CACHE` | unset | `1` disables the licence cache |
-| `VULNETIX_NO_BINARY_CACHE` | unset | `1` disables the package-manager version cache |
-| `VULNETIX_HTTP_TRACE` | unset | `1` prints one stderr line per HTTP request: start offset, duration, status, path. No headers or bodies. |
-| `VULNETIX_PROJECT`, `VULNETIX_ENVIRONMENT`, `VULNETIX_CLUSTER`, `VULNETIX_NAMESPACE` | unset | Deployment labels when the flags are absent |
-| `VULNETIX_BOM_MANUFACTURER` | unset | SBOM manufacturer when `--bom-manufacturer` is absent |
+| `VULNESIS_SCA_CONCURRENCY` | `6` | `/v2/cli.sca` batches sent in parallel, clamped 1 to 16. `1` sends them one at a time. |
+| `VULNESIS_SCA_TIMEOUT` | `75` | Seconds allowed per `/v2/cli.sca` request, clamped 10 to 300 |
+| `VULNESIS_REACHABILITY_CONCURRENCY` | `GOMAXPROCS` | Files parsed in parallel by reachability, clamped 1 to 32 |
+| `VULNESIS_NO_TOKEN_CACHE` | unset | `1` keeps exchanged API tokens in memory only |
+| `VULNESIS_NO_LICENSE_CACHE` | unset | `1` disables the licence cache |
+| `VULNESIS_NO_BINARY_CACHE` | unset | `1` disables the package-manager version cache |
+| `VULNESIS_HTTP_TRACE` | unset | `1` prints one stderr line per HTTP request: start offset, duration, status, path. No headers or bodies. |
+| `VULNESIS_PROJECT`, `VULNESIS_ENVIRONMENT`, `VULNESIS_CLUSTER`, `VULNESIS_NAMESPACE` | unset | Deployment labels when the flags are absent |
+| `VULNESIS_BOM_MANUFACTURER` | unset | SBOM manufacturer when `--bom-manufacturer` is absent |
 | `GITHUB_TOKEN`, `GH_TOKEN` | unset | GitHub licence lookups when `gh` is not signed in |
 | `CI` | unset | Any value: plain view by default, no legacy-flag notes |
 
-Credential variables (`VULNETIX_API_KEY`, `VULNETIX_ORG_ID` and others) are on [Authentication](/cli/authentication/overview/).
+Credential variables (`VULNESIS_API_KEY`, `VULNESIS_ORG_ID` and others) are on [Authentication](/cli/authentication/overview/).
 
 ## Caches
 

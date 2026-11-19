@@ -18,7 +18,7 @@ app -> HTTPS_PROXY 127.0.0.1:3128 vulnetix-sensor -> internet
 Build and push the image first: no image is published.
 
 ```bash
-git clone https://github.com/Vulnetix/cli && cd cli
+git clone https://github.com/Vulnesis/cli && cd cli
 docker build -f deploy/sensor/Dockerfile --build-arg VERSION=v3.154.0 -t <registry>/vulnetix-sensor:v3.154.0 .
 docker push <registry>/vulnetix-sensor:v3.154.0
 ```
@@ -27,8 +27,8 @@ docker push <registry>/vulnetix-sensor:v3.154.0
 
 ```bash
 kubectl create secret generic vulnetix-sensor \
-  --from-literal=VULNETIX_ORG_ID=<org-uuid> \
-  --from-literal=VULNETIX_API_KEY=<hmac>
+  --from-literal=VULNESIS_ORG_ID=<org-uuid> \
+  --from-literal=VULNESIS_API_KEY=<hmac>
 ```
 
 ```yaml
@@ -52,7 +52,7 @@ spec:
             - --upstream=http://127.0.0.1:8081
             - --health-path=/healthz
             - --egress-listen=127.0.0.1:3128
-            - --feed=https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>
+            - --feed=https://vulnes.is/feeds/<org-uuid>/<feed-uuid>
             - --state-dir=/state
           envFrom:
             - secretRef: { name: vulnetix-sensor }
@@ -112,12 +112,12 @@ Container definitions for the task. The load balancer target group points at the
         "--upstream", "http://127.0.0.1:8081",
         "--health-path", "/healthz",
         "--egress-listen", "127.0.0.1:3128",
-        "--feed", "https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>",
+        "--feed", "https://vulnes.is/feeds/<org-uuid>/<feed-uuid>",
         "--state-dir", "/tmp/vulnetix-sensor"
       ],
       "secrets": [
-        { "name": "VULNETIX_ORG_ID", "valueFrom": "arn:aws:secretsmanager:<region>:<account>:secret:vulnetix/sensor:orgId::" },
-        { "name": "VULNETIX_API_KEY", "valueFrom": "arn:aws:secretsmanager:<region>:<account>:secret:vulnetix/sensor:apiKey::" }
+        { "name": "VULNESIS_ORG_ID", "valueFrom": "arn:aws:secretsmanager:<region>:<account>:secret:vulnetix/sensor:orgId::" },
+        { "name": "VULNESIS_API_KEY", "valueFrom": "arn:aws:secretsmanager:<region>:<account>:secret:vulnetix/sensor:apiKey::" }
       ],
       "readonlyRootFilesystem": true,
       "user": "65532",

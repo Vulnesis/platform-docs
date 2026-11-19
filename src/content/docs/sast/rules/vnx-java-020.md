@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1600](https://attack.mitre.org/techniques/T1600/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `crypto` `iv` `cbc` `java` |
-| Source | [`internal/sast/rules/vnx-java-020.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-java-020.rego) |
+| Source | [`internal/sast/rules/vnx-java-020.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-java-020.rego) |
 
 ## Overview
 

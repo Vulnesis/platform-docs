@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Registry URL | `https://packages.vulnetix.com/npm/` |
+| Registry URL | `https://packages.vulnes.is/npm/` |
 | Ecosystem ID | `npm` |
 | Plan | Add-on |
 | Mode | filter: blocked and cooldown versions are removed from the packument |
@@ -31,18 +31,18 @@ vulnetix package-firewall npm
 `~/.npmrc` gets a managed block:
 
 ```ini
-# Vulnetix Package Firewall
-registry=https://packages.vulnetix.com/npm/
-//packages.vulnetix.com/npm/:_auth=BASE64_OF_ORGUUID_COLON_APIKEY
-# End Vulnetix Package Firewall
+# Vulnesis Package Firewall
+registry=https://packages.vulnes.is/npm/
+//packages.vulnes.is/npm/:_auth=BASE64_OF_ORGUUID_COLON_APIKEY
+# End Vulnesis Package Firewall
 ```
 
 `~/.yarnrc.yml` gets:
 
 ```yaml
-npmRegistryServer: "https://packages.vulnetix.com/npm/"
+npmRegistryServer: "https://packages.vulnes.is/npm/"
 npmRegistries:
-  "//packages.vulnetix.com/npm/":
+  "//packages.vulnes.is/npm/":
     npmAlwaysAuth: true
     npmAuthIdent: "YOUR_ORG_UUID:YOUR_API_KEY"
 ```

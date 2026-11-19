@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 | | |
 |---|---|
-| Proxy URL | `https://packages.vulnetix.com` (served at the root) |
+| Proxy URL | `https://packages.vulnes.is` (served at the root) |
 | Ecosystem ID | `go` |
 | Plan | Add-on |
 | Mode | native module proxy |
@@ -25,21 +25,21 @@ vulnetix package-firewall go
 
 | Writes | Content |
 |---|---|
-| `~/.netrc` | `machine packages.vulnetix.com` entry |
-| Shell rc, chosen from `$SHELL` | A `# Vulnetix Package Firewall` block setting `GOPROXY` to the firewall with a fallback, and `GOAUTH` |
+| `~/.netrc` | `machine packages.vulnes.is` entry |
+| Shell rc, chosen from `$SHELL` | A `# Vulnesis Package Firewall` block setting `GOPROXY` to the firewall with a fallback, and `GOAUTH` |
 | `.env`, `.envrc`, `Makefile` at the git root | `GOPROXY` and `GOAUTH` lines, only if the file already exists |
 | Windows | The user environment variables `GOPROXY` and `GOAUTH` |
 
 The shell rc is `~/.bashrc` (bash), `~/.zshrc` (zsh), `~/.config/fish/config.fish` (fish), `~/.tcshrc` or `~/.cshrc` (csh family), otherwise `~/.profile`.
 
 ```bash
-# Vulnetix Package Firewall
-export GOPROXY="https://packages.vulnetix.com|https://proxy.golang.org|direct"
+# Vulnesis Package Firewall
+export GOPROXY="https://packages.vulnes.is|https://proxy.golang.org|direct"
 export GOAUTH="netrc"
-# End Vulnetix Package Firewall
+# End Vulnesis Package Firewall
 ```
 
-fish gets `set -gx GOPROXY "https://packages.vulnetix.com|https://proxy.golang.org|direct"`. Open a new shell after setup.
+fish gets `set -gx GOPROXY "https://packages.vulnes.is|https://proxy.golang.org|direct"`. Open a new shell after setup.
 
 ### The fallback, and `--fail-closed`
 
@@ -52,7 +52,7 @@ The `|` separator matters. After a comma, `go` moves to the next proxy only on H
 > vulnetix package-firewall go --fail-closed
 > ```
 >
-> This writes `GOPROXY="https://packages.vulnetix.com"`. Without the add-on every module fetch then fails with HTTP 402.
+> This writes `GOPROXY="https://packages.vulnes.is"`. Without the add-on every module fetch then fails with HTTP 402.
 
 | Flag | Type | Default | Description |
 |---|---|---|---|
@@ -61,9 +61,9 @@ The `|` separator matters. After a comma, `go` moves to the next proxy only on H
 ## Manual configuration
 
 ```bash
-go env -w GOPROXY="https://packages.vulnetix.com|https://proxy.golang.org|direct" GOAUTH=netrc
+go env -w GOPROXY="https://packages.vulnes.is|https://proxy.golang.org|direct" GOAUTH=netrc
 # or, to let a refusal stop the build
-go env -w GOPROXY=https://packages.vulnetix.com GOAUTH=netrc
+go env -w GOPROXY=https://packages.vulnes.is GOAUTH=netrc
 ```
 
 and the netrc entry from [Authentication](/package-firewall/get-started/authentication/). Go reads `~/.netrc` for proxy credentials by default. `GOAUTH` (Go 1.24 and later) makes that explicit; a `GOAUTH` set to something else, such as `off`, sends no credentials and gets `401`.

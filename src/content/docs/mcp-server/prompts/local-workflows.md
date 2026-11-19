@@ -1,6 +1,6 @@
 ---
 title: Local workflows
-description: What each of the 18 prompts needs on your machine, how to install and sign in to the Vulnetix CLI, and which clients can run the steps.
+description: What each of the 18 prompts needs on your machine, how to install and sign in to the Vulnesis CLI, and which clients can run the steps.
 order: 3
 sources:
   - mcp-server/src/prompts/generated.ts
@@ -16,13 +16,13 @@ Every prompt runs on your machine, not on the server. That is also why no code l
 ## Install and sign in
 
 ```bash
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 ```
 
 Without root, install to a user directory:
 
 ```bash
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir ~/.local/bin
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir ~/.local/bin
 ```
 
 Other install methods (Homebrew, Scoop, Nix, `go install`) are on the [CLI install page](/cli/). Then sign in once; the CLI and the MCP server use the same organisation credential:

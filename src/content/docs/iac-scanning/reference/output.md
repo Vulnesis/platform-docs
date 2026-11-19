@@ -13,7 +13,7 @@ updated: 02 Nov 2026
 | Value | Writes |
 |---|---|
 | `json-sarif` | SARIF 2.1.0 to stdout, replacing the terminal report |
-| `json-report` | The Vulnetix JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
+| `json-report` | The Vulnesis JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
 | `*.sarif`, `*.sarif.json` | SARIF 2.1.0 file; the terminal report is still printed |
 | `*.report.json` | JSON report file |
 

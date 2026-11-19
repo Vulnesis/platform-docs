@@ -23,7 +23,7 @@ The PDF is the report for a human reviewer:
 
 - the framework name, report name, period, scope (or "organisation-wide") and your context text;
 - summary counts of controls by status;
-- a coverage note for frameworks Vulnetix maps in part (NIST AI RMF, ISO/IEC 42001, OWASP Top 10, PCI DSS, EU CRA), saying how much of the standard the report covers;
+- a coverage note for frameworks Vulnesis maps in part (NIST AI RMF, ISO/IEC 42001, OWASP Top 10, PCI DSS, EU CRA), saying how much of the standard the report covers;
 - a data-integrity notice if any evidence source failed to load, and a truncation notice if a query cap cut a population short. Treat a report with either notice as unsupported, not as clean;
 - every section and control with its status label, statement, rationale, evidence, gaps, notes and attached files;
 - for PCI DSS, ISO/IEC 27001 and DSOMM, the testing procedures and the assessor's reporting details under each control, and the summary table (SoA completion, DSOMM maturity matrix);
@@ -51,9 +51,9 @@ The zip streams as it is built. Its layout:
 | `malware/malware-iocs.stix.json` | A STIX 2.1 bundle of the malware indicators found in your organisation |
 
 ```bash
-curl -s -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
+curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
   -o evidence.zip \
-  "https://www.vulnetix.com/api/site/v1/compliance/reports/$REPORT_ID/evidence.zip"
+  "https://www.vulnes.is/api/site/v1/compliance/reports/$REPORT_ID/evidence.zip"
 unzip -l evidence.zip
 ```
 

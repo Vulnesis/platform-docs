@@ -56,12 +56,12 @@ Created in the scanned directory (`--path`, or the current directory). Results a
 
 | Path | Contents |
 |---|---|
-| `credentials.json` | Home credential, or keychain metadata (mode `0600`). Moved by `VULNETIX_CREDENTIALS_DIR`. |
+| `credentials.json` | Home credential, or keychain metadata (mode `0600`). Moved by `VULNESIS_CREDENTIALS_DIR`. |
 | `state/` | Time of the last update check |
 | `cache/vdb/<version>/` | VDB response cache, one directory per CLI version; old versions are removed at start |
-| `cache/tokens/` | SigV4 token cache (`VULNETIX_NO_TOKEN_CACHE` turns it off) |
-| `cache/licenses/` | Licence lookups (`VULNETIX_NO_LICENSE_CACHE`) |
-| `cache/binaries/` | Binary version detections (`VULNETIX_NO_BINARY_CACHE`) |
+| `cache/tokens/` | SigV4 token cache (`VULNESIS_NO_TOKEN_CACHE` turns it off) |
+| `cache/licenses/` | Licence lookups (`VULNESIS_NO_LICENSE_CACHE`) |
+| `cache/binaries/` | Binary version detections (`VULNESIS_NO_BINARY_CACHE`) |
 | `memory.yaml` | Used by `env` when the current directory is not in a git repository |
 
 ## User cache directory
@@ -70,13 +70,13 @@ Under the OS user cache directory (`~/.cache` on Linux, `~/Library/Caches` on ma
 
 | Path | Contents | Moved by |
 |---|---|---|
-| `vulnetix/sast/` | SAST rule results for unchanged files | `VULNETIX_SAST_CACHE_DIR` |
-| `vulnetix/graph/` | Per-file graph facts | `VULNETIX_GRAPH_CACHE_DIR` |
-| `vulnetix/malscan/definitions/` | Malscan threat-intel definitions | `VULNETIX_MALSCAN_DEFS_DIR` |
+| `vulnetix/sast/` | SAST rule results for unchanged files | `VULNESIS_SAST_CACHE_DIR` |
+| `vulnetix/graph/` | Per-file graph facts | `VULNESIS_GRAPH_CACHE_DIR` |
+| `vulnetix/malscan/definitions/` | Malscan threat-intel definitions | `VULNESIS_MALSCAN_DEFS_DIR` |
 
 ## Other files
 
 | Path | Written by |
 |---|---|
-| `~/.netrc` (`%USERPROFILE%\_netrc`) | `package-firewall <ecosystem>`: the `machine packages.vulnetix.com` entry. See [netrc](/cli/authentication/netrc/). |
+| `~/.netrc` (`%USERPROFILE%\_netrc`) | `package-firewall <ecosystem>`: the `machine packages.vulnes.is` entry. See [netrc](/cli/authentication/netrc/). |
 | `.github/workflows/vulnetix-scanners.yml` | `gha setup` |

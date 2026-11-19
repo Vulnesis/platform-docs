@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1040](https://attack.mitre.org/techniques/T1040/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `ssl` `tls` `cryptography` `python` |
-| Source | [`internal/sast/rules/vnx-py-021.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-py-021.rego) |
+| Source | [`internal/sast/rules/vnx-py-021.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-py-021.rego) |
 
 ## Overview
 

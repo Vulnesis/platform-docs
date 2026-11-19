@@ -1,6 +1,6 @@
 ---
 title: HTTP endpoints
-description: Every path the server answers on mcp.vulnetix.com, the methods each accepts, the checks that run before it, and the response it returns.
+description: Every path the server answers on mcp.vulnes.is, the methods each accepts, the checks that run before it, and the response it returns.
 order: 4
 sources:
   - mcp-server/src/index.ts
@@ -10,7 +10,7 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-Base URL: `https://mcp.vulnetix.com`.
+Base URL: `https://mcp.vulnes.is`.
 
 | Path | Methods | Auth | Returns |
 |---|---|---|---|
@@ -34,7 +34,7 @@ Requests are checked in this order. The first failing check answers.
 7. `Content-Type` must be `application/json`, or 415.
 8. The `Authorization` header is parsed, and the request goes to the MCP handler.
 
-Allowed hostnames: `mcp.vulnetix.com`, `mcp-server.cloud-account.workers.dev`, `localhost`, `127.0.0.1`, plus any in the `ALLOWED_HOSTS` variable. Ports are ignored.
+Allowed hostnames: `mcp.vulnes.is`, `mcp-server.cloud-account.workers.dev`, `localhost`, `127.0.0.1`, plus any in the `ALLOWED_HOSTS` variable. Ports are ignored.
 
 ## `/mcp`
 
@@ -45,7 +45,7 @@ A request without a credential is not rejected here. The sign-in tools need to w
 ## `/mcp/server-card`
 
 ```bash
-curl -s https://mcp.vulnetix.com/mcp/server-card
+curl -s https://mcp.vulnes.is/mcp/server-card
 ```
 
 ```json
@@ -53,13 +53,13 @@ curl -s https://mcp.vulnetix.com/mcp/server-card
   "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
   "name": "com.vulnetix/mcp",
   "version": "0.1.0",
-  "title": "Vulnetix",
+  "title": "Vulnesis",
   "description": "Vulnerability intelligence: CVE triage, exploits, KEV deadlines, remediation, package risk.",
-  "websiteUrl": "https://docs.mcp.vulnetix.com",
-  "repository": { "url": "https://github.com/Vulnetix/mcp-server", "source": "github" },
+  "websiteUrl": "https://docs.mcp.vulnes.is",
+  "repository": { "url": "https://github.com/Vulnesis/mcp-server", "source": "github" },
   "remotes": [{
     "type": "streamable-http",
-    "url": "https://mcp.vulnetix.com/mcp",
+    "url": "https://mcp.vulnes.is/mcp",
     "supportedProtocolVersions": ["2026-07-28", "2025-11-25"],
     "headers": [{ "name": "Authorization", "isRequired": true, "isSecret": true, "placeholder": "ApiKey <orgId>:<64-hex>" }]
   }]
@@ -75,11 +75,11 @@ The `icons` array and the header `description` and `format` fields are omitted a
 
 ```json
 {
-  "resource": "https://mcp.vulnetix.com/mcp",
+  "resource": "https://mcp.vulnes.is/mcp",
   "authorization_servers": [],
   "bearer_methods_supported": ["header"],
-  "resource_name": "Vulnetix VDB",
-  "resource_documentation": "https://docs.cli.vulnetix.com/"
+  "resource_name": "Vulnesis VDB",
+  "resource_documentation": "https://docs.cli.vulnes.is/"
 }
 ```
 

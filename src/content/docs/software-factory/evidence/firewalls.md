@@ -21,13 +21,13 @@ Belai supports several AI Firewalls through **adapters**. Exactly one configured
 
 | Adapter | What it is |
 |---|---|
-| `vulnetix` | The Vulnetix AI Firewall: guardrails, redaction and bring-your-own provider keys for your organisation |
+| `vulnetix` | The Vulnesis AI Firewall: guardrails, redaction and bring-your-own provider keys for your organisation |
 | `fastly` | Fastly AI Runtime Control (beta) |
 | `kong` | Your Kong AI Gateway route (beta) |
 | `aisg` | The self-hosted AI Security Gateway (beta, OpenAI chat completions only) |
 | `custom` | Any proxy |
 
-Every adapter except Vulnetix takes a **mode**:
+Every adapter except Vulnesis takes a **mode**:
 
 | Mode | Sends |
 |---|---|
@@ -65,11 +65,11 @@ A firewall's own key is never written to settings. Belai keeps it in the keychai
 > [!CAREFUL] A repository cannot turn the firewall on for you
 > A project's settings file may set `firewall.enabled` to `false`, and nothing else. It cannot add instances or pick the active one, so a cloned repository can never send your traffic through a firewall you did not choose.
 
-Some traffic is never routed: sign-in providers such as Copilot and the Cloudflare AI Gateway provider, and decision models. Kiro is routed only through the Vulnetix AI Firewall.
+Some traffic is never routed: sign-in providers such as Copilot and the Cloudflare AI Gateway provider, and decision models. Kiro is routed only through the Vulnesis AI Firewall.
 
 ## Holding unreviewed capabilities
 
-With an organisation's **hold policy** on, the Vulnetix AI Firewall holds any client, MCP server, tool or skill that no rule names and nobody has reviewed. A held tool or MCP server is stripped from the request, and a held skill or client is refused with `held_for_review`. The hold is published as a source event, so a workflow can research it and file a review card.
+With an organisation's **hold policy** on, the Vulnesis AI Firewall holds any client, MCP server, tool or skill that no rule names and nobody has reviewed. A held tool or MCP server is stripped from the request, and a held skill or client is refused with `held_for_review`. The hold is published as a source event, so a workflow can research it and file a review card.
 
 | Policy field | Values |
 |---|---|

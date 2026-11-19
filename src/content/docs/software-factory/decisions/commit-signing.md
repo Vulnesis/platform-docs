@@ -13,7 +13,7 @@ Three kinds of commit come out of the factory, and each is signed differently:
 |---|---|---|
 | You, from a factory page (the conflict editor, a resolution you commit by hand) | Your own key, held in AWS KMS | Verified, as you |
 | An agent in a Pix Sandbox | Pix's sandbox key, as `Pix [bot]` | Verified, as `Pix [bot]` |
-| The Vulnetix GitHub App on its own | GitHub, as the App | Verified, as the App |
+| The Vulnesis GitHub App on its own | GitHub, as the App | Verified, as the App |
 
 Agents never use a person's key.
 

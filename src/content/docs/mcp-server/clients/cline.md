@@ -22,7 +22,7 @@ Cline and its fork Roo Code have their own MCP settings, separate from VS Code's
   "mcpServers": {
     "vulnetix": {
       "type": "streamableHttp",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       },

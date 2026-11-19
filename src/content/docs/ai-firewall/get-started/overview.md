@@ -16,11 +16,11 @@ updated: 04 Nov 2026
 
 The AI Firewall is for organisations whose developers and pipelines send prompts to LLM providers through coding agents, SDKs and CI jobs. It puts one policy in front of that traffic: which providers and models may be used, which tools, MCP servers and skills an agent may carry, and which content, such as secrets, must never leave. Use it to control what goes to a model. Use the [MCP server](/mcp-server/) for the opposite direction: it is a tool your agent calls to look up vulnerability data, and it applies no policy to your traffic.
 
-The AI Firewall is a gateway at `https://guardrails.vulnetix.com`. You point an LLM client's base URL at it instead of at the provider and give it your Vulnetix API key instead of the provider key. The gateway checks the request against your organisation's policy, swaps in the provider key it holds for you, and forwards the request. Streaming responses are relayed as server-sent events.
+The AI Firewall is a gateway at `https://guardrails.vulnes.is`. You point an LLM client's base URL at it instead of at the provider and give it your Vulnesis API key instead of the provider key. The gateway checks the request against your organisation's policy, swaps in the provider key it holds for you, and forwards the request. Streaming responses are relayed as server-sent events.
 
 ```text
-https://guardrails.vulnetix.com/{provider}/{orgUuid}/v1      OpenAI-shaped SDKs
-https://guardrails.vulnetix.com/anthropic/{orgUuid}          Anthropic SDKs (no /v1)
+https://guardrails.vulnes.is/{provider}/{orgUuid}/v1      OpenAI-shaped SDKs
+https://guardrails.vulnes.is/anthropic/{orgUuid}          Anthropic SDKs (no /v1)
 ```
 
 The whole configuration is a base URL and an API key, so any client that lets you change those two settings can be firewalled. No custom headers are needed.
@@ -31,14 +31,14 @@ Each step can end the request with its own status and `code`. All codes are on [
 
 1. **Provider.** The first path segment names the provider. Unknown is `404 unknown_provider`; disabled in the catalog is `403 provider_disabled`.
 2. **Surface.** The provider must serve the route you called (`chat/completions`, `responses` or `messages`). If not, `404 unsupported_api` with the route to use instead. This runs before authentication so a wrong base URL says so.
-3. **Authentication.** The org UUID in the path and the Vulnetix API key in `Authorization: Bearer` or `x-api-key`. Failure is `401 invalid_api_key`. A backend outage is `503`; authentication never fails open.
+3. **Authentication.** The org UUID in the path and the Vulnesis API key in `Authorization: Bearer` or `x-api-key`. Failure is `401 invalid_api_key`. A backend outage is `503`; authentication never fails open.
 4. **Provider policy.** `403 provider_denied` when the org denies the provider, `403 provider_key_missing` when no key is stored for it.
 5. **Body.** Up to 8 MiB (`413 request_too_large`), valid JSON, with a `model`.
 6. **Model policy.** `403 model_denied` for a denied model; `403 model_not_allowed` when the provider is in allowlist mode and the model is not listed.
 7. **Inventory.** The tools, MCP servers and skills the request carries are recorded, whether or not the request is then allowed.
 8. **Sealed blocks.** Harness blocks sealed with gateway [nonces](/ai-firewall/reference/nonces/) are verified.
 9. **Guardrails.** Capability rules, then content rules in priority order. A `block` match is `403 request_blocked`; `redact` rewrites the request; `strip` removes a tool or MCP server; `flag` records and allows. A rule can also hold the request for review.
-10. **Upstream.** The provider key is decrypted, your Vulnetix credential is removed, and the request is forwarded. Every response carries `X-Vulnetix-Firewall-*` headers saying what the firewall did.
+10. **Upstream.** The provider key is decrypted, your Vulnesis credential is removed, and the request is forwarded. Every response carries `X-Vulnetix-Firewall-*` headers saying what the firewall did.
 
 > [!CAREFUL] Guardrails read the request, not the response
 > Rules run on what the client sends: prompts, tool results and tool declarations. The model's reply is relayed without inspection. See [Limitations](/ai-firewall/policy/limitations/).
@@ -66,7 +66,7 @@ The gateway and the key vault are on every plan. Policy is what paid plans add. 
 
 ## In the Resolve Platform
 
-The Resolve Platform page is [Resolve > AI Firewall](https://www.vulnetix.com/resolve/ai-firewall). Its tabs, with their URL hashes:
+The Resolve Platform page is [Resolve > AI Firewall](https://www.vulnes.is/resolve/ai-firewall). Its tabs, with their URL hashes:
 
 | Group | Tab | Hash | Covers |
 |---|---|---|---|

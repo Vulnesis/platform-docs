@@ -23,7 +23,7 @@ Every repository the factory can see has a **profile**: a short description of h
 
 The profile comes from data the factory already holds. Working it out never calls GitHub. The sources are:
 
-- the manifests the Vulnetix CLI uploaded when it scanned the repository
+- the manifests the Vulnesis CLI uploaded when it scanned the repository
 - the manifest files in GitHub's dependency graph
 - the workflow files the factory mirrors
 - the repository's primary language

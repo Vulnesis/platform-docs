@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-**Configuration › Integrations** (`/resolve/integrations`) connects Vulnetix to your source forges, chat and ticket tools, cloud accounts and registries. Credentials you give it are stored in the [secrets vault](/organization/security/secrets-vault/) as connector entries.
+**Configuration › Integrations** (`/resolve/integrations`) connects Vulnesis to your source forges, chat and ticket tools, cloud accounts and registries. Credentials you give it are stored in the [secrets vault](/organization/security/secrets-vault/) as connector entries.
 
 ## Plans
 
@@ -23,22 +23,22 @@ A gated part of `GET /v1/integrations` comes back empty with an `_entitlements` 
 
 ## GitHub App
 
-The Vulnetix GitHub App gives Vulnetix read access to your repositories and, where you grant it, write access for issues, pull requests and alert dismissals. Repository scope, code scanning alerts, GitHub Issues delivery, the manifest curator and the Software Factory all use it.
+The Vulnesis GitHub App gives Vulnesis read access to your repositories and, where you grant it, write access for issues, pull requests and alert dismissals. Repository scope, code scanning alerts, GitHub Issues delivery, the manifest curator and the Software Factory all use it.
 
 ### Installing
 
 1. **Integrations › GitHub › Install** (`GET /v1/integrations/github/install/start` returns the URL). The install carries a signed state, so the installation is bound to your organisation when GitHub sends you back.
 2. On GitHub, choose the account and **All repositories** or **Only select repositories**.
 
-If someone installs the App from GitHub directly, there is no signed state. GitHub then asks them to authorise; Vulnetix checks that they can see the installation and sends them to `/resolve/integrations?github_claim=<token>`. A signed-in owner confirms it within **10 minutes** (`POST /v1/integrations/github/claim`). If that fails, the page shows `github=claim_failed`; install again from Integrations.
+If someone installs the App from GitHub directly, there is no signed state. GitHub then asks them to authorise; Vulnesis checks that they can see the installation and sends them to `/resolve/integrations?github_claim=<token>`. A signed-in owner confirms it within **10 minutes** (`POST /v1/integrations/github/claim`). If that fails, the page shows `github=claim_failed`; install again from Integrations.
 
 An installation is never bound by matching an account name, and a webhook never creates one.
 
 ### Keeping it current
 
 - GitHub's `installation` webhooks (`created`, `unsuspend`, `new_permissions_accepted`, `suspend`, `deleted`) update its status and permissions; `installation_repositories` adds and removes repositories.
-- Every six hours Vulnetix re-reads each installation and its repositories. **Refresh** (`POST /v1/integrations/github/{id}/refresh`) does it now.
-- Removing it in Vulnetix (`DELETE /v1/integrations/github/{id}`, owner only) stops Vulnetix using it. The App stays installed on GitHub until you uninstall it there.
+- Every six hours Vulnesis re-reads each installation and its repositories. **Refresh** (`POST /v1/integrations/github/{id}/refresh`) does it now.
+- Removing it in Vulnesis (`DELETE /v1/integrations/github/{id}`, owner only) stops Vulnesis using it. The App stays installed on GitHub until you uninstall it there.
 
 `GET /v1/integrations` lists `githubInstallations`, each `{id, installationId, accountLogin, accountType, status, repositorySelection, repoCount, canWriteIssues, source, reposSyncedAt, createdAt, updatePermissionsUrl}`. `status` is `activated`, `suspended` or `not_installed`; `source` is `install_flow`, `claim` or `backfill`. When the App asks for new permissions, an owner of the GitHub account accepts them through `updatePermissionsUrl`.
 

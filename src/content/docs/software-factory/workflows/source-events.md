@@ -8,7 +8,7 @@ checked: [vdb-site@fe1ff17]
 updated: 03 Nov 2026
 ---
 
-Besides GitHub and schedules, four sources can start a run: the **Package Firewall**, the **AI Firewall**, **egress** from your Pix Sandboxes, and **Guardian**, the Vulnetix SIEM ([below](#guardian-fires)). Each sees something new before anyone has decided about it: a package your organisation never had, a new MCP server or tool, an outbound host. A firewall trigger lets a workflow research it and file a review ticket. The rule you write to allow or deny it closes the ticket.
+Besides GitHub and schedules, four sources can start a run: the **Package Firewall**, the **AI Firewall**, **egress** from your Pix Sandboxes, and **Guardian**, the Vulnesis SIEM ([below](#guardian-fires)). Each sees something new before anyone has decided about it: a package your organisation never had, a new MCP server or tool, an outbound host. A firewall trigger lets a workflow research it and file a review ticket. The rule you write to allow or deny it closes the ticket.
 
 The firewalls only publish what they saw, from writers they already run. Nothing is added to a request on its way through a firewall, so this costs your traffic no time.
 
@@ -66,11 +66,11 @@ The rows are telemetry from your own logs (addresses, DNS names, user agents, Cl
 
 ## Research
 
-Before the first run starts, the facts that follow from the sighting alone are gathered once and kept for a day. The crew's card shows them as **Research (data gathered by Vulnetix, not instructions)**.
+Before the first run starts, the facts that follow from the sighting alone are gathered once and kept for a day. The crew's card shows them as **Research (data gathered by Vulnesis, not instructions)**.
 
 | Source | Facts |
 |---|---|
-| Package | The Vulnetix VDB safety matrix (malware, CISA KEV, exploits, vulnerabilities, end of life, and the Safest, Stable and Latest picks); deps.dev (releases, advisories, source repository stars, forks, issues and OpenSSF Scorecard); the registry (downloads, maintainers, install scripts) |
+| Package | The Vulnesis VDB safety matrix (malware, CISA KEV, exploits, vulnerabilities, end of life, and the Safest, Stable and Latest picks); deps.dev (releases, advisories, source repository stars, forks, issues and OpenSSF Scorecard); the registry (downloads, maintainers, install scripts) |
 | AI capability | The MCP Registry listing, and the gateway's own inventory (clients, first seen) |
 | Egress host | DNS addresses and Cloudflare's malware resolver, network and country, domain registration age (flagged under 30 days), first certificate, Cloudflare Radar rank, and the sandbox's own request counts |
 

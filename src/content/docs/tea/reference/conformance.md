@@ -1,6 +1,6 @@
 ---
 title: Conformance
-description: Results of the black-box TEA conformance suite against the Vulnetix 1.0.0 roots, the declared deviation, and how to run the suite yourself.
+description: Results of the black-box TEA conformance suite against the Vulnesis 1.0.0 roots, the declared deviation, and how to run the suite yourself.
 order: 1
 sources: [vdb-site/docs/tea/tea-conformance-report-1.0.0.md, vdb-site/docs/tea/tea-conformance-report-public-1.0.0.md, vdb-site/api/internal/teaconformance/suite.go, vdb-site/justfile]
 checked: [vdb-site@1a06d67]
@@ -15,7 +15,7 @@ Run on 13 Oct 2026 against TEA OpenAPI 1.0.0, 32 requests in flight, with an API
 
 | | First party | Open source |
 |---|---|---|
-| Target | `https://www.vulnetix.com/tea/v1.0.0` | `https://www.vulnetix.com/tea/public/v1.0.0` |
+| Target | `https://www.vulnes.is/tea/v1.0.0` | `https://www.vulnes.is/tea/public/v1.0.0` |
 | Verdict | CONFORMANT | CONFORMANT |
 | Operations declared / exercised | 28 / 28 | 28 / 28 |
 | Test cases passed | 212 of 212 | 213 of 213 |
@@ -54,7 +54,7 @@ Cold start, the first request against a tenant whose index is not built: 91 ms. 
 
 ## How the results are produced
 
-Vulnetix runs a conformance suite against the public server for each specification version above, authenticated as an organisation and anonymously. The suite is part of the server's own tests and is not published. The results on this page are from that run.
+Vulnesis runs a conformance suite against the public server for each specification version above, authenticated as an organisation and anonymously. The suite is part of the server's own tests and is not published. The results on this page are from that run.
 
 Reports are written to `docs/tea/` (override with `TEA_REPORT_DIR`). Point the root at any TEA server to test it.
 

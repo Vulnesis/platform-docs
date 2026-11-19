@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1409](https://attack.mitre.org/techniques/T1409/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `android` `manifest` `debuggable` `backup` `mobile-security` |
-| Source | [`internal/sast/rules/vnx-android-001.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-android-001.rego) |
+| Source | [`internal/sast/rules/vnx-android-001.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-android-001.rego) |
 
 ## Overview
 

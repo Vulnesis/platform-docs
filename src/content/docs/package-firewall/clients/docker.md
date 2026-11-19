@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Registry host | `packages.vulnetix.com` (OCI API under `/v2`) |
+| Registry host | `packages.vulnes.is` (OCI API under `/v2`) |
 | Ecosystem ID | `oci` |
 | Plan | Add-on |
 | Mode | filter for `tags/list`; gate for manifests requested by tag; blobs and digest manifests streamed unchanged |
@@ -25,14 +25,14 @@ A manifest pulled by tag is checked as `<repository>@<tag>`, for example `librar
 Log in once, then name the firewall as the registry:
 
 ```bash
-printf '%s' "$VULNETIX_API_KEY" | docker login packages.vulnetix.com -u "$VULNETIX_ORG_ID" --password-stdin
-docker pull packages.vulnetix.com/library/nginx:1.27
+printf '%s' "$VULNESIS_API_KEY" | docker login packages.vulnes.is -u "$VULNESIS_ORG_ID" --password-stdin
+docker pull packages.vulnes.is/library/nginx:1.27
 ```
 
 Docker Hub official images need the `library/` prefix. In a Dockerfile:
 
 ```dockerfile
-FROM packages.vulnetix.com/library/python:3.13-slim
+FROM packages.vulnes.is/library/python:3.13-slim
 ```
 
 The same works with Podman, containerd (`nerdctl`), Buildah and Kubernetes image pull secrets, because it is a normal authenticated registry.
@@ -40,13 +40,13 @@ The same works with Podman, containerd (`nerdctl`), Buildah and Kubernetes image
 ## Daemon registry mirror
 
 ```json
-{ "registry-mirrors": ["https://packages.vulnetix.com"] }
+{ "registry-mirrors": ["https://packages.vulnes.is"] }
 ```
 
 in `/etc/docker/daemon.json`, then `sudo systemctl restart docker` and `docker info | grep -A1 'Registry Mirrors'`.
 
 > [!CAREFUL] A refused mirror falls back to Docker Hub
-> When a registry mirror fails, dockerd pulls from Docker Hub directly. That covers both a policy block and a mirror that rejects the daemon's credentials, so a mirror-only setup can be silently bypassed. A mirror also only applies to Docker Hub images. Prefer pulling by the `packages.vulnetix.com` host, and check the [decision log](/package-firewall/operations/decision-log/) for `oci` entries to confirm pulls are reaching the firewall.
+> When a registry mirror fails, dockerd pulls from Docker Hub directly. That covers both a policy block and a mirror that rejects the daemon's credentials, so a mirror-only setup can be silently bypassed. A mirror also only applies to Docker Hub images. Prefer pulling by the `packages.vulnes.is` host, and check the [decision log](/package-firewall/operations/decision-log/) for `oci` entries to confirm pulls are reaching the firewall.
 
 ## Other registries
 

@@ -27,7 +27,7 @@ Every command here has these two flags:
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--base-url` | `https://api.vdb.vulnetix.com` | VDB API base URL. |
+| `--base-url` | `https://api.vdb.vulnes.is` | VDB API base URL. |
 | `-o`, `--output` | `pretty` | `pretty` or `json`. `json` prints the response's `data` object. |
 
 > [!CAREFUL] Any member can change org policy
@@ -55,7 +55,7 @@ The command falls back to the legacy `POST /v2/cli.quality-gate-config`, and say
 | Case | Why |
 |---|---|
 | The engine answers 401 or 403 | The credential is not an owner or admin. A service account's ApiKey is a member, so CI keys usually land here. |
-| The engine answers 404 | It is not deployed where `VULNETIX_WEB_URL` points. |
+| The engine answers 404 | It is not deployed where `VULNESIS_WEB_URL` points. |
 | A flag is `null` | The engine cannot unset a field. |
 | No credential at all | The legacy path then fails with its usual `authentication required`. |
 
@@ -183,7 +183,7 @@ Prints the policy and every mirror across all ecosystems.
 | `authentication required: ... Run 'vulnetix auth login'` | No stored credentials. Fails before any request. |
 | HTTP 400 | The server rejected a value. |
 | HTTP 401 `authenticated org required` | The credentials did not resolve to an organization. |
-| HTTP 403 `... requires an authenticated Vulnetix org` | You are using the community org. |
+| HTTP 403 `... requires an authenticated Vulnesis org` | You are using the community org. |
 | HTTP 403 `authenticated org is not present in the SaaS database` | The organization has no account record yet. |
 | HTTP 503 | The organization could not be resolved, or storage is not configured. |
 

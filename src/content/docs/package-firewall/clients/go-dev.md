@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| API base URL | `https://packages.vulnetix.com/go-dev/v1beta` |
+| API base URL | `https://packages.vulnes.is/go-dev/v1beta` |
 | Ecosystem ID | `go-dev` |
 | Plan | Free |
 | Mode | filter; a single package or module document can be blocked whole |
@@ -30,14 +30,14 @@ This writes only the `~/.netrc` entry. `pkgsite-cli` has no config file, so the 
 ## Use
 
 ```bash
-alias pkgsite-cli='pkgsite-cli -api https://packages.vulnetix.com/go-dev/v1beta'
+alias pkgsite-cli='pkgsite-cli -api https://packages.vulnes.is/go-dev/v1beta'
 pkgsite-cli search uuid
 ```
 
 or per call:
 
 ```bash
-pkgsite-cli -api https://packages.vulnetix.com/go-dev/v1beta package github.com/google/go-cmp/cmp
+pkgsite-cli -api https://packages.vulnes.is/go-dev/v1beta package github.com/google/go-cmp/cmp
 ```
 
 `pkgsite-cli` sends the netrc credentials as Basic auth.

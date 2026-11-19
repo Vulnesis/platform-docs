@@ -8,7 +8,7 @@ checked: [website@d56e8be1, vdb-site@8209415]
 updated: 05 Nov 2026
 ---
 
-The Logs page shows what your organisation did with each Vulnetix product: requests, sessions, decisions and reviews. Open it at **Account › Logs** (`/resolve/logs`). Each product is its own stream with its own charts and log, and a stream reads only its own data, so a slow stream holds up only its own panel.
+The Logs page shows what your organisation did with each Vulnesis product: requests, sessions, decisions and reviews. Open it at **Account › Logs** (`/resolve/logs`). Each product is its own stream with its own charts and log, and a stream reads only its own data, so a slow stream holds up only its own panel.
 
 ## Streams
 

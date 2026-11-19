@@ -35,7 +35,7 @@ The phone icon in the Resolve Platform header opens `/call`. It shows once you h
 | Tell it to use plan mode | `send_followup` |
 | Stop that session | `propose_stop`, `stop_session` |
 
-[Voice tools](/software-factory/pix/voice-tools/) lists every tool. Pix can also look things up with the read-only Vulnetix tools.
+[Voice tools](/software-factory/pix/voice-tools/) lists every tool. Pix can also look things up with the read-only Vulnesis tools.
 
 ## Numbers only from your records
 
@@ -45,7 +45,7 @@ Every figure Pix says comes from a tool that read your factory's records. It doe
 
 Reading is free. Anything that **starts** or **stops** work is two steps, enforced in code:
 
-1. Pix proposes it and reads it back: "Just to confirm: a session on vulnetix/website, on main, on your Pix Sandbox, to fix the login redirect. Shall I start it?"
+1. Pix proposes it and reads it back: "Just to confirm: a session on vulnesis/website, on main, on your Pix Sandbox, to fix the login redirect. Shall I start it?"
 2. It acts only if your **very next** answer is a plain yes, within **2 minutes**.
 
 "Yes, but on main" is not a yes: it changes the request, so Pix proposes again. A proposal is used once. Up to 5 sessions can go in one read-back, and one yes starts them all. The read-back also appears on screen as a card with **Start it** and **Change it** buttons, which count as your reply.
@@ -77,7 +77,7 @@ Pix uses your device's timezone, so "today" and "this month" start at your midni
 
 ## How Pix runs
 
-A call is handled by a Cloudflare Durable Object. Your speech is transcribed, **PixCommander**, the coordinator, chooses the tools and the reply, and the reply is spoken back. PixCommander runs on Workers AI models that Vulnetix ranks and tunes, each with a reasoning effort of `none`, `low` or `high`; if the first is unavailable, the next is used. Model ids are never shown on a call, in history, or in logs: the coordinator is always called PixCommander. Whether a reply to a read-back is a yes is judged first by your organisation's SystemOne decision model, then by PixCommander, then by fixed word rules.
+A call is handled by a Cloudflare Durable Object. Your speech is transcribed, **PixCommander**, the coordinator, chooses the tools and the reply, and the reply is spoken back. PixCommander runs on Workers AI models that Vulnesis ranks and tunes, each with a reasoning effort of `none`, `low` or `high`; if the first is unavailable, the next is used. Model ids are never shown on a call, in history, or in logs: the coordinator is always called PixCommander. Whether a reply to a read-back is a yes is judged first by your organisation's SystemOne decision model, then by PixCommander, then by fixed word rules.
 
 ## What Pix will not do
 
@@ -90,4 +90,4 @@ A call is handled by a Cloudflare Durable Object. Your speech is transcribed, **
 
 - [Stopping work](/software-factory/pix/stopping-work/)
 - [Pix buttons in the Resolve Platform](/software-factory/pix/pix-buttons/)
-- [Pix, your personal assistant](https://www.vulnetix.com/articles/pix-personal-assistant)
+- [Pix, your personal assistant](https://www.vulnes.is/articles/pix-personal-assistant)

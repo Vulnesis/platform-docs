@@ -8,7 +8,7 @@ checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
-The messaging centre sends Vulnetix events, including every factory notice, to your chat and ticket tools. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned, and which template renders the message.
+The messaging centre sends Vulnesis events, including every factory notice, to your chat and ticket tools. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned, and which template renders the message.
 
 ## Connections
 
@@ -19,7 +19,7 @@ The messaging centre sends Vulnetix events, including every factory notice, to y
 | Discord | A webhook URL | An embed. `@everyone` never fires. |
 | Google Chat | A webhook URL | A card |
 | Jira Cloud | An email and API token | An issue |
-| GitHub Issues | None: the Vulnetix GitHub App | An issue, with labels and assignees |
+| GitHub Issues | None: the Vulnesis GitHub App | An issue, with labels and assignees |
 | Signed webhook | A URL and signing secret | JSON, signed per Standard Webhooks |
 
 Credentials live in the Secrets Vault. Every URL you type is fetched over https only, with no redirects, and only to public addresses. **Test** sends a test message. A connection that fails its credentials three times in a row is marked broken, and you are told on another connection.

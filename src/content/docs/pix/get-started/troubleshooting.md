@@ -32,7 +32,7 @@ The exit status is always `0`. Output, when there is any, is one JSON line with 
 
 ## Codex never runs the hook
 
-Codex skips a hook it does not trust and reports nothing. Approve the Vulnetix hook when Codex asks. Check `~/.codex/hooks.json` holds an entry whose command is `vulnetix agent hook`.
+Codex skips a hook it does not trust and reports nothing. Approve the Vulnesis hook when Codex asks. Check `~/.codex/hooks.json` holds an entry whose command is `vulnetix agent hook`.
 
 ## The host cannot find `vulnetix`
 
@@ -70,11 +70,11 @@ vulnetix auth status
 
 To check the API as well as the credential, run `vulnetix vdb status` (add `-o json` for a machine-readable report). It prints the CLI version, the API's `/health` result and the authentication method, organisation and whether the credential verified.
 
-On the shared Community tier, reads work, the daily limit is shared with every other anonymous caller, and scans store no server-side snapshot. Get your own key at `https://www.vulnetix.com/resolve/register`, then `vulnetix auth login`.
+On the shared Community tier, reads work, the daily limit is shared with every other anonymous caller, and scans store no server-side snapshot. Get your own key at `https://www.vulnes.is/resolve/register`, then `vulnetix auth login`.
 
 ## The session summary is stale or missing
 
-`session-context` reads the last scan recorded in `.vulnetix/memory.yaml`; it does not scan. Run `vulnetix scan` to refresh it; a scan run with `--disable-memory` does not update it. With no scan on record, the session starts with `Vulnetix: no scan on record for this repository.` and a prompt that names a CVE gets no answer.
+`session-context` reads the last scan recorded in `.vulnetix/memory.yaml`; it does not scan. Run `vulnetix scan` to refresh it; a scan run with `--disable-memory` does not update it. With no scan on record, the session starts with `Vulnesis: no scan on record for this repository.` and a prompt that names a CVE gets no answer.
 
 ## memory.yaml problems
 

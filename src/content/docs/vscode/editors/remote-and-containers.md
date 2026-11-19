@@ -1,7 +1,7 @@
 ---
 title: Remote workspaces and containers
 nav: Remote and containers
-description: Pre-install the Vulnetix extension and CLI in Remote-SSH, WSL, Dev Containers, Codespaces, code-server, OpenVSCode Server, Gitpod, Coder and Firebase Studio.
+description: Pre-install the Vulnesis extension and CLI in Remote-SSH, WSL, Dev Containers, Codespaces, code-server, OpenVSCode Server, Gitpod, Coder and Firebase Studio.
 order: 2
 sources: [vulnetix-vscode/package.json, vulnetix-vscode/src/cli/resolve.ts, vulnetix-vscode/src/shared/launch.ts, cli/install.sh, cli/pkg/cache/cache.go, cli/pkg/auth/credentials.go]
 checked: [vulnetix-vscode@9ad08fa, cli@4c8c3b7]
@@ -25,7 +25,7 @@ The extension declares `extensionKind: ["workspace"]`. In a remote session it is
 Without a CLI on `PATH`, every new container or workspace downloads one on first use. Installing it at build time removes that wait. The extension picks up `vulnetix` on `PATH` as long as it speaks LSP protocol 1 (CLI 3.100.0 or later).
 
 ```sh
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 ```
 
 `install.sh` installs to `/usr/local/bin` by default (`--install-dir DIR` or `INSTALL_DIR` to change it) and falls back to `~/.local/bin` when the directory is not writable.
@@ -41,7 +41,7 @@ The CLI keeps its dependency lookup cache in `~/.vulnetix/cache/vdb/` and creden
 // .devcontainer/devcontainer.json
 {
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "postCreateCommand": "curl -fsSL https://cli.vulnetix.com/install.sh | sudo sh",
+  "postCreateCommand": "curl -fsSL https://cli.vulnes.is/install.sh | sudo sh",
   "mounts": [
     "source=vulnetix-home,target=/home/vscode/.vulnetix,type=volume"
   ],
@@ -56,7 +56,7 @@ The CLI keeps its dependency lookup cache in `~/.vulnetix/cache/vdb/` and creden
 ```dockerfile
 FROM codercom/code-server:latest
 USER root
-RUN curl -fsSL https://cli.vulnetix.com/install.sh | sh
+RUN curl -fsSL https://cli.vulnes.is/install.sh | sh
 USER coder
 RUN code-server --install-extension vulnetix.vulnetix
 ```
@@ -75,7 +75,7 @@ Cap server memory per user with `vulnetix.lsp.memoryLimitMb` (128 to 16384, defa
 ```dockerfile
 FROM gitpod/openvscode-server:latest
 USER root
-RUN curl -fsSL https://cli.vulnetix.com/install.sh | sh
+RUN curl -fsSL https://cli.vulnes.is/install.sh | sh
 USER openvscode-server
 RUN /home/.openvscode-server/bin/openvscode-server --install-extension vulnetix.vulnetix
 ```
@@ -92,13 +92,13 @@ vscode:
 
 tasks:
   - name: vulnetix
-    init: curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+    init: curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
 ```
 
 For a shared workspace, give the server a service-account credential through the environment instead of a personal login:
 
 ```sh
-gp env VULNETIX_API_TOKEN=<token>
+gp env VULNESIS_API_TOKEN=<token>
 ```
 
 ## Coder
@@ -115,13 +115,13 @@ module "vscode-web" {
 
 resource "coder_script" "vulnetix_cli" {
   agent_id     = coder_agent.main.id
-  display_name = "Install Vulnetix CLI"
+  display_name = "Install Vulnesis CLI"
   run_on_start = true
-  script       = "curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir $HOME/.local/bin"
+  script       = "curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir $HOME/.local/bin"
 }
 ```
 
-Pass a credential as an agent environment variable (`env = { VULNETIX_API_TOKEN = ... }` on `coder_agent`). For air-gapped deployments, see [The CLI binary](/vscode/configuration/cli-binary/#mirrors-and-air-gapped-networks).
+Pass a credential as an agent environment variable (`env = { VULNESIS_API_TOKEN = ... }` on `coder_agent`). For air-gapped deployments, see [The CLI binary](/vscode/configuration/cli-binary/#mirrors-and-air-gapped-networks).
 
 ## Firebase Studio
 
@@ -132,7 +132,7 @@ Pass a credential as an agent environment variable (`env = { VULNETIX_API_TOKEN 
   idx = {
     extensions = [ "vulnetix.vulnetix" ];
     workspace.onCreate = {
-      install-vulnetix = "curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir $HOME/.local/bin";
+      install-vulnetix = "curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir $HOME/.local/bin";
     };
   };
 }
@@ -142,4 +142,4 @@ Pass a credential as an agent environment variable (`env = { VULNETIX_API_TOKEN 
 
 ## Credentials in remote workspaces
 
-The server process inherits the extension host's environment, and the CLI resolves credentials in its usual order: `VULNETIX_API_TOKEN`, then `VULNETIX_API_KEY` with `VULNETIX_ORG_ID`, then `.vulnetix/credentials.json` and `~/.vulnetix/credentials.json` on the remote side, then the community fallback. An environment variable is visible to every process in the workspace, so use a service-account credential for shared workspaces.
+The server process inherits the extension host's environment, and the CLI resolves credentials in its usual order: `VULNESIS_API_TOKEN`, then `VULNESIS_API_KEY` with `VULNESIS_ORG_ID`, then `.vulnetix/credentials.json` and `~/.vulnetix/credentials.json` on the remote side, then the community fallback. An environment variable is visible to every process in the workspace, so use a service-account credential for shared workspaces.

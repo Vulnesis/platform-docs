@@ -13,7 +13,7 @@ A connected account is swept for its resources and the CVEs CRIT criteria say af
 ## Turning one on
 
 1. Open the source's card under **Integrations > Cloud** and switch it on (`POST /v1/integrations/aws/native/{source}` with `{"enabled": true}`). This only records the choice.
-2. Press **Deploy** (`POST /v1/integrations/aws/native/{source}/deploy`). Vulnetix redeploys the pipeline stack. Which policies it attaches is decided from your recorded choices, never from the request, so the endpoint cannot grant a permission for a source nobody turned on.
+2. Press **Deploy** (`POST /v1/integrations/aws/native/{source}/deploy`). Vulnesis redeploys the pipeline stack. Which policies it attaches is decided from your recorded choices, never from the request, so the endpoint cannot grant a permission for a source nobody turned on.
 3. The drawer reads the role and shows **policy attached** only when the inline policy is really there. After the next sweep it shows the last run and how many findings it filed.
 
 Turning a source off stops it being read on the next deploy. Findings already ingested are kept with their triage history.

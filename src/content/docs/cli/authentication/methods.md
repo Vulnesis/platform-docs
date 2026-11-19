@@ -17,11 +17,11 @@ vulnetix auth login
 vulnetix auth login --store keyring
 ```
 
-The flow is an [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628) device authorisation grant against `https://www.vulnetix.com/api/site/v1/cli/device`:
+The flow is an [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628) device authorisation grant against `https://www.vulnes.is/api/site/v1/cli/device`:
 
 1. The CLI asks for a grant and receives a secret `device_code`, which never leaves the process, and a `user_code` in the form `XXXX-XXXX` (letters and digits).
-2. On an interactive terminal it opens `https://www.vulnetix.com/cli-login-code?user_code=<code>` in your browser. It always prints the URL and the code, so you can check that the code in the browser matches.
-3. You approve the code while signed in to your Vulnetix account. The browser never sees the key.
+2. On an interactive terminal it opens `https://www.vulnes.is/cli-login-code?user_code=<code>` in your browser. It always prints the URL and the code, so you can check that the code in the browser matches.
+3. You approve the code while signed in to your Vulnesis account. The browser never sees the key.
 4. The CLI polls every 5 seconds (adding 5 seconds on each `slow_down` or HTTP 429), receives the organisation ID and an ApiKey, verifies them, and saves them.
 
 | | |
@@ -35,10 +35,10 @@ The flow is an [RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628) device 
 | Code expired, no TTY | Fails with `device code expired`. |
 | Denied in the browser | Fails with `authorization was denied`. |
 
-`VULNETIX_WEB_URL` replaces `https://www.vulnetix.com` as the base for the device endpoints, for testing against a local site. With `-v` the CLI prints the authorize and token URLs before the first request:
+`VULNESIS_WEB_URL` replaces `https://www.vulnes.is` as the base for the device endpoints, for testing against a local site. With `-v` the CLI prints the authorize and token URLs before the first request:
 
 ```sh
-VULNETIX_WEB_URL=http://localhost:5173 vulnetix auth login -v
+VULNESIS_WEB_URL=http://localhost:5173 vulnetix auth login -v
 ```
 
 ## ApiKey
@@ -46,14 +46,14 @@ VULNETIX_WEB_URL=http://localhost:5173 vulnetix auth login -v
 An organisation-scoped key. The flag needs `--org-id`, a UUID.
 
 ```sh
-vulnetix auth login --api-key "$VULNETIX_API_KEY" --org-id "$VULNETIX_ORG_ID" --store keyring
+vulnetix auth login --api-key "$VULNESIS_API_KEY" --org-id "$VULNESIS_ORG_ID" --store keyring
 ```
 
 Or skip the login and set both variables; every command reads them directly:
 
 ```sh
-export VULNETIX_ORG_ID=8ff8f1e4-0000-4000-8000-000000000000
-export VULNETIX_API_KEY=6e40f1c3...
+export VULNESIS_ORG_ID=8ff8f1e4-0000-4000-8000-000000000000
+export VULNESIS_API_KEY=6e40f1c3...
 vulnetix auth verify
 ```
 
@@ -67,7 +67,7 @@ On an interactive terminal, `--api-key` without `--org-id` prompts for the organ
 vulnetix auth login --noninteractive --store home
 ```
 
-`--noninteractive` takes the key from `--api-key` or `VULNETIX_API_KEY` and the organisation from `--org-id` or `VULNETIX_ORG_ID`, never opens a browser and never prompts. It accepts only an ApiKey: combined with `--secret` or `--token` it fails. Use it in provisioning scripts that must not hang on a prompt.
+`--noninteractive` takes the key from `--api-key` or `VULNESIS_API_KEY` and the organisation from `--org-id` or `VULNESIS_ORG_ID`, never opens a browser and never prompts. It accepts only an ApiKey: combined with `--secret` or `--token` it fails. Use it in provisioning scripts that must not hang on a prompt.
 
 ## SigV4 secret
 
@@ -77,22 +77,22 @@ An organisation-scoped HMAC secret. The CLI never sends the secret: it sends `Ap
 vulnetix auth login --secret "$VVD_SECRET" --org-id "$VVD_ORG" --store keyring
 ```
 
-The environment pair is `VVD_ORG` and `VVD_SECRET`, not the `VULNETIX_*` names. Both must be set; one alone is ignored. Login and `auth verify` prove a SigV4 secret with a full token exchange.
+The environment pair is `VVD_ORG` and `VVD_SECRET`, not the `VULNESIS_*` names. Both must be set; one alone is ignored. Login and `auth verify` prove a SigV4 secret with a full token exchange.
 
 `--secret` is not another name for `--api-key`: an ApiKey passed as `--secret` derives the wrong value and the login fails.
 
 ## Bearer token
 
 ```sh
-export VULNETIX_API_TOKEN=...
+export VULNESIS_API_TOKEN=...
 vulnetix auth verify
 ```
 
-Sent as `Authorization: Bearer <token>`. The server resolves the organisation from the token, so no org ID is needed; `VULNETIX_ORG_ID`, if also set, is recorded in the credential and changes nothing else.
+Sent as `Authorization: Bearer <token>`. The server resolves the organisation from the token, so no org ID is needed; `VULNESIS_ORG_ID`, if also set, is recorded in the credential and changes nothing else.
 
-`VULNETIX_API_TOKEN` is the first source the CLI reads. When it is set, nothing else is consulted, including a fresh `auth login`. `vulnetix auth login --token <token>` exists but is hidden from help.
+`VULNESIS_API_TOKEN` is the first source the CLI reads. When it is set, nothing else is consulted, including a fresh `auth login`. `vulnetix auth login --token <token>` exists but is hidden from help.
 
-> [!CAREFUL] Do not put an ApiKey in VULNETIX_API_TOKEN
+> [!CAREFUL] Do not put an ApiKey in VULNESIS_API_TOKEN
 > The value is sent as a bearer token, so an ApiKey there is rejected, and because the variable outranks every other source, a working credential stored elsewhere is never tried.
 
 ## Organisation ID
@@ -127,4 +127,4 @@ What it means in practice:
 | `upload`, `gha upload` | No | Yes |
 | Reachability analysis | No (`reachability requires Pro / Team / Business / Enterprise`) | By plan |
 
-`vulnetix auth status` shows `Community - unauthenticated (VDB only)` in this state. A free Community plan account gives you your own quota: see [Community](https://www.vulnetix.com/features/community).
+`vulnetix auth status` shows `Community - unauthenticated (VDB only)` in this state. A free Community plan account gives you your own quota: see [Community](https://www.vulnes.is/features/community).

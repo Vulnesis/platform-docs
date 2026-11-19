@@ -66,8 +66,8 @@ Internal URLs:
 Create the rule at `flag`, then send a sample through the evaluate endpoint. It runs the organisation's full guardrail set against an OpenAI Chat body and returns the decision without calling any provider:
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/guardrails/$VULNETIX_ORG_ID/v1/evaluate" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s "https://guardrails.vulnes.is/guardrails/$VULNESIS_ORG_ID/v1/evaluate" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"test","messages":[{"role":"user","content":"Ticket for EMP-123456"}]}'
 ```

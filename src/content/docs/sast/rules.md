@@ -1,7 +1,7 @@
 ---
 title: "SAST rules index"
 nav: "Rules index"
-description: "Every built-in Rego rule the Vulnetix CLI ships, filterable by language, severity, kind and CWE."
+description: "Every built-in Rego rule the Vulnesis CLI ships, filterable by language, severity, kind and CWE."
 order: 1
 sources: ["cli/internal/sast/rules/", "cli/internal/sast/language_filter.go", "cli/internal/sast/kinds.go"]
 checked: ["cli@1700795"]

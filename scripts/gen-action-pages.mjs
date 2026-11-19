@@ -17,7 +17,7 @@ const root = new URL('..', import.meta.url).pathname;
 const args = process.argv.slice(2);
 const opt = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : undefined);
 const cli = opt('--cli') ?? join(root, '..', 'cli');
-const tag = opt('--tag') ?? execFileSync('gh', ['release', 'view', '-R', 'Vulnetix/cli', '--json', 'tagName', '--jq', '.tagName'], { encoding: 'utf8' }).trim();
+const tag = opt('--tag') ?? execFileSync('gh', ['release', 'view', '-R', 'Vulnesis/cli', '--json', 'tagName', '--jq', '.tagName'], { encoding: 'utf8' }).trim();
 
 // The generated action.yml files have one shape: top-level scalars, then inputs
 // and outputs of two-space keys with four-space fields.
@@ -79,7 +79,7 @@ function replaceSection(md, heading, body) {
 
 // Variations: one short workflow per way to use the action, written only for the
 // inputs the action really has, so a page never shows an input it lacks.
-const creds = ['org-id: ${{ secrets.VULNETIX_ORG_ID }}', 'api-key: ${{ secrets.VULNETIX_API_KEY }}'];
+const creds = ['org-id: ${{ secrets.VULNESIS_ORG_ID }}', 'api-key: ${{ secrets.VULNESIS_API_KEY }}'];
 const job = (dir, withLines, { permissions = ['contents: read'], extra = [], ref = 'v4' } = {}) => [
   '```yaml',
   'jobs:',
@@ -90,7 +90,7 @@ const job = (dir, withLines, { permissions = ['contents: read'], extra = [], ref
   '    steps:',
   '      - uses: actions/checkout@v5',
   ...extra,
-  `      - uses: Vulnetix/cli/${dir}@${ref}`,
+  `      - uses: Vulnesis/cli/${dir}@${ref}`,
   '        with:',
   ...withLines.map((l) => `          ${l}`),
   '```',
@@ -119,7 +119,7 @@ function variations(dir, a) {
   if (has('exclude') || has('rules') || has('extra-args')) {
     const l = [...creds];
     if (has('exclude')) l.push('exclude: |', '  **/testdata/**', '  vendor/**');
-    if (has('rules')) l.push('rules: |', '  Vulnetix/community-rules');
+    if (has('rules')) l.push('rules: |', '  Vulnesis/community-rules');
     add('Narrow the scan', 'Skip paths, add an external rule repository, or pass any other flag of the command with `extra-args`, one argument per line.', job(dir, l));
   }
   const [head, leaf] = dir.split('/');
@@ -175,12 +175,12 @@ for (const p of paths.sort()) {
   }
   mkdirSync(dirname(page), { recursive: true });
   const required = Object.entries(a.inputs ?? {}).filter(([k, v]) => !v.default && /^(reference|file|files|before|after|ecosystem)$/.test(k));
-  const withLines = ['org-id: ${{ secrets.VULNETIX_ORG_ID }}', 'api-key: ${{ secrets.VULNETIX_API_KEY }}',
+  const withLines = ['org-id: ${{ secrets.VULNESIS_ORG_ID }}', 'api-key: ${{ secrets.VULNESIS_API_KEY }}',
     ...required.map(([k]) => `${k}: <${k}>`)].map((l) => `          ${l}`).join('\n');
   writeFileSync(page, `---
-title: ${JSON.stringify(`Vulnetix/cli/${dir} action`)}
+title: ${JSON.stringify(`Vulnesis/cli/${dir} action`)}
 nav: ${JSON.stringify(dir)}
-description: ${JSON.stringify(`The Vulnetix/cli/${dir} GitHub Action: inputs, outputs and a workflow.`)}
+description: ${JSON.stringify(`The Vulnesis/cli/${dir} GitHub Action: inputs, outputs and a workflow.`)}
 order: ${keepOrder ? keepOrder[1] : order++}
 sources: [cli/${p}, cli/tools/actiongen/spec.go, cli/tools/actiongen/catalog.go]
 checked: [cli@${tag}]
@@ -198,7 +198,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/${dir}@v4
+      - uses: Vulnesis/cli/${dir}@v4
         with:
 ${withLines}
 \`\`\`

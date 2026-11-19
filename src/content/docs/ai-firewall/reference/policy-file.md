@@ -97,7 +97,7 @@ The file is parsed with `gopkg.in/yaml.v3` into fixed structs. Unknown keys are 
 | `metadata.org` | string (UUID) | none | The org UUID the file belongs to. `apply` refuses when it differs from the org UUID of the credential you are signed in with, unless you pass `--force`. Omit it and no check is made. `export` always writes it. |
 
 > [!CAREFUL] The guard compares your credential's org, not the tenant
-> `metadata.org` is compared with the org UUID in your Vulnetix credential (`VULNETIX_ORG_ID`, or the org stored by `vulnetix auth login`). The policy itself is stored on the tenant: a Business member and the team owner sign in as different principals and edit the same policy. A file exported by one member therefore carries that member's UUID, and `apply` run by another member refuses it. Drop `metadata.org`, or have CI apply with one fixed credential.
+> `metadata.org` is compared with the org UUID in your Vulnesis credential (`VULNESIS_ORG_ID`, or the org stored by `vulnetix auth login`). The policy itself is stored on the tenant: a Business member and the team owner sign in as different principals and edit the same policy. A file exported by one member therefore carries that member's UUID, and `apply` run by another member refuses it. Drop `metadata.org`, or have CI apply with one fixed credential.
 
 ## spec
 
@@ -150,7 +150,7 @@ One entry per provider slug. A provider the file does not mention keeps its curr
 | `key.fromEnv` | string | one of the two | Name of an environment variable holding the key. `apply` fails with `$NAME is not set` if it is empty. |
 | `key.fromFile` | string | one of the two | Path of a file holding the key. A leading `~/` is expanded to your home directory; surrounding whitespace is trimmed. |
 
-A `key` block with neither field fails validation (`set fromEnv or fromFile`). When both are set, `fromEnv` is used. Every `key` entry is sent on every apply, because the server never returns a stored key and the plan cannot tell whether it changed. A provider whose key is managed in the [secrets vault](https://www.vulnetix.com/resolve/vault) refuses a key write with `409`.
+A `key` block with neither field fails validation (`set fromEnv or fromFile`). When both are set, `fromEnv` is used. Every `key` entry is sent on every apply, because the server never returns a stored key and the plan cannot tell whether it changed. A provider whose key is managed in the [secrets vault](https://www.vulnes.is/resolve/vault) refuses a key write with `409`.
 
 Setting `allow` or `deny` needs the Pro plan; `default` does not. The server answers a plan-locked write with `200` and a `{"planLocked": true, "feature": "ai-firewall-policy", "requiredPlan": "pro"}` body; the CLI turns that into an error and `apply` stops there.
 

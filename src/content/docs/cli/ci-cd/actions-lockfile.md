@@ -1,13 +1,13 @@
 ---
 title: Lockfiles and pinning
-description: Use the Vulnetix actions with GitHub Actions lockfiles and SHA pins, and how each action ref selects the CLI binary it installs.
+description: Use the Vulnesis actions with GitHub Actions lockfiles and SHA pins, and how each action ref selects the CLI binary it installs.
 order: 3
 sources: [cli/action-lib/install.sh, cli/.github/workflows/auto-version.yml, cli/.github/workflows/release.yml]
 checked: [cli@v4.23.0]
 updated: 05 Nov 2026
 ---
 
-The Vulnetix actions work with GitHub's [workflow lockfile](https://docs.github.com/en/actions/concepts/security/workflow-dependency-lockfiles), `.github/workflows/actions.lock`.
+The Vulnesis actions work with GitHub's [workflow lockfile](https://docs.github.com/en/actions/concepts/security/workflow-dependency-lockfiles), `.github/workflows/actions.lock`.
 
 ```sh
 gh extension install github/gh-actions-lock
@@ -15,7 +15,7 @@ gh actions-lock
 gh actions-lock --verify
 ```
 
-Refs such as `Vulnetix/cli/sast/python@v4` narrow to the exact release, and nested paths lock like any other. The third-party actions the composites use are pinned by commit SHA and locked with them.
+Refs such as `Vulnesis/cli/sast/python@v4` narrow to the exact release, and nested paths lock like any other. The third-party actions the composites use are pinned by commit SHA and locked with them.
 
 ## Local actions
 

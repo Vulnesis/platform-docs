@@ -32028,7 +32028,7 @@
     "belai/internal/tui/commands.go"
    ],
    "detail": {
-    "description": "remote control: let the Vulnetix website start and drive Belai sessions on this machine"
+    "description": "remote control: let the Vulnesis website start and drive Belai sessions on this machine"
    }
   },
   {
@@ -32105,7 +32105,7 @@
     "belai/internal/tui/commands.go"
    ],
    "detail": {
-    "description": "show or change session sync to the Vulnetix website"
+    "description": "show or change session sync to the Vulnesis website"
    }
   },
   {
@@ -32171,7 +32171,7 @@
     "belai/internal/tui/commands.go"
    ],
    "detail": {
-    "description": "Vulnetix code review and firewall"
+    "description": "Vulnesis code review and firewall"
    }
   },
   {

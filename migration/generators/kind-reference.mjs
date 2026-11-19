@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // kind-reference.mjs: write the Platform IaC reference pages from a release of
-// Vulnetix/config-schemas:
+// Vulnesis/config-schemas:
 //
 //   kinds/<kebab-kind>.md   one page per kind: the fields, the schema's rules,
 //                           Minimal and Advanced samples in YAML, HCL and CLI,
@@ -16,7 +16,7 @@
 //                         secrets and celFields
 //   examples/<Kind>/*     in config-schemas: the YAML samples
 //   the provider          examples/resources/vulnetix_<kind>/ in
-//                         Vulnetix/terraform-provider-resolve at its main: the
+//                         Vulnesis/terraform-provider-resolve at its main: the
 //                         HCL samples and the import command
 //   the CLI               the release pinned in releases.json, and the
 //                         config-schemas release its go.mod pinned at each tag
@@ -34,7 +34,7 @@
 // $CONFIG_SCHEMAS_DIR, $TF_PROVIDER_DIR (and $TF_PROVIDER_REF, default main),
 // $CLI_DIR, $VDB_SITE_DIR. The CLI and config-schemas releases are pinned in
 // releases.json (see releases.mjs), so a new release of either changes nothing
-// until the pin is bumped; $VULNETIX_CLI_VERSION overrides the CLI pin. With --vdb-site, a kind the engine has no adapter for is
+// until the pin is bumped; $VULNESIS_CLI_VERSION overrides the CLI pin. With --vdb-site, a kind the engine has no adapter for is
 // shown as schema only; without it, every kind that is not validate only is
 // shown as served. With --vdb-api, the variables a jail rule may use are checked
 // against jail_when.go. A page whose front matter lacks `generated: true` is
@@ -45,7 +45,7 @@ import { metaDescription, MAX_DESCRIPTION } from './description.mjs';
 
 // Generated text comes partly from other repositories, written for their
 // developers. Readers of these pages are customers, who know the platform as
-// the Vulnetix API, not by the name of the repository behind it. Applied to
+// the Vulnesis API, not by the name of the repository behind it. Applied to
 // page bodies only: sources: in the frontmatter keeps the real paths.
 const customerWording = (text) => text
   .replace(/\bthe saas migration\b/gi, 'the platform update')
@@ -53,8 +53,8 @@ const customerWording = (text) => text
   .replace(/the migration's name/g, "the update's name")
   .replace(/naming the migration/g, 'naming the update')
   .replace(/names the migration/g, 'names the update')
-  .replace(/ \(vdb-site\)/g, ' (Vulnetix API)')
-  .replace(/\bvdb-site\b/g, 'the Vulnetix API');
+  .replace(/ \(vdb-site\)/g, ' (Vulnesis API)')
+  .replace(/\bvdb-site\b/g, 'the Vulnesis API');
 import { join, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { readPins } from './releases.mjs';
@@ -79,7 +79,7 @@ const schemaDir = join(schemasRepo, 'schemas');
 const docsRoot = join(root, 'src', 'content', 'docs', 'platform-iac');
 const outDir = join(docsRoot, 'kinds');
 const celOut = join(docsRoot, 'reference', 'cel.md');
-const RELEASES = 'https://github.com/Vulnetix/config-schemas/releases';
+const RELEASES = 'https://github.com/Vulnesis/config-schemas/releases';
 const DEV = `${RELEASES}/download/v0.0.0-dev/`;
 const CEL_PAGE = '/platform-iac/reference/cel/';
 const ENGINE_PAGE = '/platform-iac/reference/engine/';
@@ -122,7 +122,7 @@ const hasAt = (tag, kind) => filesAt[tag]?.has(`${kind}.schema.json`) ?? false;
 // embed a kind refuses it before sending it.
 const cliTags = existsSync(cliRepo) ? sortedTags(cliRepo) : [];
 function latestCliRelease() {
-  const v = process.env.VULNETIX_CLI_VERSION || pins.cli;
+  const v = process.env.VULNESIS_CLI_VERSION || pins.cli;
   if (!SEMVER.test(v)) throw new Error(`kind-reference: CLI release ${v} is not a vX.Y.Z tag`);
   if (!cliTags.includes(v)) console.warn(`kind-reference: ${cliRepo} has no tag ${v}; fetch its tags`);
   return v;
@@ -559,7 +559,7 @@ const NOTES = kindNotes({ ENGINE_PAGE, CLI });
 function tokenText(kind) {
   if (statusOf(kind) === 'validate') return 'None. The server stores nothing for this kind; validating needs no credential.';
   const creds = '[Credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation)';
-  if (GUARDIAN_KINDS.has(kind)) return `An owner, or a service account with the developer role, or an Authentik access token for either. The kind is written in Guardian, which the Vulnetix API vouches to for the caller; a member can read it but not change it. See ${creds}.`;
+  if (GUARDIAN_KINDS.has(kind)) return `An owner, or a service account with the developer role, or an Authentik access token for either. The kind is written in Guardian, which the Vulnesis API vouches to for the caller; a member can read it but not change it. See ${creds}.`;
   if (OWNER_ONLY_KINDS.has(kind)) return `An owner, or a person or service account with the developer role, or an Authentik access token for either. As code a developer grants up to developer and cannot change or remove an owner; in the console only an owner manages this kind. A member is refused with HTTP 403. See ${creds}.`;
   return `An owner, or a service account with the developer role (its ApiKey), or an Authentik access token for either. A member is refused with HTTP 403. See ${creds}.`;
 }
@@ -579,8 +579,8 @@ function cliBlock(kind, yaml) {
     return lines.join('\n');
   }
   lines.push(
-    'export VULNETIX_ORG_ID=...    # the organization UUID',
-    'export VULNETIX_API_KEY=...   # the ApiKey of a developer or owner service account',
+    'export VULNESIS_ORG_ID=...    # the organization UUID',
+    'export VULNESIS_API_KEY=...   # the ApiKey of a developer or owner service account',
   );
   for (const env of [...new Set([...yaml.matchAll(/\benv:\s*([A-Za-z_][A-Za-z0-9_]*)/g)].map((m) => m[1]))]) {
     lines.push(`export ${env}=...   # read on this machine by valueFrom, never written to the document`);
@@ -610,11 +610,11 @@ function sampleSection(kind, which, tfPresent) {
 
 // The reference files: every field with a schema default set to it, in the
 // public examples repository (copied from the provider's reference examples).
-const EXAMPLES_REPO = 'https://github.com/Vulnetix/platform-iac-examples';
+const EXAMPLES_REPO = 'https://github.com/Vulnesis/platform-iac-examples';
 function referenceLink(kind) {
   const tf = `${EXAMPLES_REPO}/blob/main/terraform/${snake(kind)}.tf`;
   const yml = `${EXAMPLES_REPO}/blob/main/yaml/${kind}.yaml`;
-  return `Every field that has a schema default, set to that default: [\`terraform/${snake(kind)}.tf\`](${tf}) and [\`yaml/${kind}.yaml\`](${yml}) in [Vulnetix/platform-iac-examples](${EXAMPLES_REPO}).\n\n`;
+  return `Every field that has a schema default, set to that default: [\`terraform/${snake(kind)}.tf\`](${tf}) and [\`yaml/${kind}.yaml\`](${yml}) in [Vulnesis/platform-iac-examples](${EXAMPLES_REPO}).\n\n`;
 }
 
 function tfAbsence(kind) {
@@ -775,7 +775,7 @@ for (const kind of kinds) {
   const others = existsSync(exampleDir(kind)) ? readdirSync(exampleDir(kind)).filter((f) => /\.ya?ml$/.test(f) && !/^(minimal|advanced)\.ya?ml$/.test(f)).sort() : [];
   if (others.length) {
     body += '## More examples\n\n';
-    for (const ex of others) body += `\`examples/${kind}/${ex}\` from \`Vulnetix/config-schemas\`:\n\n${fence('yaml', readExample(kind, ex))}\n\n`;
+    for (const ex of others) body += `\`examples/${kind}/${ex}\` from \`Vulnesis/config-schemas\`:\n\n${fence('yaml', readExample(kind, ex))}\n\n`;
   }
   body += cliKnows(kind) || status === 'validate'
     ? 'Check a file with `vulnetix config validate -f <file>`. See [Validate documents](/platform-iac/cli/validate/). In an editor, start the file with the [schema comment](/platform-iac/schemas/editors/).\n'
@@ -804,7 +804,7 @@ for (const kind of kinds) {
     `checked: [${checked.map((c) => JSON.stringify(c)).join(', ')}]`,
     '---',
     '',
-    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnetix/config-schemas. Edit the schema or the generator, not this page. -->',
+    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnesis/config-schemas. Edit the schema or the generator, not this page. -->',
     '',
   ].join('\n');
   writeFileSync(out, front + customerWording(body.trim()) + '\n');
@@ -824,7 +824,7 @@ const catOut = join(outDir, 'catalogue.md');
 if (isGenerated(catOut)) {
   const counts = { served: 0, validate: 0, schema: 0 };
   for (const c of catalogue) counts[c.status]++;
-  let body = `Every config kind with a released schema, grouped by the part of Vulnetix it configures. All of them use \`apiVersion: vulnetix.com/v1\`. This page lists the ${catalogue.length} kinds in \`config-schemas\` ${schemasVersion}.\n\n`;
+  let body = `Every config kind with a released schema, grouped by the part of Vulnesis it configures. All of them use \`apiVersion: vulnetix.com/v1\`. This page lists the ${catalogue.length} kinds in \`config-schemas\` ${schemasVersion}.\n\n`;
   body += `| Status | Meaning | Kinds |\n|---|---|---|\n`;
   body += `| Served | The config engine plans, applies and exports it. | ${counts.served} |\n`;
   body += `| Validate only | The server stores nothing for it. Validating and planning check a document; apply sends nothing. | ${counts.validate} |\n`;
@@ -851,7 +851,7 @@ if (isGenerated(catOut)) {
     `checked: [${[`config-schemas@${schemasVersion}`, ...(providerSha ? [`terraform-provider-resolve@${providerSha}`] : [])].map((c) => JSON.stringify(c)).join(', ')}]`,
     '---',
     '',
-    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnetix/config-schemas. Edit the schema, kind-notes.mjs or the generator, not this page. -->',
+    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnesis/config-schemas. Edit the schema, kind-notes.mjs or the generator, not this page. -->',
     '',
   ].join('\n');
   writeFileSync(catOut, front + customerWording(body.trim()) + '\n');
@@ -891,7 +891,7 @@ if (isGenerated(tfOut)) {
     `checked: [${[`config-schemas@${schemasVersion}`, ...(providerSha ? [`terraform-provider-resolve@${providerSha}`] : [])].map((c) => JSON.stringify(c)).join(', ')}]`,
     '---',
     '',
-    '<!-- Generated by migration/generators/kind-reference.mjs from the provider\'s examples and Vulnetix/config-schemas. Edit the generator, not this page. -->',
+    '<!-- Generated by migration/generators/kind-reference.mjs from the provider\'s examples and Vulnesis/config-schemas. Edit the generator, not this page. -->',
     '',
   ].join('\n');
   writeFileSync(tfOut, front + customerWording(body.trim()) + '\n');
@@ -1074,7 +1074,7 @@ when: "'filesystem' in mcpServers && tools.exists(t, t.startsWith('mcp__filesyst
     `checked: [${JSON.stringify(`config-schemas@${schemasVersion}`)}]`,
     '---',
     '',
-    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnetix/config-schemas (the x-vulnetix annotations, cel/README.md and cmd/celdoc). Edit the generator, kind-notes.mjs or the cel package, not this page. -->',
+    '<!-- Generated by migration/generators/kind-reference.mjs from Vulnesis/config-schemas (the x-vulnetix annotations, cel/README.md and cmd/celdoc). Edit the generator, kind-notes.mjs or the cel package, not this page. -->',
     '',
   ].join('\n');
   writeFileSync(celOut, front + customerWording(body.trim()) + '\n');

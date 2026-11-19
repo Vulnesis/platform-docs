@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1046](https://attack.mitre.org/techniques/T1046/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `webrtc` `turn` `ip-address` `security` |
-| Source | [`internal/sast/rules/vnx-node-030.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-node-030.rego) |
+| Source | [`internal/sast/rules/vnx-node-030.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-node-030.rego) |
 
 ## Overview
 

@@ -1,13 +1,13 @@
 ---
 title: Pix Sandboxes
-description: The machines Vulnetix runs for your factory, covering sizes, repositories, egress, Safe Harbour, extensions, launch configurations, maintenance and usage.
+description: The machines Vulnesis runs for your factory, covering sizes, repositories, egress, Safe Harbour, extensions, launch configurations, maintenance and usage.
 order: 7
 sources: [belai/docs/pix-sandbox.md, website/sandbox-worker/docs/pricing.md, website/sandbox-worker/docs/factory-wake.md, vdb-site/docs/pix-sandbox-safe-harbour.md, vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_provisioning.go]
 checked: [belai@35506b9, website@a31d470, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
-A Pix Sandbox is a machine Vulnetix runs for your account: one Cloudflare container per purchase, running `belai rc` with your repositories checked out. It is a [host](/software-factory/workforce/hosts-and-placement/) like any other, but nobody has to keep it running. The Pix Sandboxes page (`/resolve/belai-hosts`) manages them.
+A Pix Sandbox is a machine Vulnesis runs for your account: one Cloudflare container per purchase, running `belai rc` with your repositories checked out. It is a [host](/software-factory/workforce/hosts-and-placement/) like any other, but nobody has to keep it running. The Pix Sandboxes page (`/resolve/belai-hosts`) manages them.
 
 ## Sizes
 
@@ -93,7 +93,7 @@ A sandbox can send its OpenTelemetry `logs` and `metrics` to your own collector,
 
 ## Usage
 
-The sandbox's usage lists each session as `running`, `stopping`, `stopped`, `ended` or `lost`, with the built-in model tokens it used against your allowance. The sandbox's event log has entries for the `user` and entries for the `admin` audience, which only Vulnetix administrators see.
+The sandbox's usage lists each session as `running`, `stopping`, `stopped`, `ended` or `lost`, with the built-in model tokens it used against your allowance. The sandbox's event log has entries for the `user` and entries for the `admin` audience, which only Vulnesis administrators see.
 
 > [!WHY] Why a sandbox runs all month
 > `belai rc` has to be online to take a dispatch the moment a workflow needs it. Memory and disk cost the same idle or busy, and CPU is billed only when agents use it, so keeping it up costs little more than starting it on demand, and nothing waits for a boot.
@@ -114,4 +114,4 @@ The sandbox's usage lists each session as `running`, `stopping`, `stopped`, `end
 | GET | `/v1/belai/sandboxes/usage`, `/usage/stats`, `/builtin-usage`, `/repositories` |
 | GET | `/v1/belai/sandboxes/lookup/owners`, `/lookup/repositories` |
 
-Vulnetix administrators manage sandboxes and defaults under `/v1/admin/pix-sandboxes`.
+Vulnesis administrators manage sandboxes and defaults under `/v1/admin/pix-sandboxes`.

@@ -7,7 +7,7 @@ checked: [cli@4c8c3b71c, vdb-cyclonedx@eaf787c]
 updated: 02 Nov 2026
 ---
 
-`vulnetix bom enrich` reads an SBOM, adds what it can, and writes a standards-valid CycloneDX document. The output is still an SBOM, not a Vulnetix report.
+`vulnetix bom enrich` reads an SBOM, adds what it can, and writes a standards-valid CycloneDX document. The output is still an SBOM, not a Vulnesis report.
 
 ```bash
 vulnetix bom enrich <file> --out <file> [flags]
@@ -39,10 +39,10 @@ vulnetix bom enrich sbom.cdx.json --out enriched.cdx.json --keep-original --sign
 | Pass | What it does | When it cannot run |
 |---|---|---|
 | Licences | Resolves components whose licence is absent or `NOASSERTION`, through deps.dev, the ecosystem registries and GitHub. These are the same resolvers `vulnetix license` uses. A licence the document already states is left alone. | Per-component lookups that fail are skipped |
-| Vulnerabilities | Adds known vulnerabilities from the Vulnetix VDB as CycloneDX `vulnerabilities` entries, with ratings, EPSS and KEV context | An unreachable or unauthenticated VDB is a warning, not a failure |
+| Vulnerabilities | Adds known vulnerabilities from the Vulnesis VDB as CycloneDX `vulnerabilities` entries, with ratings, EPSS and KEV context | An unreachable or unauthenticated VDB is a warning, not a failure |
 | VEX | Folds the statements from `--vex` into each entry's `analysis` block, using the same matcher as [`vex apply`](/vex/commands/apply/) | Skipped when no `--vex` is given |
 
-When VEX was applied, the statements are also written to `<out without extension>.openvex.json` for consumers that want them separately. If you are authenticated, the VEX documents are sent to Vulnetix with origin `bom_enrich`. See [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/).
+When VEX was applied, the statements are also written to `<out without extension>.openvex.json` for consumers that want them separately. If you are authenticated, the VEX documents are sent to Vulnesis with origin `bom_enrich`. See [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/).
 
 ## What the output records
 
@@ -64,12 +64,12 @@ Enriching a Syft SBOM produces:
   "lifecycles": [{ "phase": "post-build" }],
   "tools": { "components": [
     { "name": "syft", "version": "1.2.3", "group": "Anchore" },
-    { "name": "vulnetix-bom-enrich", "version": "3.154.0", "group": "Vulnetix" }
+    { "name": "vulnetix-bom-enrich", "version": "3.154.0", "group": "Vulnesis" }
   ]}
 }
 ```
 
-The VDB request also names the input's generator, so the backend records that Syft found the packages and Vulnetix enriched them.
+The VDB request also names the input's generator, so the backend records that Syft found the packages and Vulnesis enriched them.
 
 ## Signing
 

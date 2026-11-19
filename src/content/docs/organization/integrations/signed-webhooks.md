@@ -1,6 +1,6 @@
 ---
 title: Signed webhooks
-description: The headers and JSON body of a Vulnetix signed webhook, verifying the Standard Webhooks signature, secret rotation, retries and deduplication, with a receiver.
+description: The headers and JSON body of a Vulnesis signed webhook, verifying the Standard Webhooks signature, secret rotation, retries and deduplication, with a receiver.
 order: 3
 sources: [vdb-site/api/internal/handler/messaging_send.go, vdb-site/api/internal/handler/messaging_handlers.go, vdb-site/api/internal/messaging/render_webhook.go, vdb-site/docs/messaging.md]
 checked: [vdb-site@1a06d67]
@@ -32,7 +32,7 @@ A **signed webhook** connection in [Messaging](/organization/integrations/messag
   "severity": "warning",
   "actor": { },
   "subject": { },
-  "url": "https://www.vulnetix.com/resolve/...",
+  "url": "https://www.vulnes.is/resolve/...",
   "rendered": { "title": "...", "text": "...", "markdown": "..." },
   "mentions": [ { "provider": "...", "id": "...", "display": "..." } ],
   "data": { }
@@ -56,7 +56,7 @@ A receiver using only the Python standard library:
 ```python
 import base64, hashlib, hmac, http.server, os, time
 
-SECRET = os.environ["VULNETIX_WEBHOOK_SECRET"]          # whsec_...
+SECRET = os.environ["VULNESIS_WEBHOOK_SECRET"]          # whsec_...
 KEY = base64.b64decode(SECRET.removeprefix("whsec_"))
 seen = set()
 
@@ -81,7 +81,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
 http.server.HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
 ```
 
-Run it with `VULNETIX_WEBHOOK_SECRET=whsec_... python3 receiver.py` behind an https endpoint, then press **Test** on the connection (`POST /v1/messaging/connections/{id}/test`).
+Run it with `VULNESIS_WEBHOOK_SECRET=whsec_... python3 receiver.py` behind an https endpoint, then press **Test** on the connection (`POST /v1/messaging/connections/{id}/test`).
 
 ## Rotating the secret
 
@@ -89,7 +89,7 @@ Run it with `VULNETIX_WEBHOOK_SECRET=whsec_... python3 receiver.py` behind an ht
 
 ## What your endpoint should return
 
-| Your answer | Vulnetix does |
+| Your answer | Vulnesis does |
 |---|---|
 | 2xx | marks the delivery `sent` |
 | 408, 429, 5xx, or a network error | retries: 30 s, then four times longer each attempt (±20%, at most 6 h), honouring `Retry-After`; gives up after 8 attempts |

@@ -63,7 +63,7 @@ A `workflow` fire becomes a Software Factory sighting with source `siem` and typ
 | `triggers` | Guardian trigger ids |
 | `tables` | Table names |
 
-The event carries the fire id, the trigger, category, provider, group, row count and as many context rows as fit in 4 KiB. The full capped set is on the fire record (`GET /v1/guardian/fires/{id}`). The agent receives the rows marked as data gathered by Vulnetix, not instructions. See [Triggers](/software-factory/workflows/triggers/) and [Source events](/software-factory/workflows/source-events/) in the Software Factory docs.
+The event carries the fire id, the trigger, category, provider, group, row count and as many context rows as fit in 4 KiB. The full capped set is on the fire record (`GET /v1/guardian/fires/{id}`). The agent receives the rows marked as data gathered by Vulnesis, not instructions. See [Triggers](/software-factory/workflows/triggers/) and [Source events](/software-factory/workflows/source-events/) in the Software Factory docs.
 
 **Guardian > Workflows** lists the built-in templates. Each has the same shape: an investigator agent writes `investigation.md` with a verdict (`benign`, `needs_change`, `incident`); on a needed change a person approves, a remediator changes the infrastructure code and opens a draft pull request (or writes the commands to `remediation.md` when the resource is not in code); every run notifies and files a card. Agents never apply a change to a cloud account.
 

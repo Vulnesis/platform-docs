@@ -1,7 +1,7 @@
 ---
 title: netrc and the Package Firewall
 nav: netrc
-description: The machine packages.vulnetix.com netrc entry that the Package Firewall commands write, how the CLI reads it as a credential, and how to remove it.
+description: The machine packages.vulnes.is netrc entry that the Package Firewall commands write, how the CLI reads it as a credential, and how to remove it.
 order: 5
 sources: [cli/pkg/auth/netrc.go, cli/pkg/auth/credentials.go, cli/cmd/package_firewall.go]
 checked: [cli@24498404a]
@@ -18,12 +18,12 @@ The Package Firewall authenticates package managers with HTTP Basic auth from ne
 | Windows | `%USERPROFILE%\_netrc` |
 
 ```text
-machine packages.vulnetix.com
+machine packages.vulnes.is
   login 8ff8f1e4-0000-4000-8000-000000000000
   password 6e40f1c3...
 ```
 
-`login` is the organisation ID and `password` the ApiKey (a leading `<orgId>:` is stripped). The entry may be on one line or several; `#` comments are ignored, and the entry ends at the next `machine` or `default`. A `default` entry is never used as a Vulnetix credential.
+`login` is the organisation ID and `password` the ApiKey (a leading `<orgId>:` is stripped). The entry may be on one line or several; `#` comments are ignored, and the entry ends at the next `machine` or `default`. A `default` entry is never used as a Vulnesis credential.
 
 ## Writing it
 
@@ -39,9 +39,9 @@ The entry is written from the credential in use, which must be an ApiKey, or a S
 ```sh
 umask 077
 cat >> ~/.netrc <<EOF
-machine packages.vulnetix.com
-  login $VULNETIX_ORG_ID
-  password $VULNETIX_API_KEY
+machine packages.vulnes.is
+  login $VULNESIS_ORG_ID
+  password $VULNESIS_API_KEY
 EOF
 chmod 600 ~/.netrc
 ```
@@ -76,7 +76,7 @@ vulnetix auth logout
 vulnetix auth status    # expect: Community - unauthenticated (VDB only)
 ```
 
-Or delete the `machine packages.vulnetix.com` stanza by hand.
+Or delete the `machine packages.vulnes.is` stanza by hand.
 
 ## Handling
 

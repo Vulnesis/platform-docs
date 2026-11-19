@@ -16,15 +16,15 @@ The picker lists every feed a profile can name, in groups:
 
 | Group | What it holds |
 |---|---|
-| Vulnetix STIX | The 21 Vulnetix malware STIX bundles, one for domains and one for URLs per ecosystem |
+| Vulnesis STIX | The 21 Vulnesis malware STIX bundles, one for domains and one for URLs per ecosystem |
 | Your org | The org's published Virtual Patching rule feeds, and feeds the org added by URL |
 | Connected providers | Feeds made from a [threat intel connector](/virtual-patching/sensor/threat-intel-connectors/) stream |
 | Community | Public blocklists the site fetches and parses |
 | Unavailable | Well-known feeds that cannot load today, with the reason |
 
-The scope switch (All, Vulnetix STIX, Your org, Providers, Community, Selected) and the filter narrow the list. Each row carries a badge: **Signed, can block**, **Vulnetix, report only**, **Report only** or **Unavailable**. **Add a feed by URL** in the picker takes either a signed Vulnetix feed URL or any `https://` URL with its format, and saves the second kind as an org feed.
+The scope switch (All, Vulnesis STIX, Your org, Providers, Community, Selected) and the filter narrow the list. Each row carries a badge: **Signed, can block**, **Vulnesis, report only**, **Report only** or **Unavailable**. **Add a feed by URL** in the picker takes either a signed Vulnesis feed URL or any `https://` URL with its format, and saves the second kind as an org feed.
 
-A new profile saved without any feeds gets every catalog feed marked as a default: the 21 Vulnetix STIX bundles. An explicit empty list means no feeds. Profiles that existed before the catalog are not changed. The picker's reset puts the defaults back; org and provider feeds are off by default.
+A new profile saved without any feeds gets every catalog feed marked as a default: the 21 Vulnesis STIX bundles. An explicit empty list means no feeds. Profiles that existed before the catalog are not changed. The picker's reset puts the defaults back; org and provider feeds are off by default.
 
 ## Reference forms
 
@@ -32,7 +32,7 @@ Each entry in `feeds` is one of three strings. Anything else is refused with `40
 
 | Reference | What it names | How the sensor gets it |
 |---|---|---|
-| `https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>` | A signed Vulnetix rule feed: one of your org's published [detection rule feeds](/virtual-patching/feeds/detection-rule-feeds/), or a feed the site publishes for every org | Fetched directly: `manifest.json`, `manifest.json.sig` and `rules.json`, verified against the feed key ([Manifest and signature](/virtual-patching/feeds/manifest-and-signature/)) |
+| `https://vulnes.is/feeds/<org-uuid>/<feed-uuid>` | A signed Vulnesis rule feed: one of your org's published [detection rule feeds](/virtual-patching/feeds/detection-rule-feeds/), or a feed the site publishes for every org | Fetched directly: `manifest.json`, `manifest.json.sig` and `rules.json`, verified against the feed key ([Manifest and signature](/virtual-patching/feeds/manifest-and-signature/)) |
 | `catalog:<id>` | A built-in feed from the [catalog](#catalog) | `GET /v1/runtime/feeds/catalog/<id>/indicators` on the site, with the sensor's own credential |
 | `org:<uuid>` | One of your org's own feeds: a URL feed or a connector stream. It must belong to the profile's org and not be deleted. | `GET /v1/runtime/feeds/org/<uuid>/indicators` |
 
@@ -40,13 +40,13 @@ A raw URL that is exactly a catalog entry's URL is stored as its `catalog:` refe
 
 ## Signed feeds block, indicator lists report
 
-Only a signed Vulnetix rule feed that the sensor verifies can hold or block. Every `catalog:` and `org:` feed is an indicator list the site fetches, parses and serves; it loads on the sensor as one `IOC_LIST` rule that is never verified, so a match on it reports in every mode and never holds or blocks.
+Only a signed Vulnesis rule feed that the sensor verifies can hold or block. Every `catalog:` and `org:` feed is an indicator list the site fetches, parses and serves; it loads on the sensor as one `IOC_LIST` rule that is never verified, so a match on it reports in every mode and never holds or blocks.
 
-> [!CAREFUL] The Vulnetix STIX bundles report only
-> The 21 Vulnetix STIX bundles are served as `catalog:` indicator lists and are not signed yet. A profile that runs only the defaults reports matches and blocks nothing, even in `enforce`. To block, add a signed rule feed your org published.
+> [!CAREFUL] The Vulnesis STIX bundles report only
+> The 21 Vulnesis STIX bundles are served as `catalog:` indicator lists and are not signed yet. A profile that runs only the defaults reports matches and blocks nothing, even in `enforce`. To block, add a signed rule feed your org published.
 
 > [!WHY] Why the site serves indicator lists
-> The site fetches the upstream, so a provider key never reaches a device, an `http`-only upstream still works, and every format is parsed in one place. The sensor fetches only signed Vulnetix rule feeds and lists from the site.
+> The site fetches the upstream, so a provider key never reaches a device, an `http`-only upstream still works, and every format is parsed in one place. The sensor fetches only signed Vulnesis rule feeds and lists from the site.
 
 On the sensor, a list line is a kind and a value: `d` a domain, `i` an IPv4 or IPv6 address, `u` a URL, `h` a SHA-256. Domains and addresses are checked by the egress proxy (`--egress-listen`) and the DNS guard (`--dns-listen`); a domain also matches its subdomains at the DNS guard. A URL contributes its host as a domain. Hashes are checked against executables seen through Tetragon or `vulnetix-sensor run`. The sensor polls each list on the feed refresh, every 5 minutes, with the etag it holds, so an unchanged list costs a `304`. A list that fails to fetch keeps the last one the sensor had.
 
@@ -54,7 +54,7 @@ On the sensor, a list line is a kind and a value: `d` a domain, `i` an IPv4 or I
 
 ## Catalog
 
-The catalog is built into the Vulnetix API, served at `GET /v1/runtime/feeds/catalog` to a signed-in person or a sensor credential. It has 21 Vulnetix entries, 23 community entries and 5 unavailable entries. The indicator counts for the Vulnetix rows are what `https://vulnetix.com/malscan-stix/index.json` listed when the table was written; the Resolve Platform shows the count from the last fetch.
+The catalog is built into the Vulnesis API, served at `GET /v1/runtime/feeds/catalog` to a signed-in person or a sensor credential. It has 21 Vulnesis entries, 23 community entries and 5 unavailable entries. The indicator counts for the Vulnesis rows are what `https://vulnes.is/malscan-stix/index.json` listed when the table was written; the Resolve Platform shows the count from the last fetch.
 
 | Format | Parsed as |
 |---|---|
@@ -70,27 +70,27 @@ Domains and addresses from every format pass the same allow-list the malware sca
 
 | Reference | Group | Name | Kind | Format | Upstream | Note |
 |---|---|---|---|---|---|---|
-| `catalog:vx-cargo-dns` | vulnetix | Cargo: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/cargo/dns.stix.json` | About 2 indicators when the table was written |
-| `catalog:vx-cargo-urls` | vulnetix | Cargo: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/cargo/urls.stix.json` | About 3 indicators when the table was written |
-| `catalog:vx-chrome-dns` | vulnetix | Chrome extensions: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/chrome/dns.stix.json` | About 25 indicators when the table was written |
-| `catalog:vx-chrome-urls` | vulnetix | Chrome extensions: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/chrome/urls.stix.json` | About 3 indicators when the table was written |
-| `catalog:vx-generic-dns` | vulnetix | Generic: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/generic/dns.stix.json` | About 8,846 indicators when the table was written |
-| `catalog:vx-generic-urls` | vulnetix | Generic: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/generic/urls.stix.json` | About 220 indicators when the table was written |
-| `catalog:vx-go-dns` | vulnetix | Go: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/go/dns.stix.json` | About 6 indicators when the table was written |
-| `catalog:vx-go-urls` | vulnetix | Go: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/go/urls.stix.json` | About 8 indicators when the table was written |
-| `catalog:vx-maven-urls` | vulnetix | Maven: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/maven/urls.stix.json` | About 3 indicators when the table was written |
-| `catalog:vx-npm-dns` | vulnetix | npm: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/npm/dns.stix.json` | About 334 indicators when the table was written |
-| `catalog:vx-npm-urls` | vulnetix | npm: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/npm/urls.stix.json` | About 367 indicators when the table was written |
-| `catalog:vx-openvsx-dns` | vulnetix | Open VSX: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/openvsx/dns.stix.json` | About 9 indicators when the table was written |
-| `catalog:vx-openvsx-urls` | vulnetix | Open VSX: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/openvsx/urls.stix.json` | About 8 indicators when the table was written |
-| `catalog:vx-packagist-dns` | vulnetix | Packagist: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/packagist/dns.stix.json` | About 14 indicators when the table was written |
-| `catalog:vx-packagist-urls` | vulnetix | Packagist: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/packagist/urls.stix.json` | About 2 indicators when the table was written |
-| `catalog:vx-pypi-dns` | vulnetix | PyPI: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/pypi/dns.stix.json` | About 155 indicators when the table was written |
-| `catalog:vx-pypi-urls` | vulnetix | PyPI: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/pypi/urls.stix.json` | About 174 indicators when the table was written |
-| `catalog:vx-rubygems-dns` | vulnetix | RubyGems: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/rubygems/dns.stix.json` | About 1 indicators when the table was written |
-| `catalog:vx-rubygems-urls` | vulnetix | RubyGems: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/rubygems/urls.stix.json` | About 1 indicators when the table was written |
-| `catalog:vx-vscode-dns` | vulnetix | VS Code extensions: malware domains | DNS | `stix` | `https://vulnetix.com/malscan-stix/vscode/dns.stix.json` | About 15 indicators when the table was written |
-| `catalog:vx-vscode-urls` | vulnetix | VS Code extensions: malware URLs | URLs | `stix` | `https://vulnetix.com/malscan-stix/vscode/urls.stix.json` | About 19 indicators when the table was written |
+| `catalog:vx-cargo-dns` | vulnetix | Cargo: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/cargo/dns.stix.json` | About 2 indicators when the table was written |
+| `catalog:vx-cargo-urls` | vulnetix | Cargo: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/cargo/urls.stix.json` | About 3 indicators when the table was written |
+| `catalog:vx-chrome-dns` | vulnetix | Chrome extensions: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/chrome/dns.stix.json` | About 25 indicators when the table was written |
+| `catalog:vx-chrome-urls` | vulnetix | Chrome extensions: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/chrome/urls.stix.json` | About 3 indicators when the table was written |
+| `catalog:vx-generic-dns` | vulnetix | Generic: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/generic/dns.stix.json` | About 8,846 indicators when the table was written |
+| `catalog:vx-generic-urls` | vulnetix | Generic: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/generic/urls.stix.json` | About 220 indicators when the table was written |
+| `catalog:vx-go-dns` | vulnetix | Go: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/go/dns.stix.json` | About 6 indicators when the table was written |
+| `catalog:vx-go-urls` | vulnetix | Go: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/go/urls.stix.json` | About 8 indicators when the table was written |
+| `catalog:vx-maven-urls` | vulnetix | Maven: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/maven/urls.stix.json` | About 3 indicators when the table was written |
+| `catalog:vx-npm-dns` | vulnetix | npm: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/npm/dns.stix.json` | About 334 indicators when the table was written |
+| `catalog:vx-npm-urls` | vulnetix | npm: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/npm/urls.stix.json` | About 367 indicators when the table was written |
+| `catalog:vx-openvsx-dns` | vulnetix | Open VSX: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/openvsx/dns.stix.json` | About 9 indicators when the table was written |
+| `catalog:vx-openvsx-urls` | vulnetix | Open VSX: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/openvsx/urls.stix.json` | About 8 indicators when the table was written |
+| `catalog:vx-packagist-dns` | vulnetix | Packagist: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/packagist/dns.stix.json` | About 14 indicators when the table was written |
+| `catalog:vx-packagist-urls` | vulnetix | Packagist: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/packagist/urls.stix.json` | About 2 indicators when the table was written |
+| `catalog:vx-pypi-dns` | vulnetix | PyPI: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/pypi/dns.stix.json` | About 155 indicators when the table was written |
+| `catalog:vx-pypi-urls` | vulnetix | PyPI: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/pypi/urls.stix.json` | About 174 indicators when the table was written |
+| `catalog:vx-rubygems-dns` | vulnetix | RubyGems: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/rubygems/dns.stix.json` | About 1 indicators when the table was written |
+| `catalog:vx-rubygems-urls` | vulnetix | RubyGems: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/rubygems/urls.stix.json` | About 1 indicators when the table was written |
+| `catalog:vx-vscode-dns` | vulnetix | VS Code extensions: malware domains | DNS | `stix` | `https://vulnes.is/malscan-stix/vscode/dns.stix.json` | About 15 indicators when the table was written |
+| `catalog:vx-vscode-urls` | vulnetix | VS Code extensions: malware URLs | URLs | `stix` | `https://vulnes.is/malscan-stix/vscode/urls.stix.json` | About 19 indicators when the table was written |
 | `catalog:phishing-army` | community | Phishing Army | DNS | `hosts` | `https://phishing.army/download/phishing_army_blocklist.txt` |  |
 | `catalog:blocklistde` | community | blocklist.de: all | IPs | `iplist` | `https://lists.blocklist.de/lists/all.txt` |  |
 | `catalog:ipsum3` | community | IPsum level 3 | IPs | `iplist` | `https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt` |  |
@@ -153,4 +153,4 @@ Deleting a feed that a profile uses is refused with the number of profiles, unle
 | Indicators per list | 250,000. Past that the list is cut, keeping domains first, then addresses, URLs and hashes, and its header says `# truncated <n>`. |
 | Site cache | 15 minutes per reference, in memory on each site task. A failed refresh is retried after a minute. |
 | Upstream failure | The last good list is served with `# stale <unix-ms>` and a `Warning` header, and the error is recorded on the feed. A feed that has never fetched answers `503`. |
-| Upstream fetch | Public addresses only, `https` redirects only, no redirect to a Vulnetix host |
+| Upstream fetch | Public addresses only, `https` redirects only, no redirect to a Vulnesis host |

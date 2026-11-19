@@ -20,7 +20,7 @@ schema: v1
 mcpServers:
   - name: vulnetix
     type: streamable-http
-    url: https://mcp.vulnetix.com/mcp
+    url: https://mcp.vulnes.is/mcp
     requestOptions:
       headers:
         Authorization: "ApiKey <orgId>:<hex>"

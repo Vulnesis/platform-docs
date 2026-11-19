@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Remote URL | `https://packages.vulnetix.com/conan` |
+| Remote URL | `https://packages.vulnes.is/conan` |
 | Ecosystem ID | `conan` |
 | Plan | Add-on |
 | Mode | gate: recipe and package downloads are checked |
@@ -29,7 +29,7 @@ vulnetix package-firewall conan
 ```json
 {
   "remotes": [
-    { "name": "vulnetix", "url": "https://packages.vulnetix.com/conan", "verify_ssl": true },
+    { "name": "vulnetix", "url": "https://packages.vulnes.is/conan", "verify_ssl": true },
     { "name": "conancenter", "url": "https://center2.conan.io", "verify_ssl": true, "disabled": true }
   ]
 }
@@ -50,9 +50,9 @@ Both files are written whole. Existing files are backed up to `.vulnetix.bak` an
 ## Manual equivalent
 
 ```bash
-conan remote add vulnetix https://packages.vulnetix.com/conan --index 0
+conan remote add vulnetix https://packages.vulnes.is/conan --index 0
 conan remote disable conancenter
-conan remote login vulnetix "$VULNETIX_ORG_ID" -p "$VULNETIX_API_KEY"
+conan remote login vulnetix "$VULNESIS_ORG_ID" -p "$VULNESIS_API_KEY"
 ```
 
 ## Use and verify

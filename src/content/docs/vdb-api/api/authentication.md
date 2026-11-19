@@ -29,13 +29,13 @@ Authorization: ApiKey <orgId>:<hex>
 ORG="your-org-uuid"
 SECRET="your-secret"
 HEX=$(printf '%s' "$ORG" | openssl dgst -sha256 -hmac "$SECRET" | sed 's/^.* //')
-curl -s -H "Authorization: ApiKey ${ORG}:${HEX}" https://api.vdb.vulnetix.com/v2/sources
+curl -s -H "Authorization: ApiKey ${ORG}:${HEX}" https://api.vdb.vulnes.is/v2/sources
 ```
 
 The API splits the value at the first `:`. Everything before it is the org id; everything after it must equal the HMAC exactly. It does not strip whitespace or a repeated org id.
 
 > [!CAREFUL] `ApiKey <org>:<org>:<hex>` is a 401
-> The Resolve Platform's Account page shows the API key as `<orgId>:<hex>`, ready to paste after `ApiKey `. Prefixing it with the org id again sends `ApiKey <org>:<org>:<hex>`, and the comparison fails with `401 {"error":"Invalid API key"}`. The CLI (v3.56.2 and later) removes a leading `<orgId>:` from `VULNETIX_API_KEY`, `--api-key`, the credentials file and netrc before it builds the header, so the CLI accepts either form. curl and your own clients do not.
+> The Resolve Platform's Account page shows the API key as `<orgId>:<hex>`, ready to paste after `ApiKey `. Prefixing it with the org id again sends `ApiKey <org>:<org>:<hex>`, and the comparison fails with `401 {"error":"Invalid API key"}`. The CLI (v3.56.2 and later) removes a leading `<orgId>:` from `VULNESIS_API_KEY`, `--api-key`, the credentials file and netrc before it builds the header, so the CLI accepts either form. curl and your own clients do not.
 
 An API key stops working when the secret is regenerated on the Account page, because the HMAC changes with it.
 
@@ -76,7 +76,7 @@ When it expires the API answers `401` with `"error": "Token has expired. Please 
 
 ## API token
 
-A bearer value that is not a three-part JWT is treated as an API token issued to a user account (`VULNETIX_API_TOKEN` in the CLI). The API looks up the account and the organisation it belongs to. If the account belongs to more than one organisation, the API cannot tell whose data you mean and answers `409`.
+A bearer value that is not a three-part JWT is treated as an API token issued to a user account (`VULNESIS_API_TOKEN` in the CLI). The API looks up the account and the organisation it belongs to. If the account belongs to more than one organisation, the API cannot tell whose data you mean and answers `409`.
 
 ## Failures
 

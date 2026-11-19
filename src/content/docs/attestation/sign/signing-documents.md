@@ -14,7 +14,7 @@ vulnetix cdx --sign
 vulnetix bom enrich vendor.cdx.json --out enriched.cdx.json --sign
 ```
 
-The signature uses the identity of the machine running the command: a workflow reference in CI. It is not a Vulnetix credential. A scan run in your pipeline is better attested by you than by the tool vendor, and the result verifies with `cosign verify-blob` against public Sigstore.
+The signature uses the identity of the machine running the command: a workflow reference in CI. It is not a Vulnesis credential. A scan run in your pipeline is better attested by you than by the tool vendor, and the result verifies with `cosign verify-blob` against public Sigstore.
 
 ## Where the identity comes from
 
@@ -43,7 +43,7 @@ Point both at a private Sigstore to keep signatures off the public log, and give
 | `<file>.pem` | The short-lived Fulcio certificate binding the signature to the identity |
 | `<file>.intoto.jsonl` | The same claim as a DSSE envelope |
 
-These are the names `cosign verify-blob` expects and the names the Vulnetix release workflows publish.
+These are the names `cosign verify-blob` expects and the names the Vulnesis release workflows publish.
 
 ## Verifying
 

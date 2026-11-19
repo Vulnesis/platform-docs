@@ -25,8 +25,8 @@ Tetragon writes its events to `/var/run/cilium/tetragon/tetragon.log` on each no
 
 ```bash
 kubectl -n kube-system create secret generic vulnetix-sensor \
-  --from-literal=VULNETIX_ORG_ID=<org-uuid> \
-  --from-literal=VULNETIX_API_KEY=<hmac>
+  --from-literal=VULNESIS_ORG_ID=<org-uuid> \
+  --from-literal=VULNESIS_API_KEY=<hmac>
 ```
 
 ## 3. The DaemonSet
@@ -53,8 +53,8 @@ spec:
             - --mode=monitor
             - --tetragon-export=/var/run/cilium/tetragon/tetragon.log
             - --host-root=/host
-            - --feed=https://vulnetix.com/feeds/<org-uuid>/<sigma-feed-uuid>
-            - --feed=https://vulnetix.com/feeds/<org-uuid>/<stix-feed-uuid>
+            - --feed=https://vulnes.is/feeds/<org-uuid>/<sigma-feed-uuid>
+            - --feed=https://vulnes.is/feeds/<org-uuid>/<stix-feed-uuid>
             - --state-dir=/state
           envFrom:
             - secretRef: { name: vulnetix-sensor }

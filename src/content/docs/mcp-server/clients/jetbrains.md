@@ -15,7 +15,7 @@ JetBrains AI Assistant configures MCP servers per IDE. MCP is part of the paid A
 
 1. Settings, Tools, AI Assistant, Model Context Protocol (MCP).
 2. Add (`+`) and choose the remote or HTTP server type.
-3. URL `https://mcp.vulnetix.com/mcp`.
+3. URL `https://mcp.vulnes.is/mcp`.
 4. Header `Authorization` = `ApiKey <orgId>:<hex>`.
 5. Apply, then restart the IDE.
 
@@ -26,7 +26,7 @@ The same panel has Edit as JSON:
   "mcpServers": {
     "vulnetix": {
       "type": "http",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }

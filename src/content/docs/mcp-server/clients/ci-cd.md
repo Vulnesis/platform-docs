@@ -13,17 +13,17 @@ updated: 02 Nov 2026
 
 The same URL and header work unattended. Two things change: the key comes from the CI secret store, and the pipeline needs a verdict it can act on rather than prose.
 
-Store the secret `VULNETIX_AUTH` as `<orgId>:<hex>`, without the `ApiKey ` prefix. Use a separate organisation for CI so a pipeline that exhausts the daily quota does not block developers.
+Store the secret `VULNESIS_AUTH` as `<orgId>:<hex>`, without the `ApiKey ` prefix. Use a separate organisation for CI so a pipeline that exhausts the daily quota does not block developers.
 
 ## Writing the config
 
 Generate the config at run time with `jq`, so the key is never in a committed file and is JSON-escaped correctly:
 
 ```bash
-jq -n --arg auth "ApiKey ${VULNETIX_AUTH}" '{
+jq -n --arg auth "ApiKey ${VULNESIS_AUTH}" '{
   mcpServers: { vulnetix: {
     type: "http",
-    url: "https://mcp.vulnetix.com/mcp",
+    url: "https://mcp.vulnes.is/mcp",
     headers: { Authorization: $auth }
   } }
 }' > "${RUNNER_TEMP:-/tmp}/mcp.json"
@@ -48,12 +48,12 @@ jobs:
 
       - name: Write MCP config
         env:
-          VULNETIX_AUTH: ${{ secrets.VULNETIX_AUTH }}
+          VULNESIS_AUTH: ${{ secrets.VULNESIS_AUTH }}
         run: |
-          jq -n --arg auth "ApiKey ${VULNETIX_AUTH}" '{
+          jq -n --arg auth "ApiKey ${VULNESIS_AUTH}" '{
             mcpServers: { vulnetix: {
               type: "http",
-              url: "https://mcp.vulnetix.com/mcp",
+              url: "https://mcp.vulnes.is/mcp",
               headers: { Authorization: $auth }
             } }
           }' > "$RUNNER_TEMP/mcp.json"
@@ -97,10 +97,10 @@ dependency-review:
     - apt-get update -qq && apt-get install -y -qq jq
     - npm install -g @anthropic-ai/claude-code
     - |
-      jq -n --arg auth "ApiKey ${VULNETIX_AUTH}" '{
+      jq -n --arg auth "ApiKey ${VULNESIS_AUTH}" '{
         mcpServers: { vulnetix: {
           type: "http",
-          url: "https://mcp.vulnetix.com/mcp",
+          url: "https://mcp.vulnes.is/mcp",
           headers: { Authorization: $auth }
         } }
       }' > /tmp/mcp.json
@@ -110,15 +110,15 @@ dependency-review:
     - jq -e '.verdict == "pass"' verdict.json
 ```
 
-Set `VULNETIX_AUTH` and `ANTHROPIC_API_KEY` as masked, protected CI/CD variables.
+Set `VULNESIS_AUTH` and `ANTHROPIC_API_KEY` as masked, protected CI/CD variables.
 
 ## Keep the hard gate deterministic
 
 > [!WHY] The CLI blocks, the agent explains
-> A model's verdict can be wrong in either direction. For a gate that must hold, run the Vulnetix CLI, which exits 1 by itself with no model in the path. Use the agent to explain and prioritise what the CLI found.
+> A model's verdict can be wrong in either direction. For a gate that must hold, run the Vulnesis CLI, which exits 1 by itself with no model in the path. Use the agent to explain and prioritise what the CLI found.
 
 ```yaml
-- run: curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+- run: curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
 - run: vulnetix scan --evaluate-sca --severity high --exploits weaponized
 ```
 

@@ -72,7 +72,7 @@ Yes, on Pro and above, as a custom provider: any `https` endpoint speaking OpenA
 
 ## Do I need the CLI?
 
-No. Everything can be done on the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall). The CLI adds wiring local clients, local checks, code snippets and the [policy file](/ai-firewall/reference/policy-file/).
+No. Everything can be done on the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall). The CLI adds wiring local clients, local checks, code snippets and the [policy file](/ai-firewall/reference/policy-file/).
 
 ## How do I know it is working?
 

@@ -1,7 +1,7 @@
 ---
 title: Organization quickstart
 nav: Quickstart
-description: Set up a new Vulnetix organisation, invite a colleague, create a service account for CI, and give the pipeline VULNETIX_ORG_ID and VULNETIX_API_KEY.
+description: Set up a new Vulnesis organisation, invite a colleague, create a service account for CI, and give the pipeline VULNESIS_ORG_ID and VULNESIS_API_KEY.
 order: 1.5
 sources: [vdb-site/api/internal/handler/members.go, vdb-site/api/internal/handler/service_accounts.go, vdb-site/api/internal/handler/provision.go, website/src/pages/resolve/members.vue, cli/cmd/auth.go]
 checked: [vdb-site@d2ea72f23, website@7f3b734cd, cli@v4.17.1]
@@ -12,7 +12,7 @@ This page sets up an organisation for a team: one colleague invited, and a crede
 
 ## Prerequisites
 
-- A console sign-in at `https://www.vulnetix.com/resolve` with your company address. The first person to sign up with a company domain becomes the owner of that domain's organisation. A free-mail address gets a personal organisation that nobody can join.
+- A console sign-in at `https://www.vulnes.is/resolve` with your company address. The first person to sign up with a company domain becomes the owner of that domain's organisation. A free-mail address gets a personal organisation that nobody can join.
 - The `owner` role for steps 2 and 3. Every plan includes members and service accounts.
 
 ## 1. Open the Members page
@@ -39,10 +39,10 @@ The account is named `<org>:ci-scanner`. The next dialog shows its **Org ID**, *
 Save the two values as CI secrets and pass them to the CLI as environment variables. In GitHub Actions:
 
 ```yaml
-- name: Vulnetix scan
+- name: Vulnesis scan
   env:
-    VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-    VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+    VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+    VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
   run: vulnetix scan
 ```
 
@@ -51,7 +51,7 @@ The variables take precedence over any stored login.
 ## 5. Check the credential
 
 ```bash
-VULNETIX_ORG_ID=<org id> VULNETIX_API_KEY=<api key> vulnetix auth verify
+VULNESIS_ORG_ID=<org id> VULNESIS_API_KEY=<api key> vulnetix auth verify
 ```
 
 ```text

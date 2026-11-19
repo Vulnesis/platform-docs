@@ -78,7 +78,7 @@ Paths matched by `.gitignore` are skipped unless you pass `--cdx-include-ignored
 | `--bom-property` | `name=value`, repeatable | | `metadata.properties` |
 | `--bom-overlay` | string, repeatable | | A CycloneDX fragment merged in before validation. See [Overlay files](/sbom/author/overlay/). |
 
-The identity and customisation flags are described in [Author and customise](/sbom/author/overview/). Each has a `VULNETIX_BOM_*` or `VULNETIX_COMPONENT_*` environment variable.
+The identity and customisation flags are described in [Author and customise](/sbom/author/overview/). Each has a `VULNESIS_BOM_*` or `VULNESIS_COMPONENT_*` environment variable.
 
 Distro packages found with `--include-system` carry the `distro=`, `arch=`, `epoch=` and `upstream=` purl qualifiers, which is what distro security advisories match on.
 

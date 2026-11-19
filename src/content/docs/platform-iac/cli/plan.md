@@ -51,13 +51,13 @@ The detected `owner/repo` is lowercased, so a local checkout whose remote says `
 
 The engine changes tenant policy, so plan, apply and export need an owner, or a service account with the `developer` role. The CLI uses the credentials it uses everywhere else, and sends the first of:
 
-1. `VULNETIX_API_TOKEN`, as `Authorization: Bearer <token>` (an Authentik access token or a session token);
-2. `VULNETIX_API_KEY` with `VULNETIX_ORG_ID`, as `Authorization: ApiKey <org>:<key>`;
+1. `VULNESIS_API_TOKEN`, as `Authorization: Bearer <token>` (an Authentik access token or a session token);
+2. `VULNESIS_API_KEY` with `VULNESIS_ORG_ID`, as `Authorization: ApiKey <org>:<key>`;
 3. the credential `vulnetix auth login` stored, with its usual header (`Bearer` for a token, `ApiKey` otherwise).
 
-In CI use the ApiKey of a `developer` service account in `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`. A `member` service account gets HTTP 403. A 401 or 403 error names the credential source that was tried. See [credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation).
+In CI use the ApiKey of a `developer` service account in `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`. A `member` service account gets HTTP 403. A 401 or 403 error names the credential source that was tried. See [credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation).
 
-The engine is reached at `https://www.vulnetix.com/api/site/v1`. `VULNETIX_WEB_URL` replaces `https://www.vulnetix.com`, as it does for `vulnetix auth login`.
+The engine is reached at `https://www.vulnes.is/api/site/v1`. `VULNESIS_WEB_URL` replaces `https://www.vulnes.is`, as it does for `vulnetix auth login`.
 
 ## Secrets
 
@@ -137,7 +137,7 @@ Code 3 means the plan was blocked. It shares the number with `vulnetix jail`'s i
 vulnetix config plan
 vulnetix config plan -f .vulnetix/config/quality-gate.yaml -o json
 vulnetix config plan --manager gitops:acme/platform-config --prune
-VULNETIX_ORG_ID=... VULNETIX_API_KEY=... vulnetix config plan --manager terraform
+VULNESIS_ORG_ID=... VULNESIS_API_KEY=... vulnetix config plan --manager terraform
 ```
 
 To apply a plan, see [`vulnetix config apply`](/platform-iac/cli/apply/).

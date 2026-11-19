@@ -31,8 +31,8 @@ The `<principalUuid>` is the principal's own uuid, called the **org id** in the 
 With the CLI:
 
 ```bash
-export VULNETIX_ORG_ID=<principalUuid>
-export VULNETIX_API_KEY=<apiKey>
+export VULNESIS_ORG_ID=<principalUuid>
+export VULNESIS_API_KEY=<apiKey>
 vulnetix auth verify
 ```
 
@@ -63,12 +63,12 @@ The Members page asks an owner which role the new account gets, and for a `devel
 A `developer` service account is the credential for Terraform, `vulnetix config apply` and the GitHub Actions. It is the same pair of variables as for the CLI in CI:
 
 ```sh
-export VULNETIX_ORG_ID=<principalUuid>
-export VULNETIX_API_KEY=<apiKey>
+export VULNESIS_ORG_ID=<principalUuid>
+export VULNESIS_API_KEY=<apiKey>
 vulnetix config plan
 ```
 
-The provider reads the same two names. An Authentik access token (`VULNETIX_API_TOKEN`) works for the same account where your setup already issues tokens. See [credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation).
+The provider reads the same two names. An Authentik access token (`VULNESIS_API_TOKEN`) works for the same account where your setup already issues tokens. See [credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation).
 
 | Method | Path | Does |
 |---|---|---|

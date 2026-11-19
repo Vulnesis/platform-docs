@@ -1,19 +1,19 @@
 variable "cloudflare_api_token" {
-  description = "Cloudflare API token with DNS edit permission on the vulnetix.com zone."
+  description = "Cloudflare API token with DNS edit permission on the vulnes.is zone."
   type        = string
   sensitive   = true
 }
 
 variable "cloudflare_zone_id" {
-  description = "Cloudflare zone ID for vulnetix.com."
+  description = "Cloudflare zone ID for vulnes.is."
   type        = string
   default     = "d3aeda6727dbbae840f5abb1aab1444d"
 }
 
 variable "github_pages_target" {
-  description = "GitHub Pages CNAME target for the Vulnetix organisation."
+  description = "GitHub Pages CNAME target for the Vulnesis organisation."
   type        = string
-  default     = "vulnetix.github.io"
+  default     = "vulnesis.github.io"
 }
 
 variable "manage_pages" {

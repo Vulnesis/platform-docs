@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 ---
 The IaC pass analyzes **repository files**: Kubernetes manifests (including CRDs), docker-compose files and Dockerfiles, for the AI infrastructure they would produce. Every detection is validated; a value that cannot be verified from the file is either dropped (likely false positive) or reported with `vulnetix:ai/confidence-gap` = `true` and a `vulnetix:ai/gap-reason` stating exactly what could not be verified and why. **Nothing is ever guessed.**
 
-> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.
+> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.
 
 ## Runtimes detected by container image
 
@@ -64,7 +64,7 @@ Image patterns are matched against the image **name** (registry + repository, ta
 
 - **Environment values**: `HF_MODEL_ID`, `MODEL_NAME`, `MODEL_ID`, `OLLAMA_MODEL` (a `valueFrom` secret/configMap reference is never resolved: it produces a confidence gap instead)
 - **Container args/command flags**: `--model`, `--model-id`, `--model_id`, `--model-path`, `--model-repository`, `--model-name`, `--served-model-name` (both `--flag value` and `--flag=value`)
-- **Declared annotations**: prefixes `vulnetix.com/model.`, `model.k8saibom.dev/`
+- **Declared annotations**: prefixes `vulnes.is/model.`, `model.k8saibom.dev/`
 - **Volume mounts** (model artifacts): path-boundary prefixes `/models`, `/model`, `/weights`, `/checkpoints`, `/hf_cache`. `/models` matches `/models/x` but never `/models-shared`
 - **Dataset volumes** (training workloads only): names `dataset`, `datasets`, `training-data`, mount prefixes `/data`
 

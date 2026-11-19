@@ -7,7 +7,7 @@ checked: [siem@e0f71fa]
 updated: 02 Nov 2026
 ---
 
-Guardian takes Cloudflare logs through Logpush jobs with an HTTP destination: `https://ingest.vulnetix.com/v1/ingest/cloudflare/<dataset>`. Guardian creates the jobs for you with an API token you paste once and it does not keep, or you create them yourself.
+Guardian takes Cloudflare logs through Logpush jobs with an HTTP destination: `https://ingest.vulnes.is/v1/ingest/cloudflare/<dataset>`. Guardian creates the jobs for you with an API token you paste once and it does not keep, or you create them yourself.
 
 ## Connect from the Resolve Platform
 
@@ -15,9 +15,9 @@ Guardian takes Cloudflare logs through Logpush jobs with an HTTP destination: `h
 2. Use the pre-filled token link to create an account-owned API token in the Cloudflare dashboard, or paste one you have.
 3. **Check** tests the token against each permission below and shows each as granted, missing or could not check, with the zones that lack one. If something is missing, the drawer links the dashboard's token form pre-filled with only the missing permissions.
 4. Pick zones and datasets, then **Create jobs**. Guardian creates one Guardian ingest token (kind `cloudflare`) shared by every job it makes in that run, creates the jobs, and forgets your Cloudflare token.
-5. Optionally save the Cloudflare token in the Vulnetix Secrets Vault so investigation agents can read your zone during a [workflow](/siem/alerts/triggers/#software-factory-workflows).
+5. Optionally save the Cloudflare token in the Vulnesis Secrets Vault so investigation agents can read your zone during a [workflow](/siem/alerts/triggers/#software-factory-workflows).
 
-Running it again is safe: a dataset that already has a job sending to `ingest.vulnetix.com` is skipped and reported as "already sending to Guardian".
+Running it again is safe: a dataset that already has a job sending to `ingest.vulnes.is` is skipped and reported as "already sending to Guardian".
 
 You need an owner or admin role.
 
@@ -61,7 +61,7 @@ Account datasets need the 32-character hex account id. DNS query types and respo
 If you would rather not hand over a token, create an ingest token of kind `cloudflare` on **Guardian > Sources** and create a Logpush job per dataset with this destination:
 
 ```
-https://ingest.vulnetix.com/v1/ingest/cloudflare/<dataset>?label=<zone name or account id>&header_Authorization=Bearer%20<token>
+https://ingest.vulnes.is/v1/ingest/cloudflare/<dataset>?label=<zone name or account id>&header_Authorization=Bearer%20<token>
 ```
 
 For example, with the Cloudflare API:
@@ -73,7 +73,7 @@ curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jo
     "name": "vulnetix-guardian-firewall_events",
     "dataset": "firewall_events",
     "enabled": true,
-    "destination_conf": "https://ingest.vulnetix.com/v1/ingest/cloudflare/firewall_events?label=example.com&header_Authorization=Bearer%20gdn_xxxxxxxxxxxxxxxxxxxx",
+    "destination_conf": "https://ingest.vulnes.is/v1/ingest/cloudflare/firewall_events?label=example.com&header_Authorization=Bearer%20gdn_xxxxxxxxxxxxxxxxxxxx",
     "output_options": {
       "field_names": ["Datetime","Action","RuleID","Source","Description","ClientIP","ClientRequestHost","ClientRequestPath","ClientRequestQuery","ClientRequestMethod","EdgeResponseStatus","RayID","ClientRequestUserAgent","ClientASN","ClientCountry","Kind","MatchIndex","OriginatorRayID"],
       "timestamp_format": "rfc3339",

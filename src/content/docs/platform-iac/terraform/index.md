@@ -8,13 +8,13 @@ checked: ["terraform-provider-resolve@v1.4.1", "vdb-site@fcbbdd3"]
 updated: 04 Nov 2026
 ---
 
-The `vulnetix/resolve` provider manages Vulnetix configuration as code. Each resource is one `vulnetix.com/v1` config document of one [kind](/platform-iac/kinds/catalogue/), applied through the same [server-side engine](/platform-iac/reference/engine/) as `vulnetix config apply` and the Resolve Platform's Download as code. Resources, their examples and their docs are generated from the kind schemas in [`config-schemas`](https://github.com/Vulnetix/config-schemas), so a resource has the fields its kind has.
+The `vulnetix/resolve` provider manages Vulnesis configuration as code. Each resource is one `vulnetix.com/v1` config document of one [kind](/platform-iac/kinds/catalogue/), applied through the same [server-side engine](/platform-iac/reference/engine/) as `vulnetix config apply` and the Resolve Platform's Download as code. Resources, their examples and their docs are generated from the kind schemas in [`config-schemas`](https://github.com/Vulnesis/config-schemas), so a resource has the fields its kind has.
 
 It is one binary for Terraform and OpenTofu, 1.11 or later: secrets use write-only arguments, which arrived in 1.11.
 
 ## Install
 
-The provider is published on the [Terraform registry as `vulnetix/resolve`](https://registry.terraform.io/providers/vulnetix/resolve/latest). Its source is [`Vulnetix/terraform-provider-resolve`](https://github.com/Vulnetix/terraform-provider-resolve). It is also on the [OpenTofu registry](https://search.opentofu.org/provider/vulnetix/resolve/latest). The current release is v1.4.1. A configuration needs the source and a version constraint:
+The provider is published on the [Terraform registry as `vulnetix/resolve`](https://registry.terraform.io/providers/vulnetix/resolve/latest). Its source is [`Vulnesis/terraform-provider-resolve`](https://github.com/Vulnesis/terraform-provider-resolve). It is also on the [OpenTofu registry](https://search.opentofu.org/provider/vulnetix/resolve/latest). The current release is v1.4.1. A configuration needs the source and a version constraint:
 
 ```hcl
 terraform {
@@ -26,10 +26,10 @@ terraform {
   }
 }
 
-# The credential is read from VULNETIX_ORG_ID and VULNETIX_API_KEY when not set
+# The credential is read from VULNESIS_ORG_ID and VULNESIS_API_KEY when not set
 # here. Keep it out of the configuration: pass it from your CI secret store.
 provider "vulnetix" {
-  # endpoint = "https://www.vulnetix.com/api/site/v1"
+  # endpoint = "https://www.vulnes.is/api/site/v1"
   # org_id   = var.vulnetix_org_id
   # api_key  = var.vulnetix_api_key   # the ApiKey of a developer or owner service account
   # manager  = "terraform"
@@ -51,7 +51,7 @@ The provider is on the [OpenTofu registry](https://search.opentofu.org/provider/
 
 ### Verifying a release
 
-Each release publishes zips per platform, a manifest, `terraform-provider-resolve_<version>_SHA256SUMS` and a detached signature `..._SHA256SUMS.sig`. Releases are signed with the RSA key `9BC243B2CE39D50B4ACEFA84BE9293952EA5128B`. The registry returns the public key with the download details of a version, under `signing_keys.gpg_public_keys`. To check a release by hand, import the key, download the two files from the [GitHub release](https://github.com/Vulnetix/terraform-provider-resolve/releases) and run:
+Each release publishes zips per platform, a manifest, `terraform-provider-resolve_<version>_SHA256SUMS` and a detached signature `..._SHA256SUMS.sig`. Releases are signed with the RSA key `9BC243B2CE39D50B4ACEFA84BE9293952EA5128B`. The registry returns the public key with the download details of a version, under `signing_keys.gpg_public_keys`. To check a release by hand, import the key, download the two files from the [GitHub release](https://github.com/Vulnesis/terraform-provider-resolve/releases) and run:
 
 ```bash
 curl -s https://registry.terraform.io/v1/providers/vulnetix/resolve/1.1.0/download/linux/amd64 \
@@ -66,7 +66,7 @@ Confirm that the fingerprint `gpg` reports is the one above, then check the zip 
 To run a build of your own, to try a change, build the provider and point the tool at the binary with a development override:
 
 ```bash
-git clone https://github.com/Vulnetix/terraform-provider-resolve
+git clone https://github.com/Vulnesis/terraform-provider-resolve
 cd terraform-provider-resolve
 go build -o "$HOME/go/bin/terraform-provider-resolve" .
 ```
@@ -85,13 +85,13 @@ With an override, skip `init` for this provider and run `plan` or `apply` direct
 
 ## Authentication
 
-The provider uses the credentials Vulnetix already issues. Set exactly one of the two forms; both together is an error, and neither gives a warning.
+The provider uses the credentials Vulnesis already issues. Set exactly one of the two forms; both together is an error, and neither gives a warning.
 
 | Argument | Environment variable | Sent as | Notes |
 |---|---|---|---|
-| `api_key` with `org_id` | `VULNETIX_API_KEY` with `VULNETIX_ORG_ID` | `Authorization: ApiKey <org_id>:<api_key>` | The ApiKey of a service account. Sensitive. Keep it out of the configuration. |
-| `token` | `VULNETIX_API_TOKEN` | `Authorization: Bearer <token>` | An Authentik access token or a session token. It names its own organisation, so there is no `org_id`. Sensitive. |
-| `endpoint` | `VULNETIX_ENDPOINT` | | Default `https://www.vulnetix.com/api/site/v1`. The Resolve Platform API; the engine's routes are under `/config/...`. Set it to point at another deployment. |
+| `api_key` with `org_id` | `VULNESIS_API_KEY` with `VULNESIS_ORG_ID` | `Authorization: ApiKey <org_id>:<api_key>` | The ApiKey of a service account. Sensitive. Keep it out of the configuration. |
+| `token` | `VULNESIS_API_TOKEN` | `Authorization: Bearer <token>` | An Authentik access token or a session token. It names its own organisation, so there is no `org_id`. Sensitive. |
+| `endpoint` | `VULNESIS_ENDPOINT` | | Default `https://www.vulnes.is/api/site/v1`. The Resolve Platform API; the engine's routes are under `/config/...`. Set it to point at another deployment. |
 | `manager` | none | | Default `terraform`. Recorded as the owner of every object this provider applies. |
 
 An owner creates the service account with the `developer` role (or `owner`) and gives its ApiKey to the automation. A `developer` can apply every kind, [`Organization`](/platform-iac/kinds/organization/), [`Member`](/platform-iac/kinds/member/), [`ServiceAccount`](/platform-iac/kinds/service-account/) and [`VaultEntry`](/platform-iac/kinds/vault-entry/) included; on people and service accounts it grants up to `developer`, and only an **owner** credential can grant `owner` or change an owner. The five SIEM kinds are written in Guardian with the same credential. A `member` service account is refused with HTTP 403 on apply. A person's ApiKey works too, if that person is an owner. See [credentials for automation](/platform-iac/reference/config-api/#credentials-for-automation).
@@ -100,7 +100,7 @@ An owner creates the service account with the `developer` role (or `owner`) and 
 
 One resource per kind that the engine stores: [every resource](/platform-iac/terraform/resources/), with its kind and group. A kind's page has the resource's **Minimal** and **Advanced** HCL beside the YAML and the CLI form, and its import command. Each resource's arguments are the kind's `spec` in snake case (`blockMalware` is `block_malware`), beside `name`, `labels` and `annotations` from `metadata`.
 
-**Reference files.** [Vulnetix/platform-iac-examples](https://github.com/Vulnetix/platform-iac-examples) has one file per kind that sets every argument that has a schema default to that default, plus the required arguments, as Terraform (`terraform/<resource>.tf`) and as YAML (`yaml/<Kind>.yaml`). It is a runnable root module: on a tenant that left a setting at its default, a plan only sets values that are unset. Each kind's page links its two files under the HCL.
+**Reference files.** [Vulnesis/platform-iac-examples](https://github.com/Vulnesis/platform-iac-examples) has one file per kind that sets every argument that has a schema default to that default, plus the required arguments, as Terraform (`terraform/<resource>.tf`) and as YAML (`yaml/<Kind>.yaml`). It is a runnable root module: on a tenant that left a setting at its default, a plan only sets values that are unset. Each kind's page links its two files under the HCL.
 
 The kinds that are validate only, [`LicensePolicy`](/platform-iac/kinds/license-policy/) and [`LicenseExceptions`](/platform-iac/kinds/license-exceptions/), have no resource: the server stores nothing for them, so there is nothing for Terraform to manage. A kind with a released schema that the engine does not serve is generated but not offered.
 
@@ -214,7 +214,7 @@ The provider is the same binary for both tools. Everything above applies to Open
 | Terraform registry | [`registry.terraform.io/vulnetix/resolve`](https://registry.terraform.io/providers/vulnetix/resolve/latest) | Published. Every release is listed. |
 | OpenTofu registry | [`registry.opentofu.org/vulnetix/resolve`](https://search.opentofu.org/provider/vulnetix/resolve/latest) | Published. Every release is listed, signed with the same key. |
 
-The address is `vulnetix/resolve`: namespace `vulnetix`, type `resolve`. The local name stays `vulnetix`, so the resources keep the `vulnetix_` prefix. Both registries require the repository to be named `terraform-provider-{type}` and the release archives to be named `terraform-provider-{type}_{version}_{os}_{arch}.zip`, which is why the repository is `Vulnetix/terraform-provider-resolve`.
+The address is `vulnetix/resolve`: namespace `vulnetix`, type `resolve`. The local name stays `vulnetix`, so the resources keep the `vulnetix_` prefix. Both registries require the repository to be named `terraform-provider-{type}` and the release archives to be named `terraform-provider-{type}_{version}_{os}_{arch}.zip`, which is why the repository is `Vulnesis/terraform-provider-resolve`.
 
 A release is a `vX.Y.Z` tag on the repository. Its workflow publishes a GitHub release in the registry layout: zips per platform, a manifest, `SHA256SUMS` and a detached GPG signature that both registries read.
 
@@ -230,4 +230,4 @@ A release is a `vX.Y.Z` tag on the repository. Its workflow publishes a GitHub r
 | v1.1.0 | Adds `drift_protection` to `vulnetix_organization`, the [Drift protection](/platform-iac/guides/drift-protection/) switch. Needs a server-side migration to turn on. |
 | v1.0.0 | The first release |
 
-The two AWS [modules](/platform-iac/terraform/modules/) are separate repositories, released as `aws-onboarding` v1.0.1 and `aws-siem-shipping` v1.0.0 and listed on the Terraform registry as `Vulnetix/aws-onboarding/vulnetix` and `Vulnetix/aws-siem-shipping/vulnetix`.
+The two AWS [modules](/platform-iac/terraform/modules/) are separate repositories, released as `aws-onboarding` v1.0.1 and `aws-siem-shipping` v1.0.0 and listed on the Terraform registry as `Vulnesis/aws-onboarding/vulnetix` and `Vulnesis/aws-siem-shipping/vulnetix`.

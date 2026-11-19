@@ -12,21 +12,21 @@ The CLI reads these sources in order and uses the first complete one. Sources ar
 
 | # | Source | Complete when | Method |
 |---|---|---|---|
-| 1 | `VULNETIX_API_TOKEN` | Non-empty | `token` |
-| 2 | `VULNETIX_API_KEY` and `VULNETIX_ORG_ID` | Both non-empty | `apikey` |
+| 1 | `VULNESIS_API_TOKEN` | Non-empty | `token` |
+| 2 | `VULNESIS_API_KEY` and `VULNESIS_ORG_ID` | Both non-empty | `apikey` |
 | 3 | `VVD_ORG` and `VVD_SECRET` | Both non-empty | `sigv4` |
 | 4 | `./.vulnetix/credentials.json` (relative to the current directory) | Parses, has `org_id` or a token, and any keychain secret it references loads | from the file |
-| 5 | `~/.vulnetix/credentials.json`, or `$VULNETIX_CREDENTIALS_DIR/credentials.json` | Same | from the file |
-| 6 | netrc entry `machine packages.vulnetix.com` | `login` and `password` both present, file mode allows no group or other access | `apikey` |
+| 5 | `~/.vulnetix/credentials.json`, or `$VULNESIS_CREDENTIALS_DIR/credentials.json` | Same | from the file |
+| 6 | netrc entry `machine packages.vulnes.is` | `login` and `password` both present, file mode allows no group or other access | `apikey` |
 | 7 | Embedded community credential | Always, for VDB lookups only | `apikey` |
 
 What follows from the order:
 
-- **A stale `VULNETIX_API_TOKEN` hides every login.** `auth login` writes a file or a keychain entry; resolution never gets past source 1.
+- **A stale `VULNESIS_API_TOKEN` hides every login.** `auth login` writes a file or a keychain entry; resolution never gets past source 1.
 - **A project file beats your own.** A `.vulnetix/credentials.json` in a repository you cloned signs you in as whoever wrote it, inside that directory. See [File permissions](/cli/authentication/file-permissions/#never-commit-credentials).
-- **Half an environment pair is ignored.** `VULNETIX_API_KEY` without `VULNETIX_ORG_ID` falls through to the files, which reads as "the variable did nothing".
+- **Half an environment pair is ignored.** `VULNESIS_API_KEY` without `VULNESIS_ORG_ID` falls through to the files, which reads as "the variable did nothing".
 - **netrc is a full credential source.** Any `vulnetix package-firewall <ecosystem>` command writes it, so the CLI stays signed in after `auth logout`. See [netrc](/cli/authentication/netrc/).
-- **There is no `--source` flag and no `--store-dir` on read.** `--store-dir` only chooses where `auth login` writes. To read from a non-default directory, set `VULNETIX_CREDENTIALS_DIR`.
+- **There is no `--source` flag and no `--store-dir` on read.** `--store-dir` only chooses where `auth login` writes. To read from a non-default directory, set `VULNESIS_CREDENTIALS_DIR`.
 
 ## The keychain is not a separate level
 
@@ -62,13 +62,13 @@ AUTH STATE
 
 CREDENTIAL SOURCES
 
-  [FAIL] env VULNETIX_API_TOKEN not set
-  [OK] env VULNETIX_API_KEY + VULNETIX_ORG_ID active
+  [FAIL] env VULNESIS_API_TOKEN not set
+  [OK] env VULNESIS_API_KEY + VULNESIS_ORG_ID active
   [FAIL] env VVD_ORG + VVD_SECRET not set
   [FAIL] project .vulnetix/credentials.json not set
   [FAIL] home /home/you/.vulnetix/credentials.json not set
   [FAIL] keyring not set
-  [FAIL] netrc /home/you/.netrc machine packages.vulnetix.com not set
+  [FAIL] netrc /home/you/.netrc machine packages.vulnes.is not set
 ```
 
 `Source` is one of `Environment`, `Project file`, `Home file`, `Keyring`, `netrc` or `Community`. Each source row is `set`, `not set`, `unusable` (with the reason) or `active`. A third section lists the package managers configured against the Package Firewall.
@@ -94,7 +94,7 @@ vulnetix auth verify
 Remove the ones above it:
 
 ```sh
-env -u VULNETIX_API_TOKEN -u VULNETIX_API_KEY -u VULNETIX_ORG_ID -u VVD_ORG -u VVD_SECRET \
+env -u VULNESIS_API_TOKEN -u VULNESIS_API_KEY -u VULNESIS_ORG_ID -u VVD_ORG -u VVD_SECRET \
   vulnetix auth status
 ```
 

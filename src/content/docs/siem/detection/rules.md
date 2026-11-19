@@ -16,7 +16,7 @@ An alert rule is a query that runs on a schedule over your events. Each match be
 | `tenant` | Sigma YAML you wrote or uploaded, or a saved search in Sigma mode | Yes |
 | `search` | A copy of a saved search in the search language. A search with `stats` alerts per group. | No; make a new rule |
 | `sigmahq` | A rule from the SigmaHQ catalogue | No; tune it |
-| `countermeasure` | A Vulnetix detection rule of kind Sigma, by reference (see [Virtual patching](/virtual-patching/)) | No; tune it |
+| `countermeasure` | A Vulnesis detection rule of kind Sigma, by reference (see [Virtual patching](/virtual-patching/)) | No; tune it |
 | `ioc` | `ioc-dns` (**Indicator domain resolved**, `dns_events.qname`) or `ioc-net` (**Connection to an indicator address**, `net_events.dst_ip`) against the indicator snapshot. Both `critical`. | No |
 
 The **catalogue** on the Rules page lists the SigmaHQ rules that compile and the two indicator rules (`GET /v1/guardian/catalogue?q=`). Each Monday at 04:00 UTC Guardian imports the latest SigmaHQ commit (up to 600 files, Detection Rule License 1.1) from these folders: `rules/network/dns`, `rules/network/firewall`, `rules/network/zeek`, `rules/web/proxy_generic`, `rules/web/webserver_generic`, `rules/cloud/aws/cloudtrail`. Only rules that compile are offered. Turning on the same catalogue rule twice is refused with code `exists`.
@@ -89,7 +89,7 @@ A rule a trigger uses cannot be deleted (`in_use`).
 ## Create with the API
 
 ```sh
-curl -sS https://guardian.vulnetix.com/v1/guardian/rules \
+curl -sS https://guardian.vulnes.is/v1/guardian/rules \
   -H "Authorization: Bearer $GUARDIAN_ACCESS_TOKEN" -H 'Content-Type: application/json' \
   --data @- <<'EOF'
 {

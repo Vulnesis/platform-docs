@@ -8,7 +8,7 @@ checked: [ai-firewall@339de55, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The examples are ES modules (top-level `await`): save them as `.mjs` or `.ts` and run with Node 20 or later. Each reads `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`.
+The examples are ES modules (top-level `await`): save them as `.mjs` or `.ts` and run with Node 20 or later. Each reads `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`.
 
 ```bash
 vulnetix ai-firewall snippet --lang ts --sdk openai --provider openai
@@ -28,8 +28,8 @@ npm install openai
 import OpenAI from 'openai'
 
 const client = new OpenAI({
-  baseURL: `https://guardrails.vulnetix.com/openai/${process.env.VULNETIX_ORG_ID}/v1`,
-  apiKey: process.env.VULNETIX_API_KEY, // the Vulnetix key, not an OpenAI key
+  baseURL: `https://guardrails.vulnes.is/openai/${process.env.VULNESIS_ORG_ID}/v1`,
+  apiKey: process.env.VULNESIS_API_KEY, // the Vulnesis key, not an OpenAI key
 })
 
 const response = await client.chat.completions.create({
@@ -80,8 +80,8 @@ npm install @anthropic-ai/sdk
 import Anthropic from '@anthropic-ai/sdk'
 
 const client = new Anthropic({
-  baseURL: `https://guardrails.vulnetix.com/anthropic/${process.env.VULNETIX_ORG_ID}`, // no /v1
-  authToken: process.env.VULNETIX_API_KEY,
+  baseURL: `https://guardrails.vulnes.is/anthropic/${process.env.VULNESIS_ORG_ID}`, // no /v1
+  authToken: process.env.VULNESIS_API_KEY,
 })
 
 const message = await client.messages.create({
@@ -105,8 +105,8 @@ import { createOpenAI } from '@ai-sdk/openai'
 import { generateText, streamText, APICallError } from 'ai'
 
 const vulnetix = createOpenAI({
-  baseURL: `https://guardrails.vulnetix.com/openai/${process.env.VULNETIX_ORG_ID}/v1`,
-  apiKey: process.env.VULNETIX_API_KEY!,
+  baseURL: `https://guardrails.vulnes.is/openai/${process.env.VULNESIS_ORG_ID}/v1`,
+  apiKey: process.env.VULNESIS_API_KEY!,
 })
 
 try {
@@ -139,10 +139,10 @@ npm install @langchain/openai
 import { ChatOpenAI } from '@langchain/openai'
 
 const llm = new ChatOpenAI({
-  apiKey: process.env.VULNETIX_API_KEY,
+  apiKey: process.env.VULNESIS_API_KEY,
   model: 'gpt-4o-mini',
   configuration: {
-    baseURL: `https://guardrails.vulnetix.com/openai/${process.env.VULNETIX_ORG_ID}/v1`,
+    baseURL: `https://guardrails.vulnes.is/openai/${process.env.VULNESIS_ORG_ID}/v1`,
   },
 })
 console.log((await llm.invoke('Hello')).content)

@@ -45,20 +45,20 @@ Slash commands you type in the Belai terminal UI. Type `/` to see them with comp
 | <span id="profile"></span>`/profile` | switch agent profile | [Agents and agent profiles](/software-factory/workforce/agents/) |
 | <span id="prompts"></span>`/prompts` | manage the prompt library | [The library: skills, prompts, commands, processes, repos and more](/software-factory/workforce/library/) |
 | <span id="providers"></span>`/providers` | manage providers, credentials and local models | [Providers, keys and secrets](/software-factory/workforce/providers-and-keys/) |
-| <span id="rc"></span>`/rc` | remote control: let the Vulnetix website start and drive Belai sessions on this machine | [Remote control and connected hosts](/software-factory/workforce/remote-control/) |
+| <span id="rc"></span>`/rc` | remote control: let the Vulnesis website start and drive Belai sessions on this machine | [Remote control and connected hosts](/software-factory/workforce/remote-control/) |
 | <span id="refine"></span>`/refine` | refine the extracted plan | [Modes, plan mode and goals](/software-factory/belai/modes-and-plans/) |
 | <span id="rename"></span>`/rename` | rename this session | [Sessions: resume, export, compact and rename](/software-factory/belai/sessions/) |
 | <span id="resume"></span>`/resume` | resume a session by id or browse sessions on disk | [Sessions: resume, export, compact and rename](/software-factory/belai/sessions/) |
 | <span id="sandbox"></span>`/sandbox` | show the OS sandbox status and policy for commands | [Guardrails, classifier, sandbox and trust](/software-factory/belai/guardrails/) |
 | <span id="settings"></span>`/settings` | view and edit settings | [The terminal UI](/software-factory/belai/tui/) |
 | <span id="skills"></span>`/skills` | list installed skills | [The library: skills, prompts, commands, processes, repos and more](/software-factory/workforce/library/) |
-| <span id="sync"></span>`/sync` | show or change session sync to the Vulnetix website | [Session sync and object storage](/software-factory/workforce/session-sync/) |
+| <span id="sync"></span>`/sync` | show or change session sync to the Vulnesis website | [Session sync and object storage](/software-factory/workforce/session-sync/) |
 | <span id="todos"></span>`/todos` | show plan progress | [The board](/software-factory/workforce/board/) |
 | <span id="tree"></span>`/tree` | browse the session as a tree, continue from an earlier point or fork a branch | [Sessions: resume, export, compact and rename](/software-factory/belai/sessions/) |
 | <span id="trusted"></span>`/trusted` | manage trusted directories, the ones remote control offers | [Guardrails, classifier, sandbox and trust](/software-factory/belai/guardrails/) |
 | <span id="tts"></span>`/tts` | read replies aloud: on, off, stop, voice, speed, cache | [Voice input and speech](/software-factory/belai/voice-and-tts/) |
 | <span id="voice"></span>`/voice` | speech input: dictate into the composer with a hold-to-talk key or always listening | [Voice input and speech](/software-factory/belai/voice-and-tts/) |
-| <span id="vulnetix"></span>`/vulnetix` | Vulnetix code review and firewall | [Vulnetix scanning inside sessions](/software-factory/belai/vulnetix/) |
+| <span id="vulnetix"></span>`/vulnetix` | Vulnesis code review and firewall | [Vulnesis scanning inside sessions](/software-factory/belai/vulnetix/) |
 | <span id="welcome"></span>`/welcome` | reopen the Getting started guide | [The terminal UI](/software-factory/belai/tui/) |
 | <span id="yolo"></span>`/yolo` | toggle guardrails and ask together | [Modes, plan mode and goals](/software-factory/belai/modes-and-plans/) |
 

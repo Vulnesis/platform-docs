@@ -17,7 +17,7 @@ checked: [ai-firewall@339de55, vdb-site@1a06d67, vdb-api@4145f0a]
 updated: 02 Nov 2026
 ---
 
-There are three APIs. The **gateway** at `https://guardrails.vulnetix.com` carries inference and enforces policy; it has no policy-editing routes. Policy is written through the **console API** that the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall) calls, and the **CLI API** that `vulnetix ai-firewall` calls.
+There are three APIs. The **gateway** at `https://guardrails.vulnes.is` carries inference and enforces policy; it has no policy-editing routes. Policy is written through the **console API** that the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall) calls, and the **CLI API** that `vulnetix ai-firewall` calls.
 
 ## Gateway routes
 
@@ -45,14 +45,14 @@ A provider serves only the surfaces in its `wireApis`. Calling another is `404 u
 
 | Client family | Base URL |
 |---|---|
-| OpenAI SDKs, Codex, LangChain, most others | `https://guardrails.vulnetix.com/{provider}/{org}/v1` |
-| Anthropic SDKs, Claude Code | `https://guardrails.vulnetix.com/anthropic/{org}`. No `/v1`: the SDK appends `/v1/messages`. |
+| OpenAI SDKs, Codex, LangChain, most others | `https://guardrails.vulnes.is/{provider}/{org}/v1` |
+| Anthropic SDKs, Claude Code | `https://guardrails.vulnes.is/anthropic/{org}`. No `/v1`: the SDK appends `/v1/messages`. |
 
 A `/v1/v1/` in a 404 path is the sign of the wrong one. See [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/).
 
 ## Authentication
 
-Every gateway route except the health probes needs the Vulnetix API key in one of:
+Every gateway route except the health probes needs the Vulnesis API key in one of:
 
 ```text
 Authorization: Bearer <vulnetix api key>
@@ -108,8 +108,8 @@ On Pro and above the list is filtered by the organisation's model policy, so a p
 `POST /guardrails/{org}/v1/evaluate` applies the organisation's guardrails to an OpenAI Chat Completions request without forwarding it. It exists for inference the gateway cannot proxy, such as the Workers AI models a Pix sandbox calls; its log and inventory rows use the provider slug `workers-ai`. No provider or model policy runs.
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/guardrails/$VULNETIX_ORG_ID/v1/evaluate" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s "https://guardrails.vulnes.is/guardrails/$VULNESIS_ORG_ID/v1/evaluate" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"@cf/meta/llama-3.1-8b-instruct","messages":[{"role":"user","content":"my email is a@example.com"}]}'
 ```
@@ -155,7 +155,7 @@ An organisation that downgrades keeps its rules; the gateway stops applying them
 
 ## Resolve Platform API
 
-The Resolve Platform calls `https://www.vulnetix.com/api/site/v1` with the signed-in session cookie. It is not a public API and has no token authentication. The AI Firewall routes:
+The Resolve Platform calls `https://www.vulnes.is/api/site/v1` with the signed-in session cookie. It is not a public API and has no token authentication. The AI Firewall routes:
 
 | Method and path | Purpose |
 |---|---|
@@ -174,7 +174,7 @@ The Resolve Platform calls `https://www.vulnetix.com/api/site/v1` with the signe
 
 ## CLI API
 
-`vulnetix ai-firewall` calls `POST https://api.vdb.vulnetix.com/v2/cli.<route>` with the CLI's credential:
+`vulnetix ai-firewall` calls `POST https://api.vdb.vulnes.is/v2/cli.<route>` with the CLI's credential:
 
 | Route | Used by |
 |---|---|

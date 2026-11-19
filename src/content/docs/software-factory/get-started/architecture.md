@@ -12,8 +12,8 @@ Software Factory has five parts. You use two of them directly: the Resolve Platf
 
 | Part | Where it runs | What it does |
 |---|---|---|
-| Resolve Platform | Your browser, served from `www.vulnetix.com` | The Software Factory pages under `/resolve/factory*` |
-| Factory API and engine | Vulnetix cloud | Stores workflows, runs, settings, budgets, events and the audit ledger. Advances runs. |
+| Resolve Platform | Your browser, served from `www.vulnes.is` | The Software Factory pages under `/resolve/factory*` |
+| Factory API and engine | Vulnesis cloud | Stores workflows, runs, settings, budgets, events and the audit ledger. Advances runs. |
 | Schedulers | AWS EventBridge Scheduler, Cloudflare, or a host | Fire cron triggers at the factory API |
 | Hosts | A Pix Sandbox, or your own machine running `belai rc` | Run agent sessions with the repository checked out |
 | Pix call worker | Cloudflare | Voice calls with Pix |
@@ -36,7 +36,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 - **GitHub events** arrive as webhooks at `POST /v1/webhooks/github`, signed by GitHub. The factory updates its mirror, then wakes matching triggers and waiting steps.
 - **Other forges' events** (GHES, Gitea, Forgejo, GitLab) arrive at `POST /v1/webhooks/{kind}/{connection}`, checked against the [forge connection's](/software-factory/control/forge-connections/) secret, and are translated into GitHub's events before the same path runs.
 - **Schedules** are fired by AWS EventBridge Scheduler (`runsOn: aws`), Cloudflare (`cloudflare`) or a host (`host`). A fire is a signed request to the factory's internal trigger endpoint. A fire that arrives while the factory is paused or stopped is answered `held` and starts no run; one during a maintenance window or blackout starts a run that waits as `held`.
-- **Scanner results** uploaded by the Vulnetix CLI wake scan steps.
+- **Scanner results** uploaded by the Vulnesis CLI wake scan steps.
 - **Labels and comments** (`sf:<name>`, `/sf <name>`) on issues and pull requests start a run of the named workflow.
 - **The board**: a card moving list can start a run.
 - **People** start runs by hand in the Resolve Platform or on a Pix call.
@@ -45,7 +45,7 @@ The engine has no timer that scans for work. A run moves only when something tel
 
 A host is any machine running Belai in remote control mode. It keeps a long-poll open to the API, advertises the repositories and directories it has, and takes **dispatches**: requests to start a session with a given agent, brief and limits. The host acknowledges the dispatch, runs the session, streams its transcript back and reports when it ends.
 
-- A **Pix Sandbox** is a container Vulnetix runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, with at most 6 wake requests an hour per sandbox.
+- A **Pix Sandbox** is a container Vulnesis runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, with at most 6 wake requests an hour per sandbox.
 - **Your own machine** joins with `belai rc`. It runs only what its operator allows. See [Remote control](/software-factory/workforce/remote-control/).
 
 Hosts on one tenant can message each other through the [A2A relay](/software-factory/workforce/a2a-messaging/) and share [agent memory](/software-factory/workforce/memory/).

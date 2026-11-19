@@ -26,7 +26,7 @@ vulnetix vex apply --vex ./vex/ --bom sbom.cdx.json --fail-on-effective 0
 | `--bom` | | The SBOM to apply statements to. Required. CycloneDX, SPDX or an in-toto envelope, read like [`bom import`](/sbom/read/import-and-validate/). |
 | `--out` | | Write the annotated CycloneDX document here |
 | `--fail-on-effective` | `-1` | Exit `1` when more than this many vulnerabilities survive VEX. `-1` disables; `0` means none may survive. |
-| `--upload` | `false` | Send the VEX documents to Vulnetix, which turns their false-positive and won't-fix statements into suppression rules. Needs an authenticated CLI. |
+| `--upload` | `false` | Send the VEX documents to Vulnesis, which turns their false-positive and won't-fix statements into suppression rules. Needs an authenticated CLI. |
 | `-o`, `--output` | `pretty` | `pretty` (alias `table`) or `json` |
 
 A directory is read one level deep. Every `.json` file in it is tried, and files that are not VEX are skipped and listed rather than failing the run, so `--vex .vulnetix/` works.

@@ -7,7 +7,7 @@ import { homeRedirects } from './src/lib/home-redirects.mjs';
 
 export default defineConfig({
   // Keep in sync with public/CNAME and terraform/dns.tf.
-  site: 'https://docs.vulnetix.com',
+  site: 'https://docs.vulnes.is',
   base: '/',
   trailingSlash: 'always',
   markdown: {

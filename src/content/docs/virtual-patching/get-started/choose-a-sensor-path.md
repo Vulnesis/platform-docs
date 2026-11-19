@@ -29,7 +29,7 @@ Enrollment is Linux only today (`amd64` and `arm64`, with systemd). macOS and Wi
 | AWS Lambda | Lambda layer | Org key in function environment | [Lambda layer](/virtual-patching/runtime/sensor-lambda/) |
 | A host where users, and an attacker with a user shell, must not be able to stop the sensor | Any host path above, with the profile's protection set to `hardened` or `locked` | Unchanged | [Protection](/virtual-patching/sensor/protection/) |
 
-Containers and Lambda do not enroll: they read `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` from their environment, as the pages linked above show.
+Containers and Lambda do not enroll: they read `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` from their environment, as the pages linked above show.
 
 ## Credential modes in one line each
 

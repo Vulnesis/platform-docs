@@ -18,7 +18,7 @@ Cursor connects to remote HTTP MCP servers from `mcp.json`. No `type` field is n
 {
   "mcpServers": {
     "vulnetix": {
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }
@@ -37,16 +37,16 @@ The server is available in every project and the key is outside every repository
 {
   "mcpServers": {
     "vulnetix": {
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
-        "Authorization": "ApiKey ${env:VULNETIX_AUTH}"
+        "Authorization": "ApiKey ${env:VULNESIS_AUTH}"
       }
     }
   }
 }
 ```
 
-Set `VULNETIX_AUTH` to `<orgId>:<hex>` in the environment Cursor starts from. Launched from a desktop icon, Cursor may not see variables set in your shell profile; launch it from a terminal, or use the global file.
+Set `VULNESIS_AUTH` to `<orgId>:<hex>` in the environment Cursor starts from. Launched from a desktop icon, Cursor may not see variables set in your shell profile; launch it from a terminal, or use the global file.
 
 > [!CAREFUL] `.cursor/mcp.json` is committed by default
 > Use the variable form above or add the file to `.gitignore`. If a literal key was pushed, rotate it.

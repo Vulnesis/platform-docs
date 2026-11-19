@@ -1,14 +1,14 @@
 ---
 title: Endpoint reference
 nav: Endpoints
-description: Every public v2 route of the VDB API, by resource, with its parameters, defaults, caps and plan gates. Paths are relative to https://api.vdb.vulnetix.com/v2.
+description: Every public v2 route of the VDB API, by resource, with its parameters, defaults, caps and plan gates. Paths are relative to https://api.vdb.vulnes.is/v2.
 order: 1
 sources: [vdb-api/main.go, vdb-api/internal/handler/openapi-v2.json, vdb-api/internal/handler/openapi-cli.json, vdb-api/internal/middleware/oasvalidate.go]
 checked: [vdb-api@df992c8]
 updated: 05 Nov 2026
 ---
 
-Paths are relative to `https://api.vdb.vulnetix.com/v2`. This table follows the OpenAPI document, `GET /v2/spec` (an interactive reference is at [`/v2/spec/ui`](https://api.vdb.vulnetix.com/v2/spec/ui)), and lists all 139 of its operations. Every route needs a [credential](/vdb-api/api/authentication/) unless marked **open**. `{identifier}` takes any [advisory id](/vdb-api/api/inputs/#advisory-ids); routes marked **inputs** also take a URL-encoded purl, CPE, TEI or SWID tag in that slot. "Input parameters" means the shared [input kinds](/vdb-api/api/inputs/#input-kinds) (`vulnId`, `package`, `ecosystem`, `version`, `vendor`, `product`, `cpe`, `purl`, `swid`, `tei`, `cel`) in the query, or in the JSON body on a `POST`.
+Paths are relative to `https://api.vdb.vulnes.is/v2`. This table follows the OpenAPI document, `GET /v2/spec` (an interactive reference is at [`/v2/spec/ui`](https://api.vdb.vulnes.is/v2/spec/ui)), and lists all 139 of its operations. Every route needs a [credential](/vdb-api/api/authentication/) unless marked **open**. `{identifier}` takes any [advisory id](/vdb-api/api/inputs/#advisory-ids); routes marked **inputs** also take a URL-encoded purl, CPE, TEI or SWID tag in that slot. "Input parameters" means the shared [input kinds](/vdb-api/api/inputs/#input-kinds) (`vulnId`, `package`, `ecosystem`, `version`, `vendor`, `product`, `cpe`, `purl`, `swid`, `tei`, `cel`) in the query, or in the JSON body on a `POST`.
 
 Parameters are written `name=default` and `≤cap` where they have one, with allowed values in brackets. `*` marks a required parameter. `limit` and `offset` work as described in [Pagination](/vdb-api/api/pagination/); `offset` defaults to 0 and is at most 100,000 unless the row says otherwise. Requests are checked against the document: a parameter outside its cap, pattern or allowed values answers `400` with the `field` at fault (see [Errors](/vdb-api/api/errors/#request-validation)).
 

@@ -7,7 +7,7 @@ checked: [cli@2449840]
 updated: 02 Nov 2026
 ---
 
-You need the Vulnetix CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)). No sign-in is needed.
+You need the Vulnesis CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)). No sign-in is needed.
 
 ## 1. Scan
 
@@ -61,8 +61,8 @@ The built-in rules cover seven AWS checks. Add the Regula and Checkmarx KICS pac
 
 ```bash
 vulnetix iac --depth 10 \
-  --rule Vulnetix/opa-fugue-regula \
-  --rule Vulnetix/opa-checkmarx-kics
+  --rule Vulnesis/opa-fugue-regula \
+  --rule Vulnesis/opa-checkmarx-kics
 ```
 
 Several packs often flag the same line for the same weakness; the report folds those into one problem and lists every rule that raised it. See [Rule packs](/iac-scanning/guides/rule-packs/).
@@ -78,8 +78,8 @@ The run exits `1` when any IaC finding is `high` or `critical`. A GitHub Actions
 ```yaml
 - name: IaC scan
   run: |
-    curl -fsSL https://cli.vulnetix.com/install.sh | sh
-    vulnetix iac --depth 10 --rule Vulnetix/opa-fugue-regula --fail-on high -o iac.sarif
+    curl -fsSL https://cli.vulnes.is/install.sh | sh
+    vulnetix iac --depth 10 --rule Vulnesis/opa-fugue-regula --fail-on high -o iac.sarif
 ```
 
 ## 4. Accept a finding

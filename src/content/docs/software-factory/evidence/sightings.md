@@ -24,7 +24,7 @@ One sighting is kept per source, scope (organisation or repository), repository 
 
 ## Research
 
-Before its first run starts, a sighting gets research from public sources, kept for a day: for a package, the Vulnetix vulnerability database, deps.dev and the registry; for an AI capability, the MCP Registry and the gateway's inventory; for a host, DNS, network, registration age, first certificate and the sandbox's own request counts. See [Source events](/software-factory/workflows/source-events/) for the full list.
+Before its first run starts, a sighting gets research from public sources, kept for a day: for a package, the Vulnesis vulnerability database, deps.dev and the registry; for an AI capability, the MCP Registry and the gateway's inventory; for a host, DNS, network, registration age, first certificate and the sandbox's own request counts. See [Source events](/software-factory/workflows/source-events/) for the full list.
 
 ## The review card
 

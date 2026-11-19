@@ -1,16 +1,16 @@
 ---
 title: Events API
-description: Post your own rows to Guardian over HTTPS with an events token, the request and response format, writable tables, and the Vulnetix products that send rows.
+description: Post your own rows to Guardian over HTTPS with an events token, the request and response format, writable tables, and the Vulnesis products that send rows.
 order: 3
 sources: [siem/worker/src/ingest/routes.ts, siem/worker/src/normalise/events.ts, siem/worker/src/normalise/finish.ts, siem/worker/src/pipeline.ts, cli/internal/sensor/siem/siem.go, cli/cmd/vulnetix-sensor/main.go]
 checked: [siem@e0f71fa, cli@4c8c3b71c]
 updated: 02 Nov 2026
 ---
 
-The events route takes rows that are already shaped like Guardian's tables. Use it for a log source Guardian has no connector for, a script, or the Vulnetix runtime sensor.
+The events route takes rows that are already shaped like Guardian's tables. Use it for a log source Guardian has no connector for, a script, or the Vulnesis runtime sensor.
 
 ```
-POST https://ingest.vulnetix.com/v1/ingest/events
+POST https://ingest.vulnes.is/v1/ingest/events
 Authorization: Bearer gdn_...
 Content-Type: application/json
 ```
@@ -55,7 +55,7 @@ The token must be an ingest token of kind `events`, created on **Guardian > Sour
 A quick test from a shell:
 
 ```sh
-curl -sS https://ingest.vulnetix.com/v1/ingest/events \
+curl -sS https://ingest.vulnes.is/v1/ingest/events \
   -H "Authorization: Bearer $GUARDIAN_EVENTS_TOKEN" -H 'Content-Type: application/json' \
   --data '{"source":"smoke","events":[{"table":"product_events","row":{"ts":"2026-11-02T00:00:00Z","product":"smoke","event_type":"smoke.test","decision":"allow","detail":"hello"}}]}'
 ```
@@ -78,18 +78,18 @@ curl -sS https://ingest.vulnetix.com/v1/ingest/events \
 | Flag | Env | Default |
 |---|---|---|
 | `--forward siem` | | off. `siem` is the only value. Needs `--dns-listen`, `--egress-listen` or both. |
-| `--siem-token` | `VULNETIX_SIEM_TOKEN` | required with `--forward siem`: an events token |
-| `--siem-url` | `VULNETIX_SIEM_URL` | `https://ingest.vulnetix.com/v1/ingest/events`. Must be `https`. |
+| `--siem-token` | `VULNESIS_SIEM_TOKEN` | required with `--forward siem`: an events token |
+| `--siem-url` | `VULNESIS_SIEM_URL` | `https://ingest.vulnes.is/v1/ingest/events`. Must be `https`. |
 
-The sensor buffers up to 20,000 rows and posts up to 1,000 at a time every 10 seconds. Forwarding never slows a decision: when the buffer is full the oldest rows are dropped and counted, and a batch Guardian refuses is dropped too. A blocked or held decision is stored with `action` `block`; `policy` is `<rule table>:<rule uuid>`, and `raw` keeps `decision`, `reason`, `indicator` and `hold_until`. Deploying the sensor is covered on [Vulnetix sensor](/virtual-patching/runtime/sensor/).
+The sensor buffers up to 20,000 rows and posts up to 1,000 at a time every 10 seconds. Forwarding never slows a decision: when the buffer is full the oldest rows are dropped and counted, and a batch Guardian refuses is dropped too. A blocked or held decision is stored with `action` `block`; `policy` is `<rule table>:<rule uuid>`, and `raw` keeps `decision`, `reason`, `indicator` and `hold_until`. Deploying the sensor is covered on [Vulnesis sensor](/virtual-patching/runtime/sensor/).
 
-## Vulnetix products
+## Vulnesis products
 
-These Vulnetix services send to Guardian on your behalf, with no token to set up. Their rows are stored only for organisations with Guardian active, and they do not count against your ingest cap.
+These Vulnesis services send to Guardian on your behalf, with no token to set up. Their rows are stored only for organisations with Guardian active, and they do not count against your ingest cap.
 
 | Producer | Table | `source` |
 |---|---|---|
 | Package Firewall decisions | `product_events` | `package-firewall` |
 | AI Firewall decisions | `product_events` | `ai-firewall` |
 | Pix Sandbox egress | `net_events` | `pix` |
-| Vulnetix API access log (authenticated requests; CDN cache hits are left out) | `http_events` | `vdb-api` |
+| Vulnesis API access log (authenticated requests; CDN cache hits are left out) | `http_events` | `vdb-api` |

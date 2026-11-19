@@ -61,7 +61,7 @@ An OpenVEX document regenerated from every unexpired control. Each statement is 
 compensating-control: ModSecurity, prod-eu ingress (log only) until 2027-01-10
 ```
 
-The suffix is `(blocking)`, `(log only)` or `(detection only)`. A virtual patch never makes a package `not_affected`, so the statement never says so. When no control is active the file is deleted. The document is also sent to Vulnetix as VEX with origin `defend`.
+The suffix is `(blocking)`, `(log only)` or `(detection only)`. A virtual patch never makes a package `not_affected`, so the statement never says so. When no control is active the file is deleted. The document is also sent to Vulnesis as VEX with origin `defend`.
 
 Commit both files so CI sees the same controls.
 

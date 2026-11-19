@@ -26,8 +26,8 @@ Start with [Install and sign in](/software-factory/belai/install-and-sign-in/) i
 
 | Check | Needs |
 |---|---|
-| Vulnetix CLI | `vulnetix` on your `PATH` |
-| Vulnetix login | A browser login, `vulnetix auth login`. An API-token login is refused, because the website does not accept it for remote control. |
+| Vulnesis CLI | `vulnetix` on your `PATH` |
+| Vulnesis login | A browser login, `vulnetix auth login`. An API-token login is refused, because the website does not accept it for remote control. |
 | Session sync | `sync.enabled` on (the default) |
 | Guardrails | On. Remote control never runs a session nobody is watching without them. |
 | Directories | At least one directory to offer |

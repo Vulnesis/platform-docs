@@ -48,7 +48,7 @@ Every rule does the same thing: select a population, aggregate it, compare the r
 | Aggregate | Observed value |
 |---|---|
 | `COUNT` | Number of matching items |
-| `COUNT_PAST_SLA` | Matching items past their remediation window. The window comes from the organization's linked [triage policy](https://www.vulnetix.com/resolve/triage-policy) (per-severity remediation days plus allowance). `VULN` rules only; with no linked triage policy the rule is indeterminate. |
+| `COUNT_PAST_SLA` | Matching items past their remediation window. The window comes from the organization's linked [triage policy](https://www.vulnes.is/resolve/triage-policy) (per-severity remediation days plus allowance). `VULN` rules only; with no linked triage policy the rule is indeterminate. |
 | `MAX_AGE_DAYS` | Age in days of the oldest matching item |
 | `PERCENT` | Matching items as a percentage of the population. An empty population is `0`, never a breach. |
 

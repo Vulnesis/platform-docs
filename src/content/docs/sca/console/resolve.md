@@ -32,7 +32,7 @@ The snapshot link is printed at the end of the run (on stderr when stdout carrie
 | Quality gate | `/resolve/quality-gate` |
 | Safe Harbour, including container curation | `/resolve/safe-harbour` (`?lens=containers`) |
 
-All under https://www.vulnetix.com. The finding page shows the CVE, scores, exploits, recorded defences, Vulnetix proof of concept, reachability, VEX, how the package was introduced, artefacts, history and internet exposure (attack surface). `/resolve/container-curation` redirects to the Safe Harbour container lens.
+All under https://www.vulnes.is. The finding page shows the CVE, scores, exploits, recorded defences, Vulnesis proof of concept, reachability, VEX, how the package was introduced, artefacts, history and internet exposure (attack surface). `/resolve/container-curation` redirects to the Safe Harbour container lens.
 
 ## Filters
 
@@ -65,7 +65,7 @@ Every triage or score change writes a VEX record scoped to that finding. `vulnet
 
 ## API
 
-The Resolve Platform calls the Vulnetix API with your session.
+The Resolve Platform calls the Vulnesis API with your session.
 
 | Method | Path | Purpose |
 |---|---|---|

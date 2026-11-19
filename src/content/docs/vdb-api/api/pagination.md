@@ -63,10 +63,10 @@ When a purl, CPE, TEI or SWID tag sits in a `/v2/vuln/{identifier}/*` path, the 
 ## Walking pages with curl
 
 ```bash
-AUTH="Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}"
+AUTH="Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}"
 offset=0
 while :; do
-  page=$(curl -s -H "$AUTH" "https://api.vdb.vulnetix.com/v2/identifiers/2024/3?limit=500&offset=${offset}")
+  page=$(curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/identifiers/2024/3?limit=500&offset=${offset}")
   echo "$page" | jq -r '.identifiers[]'
   [ "$(echo "$page" | jq -r '.hasMore')" = "true" ] || break
   offset=$((offset + 500))

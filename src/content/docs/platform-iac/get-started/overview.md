@@ -1,15 +1,15 @@
 ---
 title: Platform IaC
-description: What Platform IaC is, which Vulnetix configuration you can keep as code, and how documents are applied from the CLI, Terraform and a repository.
+description: What Platform IaC is, which Vulnesis configuration you can keep as code, and how documents are applied from the CLI, Terraform and a repository.
 order: 1
 sources: [config-schemas/README.md, config-schemas/schemas.go, cli/cmd/config_documents.go, cli/cmd/config.go, vdb-site/docs/platform-iac-engine.md, terraform-provider-resolve/README.md]
 checked: [config-schemas@v1.8.0, cli@v3.166.0, vdb-site@3c0433c]
 updated: 04 Nov 2026
 ---
 
-Platform IaC is for teams that want their Vulnetix settings, such as quality gates, firewall policy, members and connections, reviewed in pull requests and reproducible across organisations instead of clicked into the Resolve Platform. Use it to manage how Vulnetix is configured. To scan your own Terraform or Kubernetes code for misconfigurations, use [IaC scanning](/iac-scanning/).
+Platform IaC is for teams that want their Vulnesis settings, such as quality gates, firewall policy, members and connections, reviewed in pull requests and reproducible across organisations instead of clicked into the Resolve Platform. Use it to manage how Vulnesis is configured. To scan your own Terraform or Kubernetes code for misconfigurations, use [IaC scanning](/iac-scanning/).
 
-Platform IaC is Vulnetix configuration written as YAML documents, kept in a repository and checked like code. Every document has the same shape: `apiVersion: vulnetix.com/v1`, a `kind`, `metadata` and a `spec`. Each kind has a published JSON Schema, a page here with its fields and samples, and, where the engine stores it, a Terraform resource.
+Platform IaC is Vulnesis configuration written as YAML documents, kept in a repository and checked like code. Every document has the same shape: `apiVersion: vulnetix.com/v1`, a `kind`, `metadata` and a `spec`. Each kind has a published JSON Schema, a page here with its fields and samples, and, where the engine stores it, a Terraform resource.
 
 ```yaml
 apiVersion: vulnetix.com/v1
@@ -57,7 +57,7 @@ All three go through the same engine, so a document gives the same result in eac
 | Manage settings with Terraform | [Terraform and OpenTofu](/platform-iac/terraform/) |
 | Pull VEX documents in as suppressions | [VEX documents as suppression rules](/platform-iac/guides/vex-sources/) |
 | Get completion and errors in my editor | [Editor setup](/platform-iac/schemas/editors/) |
-| Check a schema file was published by Vulnetix | [Verify a release](/platform-iac/schemas/verify/) |
+| Check a schema file was published by Vulnesis | [Verify a release](/platform-iac/schemas/verify/) |
 | Know whether a schema update can break my files | [Compatibility](/platform-iac/schemas/compatibility/) |
 | Set the org quality gate from a script | [Imperative commands](/platform-iac/cli/imperative-commands/) |
 | Keep AI firewall policy in a repository | [AiFirewallPolicy](/platform-iac/kinds/ai-firewall-policy/) |

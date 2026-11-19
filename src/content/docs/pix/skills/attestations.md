@@ -38,6 +38,6 @@ It publishes every finding whose `decision.choice` is set to something other tha
 | Flag | Default | Effect |
 |---|---|---|
 | `--format` | `openvex` | `cyclonedx` emits CycloneDX VEX |
-| `--upload` | off | Uploads the statement to Vulnetix; otherwise only the local path is reported |
+| `--upload` | off | Uploads the statement to Vulnesis; otherwise only the local path is reported |
 
 With `gh` available and a pull request in scope (`GITHUB_REF`, or `gh pr view --json number`), it posts the summary as a PR comment. The report counts statements by status.

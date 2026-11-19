@@ -10,11 +10,11 @@ updated: 04 Nov 2026
 
 SBOMs are for teams that must say exactly what is inside the software they ship, to a customer, an auditor or their own scanners, and for teams that receive SBOMs from suppliers and need to read and check them. An SBOM is the inventory. A [VEX](/vex/) document says whether each vulnerability in that inventory affects you, and [attestation](/attestation/) proves who produced either document. Start here when you need the inventory itself.
 
-The Vulnetix CLI writes three kinds of CycloneDX bill of materials and reads SBOMs that any tool produced. Everything here runs locally. When you are authenticated, `cbom` and `aibom` send their result to Vulnetix, and `bom enrich` queries deps.dev, the package registries and the VDB, and sends the VEX it applied. `cdx` (unless `--sign`) and the other `bom` subcommands make no network calls.
+The Vulnesis CLI writes three kinds of CycloneDX bill of materials and reads SBOMs that any tool produced. Everything here runs locally. When you are authenticated, `cbom` and `aibom` send their result to Vulnesis, and `bom enrich` queries deps.dev, the package registries and the VDB, and sends the VEX it applied. `cdx` (unless `--sign`) and the other `bom` subcommands make no network calls.
 
 ## Commands
 
-| Command | Writes or reads | Default output file | Sends to Vulnetix |
+| Command | Writes or reads | Default output file | Sends to Vulnesis |
 |---|---|---|---|
 | [`vulnetix cdx`](/sbom/generate/cdx/) (alias `sbom`) | Writes a package SBOM, with AI and crypto components by default | `.vulnetix/sbom.cdx.json` | No |
 | [`vulnetix cbom`](/sbom/cbom/overview/) | Writes a cryptography BOM with post-quantum posture | `.vulnetix/cbom.cdx.json` | Yes, unless `--no-upload` |
@@ -28,7 +28,7 @@ The Vulnetix CLI writes three kinds of CycloneDX bill of materials and reads SBO
 
 Every command that writes a document can be told who made it, what it describes and what else belongs in it, from flags, environment variables or an overlay file. See [Author and customise](/sbom/author/overview/).
 
-Documents that reach Vulnetix are shown in the Resolve Platform: [SBOM Monitoring](/sbom/console/sbom-monitoring/), the [AI Inventory](/sbom/console/ai-inventory/) and the [Crypto Inventory](/sbom/console/crypto-inventory/).
+Documents that reach Vulnesis are shown in the Resolve Platform: [SBOM Monitoring](/sbom/console/sbom-monitoring/), the [AI Inventory](/sbom/console/ai-inventory/) and the [Crypto Inventory](/sbom/console/crypto-inventory/).
 
 `vulnetix scan` runs the package, crypto and AI inventory passes as part of a full scan. The standalone commands exist for when you want the file, the terminal table, or a CI gate such as `cbom --fail-on`.
 

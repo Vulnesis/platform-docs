@@ -1,5 +1,5 @@
 ---
-title: VEX sent to Vulnetix
+title: VEX sent to Vulnesis
 description: Which commands send VEX to /v2/cli.vex-ingest, how false-positive and won't-fix statements become suppression rules, and the limits and fields of each request.
 order: 3
 sources: [cli/cmd/vex_ingest.go, cli/pkg/vdb/api_cli_vex_ingest.go, cli/cmd/suppress_report.go, cli/pkg/vdb/identity_header.go, cli/internal/ghactx/oidc.go, vdb-api/internal/handler/v2_cli_vex_ingest.go, vdb-sca-match/suppression/ingest.go, vdb-cyclonedx/vexrules/classify.go]
@@ -12,7 +12,7 @@ When a command is authenticated, the VEX documents it read or wrote are sent, un
 Sending is best effort. An unauthenticated run sends nothing, and a failed send prints a warning; it never fails the command.
 
 ```text
-  VEX sent to Vulnetix: 2 document(s), 3 rule(s) created, 1 waiting for review, 0 linked, 7 finding(s) suppressed
+  VEX sent to Vulnesis: 2 document(s), 3 rule(s) created, 1 waiting for review, 0 linked, 7 finding(s) suppressed
 ```
 
 ## What is sent, and by which command
@@ -100,7 +100,7 @@ permissions:
   id-token: write
 ```
 
-A triage decision the CLI records, in `.vulnetix/memory.yaml` and as the OpenVEX `author`, follows the same order. Signed in, it names your account as `vulnetix:<account id>`, including the defaults the Vulnetix provider picks for you. Only an unauthenticated run falls back to your git `user.email`, or `user@host` when git has none. The embedded community key names no account.
+A triage decision the CLI records, in `.vulnetix/memory.yaml` and as the OpenVEX `author`, follows the same order. Signed in, it names your account as `vulnetix:<account id>`, including the defaults the Vulnesis provider picks for you. Only an unauthenticated run falls back to your git `user.email`, or `user@host` when git has none. The embedded community key names no account.
 
 ## Local suppressions
 

@@ -107,10 +107,10 @@ Still accepted and hidden from help. In an interactive terminal, outside CI, the
 
 | Variable | Effect |
 |---|---|
-| `VULNETIX_SAST_WORKERS` | Rule evaluation workers. Default: one per core, at most 16. Fewer workers use less memory. |
-| `VULNETIX_SAST_CACHE_DIR` | Where the result cache lives. Default `<user cache dir>/vulnetix/sast` (`~/.cache/vulnetix/sast` on Linux). |
-| `VULNETIX_GRAPH_CACHE_DIR` | Where the parsed-file cache for graph insights lives. Default `<user cache dir>/vulnetix/graph`. |
-| `VULNETIX_GRAPH_WORKERS` | Files parsed at once for graph insights. |
+| `VULNESIS_SAST_WORKERS` | Rule evaluation workers. Default: one per core, at most 16. Fewer workers use less memory. |
+| `VULNESIS_SAST_CACHE_DIR` | Where the result cache lives. Default `<user cache dir>/vulnetix/sast` (`~/.cache/vulnetix/sast` on Linux). |
+| `VULNESIS_GRAPH_CACHE_DIR` | Where the parsed-file cache for graph insights lives. Default `<user cache dir>/vulnetix/graph`. |
+| `VULNESIS_GRAPH_WORKERS` | Files parsed at once for graph insights. |
 | `GOMEMLIMIT` | Go soft memory limit. When unset, the scan sets 75% of physical memory or of the cgroup's `memory.max`, whichever is lower. |
 | `CI` | When set, legacy-flag notes are not printed. |
 

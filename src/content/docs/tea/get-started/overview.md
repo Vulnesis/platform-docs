@@ -1,7 +1,7 @@
 ---
 title: Transparency Exchange (TEA)
 nav: Overview
-description: Vulnetix runs an OWASP Transparency Exchange API server for SBOMs, VEX, attestations and download links, and vulnetix tea reads and publishes to TEA servers.
+description: Vulnesis runs an OWASP Transparency Exchange API server for SBOMs, VEX, attestations and download links, and vulnetix tea reads and publishes to TEA servers.
 order: 1
 sources: [vdb-site/api/internal/handler/tea_routes.go, vdb-site/api/internal/handler/tea_v1_routes.go, vdb-site/api/main.go, saas/prisma/models/tea-publisher.prisma, cli/cmd/tea.go, cli/pkg/tea/client.go, tea-spec/README.md]
 checked: [vdb-site@1a06d67, saas@50cedf37, cli@4c8c3b71c, tea-spec@6c93819]
@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 TEA is for software producers who must hand customers, regulators or the public the SBOMs, VEX and attestations for each release, and for consumers who want to fetch that evidence from a standard API, starting from one identifier. Uploading an SBOM with [`vulnetix upload`](/cli/commands/upload/) or a scan puts it in your own organisation for your own findings. Publishing to TEA makes it available to people outside your organisation, release by release, under an access policy you set.
 
-The Transparency Exchange API (TEA) is an OWASP specification for finding a release's transparency data (SBOMs, VEX, attestations) and where the release can be obtained, starting from one identifier and following DNS. Vulnetix serves a conformant TEA server, and publishes to it on your behalf.
+The Transparency Exchange API (TEA) is an OWASP specification for finding a release's transparency data (SBOMs, VEX, attestations) and where the release can be obtained, starting from one identifier and following DNS. Vulnesis serves a conformant TEA server, and publishes to it on your behalf.
 
 | You want to | Read |
 |---|---|
@@ -29,12 +29,12 @@ The Transparency Exchange API (TEA) is an OWASP specification for finding a rele
 
 | Root | Serves |
 |---|---|
-| `https://www.vulnetix.com/tea/v1.0.0` | TEA 1.0.0 consumption API, exactly as specified |
-| `https://www.vulnetix.com/tea/v1` | The stable alias: 1.0.0, plus the publication operations |
-| `https://www.vulnetix.com/tea/v0.4.0` | TEA 0.4.0 consumption API, plus the publication operations |
-| `https://www.vulnetix.com/tea/public/v1.0.0`, `/tea/public/v1` | The open source catalogue at 1.0.0. Read only. |
-| `https://www.vulnetix.com/tea/public/v0.4.0` | The open source catalogue at 0.4.0. Read only. |
-| `https://vulnetix.com/.well-known/tea` | The discovery document |
+| `https://www.vulnes.is/tea/v1.0.0` | TEA 1.0.0 consumption API, exactly as specified |
+| `https://www.vulnes.is/tea/v1` | The stable alias: 1.0.0, plus the publication operations |
+| `https://www.vulnes.is/tea/v0.4.0` | TEA 0.4.0 consumption API, plus the publication operations |
+| `https://www.vulnes.is/tea/public/v1.0.0`, `/tea/public/v1` | The open source catalogue at 1.0.0. Read only. |
+| `https://www.vulnes.is/tea/public/v0.4.0` | The open source catalogue at 0.4.0. Read only. |
+| `https://vulnes.is/.well-known/tea` | The discovery document |
 
 ## The object graph
 
@@ -60,7 +60,7 @@ Both answer through the same API, so a consumer cannot tell which half an object
 
 ## Resolve Platform
 
-The TEA Explorer and publishing workspace are at `https://www.vulnetix.com/resolve/tea` and `https://www.vulnetix.com/resolve/tea/publish`. Publishing requires the Pro plan or above.
+The TEA Explorer and publishing workspace are at `https://www.vulnes.is/resolve/tea` and `https://www.vulnes.is/resolve/tea/publish`. Publishing requires the Pro plan or above.
 
 ## GitHub Actions
 

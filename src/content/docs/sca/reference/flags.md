@@ -79,12 +79,12 @@ See [Gates and exit codes](/sca/gates/fail-on/). An org [quality gate](/sca/gate
 
 | Flag | Type | Default | Effect |
 |---|---|---|---|
-| `--project` | string | `VULNETIX_PROJECT` | Project label |
-| `--cluster` | string | `VULNETIX_CLUSTER` | Cluster label |
-| `--namespace` | string | `VULNETIX_NAMESPACE` | Namespace label |
-| `--environment` | string | `VULNETIX_ENVIRONMENT` | Environment label |
+| `--project` | string | `VULNESIS_PROJECT` | Project label |
+| `--cluster` | string | `VULNESIS_CLUSTER` | Cluster label |
+| `--namespace` | string | `VULNESIS_NAMESPACE` | Namespace label |
+| `--environment` | string | `VULNESIS_ENVIRONMENT` | Environment label |
 | `--tag` | `key=value`, repeatable | none | Extra deployment label |
-| `--bom-manufacturer` | string | `VULNETIX_BOM_MANUFACTURER` | SBOM manufacturer |
+| `--bom-manufacturer` | string | `VULNESIS_BOM_MANUFACTURER` | SBOM manufacturer |
 | `--lifecycle` | string | none | CycloneDX lifecycle phase of the data |
 
 ## Accepted, with no effect on `sca`
@@ -114,4 +114,4 @@ These belong to the shared scan flag set. They matter for other scanners in `vul
 | `--show-all-manifests` | `--show clean` |
 | `--results-only` | `-q` |
 | `-f, --format` | `--output json-cyclonedx` |
-| `--concurrency` | Never had an effect. Use `VULNETIX_SCA_CONCURRENCY`. |
+| `--concurrency` | Never had an effect. Use `VULNESIS_SCA_CONCURRENCY`. |

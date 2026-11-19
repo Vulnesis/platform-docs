@@ -1,6 +1,6 @@
 ---
 title: Enroll your own laptop
-description: Install vulnetix-sensor on a Linux laptop you use, enroll it with your own Vulnetix sign-in, and leave again when you need to.
+description: Install vulnetix-sensor on a Linux laptop you use, enroll it with your own Vulnesis sign-in, and leave again when you need to.
 order: 1
 nav: Your own laptop
 sources: [vdb-site/docs/sensor-provisioning-api.md, cli/cmd/vulnetix-sensor/main.go, cli/deploy/sensor/install.sh, cli/cmd/auth.go]
@@ -32,7 +32,7 @@ The key the login mints names you as a person. A tenant org key or a service acc
 ## 3. Install and enroll
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh \
+curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh \
   | sudo sh -s -- --enroll --from-cli-login
 ```
 
@@ -107,7 +107,7 @@ sudo vulnetix-sensor uninstall --code <code>
 | `systemctl stop` says the operation is refused | The profile is `hardened` or `locked` | Expected. Use `vulnetix-sensor uninstall`, or ask for `allowUserStop` |
 | `this sensor's profile is locked: get an uninstall code ...` | `uninstall` without `--code` on a `locked` profile | Ask an admin for a code |
 | `enroll needs root: run it with sudo` | Enroll was run without `sudo` | Run it with `sudo` |
-| `warning: /etc/vulnetix-sensor.env sets Vulnetix credentials, which win over the device credential` | An older install left an env file with credentials | Remove the `VULNETIX_*` lines from it so the sensor reports as this device |
+| `warning: /etc/vulnetix-sensor.env sets Vulnesis credentials, which win over the device credential` | An older install left an env file with credentials | Remove the `VULNESIS_*` lines from it so the sensor reports as this device |
 
 ## Next
 

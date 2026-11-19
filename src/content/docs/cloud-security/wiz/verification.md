@@ -8,7 +8,7 @@ checked: [vdb-site@1a06d67, cloudscan@67eeabb]
 updated: 02 Nov 2026
 ---
 
-Wiz reasons from an agentless graph. The probe runs inside the account with a role that can read the resource. After each Wiz sync, Vulnetix invokes the probe with `{"mode": "wiz-verify", "runId": ...}`. The probe asks Vulnetix for its work list, resolves each ARN against the live account with the same describe calls the sweep uses, and posts one verdict per claim.
+Wiz reasons from an agentless graph. The probe runs inside the account with a role that can read the resource. After each Wiz sync, Vulnesis invokes the probe with `{"mode": "wiz-verify", "runId": ...}`. The probe asks Vulnesis for its work list, resolves each ARN against the live account with the same describe calls the sweep uses, and posts one verdict per claim.
 
 The work list carries the resource, the assertion type and the values to compare. It carries no Wiz prose, severity or remediation text, so the probe is never told the answer it is checking. The probe never receives a Wiz credential.
 
@@ -22,7 +22,7 @@ The work list carries the resource, the assertion type and the values to compare
 | `resource_absent` | The ARN does not exist: Wiz is describing something deleted | `resolved`, justification `component_not_present` | Yes |
 | `unverifiable` | A denied describe, an unreadable field, or nothing on the resource reports the version claimed | `under_investigation` | No |
 
-A verdict never edits the Wiz row. It appends a second triage entry and a verification record naming the probe and its version, so the Wiz claim and the Vulnetix verdict show side by side on the finding page.
+A verdict never edits the Wiz row. It appends a second triage entry and a verification record naming the probe and its version, so the Wiz claim and the Vulnesis verdict show side by side on the finding page.
 
 Two rules the probe keeps:
 

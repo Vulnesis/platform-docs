@@ -8,7 +8,7 @@ checked: [cli@4c8c3b71c, vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-Publishing needs your own credentials (`vulnetix auth login`, or `VULNETIX_ORG_ID` and `VULNETIX_API_KEY`), always writes to your own organisation, and always goes to `https://www.vulnetix.com/tea/v1`. It needs the Pro plan or above; on a lower plan the server answers `403 FORBIDDEN`. `--catalogue public` is refused.
+Publishing needs your own credentials (`vulnetix auth login`, or `VULNESIS_ORG_ID` and `VULNESIS_API_KEY`), always writes to your own organisation, and always goes to `https://www.vulnes.is/tea/v1`. It needs the Pro plan or above; on a lower plan the server answers `403 FORBIDDEN`. `--catalogue public` is refused.
 
 For a pipeline, [`tea release`](/tea/cli/release/) does all of this in one command. Use the commands below to publish by hand or to change one object.
 

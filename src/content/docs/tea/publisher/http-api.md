@@ -1,14 +1,14 @@
 ---
 title: Publication HTTP API
 nav: HTTP API
-description: Every TEA publication route the Vulnetix server serves at /tea/v1 and /tea/v0.4.0, with request bodies, idempotency, size limits, error codes and HTTP statuses.
+description: Every TEA publication route the Vulnesis server serves at /tea/v1 and /tea/v0.4.0, with request bodies, idempotency, size limits, error codes and HTTP statuses.
 order: 4
 sources: [vdb-site/api/internal/handler/tea_routes.go, vdb-site/api/internal/handler/tea_publisher_handlers.go, vdb-site/api/internal/handler/tea_publisher_update.go, vdb-site/api/internal/handler/tea_publisher_distributions.go, vdb-site/api/internal/handler/tea_publisher_access.go, vdb-site/api/internal/handler/tea_publisher_util.go, vdb-site/api/internal/handler/entitlements.go, tea-spec/spec/publisher/overlay.yaml]
 checked: [vdb-site@1a06d67, tea-spec@6c93819]
 updated: 02 Nov 2026
 ---
 
-The publication operations are a Vulnetix extension described by the publisher overlay in `tea-spec/spec/publisher/`. They are served beside the consumption API at `https://www.vulnetix.com/tea/v1` and `https://www.vulnetix.com/tea/v0.4.0`, and not at `/tea/v1.0.0`.
+The publication operations are a Vulnesis extension described by the publisher overlay in `tea-spec/spec/publisher/`. They are served beside the consumption API at `https://www.vulnes.is/tea/v1` and `https://www.vulnes.is/tea/v0.4.0`, and not at `/tea/v1.0.0`.
 
 ## Authentication and plan
 
@@ -56,8 +56,8 @@ Field rules for each object are on [Publisher object model](/tea/publisher/objec
 ## Example
 
 ```bash
-AUTH="Authorization: ApiKey $VULNETIX_ORG_ID:$VULNETIX_API_KEY"
-BASE=https://www.vulnetix.com/tea/v1
+AUTH="Authorization: ApiKey $VULNESIS_ORG_ID:$VULNESIS_API_KEY"
+BASE=https://www.vulnes.is/tea/v1
 
 curl -s -X POST "$BASE/product" -H "$AUTH" -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: product-acme-widget' \

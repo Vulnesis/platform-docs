@@ -7,7 +7,7 @@ checked: [cli@v4.23.0]
 updated: 05 Nov 2026
 ---
 
-`Vulnetix/cli/sast` and `Vulnetix/cli/sca` scan a whole repository in one job. The granular actions scan part of one, so a repository can run languages in parallel and gate each on its own terms.
+`Vulnesis/cli/sast` and `Vulnesis/cli/sca` scan a whole repository in one job. The granular actions scan part of one, so a repository can run languages in parallel and gate each on its own terms.
 
 ## Which to use
 
@@ -28,25 +28,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sast/python@v4
+      - uses: Vulnesis/cli/sast/python@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           fail-on: critical
       # The rest step: everything the language jobs do not cover.
-      - uses: Vulnetix/cli/sast@v4
+      - uses: Vulnesis/cli/sast@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           not-language: python,javascript
   sast-javascript:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sast/javascript@v4
+      - uses: Vulnesis/cli/sast/javascript@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 ## Why the rest step matters
@@ -63,7 +63,7 @@ Every file has exactly one language or package manager, so jobs never overlap. F
 |---|---|---|
 | File | `.vulnetix/sast.python.sarif` | `.vulnetix/sbom.npm.cdx.json`, `.vulnetix/sca.npm.sarif` |
 | Code scanning category | `vulnetix/sast/python/` | `vulnetix/sca/npm/` |
-| Tool name in Vulnetix | `Vulnetix SAST python` | `Vulnetix SCA npm` |
+| Tool name in Vulnesis | `Vulnesis SAST python` | `Vulnesis SCA npm` |
 
 Each job keeps its own history. A finding missing from a job is only compared with what that job scans, so `sast/python` never closes a JavaScript finding. Code scanning works the same way: an alert closes against a later upload in its own category.
 
@@ -71,7 +71,7 @@ Moving a repository from `sast` to the granular actions starts new histories. Fi
 
 ## The whole-repository SBOM
 
-A scoped job's SBOM holds one manager's packages. Keep one `Vulnetix/cli/sbom` job for attestation, the dependency graph and [TEA](/tea/github-actions/tea-release/). `dependency-graph` is not offered on `sca/<manager>`, because a snapshot replaces the last one and a scoped job sees only part of the dependency list. To join the fragments into one document, use [`bom-merge`](/sbom/github-actions/bom-merge/).
+A scoped job's SBOM holds one manager's packages. Keep one `Vulnesis/cli/sbom` job for attestation, the dependency graph and [TEA](/tea/github-actions/tea-release/). `dependency-graph` is not offered on `sca/<manager>`, because a snapshot replaces the last one and a scoped job sees only part of the dependency list. To join the fragments into one document, use [`bom-merge`](/sbom/github-actions/bom-merge/).
 
 ## Fork pull requests
 
@@ -104,7 +104,7 @@ gates:
   sast: critical
   sca: critical,malware
 rules:
-  sast/go: [Vulnetix/opa-gosec]
+  sast/go: [Vulnesis/opa-gosec]
 ```
 
 A scanner with no gate reports and never fails its job. There is no baseline, so turn a gate on once a run is clean at that level.
@@ -113,11 +113,11 @@ On a pull request the rendered jobs do not spend the repository's GitHub API quo
 
 The forge pass is bounded on every other run too. On a push or a release the `analyze` job passes `--forge-window-days=7`, so it reads only the last week of pull requests, issues and commit reviews from GitHub. The git history window stays at a year. Only a manual run (`workflow_dispatch`) reads the full window from GitHub. Whatever the window, `analyze` stops the forge pass while half the token's hourly limit is still left, and the report carries a warning when it stopped early. A push lands on every merge, and an auto-versioned repository publishes a release on every merge too. A year-long forge pass on each of them used to spend the repository's quota until CodeQL's upload and the release dispatch failed with `API rate limit exceeded for installation`.
 
-The licence lookups are bounded on a push as well. The scanners that resolve licences (`sca`, `license`, `sbom`, `containers` and `scan`) ask GitHub only about a repository whose licence the Vulnetix store, the package registry and deps.dev could not name. They never ask about a name that cannot be a GitHub repository, such as a workflow's `uses: $/sbom`, a glob or a template placeholder, and they stop at the first 404. A repository costs one to four requests.
+The licence lookups are bounded on a push as well. The scanners that resolve licences (`sca`, `license`, `sbom`, `containers` and `scan`) ask GitHub only about a repository whose licence the Vulnesis store, the package registry and deps.dev could not name. They never ask about a name that cannot be a GitHub repository, such as a workflow's `uses: $/sbom`, a glob or a template placeholder, and they stop at the first 404. A repository costs one to four requests.
 
 Inside GitHub Actions the lookups also keep 80% of the token's hourly limit for everything else: with a 5,000 limit, they stop at 4,000 left. The remaining count belongs to the repository, so it is the same in every job, and that floor holds for the whole run however many jobs look up licences. It sits above the half that `analyze` keeps. They also stop at once when GitHub answers with a rate limit. A licence they did not check stays `UNKNOWN`, and the job log says how many repositories went unchecked. Every batch of lookups in Actions logs what it cost, for example `GitHub licence lookups: 31 requests for 26 repositories (4880 of 5000 left)`.
 
-On the push that merged Vulnetix/cli#341, before this bound, those lookups spent 4,913 requests in under three and a half minutes, and the SCA job’s SARIF upload then failed with `GitHub API rate limit exhausted`.
+On the push that merged Vulnesis/cli#341, before this bound, those lookups spent 4,913 requests in under three and a half minutes, and the SCA job’s SARIF upload then failed with `GitHub API rate limit exhausted`.
 
 An extra's `prior` step that runs a scanner gets `github-token: ""` on every event, since it only writes the file the extra reads.
 

@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 SCA is for developers and CI pipelines that need to know which of a project's dependencies have known vulnerabilities, exploits, malware reports or end-of-life dates, and to move them to a safe version. It works on what your manifests and lockfiles already declare. The [Package Firewall](/package-firewall/) works earlier, at install time, and refuses a bad version before it is downloaded, so use SCA to find and fix what is in a project and the firewall to keep bad versions out.
 
-`vulnetix sca` reads the package manifests and lockfiles in a directory, resolves every dependency to an exact version, and asks the Vulnetix VDB which known vulnerabilities, exploits, malware reports and end-of-life dates apply. It prints the findings, writes a CycloneDX SBOM, and exits non-zero when a gate you set is breached.
+`vulnetix sca` reads the package manifests and lockfiles in a directory, resolves every dependency to an exact version, and asks the Vulnesis VDB which known vulnerabilities, exploits, malware reports and end-of-life dates apply. It prints the findings, writes a CycloneDX SBOM, and exits non-zero when a gate you set is breached.
 
 It is `vulnetix scan` with every other scanner switched off:
 

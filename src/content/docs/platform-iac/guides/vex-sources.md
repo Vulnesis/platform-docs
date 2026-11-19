@@ -8,9 +8,9 @@ checked: ["config-schemas@v1.7.0", "vdb-site@b09e595", "cli@v4.4.0"]
 updated: 03 Nov 2026
 ---
 
-A [`VexSource`](/platform-iac/kinds/vex-source/) names one place VEX documents live. Vulnetix fetches it on a schedule, records each fetch, and keeps the suppression rules that source created in step with the statements it currently holds. The kind page has the fields and the Minimal and Advanced samples in YAML, HCL and CLI; this page is how it behaves.
+A [`VexSource`](/platform-iac/kinds/vex-source/) names one place VEX documents live. Vulnesis fetches it on a schedule, records each fetch, and keeps the suppression rules that source created in step with the statements it currently holds. The kind page has the fields and the Minimal and Advanced samples in YAML, HCL and CLI; this page is how it behaves.
 
-Before this kind, VEX became suppression rules only when the CLI pushed it: `vulnetix scan --vex-file` or `--vex`, `vex apply --upload` and the commands listed on [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/). The server never fetched a document itself. A `VexSource` is the standing alternative: the tenant chooses to trust a source, and the server reads it.
+Before this kind, VEX became suppression rules only when the CLI pushed it: `vulnetix scan --vex-file` or `--vex`, `vex apply --upload` and the commands listed on [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/). The server never fetched a document itself. A `VexSource` is the standing alternative: the tenant chooses to trust a source, and the server reads it.
 
 ## What a statement does
 
@@ -35,7 +35,7 @@ Name exactly one of these in `spec`.
 
 | Source | Reads | Notes |
 |---|---|---|
-| `tea` | VEX artifacts of a TEA `product`, `productRelease` or `collection`, by TEI or uuid, from `server` (the API root, or a host whose `/.well-known/tea` names it) | Works with the Vulnetix [TEA](/tea/) publisher and any TEA server. |
+| `tea` | VEX artifacts of a TEA `product`, `productRelease` or `collection`, by TEI or uuid, from `server` (the API root, or a host whose `/.well-known/tea` names it) | Works with the Vulnesis [TEA](/tea/) publisher and any TEA server. |
 | `s3` | A `bucket` with a `prefix` (every object under it) or a `key` (one object) | Read through `roleArn`, a cross-account role whose external id is the tenant uuid unless `externalId` says otherwise, the same trust pattern as cloud onboarding. A change is detected by each object's ETag. |
 | `git` | `paths` (globs) in a repository at `url` and `ref` (default: the default branch) | HTTPS to any git server. A matching [`ForgeConnection`](/platform-iac/kinds/forge-connection/) is used when there is one; otherwise `credentialRef` names a [`VaultEntry`](/platform-iac/kinds/vault-entry/). |
 | `urls` | A list of HTTPS URLs | Each is fetched with `ETag` and `If-Modified-Since`. An entry can pin a `sha256` (the document is refused if it differs) and name a request header whose value comes from a vault entry. |
@@ -48,8 +48,8 @@ A fetch reads at most 200 documents, each at most 8 MiB. A source with more repo
 `spec.refresh` is an `interval` (a whole number of minutes, hours or days: `30m`, `6h`, `1d`) or `webhook: true`. Left out, the source is fetched every 24 hours. Apply schedules a fetch straight away. A background job ticks every few minutes, so an interval shorter than that is rounded up to the tick. A `webhook` source is fetched when told its documents changed:
 
 ```bash
-curl -X POST https://www.vulnetix.com/api/site/v1/config/vex-sources/vex-bucket/refresh \
-  -H "Authorization: ApiKey $VULNETIX_ORG_ID:$VULNETIX_API_KEY"
+curl -X POST https://www.vulnes.is/api/site/v1/config/vex-sources/vex-bucket/refresh \
+  -H "Authorization: ApiKey $VULNESIS_ORG_ID:$VULNESIS_API_KEY"
 ```
 
 When a fetch fails, `onError` decides: `keep-last` (the default) keeps the suppressions from the last good fetch, and `clear` removes them.
@@ -96,7 +96,7 @@ Since CLI v4.2.0 `vulnetix scan` and the scan commands (`sca`, `sast`, `secrets`
 
 `scope.repos` and `trust.allowedAuthors` are honoured, so a scan never applies a source more widely than declared. `trust.requireSignature`, a `sha256` pin on a URL, `format`, `refresh` and `onError` are not used by a scan. `--no-vex` turns declared sources off. A scan with no `.vulnetix/config` reads none. The scan reads those files itself on every run, so a `path` or `urls` source needs no `config apply` and no login; the snapshot above is only what the Resolve Platform shows.
 
-An authenticated scan also applies the statements the Resolve Platform holds for the repository: those of every `VexSource` type, `tea`, `s3` and `git` included, and of VEX documents ingested earlier. They are matched and annotated like a `--vex` document, de-duplicated against the `--vex` documents and the `path` and `urls` sources, never sent back to Vulnetix, and skipped by `--no-vex`. A won't-fix decision is applied as `affected`: the finding is annotated and stays open. A statement recorded with no product matches the vulnerability id across packages, which is coarse. [VEX in a scan](/vex/scans/vex-file/#statements-the-resolve-platform-holds) has the details and the messages.
+An authenticated scan also applies the statements the Resolve Platform holds for the repository: those of every `VexSource` type, `tea`, `s3` and `git` included, and of VEX documents ingested earlier. They are matched and annotated like a `--vex` document, de-duplicated against the `--vex` documents and the `path` and `urls` sources, never sent back to Vulnesis, and skipped by `--no-vex`. A won't-fix decision is applied as `affected`: the finding is annotated and stays open. A statement recorded with no product matches the vulnerability id across packages, which is coarse. [VEX in a scan](/vex/scans/vex-file/#statements-the-resolve-platform-holds) has the details and the messages.
 
 ## Status
 

@@ -46,12 +46,12 @@ install -d -m 0755 /etc/vulnetix-sensor
 ( umask 077; printf '%s\n' "$MDM_KEY" > /etc/vulnetix-sensor/mdm.key )
 chmod 0600 /etc/vulnetix-sensor/mdm.key
 
-curl -fsSL "https://raw.githubusercontent.com/Vulnetix/cli/$VERSION/deploy/sensor/install.sh" \
+curl -fsSL "https://raw.githubusercontent.com/Vulnesis/cli/$VERSION/deploy/sensor/install.sh" \
   | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key \
       --integration "$INTEGRATION" --kid "$KID"
 ```
 
-Needs `curl`, outbound HTTPS to `raw.githubusercontent.com`, `github.com` and `www.vulnetix.com`, systemd, and a correct clock (the 5 minute window). Most managed Linux devices sync time over NTP already.
+Needs `curl`, outbound HTTPS to `raw.githubusercontent.com`, `github.com` and `www.vulnes.is`, systemd, and a correct clock (the 5 minute window). Most managed Linux devices sync time over NTP already.
 
 ## Autoscaled and short-lived hosts
 
@@ -122,7 +122,7 @@ The full Ansible playbook is on [At scale](/virtual-patching/sensor/iac/#ansible
 - ansible.builtin.copy: { dest: /etc/vulnetix-sensor/mdm.key, content: "{{ vulnetix_mdm_key }}\n", mode: "0600" }
   no_log: true
 - ansible.builtin.shell: >
-    curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh
+    curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh
     | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration {{ vulnetix_integration }} --kid {{ vulnetix_kid }}
   args: { creates: /etc/vulnetix-sensor/credential }
 ```
@@ -132,7 +132,7 @@ Puppet:
 ```puppet
 file { ['/etc/vulnetix-sensor']: ensure => directory, mode => '0755' }
 file { '/etc/vulnetix-sensor/mdm.key': content => Sensitive(lookup('vulnetix::mdm_key')), mode => '0600', show_diff => false }
-exec { 'vulnetix-sensor-enroll': command => '/bin/sh -c "curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>"', creates => '/etc/vulnetix-sensor/credential', require => File['/etc/vulnetix-sensor/mdm.key'] }
+exec { 'vulnetix-sensor-enroll': command => '/bin/sh -c "curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>"', creates => '/etc/vulnetix-sensor/credential', require => File['/etc/vulnetix-sensor/mdm.key'] }
 ```
 
 Chef:
@@ -140,7 +140,7 @@ Chef:
 ```ruby
 directory '/etc/vulnetix-sensor' do mode '0755' end
 file '/etc/vulnetix-sensor/mdm.key' do content data_bag_item('vulnetix', 'sensor')['mdm_key']; mode '0600'; sensitive true end
-execute 'vulnetix-sensor-enroll' do command 'curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>'; creates '/etc/vulnetix-sensor/credential' end
+execute 'vulnetix-sensor-enroll' do command 'curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>'; creates '/etc/vulnetix-sensor/credential' end
 ```
 
 Salt:
@@ -149,7 +149,7 @@ Salt:
 /etc/vulnetix-sensor/mdm.key:
   file.managed: [{ contents_pillar: vulnetix:mdm_key }, { mode: "0600" }, { makedirs: true }, { show_changes: false }]
 vulnetix-sensor-enroll:
-  cmd.run: [{ name: "curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>" }, { creates: /etc/vulnetix-sensor/credential }, { require: [{ file: /etc/vulnetix-sensor/mdm.key }] }]
+  cmd.run: [{ name: "curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <uuid> --kid <kid>" }, { creates: /etc/vulnetix-sensor/credential }, { require: [{ file: /etc/vulnetix-sensor/mdm.key }] }]
 ```
 
 ## Jamf

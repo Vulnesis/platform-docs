@@ -15,15 +15,15 @@ vulnetix ai-firewall install cursor
 
 ```text
 Cursor: Settings > Models > Override OpenAI Base URL
-    Base URL: https://guardrails.vulnetix.com/openai/<uuid>/v1
-    API key:  your $VULNETIX_API_KEY
+    Base URL: https://guardrails.vulnes.is/openai/<uuid>/v1
+    API key:  your $VULNESIS_API_KEY
 ```
 
 ## Set it up
 
 1. Store the provider key once: `vulnetix ai-firewall key set openai --from-env OPENAI_KEY`.
-2. In **Settings > Models > API Keys**, turn on **OpenAI API Key** and paste your Vulnetix API key.
-3. Turn on **Override OpenAI Base URL** and set `https://guardrails.vulnetix.com/openai/<uuid>/v1`.
+2. In **Settings > Models > API Keys**, turn on **OpenAI API Key** and paste your Vulnesis API key.
+3. Turn on **Override OpenAI Base URL** and set `https://guardrails.vulnes.is/openai/<uuid>/v1`.
 4. Add the model ids you will use, such as `gpt-4o-mini`. Cursor does not read the list from the gateway, and the gateway refuses models your policy does not allow.
 5. Select a model explicitly in the chat picker. Do not leave it on **Auto**.
 

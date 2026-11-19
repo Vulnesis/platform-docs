@@ -28,14 +28,14 @@ Issue the new credential before revoking the old one.
 1. Issue a new key in the Resolve Platform.
 2. Prove it works without touching the stored one:
    ```sh
-   VULNETIX_API_KEY="$NEW_KEY" VULNETIX_ORG_ID="$ORG" vulnetix auth verify
+   VULNESIS_API_KEY="$NEW_KEY" VULNESIS_ORG_ID="$ORG" vulnetix auth verify
    ```
 3. Put it in place (below, per store).
 4. Wait one full pipeline cycle so running jobs finish with the old value.
 5. Revoke the old key in the Resolve Platform.
 6. Prove the old one is dead:
    ```sh
-   VULNETIX_API_KEY="$OLD_KEY" VULNETIX_ORG_ID="$ORG" vulnetix auth verify   # must exit 1
+   VULNESIS_API_KEY="$OLD_KEY" VULNESIS_ORG_ID="$ORG" vulnetix auth verify   # must exit 1
    ```
 
 ## Per store
@@ -45,7 +45,7 @@ Issue the new credential before revoking the old one.
 Log in again with the same `--store`. `auth login` verifies the new credential before it writes, and only then overwrites the file and the keychain entry, so a bad key leaves the working one in place:
 
 ```sh
-VULNETIX_API_KEY="$NEW_KEY" VULNETIX_ORG_ID="$ORG" vulnetix auth login --noninteractive --store keyring
+VULNESIS_API_KEY="$NEW_KEY" VULNESIS_ORG_ID="$ORG" vulnetix auth login --noninteractive --store keyring
 vulnetix auth status
 ```
 
@@ -55,17 +55,17 @@ Run `vulnetix auth logout` first only when you also want to clear the other stor
 
 ```sh
 vulnetix package-firewall uninstall --all --remove-credentials
-VULNETIX_API_KEY="$NEW_KEY" VULNETIX_ORG_ID="$ORG" vulnetix package-firewall npm
+VULNESIS_API_KEY="$NEW_KEY" VULNESIS_ORG_ID="$ORG" vulnetix package-firewall npm
 ```
 
-Every package manager configured against `packages.vulnetix.com` uses the new value on its next request. Re-run one `package-firewall <ecosystem>` command for each package manager you use.
+Every package manager configured against `packages.vulnes.is` uses the new value on its next request. Re-run one `package-firewall <ecosystem>` command for each package manager you use.
 
 ### Environment variables
 
 Change the value in the CI secret store, or redeploy the service that sets it. Then look for copies:
 
 ```sh
-grep -rlE 'VULNETIX_(API_KEY|API_TOKEN)|VVD_SECRET' \
+grep -rlE 'VULNESIS_(API_KEY|API_TOKEN)|VVD_SECRET' \
   ~/.bashrc ~/.zshrc ~/.profile ~/.config/fish/config.fish /etc/environment /etc/systemd/system 2>/dev/null
 ```
 
@@ -79,7 +79,7 @@ Revoke first; investigate after.
    ```sh
    vulnetix auth status
    find . -path '*/.vulnetix/credentials.json'
-   grep -c 'machine packages.vulnetix.com' ~/.netrc
+   grep -c 'machine packages.vulnes.is' ~/.netrc
    ```
 4. **Audit** what it could reach: uploaded results, policy changes, Package Firewall configuration, private package fetches.
 5. **Purge** the value from logs, artifacts, chat and tickets. That is cleanup; step 1 was the fix.

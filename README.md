@@ -1,13 +1,13 @@
 # platform-docs
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Vulnetix/platform-docs)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Vulnesis/platform-docs)
 
-Source for https://docs.vulnetix.com, the user and reference documentation for every Vulnetix product. Each product has its own segment of the site under `src/content/docs/<segment>/`; the segments are listed in `src/lib/nav.ts`.
+Source for https://docs.vulnes.is, the user and reference documentation for every Vulnesis product. Each product has its own segment of the site under `src/content/docs/<segment>/`; the segments are listed in `src/lib/nav.ts`.
 Old docs hostnames answer with a 301 to the matching path here. Those rules live in `vdb-site/terraform/dns.tf`, the only owner of the zone's redirect ruleset.
 The redirect Worker (`redirects/`) is deployed by hand: `node scripts/build-redirects.mjs --check dist`, then `npx wrangler deploy` from `redirects/`.
 
 Astro 7, Tailwind v4 and Pagefind. The site is static: search runs in the browser and there is no backend.
-A link to any page with `?search` (or `?search=<terms>`) opens the search dialog on arrival, prefilled with the terms, and drops the parameter from the address bar so a reload does not reopen it. The www.vulnetix.com footer links to `/?search`.
+A link to any page with `?search` (or `?search=<terms>`) opens the search dialog on arrival, prefilled with the terms, and drops the parameter from the address bar so a reload does not reopen it. The www.vulnes.is footer links to `/?search`.
 
 ```sh
 corepack enable
@@ -39,7 +39,7 @@ Each HTML page names its twin in `<meta name="markdown">` and `<link rel="altern
 - **DeepWiki.** The README's Ask DeepWiki badge links the repository's DeepWiki page. DeepWiki has no submission API, so there is nothing to run in CI.
 - **robots.txt.** `public/robots.txt` welcomes search engines, AI search, AI agents and AI training: `Content-Signal: search=yes, ai-input=yes, ai-train=yes`, one group that names every search and AI crawler (Googlebot, bingbot, OAI-SearchBot, GPTBot, Claude-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, Amazon, Meta, Mistral, DuckAssistBot, ExaSearchBot, Kagibot, CCBot and others) with `Allow: /`, and `User-agent: *` with `Allow: /`. Nothing is disallowed. The crawlers are named so that a preference a proxy prepends cannot shadow them: the site is on GitHub Pages, not behind Cloudflare, today. `test/robots.test.mjs` checks it.
 - **Sitemap.** `scripts/sitemap.mjs` writes `sitemap-index.xml` and `sitemap-0.xml` from the built pages (not redirect stubs, not the `.md` twins); `robots.txt` points at it, which is how Google finds it. Each page's `<lastmod>` is its front matter `updated` (Doc.astro writes it as `<meta property="article:modified_time">`), else the date of the last commit to its source file, else left out. The build job checks out full history for the git fallback; in a shallow clone those pages get no `<lastmod>`.
-- **IndexNow.** `scripts/indexnow.mjs` sends every sitemap URL on docs.vulnetix.com to `api.indexnow.org`, Bing and Yandex, which share it with Seznam, Naver, Mojeek and DuckDuckGo. It runs in the `indexnow` job of `pages.yml` after each deploy, and daily at 07:00 UTC through `seo.yml` (also run by hand with `gh workflow run seo.yml`). `--dry-run` prints the payload without sending. The key is public by design: `public/<key>.txt` holds it as the proof of ownership and must match `KEY` in the script. A run fails only when every endpoint refuses.
+- **IndexNow.** `scripts/indexnow.mjs` sends every sitemap URL on docs.vulnes.is to `api.indexnow.org`, Bing and Yandex, which share it with Seznam, Naver, Mojeek and DuckDuckGo. It runs in the `indexnow` job of `pages.yml` after each deploy, and daily at 07:00 UTC through `seo.yml` (also run by hand with `gh workflow run seo.yml`). `--dry-run` prints the payload without sending. The key is public by design: `public/<key>.txt` holds it as the proof of ownership and must match `KEY` in the script. A run fails only when every endpoint refuses.
 
 ## Integrity
 

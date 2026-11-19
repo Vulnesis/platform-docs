@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Hosted URL | `https://packages.vulnetix.com/pub` |
+| Hosted URL | `https://packages.vulnes.is/pub` |
 | Ecosystem ID | `pub` |
 | Plan | Add-on |
 | Mode | filter: `/api/packages/<name>` is filtered by version |
@@ -29,7 +29,7 @@ source ~/.config/vulnetix/package-firewall/pub.env
 `~/.config/vulnetix/package-firewall/pub.env`:
 
 ```bash
-export PUB_HOSTED_URL="https://packages.vulnetix.com/pub"
+export PUB_HOSTED_URL="https://packages.vulnes.is/pub"
 ```
 
 `~/.config/dart/pub-tokens.json` (written whole, existing file backed up):
@@ -39,7 +39,7 @@ export PUB_HOSTED_URL="https://packages.vulnetix.com/pub"
   "hosted": [
     {
       "token": "BASE64_OF_ORGUUID_COLON_APIKEY",
-      "url": "https://packages.vulnetix.com/pub"
+      "url": "https://packages.vulnes.is/pub"
     }
   ],
   "version": 1
@@ -54,9 +54,9 @@ export PUB_HOSTED_URL="https://packages.vulnetix.com/pub"
 `--env-var` stores the variable name, not the token, so `PUB_VULNETIX_TOKEN` must be set wherever `dart pub` runs.
 
 ```bash
-export PUB_HOSTED_URL="https://packages.vulnetix.com/pub"
-export PUB_VULNETIX_TOKEN=$(printf '%s:%s' "$VULNETIX_ORG_ID" "$VULNETIX_API_KEY" | base64 | tr -d '\n')
-dart pub token add https://packages.vulnetix.com/pub --env-var PUB_VULNETIX_TOKEN
+export PUB_HOSTED_URL="https://packages.vulnes.is/pub"
+export PUB_VULNETIX_TOKEN=$(printf '%s:%s' "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY" | base64 | tr -d '\n')
+dart pub token add https://packages.vulnes.is/pub --env-var PUB_VULNETIX_TOKEN
 ```
 
 ## Use and verify

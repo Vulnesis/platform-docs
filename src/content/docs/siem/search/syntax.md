@@ -32,7 +32,7 @@ The range picker sets the time window, not the query. Searches window on event t
 | `\| project f [as name], ...` | Chooses and renames columns. |
 | `\| sort [-]f, ...` | Orders. `-` is descending. |
 | `\| limit n` | Caps the rows. Values above 10,000 are cut to 10,000. |
-| `\| join ioc_indicators on f` | Keeps rows whose `f` is on the Vulnetix indicator list (the last two days of the snapshot). A field with `ip` in its name is matched against address indicators, any other against domains. Must come before `stats` and `project`. |
+| `\| join ioc_indicators on f` | Keeps rows whose `f` is on the Vulnesis indicator list (the last two days of the snapshot). A field with `ip` in its name is matched against address indicators, any other against domains. Must come before `stats` and `project`. |
 
 ### Aggregates
 

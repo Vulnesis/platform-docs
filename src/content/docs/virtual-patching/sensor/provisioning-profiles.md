@@ -14,7 +14,7 @@ Profiles live on **Sensor Provisioning** (`/resolve/sensor-provisioning`, in the
 
 ## Plan and add-on
 
-Sensor provisioning comes with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of the page, whatever its plan, and its sensors are refused with `402` and keep their last good configuration. Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnetix.com/pricing).
+Sensor provisioning comes with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of the page, whatever its plan, and its sensors are refused with `402` and keep their last good configuration. Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
 
 ## Roles
 
@@ -63,7 +63,7 @@ The `config` block is what every device under the profile runs. A flag given on 
 |---|---|---|---|
 | `mode` | `monitor`, `guard`, `enforce` | `monitor` | `--mode` |
 | `hold` | A Go duration, e.g. `15m` | `15m` | `--hold` |
-| `feeds` | Up to 100 references: signed feed URLs, `catalog:<id>` or `org:<uuid>`, chosen in the editor's feed picker ([Rule feeds](/virtual-patching/sensor/feeds/)) | A new profile saved without feeds gets the 21 Vulnetix STIX bundles; an explicit empty list loads none | `--feed` |
+| `feeds` | Up to 100 references: signed feed URLs, `catalog:<id>` or `org:<uuid>`, chosen in the editor's feed picker ([Rule feeds](/virtual-patching/sensor/feeds/)) | A new profile saved without feeds gets the 21 Vulnesis STIX bundles; an explicit empty list loads none | `--feed` |
 | `feedKey` | Base64 Ed25519 public key | The key pinned in the sensor | `--feed-key` |
 | `egressListen` | An address, e.g. `127.0.0.1:3128` | No outbound proxy | `--egress-listen` |
 | `dnsListen` | A UDP address, e.g. `127.0.0.1:53` | No DNS guard | `--dns-listen` |

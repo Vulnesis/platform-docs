@@ -163,7 +163,7 @@ The run prints `Imported <n> rules from <org>/<repo>` (or `from <k> packs (...)`
 
 ## Testing a rule
 
-With the OPA CLI, evaluate the pack against a fixture without the Vulnetix CLI:
+With the OPA CLI, evaluate the pack against a fixture without the Vulnesis CLI:
 
 ```bash
 cat > input.json <<'EOF'
@@ -185,19 +185,19 @@ vulnetix sast --path ./fixtures --disable-default-rules --rule myorg/sast-rules 
 
 ## Published rule packs
 
-Public packs in the Vulnetix organisation. Only `sast`-kind rules run under `vulnetix sast`; the rest need `vulnetix iac`, `vulnetix containers` or `vulnetix scan`.
+Public packs in the Vulnesis organisation. Only `sast`-kind rules run under `vulnetix sast`; the rest need `vulnetix iac`, `vulnetix containers` or `vulnetix scan`.
 
 | Pack | Rules | Kinds | Covers |
 |---|---|---|---|
-| `Vulnetix/opa-gosec` | 60 | `sast` | Go: clean-room reimplementation of gosec G101 to G709 |
-| `Vulnetix/opa-py-ruff` | 956 | `sast` | Python: clean-room Ruff rules, IDs `RUFF-<code>`. About half are pattern checks; the rest are stubs that report nothing. |
-| `Vulnetix/community-rules` | 223 | 184 `iac`, 24 `api`, 7 `container`, 5 `sast`, 3 `sca` | Mixed |
-| `Vulnetix/opa-aquasecurity-trivy` | 107 | `iac` | Dockerfile and container configuration |
-| `Vulnetix/opa-fugue-regula` | 275 | `iac` | Terraform, CloudFormation, Kubernetes, ARM |
-| `Vulnetix/opa-checkmarx-kics` | 205 | `iac` | IaC across many platforms |
-| `Vulnetix/opa-cigna-tf` | 88 | `iac` | AWS Terraform |
+| `Vulnesis/opa-gosec` | 60 | `sast` | Go: clean-room reimplementation of gosec G101 to G709 |
+| `Vulnesis/opa-py-ruff` | 956 | `sast` | Python: clean-room Ruff rules, IDs `RUFF-<code>`. About half are pattern checks; the rest are stubs that report nothing. |
+| `Vulnesis/community-rules` | 223 | 184 `iac`, 24 `api`, 7 `container`, 5 `sast`, 3 `sca` | Mixed |
+| `Vulnesis/opa-aquasecurity-trivy` | 107 | `iac` | Dockerfile and container configuration |
+| `Vulnesis/opa-fugue-regula` | 275 | `iac` | Terraform, CloudFormation, Kubernetes, ARM |
+| `Vulnesis/opa-checkmarx-kics` | 205 | `iac` | IaC across many platforms |
+| `Vulnesis/opa-cigna-tf` | 88 | `iac` | AWS Terraform |
 
 ```bash
-vulnetix sast --depth 10 --rule Vulnetix/opa-gosec
-vulnetix sast --depth 10 --rule Vulnetix/opa-py-ruff --disable-default-rules
+vulnetix sast --depth 10 --rule Vulnesis/opa-gosec
+vulnetix sast --depth 10 --rule Vulnesis/opa-py-ruff --disable-default-rules
 ```

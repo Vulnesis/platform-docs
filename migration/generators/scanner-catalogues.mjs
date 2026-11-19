@@ -18,7 +18,7 @@
 // Usage:
 //   node migration/generators/scanner-catalogues.mjs [--cli <path>] [--engine <path>] [--cli-ref <ref>]
 //
-//   --cli      cli checkout (default: $VULNETIX_CLI_REPO, else ../cli)
+//   --cli      cli checkout (default: $VULNESIS_CLI_REPO, else ../cli)
 //   --engine   malscan-engine checkout (default: $MALSCAN_ENGINE_REPO, else ../malscan-engine)
 //   --cli-ref  read the cli at this git ref instead of the working tree (e.g. origin/main)
 //
@@ -36,7 +36,7 @@ const opt = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
 };
-const cli = resolve(opt('cli', process.env.VULNETIX_CLI_REPO ?? join(root, '..', 'cli')));
+const cli = resolve(opt('cli', process.env.VULNESIS_CLI_REPO ?? join(root, '..', 'cli')));
 const engine = resolve(opt('engine', process.env.MALSCAN_ENGINE_REPO ?? join(root, '..', 'malscan-engine')));
 const cliRef = opt('cli-ref', '');
 const outRoot = join(root, 'src', 'content', 'docs');

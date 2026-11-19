@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1059](https://attack.mitre.org/techniques/T1059/) |
 | CWSS vector | `CWSS:1.0/TI:C/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:C/DI:H/EX:H/EC:N/P:W` |
 | Tags | `deserialization` `ml` `pytorch` `pickle` `supply-chain` |
-| Source | [`internal/sast/rules/vnx-py-013.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-py-013.rego) |
+| Source | [`internal/sast/rules/vnx-py-013.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-py-013.rego) |
 
 ## Overview
 

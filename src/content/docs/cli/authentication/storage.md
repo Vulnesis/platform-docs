@@ -53,7 +53,7 @@ Headless Linux, containers and CI runners usually have no Secret Service. `--sto
 ```text
 no OS keychain backend detected on linux/amd64: ...
   expected: a freedesktop Secret Service provider (GNOME Keyring / KWallet) running on the D-Bus session bus - headless sessions usually have none
-  setup guide: https://docs.vulnetix.com/cli/authentication/storage/#no-keychain
+  setup guide: https://docs.vulnes.is/cli/authentication/storage/#no-keychain
   alternatively store credentials in a file with --store home|project
 No usable OS keychain - falling back to file storage.
 Credentials saved to home store
@@ -74,17 +74,17 @@ The login succeeds. The last line names the store actually used. If a plaintext 
 
 ## Custom directory
 
-`VULNETIX_CREDENTIALS_DIR` moves the home store, for reading and writing:
+`VULNESIS_CREDENTIALS_DIR` moves the home store, for reading and writing:
 
 ```sh
-export VULNETIX_CREDENTIALS_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/vulnetix"
+export VULNESIS_CREDENTIALS_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/vulnetix"
 vulnetix auth login --store home
 vulnetix auth status
 ```
 
 On a `tmpfs` such as `/run/user/$UID`, the credential never reaches disk and is gone after a reboot. Project credentials are not affected.
 
-`auth login --store-dir <dir>` writes the home (or keyring metadata) file to `<dir>` for that login only. Nothing reads `--store-dir` back: unless `VULNETIX_CREDENTIALS_DIR` points at the same directory, later commands do not find the credential, and `auth logout` does not remove it.
+`auth login --store-dir <dir>` writes the home (or keyring metadata) file to `<dir>` for that login only. Nothing reads `--store-dir` back: unless `VULNESIS_CREDENTIALS_DIR` points at the same directory, later commands do not find the credential, and `auth logout` does not remove it.
 
 ## File format
 

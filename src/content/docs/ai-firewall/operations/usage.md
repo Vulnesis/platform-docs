@@ -23,14 +23,14 @@ The gateway does not meter, bill or cap usage. Token counts are the provider's o
 
 | Place | Figures | Window |
 |---|---|---|
-| Overview tab of the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall) | Weekly gateway activity: total, blocked, redacted and flagged inferences | 52 weeks |
+| Overview tab of the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall) | Weekly gateway activity: total, blocked, redacted and flagged inferences | 52 weeks |
 | Govern tab | Requests refused by provider or model policy, per week | 52 weeks |
 | Guardrails tab | Hits per guardrail with its action | 30 days |
-| AI Firewall stream on the [Logs page](https://www.vulnetix.com/resolve/logs#aifw) | Decisions per bucket, top blocking or redacting rules, top providers and clients, totals | `24h`, `7d`, `30d`, `90d` |
+| AI Firewall stream on the [Logs page](https://www.vulnes.is/resolve/logs#aifw) | Decisions per bucket, top blocking or redacting rules, top providers and clients, totals | `24h`, `7d`, `30d`, `90d` |
 
 ## GET /ai-firewall/stats
 
-Session-authenticated, `https://www.vulnetix.com/api/site/v1/ai-firewall/stats`. No parameters.
+Session-authenticated, `https://www.vulnes.is/api/site/v1/ai-firewall/stats`. No parameters.
 
 | Field | Content |
 |---|---|

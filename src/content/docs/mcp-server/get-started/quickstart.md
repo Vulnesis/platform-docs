@@ -13,11 +13,11 @@ updated: 02 Nov 2026
 
 ## 1. Get a credential
 
-You need a Vulnetix API key: your organisation UUID and a 64-character hex digest, joined by a colon. Use one of these.
+You need a Vulnesis API key: your organisation UUID and a 64-character hex digest, joined by a colon. Use one of these.
 
 | Method | Steps |
 |---|---|
-| Resolve Platform | Sign up at [vulnetix.com/vdb-register](https://www.vulnetix.com/vdb-register) and copy the API key from the dashboard. |
+| Resolve Platform | Sign up at [vulnes.is/vdb-register](https://www.vulnes.is/vdb-register) and copy the API key from the dashboard. |
 | CLI | `vulnetix auth login` opens a browser sign-in and stores the credential. `vulnetix auth status` shows the organisation and plan. |
 | Inside the agent | Connect with no header, then ask the agent to run `vulnetix_auth_start`. Approve in the browser, and `vulnetix_auth_poll` returns the full header value. See [Authentication](/mcp-server/get-started/authentication/). |
 
@@ -36,7 +36,7 @@ Most JSON clients accept this shape. File locations and per-client key names are
   "mcpServers": {
     "vulnetix": {
       "type": "http",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }
@@ -48,8 +48,8 @@ Most JSON clients accept this shape. File locations and per-client key names are
 Claude Code takes it as one command:
 
 ```bash
-claude mcp add --scope user --transport http vulnetix https://mcp.vulnetix.com/mcp \
-  --header "Authorization: ApiKey ${VULNETIX_ORG}:${VULNETIX_KEY}"
+claude mcp add --scope user --transport http vulnetix https://mcp.vulnes.is/mcp \
+  --header "Authorization: ApiKey ${VULNESIS_ORG}:${VULNESIS_KEY}"
 ```
 
 > [!CAREFUL] Both halves of the key

@@ -22,8 +22,8 @@ Then, in the app:
 1. **Help > Troubleshooting > Enable Developer Mode.**
 2. **Developer > Configure Third-Party Inference...**
 3. Backend: **Gateway (Anthropic-compatible)**.
-4. Base URL: `https://guardrails.vulnetix.com/anthropic/<uuid>`, with no `/v1`.
-5. API key: your Vulnetix API key.
+4. Base URL: `https://guardrails.vulnes.is/anthropic/<uuid>`, with no `/v1`.
+5. API key: your Vulnesis API key.
 6. Auth scheme: `bearer`. The gateway also accepts `x-api-key`, so either scheme works.
 7. **Apply locally**, then quit the app fully and reopen it. The setting is read at start-up.
 8. On the start screen choose **Continue with Gateway**.
@@ -41,10 +41,10 @@ The menu paths are Claude Desktop's and can change between releases.
 
 | Status | `code` | Cause | Fix |
 |---|---|---|---|
-| `401` | `invalid_api_key` | The API key field holds an Anthropic key | Use your Vulnetix API key |
+| `401` | `invalid_api_key` | The API key field holds an Anthropic key | Use your Vulnesis API key |
 | `403` | `provider_key_missing` | No Anthropic key in the vault. The model picker is empty for the same reason. | `vulnetix ai-firewall key set anthropic`, then restart the app |
 | `403` | `model_not_allowed` | The provider is in allowlist mode and the model is not listed | Pick an allowed model |
-| `404` | `unsupported_api` | The base URL ends in `/v1`, or the slug is not `anthropic` | Use `https://guardrails.vulnetix.com/anthropic/<uuid>` |
+| `404` | `unsupported_api` | The base URL ends in `/v1`, or the slug is not `anthropic` | Use `https://guardrails.vulnes.is/anthropic/<uuid>` |
 
 ## Limits
 

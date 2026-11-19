@@ -33,7 +33,7 @@ updated: 04 Nov 2026
 | `--component-group` | string | | `metadata.component.group`, such as `com.acme` |
 | `--component-purl` | string | | `metadata.component.purl` |
 
-An unknown `--component-type` is rejected before the scan starts. Each flag has a `VULNETIX_COMPONENT_*` environment variable.
+An unknown `--component-type` is rejected before the scan starts. Each flag has a `VULNESIS_COMPONENT_*` environment variable.
 
 Only the members you set change. The git properties, the `vcs` references and the committers stay, because they are still true of the source the document was built from.
 

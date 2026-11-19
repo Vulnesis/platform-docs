@@ -32,8 +32,8 @@ This is opt in. A client that sends no sealed blocks is not affected, and nothin
 ## Getting nonces
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/anthropic/$VULNETIX_ORG_ID/v1/nonces?count=32" \
-  -H "x-api-key: $VULNETIX_API_KEY"
+curl -s "https://guardrails.vulnes.is/anthropic/$VULNESIS_ORG_ID/v1/nonces?count=32" \
+  -H "x-api-key: $VULNESIS_API_KEY"
 ```
 
 ```json
@@ -48,11 +48,11 @@ curl -s "https://guardrails.vulnetix.com/anthropic/$VULNETIX_ORG_ID/v1/nonces?co
 | Property | Value |
 |---|---|
 | Route | `GET /{provider}/{org}/v1/nonces` (legacy `GET /{provider}/v1/nonces` with `X-Organisation-UUID`) |
-| Authentication | Same as inference: the Vulnetix API key for the org UUID in the URL |
+| Authentication | Same as inference: the Vulnesis API key for the org UUID in the URL |
 | `count` | 1 to 64, default 16. A value outside the range, or not a number, silently falls back to 16. |
 | Lifetime | 24 hours from issue, truncated to the second |
 | Format | 80 hex characters: 16 random bytes, an 8-byte big-endian expiry, and the first 16 bytes of an HMAC-SHA256 |
-| Key | The principal's own HMAC secret, the one its Vulnetix API key is derived from |
+| Key | The principal's own HMAC secret, the one its Vulnesis API key is derived from |
 | Storage | None. Nonces are stateless; any gateway replica verifies any nonce. |
 | Policy gate | Only an explicit provider `deny` (Pro and above) refuses it, with `403 provider_denied`. No provider key is needed, and nothing is sent upstream. |
 

@@ -1,7 +1,7 @@
 ---
 title: VDB API overview
 nav: Overview
-description: The Vulnetix Vulnerability Database API serves vulnerability, exploit, fix, KEV, detection-rule and package intelligence, and vulnetix vdb CLI commands wrap it.
+description: The Vulnesis Vulnerability Database API serves vulnerability, exploit, fix, KEV, detection-rule and package intelligence, and vulnetix vdb CLI commands wrap it.
 order: 1
 sources: [vdb-api/main.go, vdb-api/internal/handler/openapi-v2.json, vdb-api/internal/handler/openapi-cli.json, vdb-api/internal/handler/openapi.json, vdb-api/internal/middleware/auth.go, vdb-api/internal/middleware/ratelimit.go, cli/cmd/vdb.go]
 checked: [vdb-api@df992c8, cli@4c8c3b71c]
@@ -10,12 +10,12 @@ updated: 05 Nov 2026
 
 The VDB API is for developers who need vulnerability data inside their own tools, scripts and services: what affects a package, which version fixes it, whether it is exploited. Call the API when you are writing code against it. Use [`vulnetix vdb`](/vdb-api/cli/commands/) for the same routes from a terminal or a shell script without writing HTTP calls, and the [MCP server](/mcp-server/) when an AI agent is the one asking.
 
-The VDB API is a read API over the Vulnetix Vulnerability Database. You send an advisory id, a package, a purl, a CPE or another [input](/vdb-api/api/inputs/), and it answers with the vulnerability record, affected versions, fixes, exploits, KEV status, scores, detection rules and remediation guidance it holds for it.
+The VDB API is a read API over the Vulnesis Vulnerability Database. You send an advisory id, a package, a purl, a CPE or another [input](/vdb-api/api/inputs/), and it answers with the vulnerability record, affected versions, fixes, exploits, KEV status, scores, detection rules and remediation guidance it holds for it.
 
 | | |
 |---|---|
-| Base URL | `https://api.vdb.vulnetix.com/v2` |
-| Legacy base URL | `https://api.vdb.vulnetix.com/v1` (deprecated; every v1 operation is marked deprecated in `GET /v1/spec`) |
+| Base URL | `https://api.vdb.vulnes.is/v2` |
+| Legacy base URL | `https://api.vdb.vulnes.is/v1` (deprecated; every v1 operation is marked deprecated in `GET /v1/spec`) |
 | OpenAPI document | `GET /v2/spec` (OpenAPI 3.1 JSON), `GET /v2/spec/ui` (interactive reference, Scalar). The CLI's own operations: `GET /v2/spec/cli`, `GET /v2/spec/cli/ui` |
 | Request validation | Requests are checked against the document; one that does not fit answers `400` with the `field` at fault. See [Errors](/vdb-api/api/errors/#request-validation) |
 | Health | `GET /health` returns `{"status":"healthy"}`, no credential |
@@ -31,11 +31,11 @@ v2 is the current API and the CLI's default. v1 is kept for backwards compatibil
 ## What a call looks like
 
 ```bash
-export VULNETIX_ORG_ID="your-org-uuid"
-export VULNETIX_API_KEY="your-api-key-hex"
+export VULNESIS_ORG_ID="your-org-uuid"
+export VULNESIS_API_KEY="your-api-key-hex"
 
-curl -s -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
-  "https://api.vdb.vulnetix.com/v2/vuln/CVE-2021-44228/fixes/registry?ecosystem=maven&limit=5"
+curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
+  "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry?ecosystem=maven&limit=5"
 ```
 
 The same lookup with the CLI:
@@ -66,8 +66,8 @@ Every authenticated response carries `X-VDB-Plan`: `community`, `pro`, `teams` o
 
 The database aggregates public, vendor, government and Vulnetix-derived sources. Which sources feed it, and the terms under which you may use and redistribute what the API returns, are published on the VDB site:
 
-- [VDB data sources](https://vdb.vulnetix.com/sources/)
-- [VDB licensing](https://vdb.vulnetix.com/licensing/)
+- [VDB data sources](https://vdb.vulnes.is/sources/)
+- [VDB licensing](https://vdb.vulnes.is/licensing/)
 
 ## Where to go next
 
@@ -78,4 +78,4 @@ The database aggregates public, vendor, government and Vulnetix-derived sources.
 
 ## Platform IaC
 
-The VDB API has no configuration of its own to declare. Config-as-code for the Vulnetix platform (`vulnetix config validate|kinds|schema`, the published JSON Schemas and the kinds) is described on [Platform IaC](/platform-iac/).
+The VDB API has no configuration of its own to declare. Config-as-code for the Vulnesis platform (`vulnetix config validate|kinds|schema`, the published JSON Schemas and the kinds) is described on [Platform IaC](/platform-iac/).

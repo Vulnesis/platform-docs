@@ -14,7 +14,7 @@ Zed calls MCP servers context servers and configures them in `settings.json`. Op
 {
   "context_servers": {
     "vulnetix": {
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }

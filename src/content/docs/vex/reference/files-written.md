@@ -1,7 +1,7 @@
 ---
 title: VEX the CLI writes
 nav: VEX files written
-description: Every VEX file the Vulnetix CLI writes under .vulnetix, the triage flags that write VEX, and the authorship fields those documents carry.
+description: Every VEX file the Vulnesis CLI writes under .vulnetix, the triage flags that write VEX, and the authorship fields those documents carry.
 order: 1
 sources: [cli/cmd/reconcile.go, cli/cmd/malscan.go, cli/cmd/cbom.go, cli/cmd/aibom.go, cli/cmd/fix_autofix.go, cli/cmd/jail_artifacts.go, cli/cmd/defend.go, cli/cmd/gh_dependabot.go, cli/internal/triage/vex.go]
 checked: [cli@4c8c3b71c]
@@ -46,10 +46,10 @@ The rest of `triage` is documented with [vulnerability management](/vulnerabilit
 | Format | Field | Value |
 |---|---|---|
 | OpenVEX | `@context` | `https://openvex.dev/ns/v0.2.0` |
-| OpenVEX | `author` | `Vulnetix CLI` unless the caller names one |
+| OpenVEX | `author` | `Vulnesis CLI` unless the caller names one |
 | OpenVEX | `tooling` | `vulnetix-cli` |
 | OpenVEX | statement `timestamp` | When the decision was made, where known, not when the file was written |
-| CycloneDX VEX | `metadata.authors` | Vulnetix |
+| CycloneDX VEX | `metadata.authors` | Vulnesis |
 | CycloneDX VEX | `metadata.tools.components` | `vulnetix-vex` at the CLI version |
 | CycloneDX VEX | `metadata.lifecycles` | `operations` |
 

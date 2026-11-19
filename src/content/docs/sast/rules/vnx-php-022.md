@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1598](https://attack.mitre.org/techniques/T1598/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `open-redirect` `redirect` `symfony` `laravel` `php` |
-| Source | [`internal/sast/rules/vnx-php-022.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-php-022.rego) |
+| Source | [`internal/sast/rules/vnx-php-022.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-php-022.rego) |
 
 ## Overview
 

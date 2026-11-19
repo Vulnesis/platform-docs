@@ -13,7 +13,7 @@ updated: 02 Nov 2026
 
 | It cannot | Why | Use instead |
 |---|---|---|
-| Read your code | No tool accepts file content and the Worker has no filesystem | The [prompts](/mcp-server/prompts/overview/), which drive the Vulnetix CLI on your machine |
+| Read your code | No tool accepts file content and the Worker has no filesystem | The [prompts](/mcp-server/prompts/overview/), which drive the Vulnesis CLI on your machine |
 | Apply a fix | It has no access to your manifests | `vulnetix_fix_plan` for the edit, then the `vulnetix_fix` prompt or the CLI |
 | Run a scanner | No sandbox, no code execution | `vulnetix scan` locally, which composes with Semgrep, Trivy, Grype, Syft when present |
 | Run an exploit check | By design, permanently. `vulnetix_exploit_test` returns a command as text. | Run the command yourself against a system you are authorised to test |

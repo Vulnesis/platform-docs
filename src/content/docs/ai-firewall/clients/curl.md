@@ -11,8 +11,8 @@ updated: 02 Nov 2026
 Every example reads two variables:
 
 ```bash
-export VULNETIX_API_KEY="<your Vulnetix API key>"
-export VULNETIX_ORG_ID="<the UUID the key belongs to>"
+export VULNESIS_API_KEY="<your Vulnesis API key>"
+export VULNESIS_ORG_ID="<the UUID the key belongs to>"
 ```
 
 `vulnetix ai-firewall snippet --lang sh --sdk curl` prints the first example with your values filled in.
@@ -22,8 +22,8 @@ export VULNETIX_ORG_ID="<the UUID the key belongs to>"
 Chat Completions (any `chat` provider):
 
 ```bash
-curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -sS "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Hello"}]}'
 ```
@@ -31,8 +31,8 @@ curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/comple
 Responses (`openai` only):
 
 ```bash
-curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/responses" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -sS "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/responses" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","input":"Hello"}'
 ```
@@ -40,8 +40,8 @@ curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/responses" 
 Messages (`anthropic` only). The route is `/v1/messages` under the UUID; an Anthropic SDK base URL stops before `/v1`.
 
 ```bash
-curl -sS "https://guardrails.vulnetix.com/anthropic/$VULNETIX_ORG_ID/v1/messages" \
-  -H "x-api-key: $VULNETIX_API_KEY" \
+curl -sS "https://guardrails.vulnes.is/anthropic/$VULNESIS_ORG_ID/v1/messages" \
+  -H "x-api-key: $VULNESIS_API_KEY" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
   -d '{"model":"claude-sonnet-4-5","max_tokens":256,"messages":[{"role":"user","content":"Hello"}]}'
@@ -52,8 +52,8 @@ The key is accepted as `Authorization: Bearer <key>` or `x-api-key: <key>` on ev
 Models your policy allows:
 
 ```bash
-curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/models" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY"
+curl -sS "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/models" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY"
 ```
 
 ## Streaming
@@ -61,8 +61,8 @@ curl -sS "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/models" \
 Add `"stream": true` and `--no-buffer`. The response is relayed as server-sent events. A refusal is decided before the stream opens, so it arrives as a plain `403` with a JSON body.
 
 ```bash
-curl -sS --no-buffer "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -sS --no-buffer "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Hello"}],"stream":true}'
 ```
@@ -115,8 +115,8 @@ In a script:
 set -eu
 body=$(mktemp)
 status=$(curl -sS -o "$body" -w '%{http_code}' \
-  "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+  "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Hello"}]}')
 

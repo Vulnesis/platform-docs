@@ -130,4 +130,4 @@ A report whose evidence does not add up is rejected by the CLI before writing an
 - `security.commits.unreviewed` checks at most 300 default-branch commits for an associated pull request; past that the metric is marked truncated.
 - `security.commits.review_unknown` is kept apart from `unreviewed` on purpose: "no pull request found" is not "nobody reviewed it".
 - The forge metrics need a GitHub token; see [analyze](/cli/commands/analyze/#before-you-run-it). Without one, or with `--no-forge`, they are `not measured`.
-- The staleness metrics need Vulnetix credentials for registry data. Without them they are `null` with a reason.
+- The staleness metrics need Vulnesis credentials for registry data. Without them they are `null` with a reason.

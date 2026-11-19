@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) |
 | CWSS vector | `CWSS:1.0/TI:L/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:L/DI:H/EX:L/EC:N/P:L` |
 | Tags | `docker` `supply-chain` `reproducibility` `container` |
-| Source | [`internal/sast/rules/vnx-docker-008.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-docker-008.rego) |
+| Source | [`internal/sast/rules/vnx-docker-008.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-docker-008.rego) |
 
 ## Overview
 

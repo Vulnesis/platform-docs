@@ -24,8 +24,8 @@ The AWS and Wiz drawers show the API's error message as written. This page lists
 
 | Symptom or message | Cause | Fix |
 |---|---|---|
-| `a CloudTrail named vulnetix-management-events already exists in this account outside Vulnetix` | A trail with the fixed name exists and is not in the pipeline stack | Rename or remove that trail, then run the deploy again |
-| `the bucket vulnetix-cloudtrail-<account> already exists outside Vulnetix` | A bucket with the fixed name exists and is not in the bootstrap stack | Remove the bucket, then run the deploy again |
+| `a CloudTrail named vulnetix-management-events already exists in this account outside Vulnesis` | A trail with the fixed name exists and is not in the pipeline stack | Rename or remove that trail, then run the deploy again |
+| `the bucket vulnetix-cloudtrail-<account> already exists outside Vulnesis` | A bucket with the fixed name exists and is not in the bootstrap stack | Remove the bucket, then run the deploy again |
 | A step shows `failed` with a CloudFormation reason | CloudFormation rolled the stack back. A create that rolled back to `ROLLBACK_COMPLETE` cannot be updated. | Fix what the reason names (usually a missing permission on the deploying identity), then deploy again. Provisioning deletes a `ROLLBACK_COMPLETE` stack before it retries. |
 
 ## Verify and the probe

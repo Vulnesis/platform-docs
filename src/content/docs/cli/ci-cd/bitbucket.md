@@ -1,7 +1,7 @@
 ---
 title: Bitbucket Pipelines
 nav: Bitbucket
-description: Run Vulnetix in Bitbucket Pipelines with secured repository variables, parallel scanner steps, gates and artifacts.
+description: Run Vulnesis in Bitbucket Pipelines with secured repository variables, parallel scanner steps, gates and artifacts.
 order: 6
 sources: [cli/internal/config/config.go, cli/install.sh, cli/cmd/scan.go]
 checked: [cli@24498404a]
@@ -10,7 +10,7 @@ updated: 02 Nov 2026
 
 ## Variables
 
-Under **Repository settings > Repository variables**, add `VULNETIX_ORG_ID` and `VULNETIX_API_KEY`, with **Secured** ticked for the key. Workspace variables cover every repository; deployment variables cover one environment. All are exported to the step's shell.
+Under **Repository settings > Repository variables**, add `VULNESIS_ORG_ID` and `VULNESIS_API_KEY`, with **Secured** ticked for the key. Workspace variables cover every repository; deployment variables cover one environment. All are exported to the step's shell.
 
 ## Quick start
 
@@ -22,10 +22,10 @@ image: alpine:3.20
 definitions:
   steps:
     - step: &vulnetix
-        name: Vulnetix scan
+        name: Vulnesis scan
         script:
           - apk add --no-cache curl ca-certificates git
-          - curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+          - curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
           - export PATH="$HOME/.local/bin:$PATH"
           - vulnetix auth verify
           - mkdir -p dist
@@ -52,14 +52,14 @@ pipelines:
               name: SCA
               script:
                 - apk add --no-cache curl ca-certificates git
-                - curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+                - curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
                 - export PATH="$HOME/.local/bin:$PATH"
                 - vulnetix sca --fail-on high -o sbom.cdx.json
           - step:
               name: SAST
               script:
                 - apk add --no-cache curl ca-certificates git
-                - curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+                - curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
                 - export PATH="$HOME/.local/bin:$PATH"
                 - vulnetix sast --fail-on high -o sast.sarif
 ```

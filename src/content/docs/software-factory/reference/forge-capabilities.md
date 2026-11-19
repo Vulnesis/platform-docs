@@ -219,9 +219,9 @@ What each forge supports, emulates or lacks, from the factory's capability table
 |---|---|
 | GitHub | Yes |
 | GitHub Enterprise Server | Yes |
-| Gitea | Not available: Gitea and Forgejo publish no security alerts; Vulnetix's own scanners fill the gap. |
-| Forgejo | Not available: Gitea and Forgejo publish no security alerts; Vulnetix's own scanners fill the gap. |
-| GitLab | Not available: GitLab's security reports are pipeline artifacts, not alerts; Vulnetix's own scanners fill the gap. |
+| Gitea | Not available: Gitea and Forgejo publish no security alerts; Vulnesis's own scanners fill the gap. |
+| Forgejo | Not available: Gitea and Forgejo publish no security alerts; Vulnesis's own scanners fill the gap. |
+| GitLab | Not available: GitLab's security reports are pipeline artifacts, not alerts; Vulnesis's own scanners fill the gap. |
 
 ### Merge queue
 
@@ -266,10 +266,10 @@ What each forge supports, emulates or lacks, from the factory's capability table
 | Forge | Support |
 |---|---|
 | GitHub | Yes |
-| GitHub Enterprise Server | Not available: The manifest curator works through the Vulnetix GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
-| Gitea | Not available: The manifest curator works through the Vulnetix GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
-| Forgejo | Not available: The manifest curator works through the Vulnetix GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
-| GitLab | Not available: The manifest curator works through the Vulnetix GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
+| GitHub Enterprise Server | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
+| Gitea | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
+| Forgejo | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
+| GitLab | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
 
 ### Pix Sandbox repositories
 
@@ -278,10 +278,10 @@ What each forge supports, emulates or lacks, from the factory's capability table
 | Forge | Support |
 |---|---|
 | GitHub | Yes |
-| GitHub Enterprise Server | Not available: A Pix Sandbox reaches repositories through the Vulnetix GitHub App on github.com. Belai on your own machines works on every forge. |
-| Gitea | Not available: A Pix Sandbox reaches repositories through the Vulnetix GitHub App on github.com. Belai on your own machines works on every forge. |
-| Forgejo | Not available: A Pix Sandbox reaches repositories through the Vulnetix GitHub App on github.com. Belai on your own machines works on every forge. |
-| GitLab | Not available: A Pix Sandbox reaches repositories through the Vulnetix GitHub App on github.com. Belai on your own machines works on every forge. |
+| GitHub Enterprise Server | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| Gitea | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| Forgejo | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| GitLab | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
 
 ## Trigger events
 

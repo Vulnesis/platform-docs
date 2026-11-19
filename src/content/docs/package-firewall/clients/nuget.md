@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Service index | `https://packages.vulnetix.com/nuget/v3/index.json` |
+| Service index | `https://packages.vulnes.is/nuget/v3/index.json` |
 | Ecosystem ID | `nuget` |
 | Plan | Add-on |
 | Mode | filter |
@@ -29,7 +29,7 @@ This replaces `~/.nuget/NuGet/NuGet.Config`, backing up an existing file to `NuG
 <configuration>
   <packageSources>
     <clear />
-    <add key="vulnetix" value="https://packages.vulnetix.com/nuget/v3/index.json" />
+    <add key="vulnetix" value="https://packages.vulnes.is/nuget/v3/index.json" />
   </packageSources>
   <packageSourceCredentials>
     <vulnetix>
@@ -45,8 +45,8 @@ This replaces `~/.nuget/NuGet/NuGet.Config`, backing up an existing file to `NuG
 ## Manual equivalent
 
 ```bash
-dotnet nuget add source https://packages.vulnetix.com/nuget/v3/index.json \
-  --name vulnetix --username "$VULNETIX_ORG_ID" --password "$VULNETIX_API_KEY" \
+dotnet nuget add source https://packages.vulnes.is/nuget/v3/index.json \
+  --name vulnetix --username "$VULNESIS_ORG_ID" --password "$VULNESIS_API_KEY" \
   --store-password-in-clear-text
 dotnet nuget disable source nuget.org
 ```

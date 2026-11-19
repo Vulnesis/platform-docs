@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Channel URL | `https://packages.vulnetix.com/conda/<channel>` |
+| Channel URL | `https://packages.vulnes.is/conda/<channel>` |
 | Ecosystem ID | `conda` |
 | Plan | Add-on |
 | Mode | gate: `repodata.json` is streamed unchanged; `.conda` and `.tar.bz2` downloads are checked |
@@ -28,10 +28,10 @@ A resolve can therefore pick a blocked version; the install then fails on that p
 
 ```yaml
 channels:
-  - https://packages.vulnetix.com/conda/conda-forge
+  - https://packages.vulnes.is/conda/conda-forge
 default_channels:
-  - https://packages.vulnetix.com/conda/main
-channel_alias: https://packages.vulnetix.com/conda
+  - https://packages.vulnes.is/conda/main
+channel_alias: https://packages.vulnes.is/conda
 ```
 
 The channel path is appended to the mirror, so `/conda/conda-forge` fetches `https://conda.anaconda.org/conda-forge`. conda authenticates with `~/.netrc`, so run any `vulnetix package-firewall <ecosystem>` once, or write the [netrc entry](/package-firewall/get-started/authentication/#what-the-cli-writes) yourself.

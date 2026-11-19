@@ -1,7 +1,7 @@
 ---
 title: Browser extension
 nav: Overview
-description: The Vulnetix browser extension finds vulnerability identifiers on any web page and shows VDB intelligence for them in a hover card and a browser sidebar.
+description: The Vulnesis browser extension finds vulnerability identifiers on any web page and shows VDB intelligence for them in a hover card and a browser sidebar.
 order: 1
 sources: [browser-extension/README.md, browser-extension/wxt.config.ts, browser-extension/src/entrypoints/content.ts, browser-extension/src/shared/identifiers.ts, browser-extension/src/lib/api.ts, browser-extension/package.json]
 checked: [browser-extension@d25ce74]
@@ -22,8 +22,8 @@ Detection runs locally and costs nothing. Looking an identifier up spends a VDB 
 | Version | 0.2.1 |
 | Browsers | Chromium 116+ (Chrome, Edge, Brave, Arc, Opera, Vivaldi), Firefox 128 ESR+ (also Zen, LibreWolf, Waterfox) |
 | Manifest | MV3 on both |
-| Runs on | Every `http` and `https` page except `*.vulnetix.com` |
-| Talks to | `api.vdb.vulnetix.com` and `www.vulnetix.com`, from the background worker only |
+| Runs on | Every `http` and `https` page except `*.vulnes.is` |
+| Talks to | `api.vdb.vulnes.is` and `www.vulnes.is`, from the background worker only |
 | Telemetry | None |
 | Shortcut | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> opens the sidebar |
 

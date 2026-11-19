@@ -16,8 +16,8 @@ Persistent flags, accepted by every command and subcommand.
 | `-v`, `--verbose` | off | Counted. `-v` adds diagnostics (rate limits, cache status, auth notes, retry and backoff messages, org policy overrides) and per-advisory version checks; `-vv` adds the raw evidence. |
 | `--no-progress` | off | No progress bars or spinners |
 | `--no-banner` | off | No startup banner |
-| `--no-analytics` | off | No anonymous usage analytics for this run (sets `VULNETIX_NO_ANALYTICS=1`) |
-| `--artifact-manifest <file>` | | Record every file the command writes in this JSON Lines [artifact manifest](/cli/reference/artifact-manifest/). Also `VULNETIX_ARTIFACT_MANIFEST`. |
+| `--no-analytics` | off | No anonymous usage analytics for this run (sets `VULNESIS_NO_ANALYTICS=1`) |
+| `--artifact-manifest <file>` | | Record every file the command writes in this JSON Lines [artifact manifest](/cli/reference/artifact-manifest/). Also `VULNESIS_ARTIFACT_MANIFEST`. |
 | `--disable-memory` | off | Do not read or write `.vulnetix/memory.yaml`. VDB commands skip their memory side effects. |
 | `--version` | | Print the bare version and exit |
 | `-h`, `--help` | | Help for the command |
@@ -33,7 +33,7 @@ The CLI sends anonymous usage events (the command name and path, the auth method
 | Condition | |
 |---|---|
 | `--no-analytics` | This run |
-| `VULNETIX_NO_ANALYTICS` set to any value | Every run |
+| `VULNESIS_NO_ANALYTICS` set to any value | Every run |
 | `DO_NOT_TRACK=1` | Every run |
 | `CI=true` and not GitHub Actions | Automatically. Under GitHub Actions they stay on unless turned off. |
 

@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 status: planned
 ---
 
-The earlier site at docs.code.vulnetix.com documented the planned design alongside what had shipped. None of the items below exist in extension `0.3.1` or in `vulnetix lsp` at `cli@4c8c3b7`. If you set one of the settings, VS Code ignores it.
+The earlier site at docs.code.vulnes.is documented the planned design alongside what had shipped. None of the items below exist in extension `0.3.1` or in `vulnetix lsp` at `cli@4c8c3b7`. If you set one of the settings, VS Code ignores it.
 
 ## Features
 

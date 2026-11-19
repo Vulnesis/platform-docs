@@ -69,7 +69,7 @@ write_files:
         --secret-id vulnetix/sensor-mdm-key \
         --query SecretString --output text > /etc/vulnetix-sensor/mdm.key
       chmod 0600 /etc/vulnetix-sensor/mdm.key
-      curl -fsSL "https://raw.githubusercontent.com/Vulnetix/cli/$VERSION/deploy/sensor/install.sh" \
+      curl -fsSL "https://raw.githubusercontent.com/Vulnesis/cli/$VERSION/deploy/sensor/install.sh" \
         | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key \
             --integration "$INTEGRATION" --kid "$KID"
 runcmd:
@@ -126,7 +126,7 @@ aws ssm send-command --document-name AWS-RunShellScript \
   --parameters 'commands=[
     "install -d -m 0700 /etc/vulnetix-sensor",
     "umask 077; aws secretsmanager get-secret-value --secret-id vulnetix/sensor-mdm-key --query SecretString --output text > /etc/vulnetix-sensor/mdm.key",
-    "curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <integration-uuid> --kid <kid>"
+    "curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh | sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <integration-uuid> --kid <kid>"
   ]'
 ```
 
@@ -183,7 +183,7 @@ The EMR EC2 instance profile needs `secretsmanager:GetSecretValue` on the key an
 
     - name: Installer
       ansible.builtin.get_url:
-        url: "https://raw.githubusercontent.com/Vulnetix/cli/{{ vulnetix_version }}/deploy/sensor/install.sh"
+        url: "https://raw.githubusercontent.com/Vulnesis/cli/{{ vulnetix_version }}/deploy/sensor/install.sh"
         dest: /usr/local/sbin/vulnetix-sensor-install.sh
         mode: "0700"
 
@@ -206,4 +206,4 @@ The EMR EC2 instance profile needs `secretsmanager:GetSecretValue` on the key an
 
 ## Kubernetes and other containers
 
-Containers do not enroll today. A pod has no systemd to install a unit into and its filesystem does not outlive it, so the sidecar and DaemonSet read `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` from a Secret, as their pages show, and are configured by their container arguments, not by a profile. The same holds for ECS tasks and Lambda functions. A pod still shows on **Sensors**; it does not appear in the provisioning devices list.
+Containers do not enroll today. A pod has no systemd to install a unit into and its filesystem does not outlive it, so the sidecar and DaemonSet read `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` from a Secret, as their pages show, and are configured by their container arguments, not by a profile. The same holds for ECS tasks and Lambda functions. A pod still shows on **Sensors**; it does not appear in the provisioning devices list.

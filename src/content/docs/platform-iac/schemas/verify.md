@@ -1,7 +1,7 @@
 ---
 title: Verify a schema release
 nav: Verify a release
-description: Check that a schema file was published by the Vulnetix/config-schemas release workflow, with cosign keyless verification and SHA256SUMS.
+description: Check that a schema file was published by the Vulnesis/config-schemas release workflow, with cosign keyless verification and SHA256SUMS.
 order: 2
 sources: [config-schemas/.github/workflows/release.yml, config-schemas/README.md]
 checked: [config-schemas@9bda9e1]
@@ -16,13 +16,13 @@ You need [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) 
 
 ```sh
 TAG=v1.0.1
-base=https://github.com/Vulnetix/config-schemas/releases/download/$TAG
+base=https://github.com/Vulnesis/config-schemas/releases/download/$TAG
 curl -fsSLO "$base/QualityGate.schema.json"
 curl -fsSLO "$base/QualityGate.schema.json.sigstore.json"
 
 cosign verify-blob QualityGate.schema.json \
   --bundle QualityGate.schema.json.sigstore.json \
-  --certificate-identity "https://github.com/Vulnetix/config-schemas/.github/workflows/release.yml@refs/tags/$TAG" \
+  --certificate-identity "https://github.com/Vulnesis/config-schemas/.github/workflows/release.yml@refs/tags/$TAG" \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 
@@ -38,7 +38,7 @@ The identity is the workflow path at the tag ref. It proves both that the releas
 > ```sh
 > cosign verify-blob QualityGate.schema.json \
 >   --bundle QualityGate.schema.json.sigstore.json \
->   --certificate-identity-regexp '^https://github.com/Vulnetix/config-schemas/\.github/workflows/release\.yml@' \
+>   --certificate-identity-regexp '^https://github.com/Vulnesis/config-schemas/\.github/workflows/release\.yml@' \
 >   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 > ```
 
@@ -48,10 +48,10 @@ Verify `SHA256SUMS` once, then check every file against it:
 
 ```sh
 TAG=v1.0.1
-gh release download "$TAG" -R Vulnetix/config-schemas
+gh release download "$TAG" -R Vulnesis/config-schemas
 cosign verify-blob SHA256SUMS \
   --bundle SHA256SUMS.sigstore.json \
-  --certificate-identity "https://github.com/Vulnetix/config-schemas/.github/workflows/release.yml@refs/tags/$TAG" \
+  --certificate-identity "https://github.com/Vulnesis/config-schemas/.github/workflows/release.yml@refs/tags/$TAG" \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 sha256sum -c SHA256SUMS
 ```

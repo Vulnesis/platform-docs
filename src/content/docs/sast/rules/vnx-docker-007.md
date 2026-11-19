@@ -19,7 +19,7 @@ generated: true
 | CWE | [CWE-754](https://cwe.mitre.org/data/definitions/754.html) |
 | CWSS vector | `CWSS:1.0/TI:L/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:L/DI:H/EX:L/EC:N/P:L` |
 | Tags | `docker` `best-practice` `availability` `container` |
-| Source | [`internal/sast/rules/vnx-docker-007.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-docker-007.rego) |
+| Source | [`internal/sast/rules/vnx-docker-007.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-docker-007.rego) |
 
 ## Overview
 

@@ -1,6 +1,6 @@
 ---
 title: Virtual patching
-description: Block rules and detections Vulnetix builds from public exploits, for a vulnerability you cannot patch yet, and the ways to run them.
+description: Block rules and detections Vulnesis builds from public exploits, for a vulnerability you cannot patch yet, and the ways to run them.
 order: 1
 nav: Overview
 sources: [vdb-site/api/internal/handler/defence_formats.go, vdb-site/api/internal/handler/defences.go, vdb-site/api/internal/handler/detection_rule_feeds.go, cli/cmd/defend.go, cli/deploy/sensor/README.md]
@@ -10,12 +10,12 @@ updated: 04 Nov 2026
 
 Virtual patching is for teams that run a vulnerable service they cannot upgrade yet, because no fixed version exists or the upgrade has to wait, and need to stop or see exploit attempts in the meantime. When a fixed version exists and you can take it, use [`vulnetix fix`](/sca/autofix/fix/) to move the dependency to it. Use a virtual patch for the time between the finding and that upgrade.
 
-Vulnetix reads the public proofs of concept for each vulnerability and builds rules from them. A rule is one of two kinds, and the two are never mixed:
+Vulnesis reads the public proofs of concept for each vulnerability and builds rules from them. A rule is one of two kinds, and the two are never mixed:
 
 | | Virtual patch (lane `block`) | Countermeasure (lane `detect`) |
 |---|---|---|
 | Does | Stops the exploit request | Tells you it happened |
-| Runs in | A WAF, an IDS/IPS, a web server, the Vulnetix sensor | A SIEM, an EDR, a threat intelligence platform, the Vulnetix sensor |
+| Runs in | A WAF, an IDS/IPS, a web server, the Vulnesis sensor | A SIEM, an EDR, a threat intelligence platform, the Vulnesis sensor |
 | Formats | Snort, Suricata, ModSecurity, nginx, AWS WAF, Cloudflare WAF, layer 7 regex | Sigma, YARA, STIX 2.1, OpenIOC |
 
 Neither replaces the patch. A virtual patch buys time until a fixed version exists and you can upgrade.
@@ -32,7 +32,7 @@ Every rule states:
 |---|---|---|
 | `vulnetix defend <advisory-id>` | One finding, saved into your repository and recorded as a compensating control | [defend command](/virtual-patching/defend/command/) |
 | A detection rule feed | A curated, published set of rules that your WAF, IDS or SIEM fetches from a stable URL | [Detection rule feeds](/virtual-patching/feeds/detection-rule-feeds/) |
-| The Vulnetix runtime sensor | Running the rules inside your workload, with a person deciding on each hold | [Runtime sensor](/virtual-patching/runtime/sensor/), and [Choose a sensor path](/virtual-patching/get-started/choose-a-sensor-path/) for how to install it |
+| The Vulnesis runtime sensor | Running the rules inside your workload, with a person deciding on each hold | [Runtime sensor](/virtual-patching/runtime/sensor/), and [Choose a sensor path](/virtual-patching/get-started/choose-a-sensor-path/) for how to install it |
 
 Then deploy the rules to the system that runs them:
 
@@ -42,7 +42,7 @@ Then deploy the rules to the system that runs them:
 | Cloudflare | `CLOUDFLARE_WAF` | [Cloudflare WAF](/virtual-patching/runtime/cloudflare/) |
 | ModSecurity, Coraza, nginx | `MODSECURITY`, `NGINX` | [ModSecurity and Coraza](/virtual-patching/runtime/modsecurity/) |
 | Suricata, Snort | `SURICATA`, `SNORT` | [Suricata and Snort](/virtual-patching/runtime/suricata-snort/) |
-| Vulnetix sensor | `MODSECURITY`, `REGEX_L7`, `SIGMA`, `YARA`, `STIX`, `OPENIOC` | [Sidecar](/virtual-patching/runtime/sensor-sidecar/), [DaemonSet](/virtual-patching/runtime/sensor-daemonset/), [Lambda layer](/virtual-patching/runtime/sensor-lambda/), [EC2 and EMR](/virtual-patching/runtime/sensor-hosts/) |
+| Vulnesis sensor | `MODSECURITY`, `REGEX_L7`, `SIGMA`, `YARA`, `STIX`, `OPENIOC` | [Sidecar](/virtual-patching/runtime/sensor-sidecar/), [DaemonSet](/virtual-patching/runtime/sensor-daemonset/), [Lambda layer](/virtual-patching/runtime/sensor-lambda/), [EC2 and EMR](/virtual-patching/runtime/sensor-hosts/) |
 | Tetragon | Rendered from `SIGMA` | [Tetragon](/virtual-patching/runtime/tetragon/) |
 | A Sigma-capable SIEM | `SIGMA` | [Guardian Sigma rules](/siem/detection/sigma/) |
 

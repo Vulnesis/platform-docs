@@ -12,8 +12,8 @@ This page takes a repository from no SBOM to a signed CycloneDX document that sa
 
 ## Prerequisites
 
-- The Vulnetix CLI on your `PATH`, v4.15.0 or later for the `--bom-manufacturer` and `--bom-supplier` flags ([installing the CLI](/cli/get-started/install/)).
-- No Vulnetix credentials. `vulnetix cdx` makes no uploads.
+- The Vulnesis CLI on your `PATH`, v4.15.0 or later for the `--bom-manufacturer` and `--bom-supplier` flags ([installing the CLI](/cli/get-started/install/)).
+- No Vulnesis credentials. `vulnetix cdx` makes no uploads.
 - For step 4, a GitHub Actions job that can request an OIDC token (`id-token: write`).
 
 ## 1. Generate the SBOM
@@ -71,7 +71,7 @@ Add `--min-score 70` to exit `1` below a score.
 
 ## 4. Sign it in CI
 
-`--sign` signs with the runner's own OIDC identity through public Sigstore. It needs no Vulnetix credential:
+`--sign` signs with the runner's own OIDC identity through public Sigstore. It needs no Vulnesis credential:
 
 ```yaml
 permissions:
@@ -79,7 +79,7 @@ permissions:
   id-token: write
 steps:
   - uses: actions/checkout@v5
-  - uses: Vulnetix/cli/sbom@v4
+  - uses: Vulnesis/cli/sbom@v4
     with:
       sign: true
       bom-manufacturer: Acme Ltd

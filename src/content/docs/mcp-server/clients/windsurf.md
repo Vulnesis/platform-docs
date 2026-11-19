@@ -14,7 +14,7 @@ Windsurf's Cascade agent reads remote MCP servers from `~/.codeium/windsurf/mcp_
 {
   "mcpServers": {
     "vulnetix": {
-      "serverUrl": "https://mcp.vulnetix.com/mcp",
+      "serverUrl": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }

@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Registry | `sparse+https://packages.vulnetix.com/cargo/` |
+| Registry | `sparse+https://packages.vulnes.is/cargo/` |
 | Ecosystem ID | `cargo` |
 | Plan | Add-on |
 | Mode | filter: blocked versions are dropped from the sparse index |
@@ -29,10 +29,10 @@ vulnetix package-firewall cargo
 replace-with = "vulnetix"
 
 [source.vulnetix]
-registry = "sparse+https://packages.vulnetix.com/cargo/"
+registry = "sparse+https://packages.vulnes.is/cargo/"
 
 [registries.vulnetix]
-index = "sparse+https://packages.vulnetix.com/cargo/"
+index = "sparse+https://packages.vulnes.is/cargo/"
 credential-provider = ["cargo:token"]
 ```
 

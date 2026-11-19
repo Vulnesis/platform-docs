@@ -14,7 +14,7 @@ updated: 02 Nov 2026
 | `SNORT` | `local.rules` | Snort 2 and Snort 3 |
 | `SNORT_YARA` (legacy) | `snort.rules` and `rules.yar` | third-party catalogue rules |
 
-Generated rules carry `msg`, `rev` and a `sid` between 3000000 and 3999999, a range Vulnetix keeps for its own rules. Check it against any local rules you already number in that range. A disabled rule is published commented out with `# `; an enabled rule is always published uncommented.
+Generated rules carry `msg`, `rev` and a `sid` between 3000000 and 3999999, a range Vulnesis keeps for its own rules. Check it against any local rules you already number in that range. A disabled rule is published commented out with `# `; an enabled rule is always published uncommented.
 
 Snort and Suricata rules are written for a specific dialect. Use the feed type that matches your engine: a Suricata feed holds only Suricata rules.
 
@@ -24,7 +24,7 @@ Snort and Suricata rules are written for a specific dialect. Use the feed type t
 #!/bin/sh
 # /usr/local/bin/vulnetix-ids-update suricata.rules /etc/suricata/rules/vulnetix.rules
 set -eu
-FEED="https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>"
+FEED="https://vulnes.is/feeds/<org-uuid>/<feed-uuid>"
 FILE="$1"; DEST="$2"
 TMP="$(mktemp)"
 curl -fsSL "$FEED/$FILE" -o "$TMP"
@@ -62,7 +62,7 @@ Rules are published with the action their author chose, usually `alert`. On an i
 sed -i -E '/sid:3000123;/ s/^alert /drop /' /etc/suricata/rules/vulnetix.rules
 ```
 
-The Vulnetix sid range is 3000000 to 3999999, so `/sid:3[0-9]{6};/` matches every generated rule.
+The Vulnesis sid range is 3000000 to 3999999, so `/sid:3[0-9]{6};/` matches every generated rule.
 
 ## Snort 3
 
@@ -121,6 +121,6 @@ systemctl enable --now vulnetix-ids-update.timer
 
 The fetch exits non-zero on a checksum mismatch, so the reload is skipped and the previous rules stay loaded.
 
-## The Vulnetix sensor does not run these
+## The Vulnesis sensor does not run these
 
-Snort and Suricata rules need a packet engine. The [Vulnetix sensor](/virtual-patching/runtime/sensor/) reports a Snort or Suricata rule as `no-engine` and does not run it.
+Snort and Suricata rules need a packet engine. The [Vulnesis sensor](/virtual-patching/runtime/sensor/) reports a Snort or Suricata rule as `no-engine` and does not run it.

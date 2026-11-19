@@ -21,7 +21,7 @@ Every rule has an `id` in 30000000 to 39999999, so it cannot collide with the OW
 #!/bin/sh
 # /usr/local/bin/vulnetix-modsec-update
 set -eu
-FEED="https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>"
+FEED="https://vulnes.is/feeds/<org-uuid>/<feed-uuid>"
 DEST=/etc/modsecurity/vulnetix/modsecurity.conf
 TMP="$(mktemp)"
 curl -fsSL "$FEED/modsecurity.conf" -o "$TMP"
@@ -127,7 +127,7 @@ app.example.com {
 }
 ```
 
-The [Vulnetix sensor](/virtual-patching/runtime/sensor/) embeds Coraza: point it at the same feed and it runs the rules in front of your app, with each block held for a person to confirm.
+The [Vulnesis sensor](/virtual-patching/runtime/sensor/) embeds Coraza: point it at the same feed and it runs the rules in front of your app, with each block held for a person to confirm.
 
 ## Disabled rules
 

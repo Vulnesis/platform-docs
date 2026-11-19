@@ -1,14 +1,14 @@
 ---
 title: Authentication
 nav: Overview
-description: How the CLI signs in to a Vulnetix organisation, the credential methods and stores it supports, and the auth commands.
+description: How the CLI signs in to a Vulnesis organisation, the credential methods and stores it supports, and the auth commands.
 order: 1
 sources: [cli/cmd/auth.go, cli/pkg/auth/auth.go, cli/pkg/auth/credentials.go, cli/pkg/auth/keyring.go, cli/pkg/auth/netrc.go, cli/pkg/auth/community.go]
 checked: [cli@24498404a]
 updated: 02 Nov 2026
 ---
 
-Every Vulnetix command authenticates as one organisation. On a workstation, sign in once with the browser and keep the key in the OS keychain:
+Every Vulnesis command authenticates as one organisation. On a workstation, sign in once with the browser and keep the key in the OS keychain:
 
 ```sh
 vulnetix auth login --store keyring
@@ -20,9 +20,9 @@ In CI, set environment variables and do not log in. See [Authentication in CI/CD
 
 | Method | Login flag | Environment | Needs an org ID | Header sent |
 |---|---|---|---|---|
-| ApiKey | `--api-key` (or the browser login) | `VULNETIX_API_KEY` + `VULNETIX_ORG_ID` | Yes | `Authorization: ApiKey <org>:<key>` |
+| ApiKey | `--api-key` (or the browser login) | `VULNESIS_API_KEY` + `VULNESIS_ORG_ID` | Yes | `Authorization: ApiKey <org>:<key>` |
 | SigV4 secret | `--secret` | `VVD_ORG` + `VVD_SECRET` | Yes | `Authorization: ApiKey <org>:<HMAC-SHA256(secret, org)>` |
-| Bearer token | `--token` (hidden) | `VULNETIX_API_TOKEN` | No, resolved by the server | `Authorization: Bearer <token>` |
+| Bearer token | `--token` (hidden) | `VULNESIS_API_TOKEN` | No, resolved by the server | `Authorization: Bearer <token>` |
 | Community | none | none | No | The embedded community ApiKey |
 
 The browser login always produces an ApiKey. Details and examples: [Credential methods](/cli/authentication/methods/).
@@ -31,7 +31,7 @@ The browser login always produces an ApiKey. Details and examples: [Credential m
 
 | Store | `--store` | Location | Secret at rest |
 |---|---|---|---|
-| Home file (default) | `home` | `~/.vulnetix/credentials.json`, or `$VULNETIX_CREDENTIALS_DIR/credentials.json` | Plain JSON, mode `0600` |
+| Home file (default) | `home` | `~/.vulnetix/credentials.json`, or `$VULNESIS_CREDENTIALS_DIR/credentials.json` | Plain JSON, mode `0600` |
 | Project file | `project` | `./.vulnetix/credentials.json` | Plain JSON, mode `0600` |
 | OS keychain | `keyring` | Secret in the keychain (service `vulnetix`); metadata in the home file | Keychain |
 | netrc | none (written by `package-firewall`) | `~/.netrc`, `%USERPROFILE%\_netrc` on Windows | Plain text, mode `0600` required |

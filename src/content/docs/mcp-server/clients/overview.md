@@ -14,7 +14,7 @@ updated: 02 Nov 2026
 Every client reaches the server the same way: a remote Streamable HTTP MCP server, one URL, one header. There is no local process to run.
 
 ```text
-URL     https://mcp.vulnetix.com/mcp
+URL     https://mcp.vulnes.is/mcp
 Header  Authorization: ApiKey <orgId>:<hex>
 ```
 

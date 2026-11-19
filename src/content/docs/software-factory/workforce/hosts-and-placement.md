@@ -7,11 +7,11 @@ checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 05 Nov 2026
 ---
 
-A **host** is a machine running Belai in remote control mode (`belai rc`). It keeps a connection open to Vulnetix, advertises the repositories and directories it has and the agents and crews it offers, and takes dispatches. There are two kinds:
+A **host** is a machine running Belai in remote control mode (`belai rc`). It keeps a connection open to Vulnesis, advertises the repositories and directories it has and the agents and crews it offers, and takes dispatches. There are two kinds:
 
 | Kind | Is |
 |---|---|
-| Pix Sandbox | A container Vulnetix runs for you. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/). |
+| Pix Sandbox | A container Vulnesis runs for you. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/). |
 | Self-hosted | Your own machine running `belai rc`. See [Remote control](/software-factory/workforce/remote-control/). |
 
 How many self-hosted hosts you can run depends on the plan. Community includes one, free; a second one is refused with `"code": "host_limit"` while the first is active (seen in the last 45 seconds). Pro, Business and Enterprise enrol any number. Pix Sandboxes never count against the limit. See [Who can use it](/software-factory/#who-can-use-it).
@@ -42,7 +42,7 @@ A step that names no `runOn` (every default workflow, for example) takes `hosts.
 Only the hosts of the run's principal: the workflow's author, or for a default workflow, the member who made the organisation managed. Cards, dispatches and sessions are all scoped to that person, so a host another member registered would never see the card.
 
 > [!CAREFUL] Run belai rc as the right person
-> `belai rc` registers its host under the person signed in to the Vulnetix CLI. Sign in as the member whose workflows should land there, or the factory will not use that host.
+> `belai rc` registers its host under the person signed in to the Vulnesis CLI. Sign in as the member whose workflows should land there, or the factory will not use that host.
 
 ### Eligible and ranked
 
@@ -83,7 +83,7 @@ Each worker on a host is in one of these states: `starting`, `working`, `idle`, 
 
 ## When a host needs a person
 
-A host runs where nobody sits, so it cannot open a browser. When it needs something, it asks Vulnetix, which tells the host's owner through your notification channels. The owner, or a tenant owner or admin, decides from the notification or the Hosts page, and the host reads the answer on its next heartbeat.
+A host runs where nobody sits, so it cannot open a browser. When it needs something, it asks Vulnesis, which tells the host's owner through your notification channels. The owner, or a tenant owner or admin, decides from the notification or the Hosts page, and the host reads the answer on its next heartbeat.
 
 | Kind | Reasons | Approving |
 |---|---|---|

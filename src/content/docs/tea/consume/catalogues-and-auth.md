@@ -1,7 +1,7 @@
 ---
 title: Catalogues and authentication
 nav: Catalogues and auth
-description: The first-party and open source TEA catalogues Vulnetix serves, what anonymous callers see, accepted credential schemes, and why private objects answer 404.
+description: The first-party and open source TEA catalogues Vulnesis serves, what anonymous callers see, accepted credential schemes, and why private objects answer 404.
 order: 3
 sources: [vdb-site/api/internal/handler/tea_routes.go, vdb-site/api/internal/handler/tea_v1_routes.go, vdb-site/api/internal/handler/tea_published_index.go, vdb-site/api/internal/handler/tea_repo_visibility.go, vdb-site/docs/tea/repo-visibility.md, cli/cmd/tea.go, cli/pkg/tea/client.go]
 checked: [vdb-site@1a06d67, cli@4c8c3b71c]
@@ -12,9 +12,9 @@ updated: 02 Nov 2026
 
 | | First party | Open source |
 |---|---|---|
-| Root (1.0.0) | `https://www.vulnetix.com/tea/v1.0.0` | `https://www.vulnetix.com/tea/public/v1.0.0` |
-| Root (0.4.0) | `https://www.vulnetix.com/tea/v0.4.0` | `https://www.vulnetix.com/tea/public/v0.4.0` |
-| Holds | Vulnetix's own products, and your organisation's scans and publications | The most-starred GitHub projects, at most 1,500 |
+| Root (1.0.0) | `https://www.vulnes.is/tea/v1.0.0` | `https://www.vulnes.is/tea/public/v1.0.0` |
+| Root (0.4.0) | `https://www.vulnes.is/tea/v0.4.0` | `https://www.vulnes.is/tea/public/v0.4.0` |
+| Holds | Vulnesis's own products, and your organisation's scans and publications | The most-starred GitHub projects, at most 1,500 |
 | Anonymous request | Public objects only | `401` |
 | Plan to read | None | None; any valid API key, including a community-tier key |
 | Identifiers | TEI and PURL | A TEI and a `pkg:github/owner/repo` PURL only |
@@ -36,8 +36,8 @@ If you send a credential it must be valid. An unrecognised one is refused with `
 | Basic | `Authorization: Basic base64(<orgId>:<hmac>)` |
 
 ```bash
-curl -s -H "Authorization: ApiKey $VULNETIX_ORG_ID:$VULNETIX_API_KEY" \
-  'https://www.vulnetix.com/tea/public/v1.0.0/products?idType=PURL&idValue=pkg%3Agithub%2Fprefix-dev%2Fpixi'
+curl -s -H "Authorization: ApiKey $VULNESIS_ORG_ID:$VULNESIS_API_KEY" \
+  'https://www.vulnes.is/tea/public/v1.0.0/products?idType=PURL&idValue=pkg%3Agithub%2Fprefix-dev%2Fpixi'
 ```
 
 ## What you will not find
@@ -48,7 +48,7 @@ curl -s -H "Authorization: ApiKey $VULNETIX_ORG_ID:$VULNETIX_API_KEY" \
 | An unknown path | `404 OBJECT_UNKNOWN` | The error shape a TEA client can parse |
 | Another tenant's scan-derived records | absent | An inference drawn from scanning someone's code is not published |
 
-The 1.0.0 specification asks for `401` with a Bearer challenge when an anonymous caller asks for an object it may not read. The Vulnetix server answers `404` instead, and declares that deviation in its conformance report.
+The 1.0.0 specification asks for `401` with a Bearer challenge when an anonymous caller asks for an object it may not read. The Vulnesis server answers `404` instead, and declares that deviation in its conformance report.
 
 ## Scan-derived records
 

@@ -20,7 +20,7 @@ generated: true
 | CAPEC | [CAPEC-112](https://capec.mitre.org/data/definitions/112.html) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `cryptography` `prng` `randomness` |
-| Source | [`internal/sast/rules/vnx-py-005.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-py-005.rego) |
+| Source | [`internal/sast/rules/vnx-py-005.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-py-005.rego) |
 
 ## Overview
 

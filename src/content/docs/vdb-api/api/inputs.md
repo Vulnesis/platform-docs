@@ -71,8 +71,8 @@ A literal advisory id is passed straight through, and the route answers exactly 
 `GET /v2/inputs/resolve` (or `POST` with the inputs as a JSON body) returns only the `resolved` block. It is open to every plan.
 
 ```bash
-curl -s -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
-  "https://api.vdb.vulnetix.com/v2/inputs/resolve?purl=pkg:npm/lodash@4.17.20"
+curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
+  "https://api.vdb.vulnes.is/v2/inputs/resolve?purl=pkg:npm/lodash@4.17.20"
 ```
 
 `resolved.truncated` is `true` when a TEI or CEL selection was capped at 500 packages, or a CEL evaluation at 5,000 matches.
@@ -87,5 +87,5 @@ The CLI resolves the input first and runs the command once per advisory, at most
 vulnetix vdb workarounds pkg:maven/org.apache.logging.log4j/log4j-core@2.14.1
 vulnetix vdb kev get cpe:2.3:o:paloaltonetworks:pan-os:11.1.0:*:*:*:*:*:*:*
 vulnetix vdb exploits --vendor apache --product log4j --package-version 2.14.1
-vulnetix vdb advisories urn:tei:purl:vulnetix.com:pkg:npm/lodash@4.17.20
+vulnetix vdb advisories urn:tei:purl:vulnes.is:pkg:npm/lodash@4.17.20
 ```

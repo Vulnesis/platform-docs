@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | AUR | Official repos |
 |---|---|---|
-| URL | `https://packages.vulnetix.com/aur` | `https://packages.vulnetix.com/arch` |
+| URL | `https://packages.vulnes.is/aur` | `https://packages.vulnes.is/arch` |
 | Ecosystem ID | `aur` | `arch` |
 | Clients | paru, yay | pacman |
 | Plan | Free | Add-on |
@@ -35,8 +35,8 @@ One command covers both. paru and yay configs are merged, not replaced: the orig
 
 ```ini
 [options]
-AurUrl = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/aur
-AurRpcUrl = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/aur/rpc
+AurUrl = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/aur
+AurRpcUrl = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/aur/rpc
 ```
 
 ## pacman (needs root)
@@ -50,7 +50,7 @@ sudo install -m 600 ~/.config/vulnetix/package-firewall/arch-mirrorlist /etc/pac
 Then add `Include = /etc/pacman.d/vulnetix-mirrorlist` as the first line under `[core]`, `[extra]` and `[multilib]` in `/etc/pacman.conf`. The staged line is:
 
 ```text
-Server = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/arch/$repo/os/$arch
+Server = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/arch/$repo/os/$arch
 ```
 
 Test without root first:

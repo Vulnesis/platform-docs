@@ -146,7 +146,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Git sync and repository info | belai | `belai/git` | verified | 27 |
 | Token budgets and session intelligence | belai | `belai/token-budgets` | verified | 9 |
 | Tests, lint and build detection | belai | `belai/tests-and-lint` | verified | 10 |
-| Vulnetix scanning inside sessions | belai | `belai/vulnetix` | verified | 7 |
+| Vulnesis scanning inside sessions | belai | `belai/vulnetix` | verified | 7 |
 | Telemetry and tracing | belai | `belai/telemetry` | verified | 5 |
 | The terminal UI | belai | `belai/tui` | verified | 44 |
 | TUI slash commands reference | belai | `belai/tui-commands` | verified | 49 |

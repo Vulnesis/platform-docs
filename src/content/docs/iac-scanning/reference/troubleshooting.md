@@ -14,7 +14,7 @@ Use this page when `vulnetix iac` stops with an error, or reports less than you 
 
 | Symptom or message | Cause | Fix |
 |---|---|---|
-| `invalid rule reference "<value>": expected org/repo` | `--rule` was given a URL or a bare name | Pass `org/repo`, for example `--rule Vulnetix/opa-fugue-regula`. Set another host with `--rule-registry`. |
+| `invalid rule reference "<value>": expected org/repo` | `--rule` was given a URL or a bare name | Pass `org/repo`, for example `--rule Vulnesis/opa-fugue-regula`. Set another host with `--rule-registry`. |
 | `--fail-on: unknown rule "<value>" (valid: low, medium, high, critical, ...)` | A misspelt severity | Use `low`, `medium`, `high` or `critical`. |
 | `cannot infer output format for "<path>": use .cdx.json for CycloneDX or .sarif for SARIF` | `-o` was given a file name with no recognised extension | End it in `.sarif`, `.sarif.json` or `.report.json`. See [Output](/iac-scanning/reference/output/). |
 
@@ -33,7 +33,7 @@ Use this page when `vulnetix iac` stops with an error, or reports less than you 
 
 | Symptom or message | Cause | Fix |
 |---|---|---|
-| Nothing reported for Kubernetes, CloudFormation, ARM or Ansible | The seven built-in rules are Terraform on AWS only | Add a rule pack. See [Rule packs](/iac-scanning/guides/rule-packs/#packs-vulnetix-publishes). |
+| Nothing reported for Kubernetes, CloudFormation, ARM or Ansible | The seven built-in rules are Terraform on AWS only | Add a rule pack. See [Rule packs](/iac-scanning/guides/rule-packs/#packs-vulnesis-publishes). |
 | A module under `infra/modules/<name>/main.tf` is not checked | It is at depth 4; the default `--depth` is `3` | Pass `--depth 10` or more. |
 | A misconfiguration set through a variable, local or module input is not reported | The rules read literals, not evaluated HCL | Expected. See [Overview](/iac-scanning/). |
 | Hard-coded AWS keys in Terraform are not reported | `VNX-TF-008` is a `secrets` rule | Run [`vulnetix secrets`](/secrets/). |

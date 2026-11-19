@@ -15,7 +15,7 @@ Agents keep notes so the next session does not have to relearn the same things: 
 | `repo` | Notes about a repository, readable and writable by every agent working on it |
 | `profile` | A worker profile's lessons |
 
-Every note a host keeps is replicated to Vulnetix, so every host of your organisation shares the same notes, and a Pix Sandbox that restarts gets its notes back.
+Every note a host keeps is replicated to Vulnesis, so every host of your organisation shares the same notes, and a Pix Sandbox that restarts gets its notes back.
 
 A note is at most 4 KiB of text with up to 16 tags. A scope keeps up to 500 live notes; the oldest beyond that are removed. Deleting a note leaves a marker, so a host with an old copy cannot bring it back.
 

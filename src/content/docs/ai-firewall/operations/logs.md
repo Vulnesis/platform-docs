@@ -28,7 +28,7 @@ With inference logging on, the gateway writes one `AiFirewallLog` row per infere
 
 | Where | How |
 |---|---|
-| Resolve Platform | **Inference logging** card on the Overview tab of the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall) |
+| Resolve Platform | **Inference logging** card on the Overview tab of the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall) |
 | CLI | `vulnetix ai-firewall settings --logs` (on), `--no-logs` (off) |
 | Policy file | `spec.settings.logsEnabled: true` in [`.vulnetix/ai-firewall.yaml`](/ai-firewall/reference/policy-file/#specsettings) |
 | Check | `vulnetix ai-firewall status` prints `Inference logging  on` or `off` |
@@ -70,13 +70,13 @@ The gateway's own operational log line for each request holds method, path, stat
 
 ## Where rows also go
 
-While logging is on, each row is also forwarded, best effort, to Guardian, the Vulnetix SIEM, as a `product_events` row. Every capability the hold for review holds is forwarded too, whether or not logging is on. Rows wait in a bounded in-memory buffer and are dropped if a post fails; the database row stays the record. Guardian drops rows for organisations below its own plan. See the [SIEM docs](/siem/).
+While logging is on, each row is also forwarded, best effort, to Guardian, the Vulnesis SIEM, as a `product_events` row. Every capability the hold for review holds is forwarded too, whether or not logging is on. Rows wait in a bounded in-memory buffer and are dropped if a post fails; the database row stays the record. Guardian drops rows for organisations below its own plan. See the [SIEM docs](/siem/).
 
 ## Reading logs
 
-The Resolve Platform's [Logs page](https://www.vulnetix.com/resolve/logs#aifw) has an AI Firewall stream with decision charts, the top blocking rules, providers and clients, and a paged table. The range is `24h`, `7d`, `30d` (default) or `90d`.
+The Resolve Platform's [Logs page](https://www.vulnes.is/resolve/logs#aifw) has an AI Firewall stream with decision charts, the top blocking rules, providers and clients, and a paged table. The range is `24h`, `7d`, `30d` (default) or `90d`.
 
-Resolve Platform API, session-authenticated, under `https://www.vulnetix.com/api/site/v1`:
+Resolve Platform API, session-authenticated, under `https://www.vulnes.is/api/site/v1`:
 
 | Request | Parameters | Returns |
 |---|---|---|

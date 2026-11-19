@@ -30,7 +30,7 @@ Add `--dry-run` to any of them to see what would be removed. Exactly one of name
 | The `~/.netrc` entry | Only with `--remove-credentials` or `--purge`. |
 
 > [!CAREFUL] The credential is shared
-> Every ecosystem authenticates with the one `machine packages.vulnetix.com` netrc entry. Removing it while another ecosystem is still configured breaks that ecosystem with `401`. The command prints which ecosystems still point at the firewall when this happens. Use `--purge` to remove everything at once.
+> Every ecosystem authenticates with the one `machine packages.vulnes.is` netrc entry. Removing it while another ecosystem is still configured breaks that ecosystem with `401`. The command prints which ecosystems still point at the firewall when this happens. Use `--purge` to remove everything at once.
 
 Root-owned files you installed by hand (`/etc/pacman.d/vulnetix-mirrorlist`, APT and dnf repository files, `/etc/apk/repositories`, `/etc/docker/daemon.json`) are never touched. Remove them yourself.
 

@@ -41,7 +41,7 @@ Event names are GitHub's on every forge. A GHES, Gitea, Forgejo or GitLab delive
 | `deployment_status` | `created` | `deploy:<id>` |
 | `posture_finding` | `opened`, `resolved`, `regressed`, `introduced` | `finding:<uuid>`; `pr:N` for `introduced` |
 
-`posture_finding` is not a GitHub delivery. Vulnetix raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). `introduced` is raised for a pull request that changes a workflow, an action or `CODEOWNERS` when its head would add a misconfiguration the default branch does not have: its subject is the pull request, its `severity` the worst new finding, and `origin` says whether it comes from a fork. The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
+`posture_finding` is not a GitHub delivery. Vulnesis raises it when one of its GitHub misconfiguration rules fails on a repository for the first time (`opened`), passes again after a fix (`resolved`), or fails again after passing (`regressed`). `introduced` is raised for a pull request that changes a workflow, an action or `CODEOWNERS` when its head would add a misconfiguration the default branch does not have: its subject is the pull request, its `severity` the worst new finding, and `origin` says whether it comes from a fork. The rules run on pushes that change workflows, actions, `CODEOWNERS`, `SECURITY.md` or the Dependabot configuration, on branch protection, ruleset, deploy key and security setting changes, and once a day. Its `severity` is the finding's after the repository's own settings rated it: a pull request target checkout in a private repository with forking disabled is rated lower than the same workflow in a public one, so a `critical` trigger does not fire for it.
 
 Some events need App permissions or subscriptions your installation may not have yet. The Organisations panel on the Repos page shows each event's state. See [Managed scope](/software-factory/control/managed-scope/).
 
@@ -93,7 +93,7 @@ A delivery that matches can still be stopped. Each stop is recorded as a `trigge
 | Reason | Why |
 |---|---|
 | `own_branch` | The head branch starts with the factory's own branch prefix (`forge.branch_prefix`, `belai/K-` by default). |
-| `own_identity` | The author or sender is the Vulnetix App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Pix [bot]` or `security@vulnetix.com`. |
+| `own_identity` | The author or sender is the Vulnesis App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Pix [bot]` or `security@vulnes.is`. |
 | `coalesced` | Another delivery in the same debounce window already started the run. |
 | `rate_limited` | The trigger hit `maxRunsPerHour`. |
 | `fanout_cap` | The delivery already started the most runs one delivery may start. |

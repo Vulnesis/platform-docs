@@ -21,7 +21,7 @@ checked: [cli@4c8c3b7, vdb-api@4145f0a]
 updated: 02 Nov 2026
 ---
 
-`vulnetix ai-firewall` wires the AI clients on a machine to the gateway at `https://guardrails.vulnetix.com`, checks that they are wired, and edits the policy the gateway enforces for your organisation. It is separate from `vulnetix package-firewall`, which proxies package registries.
+`vulnetix ai-firewall` wires the AI clients on a machine to the gateway at `https://guardrails.vulnes.is`, checks that they are wired, and edits the policy the gateway enforces for your organisation. It is separate from `vulnetix package-firewall`, which proxies package registries.
 
 ```text
 vulnetix ai-firewall
@@ -42,19 +42,19 @@ vulnetix ai-firewall
 
 ## Credentials
 
-Every subcommand except `uninstall` needs a Vulnetix credential, found in this order: `VULNETIX_API_TOKEN`; `VULNETIX_API_KEY` with `VULNETIX_ORG_ID`; `VVD_ORG` with `VVD_SECRET`; `.vulnetix/credentials.json` in the project; `~/.vulnetix/credentials.json`; the Package Firewall netrc entry. See [CLI authentication](/cli/authentication/overview/).
+Every subcommand except `uninstall` needs a Vulnesis credential, found in this order: `VULNESIS_API_TOKEN`; `VULNESIS_API_KEY` with `VULNESIS_ORG_ID`; `VVD_ORG` with `VVD_SECRET`; `.vulnetix/credentials.json` in the project; `~/.vulnetix/credentials.json`; the Package Firewall netrc entry. See [CLI authentication](/cli/authentication/overview/).
 
-`install`, `status`, `snippet`, `apply` and `export` also need the org's Vulnetix API key itself, because they write it into client config or compare it with `metadata.org`. They accept only an API key credential (`VULNETIX_API_KEY` with `VULNETIX_ORG_ID`, or a stored API key login) or a SigV4 credential, from which a derived API key is fetched. A `VULNETIX_API_TOKEN` credential fails with `unsupported authentication method`.
+`install`, `status`, `snippet`, `apply` and `export` also need the org's Vulnesis API key itself, because they write it into client config or compare it with `metadata.org`. They accept only an API key credential (`VULNESIS_API_KEY` with `VULNESIS_ORG_ID`, or a stored API key login) or a SigV4 credential, from which a derived API key is fetched. A `VULNESIS_API_TOKEN` credential fails with `unsupported authentication method`.
 
-> [!CAREFUL] VULNETIX_API_KEY alone is not a credential
-> The CLI uses `VULNETIX_API_KEY` only when `VULNETIX_ORG_ID` is also set. With the key alone it falls through to the stored login, or fails with `no credentials found`. In CI, set both.
+> [!CAREFUL] VULNESIS_API_KEY alone is not a credential
+> The CLI uses `VULNESIS_API_KEY` only when `VULNESIS_ORG_ID` is also set. With the key alone it falls through to the stored login, or fails with `no credentials found`. In CI, set both.
 
 ## Flags shared by many subcommands
 
 | Flag | Default | On | Meaning |
 |---|---|---|---|
-| `--base-url` | `https://api.vdb.vulnetix.com` | every subcommand except `uninstall` | Vulnetix API the policy is read from and written to |
-| `--gateway-url` | `https://guardrails.vulnetix.com` | `install`, `uninstall`, `status`, `snippet` | Gateway written into client config, and the host `status` and `uninstall` look for |
+| `--base-url` | `https://api.vdb.vulnes.is` | every subcommand except `uninstall` | Vulnesis API the policy is read from and written to |
+| `--gateway-url` | `https://guardrails.vulnes.is` | `install`, `uninstall`, `status`, `snippet` | Gateway written into client config, and the host `status` and `uninstall` look for |
 | `-o`, `--output` | `pretty` | every subcommand | `pretty` or `json`. Anything else fails with `--output must be one of: pretty, json`. |
 
 ## install
@@ -72,7 +72,7 @@ Clients: `aider`, `claude-code`, `codex`, `continue`, `cursor`, `env`, `shell`, 
 | `--provider <slug>[,<slug>]` | every provider with a stored key | Wire only these providers. Repeatable. |
 | `--model <id>` | none | Default model to pin in agent configs. Refused if the policy would reject it. |
 | `--scope user\|project` | per client | Where to write. Defaults: `shell`, `codex`, `continue`, `cursor`, `windsurf` user; `env`, `claude-code`, `aider` project. |
-| `--embed-key` | `false` | Write the literal API key instead of a reference to `$VULNETIX_API_KEY`. |
+| `--embed-key` | `false` | Write the literal API key instead of a reference to `$VULNESIS_API_KEY`. |
 | `--create-env` | `false` | Create a `.env` at the git root when there is no `.env`, `.envrc` or `Makefile`. |
 | `--dry-run` | `false` | Print the planned changes and write nothing. |
 
@@ -91,7 +91,7 @@ Removes what `install` wrote. Server policy and stored keys are not touched, and
 | `--all` | `false` | Every client |
 | `--except <client>` | none | Every client except these |
 | `--dry-run` | `false` | Print the planned changes and write nothing |
-| `--gateway-url` | `https://guardrails.vulnetix.com` | Host whose settings are stripped |
+| `--gateway-url` | `https://guardrails.vulnes.is` | Host whose settings are stripped |
 
 ## status
 
@@ -180,7 +180,7 @@ Stores or removes the provider API key the gateway uses upstream. The key is enc
 | `--stdin` | Read the first line of stdin |
 | `--key <key>` | The key on the command line. Prints a warning, because it lands in shell history and the process list. |
 
-Exactly one source. The key is trimmed and must be 1 to 4096 bytes with no control characters. `key set kiro` is refused; use `kiro login`. A key managed in the secrets vault is refused with `409`; change it at `https://www.vulnetix.com/resolve/vault`. Storing a key for a disabled provider fails with `400 provider <slug> is disabled`.
+Exactly one source. The key is trimmed and must be 1 to 4096 bytes with no control characters. `key set kiro` is refused; use `kiro login`. A key managed in the secrets vault is refused with `409`; change it at `https://www.vulnes.is/resolve/vault`. Storing a key for a disabled provider fails with `400 provider <slug> is disabled`.
 
 ```bash
 vulnetix ai-firewall key set openai --from-env OPENAI_API_KEY
@@ -193,7 +193,7 @@ printf '%s\n' "$ANTHROPIC_API_KEY" | vulnetix ai-firewall key set anthropic --st
 vulnetix ai-firewall kiro login [flags]
 ```
 
-Kiro has no API key. This signs in with an AWS Builder ID, or an IAM Identity Center start URL, and stores the sign-in in the secrets vault as the `kiro` provider's key, granted to the AI Firewall. The gateway mints a short-lived Kiro access token from it for each request. Clients send their Vulnetix API key to `https://guardrails.vulnetix.com/kiro/<org-uuid>/v1`. Needs an API key sign-in (`vulnetix auth login` with an API key).
+Kiro has no API key. This signs in with an AWS Builder ID, or an IAM Identity Center start URL, and stores the sign-in in the secrets vault as the `kiro` provider's key, granted to the AI Firewall. The gateway mints a short-lived Kiro access token from it for each request. Clients send their Vulnesis API key to `https://guardrails.vulnes.is/kiro/<org-uuid>/v1`. Needs an API key sign-in (`vulnetix auth login` with an API key).
 
 | Flag | Default | Meaning |
 |---|---|---|

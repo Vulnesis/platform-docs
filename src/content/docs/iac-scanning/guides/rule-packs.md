@@ -10,27 +10,27 @@ updated: 02 Nov 2026
 The built-in IaC rules are seven Terraform checks for AWS. Everything else comes from rule packs: Git repositories of Rego modules that the CLI fetches and evaluates alongside the built-in rules.
 
 ```bash
-vulnetix iac --rule Vulnetix/opa-fugue-regula
+vulnetix iac --rule Vulnesis/opa-fugue-regula
 ```
 
-## Packs Vulnetix publishes
+## Packs Vulnesis publishes
 
 All are public on GitHub. Counts are the rules of kind `iac` in each pack at the commit listed on this page; only those run under `vulnetix iac`.
 
 | Pack | `iac` rules | Covers |
 |---|---|---|
-| `Vulnetix/opa-fugue-regula` | 275 | Terraform (194), Azure Resource Manager JSON (38), CloudFormation YAML or JSON (23), Kubernetes (20). Ported from Fugue Regula. |
-| `Vulnetix/opa-checkmarx-kics` | 205 | Terraform (143), Dockerfile (48), Ansible (14). Ported from Checkmarx KICS. |
-| `Vulnetix/opa-aquasecurity-trivy` | 107 | Kubernetes YAML (79), Dockerfile (28). Ported from Aqua Trivy. |
-| `Vulnetix/opa-cigna-tf` | 88 | Terraform on AWS. Ported from Cigna's policies. |
-| `Vulnetix/opa-cds-aws-tf` | 16 | Terraform on AWS: RDS, Lambda, IAM, ECS, WAF, SSM, tagging. |
-| `Vulnetix/opa-snyk-labs-iac` | 6 | Terraform examples: S3 ACLs and tags, VPC flow logs, password policy, approved AMIs, branch protection. |
-| `Vulnetix/community-rules` | 184 | Collected community policy packs, mostly Terraform, some Kubernetes and Dockerfile. It also has 39 rules of other kinds (`api`, `container`, `sast`, `sca`) that do not run here. |
+| `Vulnesis/opa-fugue-regula` | 275 | Terraform (194), Azure Resource Manager JSON (38), CloudFormation YAML or JSON (23), Kubernetes (20). Ported from Fugue Regula. |
+| `Vulnesis/opa-checkmarx-kics` | 205 | Terraform (143), Dockerfile (48), Ansible (14). Ported from Checkmarx KICS. |
+| `Vulnesis/opa-aquasecurity-trivy` | 107 | Kubernetes YAML (79), Dockerfile (28). Ported from Aqua Trivy. |
+| `Vulnesis/opa-cigna-tf` | 88 | Terraform on AWS. Ported from Cigna's policies. |
+| `Vulnesis/opa-cds-aws-tf` | 16 | Terraform on AWS: RDS, Lambda, IAM, ECS, WAF, SSM, tagging. |
+| `Vulnesis/opa-snyk-labs-iac` | 6 | Terraform examples: S3 ACLs and tags, VPC flow logs, password policy, approved AMIs, branch protection. |
+| `Vulnesis/community-rules` | 184 | Collected community policy packs, mostly Terraform, some Kubernetes and Dockerfile. It also has 39 rules of other kinds (`api`, `container`, `sast`, `sca`) that do not run here. |
 
 Rule ids keep the source project's prefix (`FUGUE-ARM-AS-05`, `KICS-ANSIBLE-AWS-ENC-001`, `TRIVY-DS-0011`, `CIGNA-TF-AWS-CF-02`), so the report and the SARIF show where each check came from.
 
 > [!CAREFUL] Dockerfile checks run under iac, not containers
-> The KICS and Trivy Dockerfile rules declare kind `iac`. `vulnetix iac --rule Vulnetix/opa-checkmarx-kics` checks your Dockerfiles; `vulnetix containers --rule Vulnetix/opa-checkmarx-kics` does not, because the containers command runs only kinds `oci` and `container`.
+> The KICS and Trivy Dockerfile rules declare kind `iac`. `vulnetix iac --rule Vulnesis/opa-checkmarx-kics` checks your Dockerfiles; `vulnetix containers --rule Vulnesis/opa-checkmarx-kics` does not, because the containers command runs only kinds `oci` and `container`.
 
 ## How packs are fetched
 
@@ -48,13 +48,13 @@ Rule ids keep the source project's prefix (`FUGUE-ARM-AS-05`, `KICS-ANSIBLE-AWS-
 ## Running packs only
 
 ```bash
-vulnetix iac --disable-default-rules --rule Vulnetix/opa-aquasecurity-trivy
+vulnetix iac --disable-default-rules --rule Vulnesis/opa-aquasecurity-trivy
 ```
 
 `--disable-default-rules` drops the seven built-in rules. To try one rule from a pack:
 
 ```bash
-vulnetix iac --rule Vulnetix/opa-fugue-regula --rule-id FUGUE-ARM-AS-05
+vulnetix iac --rule Vulnesis/opa-fugue-regula --rule-id FUGUE-ARM-AS-05
 ```
 
 ## Writing your own pack

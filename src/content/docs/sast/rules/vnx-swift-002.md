@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1552](https://attack.mitre.org/techniques/T1552/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `logging` `sensitive-data` `swift` `ios` |
-| Source | [`internal/sast/rules/vnx-swift-002.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-swift-002.rego) |
+| Source | [`internal/sast/rules/vnx-swift-002.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-swift-002.rego) |
 
 ## Overview
 

@@ -1,14 +1,14 @@
 ---
 title: Organization
 nav: Overview
-description: Your Vulnetix organisation, the people and service accounts in it, the secrets vault, integrations, messaging and notifications, and which page handles each.
+description: Your Vulnesis organisation, the people and service accounts in it, the secrets vault, integrations, messaging and notifications, and which page handles each.
 order: 1
 sources: [vdb-site/api/main.go, vdb-site/api/internal/handler/members.go, vdb-site/api/internal/handler/entitlements.go, vdb-site/.repo/org-provisioning.md, website/src/shared/console-nav.ts]
 checked: [vdb-site@1a06d67, website@b548e4c]
 updated: 04 Nov 2026
 ---
 
-These pages are for the owners and admins who set up and run a Vulnetix organisation: who is in it, which credentials CI uses, where provider keys and integration secrets are kept, and where alerts are sent. Read them before you connect a product, because every product's data and policy belongs to the organisation and takes its credentials from here.
+These pages are for the owners and admins who set up and run a Vulnesis organisation: who is in it, which credentials CI uses, where provider keys and integration secrets are kept, and where alerts are sent. Read them before you connect a product, because every product's data and policy belongs to the organisation and takes its credentials from here.
 
 An organisation is the tenant everything else belongs to: scan data, policies, vault entries, connections and members. It is created by the first person to sign up with a company domain, or as a personal organisation for a free-mail address.
 

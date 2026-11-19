@@ -14,7 +14,7 @@ cd ~/code/my-project
 belai
 ```
 
-The first launch opens **Getting started**: three ideas with the commands and keys for each, and an offer to install the Vulnetix CLI and sign in. `/welcome` reopens it.
+The first launch opens **Getting started**: three ideas with the commands and keys for each, and an offer to install the Vulnesis CLI and sign in. `/welcome` reopens it.
 
 ## The screen
 

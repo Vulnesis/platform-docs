@@ -8,13 +8,13 @@ checked: [ai-firewall@339de55]
 updated: 02 Nov 2026
 ---
 
-There is no CLI snippet for the JVM. Each example reads `VULNETIX_API_KEY` and `VULNETIX_ORG_ID` from the environment.
+There is no CLI snippet for the JVM. Each example reads `VULNESIS_API_KEY` and `VULNESIS_ORG_ID` from the environment.
 
 | Client | Base URL to give it |
 |---|---|
-| `openai-java` (Java or Kotlin) | `https://guardrails.vulnetix.com/<provider>/<uuid>/v1` |
-| `openai-kotlin` (`com.aallam.openai`) | `https://guardrails.vulnetix.com/<provider>/<uuid>/v1/`, with a trailing slash |
-| Spring AI | `https://guardrails.vulnetix.com/<provider>/<uuid>`, no `/v1` |
+| `openai-java` (Java or Kotlin) | `https://guardrails.vulnes.is/<provider>/<uuid>/v1` |
+| `openai-kotlin` (`com.aallam.openai`) | `https://guardrails.vulnes.is/<provider>/<uuid>/v1/`, with a trailing slash |
+| Spring AI | `https://guardrails.vulnes.is/<provider>/<uuid>`, no `/v1` |
 
 ## Java with openai-java
 
@@ -33,8 +33,8 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams;
 public class Hello {
     public static void main(String[] args) {
         OpenAIClient client = OpenAIOkHttpClient.builder()
-            .baseUrl("https://guardrails.vulnetix.com/openai/" + System.getenv("VULNETIX_ORG_ID") + "/v1")
-            .apiKey(System.getenv("VULNETIX_API_KEY")) // the Vulnetix key
+            .baseUrl("https://guardrails.vulnes.is/openai/" + System.getenv("VULNESIS_ORG_ID") + "/v1")
+            .apiKey(System.getenv("VULNESIS_API_KEY")) // the Vulnesis key
             .build();
 
         ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()
@@ -66,8 +66,8 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams
 
 fun main() {
     val client = OpenAIOkHttpClient.builder()
-        .baseUrl("https://guardrails.vulnetix.com/openai/${System.getenv("VULNETIX_ORG_ID")}/v1")
-        .apiKey(System.getenv("VULNETIX_API_KEY"))
+        .baseUrl("https://guardrails.vulnes.is/openai/${System.getenv("VULNESIS_ORG_ID")}/v1")
+        .apiKey(System.getenv("VULNESIS_API_KEY"))
         .build()
 
     val params = ChatCompletionCreateParams.builder()
@@ -93,8 +93,8 @@ import com.aallam.openai.client.OpenAIHost
 suspend fun main() {
     val openAI = OpenAI(
         OpenAIConfig(
-            host = OpenAIHost(baseUrl = "https://guardrails.vulnetix.com/openai/${System.getenv("VULNETIX_ORG_ID")}/v1/"),
-            token = System.getenv("VULNETIX_API_KEY"),
+            host = OpenAIHost(baseUrl = "https://guardrails.vulnes.is/openai/${System.getenv("VULNESIS_ORG_ID")}/v1/"),
+            token = System.getenv("VULNESIS_API_KEY"),
         )
     )
     val completion = openAI.chatCompletion(
@@ -122,8 +122,8 @@ Spring AI appends `/v1/chat/completions` to `base-url` itself, so the base URL s
 spring:
   ai:
     openai:
-      base-url: https://guardrails.vulnetix.com/openai/${VULNETIX_ORG_ID}
-      api-key: ${VULNETIX_API_KEY}
+      base-url: https://guardrails.vulnes.is/openai/${VULNESIS_ORG_ID}
+      api-key: ${VULNESIS_API_KEY}
       chat:
         options:
           model: gpt-4o-mini

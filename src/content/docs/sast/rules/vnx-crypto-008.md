@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1110](https://attack.mitre.org/techniques/T1110/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `crypto` `timing-attack` `hmac` |
-| Source | [`internal/sast/rules/vnx-crypto-008.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-crypto-008.rego) |
+| Source | [`internal/sast/rules/vnx-crypto-008.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-crypto-008.rego) |
 
 ## Overview
 

@@ -1,6 +1,6 @@
 ---
 title: Jenkins
-description: Run Vulnetix in declarative and scripted Jenkins pipelines with credentials from the Jenkins store, gates, archived reports and catchError.
+description: Run Vulnesis in declarative and scripted Jenkins pipelines with credentials from the Jenkins store, gates, archived reports and catchError.
 order: 8
 sources: [cli/internal/config/config.go, cli/install.sh, cli/cmd/scan.go]
 checked: [cli@24498404a]
@@ -17,13 +17,13 @@ Add two **Secret text** credentials, for example `vulnetix-org-id` and `vulnetix
 pipeline {
   agent any
   environment {
-    VULNETIX_ORG_ID  = credentials('vulnetix-org-id')
-    VULNETIX_API_KEY = credentials('vulnetix-api-key')
+    VULNESIS_ORG_ID  = credentials('vulnetix-org-id')
+    VULNESIS_API_KEY = credentials('vulnetix-api-key')
   }
   stages {
-    stage('Install Vulnetix') {
+    stage('Install Vulnesis') {
       steps {
-        sh 'curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"'
+        sh 'curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"'
         sh '"$HOME/.local/bin/vulnetix" auth verify'
       }
     }
@@ -61,7 +61,7 @@ To treat an undecided jail gate (exit `3`) differently from a breach (exit `1`):
 script {
   def code = sh(script: '"$HOME/.local/bin/vulnetix" scan --fail-on high --jail', returnStatus: true)
   if (code == 3) { unstable('jail could not decide: check the required scans ran') }
-  else if (code != 0) { error("Vulnetix gate failed (exit ${code})") }
+  else if (code != 0) { error("Vulnesis gate failed (exit ${code})") }
 }
 ```
 
@@ -71,11 +71,11 @@ script {
 node {
   checkout scm
   withCredentials([
-    string(credentialsId: 'vulnetix-org-id', variable: 'VULNETIX_ORG_ID'),
-    string(credentialsId: 'vulnetix-api-key', variable: 'VULNETIX_API_KEY'),
+    string(credentialsId: 'vulnetix-org-id', variable: 'VULNESIS_ORG_ID'),
+    string(credentialsId: 'vulnetix-api-key', variable: 'VULNESIS_API_KEY'),
   ]) {
     withEnv(["PATH+VULNETIX=${env.HOME}/.local/bin"]) {
-      sh 'curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"'
+      sh 'curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"'
       sh 'vulnetix auth verify'
       sh 'vulnetix scan --fail-on high,kev'
     }

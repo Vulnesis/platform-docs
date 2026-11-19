@@ -7,7 +7,7 @@ checked: [siem@e0f71fa]
 updated: 02 Nov 2026
 ---
 
-This takes about 15 minutes. You need an owner or admin role in a Vulnetix organisation on the Business or Enterprise plan, and permission to create IAM roles, Firehose streams and flow logs in an AWS account.
+This takes about 15 minutes. You need an owner or admin role in a Vulnesis organisation on the Business or Enterprise plan, and permission to create IAM roles, Firehose streams and flow logs in an AWS account.
 
 ## 1. Start a pack
 
@@ -24,7 +24,7 @@ A token is tied to one kind (`aws`, `cloudflare` or `events`). An AWS token sent
 Use **Launch in AWS** on the Sources page and paste the token into the `IngestToken` field, or deploy from a shell:
 
 ```sh
-curl -fsSLo vulnetix-siem.yaml https://guardian.vulnetix.com/v1/templates/vulnetix-siem.yaml
+curl -fsSLo vulnetix-siem.yaml https://guardian.vulnes.is/v1/templates/vulnetix-siem.yaml
 aws cloudformation deploy --stack-name vulnetix-siem --template-file vulnetix-siem.yaml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --parameter-overrides IngestToken=gdn_xxxxxxxxxxxxxxxxxxxx VpcIds=vpc-0abc1234,vpc-0def5678
@@ -52,4 +52,4 @@ The help panel lists more templates. Syntax is on [Search syntax](/siem/search/s
 
 ## 6. Turn on a rule
 
-On **Guardian > Rules**, open the catalogue and turn on **Indicator domain resolved** (`ioc-dns`, level `critical`), which matches DNS queries against the Vulnetix indicator list. Set a target (a messaging connection or an email address) on the rule. New matches arrive as `siem.alert.<level>` messages. See [Alert rules](/siem/detection/rules/).
+On **Guardian > Rules**, open the catalogue and turn on **Indicator domain resolved** (`ioc-dns`, level `critical`), which matches DNS queries against the Vulnesis indicator list. Set a target (a messaging connection or an email address) on the rule. New matches arrive as `siem.alert.<level>` messages. See [Alert rules](/siem/detection/rules/).

@@ -11,7 +11,7 @@ updated: 02 Nov 2026
 ---
 
 > [!CAREFUL] Client identity is self-reported
-> Every signal below is a header the caller chooses to send. `curl -H 'User-Agent: claude-cli/2.1.0'` is Claude Code as far as the gateway can tell. Use client rules for attribution and inventory. The authentication boundary is the Vulnetix API key.
+> Every signal below is a header the caller chooses to send. `curl -H 'User-Agent: claude-cli/2.1.0'` is Claude Code as far as the gateway can tell. Use client rules for attribution and inventory. The authentication boundary is the Vulnesis API key.
 
 ## How the name is chosen
 
@@ -73,7 +73,7 @@ Organisations run more clients than they expect: CI scripts on an SDK, notebooks
 - **Finding unmanaged agents.** A client name nobody recognises in the inventory.
 - **Rollout.** Applying a strict rule to `claude-code` first.
 
-It does not stop a determined caller. If only approved software may reach the provider, control who holds the Vulnetix API key.
+It does not stop a determined caller. If only approved software may reach the provider, control who holds the Vulnesis API key.
 
 ## Related
 

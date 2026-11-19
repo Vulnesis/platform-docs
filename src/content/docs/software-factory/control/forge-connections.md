@@ -33,7 +33,7 @@ Codeberg is Forgejo: use the Forgejo card with host `codeberg.org`. The factory 
 
 ### GitHub Enterprise Server
 
-1. On the instance, register a GitHub App with the same permissions and events as the Vulnetix GitHub App ([Quickstart](/software-factory/get-started/quickstart/) lists them).
+1. On the instance, register a GitHub App with the same permissions and events as the Vulnesis GitHub App ([Quickstart](/software-factory/get-started/quickstart/) lists them).
 2. Install it on the organisation.
 3. Enter the App id, the installation id (the number at the end of the installation's settings URL) and the App's private key.
 
@@ -41,7 +41,7 @@ The factory signs in as the App, exactly as on github.com, so a GHES installatio
 
 ## Webhooks
 
-After connecting, the dialog shows the connection's webhook URL and its secret, once. The URL is `https://www.vulnetix.com/api/site/v1/webhooks/<kind>/<connection id>`.
+After connecting, the dialog shows the connection's webhook URL and its secret, once. The URL is `https://www.vulnes.is/api/site/v1/webhooks/<kind>/<connection id>`.
 
 Choose the webhook button on the connection's row to have the factory create its webhook on every repository the bot can reach. It subscribes to push, pull requests, reviews, review comments, issues, issue comments, checks (commit statuses on Gitea and Forgejo, jobs on GitLab; Gitea 1.22 has no status event, so a check trigger does not fire there, though gates still read the statuses), workflow runs (GitLab pipelines), releases, repository events and deployment statuses. A webhook that already exists is left as it is. Removing the connection removes the factory's webhooks. Where the bot may not add a webhook, the row says so for each repository it could not reach; add the webhook there by hand with the same URL and secret.
 
@@ -67,7 +67,7 @@ The status reads **connected**, or **the token was refused** when the forge answ
 
 The bot does the factory's work. Each member can also link their own account on a connection, so a merge they commit from the conflict editor carries an email the forge matches to them, and so their signing key can be added to their account there.
 
-1. An owner or admin chooses **Set up sign-in** on the connection's row. On the forge, create an OAuth application with the redirect URI the row shows (`https://www.vulnetix.com/resolve/integrations`), then paste its client id and secret. On Gitea and Forgejo the application asks for `read:user write:user`; on GitLab, `api`; on GHES, the App you registered is the application.
+1. An owner or admin chooses **Set up sign-in** on the connection's row. On the forge, create an OAuth application with the redirect URI the row shows (`https://www.vulnes.is/resolve/integrations`), then paste its client id and secret. On Gitea and Forgejo the application asks for `read:user write:user`; on GitLab, `api`; on GHES, the App you registered is the application.
 2. A member chooses **Link my account**, signs in on the forge and comes back to Integrations. The row then names their login and email.
 3. **Add my signing key** puts their ready [signing key](/software-factory/decisions/commit-signing/) on their forge account, so the forge can show their signed commits as verified.
 

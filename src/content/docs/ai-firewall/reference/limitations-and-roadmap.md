@@ -40,7 +40,7 @@ updated: 02 Nov 2026
 - **Redaction breaks prompt caching** when it rewrites text in a cached prefix.
 - **Streamed Chat Completions without `stream_options.include_usage` log no tokens.**
 - **The CLI knows nine providers.** `key set` and `install` do not cover `alibaba`, `moonshot`, `minimax`, `kiro` or custom providers; use the Resolve Platform or a policy file.
-- **CLI token credentials.** `status`, `install`, `snippet`, `apply` and `export` reject `VULNETIX_API_TOKEN` sign-ins with `unsupported authentication method: token`.
+- **CLI token credentials.** `status`, `install`, `snippet`, `apply` and `export` reject `VULNESIS_API_TOKEN` sign-ins with `unsupported authentication method: token`.
 - **`GET /v1/models` responses carry no `X-Vulnetix-Firewall-Request-Id`.**
 - **Cursor.** Some Cursor features (tab completion, Auto mode) never use a custom key or base URL, so they never reach the gateway. See [Cursor](/ai-firewall/clients/cursor/).
 - **Kiro refresh tokens.** When AWS rotates a Kiro refresh token during use, each gateway replica keeps the new token in memory only; only the vault's verify action saves it. GitHub and Google Kiro sign-ins cannot be used.

@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1190](https://attack.mitre.org/techniques/T1190/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `rds` `database` `public-access` `aws` `terraform` |
-| Source | [`internal/sast/rules/vnx-tf-003.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-tf-003.rego) |
+| Source | [`internal/sast/rules/vnx-tf-003.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-tf-003.rego) |
 
 ## Overview
 

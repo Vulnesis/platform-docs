@@ -97,7 +97,7 @@ With no `--baseline-required`, an unreachable or invalid baseline is a note in t
 
 ## In GitHub Actions
 
-Check the plan on pull requests and apply on `main`. The CLI needs both `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`: with the key alone it does not authenticate. `VULNETIX_API_TOKEN` does not work for `apply` or `export`. Install the CLI as described in [CI/CD](/cli/ci-cd/github-actions/).
+Check the plan on pull requests and apply on `main`. The CLI needs both `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`: with the key alone it does not authenticate. `VULNESIS_API_TOKEN` does not work for `apply` or `export`. Install the CLI as described in [CI/CD](/cli/ci-cd/github-actions/).
 
 ```yaml
 name: ai-firewall-policy
@@ -112,8 +112,8 @@ jobs:
   policy:
     runs-on: ubuntu-latest
     env:
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
+      VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
+      VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
     steps:
       - uses: actions/checkout@v4
       # Install the vulnetix CLI here.

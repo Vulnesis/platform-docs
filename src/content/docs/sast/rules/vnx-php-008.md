@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1592](https://attack.mitre.org/techniques/T1592/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `information-disclosure` `reconnaissance` `php` |
-| Source | [`internal/sast/rules/vnx-php-008.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-php-008.rego) |
+| Source | [`internal/sast/rules/vnx-php-008.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-php-008.rego) |
 
 ## Overview
 

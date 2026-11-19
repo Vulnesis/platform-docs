@@ -58,7 +58,7 @@ A provider that is allowed but has no key in the vault is refused with the same 
 ```json
 {
   "error": {
-    "message": "no OpenAI API key configured for your organisation: add one with 'vulnetix ai-firewall key set openai' or at https://www.vulnetix.com/vdb-ai-firewall#byok",
+    "message": "no OpenAI API key configured for your organisation: add one with 'vulnetix ai-firewall key set openai' or at https://www.vulnes.is/vdb-ai-firewall#byok",
     "type": "policy_violation",
     "code": "provider_key_missing"
   }
@@ -73,7 +73,7 @@ This check runs at every plan. Store a key with `vulnetix ai-firewall key set <p
 
 ## Custom compatible providers
 
-An organisation on Pro can add up to 10 of its own upstreams (vLLM, LiteLLM, Ollama, llama.cpp, or a hosted OpenAI-compatible service) in the Resolve Platform's Connect tab. A custom provider gets the same provider and model policy, guardrails and logging as a built-in, and is reached at `https://guardrails.vulnetix.com/<slug>/<orgUuid>/v1`.
+An organisation on Pro can add up to 10 of its own upstreams (vLLM, LiteLLM, Ollama, llama.cpp, or a hosted OpenAI-compatible service) in the Resolve Platform's Connect tab. A custom provider gets the same provider and model policy, guardrails and logging as a built-in, and is reached at `https://guardrails.vulnes.is/<slug>/<orgUuid>/v1`.
 
 | Field | Accepted values |
 |---|---|
@@ -81,11 +81,11 @@ An organisation on Pro can add up to 10 of its own upstreams (vLLM, LiteLLM, Oll
 | `name` | Up to 64 characters, no control characters. Defaults to the slug. |
 | `kind` | `openai-compatible` (default), `ollama`, `llama-server` |
 | `protocol` | `openai-chat`, `openai-responses`, `anthropic-messages`. `ollama` and `llama-server` take `openai-chat` only. |
-| base URL | `https` only, host only (no path or query), a public unicast address. Vulnetix's own hosts are refused. |
+| base URL | `https` only, host only (no path or query), a public unicast address. Vulnesis's own hosts are refused. |
 | `auth` | `bearer`, `x-api-key`, `cf-aig` |
 | `models` | Up to 100, each an id without spaces. A `llama-server` serves exactly one. |
 
-A custom provider is visible only to the tenant that owns it. A request for another tenant's slug gets the same `404 unknown_provider` as a slug that does not exist. When a custom slug and a built-in collide, the built-in always wins. Deleting a custom provider is not plan-gated. The key is stored through the [secrets vault](https://www.vulnetix.com/resolve/vault), not with `key set`.
+A custom provider is visible only to the tenant that owns it. A request for another tenant's slug gets the same `404 unknown_provider` as a slug that does not exist. When a custom slug and a built-in collide, the built-in always wins. Deleting a custom provider is not plan-gated. The key is stored through the [secrets vault](https://www.vulnes.is/resolve/vault), not with `key set`.
 
 ## In a policy file
 

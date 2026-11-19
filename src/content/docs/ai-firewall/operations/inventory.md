@@ -44,7 +44,7 @@ The gateway hashes each request's capability set together with the client and re
 
 ## Resolve Platform
 
-The [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall) shows the inventory on the capability tabs: **MCP** (`#mcp`), **Tools** (`#tools`), **Clients** (`#clients`) and **Skills** (`#skills`). Each row offers the rule to write against it.
+The [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall) shows the inventory on the capability tabs: **MCP** (`#mcp`), **Tools** (`#tools`), **Clients** (`#clients`) and **Skills** (`#skills`). Each row offers the rule to write against it.
 
 ## CLI
 
@@ -63,14 +63,14 @@ vulnetix ai-firewall inventory --clear
 | `--search` | | Substring match on the identity |
 | `--limit` | `200` | 1 to 1000. The output says `Truncated at --limit N` when the limit was reached. |
 | `--clear` | `false` | Delete the whole inventory instead of reading it. There is no confirmation prompt. |
-| `--base-url` | `https://api.vdb.vulnetix.com` | VDB API |
+| `--base-url` | `https://api.vdb.vulnes.is` | VDB API |
 | `-o, --output` | `pretty` | `pretty` or `json` |
 
 The pretty output has `KIND`, `NAME`, `CLIENT` and `EVIDENCE` columns, an MCP server's URL on a dimmed line under it, and a footer counting clients, MCP servers, tools and skills.
 
 ## Resolve Platform API
 
-Session-authenticated, under `https://www.vulnetix.com/api/site/v1`:
+Session-authenticated, under `https://www.vulnes.is/api/site/v1`:
 
 | Request | Parameters |
 |---|---|

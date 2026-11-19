@@ -1,6 +1,6 @@
 ---
 title: Editor setup
-description: Get completion, hover text and errors for Vulnetix config documents in any editor that runs the YAML language server.
+description: Get completion, hover text and errors for Vulnesis config documents in any editor that runs the YAML language server.
 order: 3
 sources: [config-schemas/README.md, config-schemas/cmd/schemacheck/main.go, config-schemas/examples/QualityGate/strict.yaml]
 checked: [config-schemas@9bda9e1]
@@ -14,7 +14,7 @@ Editors that use the [YAML language server](https://github.com/redhat-developer/
 Point the file at the kind's own schema:
 
 ```yaml
-# yaml-language-server: $schema=https://github.com/Vulnetix/config-schemas/releases/download/v1.0.1/QualityGate.schema.json
+# yaml-language-server: $schema=https://github.com/Vulnesis/config-schemas/releases/download/v1.0.1/QualityGate.schema.json
 apiVersion: vulnetix.com/v1
 kind: QualityGate
 metadata:
@@ -28,7 +28,7 @@ spec:
 Point the file at the bundle. It requires `apiVersion` and `kind`, offers the released kinds as completions for `kind`, and checks each document against the schema its `kind` names:
 
 ```yaml
-# yaml-language-server: $schema=https://github.com/Vulnetix/config-schemas/releases/latest/download/vulnetix-config.schema.json
+# yaml-language-server: $schema=https://github.com/Vulnesis/config-schemas/releases/latest/download/vulnetix-config.schema.json
 ```
 
 ## Every file in .vulnetix/config
@@ -38,7 +38,7 @@ Instead of a comment in each file, map the directory in your editor settings. In
 ```json
 {
   "yaml.schemas": {
-    "https://github.com/Vulnetix/config-schemas/releases/latest/download/vulnetix-config.schema.json": ".vulnetix/config/**/*.yaml"
+    "https://github.com/Vulnesis/config-schemas/releases/latest/download/vulnetix-config.schema.json": ".vulnetix/config/**/*.yaml"
   }
 }
 ```
@@ -54,5 +54,5 @@ The language server follows GitHub's redirects to the asset. If your editor show
 
 The comment does not affect `vulnetix config validate`, which always uses the schemas built into the CLI.
 
-> [!CAREFUL] Not in SchemaStore or the Vulnetix extension yet
-> The schemas are not registered in the SchemaStore catalog, and the Vulnetix VS Code extension and `vulnetix lsp` do not bind them. Until they do, use the comment or the `yaml.schemas` setting above.
+> [!CAREFUL] Not in SchemaStore or the Vulnesis extension yet
+> The schemas are not registered in the SchemaStore catalog, and the Vulnesis VS Code extension and `vulnetix lsp` do not bind them. Until they do, use the comment or the `yaml.schemas` setting above.

@@ -15,7 +15,7 @@ updated: 02 Nov 2026
 | Field | Value |
 |---|---|
 | Transport | Streamable HTTP |
-| URL | `https://mcp.vulnetix.com/mcp` |
+| URL | `https://mcp.vulnes.is/mcp` |
 | Header name | `Authorization` |
 | Header value | `ApiKey <orgId>:<hex>` |
 | Auth type, if asked | Custom header or none. Not OAuth. |
@@ -34,7 +34,7 @@ The endpoint takes `POST` only. `GET` and `DELETE` return 405.
 
 ## Discovery
 
-A client or registry that reads [MCP Server Cards](/mcp-server/reference/http-endpoints/) can fetch `https://mcp.vulnetix.com/mcp/server-card`, which names the endpoint, the transport and the required `Authorization` header.
+A client or registry that reads [MCP Server Cards](/mcp-server/reference/http-endpoints/) can fetch `https://mcp.vulnes.is/mcp/server-card`, which names the endpoint, the transport and the required `Authorization` header.
 
 ## Stdio-only clients
 
@@ -47,11 +47,11 @@ A client that can only launch a local command can use [`mcp-remote`](https://www
       "command": "npx",
       "args": [
         "-y", "mcp-remote",
-        "https://mcp.vulnetix.com/mcp",
-        "--header", "Authorization:${VULNETIX_AUTH_HEADER}"
+        "https://mcp.vulnes.is/mcp",
+        "--header", "Authorization:${VULNESIS_AUTH_HEADER}"
       ],
       "env": {
-        "VULNETIX_AUTH_HEADER": "ApiKey <orgId>:<hex>"
+        "VULNESIS_AUTH_HEADER": "ApiKey <orgId>:<hex>"
       }
     }
   }
@@ -65,7 +65,7 @@ No space after `Authorization:` in the argument. `mcp-remote` splits on the firs
 
 ## Expected to work, not tested
 
-These document remote MCP with custom headers but have not been run against this server: Amp, Warp, Trae, Qodo Gen, Sourcegraph Cody, LibreChat, Open WebUI, Msty, BoltAI, 5ire, Witsy. Report results on [GitHub](https://github.com/Vulnetix/mcp-server/issues).
+These document remote MCP with custom headers but have not been run against this server: Amp, Warp, Trae, Qodo Gen, Sourcegraph Cody, LibreChat, Open WebUI, Msty, BoltAI, 5ire, Witsy. Report results on [GitHub](https://github.com/Vulnesis/mcp-server/issues).
 
 ## Will not work
 

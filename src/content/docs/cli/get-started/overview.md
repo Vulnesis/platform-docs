@@ -1,21 +1,21 @@
 ---
-title: Vulnetix CLI
+title: Vulnesis CLI
 nav: Overview
-description: The vulnetix binary runs every Vulnetix scanner, signs in to your organisation, publishes results from CI, and is the entry point for most Vulnetix products.
+description: The vulnetix binary runs every Vulnesis scanner, signs in to your organisation, publishes results from CI, and is the entry point for most Vulnesis products.
 order: 1
 sources: [cli/cmd/root.go, cli/cmd/exit_codes.go, cli/pkg/auth/credentials.go, cli/cmd/config_documents.go]
 checked: [cli@24498404a]
 updated: 04 Nov 2026
 ---
 
-The Vulnetix CLI is for developers and CI pipelines that need to scan code, dependencies and infrastructure where the code lives, and gate a build on the result. It is the way in to most Vulnetix products: the scanners, SBOMs, VEX, signing and the firewalls all start from a `vulnetix` command. Read this segment for what every command shares, and the product's own segment for one scanner's behaviour.
+The Vulnesis CLI is for developers and CI pipelines that need to scan code, dependencies and infrastructure where the code lives, and gate a build on the result. It is the way in to most Vulnesis products: the scanners, SBOMs, VEX, signing and the firewalls all start from a `vulnetix` command. Read this segment for what every command shares, and the product's own segment for one scanner's behaviour.
 
-`vulnetix` is one Go binary for Linux, macOS and Windows. It parses your manifests and source locally, asks the Vulnetix VDB about the packages it found, writes its results under `.vulnetix/` in the project, and, when you are signed in, publishes those results to your organisation. Files are not uploaded. What is published is the SBOM and the SARIF, and a SARIF result carries a few lines of source around each finding (`--snippet-context`, `0` turns it off).
+`vulnetix` is one Go binary for Linux, macOS and Windows. It parses your manifests and source locally, asks the Vulnesis VDB about the packages it found, writes its results under `.vulnetix/` in the project, and, when you are signed in, publishes those results to your organisation. Files are not uploaded. What is published is the SBOM and the SARIF, and a SARIF result carries a few lines of source around each finding (`--snippet-context`, `0` turns it off).
 
 These pages cover what every command shares: installing it, signing in, running it in CI, the orchestrating `scan` command, `report`, `analyze`, the GitHub posture commands, and the global flags, environment variables and exit codes. Each scanner and product has its own segment, linked from the map below.
 
 ```sh
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 vulnetix auth login
 vulnetix scan
 ```
@@ -28,8 +28,8 @@ Every top-level command in `vulnetix --help`, and the docs segment that owns it.
 
 | Command | What it does | Documented in |
 |---|---|---|
-| `agent` | Wires AI coding agents to Vulnetix and answers their lifecycle hooks | [Pix](/pix/) |
-| `ai-firewall` | Points AI clients at the Vulnetix AI Firewall and manages its policy | [AI Firewall](/ai-firewall/) |
+| `agent` | Wires AI coding agents to Vulnesis and answers their lifecycle hooks | [Pix](/pix/) |
+| `ai-firewall` | Points AI clients at the Vulnesis AI Firewall and manages its policy | [AI Firewall](/ai-firewall/) |
 | `aibom` | Discovers AI agents, SDKs and models; writes a CycloneDX AIBOM | [SBOM](/sbom/) |
 | `analyze` | Builds the repository's tech-stack graph and evidence-backed metrics | [CLI: analyze](/cli/commands/analyze/) |
 | `api` | Finds OpenAPI and Swagger descriptions in a repository and uploads them | [CLI: api](/cli/commands/api/) |
@@ -51,22 +51,22 @@ Every top-level command in `vulnetix --help`, and the docs segment that owns it.
 | `image` | Inventories a container image for container curation | [SCA](/sca/) |
 | `jail` | Gates the pipeline on the organisation's jail policy | [Quality gates](/quality-gates/) |
 | `license` | Checks package licences for conflicts and policy | [SCA](/sca/) |
-| `lsp` | Runs the Vulnetix language server over stdio | [VS Code](/vscode/) |
+| `lsp` | Runs the Vulnesis language server over stdio | [VS Code](/vscode/) |
 | `malscan` | Scans installed dependency directories for malware | [Malware](/malware/) |
-| `package-firewall` | Configures package managers to use the Vulnetix Package Firewall | [Package Firewall](/package-firewall/) |
+| `package-firewall` | Configures package managers to use the Vulnesis Package Firewall | [Package Firewall](/package-firewall/) |
 | `pix` | Installs the Pix plugin's skills (`vulnetix pix install`, with `--agent` and `--skill`) | [Pix](/pix/) |
 | `report` | Renders the stored results of the last scan without rescanning | [CLI: report](/cli/commands/replay/) |
 | `sast` | Runs only static analysis | [SAST](/sast/) |
 | `sca` | Runs only dependency (software composition) analysis | [SCA](/sca/) |
 | `scan` | Runs every scanner in one pass and applies one set of gates | [CLI: scan](/cli/commands/scan/) |
 | `secrets` | Runs only secret detection | [Secrets](/secrets/) |
-| `skills` | Installs, checks, updates and removes Vulnetix agent skills | [Pix](/pix/) |
+| `skills` | Installs, checks, updates and removes Vulnesis agent skills | [Pix](/pix/) |
 | `surface` | Checks from inside your network that registered routes and hosts still answer | [CLI: surface](/cli/commands/surface/) |
 | `tea` | Publishes to and reads from the Transparency Exchange API | [TEA](/tea/) |
-| `triage` | Triages GitHub alerts or Vulnetix findings against the VDB and writes VEX | [CLI: triage](/cli/commands/triage/) |
+| `triage` | Triages GitHub alerts or Vulnesis findings against the VDB and writes VEX | [CLI: triage](/cli/commands/triage/) |
 | `update` | Replaces the binary with the latest release | [CLI: utilities](/cli/commands/utilities/) |
 | `upload` | Publishes a third-party SARIF, CycloneDX or SPDX report | [CLI: upload](/cli/commands/upload/) |
-| `vdb` | Queries the Vulnetix Vulnerability Database API | [VDB API](/vdb-api/) |
+| `vdb` | Queries the Vulnesis Vulnerability Database API | [VDB API](/vdb-api/) |
 | `version` | Prints the version, commit and build details | [CLI: utilities](/cli/commands/utilities/) |
 | `vex` | Reads, validates and applies VEX statements | [VEX](/vex/) |
 
@@ -81,8 +81,8 @@ Every top-level command in `vulnetix --help`, and the docs segment that owns it.
 | Sign in without a browser | [Credential methods](/cli/authentication/methods/#apikey) |
 | Find out which credential the CLI is using | [Credential precedence](/cli/authentication/precedence/) |
 | Fail a build on high-severity or exploited findings | [scan: when to fail](/cli/commands/scan/#when-to-fail) |
-| Run Vulnetix in GitHub Actions | [GitHub Actions](/cli/ci-cd/github-actions/) |
-| Send gosec, Trivy or Semgrep results to Vulnetix | [Third-party scanners](/cli/ci-cd/third-party-scanners/) |
+| Run Vulnesis in GitHub Actions | [GitHub Actions](/cli/ci-cd/github-actions/) |
+| Send gosec, Trivy or Semgrep results to Vulnesis | [Third-party scanners](/cli/ci-cd/third-party-scanners/) |
 | Check a repository's workflows for injection flaws | [GitHub posture commands](/cli/commands/gha/) |
 | Look up a VNX-GH rule the posture commands report | [GitHub posture rules](/cli/github-rules/overview/) |
 | Tell a pipeline failure from a gate that could not decide | [Exit codes](/cli/reference/exit-codes/) |
@@ -94,6 +94,6 @@ The per-command actions are listed on [GitHub Actions](/cli/ci-cd/github-actions
 
 ## Platform IaC
 
-The CLI is where config-as-code runs from. `vulnetix config validate`, `config kinds` and `config schema` check `apiVersion: vulnetix.com/v1` documents offline against the schemas built into the CLI, which are a release of [Vulnetix/config-schemas](https://github.com/Vulnetix/config-schemas). `config plan`, `apply` and `export` send documents to the config engine; `config set|get` are the imperative forms. `ai-firewall apply|export` and the policy form of `config set package-firewall` became aliases of the engine in CLI v4.0.0, as `config set quality-gate|eol-policy` already were. A file is a Platform IaC document if its `apiVersion` is `vulnetix.com/v1` and its `kind` is one `vulnetix config kinds` lists. The CLI reads `.vulnetix/config` and three well-known files: `.vulnetix/ai-firewall.yaml`, `.vulnetix/license-policy.yaml` and `.vulnetix/license-exceptions.yaml`.
+The CLI is where config-as-code runs from. `vulnetix config validate`, `config kinds` and `config schema` check `apiVersion: vulnetix.com/v1` documents offline against the schemas built into the CLI, which are a release of [Vulnesis/config-schemas](https://github.com/Vulnesis/config-schemas). `config plan`, `apply` and `export` send documents to the config engine; `config set|get` are the imperative forms. `ai-firewall apply|export` and the policy form of `config set package-firewall` became aliases of the engine in CLI v4.0.0, as `config set quality-gate|eol-policy` already were. A file is a Platform IaC document if its `apiVersion` is `vulnetix.com/v1` and its `kind` is one `vulnetix config kinds` lists. The CLI reads `.vulnetix/config` and three well-known files: `.vulnetix/ai-firewall.yaml`, `.vulnetix/license-policy.yaml` and `.vulnetix/license-exceptions.yaml`.
 
 The CLI embeds one release of the schemas, so `vulnetix config kinds` lists the kinds your binary knows. It refuses a kind added in a later release as unknown before it sends anything. The [kind catalogue](/platform-iac/kinds/catalogue/) and each kind's page say from which CLI release a kind is known. The CLI evaluates no CEL expression; see [CEL rule expressions](/platform-iac/reference/cel/). The CLI's own settings (credentials, output and gate flags) are flags and environment variables, not documents. See [Platform IaC](/platform-iac/).

@@ -59,7 +59,7 @@ const filters = ['All', ...SEGMENTS.map((s) => s.title)];
   });
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
 
-  // Links from www.vulnetix.com land on /?search (or /?search=<terms>) to open
+  // Links from www.vulnes.is land on /?search (or /?search=<terms>) to open
   // search straight away. The parameter is dropped so a reload or a shared
   // link does not reopen it.
   const params = new URLSearchParams(location.search);

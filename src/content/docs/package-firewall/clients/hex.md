@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Mirror URL | `https://packages.vulnetix.com/hex` |
+| Mirror URL | `https://packages.vulnes.is/hex` |
 | Ecosystem ID | `hex` |
 | Plan | Add-on |
 | Mode | gate: the signed registry is streamed unchanged; `tarballs/*.tar` and `docs/*.tar` are checked |
@@ -27,7 +27,7 @@ source ~/.config/vulnetix/package-firewall/hex.env
 `~/.config/vulnetix/package-firewall/hex.env`:
 
 ```bash
-export HEX_MIRROR="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/hex"
+export HEX_MIRROR="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/hex"
 ```
 
 Hex has no separate auth file for a mirror and honours credentials in the mirror URL. Add the `source` line to your shell profile, or set `HEX_MIRROR` as a CI secret.

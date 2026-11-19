@@ -22,7 +22,7 @@ vulnetix auth [flags]          # the same
 | `--secret <secret>` | | SigV4 secret; needs `--org-id` |
 | `--token <token>` | | Bearer token; no org needed. Hidden from help. |
 | `--org-id <uuid>` | | Organisation for `--api-key` or `--secret`. Prompted for on a terminal. |
-| `--noninteractive` | off | ApiKey from flags or `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`; never a browser or prompt |
+| `--noninteractive` | off | ApiKey from flags or `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`; never a browser or prompt |
 | `--store <s>` | `home` | `home`, `project` or `keyring`. In the browser flow on a terminal you are asked instead. |
 | `--store-dir <dir>` | `$HOME/.vulnetix` | Write the home or keyring metadata file here, for this login only. Not read back; see [Storage](/cli/authentication/storage/#custom-directory). |
 | `--method <m>` | | Deprecated; fails when used without a credential flag |
@@ -35,7 +35,7 @@ vulnetix auth [flags]          # the same
 vulnetix auth status [--base-url <url>]
 ```
 
-Prints the credential in use (organisation, method, source, plan, masked secret), every source's state, and the Package Firewall ecosystems. `--base-url` (default `https://api.vdb.vulnetix.com/v1`) is where the plan is looked up, with a 3-second limit. Always exits `0`; it does not prove the credential works.
+Prints the credential in use (organisation, method, source, plan, masked secret), every source's state, and the Package Firewall ecosystems. `--base-url` (default `https://api.vdb.vulnes.is/v1`) is where the plan is looked up, with a 3-second limit. Always exits `0`; it does not prove the credential works.
 
 ## auth verify
 
@@ -45,7 +45,7 @@ vulnetix auth verify
 
 Loads the credential in use and calls an authenticated VDB endpoint (a full token exchange for SigV4). Writes nothing. Exits `0` when accepted, `1` when nothing is found (`no credentials found`) or the API refuses it (`verification failed: ...`).
 
-`auth verify` accepts `--base-url` (default `https://api.vdb.vulnetix.com/v1`), but the value is not used: verification always goes to the default API.
+`auth verify` accepts `--base-url` (default `https://api.vdb.vulnes.is/v1`), but the value is not used: verification always goes to the default API.
 
 ## auth logout
 

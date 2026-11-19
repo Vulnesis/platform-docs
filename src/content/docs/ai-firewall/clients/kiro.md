@@ -7,7 +7,7 @@ checked: [ai-firewall@339de55, cli@4c8c3b7, belai@2b15d69]
 updated: 02 Nov 2026
 ---
 
-[Belai](/software-factory/belai/install-and-sign-in/), the Vulnetix agent harness, has the AI Firewall built in as its `vulnetix` firewall adapter. It is the only client that reaches the gateway's `kiro` provider.
+[Belai](/software-factory/belai/install-and-sign-in/), the Vulnesis agent harness, has the AI Firewall built in as its `vulnetix` firewall adapter. It is the only client that reaches the gateway's `kiro` provider.
 
 ## Belai
 
@@ -17,7 +17,7 @@ Turn the firewall on in Belai's global settings file:
 "firewall": { "enabled": true }
 ```
 
-With no `active` instance Belai uses `vulnetix`, whose URL is `https://guardrails.vulnetix.com`. Belai then builds the same base URLs as the CLI: `https://guardrails.vulnetix.com/anthropic/<uuid>` for Anthropic and `https://guardrails.vulnetix.com/<slug>/<uuid>/v1` for the rest. It routes these Belai providers: `anthropic`, `openai`, `openrouter`, `groq`, `mistral`, `deepseek`, `xai`, `together`, `fireworks`, `alibaba`, `moonshot`, `minimax` and `kiro`. Others go direct.
+With no `active` instance Belai uses `vulnetix`, whose URL is `https://guardrails.vulnes.is`. Belai then builds the same base URLs as the CLI: `https://guardrails.vulnes.is/anthropic/<uuid>` for Anthropic and `https://guardrails.vulnes.is/<slug>/<uuid>/v1` for the rest. It routes these Belai providers: `anthropic`, `openai`, `openrouter`, `groq`, `mistral`, `deepseek`, `xai`, `together`, `fireworks`, `alibaba`, `moonshot`, `minimax` and `kiro`. Others go direct.
 
 `/firewall` in the TUI opens the settings screen, `F10` toggles the firewall for the current project, and `belai -firewall` routes one run. A project settings file may only set `firewall.enabled` to `false`. The full settings, the other adapters and the hold-for-review permission cards are in [Package and AI firewalls on factory work](/software-factory/evidence/firewalls/).
 
@@ -28,7 +28,7 @@ Belai reads the gateway's `X-Vulnetix-Firewall-Decision`, `-Rules`, `-Redactions
 
 ## Kiro
 
-Kiro has no API key. The vault holds a **Kiro sign-in** for the `kiro` provider (an AWS SSO-OIDC refresh token and its client registration), and for each request the gateway trades it for a short-lived access token, sets the sign-in's profile ARN on the request, and calls `q.<api-region>.amazonaws.com`. Tokens are only sent to pinned `oidc`, `q` and `codewhisperer` hosts under `amazonaws.com`. Clients send only their Vulnetix API key.
+Kiro has no API key. The vault holds a **Kiro sign-in** for the `kiro` provider (an AWS SSO-OIDC refresh token and its client registration), and for each request the gateway trades it for a short-lived access token, sets the sign-in's profile ARN on the request, and calls `q.<api-region>.amazonaws.com`. Tokens are only sent to pinned `oidc`, `q` and `codewhisperer` hosts under `amazonaws.com`. Clients send only their Vulnesis API key.
 
 ```bash
 vulnetix ai-firewall kiro login                                  # AWS Builder ID
@@ -56,8 +56,8 @@ GitHub and Google Kiro sign-ins have no SSO-OIDC refresh path and cannot be used
 
 | Route | Use |
 |---|---|
-| `POST https://guardrails.vulnetix.com/kiro/<uuid>/v1/generateAssistantResponse` | Inference. Guardrails run over `conversationState`, including tool results and tool definitions. The AWS event-stream response is relayed unchanged. |
-| `GET https://guardrails.vulnetix.com/kiro/<uuid>/v1/ListAvailableModels` | Kiro's models, filtered by your model policy |
+| `POST https://guardrails.vulnes.is/kiro/<uuid>/v1/generateAssistantResponse` | Inference. Guardrails run over `conversationState`, including tool results and tool definitions. The AWS event-stream response is relayed unchanged. |
+| `GET https://guardrails.vulnes.is/kiro/<uuid>/v1/ListAvailableModels` | Kiro's models, filtered by your model policy |
 
 Refusals use the AWS error shape (`__type`, `message`, and the `x-amzn-ErrorType` header) with the gateway's `{"error": {...}}` envelope alongside it.
 

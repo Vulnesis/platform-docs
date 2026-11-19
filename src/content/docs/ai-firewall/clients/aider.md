@@ -19,29 +19,29 @@ vulnetix ai-firewall install aider shell --model gpt-4o-mini
 `install aider` sets two keys in `.aider.conf.yml` and leaves the rest of the file alone:
 
 ```yaml
-openai-api-base: https://guardrails.vulnetix.com/openai/<uuid>/v1
+openai-api-base: https://guardrails.vulnes.is/openai/<uuid>/v1
 model: openai/gpt-4o-mini
 ```
 
 The file is at the git root (default scope `project`), or `~/.aider.conf.yml` outside a repository. `model` is only written with `--model`, prefixed `openai/` so aider sends it to the OpenAI-compatible base URL. The file never holds the key, so it is safe to commit.
 
-`install shell` exports `OPENAI_API_KEY="$VULNETIX_API_KEY"` (and the base-URL variables) in your shell rc. With `--embed-key` the literal key is written instead, and the CLI refuses if the file is tracked by git.
+`install shell` exports `OPENAI_API_KEY="$VULNESIS_API_KEY"` (and the base-URL variables) in your shell rc. With `--embed-key` the literal key is written instead, and the CLI refuses if the file is tracked by git.
 
 ## By hand
 
 ```yaml
 # .aider.conf.yml
-openai-api-base: https://guardrails.vulnetix.com/openai/<uuid>/v1
+openai-api-base: https://guardrails.vulnes.is/openai/<uuid>/v1
 model: openai/gpt-4o-mini
 ```
 
 ```bash
-export VULNETIX_API_KEY="<your Vulnetix API key>"
-export OPENAI_API_KEY="$VULNETIX_API_KEY"
+export VULNESIS_API_KEY="<your Vulnesis API key>"
+export OPENAI_API_KEY="$VULNESIS_API_KEY"
 aider
 ```
 
-For another `chat` provider, change the slug and use that provider's model name after the `openai/` prefix, for example `openai-api-base: https://guardrails.vulnetix.com/openrouter/<uuid>/v1` with `model: openai/openai/gpt-4o-mini`.
+For another `chat` provider, change the slug and use that provider's model name after the `openai/` prefix, for example `openai-api-base: https://guardrails.vulnes.is/openrouter/<uuid>/v1` with `model: openai/openai/gpt-4o-mini`.
 
 ## Verify
 

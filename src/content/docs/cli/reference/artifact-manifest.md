@@ -1,7 +1,7 @@
 ---
 title: Artifact manifest
 nav: Artifact manifest
-description: The JSON Lines file listing every file a Vulnetix command wrote, set with --artifact-manifest, and how the GitHub Actions upload, attest and attach those files.
+description: The JSON Lines file listing every file a Vulnesis command wrote, set with --artifact-manifest, and how the GitHub Actions upload, attest and attach those files.
 order: 6
 sources: [cli/internal/artifacts/manifest.go, cli/cmd/root.go, cli/action-lib/run.sh, cli/action-lib/release-assets.sh, cli/docs/github-publishing.md]
 checked: [cli@3e6fd831d]
@@ -13,16 +13,16 @@ A CI step that uploads, attests or attaches what a scan wrote should not guess a
 | Setting | Value |
 |---|---|
 | Flag | `--artifact-manifest <file>`, on every command |
-| Environment variable | `VULNETIX_ARTIFACT_MANIFEST` |
+| Environment variable | `VULNESIS_ARTIFACT_MANIFEST` |
 | Without either | Nothing is recorded |
 
 The flag wins over the variable. The file is JSON Lines: one object per write, appended with `O_APPEND`, so several commands in one job (`sca`, then `sast`, then `cdx`) add to the same file without coordinating.
 
 ```sh
-export VULNETIX_ARTIFACT_MANIFEST="$RUNNER_TEMP/vx.jsonl"
+export VULNESIS_ARTIFACT_MANIFEST="$RUNNER_TEMP/vx.jsonl"
 vulnetix sca
 vulnetix sast
-jq -r .path "$VULNETIX_ARTIFACT_MANIFEST"
+jq -r .path "$VULNESIS_ARTIFACT_MANIFEST"
 ```
 
 ## Entry

@@ -27,7 +27,7 @@ The list holds origins, typed exactly as `scheme://host[:port]` with no path, fo
 | Block list (default) | Every page except origins in `disabledOrigins` |
 | Allow list (**Only run on sites I allow**) | Only origins in `allowedOrigins`. With an empty list, nowhere. |
 
-`*.vulnetix.com` and `vulnetix.com` are always excluded by the manifest, whatever the list says. A change applies the next time a page loads.
+`*.vulnes.is` and `vulnes.is` are always excluded by the manifest, whatever the list says. A change applies the next time a page loads.
 
 ## Cache
 

@@ -1,7 +1,7 @@
-# GitHub Pages configuration for Vulnetix/platform-docs.
+# GitHub Pages configuration for Vulnesis/platform-docs.
 #
 # Pages was enabled with the GitHub API when the repository was created (as
-# Vulnetix/software-factory), so Terraform adopted it by import on 2026-10-27.
+# Vulnesis/software-factory), so Terraform adopted it by import on 2026-10-27.
 # The repository was renamed to platform-docs on 2026-11-01; the resource was
 # moved in state and re-imported under the new name:
 #
@@ -17,7 +17,7 @@ resource "github_repository_pages" "platform_docs" {
 
   # .github/workflows/pages.yml deploys with actions/deploy-pages.
   build_type = "workflow"
-  cname      = "docs.vulnetix.com"
+  cname      = "docs.vulnes.is"
 
   # GitHub rejects this until the certificate for the domain is issued. It was
   # issued on 2026-11-01, after the domain was cleared and set again: Pages
@@ -25,9 +25,9 @@ resource "github_repository_pages" "platform_docs" {
   #
   # Careful: when this provider changed https_enforced alone, GitHub cleared
   # cname and the site went to 404. The fix was `gh api -X PUT
-  # repos/Vulnetix/platform-docs/pages -f cname=docs.vulnetix.com` and a
+  # repos/Vulnesis/platform-docs/pages -f cname=docs.vulnes.is` and a
   # redeploy of pages.yml. After any apply that touches this block, check
-  # `gh api repos/Vulnetix/platform-docs/pages --jq .cname`.
+  # `gh api repos/Vulnesis/platform-docs/pages --jq .cname`.
   https_enforced = true
 
   lifecycle {

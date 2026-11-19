@@ -36,7 +36,7 @@ vulnetix package-firewall uninstall [ecosystem...] [flags]
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--proxy-url` | `https://packages.vulnetix.com` | Firewall base URL. Must be absolute. Its host is used for the netrc entry. |
+| `--proxy-url` | `https://packages.vulnes.is` | Firewall base URL. Must be absolute. Its host is used for the netrc entry. |
 | `--base-url` | VDB API default | VDB API used to verify the API key or derive one from SigV4 credentials. |
 | `--dry-run` | `false` | Print what would change; write nothing. |
 
@@ -44,7 +44,7 @@ Each run writes the `~/.netrc` entry, then the ecosystem's files (see each [clie
 
 | Write | Files | Re-run | Uninstall |
 |---|---|---|---|
-| Managed block between `# Vulnetix Package Firewall` and `# End Vulnetix Package Firewall` | `.npmrc`, `pip.conf`, `uv.toml`, Cargo files, `.gemrc`, `.bundle/config`, `.Rprofile`, `*.env`, `.yarnrc.yml`, shell rc | block replaced in place | block removed; file deleted if empty |
+| Managed block between `# Vulnesis Package Firewall` and `# End Vulnesis Package Firewall` | `.npmrc`, `pip.conf`, `uv.toml`, Cargo files, `.gemrc`, `.bundle/config`, `.Rprofile`, `*.env`, `.yarnrc.yml`, shell rc | block replaced in place | block removed; file deleted if empty |
 | Whole file | `settings.xml`, `NuGet.Config`, Composer and Conan JSON, `pub-tokens.json`, Helm `repositories.yaml`, staged Arch files | file replaced; an existing file is first copied to `<file>.vulnetix.bak` | backup restored, or the file deleted if it still points at the firewall |
 | Merge | `paru.conf`, yay `config.json` | keys set, rest kept; backup written | backup restored, or the keys stripped |
 
@@ -57,9 +57,9 @@ Reverses the setup. Needs no authentication.
 | `[ecosystem...]` | Ecosystems to unconfigure |
 | `--all` | Every supported ecosystem |
 | `--except <csv>` | Every ecosystem except these |
-| `--remove-credentials` | Also remove the shared `machine packages.vulnetix.com` netrc entry |
+| `--remove-credentials` | Also remove the shared `machine packages.vulnes.is` netrc entry |
 | `--purge` | `--all` plus `--remove-credentials` |
-| `--proxy-url` | Host to detect and strip, default `https://packages.vulnetix.com` |
+| `--proxy-url` | Host to detect and strip, default `https://packages.vulnes.is` |
 | `--dry-run` | Preview |
 
 Exactly one of positional ecosystems, `--all` or `--except` is required. Details on [Uninstall](/package-firewall/reference/uninstall/).

@@ -1,6 +1,6 @@
 ---
 title: Cloud security
-description: What Vulnetix reads from and deploys into a connected AWS account, how Wiz findings are checked against it, and where results appear in the Resolve Platform.
+description: What Vulnesis reads from and deploys into a connected AWS account, how Wiz findings are checked against it, and where results appear in the Resolve Platform.
 order: 1
 nav: Overview
 sources: [vdb-site/api/main.go, vdb-site/api/internal/handler/integrations_aws.go, vdb-site/api/internal/handler/integrations_aws_stack.go, vdb-site/api/internal/handler/cloud_native.go, vdb-site/api/internal/handler/entitlements.go, vdb-site/api/internal/handler/cloud_scheduler.go, cloudscan/README.md]
@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 Cloud security is for teams that run workloads in AWS and need findings that name the affected resource, not only the vulnerable package. It answers which ARN in which account is exposed to which CVE or fails which control, and checks Wiz claims from inside the account. Use it for the state of your resources. Use the [SIEM](/siem/) to collect, search and alert on the logs those resources produce.
 
-Cloud security connects your AWS accounts to Vulnetix. A small function, the **probe** (`vulnetix-security-reporter`), runs inside each account, enumerates its resources, and reports findings that name a resource ARN and the CVE or control it fails. The probe is the only thing that reads your account's data. Vulnetix assumes a role in the account to deploy and maintain it, and to start a sweep.
+Cloud security connects your AWS accounts to Vulnetix. A small function, the **probe** (`vulnetix-security-reporter`), runs inside each account, enumerates its resources, and reports findings that name a resource ARN and the CVE or control it fails. The probe is the only thing that reads your account's data. Vulnesis assumes a role in the account to deploy and maintain it, and to start a sweep.
 
 ## What you get
 
@@ -27,8 +27,8 @@ Every cloud finding is an ordinary finding (category `cloud`), so triage, suppre
 ## How it fits together
 
 1. You connect an account from **Integrations > AWS** in the Resolve Platform, with IAM Identity Center or, for accounts without it, an IAM user access key. See [Connect with IAM Identity Center](/cloud-security/aws/connect-identity-center/).
-2. Vulnetix deploys two CloudFormation stacks into the account: `vulnetix-security-bootstrap` (a CloudTrail bucket and the cross-account role) and `vulnetix-security-pipeline` (a multi-region trail, an EventBridge rule, an SQS queue, a secret and the probe). See [What Vulnetix deploys](/cloud-security/aws/what-gets-deployed/).
-3. Vulnetix invokes the probe on a schedule: daily, staggered across a 4-hour window. The probe reads the account, looks up CRIT criteria from the VDB API and posts its findings back.
+2. Vulnesis deploys two CloudFormation stacks into the account: `vulnetix-security-bootstrap` (a CloudTrail bucket and the cross-account role) and `vulnetix-security-pipeline` (a multi-region trail, an EventBridge rule, an SQS queue, a secret and the probe). See [What Vulnesis deploys](/cloud-security/aws/what-gets-deployed/).
+3. Vulnesis invokes the probe on a schedule: daily, staggered across a 4-hour window. The probe reads the account, looks up CRIT criteria from the VDB API and posts its findings back.
 4. Each extra source you turn on attaches one named, read-only inline policy to the probe's role on the next stack deploy. See [Cloud-native sources](/cloud-security/sources/native-sources/).
 
 ## Plan
@@ -46,9 +46,9 @@ Cloud integrations (AWS, the AWS-native sources and Wiz) need the **Pro** plan o
 
 ## Related
 
-- Ship VPC flow, Resolver and CloudTrail logs to the Vulnetix SIEM: [Guardian AWS log shipping](/siem/sources/aws/).
+- Ship VPC flow, Resolver and CloudTrail logs to the Vulnesis SIEM: [Guardian AWS log shipping](/siem/sources/aws/).
 - Deploy virtual patches to AWS WAF: [/virtual-patching/](/virtual-patching/).
-- The runtime sensor that runs on your hosts and containers: [Vulnetix sensor](/virtual-patching/runtime/sensor/).
+- The runtime sensor that runs on your hosts and containers: [Vulnesis sensor](/virtual-patching/runtime/sensor/).
 
 ## Platform IaC
 

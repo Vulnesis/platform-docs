@@ -11,7 +11,7 @@ updated: 02 Nov 2026
 > Use the pr-security-reviewer agent on PR 142.
 ```
 
-It is a Claude Code subagent from the plugin, `sonnet` at medium effort, at most 18 turns, with `Bash`, `Read`, `Glob`, `Grep`, `Edit` and `Write`. It needs the Vulnetix CLI and `git`, and optionally `gh` logged in (`gh auth status`).
+It is a Claude Code subagent from the plugin, `sonnet` at medium effort, at most 18 turns, with `Bash`, `Read`, `Glob`, `Grep`, `Edit` and `Write`. It needs the Vulnesis CLI and `git`, and optionally `gh` logged in (`gh auth status`).
 
 ## Inputs
 
@@ -61,7 +61,7 @@ In CI, treat `REQUEST_CHANGES` as the failing gate. Example output:
 | Low | Licences | package.json | new dependency is MPL-2.0 |
 ```
 
-## Where Vulnetix data comes in
+## Where Vulnesis data comes in
 
 SAST, secrets, container and IaC scanning run locally on the CLI's rules. The vulnerability database is consulted twice: SCA matches the changed manifests' packages against the VDB, and `dependency-choice` looks each new package up (`vulnetix vdb packages search`, `packages get`, `package-vulns`). Both count against your daily API limit; a PR that adds several dependencies uses a visible share on the Community plan.
 

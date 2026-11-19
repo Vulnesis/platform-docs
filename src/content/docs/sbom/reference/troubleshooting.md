@@ -34,7 +34,7 @@ Each validation line ends with the input that set the value:
 
 | Pointer starts with | Set by |
 |---|---|
-| `/metadata/authors` | `--bom-author`, `VULNETIX_BOM_AUTHORS` or an overlay |
+| `/metadata/authors` | `--bom-author`, `VULNESIS_BOM_AUTHORS` or an overlay |
 | `/metadata/supplier`, `/metadata/manufacturer` | `--bom-supplier`, `--bom-manufacturer` or an overlay |
 | `/metadata/licenses`, `/metadata/properties` | `--bom-license`, `--bom-property` or an overlay |
 | `/metadata/component` | `--component-*` or an overlay |

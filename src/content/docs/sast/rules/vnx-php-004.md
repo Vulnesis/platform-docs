@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1566](https://attack.mitre.org/techniques/T1566/) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `open-redirect` `web` `phishing` |
-| Source | [`internal/sast/rules/vnx-php-004.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-php-004.rego) |
+| Source | [`internal/sast/rules/vnx-php-004.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-php-004.rego) |
 
 ## Overview
 

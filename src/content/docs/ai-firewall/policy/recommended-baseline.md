@@ -14,7 +14,7 @@ checked: [vdb-api@4145f0a, vdb-site@1a06d67, cli@4c8c3b7, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-The baseline is a set of guardrails Vulnetix maintains: secret patterns, prompt-injection phrasing, PII redaction, a runaway-conversation cap and agent capability flags. It is served by the API rather than built into the CLI, so it changes without a CLI release. It contains guardrails only, never provider or model allow and deny entries.
+The baseline is a set of guardrails Vulnesis maintains: secret patterns, prompt-injection phrasing, PII redaction, a runaway-conversation cap and agent capability flags. It is served by the API rather than built into the CLI, so it changes without a CLI release. It contains guardrails only, never provider or model allow and deny entries.
 
 ```bash
 vulnetix ai-firewall baseline

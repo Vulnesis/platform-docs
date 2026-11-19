@@ -8,7 +8,7 @@ checked: [cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-You need the Vulnetix CLI on your `PATH` (see [/cli/](/cli/) for install). No account is needed: without credentials the scan runs fully and uploads nothing of yours.
+You need the Vulnesis CLI on your `PATH` (see [/cli/](/cli/) for install). No account is needed: without credentials the scan runs fully and uploads nothing of yours.
 
 ## 1. Scan a directory
 
@@ -83,8 +83,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Vulnetix CLI
-        run: curl -fsSL https://cli.vulnetix.com/install.sh | sh
+      - name: Install Vulnesis CLI
+        run: curl -fsSL https://cli.vulnes.is/install.sh | sh
       - name: SAST
         run: vulnetix sast --depth 10 --no-progress -o vulnetix-sast.sarif --fail-on high
       - uses: github/codeql-action/upload-sarif@v3

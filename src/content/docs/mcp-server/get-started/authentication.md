@@ -20,7 +20,7 @@ Every VDB tool call needs a credential in the `Authorization` header. The server
 | Scheme | Header value | Parsed when | Source |
 |---|---|---|---|
 | `ApiKey` | `ApiKey <orgId>:<64-hex>` | `orgId` is a UUID and a colon follows it | Resolve Platform, `vulnetix auth login`, or `vulnetix_auth_poll` |
-| `Bearer` | `Bearer <opaque token>` | token is non-empty | Vulnetix identity provider API token |
+| `Bearer` | `Bearer <opaque token>` | token is non-empty | Vulnesis identity provider API token |
 | `Bearer` | `Bearer <jwt>` | token is non-empty | `vdb_token` web session JWT |
 
 The scheme name is case-insensitive. Any other value, including `ApiKey <hex>` with no org id, is treated as no credential. Use `ApiKey` in client configs.
@@ -34,13 +34,13 @@ Three tools work with no credential, so a user can get one without leaving the c
 | Tool | Does |
 |---|---|
 | `vulnetix_auth_status` | Says whether the request carried a parseable credential, its `scheme` and `orgId` |
-| `vulnetix_auth_start` | Starts an RFC 8628 device grant with the Vulnetix API and returns `verification_uri`, `user_code`, `expires_in_seconds`, `poll_interval_seconds` and an opaque `handle` |
+| `vulnetix_auth_start` | Starts an RFC 8628 device grant with the Vulnesis API and returns `verification_uri`, `user_code`, `expires_in_seconds`, `poll_interval_seconds` and an opaque `handle` |
 | `vulnetix_auth_poll` | Takes the `handle`, redeems the grant once, and returns `status: "approved"` with `org_id` and `authorization_header`, or `status: "pending"` |
 
 The flow:
 
-1. Ask the agent to start a Vulnetix login. It calls `vulnetix_auth_start` and shows you a URL like `https://www.vulnetix.com/cli-login-code?user_code=5HWL-6L4B`.
-2. Open it in a browser signed in to Vulnetix, check the code on screen matches the one the agent showed, and approve.
+1. Ask the agent to start a Vulnesis login. It calls `vulnetix_auth_start` and shows you a URL like `https://www.vulnes.is/cli-login-code?user_code=5HWL-6L4B`.
+2. Open it in a browser signed in to Vulnesis, check the code on screen matches the one the agent showed, and approve.
 3. Tell the agent you have approved. It calls `vulnetix_auth_poll` with the handle, no faster than every 5 seconds.
 4. Copy the returned `authorization_header` (it already starts with `ApiKey `) into your client config and restart the client.
 
@@ -51,7 +51,7 @@ The code expires after 300 seconds. A handle older than that returns an error te
 
 ### What the approval page shows
 
-`vulnetix_auth_start` sends the client's self-reported name (`clientInfo.title` or `clientInfo.name`) to the Vulnetix API as `client_name`, so the page names the app that asked rather than "the Vulnetix CLI". That name is unverified: anyone can start a grant and claim any name. Approve only a sign-in you started.
+`vulnetix_auth_start` sends the client's self-reported name (`clientInfo.title` or `clientInfo.name`) to the Vulnesis API as `client_name`, so the page names the app that asked rather than "the Vulnesis CLI". That name is unverified: anyone can start a grant and claim any name. Approve only a sign-in you started.
 
 ### Why the handle is encrypted
 
@@ -76,14 +76,14 @@ Treat it as a password: anyone holding it acts as your organisation.
 Rotate from the Resolve Platform, or run `vulnetix auth login` again, then update each client config. There is no session, so the new value applies from the next request. Rotate after a key appears in a commit, a shared transcript, a screenshot or an exported conversation. A key obtained with `vulnetix_auth_poll` passed through the transcript; rotate it if that transcript was shared.
 
 > [!WHY] Why there is no anonymous mode
-> vdb-api meters quota per organisation. A shared server that fell back to one built-in credential would put every caller without a key into one bucket, the same one every Vulnetix CLI community user draws from, and a single runaway agent loop would exhaust it for everyone. You bring a credential and are metered as yourself.
+> vdb-api meters quota per organisation. A shared server that fell back to one built-in credential would put every caller without a key into one bucket, the same one every Vulnesis CLI community user draws from, and a single runaway agent loop would exhaust it for everyone. You bring a credential and are metered as yourself.
 
 ## When authentication fails
 
 A request with no credential is not rejected at the transport, because the sign-in tools must work then. Each VDB tool returns an error result instead:
 
 ```text
-Vulnetix request failed: No Vulnetix credential was supplied. Add an `Authorization: ApiKey <orgId>:<hex>` header to this MCP server's configuration, or run `vulnetix_auth_start` and then `vulnetix_auth_poll` to obtain one.
+Vulnesis request failed: No Vulnesis credential was supplied. Add an `Authorization: ApiKey <orgId>:<hex>` header to this MCP server's configuration, or run `vulnetix_auth_start` and then `vulnetix_auth_poll` to obtain one.
 ```
 
-A credential vdb-api rejects returns `Vulnetix rejected the credential (HTTP 401).` See [Troubleshooting](/mcp-server/reference/troubleshooting/).
+A credential vdb-api rejects returns `Vulnesis rejected the credential (HTTP 401).` See [Troubleshooting](/mcp-server/reference/troubleshooting/).

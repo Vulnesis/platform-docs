@@ -13,13 +13,13 @@ updated: 02 Nov 2026
 
 Tools answer one question. Prompts hand your agent a whole procedure. The server serves the 18 Pix skills as MCP prompts, generated from each skill's `SKILL.md` by `scripts/generate-prompts.mjs`. CI runs `yarn prompts:check` and fails when the generated file drifts from the skills.
 
-Every prompt needs your machine: it reads or writes files, runs a package manager or calls a scanner. The server has no filesystem, so each prompt body starts with this notice and your agent runs the steps with the [Vulnetix CLI](/cli/):
+Every prompt needs your machine: it reads or writes files, runs a package manager or calls a scanner. The server has no filesystem, so each prompt body starts with this notice and your agent runs the steps with the [Vulnesis CLI](/cli/):
 
 ```text
 > **This workflow needs your local machine.** It reads or writes files in the repo,
 > runs package managers, or shells out to scanners. The MCP server has no filesystem,
-> so run these steps yourself with the Vulnetix CLI. Install it with:
-> `curl -fsSL https://cli.vulnetix.com/install.sh | sh`
+> so run these steps yourself with the Vulnesis CLI. Install it with:
+> `curl -fsSL https://cli.vulnes.is/install.sh | sh`
 ```
 
 Lookups (a CVE, a KEV check, a package's advisories) are tools only, so one question has one answer.

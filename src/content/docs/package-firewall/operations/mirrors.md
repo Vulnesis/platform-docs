@@ -80,10 +80,10 @@ Deleting a mirror is done in the Resolve Platform's **Mirrors** tab.
 |---|---|
 | Scheme | not HTTPS |
 | Duplicate | the URL is already in the ecosystem's list |
-| Loop | the host is a Vulnetix firewall host |
+| Loop | the host is a Vulnesis firewall host |
 | Address | the host is a literal private or reserved IP |
 
-The Resolve Platform then probes the mirror from Vulnetix servers with a request the registry should answer:
+The Resolve Platform then probes the mirror from Vulnesis servers with a request the registry should answer:
 
 | Ecosystem | Probe path appended to the mirror URL |
 |---|---|

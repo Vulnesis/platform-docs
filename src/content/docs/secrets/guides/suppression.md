@@ -14,7 +14,7 @@ There are three ways to stop a secrets finding from being reported. They apply i
 |---|---|---|
 | Path exclusion | Files never read | Command line or `.gitignore` |
 | `nosec` comment | One line, or one file | The source file |
-| Ignore rule | Rule, file or both, in one repository | `.vulnetix/memory.yaml` and, when authenticated, the Vulnetix organisation |
+| Ignore rule | Rule, file or both, in one repository | `.vulnetix/memory.yaml` and, when authenticated, the Vulnesis organisation |
 
 A suppressed credential is still a credential. If it was ever committed, revoke it at the provider first.
 
@@ -50,7 +50,7 @@ Rule ids are case-insensitive.
 aws_access_key_id: AKIAIOSFODNN7SAMPLE1   # nosec VNX-SEC-001
 ```
 
-Each suppressed finding is recorded in `.vulnetix/memory.yaml` and, when you are authenticated, sent to Vulnetix as a suppression of type `nosec`, so the Resolve Platform shows what was silenced and where.
+Each suppressed finding is recorded in `.vulnetix/memory.yaml` and, when you are authenticated, sent to Vulnesis as a suppression of type `nosec`, so the Resolve Platform shows what was silenced and where.
 
 > [!CAREFUL] nosec cannot reach history or binaries
 > A finding under `__git_history__/`, `__binary_strings__/`, `__exif__/` or `__k8s_secret__/` has no source line to carry a comment. Use an ignore rule with `--file`, which also matches those paths.

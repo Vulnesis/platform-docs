@@ -8,22 +8,22 @@ checked: [cli@v4.17.1]
 updated: 04 Nov 2026
 ---
 
-This page reads a published release from the Vulnetix TEA server, then publishes a release of your own with its SBOM and VEX.
+This page reads a published release from the Vulnesis TEA server, then publishes a release of your own with its SBOM and VEX.
 
 ## Prerequisites
 
-- The Vulnetix CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)).
+- The Vulnesis CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)).
 - Reading public objects needs no credential.
-- Publishing needs the Pro plan or above, and `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` for your organisation.
+- Publishing needs the Pro plan or above, and `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` for your organisation.
 
 ## 1. Find a product
 
 ```bash
-vulnetix tea products --purl pkg:github/Vulnetix/cli
+vulnetix tea products --purl pkg:github/Vulnesis/cli
 ```
 
 ```text
-54e8820d-0803-5a4f-858d-88a279486564  Vulnetix/cli
+54e8820d-0803-5a4f-858d-88a279486564  Vulnesis/cli
 ```
 
 `--purl` is an exact match done by the server. `--search` matches part of a name.
@@ -35,9 +35,9 @@ vulnetix tea product 54e8820d-0803-5a4f-858d-88a279486564
 ```
 
 ```text
-Vulnetix/cli
-  TEI   tei://vulnetix.com/uuid/54e8820d-0803-5a4f-858d-88a279486564
-  PURL  pkg:github/Vulnetix/cli
+Vulnesis/cli
+  TEI   tei://vulnes.is/uuid/54e8820d-0803-5a4f-858d-88a279486564
+  PURL  pkg:github/Vulnesis/cli
 
 releases (100)
   v3.82.2                  959d737f-7a54-51b7-b236-6ed079105345
@@ -96,10 +96,10 @@ jobs:
         with:
           fetch-depth: 0          # the release date is the tagged commit's date
       # ... your build steps write dist/
-      - uses: Vulnetix/cli/tea-release@v4
+      - uses: Vulnesis/cli/tea-release@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           tea-files: dist/*.cdx.json
           tea-visibility: public
 ```

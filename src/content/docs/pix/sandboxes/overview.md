@@ -8,7 +8,7 @@ checked: [vdb-site@1a06d67, saas@50cedf3, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-A Pix Sandbox is a Cloudflare container Vulnetix runs for you, one per purchase, running `belai rc` with your repositories cloned. It registers as a [Belai host](/software-factory/workforce/hosts-and-placement/) under the sandbox's own id and is online all month. Sizes, prices, repositories, Safe Harbour, maintenance windows, wakes and telemetry are on the factory's [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/) page. This section covers what a sandbox is built from and what it may reach.
+A Pix Sandbox is a Cloudflare container Vulnesis runs for you, one per purchase, running `belai rc` with your repositories cloned. It registers as a [Belai host](/software-factory/workforce/hosts-and-placement/) under the sandbox's own id and is online all month. Sizes, prices, repositories, Safe Harbour, maintenance windows, wakes and telemetry are on the factory's [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/) page. This section covers what a sandbox is built from and what it may reach.
 
 | Page | Covers |
 |---|---|
@@ -19,7 +19,7 @@ In the Resolve Platform: **Hosts** (`/resolve/belai-hosts`), tab **Pix Sandboxes
 
 ## The launch draft
 
-Each sandbox has one draft (`PixLaunchConfig`). A relaunch resolves it against the product defaults (`PixProductDefaults`, set by Vulnetix) and snapshots the result onto the launch. A field left `null` inherits the default. Saving the draft marks the sandbox `applyPending`; nothing changes on the running machine until it relaunches.
+Each sandbox has one draft (`PixLaunchConfig`). A relaunch resolves it against the product defaults (`PixProductDefaults`, set by Vulnesis) and snapshots the result onto the launch. A field left `null` inherits the default. Saving the draft marks the sandbox `applyPending`; nothing changes on the running machine until it relaunches.
 
 | Field | Values | Default when `null` |
 |---|---|---|
@@ -36,7 +36,7 @@ Each sandbox has one draft (`PixLaunchConfig`). A relaunch resolves it against t
 | `versionPolicy` | `{strategy, pins}` (below) | none |
 | `notes` | One line, at most 2,000 characters | `""` |
 
-`jevDailyCap` is set by Vulnetix only (default 2,000); a tenant write that sends it gets `400 the Jev cap is set by Vulnetix`. Provider keys have their own route and are not part of a draft save.
+`jevDailyCap` is set by Vulnesis only (default 2,000); a tenant write that sends it gets `400 the Jev cap is set by Vulnesis`. Provider keys have their own route and are not part of a draft save.
 
 ### Packs
 

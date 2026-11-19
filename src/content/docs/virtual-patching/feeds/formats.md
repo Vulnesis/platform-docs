@@ -1,6 +1,6 @@
 ---
 title: Feed formats
-description: What each published feed file contains, how a disabled rule appears in it, and which formats Vulnetix does not emit.
+description: What each published feed file contains, how a disabled rule appears in it, and which formats Vulnesis does not emit.
 order: 2
 nav: Formats
 sources: [vdb-site/api/internal/handler/detection_rule_feeds_publish.go, vdb-site/api/internal/handler/detection_rule_feeds_sensor.go, vdb-site/api/internal/handler/defence_formats.go, vdb-manager/scripts/go-processors/internal/defence/defence.go, vdb-manager/scripts/go-processors/internal/defence/validate/network.go, vdb-manager/scripts/go-processors/internal/defence/validate/schema.go]
@@ -45,7 +45,7 @@ Generated Sigma rules always have `title`, a UUID `id`, `status`, a `logsource` 
 
 ## `rules.json`
 
-Every feed also publishes `rules.json`, which the [Vulnetix sensor](/virtual-patching/runtime/sensor/) reads instead of the native file, because it needs to know which rule each body is and what mode it may start in:
+Every feed also publishes `rules.json`, which the [Vulnesis sensor](/virtual-patching/runtime/sensor/) reads instead of the native file, because it needs to know which rule each body is and what mode it may start in:
 
 ```json
 {

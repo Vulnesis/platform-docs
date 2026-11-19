@@ -12,7 +12,7 @@ The factory works on five kinds of forge. Every one runs the same workflows, tri
 
 | Forge | Connects with | Pull requests are called |
 |---|---|---|
-| github.com | The Vulnetix GitHub App | pull requests |
+| github.com | The Vulnesis GitHub App | pull requests |
 | GitHub Enterprise Server (GHES) | A GitHub App you register on your instance | pull requests |
 | Gitea | A bot account's access token | pull requests |
 | Forgejo, Codeberg included | A bot account's access token | pull requests |
@@ -44,10 +44,10 @@ github.com connects as described in the [Quickstart](/software-factory/get-start
 
 Some GitHub features have no equivalent. A step that needs one fails with `forge_capability_unavailable` and says why, and the Resolve Platform marks it "not available on" that forge.
 
-- **Security alerts** (Dependabot, code scanning, secret scanning) are GitHub's. On other forges Vulnetix's own scanners report the same findings.
+- **Security alerts** (Dependabot, code scanning, secret scanning) are GitHub's. On other forges Vulnesis's own scanners report the same findings.
 - **Merge queues** are GitHub's.
 - **Issue close reasons** exist only on GitHub. Elsewhere the card keeps the reason on the board.
-- **Pix Sandboxes** reach repositories through the Vulnetix GitHub App, so they work on github.com only. Belai on your own machines works on every forge.
+- **Pix Sandboxes** reach repositories through the Vulnesis GitHub App, so they work on github.com only. Belai on your own machines works on every forge.
 
 The full table, per capability and per trigger event, is [Forge capabilities](/software-factory/reference/forge-capabilities/).
 

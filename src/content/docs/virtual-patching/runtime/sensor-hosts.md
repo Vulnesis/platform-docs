@@ -14,11 +14,11 @@ updated: 02 Nov 2026
 
 ```bash
 # A person, after vulnetix auth login --store home
-curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh \
+curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh \
   | sudo sh -s -- --enroll --from-cli-login
 
 # A host, with an MDM integration key in /etc/vulnetix-sensor/mdm.key
-curl -fsSL https://raw.githubusercontent.com/Vulnetix/cli/v3.158.0/deploy/sensor/install.sh \
+curl -fsSL https://raw.githubusercontent.com/Vulnesis/cli/v3.158.0/deploy/sensor/install.sh \
   | sudo sh -s -- --enroll --mdm-key /etc/vulnetix-sensor/mdm.key --integration <integration-uuid> --kid <kid>
 ```
 
@@ -28,8 +28,8 @@ See [Your own laptop](/virtual-patching/sensor/byod-laptop/) and [At scale](/vir
 
 ```bash
 VERSION=v3.154.0 ARCH=amd64     # or arm64
-curl -fsSLO "https://github.com/Vulnetix/cli/releases/download/$VERSION/vulnetix-sensor-linux-$ARCH"
-curl -fsSL "https://github.com/Vulnetix/cli/releases/download/$VERSION/checksums.txt" \
+curl -fsSLO "https://github.com/Vulnesis/cli/releases/download/$VERSION/vulnetix-sensor-linux-$ARCH"
+curl -fsSL "https://github.com/Vulnesis/cli/releases/download/$VERSION/checksums.txt" \
   | grep " \*\?vulnetix-sensor-linux-$ARCH\$" | sha256sum -c -
 sudo install -m 0755 vulnetix-sensor-linux-$ARCH /usr/local/bin/vulnetix-sensor
 vulnetix-sensor --version
@@ -55,9 +55,9 @@ The unit always starts the egress proxy on `127.0.0.1:3128`; set `HTTPS_PROXY` f
 
 ```bash
 sudo install -m 0600 /dev/null /etc/vulnetix-sensor.env
-printf 'VULNETIX_ORG_ID=%s\nVULNETIX_API_KEY=%s\n' "<org-uuid>" "<hmac>" | sudo tee /etc/vulnetix-sensor.env >/dev/null
-curl -fsSLO https://raw.githubusercontent.com/Vulnetix/cli/v3.154.0/deploy/sensor/install.sh
-sudo sh install.sh v3.154.0 https://vulnetix.com/feeds/<org-uuid>/<feed-uuid> <feed-key> monitor
+printf 'VULNESIS_ORG_ID=%s\nVULNETIX_API_KEY=%s\n' "<org-uuid>" "<hmac>" | sudo tee /etc/vulnetix-sensor.env >/dev/null
+curl -fsSLO https://raw.githubusercontent.com/Vulnesis/cli/v3.154.0/deploy/sensor/install.sh
+sudo sh install.sh v3.154.0 https://vulnes.is/feeds/<org-uuid>/<feed-uuid> <feed-key> monitor
 systemctl status vulnetix-sensor
 ```
 
@@ -86,7 +86,7 @@ aws ssm create-document --name VulnetixSensorInstall --document-type Command \
 
 aws ssm send-command --document-name VulnetixSensorInstall \
   --targets Key=tag:vulnetix-sensor,Values=on \
-  --parameters Version=v3.154.0,FeedUrl=https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>,FeedKey=<feed-key>,Mode=monitor
+  --parameters Version=v3.154.0,FeedUrl=https://vulnes.is/feeds/<org-uuid>/<feed-uuid>,FeedKey=<feed-key>,Mode=monitor
 ```
 
 The instance role needs `secretsmanager:GetSecretValue` on the secret, and the host needs `python3` and the AWS CLI. Use a State Manager association with the same document to keep new instances covered.
@@ -96,7 +96,7 @@ The instance role needs `secretsmanager:GetSecretValue` on the secret, and the h
 Where there is no eBPF (Fargate, locked-down hosts), `run` starts the workload itself under a seccomp filter that stops every `execve` and `execveat` until the sensor answers. Each exec is checked against the feeds' Sigma `process_creation` rules, indicator hashes and YARA rules before it runs. In `guard` or `enforce` a match is refused with `EPERM`; a shell reports exit `126`. In guard the exec is held like a request. Every other system call runs untouched.
 
 ```bash
-vulnetix-sensor run --mode guard --feed https://vulnetix.com/feeds/<org-uuid>/<feed-uuid> -- /app/server --port 8080
+vulnetix-sensor run --mode guard --feed https://vulnes.is/feeds/<org-uuid>/<feed-uuid> -- /app/server --port 8080
 ```
 
 `run` takes every sensor flag, then `--` and the command, and exits with the workload's exit code.
@@ -107,7 +107,7 @@ Use it as the container entrypoint, with the binary copied into your image:
 FROM <your app image>
 COPY --from=<registry>/vulnetix-sensor:v3.154.0 /usr/local/bin/vulnetix-sensor /usr/local/bin/vulnetix-sensor
 ENTRYPOINT ["/usr/local/bin/vulnetix-sensor", "run", "--mode", "guard", \
-            "--feed", "https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>", "--"]
+            "--feed", "https://vulnes.is/feeds/<org-uuid>/<feed-uuid>", "--"]
 CMD ["/app/server"]
 ```
 

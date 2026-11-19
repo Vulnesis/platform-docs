@@ -7,7 +7,7 @@ checked: [browser-extension@d25ce74]
 updated: 02 Nov 2026
 ---
 
-The VDB rate limit is per day, and on the [Community plan](https://www.vulnetix.com/features/community) a request over the limit gets `429`. One advisory page can carry more than 60 identifiers, so the extension never fetches speculatively by default.
+The VDB rate limit is per day, and on the [Community plan](https://www.vulnes.is/features/community) a request over the limit gets `429`. One advisory page can carry more than 60 identifiers, so the extension never fetches speculatively by default.
 
 ## What costs a request
 

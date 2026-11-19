@@ -121,8 +121,8 @@ function customerWording(text) {
 
 // ── Console routes ─────────────────────────────────────────────────────────
 {
-  let body = 'Pages in the Resolve Platform that belong to Software Factory. All are under `https://www.vulnetix.com` and need you to be signed in.\n\n| Path | Explained in |\n|---|---|\n';
-  for (const a of by('console')) body += `| [${code(a.value)}](https://www.vulnetix.com${a.value}) | ${link(guideFor(a))} |\n`;
+  let body = 'Pages in the Resolve Platform that belong to Software Factory. All are under `https://www.vulnes.is` and need you to be signed in.\n\n| Path | Explained in |\n|---|---|\n';
+  for (const a of by('console')) body += `| [${code(a.value)}](https://www.vulnes.is${a.value}) | ${link(guideFor(a))} |\n`;
   write('reference/console-routes', { title: 'Resolve Platform pages', description: 'Every Software Factory page in the Resolve Platform and the guide that explains it.', order: 5, checked: short('website') }, body);
 }
 

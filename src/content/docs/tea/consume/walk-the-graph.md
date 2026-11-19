@@ -1,18 +1,18 @@
 ---
 title: Walk the object graph
-description: List products, follow a product release to its component releases, and fetch distributions, collections and artifact bytes against the Vulnetix TEA 1.0.0 root.
+description: List products, follow a product release to its component releases, and fetch distributions, collections and artifact bytes against the Vulnesis TEA 1.0.0 root.
 order: 2
 sources: [vdb-site/api/internal/handler/tea_v1_routes.go, vdb-site/api/internal/handler/tea_v1_catalogue.go, tea-spec/spec/openapi.yaml]
 checked: [vdb-site@1a06d67, tea-spec@6c93819]
 updated: 02 Nov 2026
 ---
 
-These requests are unauthenticated and return Vulnetix's public records. Responses are trimmed. Base: `https://www.vulnetix.com/tea/v1.0.0`.
+These requests are unauthenticated and return Vulnesis's public records. Responses are trimmed. Base: `https://www.vulnes.is/tea/v1.0.0`.
 
 ## List products
 
 ```bash
-curl -s 'https://www.vulnetix.com/tea/v1.0.0/products?pageSize=1'
+curl -s 'https://www.vulnes.is/tea/v1.0.0/products?pageSize=1'
 ```
 
 ```json
@@ -22,10 +22,10 @@ curl -s 'https://www.vulnetix.com/tea/v1.0.0/products?pageSize=1'
   "results": [
     {
       "uuid": "6551da21-1ca4-5930-8cfc-b3110b1588c4",
-      "name": "Vulnetix/belai",
+      "name": "Vulnesis/belai",
       "identifiers": [
-        { "idType": "TEI", "idValue": "tei://vulnetix.com/uuid/6551da21-1ca4-5930-8cfc-b3110b1588c4" },
-        { "idType": "PURL", "idValue": "pkg:github/Vulnetix/belai" }
+        { "idType": "TEI", "idValue": "tei://vulnes.is/uuid/6551da21-1ca4-5930-8cfc-b3110b1588c4" },
+        { "idType": "PURL", "idValue": "pkg:github/Vulnesis/belai" }
       ]
     }
   ]
@@ -37,7 +37,7 @@ Page with `pageToken=<nextPageToken>` while `hasNext` is true. A token is bound 
 Filter exactly on one identifier with `idType` and `idValue`:
 
 ```bash
-curl -s 'https://www.vulnetix.com/tea/v1.0.0/products?idType=PURL&idValue=pkg%3Agithub%2FVulnetix%2Fcli'
+curl -s 'https://www.vulnes.is/tea/v1.0.0/products?idType=PURL&idValue=pkg%3Agithub%2FVulnetix%2Fcli'
 ```
 
 `idType` is one of `CPE`, `TEI`, `PURL`, `COMPLIANCE_DOCUMENT`. There is no name search on the server.
@@ -45,7 +45,7 @@ curl -s 'https://www.vulnetix.com/tea/v1.0.0/products?idType=PURL&idValue=pkg%3A
 ## A product's releases
 
 ```bash
-curl -s 'https://www.vulnetix.com/tea/v1.0.0/product/54e8820d-0803-5a4f-858d-88a279486564/releases?pageSize=1'
+curl -s 'https://www.vulnes.is/tea/v1.0.0/product/54e8820d-0803-5a4f-858d-88a279486564/releases?pageSize=1'
 ```
 
 ```json
@@ -54,7 +54,7 @@ curl -s 'https://www.vulnetix.com/tea/v1.0.0/product/54e8820d-0803-5a4f-858d-88a
     {
       "uuid": "959d737f-7a54-51b7-b236-6ed079105345",
       "product": "54e8820d-0803-5a4f-858d-88a279486564",
-      "productName": "Vulnetix/cli",
+      "productName": "Vulnesis/cli",
       "version": "v3.82.2",
       "createdDate": "2026-08-02T05:50:18Z",
       "releaseDate": "2026-08-02T05:50:17Z",
@@ -71,20 +71,20 @@ Follow `components[].release`: the downloads and most evidence live on the compo
 ## A component release
 
 ```bash
-curl -s 'https://www.vulnetix.com/tea/v1.0.0/componentRelease/e5a33f26-8056-5f16-a950-41a0db12d48f'
+curl -s 'https://www.vulnes.is/tea/v1.0.0/componentRelease/e5a33f26-8056-5f16-a950-41a0db12d48f'
 ```
 
 ```json
 {
   "uuid": "e5a33f26-8056-5f16-a950-41a0db12d48f",
-  "componentName": "Vulnetix/cli",
+  "componentName": "Vulnesis/cli",
   "version": "v3.82.2",
-  "identifiers": [{ "idType": "PURL", "idValue": "pkg:github/Vulnetix/cli@v3.82.2" }],
+  "identifiers": [{ "idType": "PURL", "idValue": "pkg:github/Vulnesis/cli@v3.82.2" }],
   "distributions": [
     {
       "distributionId": "d6d7b590-1096-5db2-809a-9bea5d83c5ed",
       "description": "vulnetix-darwin-amd64",
-      "url": "https://github.com/Vulnetix/cli/releases/download/v3.82.2/vulnetix-darwin-amd64",
+      "url": "https://github.com/Vulnesis/cli/releases/download/v3.82.2/vulnetix-darwin-amd64",
       "checksums": [{ "algType": "SHA-256", "algValue": "9ae163c29eba8321382df0e8c1954c063fdec594306c6f5e17979b37f1d83fce" }]
     }
   ],
@@ -119,7 +119,7 @@ curl -s 'https://www.vulnetix.com/tea/v1.0.0/componentRelease/e5a33f26-8056-5f16
 | `latestCollection.uuid` | The same as the release UUID. Collections are versioned, not separately identified. |
 
 > [!CAREFUL] Distribution checksums are the publisher's claim
-> Vulnetix does not host distribution files. Check the checksum against the file you download.
+> Vulnesis does not host distribution files. Check the checksum against the file you download.
 
 Older collection versions are at `/componentRelease/{uuid}/collections` and `/componentRelease/{uuid}/collection/{collectionVersion}`, with the same routes under `/productRelease/{uuid}`.
 
@@ -129,7 +129,7 @@ Hosted artifacts have no `url` in 1.0.0. Fetch them from the download route, nam
 
 ```bash
 curl -sL -o vulnetix.cdx.json \
-  'https://www.vulnetix.com/tea/v1.0.0/artifact/6502fa11-6497-5ee2-8182-72f2caa3d549/1/download?mediaType=application%2Fvnd.cyclonedx%2Bjson'
+  'https://www.vulnes.is/tea/v1.0.0/artifact/6502fa11-6497-5ee2-8182-72f2caa3d549/1/download?mediaType=application%2Fvnd.cyclonedx%2Bjson'
 sha256sum vulnetix.cdx.json
 ```
 

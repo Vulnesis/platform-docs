@@ -46,7 +46,7 @@ A transitive match on a same-named method is the common one. Read `captures`: `c
 |---|---|
 | `--reachability direct` | Skips the whole-tree sweep |
 | `--reachability off` | Skips reachability and the query fetch |
-| `VULNETIX_REACHABILITY_CONCURRENCY` | Files parsed in parallel, default `GOMAXPROCS`, clamped 1 to 32 |
+| `VULNESIS_REACHABILITY_CONCURRENCY` | Files parsed in parallel, default `GOMAXPROCS`, clamped 1 to 32 |
 | Skipped directories | `.git`, `node_modules`, `vendor`, `.venv`, `venv`, `env`, `__pycache__`, `.tox`, `dist`, `build`, `target`, `.gradle`, `.idea`, `.vscode`, `.next`, `.nuxt`, `coverage`, `.cache`. Other generated trees are walked. |
 | File size | Files over 4 MiB are skipped |
 

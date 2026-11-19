@@ -7,7 +7,7 @@ checked: [saas@50cedf37, vdb-site@1a06d67, cli@4c8c3b71c]
 updated: 02 Nov 2026
 ---
 
-TEA says how transparency data is fetched, not who may fetch it. The Vulnetix publisher adds an access policy to every object it stores.
+TEA says how transparency data is fetched, not who may fetch it. The Vulnesis publisher adds an access policy to every object it stores.
 
 ## Visibility
 
@@ -43,7 +43,7 @@ The effective visibility is the narrowest declaration anywhere on that chain, no
 
 | Field | Notes |
 |---|---|
-| `organizationUuid` | A Vulnetix organisation UUID, the identity a reader authenticates as |
+| `organizationUuid` | A Vulnesis organisation UUID, the identity a reader authenticates as |
 | `organizationName` | Display only. A rename does not move a grant. |
 | `grantedAt` | RFC 3339, set by the server |
 | `expiresAt` | RFC 3339, optional. A value that does not parse is treated as already expired. |

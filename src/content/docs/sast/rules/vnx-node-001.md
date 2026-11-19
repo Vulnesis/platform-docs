@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1195.001](https://attack.mitre.org/techniques/T1195/001/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `supply-chain` `lockfile` `integrity` |
-| Source | [`internal/sast/rules/vnx-node-001.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-node-001.rego) |
+| Source | [`internal/sast/rules/vnx-node-001.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-node-001.rego) |
 
 ## Overview
 
@@ -57,7 +57,7 @@ A lock file listed in `.gitignore` is treated as absent, because it is not commi
 
 ## Scanner Behavior Without a Lock File
 
-The SAST rule still reports this as a high-severity supply-chain issue. For SCA, Vulnetix can continue only when the project already has an installed `node_modules/` tree. In that case, the CLI reads installed package manifests to resolve actual package versions, verifies that every direct dependency declared in `package.json` is present, and treats installed packages that are not declared directly as transitives when it can connect them through dependency fields.
+The SAST rule still reports this as a high-severity supply-chain issue. For SCA, Vulnesis can continue only when the project already has an installed `node_modules/` tree. In that case, the CLI reads installed package manifests to resolve actual package versions, verifies that every direct dependency declared in `package.json` is present, and treats installed packages that are not declared directly as transitives when it can connect them through dependency fields.
 
 If `node_modules/` is missing or a declared direct dependency is absent, the CLI stops before calling `/v2/cli.sca`. This avoids reporting vulnerability results against version ranges such as `^1.2.3`, which are not real installed versions.
 

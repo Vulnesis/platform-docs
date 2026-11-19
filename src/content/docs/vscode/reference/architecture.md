@@ -1,6 +1,6 @@
 ---
 title: Architecture
-description: "The three parts behind the extension: the extension, the CLI's `vulnetix lsp` language server and the Vulnetix vulnerability database, and how each fails."
+description: "The three parts behind the extension: the extension, the CLI's `vulnetix lsp` language server and the Vulnesis vulnerability database, and how each fails."
 order: 5
 sources: [vulnetix-vscode/package.json, vulnetix-vscode/src/extension.ts, vulnetix-vscode/src/lsp/client.ts, cli/cmd/lsp.go, cli/internal/lsp/server.go, cli/internal/lsp/sca.go]
 checked: [vulnetix-vscode@c32c4a1, cli@0b41bb394]
@@ -19,7 +19,7 @@ status: available
 ```
 editor (extension host)  --LSP over stdio-->  vulnetix lsp  --reads-->  workspace files
                                                    |
-                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnetix.com
+                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnes.is
 ```
 
 There is no sign-in in the editor. The server uses the CLI's own credentials (`vulnetix auth login`), or the community key when there are none. See [Privacy and network use](/vscode/configuration/privacy/#credentials).
@@ -44,9 +44,9 @@ Browser-only editors (vscode.dev, github.dev) have no process to run, so the ext
 
 | Failure | What happens |
 |---|---|
-| The server exits | The extension restarts it. After more than three exits within three minutes it stops restarting, shows **The Vulnetix language server keeps crashing. Scanning is disabled for this session.** and offers **Show Log** and **Restart**. |
-| A server error that does not exit | Written to the **Vulnetix** output channel; the server keeps running |
+| The server exits | The extension restarts it. After more than three exits within three minutes it stops restarting, shows **The Vulnesis language server keeps crashing. Scanning is disabled for this session.** and offers **Show Log** and **Restart**. |
+| A server error that does not exit | Written to the **Vulnesis** output channel; the server keeps running |
 | The VDB cannot be reached, or the lookup fails | The error is written to the log as `sca: dependency lookup failed: ...` and no dependency diagnostics are published. Code, secret, infrastructure and container rules are local and keep working. |
 
 > [!CAREFUL] No dependency findings is not the same as no vulnerable dependencies
-> The editor does not yet show a failed dependency lookup any differently from a clean one. If a manifest you expect to have findings shows none, open the log (click the status bar item, or run **Vulnetix: Show Output**) and look for `sca:` lines. See [No dependency findings](/vscode/guides/troubleshooting/#no-dependency-findings).
+> The editor does not yet show a failed dependency lookup any differently from a clean one. If a manifest you expect to have findings shows none, open the log (click the status bar item, or run **Vulnesis: Show Output**) and look for `sca:` lines. See [No dependency findings](/vscode/guides/troubleshooting/#no-dependency-findings).

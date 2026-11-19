@@ -8,7 +8,7 @@ checked: [cli@3e6fd831d]
 updated: 03 Nov 2026
 ---
 
-`vulnetix gha publish` sends results the CLI already wrote into GitHub, in the formats GitHub reads itself. It is independent of sending them to Vulnetix: it needs no Vulnetix credentials, and [`gha upload`](/cli/ci-cd/gha-command/) and the scan's own upload are unaffected by it.
+`vulnetix gha publish` sends results the CLI already wrote into GitHub, in the formats GitHub reads itself. It is independent of sending them to Vulnesis: it needs no Vulnesis credentials, and [`gha upload`](/cli/ci-cd/gha-command/) and the scan's own upload are unaffected by it.
 
 | Subcommand | Publishes | Since |
 |---|---|---|
@@ -16,7 +16,7 @@ updated: 03 Nov 2026
 | [`dependency-graph`](#dependency-graph) | A CycloneDX SBOM as a dependency graph snapshot | v3.161.0 |
 | [`release-assets`](#release-assets) | Files, or everything in the artifact manifest, to a release | v3.162.0 |
 | [`advisories`](#advisories) | Draft repository security advisories for SAST findings | v3.163.0 |
-| [`campaigns`](#campaigns) | Vulnetix remediation campaigns as GitHub security campaigns | v3.166.0 |
+| [`campaigns`](#campaigns) | Vulnesis remediation campaigns as GitHub security campaigns | v3.166.0 |
 
 The GitHub Actions use these commands: the `github-code-scanning`, `dependency-graph` and `release-tag` inputs of every action, and the [github-publish action](/cli/github-actions/github-publish/).
 
@@ -42,7 +42,7 @@ A 401, 403 or 404 is reported with the permission the token lacks. A pull reques
 vulnetix scan --github-publish code-scanning,dependency-graph
 ```
 
-At the end of the scan it publishes the scan's own results. It uploads an empty result set for each scanner that ran clean, so alerts that were fixed close. `code-scanning` forces `--no-cache`, because a cached run must never close an alert that is still real. A failure prints a warning only: the scan's exit code and its upload to Vulnetix are unaffected, and a community run with no Vulnetix credentials still publishes to GitHub.
+At the end of the scan it publishes the scan's own results. It uploads an empty result set for each scanner that ran clean, so alerts that were fixed close. `code-scanning` forces `--no-cache`, because a cached run must never close an alert that is still real. A failure prints a warning only: the scan's exit code and its upload to Vulnesis are unaffected, and a community run with no Vulnesis credentials still publishes to GitHub.
 
 Add `--github-publish-dry-run` to see what would be published: it writes the per-kind SARIF files under `.vulnetix/code-scanning/` and prints the dependency graph snapshot, and submits nothing to GitHub.
 
@@ -97,7 +97,7 @@ Components without a purl cannot be named to the dependency graph and are skippe
 vulnetix gha publish release-assets [file...] [--tag <tag>] [--manifest <file>] [--clobber] [--create] [--repo]
 ```
 
-Attaches the named files to the release for `--tag`. With no files named, it attaches every file in the artifact manifest (`--manifest`, else `--artifact-manifest` or `VULNETIX_ARTIFACT_MANIFEST`), including the `.sig`, `.pem` and `.intoto.jsonl` files of a signed SBOM. See [Artifact manifest](/cli/reference/artifact-manifest/).
+Attaches the named files to the release for `--tag`. With no files named, it attaches every file in the artifact manifest (`--manifest`, else `--artifact-manifest` or `VULNESIS_ARTIFACT_MANIFEST`), including the `.sig`, `.pem` and `.intoto.jsonl` files of a signed SBOM. See [Artifact manifest](/cli/reference/artifact-manifest/).
 
 | Flag | Default | Meaning |
 |---|---|---|
@@ -135,28 +135,28 @@ Drafts GitHub repository security advisories for this repository's own SAST find
 |---|---|
 | Scope | Findings of kind `sast` at or above `--min-severity`. Suppressed findings, test-suite findings and findings with a confidence gap are left out. |
 | Grouping | One advisory per rule and CWE set, worst severity first, then most locations, at most `--max` |
-| Fields | Summary `[Vulnetix] <rule>`, a description listing up to 25 locations, `cwe_ids` and `severity`. A CVSS vector is never set. |
+| Fields | Summary `[Vulnesis] <rule>`, a description listing up to 25 locations, `cwe_ids` and `severity`. A CVSS vector is never set. |
 | Package | The repository's own, from `package.json`, `go.mod`, `Cargo.toml`, `pyproject.toml` or `composer.json`. Otherwise ecosystem `other` with the repository name. |
 | Lifecycle | Always a draft. The update body has no `state`, so publishing stays a maintainer's decision. |
 
 ## campaigns
 
 ```sh
-VULNETIX_ORG_ID=... VULNETIX_API_KEY=... GH_TOKEN=$ORG_PAT vulnetix gha publish campaigns --org acme [--recreate-on-scope-change] [--default-days 90] [--dry-run]
+VULNESIS_ORG_ID=... VULNESIS_API_KEY=... GH_TOKEN=$ORG_PAT vulnetix gha publish campaigns --org acme [--recreate-on-scope-change] [--default-days 90] [--dry-run]
 ```
 
 The command is available since v3.166.0 and needs a Pro plan.
 
-Mirrors each active Vulnetix remediation campaign as a GitHub security campaign named `[Vulnetix] <name>`. A campaign's open items are matched to the organisation's open code scanning alerts: an alert belongs to an item when its rule ID is the item's finding ID and, for a package, the alert names it. Publish code scanning first so the alerts exist. The campaign ends at the Vulnetix deadline, or `--default-days` days from creation, and its contact link points back at the Vulnetix campaign. A completed or archived Vulnetix campaign closes its GitHub campaign.
+Mirrors each active Vulnesis remediation campaign as a GitHub security campaign named `[Vulnesis] <name>`. A campaign's open items are matched to the organisation's open code scanning alerts: an alert belongs to an item when its rule ID is the item's finding ID and, for a package, the alert names it. Publish code scanning first so the alerts exist. The campaign ends at the Vulnesis deadline, or `--default-days` days from creation, and its contact link points back at the Vulnesis campaign. A completed or archived Vulnesis campaign closes its GitHub campaign.
 
 | Flag | Default | Meaning |
 |---|---|---|
 | `--org` | `GITHUB_REPOSITORY_OWNER` | GitHub organisation that owns the repositories |
-| `--recreate-on-scope-change` | `false` | Close and recreate a GitHub campaign whose Vulnetix cohort changed |
-| `--default-days` | `90` | Days until a campaign with no Vulnetix deadline ends |
-| `--dry-run` | `false` | Read from Vulnetix and GitHub, print what would change, write nothing |
+| `--recreate-on-scope-change` | `false` | Close and recreate a GitHub campaign whose Vulnesis cohort changed |
+| `--default-days` | `90` | Days until a campaign with no Vulnesis deadline ends |
+| `--dry-run` | `false` | Read from Vulnesis and GitHub, print what would change, write nothing |
 
-Two credentials are needed: the Vulnetix token above, and a GitHub token of an organisation owner or security manager, as a PAT or GitHub App, on an organisation with GitHub Advanced Security. GitHub cannot change the alerts of a campaign once it exists, so a changed cohort is reported and the campaign is left alone unless `--recreate-on-scope-change` is set. Run it as an organisation-level scheduled job, not on every push.
+Two credentials are needed: the Vulnesis token above, and a GitHub token of an organisation owner or security manager, as a PAT or GitHub App, on an organisation with GitHub Advanced Security. GitHub cannot change the alerts of a campaign once it exists, so a changed cohort is reported and the campaign is left alone unless `--recreate-on-scope-change` is set. Run it as an organisation-level scheduled job, not on every push.
 
 ## Markers
 
@@ -167,7 +167,7 @@ The commands find their earlier work by a hidden marker, so a re-run updates ins
 | Category `vulnetix/<kind>/` | Code scanning run (`automationDetails.id`) | One category per scanner. An upload replaces that category's alerts only. |
 | `job.correlator` `vulnetix/<workflow>/<job>` | Dependency graph snapshot | The next snapshot with the same correlator replaces this one |
 | `<!-- vulnetix-advisory:<hash> -->` | End of an advisory description | Hash of the rule and CWE set. A later run updates the matching draft with `PATCH` and leaves a published or closed advisory alone. |
-| `<!-- vulnetix-campaign:<uuid> -->` | End of a campaign description | Ties the GitHub campaign to the Vulnetix campaign |
+| `<!-- vulnetix-campaign:<uuid> -->` | End of a campaign description | Ties the GitHub campaign to the Vulnesis campaign |
 | `<!-- vulnetix-scope:<hash> -->` | End of a campaign description | The frozen cohort the campaign was created from |
 | `<!-- vulnetix-config-plan -->` | First line of the `config-plan` pull request comment | One comment per pull request, updated on each push |
 
@@ -184,7 +184,7 @@ The commands find their earlier work by a hidden marker, so a re-run updates ins
 
 ## Both destinations
 
-Sending to Vulnetix and publishing to GitHub are separate. With Vulnetix credentials, a scan stores its results in Vulnetix and, with `--github-publish`, also publishes them to GitHub. Without credentials the scan runs against the community tier, stores nothing in Vulnetix, and still publishes to GitHub. A GitHub failure never changes the scan's exit code or its Vulnetix upload.
+Sending to Vulnesis and publishing to GitHub are separate. With Vulnesis credentials, a scan stores its results in Vulnesis and, with `--github-publish`, also publishes them to GitHub. Without credentials the scan runs against the community tier, stores nothing in Vulnesis, and still publishes to GitHub. A GitHub failure never changes the scan's exit code or its Vulnesis upload.
 
 ## Related
 

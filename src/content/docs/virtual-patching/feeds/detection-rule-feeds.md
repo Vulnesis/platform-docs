@@ -1,6 +1,6 @@
 ---
 title: Detection rule feeds
-description: Curate rules into a feed, publish it to a stable public URL, and point a WAF, IDS, SIEM or the Vulnetix sensor at it.
+description: Curate rules into a feed, publish it to a stable public URL, and point a WAF, IDS, SIEM or the Vulnesis sensor at it.
 order: 1
 nav: Feeds
 sources: [vdb-site/docs/addons.md, saas/prisma/models/detection-rule-feeds.prisma, vdb-site/api/internal/handler/detection_rule_feeds.go, vdb-site/api/internal/handler/detection_rule_feeds_publish.go, vdb-site/api/internal/handler/defence_formats.go, website/src/pages/resolve/virtual-patching.vue]
@@ -8,7 +8,7 @@ checked: [vdb-site@1a06d67, saas@50cedf3, website@ad775f3]
 updated: 05 Nov 2026
 ---
 
-A detection rule feed is a set of rules your organisation picks, published as files under one URL. Third-party tools fetch the files without authentication. The Vulnetix runtime sensor fetches the same feed and verifies its signature.
+A detection rule feed is a set of rules your organisation picks, published as files under one URL. Third-party tools fetch the files without authentication. The Vulnesis runtime sensor fetches the same feed and verifies its signature.
 
 Feeds are on the **Your Feeds** tab of `/resolve/virtual-patching` in the Resolve Platform.
 
@@ -53,7 +53,7 @@ What each file looks like, and how a disabled rule appears in it, is on [Feed fo
 ## The URL
 
 ```text
-https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>/
+https://vulnes.is/feeds/<org-uuid>/<feed-uuid>/
 ```
 
 This is `publicBaseUrl`, shown on the feed after publishing. Under it:
@@ -64,7 +64,7 @@ This is `publicBaseUrl`, shown on the feed after publishing. Under it:
 | `<file>.sha256` | The file's SHA-256, lower-case hex, no filename |
 | `manifest.json` | Every file with its URL, SHA-256 and rule count |
 | `manifest.json.sig` | Ed25519 signature over `manifest.json`, base64 |
-| `rules.json` | Every rule as its own object with its start mode, for the Vulnetix sensor |
+| `rules.json` | Every rule as its own object with its start mode, for the Vulnesis sensor |
 
 See [Manifest and signature](/virtual-patching/feeds/manifest-and-signature/) to verify a download.
 
@@ -75,7 +75,7 @@ Every runtime page has the exact commands. The pattern is the same for every too
 ```bash
 #!/bin/sh
 set -eu
-FEED="https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>"
+FEED="https://vulnes.is/feeds/<org-uuid>/<feed-uuid>"
 FILE="suricata.rules"
 DEST="/etc/suricata/rules/vulnetix.rules"
 TMP="$(mktemp)"
@@ -89,7 +89,7 @@ rm -f "$TMP"
 
 ## Plan and add-on
 
-Feeds come with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of **Your feeds**, whatever its plan, and the feed API answers `planLocked: true` with `addon: "soc_intelligence"` (`402` for a write). Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnetix.com/pricing).
+Feeds come with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of **Your feeds**, whatever its plan, and the feed API answers `planLocked: true` with `addon: "soc_intelligence"` (`402` for a write). Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
 
 The rule catalogues a feed is curated from (virtual patches, countermeasures, the Snort and YARA catalogues) are part of Pro, and they also open for an organisation on Community that holds SOC Intelligence, so its feeds can be filled.
 

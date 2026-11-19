@@ -7,7 +7,7 @@ checked: [siem@e0f71fa]
 updated: 02 Nov 2026
 ---
 
-Guardian takes AWS logs by push. You deploy a CloudFormation stack that creates Firehose streams pointing at `https://ingest.vulnetix.com/v1/ingest/aws/<kind>`. Vulnetix holds no AWS credentials for delivery and the stack grants Vulnetix no access to the account.
+Guardian takes AWS logs by push. You deploy a CloudFormation stack that creates Firehose streams pointing at `https://ingest.vulnes.is/v1/ingest/aws/<kind>`. Vulnesis holds no AWS credentials for delivery and the stack grants Vulnesis no access to the account.
 
 A second, optional stack creates a read-only role that a Guardian investigation agent assumes. See [The investigation role](#the-investigation-role).
 
@@ -19,15 +19,15 @@ Both templates are served without sign-in:
 
 | Template | URL |
 |---|---|
-| Delivery | `https://guardian.vulnetix.com/v1/templates/vulnetix-siem.yaml` |
-| Investigation role | `https://guardian.vulnetix.com/v1/templates/vulnetix-guardian-readonly.yaml` |
+| Delivery | `https://guardian.vulnes.is/v1/templates/vulnetix-siem.yaml` |
+| Investigation role | `https://guardian.vulnes.is/v1/templates/vulnetix-guardian-readonly.yaml` |
 
 **Guardian > Sources** also shows a CloudFormation quick-create link for each. The delivery link names the stack only, so the token never sits in a URL or your browser history: you paste it into the form. The role link fills in `ExternalId` with your organisation id. The Resolve Platform opens in the region you last used.
 
 ## The delivery stack
 
 ```sh
-curl -fsSLo vulnetix-siem.yaml https://guardian.vulnetix.com/v1/templates/vulnetix-siem.yaml
+curl -fsSLo vulnetix-siem.yaml https://guardian.vulnes.is/v1/templates/vulnetix-siem.yaml
 aws cloudformation deploy --stack-name vulnetix-siem --template-file vulnetix-siem.yaml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --parameter-overrides IngestToken=gdn_xxxxxxxxxxxxxxxxxxxx VpcIds=vpc-0abc1234,vpc-0def5678
@@ -40,7 +40,7 @@ aws cloudformation deploy --stack-name vulnetix-siem --template-file vulnetix-si
 | Parameter | Default | Meaning |
 |---|---|---|
 | `IngestToken` | required | A Guardian ingest token of kind `aws`. Must match `^gdn_[A-Za-z0-9_-]{20,64}$`. `NoEcho`. |
-| `IngestHost` | `ingest.vulnetix.com` | The ingest host. Leave it. |
+| `IngestHost` | `ingest.vulnes.is` | The ingest host. Leave it. |
 | `VpcIds` | empty | Comma-separated VPC ids. Empty sends CloudTrail only. |
 | `SendFlowLogs` | `true` | Create a flow log for each VPC. |
 | `SendResolverLogs` | `true` | Create Resolver query logging for each VPC. |
@@ -107,7 +107,7 @@ Every response is in Firehose's JSON shape with the request id echoed.
 `vulnetix-guardian-readonly.yaml` creates `VulnetixGuardianReadOnly`, which an investigation agent in a [Guardian workflow](/siem/alerts/triggers/#software-factory-workflows) assumes to read the account. Nothing in it can change the account: a remediation is a pull request or a command a person runs.
 
 ```sh
-curl -fsSLo vulnetix-guardian-readonly.yaml https://guardian.vulnetix.com/v1/templates/vulnetix-guardian-readonly.yaml
+curl -fsSLo vulnetix-guardian-readonly.yaml https://guardian.vulnes.is/v1/templates/vulnetix-guardian-readonly.yaml
 aws cloudformation deploy --stack-name vulnetix-guardian-readonly --template-file vulnetix-guardian-readonly.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --parameter-overrides TrustedPrincipalArn=arn:aws:iam::<your-account-id>:user/vulnetix-investigator ExternalId=<your-organisation-id>
@@ -115,8 +115,8 @@ aws cloudformation deploy --stack-name vulnetix-guardian-readonly --template-fil
 
 | Parameter | Meaning |
 |---|---|
-| `TrustedPrincipalArn` | The IAM user or role whose access key you store in the Vulnetix Secrets Vault as an `env` entry for the investigation sandbox. Pattern `arn:aws:iam::<12 digits>:(user\|role)/<name>`. |
-| `ExternalId` | Your Vulnetix organisation id (a UUID), shown on the Sources page. Required in `sts:ExternalId` on every assume. |
+| `TrustedPrincipalArn` | The IAM user or role whose access key you store in the Vulnesis Secrets Vault as an `env` entry for the investigation sandbox. Pattern `arn:aws:iam::<12 digits>:(user\|role)/<name>`. |
+| `ExternalId` | Your Vulnesis organisation id (a UUID), shown on the Sources page. Required in `sts:ExternalId` on every assume. |
 
 The role has a 1-hour maximum session and:
 
@@ -128,4 +128,4 @@ The role has a 1-hour maximum session and:
 
 There is no explicit deny statement: IAM refuses a wildcard service prefix such as `*:Get*`, so the role is read-only because nothing it holds allows a write. Put the `RoleArn` output into the investigation agent's `aws_role_arn` fact.
 
-For connecting an AWS account to Vulnetix cloud scanning (a different role), see [Cloud security](/cloud-security/).
+For connecting an AWS account to Vulnesis cloud scanning (a different role), see [Cloud security](/cloud-security/).

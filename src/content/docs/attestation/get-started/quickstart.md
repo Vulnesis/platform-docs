@@ -8,13 +8,13 @@ checked: [cli@v4.17.1]
 updated: 04 Nov 2026
 ---
 
-This page signs the SBOM a workflow generates and checks that signature in the same job, pinned to the workflow that made it. Signing uses public Sigstore and the runner's own identity, not a Vulnetix credential.
+This page signs the SBOM a workflow generates and checks that signature in the same job, pinned to the workflow that made it. Signing uses public Sigstore and the runner's own identity, not a Vulnesis credential.
 
 ## Prerequisites
 
 - A GitHub repository where you can add a workflow.
 - A job that may request an OIDC token: `permissions: id-token: write`.
-- No Vulnetix plan or credentials. Both actions run in community mode without them.
+- No Vulnesis plan or credentials. Both actions run in community mode without them.
 
 ## 1. Sign the SBOM
 
@@ -31,7 +31,7 @@ jobs:
       id-token: write          # lets the job sign as itself
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sbom@v4
+      - uses: Vulnesis/cli/sbom@v4
         with:
           sign: true
 ```
@@ -53,7 +53,7 @@ The action runs `vulnetix cdx --sign` and writes, in `.vulnetix/`:
 Add a step after the sbom step:
 
 ```yaml
-      - uses: Vulnetix/cli/attest@v4
+      - uses: Vulnesis/cli/attest@v4
         with:
           subject: .vulnetix/sbom.cdx.json
           args: --identity https://github.com/${{ github.workflow_ref }} --issuer github

@@ -46,8 +46,8 @@ jobs:
             --channel "name=Homebrew: brew install owner/tap/tool,url=https://github.com/owner/homebrew-tap" \
             --visibility public
         env:
-          VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-          VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+          VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+          VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
 ```
 

@@ -10,9 +10,9 @@ updated: 02 Nov 2026
 
 ## 1. Get credentials
 
-Register for a free Community account at [vulnetix.com/resolve/register](https://www.vulnetix.com/resolve/register). Its daily quota is 50 requests. Paid plans and higher limits are on [vulnetix.com/pricing](https://www.vulnetix.com/pricing).
+Register for a free Community account at [vulnes.is/resolve/register](https://www.vulnes.is/resolve/register). Its daily quota is 50 requests. Paid plans and higher limits are on [vulnes.is/pricing](https://www.vulnes.is/pricing).
 
-Your credentials are on the Resolve Platform's [Account page](https://www.vulnetix.com/resolve/account):
+Your credentials are on the Resolve Platform's [Account page](https://www.vulnes.is/resolve/account):
 
 | Value | Looks like | Used for |
 |---|---|---|
@@ -21,7 +21,7 @@ Your credentials are on the Resolve Platform's [Account page](https://www.vulnet
 | Secret | A random string | SigV4 signing. The API key is HMAC-SHA256 of the org id, keyed with this secret |
 
 > [!CAREFUL] The API key already contains your org id
-> The Resolve Platform shows the key as `<orgId>:<hex>`, which is exactly what goes after `ApiKey ` in the header. If you build the header yourself as `ApiKey $ORG:$KEY` from that value, the org id appears twice and the API answers `401 {"error":"Invalid API key"}`. Use only the hex part in `VULNETIX_API_KEY`. The CLI strips a duplicated `<orgId>:` prefix itself; curl and your own code do not.
+> The Resolve Platform shows the key as `<orgId>:<hex>`, which is exactly what goes after `ApiKey ` in the header. If you build the header yourself as `ApiKey $ORG:$KEY` from that value, the org id appears twice and the API answers `401 {"error":"Invalid API key"}`. Use only the hex part in `VULNESIS_API_KEY`. The CLI strips a duplicated `<orgId>:` prefix itself; curl and your own code do not.
 
 ## 2. Store them for the CLI
 
@@ -34,7 +34,7 @@ vulnetix auth login
 With a key you already have, and no browser:
 
 ```bash
-vulnetix auth login --org-id "$VULNETIX_ORG_ID" --api-key "$VULNETIX_API_KEY" --noninteractive
+vulnetix auth login --org-id "$VULNESIS_ORG_ID" --api-key "$VULNESIS_API_KEY" --noninteractive
 ```
 
 This writes `~/.vulnetix/credentials.json` (mode `0600`). `--store project` writes `.vulnetix/credentials.json` in the current directory instead, and `--store keyring` keeps the secret in the OS keychain and only metadata on disk.
@@ -42,8 +42,8 @@ This writes `~/.vulnetix/credentials.json` (mode `0600`). `--store project` writ
 In CI, set environment variables instead:
 
 ```bash
-export VULNETIX_ORG_ID="your-org-uuid"
-export VULNETIX_API_KEY="your-api-key-hex"
+export VULNESIS_ORG_ID="your-org-uuid"
+export VULNESIS_API_KEY="your-api-key-hex"
 ```
 
 The full list of credential sources, and the order the CLI tries them in, is in [CLI flags, output and cache](/vdb-api/cli/flags-and-output/#credentials).
@@ -60,8 +60,8 @@ With curl, an authenticated route that returns quickly is a good probe. `401` me
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' \
-  -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
-  https://api.vdb.vulnetix.com/v2/ecosystems
+  -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
+  https://api.vdb.vulnes.is/v2/ecosystems
 ```
 
 ## 4. First queries
@@ -93,10 +93,10 @@ vulnetix vdb kev get CVE-2021-44228
 The same three calls with curl:
 
 ```bash
-AUTH="Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}"
-curl -s -H "$AUTH" "https://api.vdb.vulnetix.com/v2/exploits/CVE-2021-44228?limit=10"
-curl -s -H "$AUTH" "https://api.vdb.vulnetix.com/v2/vuln/CVE-2021-44228/fixes/registry"
-curl -s -H "$AUTH" "https://api.vdb.vulnetix.com/v2/vuln/CVE-2021-44228/kev"
+AUTH="Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}"
+curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/exploits/CVE-2021-44228?limit=10"
+curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry"
+curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/kev"
 ```
 
 ## Next

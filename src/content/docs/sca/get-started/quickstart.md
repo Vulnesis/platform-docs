@@ -51,8 +51,8 @@ GitHub Actions:
 - name: SCA
   run: vulnetix sca --fail-on high --output sbom.cdx.json
   env:
-    VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-    VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
+    VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
+    VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
 ```
 
 ## 4. Export

@@ -44,7 +44,7 @@ vulnetix triage status [flags]
 
 ## The VEX it writes
 
-With `--vex-format cdx`, the decisions are written as CycloneDX VEX at spec version 1.5. The document names `Vulnetix` in `metadata.authors` and claims the `operations` lifecycle phase. With `openvex` it writes OpenVEX 0.2.0. See [Files the VEX commands write](/vex/reference/files-written/) for both shapes, and [CycloneDX authoring](/sbom/author/overview/) to set the authorship of an SBOM instead.
+With `--vex-format cdx`, the decisions are written as CycloneDX VEX at spec version 1.5. The document names `Vulnesis` in `metadata.authors` and claims the `operations` lifecycle phase. With `openvex` it writes OpenVEX 0.2.0. See [Files the VEX commands write](/vex/reference/files-written/) for both shapes, and [CycloneDX authoring](/sbom/author/overview/) to set the authorship of an SBOM instead.
 
 ## triage status
 

@@ -11,12 +11,12 @@ Guardian has two hosts:
 
 | Host | Serves |
 |---|---|
-| `https://guardian.vulnetix.com` | The Resolve Platform API under `/v1/guardian/...`, the AWS templates under `/v1/templates/...`, `/v1/health` |
-| `https://ingest.vulnetix.com` | Log ingest under `/v1/ingest/...`, authenticated by [ingest token](/siem/sources/ingest-tokens/) |
+| `https://guardian.vulnes.is` | The Resolve Platform API under `/v1/guardian/...`, the AWS templates under `/v1/templates/...`, `/v1/health` |
+| `https://ingest.vulnes.is` | Log ingest under `/v1/ingest/...`, authenticated by [ingest token](/siem/sources/ingest-tokens/) |
 
 ## Authentication
 
-Resolve Platform API requests carry `Authorization: Bearer <access token>`, the OIDC access token of a signed-in Resolve Platform session (an RS256 JWT issued by Vulnetix sign-in). Guardian verifies it, looks up the user, and resolves your organisation from the user. No route takes an organisation from the request. Vulnetix API keys are not accepted here.
+Resolve Platform API requests carry `Authorization: Bearer <access token>`, the OIDC access token of a signed-in Resolve Platform session (an RS256 JWT issued by Vulnesis sign-in). Guardian verifies it, looks up the user, and resolves your organisation from the user. No route takes an organisation from the request. Vulnesis API keys are not accepted here.
 
 The template downloads and `/v1/health` need no token.
 
@@ -32,7 +32,7 @@ Errors are JSON: `{ "error": "<message>", "code": "<code>" }`, plus `needs` on a
 
 ## Resolve Platform API
 
-All paths are under `https://guardian.vulnetix.com/v1/guardian`.
+All paths are under `https://guardian.vulnes.is/v1/guardian`.
 
 | Method and path | Does | Page |
 |---|---|---|
@@ -63,7 +63,7 @@ All paths are under `https://guardian.vulnetix.com/v1/guardian`.
 | `POST /sources/cloudflare/remove` | `{ apiToken, ids }`: delete jobs | [Cloudflare](/siem/sources/cloudflare/#remove-jobs) |
 | `GET /connections` | Your messaging connections, for destination pickers | |
 | `GET /surface?rangeMs=&from=&to=&refresh=1` | The attack surface: an aggregate of the tenant's `http_events` and `waf_events` by route, ASN and country. The window is `rangeMs` (1 hour to 30 days, default one day) or `from` and `to` (at most 30 days). The answer is cached and says `cached: true`; `refresh=1` recomputes it. | |
-| `PUT /surface/templates` | `{ version, templates: [{ method, path, key }] }`: replaces the tenant's route and operation template set, at most 20,000. Ingest matches request paths against it to fill `path_template`. Vulnetix pushes it. | [Tables](/siem/search/tables/) |
+| `PUT /surface/templates` | `{ version, templates: [{ method, path, key }] }`: replaces the tenant's route and operation template set, at most 20,000. Ingest matches request paths against it to fill `path_template`. Vulnesis pushes it. | [Tables](/siem/search/tables/) |
 | `GET /usage` | Fourteen days of bytes scanned, queries and rows ingested, and the daily budget | [Packs](/siem/reference/packs-and-limits/) |
 
 An unknown path answers `404`; a known path with the wrong method `405`.
@@ -72,14 +72,14 @@ An unknown path answers `404`; a known path with the wrong method `405`.
 
 | Method and path | Returns |
 |---|---|
-| `GET https://guardian.vulnetix.com/v1/templates/vulnetix-siem.yaml` | The delivery CloudFormation template |
-| `GET https://guardian.vulnetix.com/v1/templates/vulnetix-guardian-readonly.yaml` | The investigation role template |
-| `GET https://guardian.vulnetix.com/v1/health` | `{ "ok": true }` |
+| `GET https://guardian.vulnes.is/v1/templates/vulnetix-siem.yaml` | The delivery CloudFormation template |
+| `GET https://guardian.vulnes.is/v1/templates/vulnetix-guardian-readonly.yaml` | The investigation role template |
+| `GET https://guardian.vulnes.is/v1/health` | `{ "ok": true }` |
 
 ## Ingest
 
 | Method and path | Token kind | Page |
 |---|---|---|
-| `POST https://ingest.vulnetix.com/v1/ingest/aws/{flow,dns,cloudtrail}` | `aws`, as `X-Amz-Firehose-Access-Key` | [AWS](/siem/sources/aws/#responses-firehose-sees) |
-| `POST https://ingest.vulnetix.com/v1/ingest/cloudflare/<dataset>` | `cloudflare`, as `Authorization: Bearer` | [Cloudflare](/siem/sources/cloudflare/#responses-logpush-sees) |
-| `POST https://ingest.vulnetix.com/v1/ingest/events` | `events`, as `Authorization: Bearer` | [Events API](/siem/sources/events/) |
+| `POST https://ingest.vulnes.is/v1/ingest/aws/{flow,dns,cloudtrail}` | `aws`, as `X-Amz-Firehose-Access-Key` | [AWS](/siem/sources/aws/#responses-firehose-sees) |
+| `POST https://ingest.vulnes.is/v1/ingest/cloudflare/<dataset>` | `cloudflare`, as `Authorization: Bearer` | [Cloudflare](/siem/sources/cloudflare/#responses-logpush-sees) |
+| `POST https://ingest.vulnes.is/v1/ingest/events` | `events`, as `Authorization: Bearer` | [Events API](/siem/sources/events/) |

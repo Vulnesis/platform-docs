@@ -9,15 +9,15 @@ updated: 02 Nov 2026
 status: available
 ---
 
-All commands are in the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) under the **Vulnetix** category.
+All commands are in the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) under the **Vulnesis** category.
 
 | Palette title | Command ID | What it does |
 |---|---|---|
-| Vulnetix: Show Output | `vulnetix.lsp.showOutput` | Opens the Vulnetix output channel: extension version, CLI resolution, server log and traces. Also runs when you click the status bar item. |
-| Vulnetix: Restart Language Server | `vulnetix.lsp.restart` | Stops and starts the server with the same binary, and resets the crash counter. Shows "Vulnetix is not running." when no CLI has been resolved. |
-| Vulnetix: Install CLI | `vulnetix.cli.install` | When no CLI has been resolved in this window, downloads and verifies the pinned CLI (`v3.100.0`) without prompting, then starts the server. When one has, it starts the server with that binary again and downloads nothing. |
-| Vulnetix: Set CLI Path | `vulnetix.cli.setPath` | File picker. Writes the chosen file to `vulnetix.cli.path` in user settings and restarts with it. |
-| Vulnetix: Show CLI Version | `vulnetix.cli.showVersion` | Shows `Vulnetix CLI <version> (protocol v<n>) from <source>: <path>`, or "No Vulnetix CLI has been resolved yet." |
+| Vulnesis: Show Output | `vulnetix.lsp.showOutput` | Opens the Vulnesis output channel: extension version, CLI resolution, server log and traces. Also runs when you click the status bar item. |
+| Vulnesis: Restart Language Server | `vulnetix.lsp.restart` | Stops and starts the server with the same binary, and resets the crash counter. Shows "Vulnesis is not running." when no CLI has been resolved. |
+| Vulnesis: Install CLI | `vulnetix.cli.install` | When no CLI has been resolved in this window, downloads and verifies the pinned CLI (`v3.100.0`) without prompting, then starts the server. When one has, it starts the server with that binary again and downloads nothing. |
+| Vulnesis: Set CLI Path | `vulnetix.cli.setPath` | File picker. Writes the chosen file to `vulnetix.cli.path` in user settings and restarts with it. |
+| Vulnesis: Show CLI Version | `vulnetix.cli.showVersion` | Shows `Vulnesis CLI <version> (protocol v<n>) from <source>: <path>`, or "No Vulnesis CLI has been resolved yet." |
 
 No command is hidden by a `when` clause, and none has a menu or context-menu entry.
 

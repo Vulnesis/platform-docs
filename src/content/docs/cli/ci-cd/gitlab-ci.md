@@ -1,7 +1,7 @@
 ---
 title: "GitLab CI/CD"
 nav: "GitLab CI"
-description: "Run Vulnetix in GitLab pipelines: credentials as CI/CD variables, a shared job template, gates, artifacts and reports, and the pipeline context the CLI reads."
+description: "Run Vulnesis in GitLab pipelines: credentials as CI/CD variables, a shared job template, gates, artifacts and reports, and the pipeline context the CLI reads."
 order: 5
 sources: [cli/internal/config/config.go, cli/install.sh, cli/cmd/scan.go, cli/cmd/exit_codes.go]
 checked: [cli@24498404a]
@@ -10,7 +10,7 @@ updated: 02 Nov 2026
 
 ## Variables
 
-Under **Settings > CI/CD > Variables**, add `VULNETIX_ORG_ID` and `VULNETIX_API_KEY`. Mark the key **Masked** and **Protected** (protected variables reach only protected branches and tags; leave it unprotected if merge request pipelines must publish). GitLab exports variables to every job, so no `auth login` step is needed.
+Under **Settings > CI/CD > Variables**, add `VULNESIS_ORG_ID` and `VULNESIS_API_KEY`. Mark the key **Masked** and **Protected** (protected variables reach only protected branches and tags; leave it unprotected if merge request pipelines must publish). GitLab exports variables to every job, so no `auth login` step is needed.
 
 ## Quick start
 
@@ -24,7 +24,7 @@ vulnetix:
   image: alpine:3.20
   before_script:
     - apk add --no-cache curl ca-certificates git
-    - curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+    - curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
     - export PATH="$HOME/.local/bin:$PATH"
     - vulnetix auth verify
   script:
@@ -61,7 +61,7 @@ The CLI detects GitLab from `GITLAB_CI` or `CI_JOB_ID` and attributes results fr
   image: alpine:3.20
   before_script:
     - apk add --no-cache curl ca-certificates git
-    - curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+    - curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
     - export PATH="$HOME/.local/bin:$PATH"
     - mkdir -p dist
   artifacts:
@@ -113,7 +113,7 @@ sca:
       cyclonedx: [dist/sbom.cdx.json]
 ```
 
-What GitLab does with a `cyclonedx` report depends on your GitLab tier. Keep `paths` as well, which works on every tier. `artifacts:reports:sast` expects GitLab's own report schema, not SARIF: do not point it at a Vulnetix SARIF file.
+What GitLab does with a `cyclonedx` report depends on your GitLab tier. Keep `paths` as well, which works on every tier. `artifacts:reports:sast` expects GitLab's own report schema, not SARIF: do not point it at a Vulnesis SARIF file.
 
 ## Gates and soft failure
 
@@ -142,7 +142,7 @@ sca:
   script: [vulnetix sca --fail-on high -o dist/sbom.cdx.json]
 ```
 
-Set `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` once as group-level variables to cover every project in the group.
+Set `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` once as group-level variables to cover every project in the group.
 
 ## Releases
 

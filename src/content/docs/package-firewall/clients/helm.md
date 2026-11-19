@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/helm` |
+| Repository URL | `https://packages.vulnes.is/helm` |
 | Ecosystem ID | `helm` |
 | Plan | Add-on |
 | Mode | filter: `index.yaml` is filtered; `.tgz` chart downloads are checked |
@@ -36,7 +36,7 @@ apiVersion: v1
 generated: "0001-01-01T00:00:00Z"
 repositories:
 - name: vulnetix
-  url: "https://packages.vulnetix.com/helm"
+  url: "https://packages.vulnes.is/helm"
   username: "YOUR_ORG_UUID"
   password: "YOUR_API_KEY"
   pass_credentials_all: true
@@ -48,8 +48,8 @@ repositories:
 ## Manual equivalent
 
 ```bash
-helm repo add vulnetix https://packages.vulnetix.com/helm \
-  --username "$VULNETIX_ORG_ID" --password "$VULNETIX_API_KEY" --pass-credentials
+helm repo add vulnetix https://packages.vulnes.is/helm \
+  --username "$VULNESIS_ORG_ID" --password "$VULNESIS_API_KEY" --pass-credentials
 ```
 
 ## Use and verify

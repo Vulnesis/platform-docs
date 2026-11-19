@@ -14,8 +14,8 @@ updated: 02 Nov 2026
 | `storage` | Both | Credential, summary cache, settings, per-tab state |
 | `alarms` | Both | The 6-hourly cache clean-up, without keeping the worker alive |
 | `sidePanel` | Chromium | The sidebar. Firefox's `sidebar_action` needs no permission. |
-| `host_permissions`: `https://api.vdb.vulnetix.com/*`, `https://www.vulnetix.com/*` | Both | Neither host sends CORS headers a page could use, so all requests come from the background worker, which host permissions exempt from CORS |
-| Content script on `http://*/*`, `https://*/*` | Both | Detection must run on any page. Excludes `*.vulnetix.com`. Top frame only. |
+| `host_permissions`: `https://api.vdb.vulnes.is/*`, `https://www.vulnes.is/*` | Both | Neither host sends CORS headers a page could use, so all requests come from the background worker, which host permissions exempt from CORS |
+| Content script on `http://*/*`, `https://*/*` | Both | Detection must run on any page. Excludes `*.vulnes.is`. Top frame only. |
 | `commands`: `open-sidebar` | Both | The <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> shortcut |
 
 Not requested: `tabs`, `scripting`, `webNavigation`, `cookies`, `offscreen`, `unlimitedStorage`, or a literal `<all_urls>`. `web_accessible_resources` is empty, and the extension pages' CSP is `script-src 'self'; object-src 'self'`. CI fails if any of this changes.
@@ -24,9 +24,9 @@ Not requested: `tabs`, `scripting`, `webNavigation`, `cookies`, `offscreen`, `un
 
 | Sent | To | When |
 |---|---|---|
-| A vulnerability identifier | `https://api.vdb.vulnetix.com` | You hover it, open the sidebar or a detail view, export, or have prefetch on |
-| Your API key, as `Authorization: ApiKey <uuid>:<secret>` | `https://api.vdb.vulnetix.com` | With every lookup |
-| A client name, then the device code | `https://www.vulnetix.com/api/site/v1/cli/device/*` | During browser sign-in only |
+| A vulnerability identifier | `https://api.vdb.vulnes.is` | You hover it, open the sidebar or a detail view, export, or have prefetch on |
+| Your API key, as `Authorization: ApiKey <uuid>:<secret>` | `https://api.vdb.vulnes.is` | With every lookup |
+| A client name, then the device code | `https://www.vulnes.is/api/site/v1/cli/device/*` | During browser sign-in only |
 
 Nothing else: no page URL, title or content, no browsing history, no text you type, no telemetry, analytics or crash reports. The scanner skips form fields and editable regions entirely.
 

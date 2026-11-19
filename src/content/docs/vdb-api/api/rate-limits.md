@@ -18,7 +18,7 @@ The VDB API limits how many requests each API key makes in a day. There is no pe
 | Business | `teams` | 100,000 per API key; 10 API keys included, the most a Business organisation can create |
 | Enterprise | `enterprise` | Set per contract, often unlimited |
 
-These are the defaults that `GET https://www.vulnetix.com/api/site/v1/config` publishes in `tiers[].max_requests_per_day`. Vulnetix can set a different limit for one organisation, so the number that applies to you is the one in your own `RateLimit-DayLimit` header. Prices are on [vulnetix.com/pricing](https://www.vulnetix.com/pricing).
+These are the defaults that `GET https://www.vulnes.is/api/site/v1/config` publishes in `tiers[].max_requests_per_day`. Vulnesis can set a different limit for one organisation, so the number that applies to you is the one in your own `RateLimit-DayLimit` header. Prices are on [vulnes.is/pricing](https://www.vulnes.is/pricing).
 
 ## How requests are counted
 

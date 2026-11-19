@@ -27,7 +27,7 @@ Or, in the editor, open the Command Palette and run **Extensions: Install from V
 
 ## Cursor, Windsurf, VSCodium and other forks
 
-Forks use Open VSX as their registry, so the Extensions view finds **Vulnetix** by name. From a terminal:
+Forks use Open VSX as their registry, so the Extensions view finds **Vulnesis** by name. From a terminal:
 
 ```sh
 cursor      --install-extension vulnetix.vulnetix
@@ -65,14 +65,14 @@ Pinning the extension does not pin the CLI it downloads; see [The CLI binary](/v
 
 ## Verify the download
 
-The release workflow builds one VSIX, publishes it to Open VSX and attaches the same file, with a `.sha256` beside it, to the GitHub release `v<version>` in `Vulnetix/vulnetix-vscode`. Compare digests:
+The release workflow builds one VSIX, publishes it to Open VSX and attaches the same file, with a `.sha256` beside it, to the GitHub release `v<version>` in `Vulnesis/vulnetix-vscode`. Compare digests:
 
 ```sh
 sha256sum vulnetix-0.2.0.vsix
 ```
 
 > [!CAREFUL] The GitHub repository is private
-> `Vulnetix/vulnetix-vscode` and its releases are private, so the `.sha256` files and the issue tracker are only reachable with access to the organisation. Open VSX is the public source.
+> `Vulnesis/vulnetix-vscode` and its releases are private, so the `.sha256` files and the issue tracker are only reachable with access to the organisation. Open VSX is the public source.
 
 ## After installing
 

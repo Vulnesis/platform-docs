@@ -8,13 +8,13 @@ checked: [cli@24498404a]
 updated: 05 Nov 2026
 ---
 
-Every release publishes prebuilt binaries to [GitHub Releases](https://github.com/Vulnetix/cli/releases). The install script, Homebrew and Scoop all install those same binaries.
+Every release publishes prebuilt binaries to [GitHub Releases](https://github.com/Vulnesis/cli/releases). The install script, Homebrew and Scoop all install those same binaries.
 
 | Method | Command | Platforms |
 |---|---|---|
-| Install script | `curl -fsSL https://cli.vulnetix.com/install.sh \| sh` | Linux, macOS, Windows under Git Bash, MSYS2 or Cygwin |
+| Install script | `curl -fsSL https://cli.vulnes.is/install.sh \| sh` | Linux, macOS, Windows under Git Bash, MSYS2 or Cygwin |
 | Homebrew | `brew install vulnetix/tap/vulnetix` | macOS and Linux, amd64 and arm64 |
-| Scoop | `scoop bucket add vulnetix https://github.com/Vulnetix/scoop-bucket` then `scoop install vulnetix` | Windows, amd64 and arm64 |
+| Scoop | `scoop bucket add vulnetix https://github.com/Vulnesis/scoop-bucket` then `scoop install vulnetix` | Windows, amd64 and arm64 |
 | Direct download | See [Release assets](#release-assets) | All |
 
 Check the install:
@@ -28,27 +28,27 @@ vulnetix version     # version, commit, build date and Go version
 
 ```sh
 # Latest release into /usr/local/bin, or ~/.local/bin if that is not writable
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 
 # Choose the directory
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
 
 # Pin a release
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --version v4.0.0
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --version v4.0.0
 
 # Stay on v3 (frozen at v3.169.2)
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --version v3
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --version v3
 
 # Refuse to install unless cosign verifies the release's signed provenance
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --require-provenance
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --require-provenance
 ```
 
 | Option | Environment | Default | Meaning |
 |---|---|---|---|
 | `--install-dir <dir>` | `INSTALL_DIR` | `/usr/local/bin` | Where `vulnetix` is written. If the directory cannot be created or written, the script falls back to `$HOME/.local/bin` and says so. |
 | `--version <tag>` | `VERSION` | `latest` | A release tag such as `v4.0.0`, a major channel such as `v4` (the newest v4 release), or `latest`. `v3` still resolves, to the last v3 release. Each is resolved to a concrete tag before downloading. See [Versions and release channels](/cli/ci-cd/versions-and-channels/). |
-| `--require-provenance` | `VULNETIX_REQUIRE_PROVENANCE=1` | off | Fail unless `cosign` is on `PATH` and the release's `provenance.sigstore.json` verifies for the downloaded binary. |
-| `--insecure-skip-verify` | `VULNETIX_INSECURE_SKIP_VERIFY=1` | off | Install without checking the checksum or the provenance, with a warning. Not recommended. Cannot be combined with `--require-provenance`. |
+| `--require-provenance` | `VULNESIS_REQUIRE_PROVENANCE=1` | off | Fail unless `cosign` is on `PATH` and the release's `provenance.sigstore.json` verifies for the downloaded binary. |
+| `--insecure-skip-verify` | `VULNESIS_INSECURE_SKIP_VERIFY=1` | off | Install without checking the checksum or the provenance, with a warning. Not recommended. Cannot be combined with `--require-provenance`. |
 | `--help` | | | Print usage, the verification rules and the analytics opt-outs. |
 
 What the script does, in order:
@@ -61,7 +61,7 @@ What the script does, in order:
 
 On Windows the file is saved as `vulnetix` with no `.exe`. Git Bash, MSYS2 and Cygwin run it; PowerShell and cmd do not. For those, use Scoop or the `.exe` from the release.
 
-After a successful install the script sends one anonymous install event to Google Analytics: OS, architecture, version and a random id made for that install and never stored. It prints a line when it does. `VULNETIX_NO_ANALYTICS=1` or `DO_NOT_TRACK=1` turns it off.
+After a successful install the script sends one anonymous install event to Google Analytics: OS, architecture, version and a random id made for that install and never stored. It prints a line when it does. `VULNESIS_NO_ANALYTICS=1` or `DO_NOT_TRACK=1` turns it off.
 
 On Alpine and other minimal images, install `curl` (or `wget`) and `ca-certificates` first: `apk add --no-cache curl ca-certificates`.
 
@@ -73,14 +73,14 @@ brew upgrade vulnetix/tap/vulnetix
 brew uninstall vulnetix
 ```
 
-The formula in [Vulnetix/homebrew-tap](https://github.com/Vulnetix/homebrew-tap) downloads the release binary for the machine's OS and architecture and pins its SHA-256. The release workflow updates it on every release. It does not install shell completions; see [completion](/cli/commands/completion/).
+The formula in [Vulnesis/homebrew-tap](https://github.com/Vulnesis/homebrew-tap) downloads the release binary for the machine's OS and architecture and pins its SHA-256. The release workflow updates it on every release. It does not install shell completions; see [completion](/cli/commands/completion/).
 
-The same tap also carries `crit-validate`, a separate tool and not part of `vulnetix`. It checks CVE records (CVE JSON 5) that carry CRIT extensions against the rules of the [CRIT specification](https://github.com/Vulnetix/ietf-crit-spec), and converts a CRIT record between its JSON form and its vector string. Install it with `brew install vulnetix/tap/crit-validate` (macOS and Linux, amd64 and arm64), or `go install github.com/Vulnetix/ietf-crit-spec/cmd/crit-validate@latest`.
+The same tap also carries `crit-validate`, a separate tool and not part of `vulnetix`. It checks CVE records (CVE JSON 5) that carry CRIT extensions against the rules of the [CRIT specification](https://github.com/Vulnesis/ietf-crit-spec), and converts a CRIT record between its JSON form and its vector string. Install it with `brew install vulnetix/tap/crit-validate` (macOS and Linux, amd64 and arm64), or `go install github.com/Vulnetix/ietf-crit-spec/cmd/crit-validate@latest`.
 
 ## Scoop
 
 ```powershell
-scoop bucket add vulnetix https://github.com/Vulnetix/scoop-bucket
+scoop bucket add vulnetix https://github.com/Vulnesis/scoop-bucket
 scoop install vulnetix
 scoop update vulnetix
 ```
@@ -104,8 +104,8 @@ Each release on GitHub carries:
 The binaries are not archived. Download, mark executable and move:
 
 ```sh
-curl -fsSLo vulnetix https://github.com/Vulnetix/cli/releases/latest/download/vulnetix-linux-amd64
-curl -fsSLO https://github.com/Vulnetix/cli/releases/latest/download/checksums.txt
+curl -fsSLo vulnetix https://github.com/Vulnesis/cli/releases/latest/download/vulnetix-linux-amd64
+curl -fsSLO https://github.com/Vulnesis/cli/releases/latest/download/checksums.txt
 grep ' vulnetix-linux-amd64$' checksums.txt | sed 's/vulnetix-linux-amd64$/vulnetix/' | sha256sum -c -
 chmod +x vulnetix
 sudo mv vulnetix /usr/local/bin/
@@ -114,7 +114,7 @@ sudo mv vulnetix /usr/local/bin/
 ```powershell
 $dir = "$env:LOCALAPPDATA\Programs\vulnetix"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
-Invoke-WebRequest -Uri https://github.com/Vulnetix/cli/releases/latest/download/vulnetix-windows-amd64.exe -OutFile "$dir\vulnetix.exe"
+Invoke-WebRequest -Uri https://github.com/Vulnesis/cli/releases/latest/download/vulnetix-windows-amd64.exe -OutFile "$dir\vulnetix.exe"
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$dir", "User")
 ```
 
@@ -122,17 +122,17 @@ Open a new terminal for the `Path` change to apply.
 
 ## Verify a download
 
-The checksum shows the file is the one the release lists. The provenance shows the release workflow built it: `provenance.sigstore.json` is an SLSA v1 statement whose subjects are every line of `checksums.txt`, signed keyless through Sigstore with a public Rekor entry. The signing certificate names the reusable workflow `.github/workflows/slsa-provenance.yml` in `Vulnetix/cli`, not `release.yml`.
+The checksum shows the file is the one the release lists. The provenance shows the release workflow built it: `provenance.sigstore.json` is an SLSA v1 statement whose subjects are every line of `checksums.txt`, signed keyless through Sigstore with a public Rekor entry. The signing certificate names the reusable workflow `.github/workflows/slsa-provenance.yml` in `Vulnesis/cli`, not `release.yml`.
 
 ```sh
 V=v4.17.1   # the release you downloaded
-curl -fsSLO "https://github.com/Vulnetix/cli/releases/download/$V/provenance.sigstore.json"
+curl -fsSLO "https://github.com/Vulnesis/cli/releases/download/$V/provenance.sigstore.json"
 cosign verify-blob-attestation \
   --bundle provenance.sigstore.json --new-bundle-format \
   --type slsaprovenance1 \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  --certificate-identity-regexp '^https://github\.com/Vulnetix/cli/\.github/workflows/slsa-provenance\.yml@refs/(heads/main|tags/v[0-9]+\.[0-9]+\.[0-9]+.*)$' \
-  --certificate-github-workflow-repository Vulnetix/cli \
+  --certificate-identity-regexp '^https://github\.com/Vulnesis/cli/\.github/workflows/slsa-provenance\.yml@refs/(heads/main|tags/v[0-9]+\.[0-9]+\.[0-9]+.*)$' \
+  --certificate-github-workflow-repository Vulnesis/cli \
   vulnetix
 ```
 
@@ -146,11 +146,11 @@ Pushing a full version tag (`v4.0.0`, or a pre-release such as `v4.1.0-rc.1`) ru
 |---|---|---|
 | GitHub Releases | The `release` job builds every OS and architecture, writes `checksums.txt` and the provenance, and publishes the release | When the job finishes |
 | Install script | Nothing to publish: `install.sh` resolves `latest` from GitHub Releases | At once |
-| Homebrew ([Vulnetix/homebrew-tap](https://github.com/Vulnetix/homebrew-tap)) | The `update-packages` job rewrites `Formula/vulnetix.rb` with the new URLs and SHA-256 values | When the job finishes |
-| Scoop ([Vulnetix/scoop-bucket](https://github.com/Vulnetix/scoop-bucket)) | The `update-packages` job rewrites `bucket/vulnetix.json` with hashes from `checksums.txt` | When the job finishes |
+| Homebrew ([Vulnesis/homebrew-tap](https://github.com/Vulnesis/homebrew-tap)) | The `update-packages` job rewrites `Formula/vulnetix.rb` with the new URLs and SHA-256 values | When the job finishes |
+| Scoop ([Vulnesis/scoop-bucket](https://github.com/Vulnesis/scoop-bucket)) | The `update-packages` job rewrites `bucket/vulnetix.json` with hashes from `checksums.txt` | When the job finishes |
 | Nix flake | The `update-packages` job sets `version` in the repository's `flake.nix` | When the job finishes; see [Building from source](#building-from-source) |
 | Go module proxy | Nothing to publish: `proxy.golang.org` indexes the tag | Usually 5 to 15 minutes after the tag is pushed |
-| GitHub Action (`Vulnetix/cli@v4`) | The floating major tag `v4` is moved to the new release | When the tag is moved |
+| GitHub Action (`Vulnesis/cli@v4`) | The floating major tag `v4` is moved to the new release | When the tag is moved |
 
 `update-packages` runs only for the newest release, so an older release that finishes late never rolls Homebrew, Scoop or the flake back.
 
@@ -166,13 +166,13 @@ If a new release does not show up:
 
 ## Building from source
 
-> [!CAREFUL] go install and the Nix flake do not build outside Vulnetix
-> The CLI depends on `github.com/Vulnetix/vdb-sca-match`, which is a private repository. `go install github.com/vulnetix/cli/v4@latest`, `go build` in a clone, and `nix run github:Vulnetix/cli` all fail to fetch it unless your Git credentials can read that repository. The flake also ships with `vendorHash = pkgs.lib.fakeHash`, so `nix build` stops at the hash check even with access. Use a prebuilt binary.
+> [!CAREFUL] go install and the Nix flake do not build outside Vulnesis
+> The CLI depends on `github.com/Vulnesis/vdb-sca-match`, which is a private repository. `go install github.com/vulnetix/cli/v4@latest`, `go build` in a clone, and `nix run github:Vulnesis/cli` all fail to fetch it unless your Git credentials can read that repository. The flake also ships with `vendorHash = pkgs.lib.fakeHash`, so `nix build` stops at the hash check even with access. Use a prebuilt binary.
 
 With access, the module path needs its `/v4` suffix, and the binary built is a source build:
 
 ```sh
-GOPRIVATE=github.com/Vulnetix/* go install github.com/vulnetix/cli/v4@latest
+GOPRIVATE=github.com/Vulnesis/* go install github.com/vulnetix/cli/v4@latest
 ```
 
 ## Updating
@@ -202,4 +202,4 @@ vulnetix auth logout          # credentials files and keychain entries
 rm -rf ~/.vulnetix            # caches, state, scan memory
 ```
 
-Each project you scanned has its own `.vulnetix/` directory; see [Files](/cli/reference/files/). `vulnetix auth logout` leaves a `machine packages.vulnetix.com` entry in `~/.netrc` alone; see [netrc](/cli/authentication/netrc/#removing-the-entry).
+Each project you scanned has its own `.vulnetix/` directory; see [Files](/cli/reference/files/). `vulnetix auth logout` leaves a `machine packages.vulnes.is` entry in `~/.netrc` alone; see [netrc](/cli/authentication/netrc/#removing-the-entry).

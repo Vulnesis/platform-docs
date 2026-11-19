@@ -36,11 +36,11 @@ Per-client setup by hand, including clients `install` does not handle, is in [Cl
 
 | Client id | Default scope | File | Change | API key |
 |---|---|---|---|---|
-| `shell` | user | Your login shell's rc file (see below) | Managed block of `export` lines | `$VULNETIX_API_KEY` reference |
-| `env` | project | `.env`, `.envrc` and `Makefile` at the git root, whichever exist | Managed block | `${VULNETIX_API_KEY}` reference |
+| `shell` | user | Your login shell's rc file (see below) | Managed block of `export` lines | `$VULNESIS_API_KEY` reference |
+| `env` | project | `.env`, `.envrc` and `Makefile` at the git root, whichever exist | Managed block | `${VULNESIS_API_KEY}` reference |
 | `claude-code` | project | `.claude/settings.json` (`~/.claude/settings.json` with `--scope user`) | `ANTHROPIC_BASE_URL` and, with `--model`, `ANTHROPIC_MODEL` merged into `env` | Not written; comes from the shell. With `--embed-key`, `ANTHROPIC_AUTH_TOKEN` goes into `settings.local.json`. |
-| `codex` | user | `~/.codex/config.toml` | Managed `[model_providers.vulnetix-openai]` table with `wire_api = "responses"` and `env_key = "VULNETIX_API_KEY"`; root `model_provider = "vulnetix-openai"` and, with `--model`, `model` | Read from `$VULNETIX_API_KEY` by Codex |
-| `continue` | user | `~/.continue/config.yaml` (or `config.json` when only that exists) | `models[]` entry named `Vulnetix AI Firewall (openai)` with `apiBase` and `apiKey: ${{ secrets.VULNETIX_API_KEY }}`; model `gpt-4o` unless `--model` | **Literal** `VULNETIX_API_KEY=...` in `~/.continue/.env`, mode `0600` |
+| `codex` | user | `~/.codex/config.toml` | Managed `[model_providers.vulnetix-openai]` table with `wire_api = "responses"` and `env_key = "VULNESIS_API_KEY"`; root `model_provider = "vulnetix-openai"` and, with `--model`, `model` | Read from `$VULNESIS_API_KEY` by Codex |
+| `continue` | user | `~/.continue/config.yaml` (or `config.json` when only that exists) | `models[]` entry named `Vulnesis AI Firewall (openai)` with `apiBase` and `apiKey: ${{ secrets.VULNESIS_API_KEY }}`; model `gpt-4o` unless `--model` | **Literal** `VULNESIS_API_KEY=...` in `~/.continue/.env`, mode `0600` |
 | `aider` | project | `.aider.conf.yml` at the git root (`~/.aider.conf.yml` outside a repo) | `openai-api-base` and, with `--model`, `model: openai/<model>` | Not written; aider reads `OPENAI_API_KEY` |
 | `cursor` | | none | Printed instructions: Settings > Models > Override OpenAI Base URL | You paste it |
 | `windsurf` | | none | Printed instructions: Settings > Cascade > Model Provider | You paste it |
@@ -65,19 +65,19 @@ On Windows the variables are set in the user environment instead of a file.
 For an org with OpenAI and Anthropic keys stored, the zsh block is:
 
 ```sh
-# Vulnetix AI Firewall
-export OPENAI_BASE_URL="https://guardrails.vulnetix.com/openai/<org-uuid>/v1"
-export OPENAI_API_BASE="https://guardrails.vulnetix.com/openai/<org-uuid>/v1"
-export OPENAI_API_KEY="$VULNETIX_API_KEY"
-export ANTHROPIC_BASE_URL="https://guardrails.vulnetix.com/anthropic/<org-uuid>"
-export ANTHROPIC_AUTH_TOKEN="$VULNETIX_API_KEY"
-# End Vulnetix AI Firewall
+# Vulnesis AI Firewall
+export OPENAI_BASE_URL="https://guardrails.vulnes.is/openai/<org-uuid>/v1"
+export OPENAI_API_BASE="https://guardrails.vulnes.is/openai/<org-uuid>/v1"
+export OPENAI_API_KEY="$VULNESIS_API_KEY"
+export ANTHROPIC_BASE_URL="https://guardrails.vulnes.is/anthropic/<org-uuid>"
+export ANTHROPIC_AUTH_TOKEN="$VULNESIS_API_KEY"
+# End Vulnesis AI Firewall
 ```
 
-`install` never writes `VULNETIX_API_KEY` itself. Export it from wherever you keep credentials, or the wired clients send an empty key and `status` reports `key_env_unset`.
+`install` never writes `VULNESIS_API_KEY` itself. Export it from wherever you keep credentials, or the wired clients send an empty key and `status` reports `key_env_unset`.
 
 > [!CAREFUL] The shell block reroutes every OpenAI and Anthropic SDK in that shell
-> `OPENAI_API_KEY` and `ANTHROPIC_AUTH_TOKEN` now hold the Vulnetix key, so any script in that shell that calls OpenAI or Anthropic goes through the gateway and is subject to the org's policy. That is the intent. A script that must reach the provider directly needs its own variables.
+> `OPENAI_API_KEY` and `ANTHROPIC_AUTH_TOKEN` now hold the Vulnesis key, so any script in that shell that calls OpenAI or Anthropic goes through the gateway and is subject to the org's policy. That is the intent. A script that must reach the provider directly needs its own variables.
 
 ### Variables per provider
 
@@ -90,7 +90,7 @@ export ANTHROPIC_AUTH_TOKEN="$VULNETIX_API_KEY"
 
 `OPENAI_API_BASE` is the older spelling that LangChain and LlamaIndex read, so both are covered without a file of their own. `ANTHROPIC_AUTH_TOKEN` is used instead of `ANTHROPIC_API_KEY` because it makes the SDK send `Authorization: Bearer`.
 
-No SDK reads a base-URL variable for the six providers in the last row. `install` writes an informational `VULNETIX_AIFW_<SLUG>_BASE_URL` (for example `VULNETIX_AIFW_MISTRAL_BASE_URL`) that nothing consumes, and prints a `snippet` command. For those providers the base URL has to be set in code; see [Code snippets](/ai-firewall/cli/snippets/).
+No SDK reads a base-URL variable for the six providers in the last row. `install` writes an informational `VULNESIS_AIFW_<SLUG>_BASE_URL` (for example `VULNESIS_AIFW_MISTRAL_BASE_URL`) that nothing consumes, and prints a `snippet` command. For those providers the base URL has to be set in code; see [Code snippets](/ai-firewall/cli/snippets/).
 
 ## Flags
 
@@ -125,7 +125,7 @@ Server-side policy and stored provider keys are not touched. To remove a key, ru
 
 ## Next to the Package Firewall
 
-`vulnetix package-firewall` writes its own managed block to the same shell rc file, so a machine wired for both has two blocks: `# Vulnetix AI Firewall` ... `# End Vulnetix AI Firewall` and `# Vulnetix Package Firewall` ... `# End Vulnetix Package Firewall`. Each `uninstall` strips only its own block. The two products are unrelated: the [Package Firewall](/package-firewall/) governs which software packages may be installed.
+`vulnetix package-firewall` writes its own managed block to the same shell rc file, so a machine wired for both has two blocks: `# Vulnesis AI Firewall` ... `# End Vulnesis AI Firewall` and `# Vulnesis Package Firewall` ... `# End Vulnesis Package Firewall`. Each `uninstall` strips only its own block. The two products are unrelated: the [Package Firewall](/package-firewall/) governs which software packages may be installed.
 
 ## Commands to run alongside
 

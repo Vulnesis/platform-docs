@@ -14,7 +14,7 @@ Every ecosystem except Go goes through the same handler. Go uses its own module-
 
 | Step | Check | Outcome on failure |
 |---|---|---|
-| 1 | Parse `Authorization` (Basic, or Bearer for clients that cannot send Basic). | `401`, `WWW-Authenticate: Basic realm="Vulnetix Package Firewall"` |
+| 1 | Parse `Authorization` (Basic, or Bearer for clients that cannot send Basic). | `401`, `WWW-Authenticate: Basic realm="Vulnesis Package Firewall"` |
 | 2 | Validate the credentials (cached). | `401` for bad or inactive credentials, `503` when the identity backend is unreachable |
 | 3 | Load the organization's policy, mirrors, plan, add-on and curation lists. | `500` |
 | 4 | Entitlement for the ecosystem: free (`go-dev`, `aur`), the Package Firewall add-on, or the Enterprise plan. | `402`, logged `BLOCK` |

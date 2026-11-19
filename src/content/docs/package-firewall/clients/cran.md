@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/cran` |
+| Repository URL | `https://packages.vulnes.is/cran` |
 | Ecosystem ID | `cran` |
 | Plan | Add-on |
 | Mode | gate: `src/contrib/PACKAGES` is streamed unchanged; `<name>_<version>.tar.gz` downloads are checked |
@@ -27,7 +27,7 @@ vulnetix package-firewall cran
 `~/.Rprofile` gets a managed block:
 
 ```r
-options(repos = c(CRAN = "https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/cran"))
+options(repos = c(CRAN = "https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/cran"))
 options(download.file.method = "libcurl")
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Verify, upgrade and disconnect
-description: Check that Vulnetix can read a connected account, upgrade the probe to a new release, opt in to private reporting, and remove everything Vulnetix deployed.
+description: Check that Vulnesis can read a connected account, upgrade the probe to a new release, opt in to private reporting, and remove everything Vulnesis deployed.
 order: 14
 nav: Verify, upgrade, disconnect
 sources: [vdb-site/api/internal/handler/integrations_aws_verify.go, vdb-site/api/internal/handler/integrations_aws_probe.go, vdb-site/api/internal/handler/integrations_aws_stack.go, vdb-site/api/internal/handler/integrations_aws_iamuser.go, vdb-site/api/main.go]
@@ -14,7 +14,7 @@ updated: 02 Nov 2026
 
 | Check id | Label | `fail` means |
 |---|---|---|
-| `assume-role` | Cross-account access | Vulnetix cannot assume `VulnetixSecurityAuditor` with your organisation id. The role was deleted, or its trust policy changed. |
+| `assume-role` | Cross-account access | Vulnesis cannot assume `VulnetixSecurityAuditor` with your organisation id. The role was deleted, or its trust policy changed. |
 | `cloudtrail` | CloudTrail delivering | The trail `vulnetix-management-events` is not logging. |
 | `log-objects` | Log data readable | A log object cannot be listed or read back. |
 | `event-queue` | Event stream wired | The EventBridge rule does not target the reporter queue. |
@@ -26,12 +26,12 @@ updated: 02 Nov 2026
 
 ## Upgrade the probe
 
-The probe is a Lambda in your account. It never updates itself and Vulnetix does not replace it without asking. `GET /v1/integrations/aws/probe` reads the version from the staged bundle key (`vulnetix/probe/cloudscan-<version>-<digest>.zip`) on the pipeline stack and answers:
+The probe is a Lambda in your account. It never updates itself and Vulnesis does not replace it without asking. `GET /v1/integrations/aws/probe` reads the version from the staged bundle key (`vulnetix/probe/cloudscan-<version>-<digest>.zip`) on the pipeline stack and answers:
 
 | Field | Meaning |
 |---|---|
 | `deployedVersion` | What the function runs |
-| `availableVersion` | The release Vulnetix currently deploys |
+| `availableVersion` | The release Vulnesis currently deploys |
 | `upgradeAvailable` | `true` when they differ and the deployed one is older |
 | `grantsNewPermissions` | `true` when the upgrade attaches a policy the role does not carry now |
 | `newPermissionReasons` | What would be attached, for example `analyser`, `wiz`, `waf` |
@@ -40,11 +40,11 @@ The probe is a Lambda in your account. It never updates itself and Vulnetix does
 
 ## Private reporting
 
-By default the probe reports to Vulnetix over the public HTTPS endpoint, which needs nothing from you. `PATCH /v1/integrations/aws/advanced` with `{"enabled": true}` opts in to a private network path; Vulnetix fills the `PrivateReporting` and endpoint parameters on the next pipeline deploy. The private endpoint is only reachable once its endpoint service connection is accepted in your account, so leave this off unless Vulnetix support has set that up with you.
+By default the probe reports to Vulnesis over the public HTTPS endpoint, which needs nothing from you. `PATCH /v1/integrations/aws/advanced` with `{"enabled": true}` opts in to a private network path; Vulnesis fills the `PrivateReporting` and endpoint parameters on the next pipeline deploy. The private endpoint is only reachable once its endpoint service connection is accepted in your account, so leave this off unless Vulnesis support has set that up with you.
 
 ## Disconnect
 
-`DELETE /v1/integrations/aws`, the **Disconnect** button. It removes everything Vulnetix put in the account, one resumable step per call, and answers `{ "done": false, "step": "..." }` until it is finished. The Resolve Platform calls it until `done` is `true`. The order is fixed:
+`DELETE /v1/integrations/aws`, the **Disconnect** button. It removes everything Vulnesis put in the account, one resumable step per call, and answers `{ "done": false, "step": "..." }` until it is finished. The Resolve Platform calls it until `done` is `true`. The order is fixed:
 
 1. Delete the pipeline stack (CloudTrail stops writing to the bucket).
 2. Empty the log bucket, in batches. The step reports how many objects it removed.

@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 ---
 The source-code pass scans files in the matching language for these SDKs. When an SDK is in use, the catalog extracts the model-name literal bound to the listed parameters, so unknown / future model names are captured without a hardcoded model list.
 
-> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.
+> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.
 
 | Library | Provider | Languages | Model parameters |
 |---------|----------|-----------|------------------|

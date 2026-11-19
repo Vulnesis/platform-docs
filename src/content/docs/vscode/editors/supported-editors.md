@@ -39,7 +39,7 @@ The server-hosted editors are covered on [Remote workspaces and containers](/vsc
 | VSCodium | `codium --install-extension vulnetix.vulnetix` |
 | code-server | `code-server --install-extension vulnetix.vulnetix` |
 | OpenVSCode Server | `/home/.openvscode-server/bin/openvscode-server --install-extension vulnetix.vulnetix` (path in the official image) |
-| Kiro, Positron, Trae | Extensions view, search **Vulnetix**, or **Extensions: Install from VSIX** |
+| Kiro, Positron, Trae | Extensions view, search **Vulnesis**, or **Extensions: Install from VSIX** |
 
 When an editor has search disabled, download the stable VSIX and use **Extensions: Install from VSIX**:
 
@@ -58,7 +58,7 @@ Agent edits are written to files like any other edit, so the server checks them 
 
 ### VSCodium
 
-VSCodium's telemetry is off by default. The extension adds nothing on top: it always starts the server with `--no-analytics`, and when the editor's telemetry is off it also sets `VULNETIX_NO_ANALYTICS=1` and `DO_NOT_TRACK=1`. See [Privacy and network use](/vscode/configuration/privacy/).
+VSCodium's telemetry is off by default. The extension adds nothing on top: it always starts the server with `--no-analytics`, and when the editor's telemetry is off it also sets `VULNESIS_NO_ANALYTICS=1` and `DO_NOT_TRACK=1`. See [Privacy and network use](/vscode/configuration/privacy/).
 
 ### Eclipse Theia
 

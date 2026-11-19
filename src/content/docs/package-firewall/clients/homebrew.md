@@ -9,8 +9,8 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| API URL | `https://packages.vulnetix.com/homebrew/api` |
-| Bottle URL | `https://packages.vulnetix.com/homebrew-bottle` |
+| API URL | `https://packages.vulnes.is/homebrew/api` |
+| Bottle URL | `https://packages.vulnes.is/homebrew-bottle` |
 | Ecosystem IDs | `homebrew` (API), `homebrew-bottle` (bottles) |
 | Plan | Add-on |
 | Mode | filter for `formula.json`, `cask.json` and per-formula JSON; gate for bottle manifests on ghcr.io |
@@ -27,8 +27,8 @@ source ~/.config/vulnetix/package-firewall/homebrew.env
 `~/.config/vulnetix/package-firewall/homebrew.env`:
 
 ```bash
-export HOMEBREW_API_DOMAIN="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/homebrew/api"
-export HOMEBREW_ARTIFACT_DOMAIN="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/homebrew-bottle"
+export HOMEBREW_API_DOMAIN="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/homebrew/api"
+export HOMEBREW_ARTIFACT_DOMAIN="https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/homebrew-bottle"
 export HOMEBREW_ARTIFACT_DOMAIN_NO_FALLBACK="1"
 ```
 

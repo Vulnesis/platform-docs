@@ -14,7 +14,7 @@ updated: 04 Nov 2026
 
 | Flag | Type | Default | Description |
 |---|---|---|---|
-| `--bom-license` | string, repeatable | | A licence of the document. Environment: `VULNETIX_BOM_LICENSES`. |
+| `--bom-license` | string, repeatable | | A licence of the document. Environment: `VULNESIS_BOM_LICENSES`. |
 
 Each value lands where CycloneDX puts that kind of licence:
 
@@ -36,7 +36,7 @@ CycloneDX properties are "a name-value store" for "data not officially supported
 
 | Flag | Type | Default | Description |
 |---|---|---|---|
-| `--bom-property` | `name=value`, repeatable | | A document property. Environment: `VULNETIX_BOM_PROPERTIES`, comma- or semicolon-separated. |
+| `--bom-property` | `name=value`, repeatable | | A document property. Environment: `VULNESIS_BOM_PROPERTIES`, comma- or semicolon-separated. |
 
 The value is everything after the first `=`, so it may contain `=`. A name appears once: setting it again, from a flag or an overlay, replaces the value. The flag wins over an overlay.
 

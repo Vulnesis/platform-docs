@@ -16,7 +16,7 @@ Run these in order. Each one rules out a layer.
 ## 1. The server is up
 
 ```bash
-curl -s https://mcp.vulnetix.com/health
+curl -s https://mcp.vulnes.is/health
 ```
 
 ```json
@@ -30,7 +30,7 @@ A timeout, an HTML page or a certificate error is the network: check a proxy or 
 `tools/list` needs no credential.
 
 ```bash
-curl -sS -X POST https://mcp.vulnetix.com/mcp \
+curl -sS -X POST https://mcp.vulnes.is/mcp \
   -H 'content-type: application/json' \
   -H 'accept: application/json, text/event-stream' \
   -H 'MCP-Protocol-Version: 2026-07-28' \
@@ -45,17 +45,17 @@ You should see a JSON-RPC `result` with a `tools` array. `-32602 Invalid _meta e
 
 ## 3. The credential is accepted
 
-Set `VULNETIX_AUTH` to the part after `ApiKey `, that is `<orgId>:<hex>`.
+Set `VULNESIS_AUTH` to the part after `ApiKey `, that is `<orgId>:<hex>`.
 
 ```bash
-export VULNETIX_AUTH='<orgId>:<hex>'
-curl -sS -X POST https://mcp.vulnetix.com/mcp \
+export VULNESIS_AUTH='<orgId>:<hex>'
+curl -sS -X POST https://mcp.vulnes.is/mcp \
   -H 'content-type: application/json' \
   -H 'accept: application/json, text/event-stream' \
   -H 'MCP-Protocol-Version: 2026-07-28' \
   -H 'Mcp-Method: tools/call' \
   -H 'Mcp-Name: vulnetix_kev' \
-  -H "Authorization: ApiKey ${VULNETIX_AUTH}" \
+  -H "Authorization: ApiKey ${VULNESIS_AUTH}" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{
         "name":"vulnetix_kev","arguments":{"limit":1},"_meta":{
         "io.modelcontextprotocol/protocolVersion":"2026-07-28",
@@ -63,7 +63,7 @@ curl -sS -X POST https://mcp.vulnetix.com/mcp \
         "io.modelcontextprotocol/clientCapabilities":{}}}}' | head -c 400
 ```
 
-A KEV item means the credential works. `"isError":true` with `HTTP 401` means vdb-api rejected it. "No Vulnetix credential was supplied" means the header did not parse: check both halves and the colon.
+A KEV item means the credential works. `"isError":true` with `HTTP 401` means vdb-api rejected it. "No Vulnesis credential was supplied" means the header did not parse: check both halves and the colon.
 
 `Mcp-Name` must equal `params.name`, or the server answers 400 with `-32020`.
 
@@ -105,8 +105,8 @@ Your plan is in `_meta["vulnetix/plan"]` on any VDB tool result.
 The repository's `scripts/client-check.mjs` drives the endpoint with `@modelcontextprotocol/client`: version negotiation, tool discovery, argument validation, prompt retrieval and result decoding.
 
 ```bash
-git clone https://github.com/Vulnetix/mcp-server.git && cd mcp-server && yarn install
-node scripts/client-check.mjs https://mcp.vulnetix.com/mcp "ApiKey ${VULNETIX_AUTH}"
+git clone https://github.com/Vulnesis/mcp-server.git && cd mcp-server && yarn install
+node scripts/client-check.mjs https://mcp.vulnes.is/mcp "ApiKey ${VULNESIS_AUTH}"
 ```
 
 Still failing: [Troubleshooting](/mcp-server/reference/troubleshooting/).

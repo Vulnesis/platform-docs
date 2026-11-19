@@ -11,14 +11,14 @@ import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const SITE = 'https://docs.vulnetix.com';
+const SITE = 'https://docs.vulnes.is';
 
 // The page's own date, else its source file's last commit, else none.
 export const lastmodFor = (html, gitDates) => {
   const meta = html.match(/<meta property="article:modified_time" content="(\d{4}-\d{2}-\d{2})"/);
   if (meta) return meta[1];
   // The source file, from the "Edit this page" link; the home page has none.
-  const src = html.match(/\/edit\/main\/(src\/content\/docs\/[^"]+\.md)"/)?.[1] ?? (html.includes('<link rel="canonical" href="https://docs.vulnetix.com/">') ? 'src/pages/index.astro' : null);
+  const src = html.match(/\/edit\/main\/(src\/content\/docs\/[^"]+\.md)"/)?.[1] ?? (html.includes('<link rel="canonical" href="https://docs.vulnes.is/">') ? 'src/pages/index.astro' : null);
   return (src && gitDates.get(src)) || null;
 };
 

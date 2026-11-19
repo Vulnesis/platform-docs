@@ -1,7 +1,7 @@
 # Edge certificate for the retired two-level docs hostnames.
 #
 # docs.cli, docs.code, docs.guardrails and docs.mcp sit two labels under
-# vulnetix.com, so the zone's universal certificate (*.vulnetix.com) does not
+# vulnes.is, so the zone's universal certificate (*.vulnes.is) does not
 # cover them. While they were GitHub Pages CNAMEs (unproxied) Pages issued their
 # certificates. To answer them with the redirect Worker they must be proxied,
 # and the edge then needs a certificate of its own: without one the TLS
@@ -20,7 +20,7 @@ resource "cloudflare_certificate_pack" "retired_docs" {
 
   zone_id               = var.cloudflare_zone_id
   type                  = "advanced"
-  # Let's Encrypt, not Google: while these hosts are CNAMEs to vulnetix.github.io a
+  # Let's Encrypt, not Google: while these hosts are CNAMEs to vulnesis.github.io a
   # CA follows the CNAME and reads GitHub's CAA records, which allow DigiCert,
   # Let's Encrypt and Sectigo only. A Google (pki.goog) pack stayed in
   # pending_validation with "CAA records block issuance". Let's Encrypt is also in
@@ -29,10 +29,10 @@ resource "cloudflare_certificate_pack" "retired_docs" {
   validation_method     = "txt"
   validity_days         = 90
   hosts = [
-    "vulnetix.com",
-    "docs.cli.vulnetix.com",
-    "docs.code.vulnetix.com",
-    "docs.guardrails.vulnetix.com",
-    "docs.mcp.vulnetix.com",
+    "vulnes.is",
+    "docs.cli.vulnes.is",
+    "docs.code.vulnes.is",
+    "docs.guardrails.vulnes.is",
+    "docs.mcp.vulnes.is",
   ]
 }

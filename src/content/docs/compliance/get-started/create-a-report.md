@@ -25,7 +25,7 @@ Reports run on the **Pro** plan or higher.
 
 ## In the Resolve Platform
 
-1. Open the framework's page, for example **Reports > OWASP Top 10** at [/resolve/owasp-top-10](https://www.vulnetix.com/resolve/owasp-top-10). The full list is in the [overview](/compliance/#frameworks).
+1. Open the framework's page, for example **Reports > OWASP Top 10** at [/resolve/owasp-top-10](https://www.vulnes.is/resolve/owasp-top-10). The full list is in the [overview](/compliance/#frameworks).
 2. **Name the report.** The name is used for export file names.
 3. **Choose the period**: Last 12 months (the default), Year to date, Previous calendar year, or Custom dates. Every control, finding and file is bounded by it. The end must not be before the start.
 4. **Set the scope**: Whole organisation, or Choose repositories (`owner/name`, then Enter). At least one repository is required in the second case.
@@ -40,14 +40,14 @@ When a report's period has ended, a notice says that later scans and repositorie
 
 | What | Where | Stored |
 |---|---|---|
-| Manual evidence | Attach a file to the report, or to one control. Optional title, context text and its own reporting period | In Vulnetix storage, with its SHA-256 |
+| Manual evidence | Attach a file to the report, or to one control. Optional title, context text and its own reporting period | In Vulnesis storage, with its SHA-256 |
 | Notes | A thread per control, or on the report | Yes; deleting a note archives it |
 | Assessor findings | PCI DSS, ISO/IEC 27001 and DSOMM only: a status, a method or justification, and free text per testing procedure | Yes |
 | DSOMM targets | A target level from 1 to 5 per dimension or `dimension/sub-dimension`, at most 64 | In the report's `settings` |
 
 Some controls can only be satisfied by a document: Article 5 and Article 6 of the EU AI Act are your organisation's own determinations, as are the CRA Annex II user information items. Attaching evidence to such a control changes its status.
 
-For PCI DSS, ISO/IEC 27001 and DSOMM, Vulnetix pre-fills the assessor's reporting details with the telemetry it holds when the report is created. Changing the scope or the period recomputes the pre-filled text you have not edited. Text you have edited is kept.
+For PCI DSS, ISO/IEC 27001 and DSOMM, Vulnesis pre-fills the assessor's reporting details with the telemetry it holds when the report is created. Changing the scope or the period recomputes the pre-filled text you have not edited. Text you have edited is kept.
 
 ## Archiving
 
@@ -55,11 +55,11 @@ Deleting a report, a note or an evidence file archives it rather than removing i
 
 ## Through the API
 
-The same routes the Resolve Platform uses are served at `https://www.vulnetix.com/api/site/v1/compliance/...` and accept an [API key](/vdb-api/api/authentication/#api-key) header. All times are Unix epoch milliseconds.
+The same routes the Resolve Platform uses are served at `https://www.vulnes.is/api/site/v1/compliance/...` and accept an [API key](/vdb-api/api/authentication/#api-key) header. All times are Unix epoch milliseconds.
 
 ```bash
-BASE=https://www.vulnetix.com/api/site/v1/compliance
-AUTH="Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}"
+BASE=https://www.vulnes.is/api/site/v1/compliance
+AUTH="Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}"
 
 # Create an OWASP Top 10 report for Q3 2026
 id=$(curl -s -H "$AUTH" -H 'Content-Type: application/json' \

@@ -20,7 +20,7 @@ extensions:
     enabled: true
     name: vulnetix
     type: streamable_http
-    uri: https://mcp.vulnetix.com/mcp
+    uri: https://mcp.vulnes.is/mcp
     timeout: 60
     headers:
       Authorization: "ApiKey <orgId>:<hex>"
@@ -39,7 +39,7 @@ Choose Add Extension, then Remote Extension (Streaming HTTP):
 | Prompt | Answer |
 |---|---|
 | Name | `vulnetix` |
-| Endpoint URL | `https://mcp.vulnetix.com/mcp` |
+| Endpoint URL | `https://mcp.vulnes.is/mcp` |
 | Timeout | `60` |
 | Custom headers | `Authorization` = `ApiKey <orgId>:<hex>` |
 

@@ -7,7 +7,7 @@ checked: [package-firewall@77cd1a5, vdb-site@1a06d67, saas@50cedf37]
 updated: 04 Nov 2026
 ---
 
-Each organization has one allow list and one deny list, curated on the Resolve Platform's **Curation** tab at [www.vulnetix.com/resolve/package-firewall](https://www.vulnetix.com/resolve/package-firewall#curation). They can also be written as a [`PackageList`](/platform-iac/kinds/package-list/) document and applied with `vulnetix config apply`.
+Each organization has one allow list and one deny list, curated on the Resolve Platform's **Curation** tab at [www.vulnes.is/resolve/package-firewall](https://www.vulnes.is/resolve/package-firewall#curation). They can also be written as a [`PackageList`](/platform-iac/kinds/package-list/) document and applied with `vulnetix config apply`.
 
 ## Entry fields
 
@@ -100,13 +100,13 @@ A conditional entry is used only where the version's signals are in hand. These 
 
 - the whole-package gates, such as the bad-actor gate and the allowlist-only gate
 - the cooldown and version-lag waivers, and the bad-actor waiver
-- a deny entry for an exact version the Vulnetix API holds no signals for
+- a deny entry for an exact version the Vulnesis API holds no signals for
 
 A condition that fails to evaluate is logged and the entry does not apply: a deny entry does not block, and an allow entry does not waive.
 
 ## Decisions in Guardian
 
-Every firewall decision is also sent to [Guardian](/siem/), the Vulnetix SIEM, for organisations with Guardian active. It needs no token and does not count against the ingest cap. Decisions land in the `product_events` table with `source` `package-firewall`. See [Vulnetix products](/siem/sources/events/#vulnetix-products).
+Every firewall decision is also sent to [Guardian](/siem/), the Vulnesis SIEM, for organisations with Guardian active. It needs no token and does not count against the ingest cap. Decisions land in the `product_events` table with `source` `package-firewall`. See [Vulnesis products](/siem/sources/events/#vulnesis-products).
 
 ## Usage tracking
 

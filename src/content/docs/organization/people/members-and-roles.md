@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-People sign in to Vulnetix through its identity provider (Authentik). Each person is a **principal** in exactly one organisation, with a role there. Manage them on **Account › Members** (`/resolve/members`).
+People sign in to Vulnesis through its identity provider (Authentik). Each person is a **principal** in exactly one organisation, with a role there. Manage them on **Account › Members** (`/resolve/members`).
 
 ## What your organisation is
 

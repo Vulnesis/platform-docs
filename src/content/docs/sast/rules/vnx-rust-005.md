@@ -19,7 +19,7 @@ generated: true
 | CWE | [CWE-755](https://cwe.mitre.org/data/definitions/755.html) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `rust` `panic` `error-handling` `result` |
-| Source | [`internal/sast/rules/vnx-rust-005.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-rust-005.rego) |
+| Source | [`internal/sast/rules/vnx-rust-005.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-rust-005.rego) |
 
 ## Overview
 

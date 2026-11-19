@@ -7,7 +7,7 @@ checked: [ai-firewall@339de55, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-Two settings change: the base URL and the API key. Everything else in your code stays the same. Each example reads `VULNETIX_API_KEY` and `VULNETIX_ORG_ID` from the environment.
+Two settings change: the base URL and the API key. Everything else in your code stays the same. Each example reads `VULNESIS_API_KEY` and `VULNESIS_ORG_ID` from the environment.
 
 The CLI prints the OpenAI, Anthropic, LangChain and LlamaIndex examples with your UUID and an allowed model filled in:
 
@@ -30,8 +30,8 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url=f"https://guardrails.vulnetix.com/openai/{os.environ['VULNETIX_ORG_ID']}/v1",
-    api_key=os.environ["VULNETIX_API_KEY"],  # the Vulnetix key, not an OpenAI key
+    base_url=f"https://guardrails.vulnes.is/openai/{os.environ['VULNESIS_ORG_ID']}/v1",
+    api_key=os.environ["VULNESIS_API_KEY"],  # the Vulnesis key, not an OpenAI key
 )
 
 response = client.chat.completions.create(
@@ -85,8 +85,8 @@ import os
 from anthropic import Anthropic
 
 client = Anthropic(
-    base_url=f"https://guardrails.vulnetix.com/anthropic/{os.environ['VULNETIX_ORG_ID']}",  # no /v1
-    auth_token=os.environ["VULNETIX_API_KEY"],
+    base_url=f"https://guardrails.vulnes.is/anthropic/{os.environ['VULNESIS_ORG_ID']}",  # no /v1
+    auth_token=os.environ["VULNESIS_API_KEY"],
 )
 
 message = client.messages.create(
@@ -122,8 +122,8 @@ import os
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    base_url=f"https://guardrails.vulnetix.com/openai/{os.environ['VULNETIX_ORG_ID']}/v1",
-    api_key=os.environ["VULNETIX_API_KEY"],
+    base_url=f"https://guardrails.vulnes.is/openai/{os.environ['VULNESIS_ORG_ID']}/v1",
+    api_key=os.environ["VULNESIS_API_KEY"],
     model="gpt-4o-mini",
 )
 print(llm.invoke("Hello").content)
@@ -143,8 +143,8 @@ from llama_index.core import Settings
 from llama_index.llms.openai import OpenAI
 
 llm = OpenAI(
-    api_base=f"https://guardrails.vulnetix.com/openai/{os.environ['VULNETIX_ORG_ID']}/v1",
-    api_key=os.environ["VULNETIX_API_KEY"],
+    api_base=f"https://guardrails.vulnes.is/openai/{os.environ['VULNESIS_ORG_ID']}/v1",
+    api_key=os.environ["VULNESIS_API_KEY"],
     model="gpt-4o-mini",
 )
 Settings.llm = llm  # query engines and agents now use the gateway
@@ -169,8 +169,8 @@ from pydantic_ai.providers.openai import OpenAIProvider
 model = OpenAIChatModel(
     "gpt-4o-mini",
     provider=OpenAIProvider(
-        base_url=f"https://guardrails.vulnetix.com/openai/{os.environ['VULNETIX_ORG_ID']}/v1",
-        api_key=os.environ["VULNETIX_API_KEY"],
+        base_url=f"https://guardrails.vulnes.is/openai/{os.environ['VULNESIS_ORG_ID']}/v1",
+        api_key=os.environ["VULNESIS_API_KEY"],
     ),
 )
 agent = Agent(model, system_prompt="Be concise.")

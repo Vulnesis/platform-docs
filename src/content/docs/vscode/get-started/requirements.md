@@ -35,7 +35,7 @@ The extension downloads a CLI release asset that matches `process.platform` and 
 | Windows | `x64` | `vulnetix-windows-amd64.exe` |
 | Windows | `arm64` | `vulnetix-windows-arm64.exe` |
 
-Linux builds are statically linked against musl, so one binary runs on Alpine and glibc distributions. On any other platform, such as FreeBSD or 32-bit Windows, the extension logs `Vulnetix does not publish a CLI for <platform>/<arch>` and stops. Build the CLI from source (it needs CGO for the tree-sitter grammars) and set [`vulnetix.cli.path`](/vscode/reference/settings/).
+Linux builds are statically linked against musl, so one binary runs on Alpine and glibc distributions. On any other platform, such as FreeBSD or 32-bit Windows, the extension logs `Vulnesis does not publish a CLI for <platform>/<arch>` and stops. Build the CLI from source (it needs CGO for the tree-sitter grammars) and set [`vulnetix.cli.path`](/vscode/reference/settings/).
 
 ## CLI version
 
@@ -50,10 +50,10 @@ Linux builds are statically linked against musl, so one binary runs on Alpine an
 | Host | Used for | Needed for |
 |---|---|---|
 | `github.com` (or your mirror) | Downloading the CLI and `checksums.txt` | First run, unless the CLI is already installed |
-| `api.vdb.vulnetix.com` | Dependency lookups | Dependency findings only |
+| `api.vdb.vulnes.is` | Dependency lookups | Dependency findings only |
 
 Code, secret, infrastructure and container rules run with no network at all. Details are on [Privacy and network use](/vscode/configuration/privacy/).
 
 ## Account
 
-None. When no credential is found the server uses the CLI's built-in [community](https://www.vulnetix.com/features/community) credentials. If you have already run `vulnetix auth login`, or set `VULNETIX_API_TOKEN` or `VULNETIX_API_KEY` with `VULNETIX_ORG_ID` in the editor's environment, the server uses that instead; the order is on [Privacy and network use](/vscode/configuration/privacy/#credentials). Ranked Safe Harbour versions, which quick fixes and `→ <version>` hints need, are gated by plan; on the community tier the hover card says the fix data was withheld rather than reporting that no fix exists.
+None. When no credential is found the server uses the CLI's built-in [community](https://www.vulnes.is/features/community) credentials. If you have already run `vulnetix auth login`, or set `VULNESIS_API_TOKEN` or `VULNESIS_API_KEY` with `VULNESIS_ORG_ID` in the editor's environment, the server uses that instead; the order is on [Privacy and network use](/vscode/configuration/privacy/#credentials). Ranked Safe Harbour versions, which quick fixes and `→ <version>` hints need, are gated by plan; on the community tier the hover card says the fix data was withheld rather than reporting that no fix exists.

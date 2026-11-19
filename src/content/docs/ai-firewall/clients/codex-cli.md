@@ -7,7 +7,7 @@ checked: [ai-firewall@339de55, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-Codex sends `POST /v1/responses`. Of the built-in providers only `openai` serves the `responses` surface, so Codex is always wired to `https://guardrails.vulnetix.com/openai/<uuid>/v1`. Pointing it at `groq`, `openrouter` or another `chat`-only provider returns `404 unsupported_api`.
+Codex sends `POST /v1/responses`. Of the built-in providers only `openai` serves the `responses` surface, so Codex is always wired to `https://guardrails.vulnes.is/openai/<uuid>/v1`. Pointing it at `groq`, `openrouter` or another `chat`-only provider returns `404 unsupported_api`.
 
 ## With the CLI
 
@@ -22,13 +22,13 @@ vulnetix ai-firewall install codex --model gpt-4o-mini
 model = "gpt-4o-mini"
 model_provider = "vulnetix-openai"
 
-# Vulnetix AI Firewall
+# Vulnesis AI Firewall
 [model_providers.vulnetix-openai]
-name = "Vulnetix AI Firewall (openai)"
-base_url = "https://guardrails.vulnetix.com/openai/<uuid>/v1"
-env_key = "VULNETIX_API_KEY"
+name = "Vulnesis AI Firewall (openai)"
+base_url = "https://guardrails.vulnes.is/openai/<uuid>/v1"
+env_key = "VULNESIS_API_KEY"
 wire_api = "responses"
-# End Vulnetix AI Firewall
+# End Vulnesis AI Firewall
 ```
 
 `model` is only written with `--model`, and the model is checked against your policy first. If the gateway does not advertise `responses` for `openai`, the CLI skips Codex with `wire_unsupported` rather than writing a config that would fail.
@@ -36,7 +36,7 @@ wire_api = "responses"
 `env_key` names a variable: Codex reads the key from the environment, so export it where Codex runs.
 
 ```bash
-export VULNETIX_API_KEY="<your Vulnetix API key>"
+export VULNESIS_API_KEY="<your Vulnesis API key>"
 ```
 
 `uninstall codex` removes the table, and removes `model_provider` and `model` only while `model_provider` still names `vulnetix-openai`.
@@ -48,7 +48,7 @@ Write the block above into `~/.codex/config.toml` yourself. The four values that
 1. `wire_api = "responses"`. Codex accepts no other value.
 2. `base_url` ends in `/v1`.
 3. The slug in `base_url` is `openai`.
-4. `env_key` is the name of the variable holding your Vulnetix key, not the key.
+4. `env_key` is the name of the variable holding your Vulnesis key, not the key.
 
 ## Verify
 
@@ -74,7 +74,7 @@ A local MCP server from `config.toml` arrives flattened into `tools[]` as `<serv
 
 | Status | `code` | Cause |
 |---|---|---|
-| `401` | `invalid_api_key` | `VULNETIX_API_KEY` is unset, empty, or holds an OpenAI key |
+| `401` | `invalid_api_key` | `VULNESIS_API_KEY` is unset, empty, or holds an OpenAI key |
 | `403` | `provider_key_missing` | No OpenAI key in the vault |
 | `403` | `model_not_allowed`, `model_denied` | The model is refused by policy |
 | `404` | `unsupported_api` | The slug is not `openai`, or `wire_api` is not `responses` |

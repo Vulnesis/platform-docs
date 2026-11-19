@@ -1,6 +1,6 @@
 ---
 title: Severity and filtering
-description: How Vulnetix severities map to editor diagnostic levels, and the settings that hide low findings or demote them to hints.
+description: How Vulnesis severities map to editor diagnostic levels, and the settings that hide low findings or demote them to hints.
 order: 5
 sources: [cli/internal/lsp/diagnostics.go, cli/internal/lsp/settings.go, cli/internal/lsp/server.go, vulnetix-vscode/src/shared/severity.ts, vulnetix-vscode/package.json]
 checked: [cli@4c8c3b7, vulnetix-vscode@9ad08fa]
@@ -10,7 +10,7 @@ status: available
 
 The mapping matches the CLI's SARIF levels, so an Error in the editor is what `vulnetix scan` reports as `error`.
 
-| Vulnetix severity | CLI label | SARIF level | Editor level | Problems panel |
+| Vulnesis severity | CLI label | SARIF level | Editor level | Problems panel |
 |---|---|---|---|---|
 | `critical` | Dangerous | `error` | Error | Yes |
 | `high` | Risky | `error` | Error | Yes |

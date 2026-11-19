@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/debian` |
+| Repository URL | `https://packages.vulnes.is/debian` |
 | Ecosystem ID | `debian` |
 | Plan | Add-on |
 | Mode | gate: `dists/` is streamed unchanged; `pool/**/<name>_<version>_<arch>.deb` is checked |
@@ -36,13 +36,13 @@ For Ubuntu use `https://archive.ubuntu.com/ubuntu`. A `404` from a mirror is fin
 `/etc/apt/sources.list.d/vulnetix.list`:
 
 ```text
-deb https://packages.vulnetix.com/debian bookworm main
+deb https://packages.vulnes.is/debian bookworm main
 ```
 
 `/etc/apt/auth.conf.d/vulnetix.conf`, mode `600`, owned by root:
 
 ```text
-machine packages.vulnetix.com
+machine packages.vulnes.is
 login YOUR_ORG_UUID
 password YOUR_API_KEY
 ```

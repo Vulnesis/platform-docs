@@ -18,7 +18,7 @@ checked: [saas@50cedf3, vdb-site@1a06d67, ai-firewall@339de55, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The provider is the first path segment of the base URL: `https://guardrails.vulnetix.com/{slug}/{org}/v1`. The catalog is a database table; the live list for your organisation, with your policy and key state, is printed by `vulnetix ai-firewall get`.
+The provider is the first path segment of the base URL: `https://guardrails.vulnes.is/{slug}/{org}/v1`. The catalog is a database table; the live list for your organisation, with your policy and key state, is printed by `vulnetix ai-firewall get`.
 
 ## Built-in providers
 
@@ -40,7 +40,7 @@ The provider is the first path segment of the base URL: `https://guardrails.vuln
 
 The upstream path is the base plus `/v1/chat/completions`, `/v1/responses`, `/v1/messages`, `/v1/messages/count_tokens` or, for Kiro, `/generateAssistantResponse`.
 
-Every provider needs a stored key before it proxies anything (`403 provider_key_missing`). A provider Vulnetix has switched off for everyone answers `403 provider_disabled`.
+Every provider needs a stored key before it proxies anything (`403 provider_key_missing`). A provider Vulnesis has switched off for everyone answers `403 provider_disabled`.
 
 > [!CAREFUL] Only openai serves the Responses API
 > Codex CLI accepts no wire format but Responses, so it can only be pointed at `openai` (or a custom provider registered with the Responses protocol). Claude Code and Claude Desktop speak only Messages, so they need `anthropic`. Calling a surface a provider does not serve is `404 unsupported_api`.
@@ -54,7 +54,7 @@ Every provider needs a stored key before it proxies anything (`403 provider_key_
 | `openai` | `OPENAI_BASE_URL`, `OPENAI_API_BASE`, `OPENAI_API_KEY` | yes |
 | `anthropic` | `ANTHROPIC_BASE_URL`, `ANTHROPIC_AUTH_TOKEN` | yes |
 | `groq` | `GROQ_BASE_URL`, `GROQ_API_KEY` | yes (not verified against SDK source) |
-| `mistral`, `deepseek`, `xai`, `openrouter`, `together`, `fireworks` | an informational `VULNETIX_AIFW_<SLUG>_BASE_URL` | no: set `base_url` in code, see [Snippets](/ai-firewall/cli/snippets/) |
+| `mistral`, `deepseek`, `xai`, `openrouter`, `together`, `fireworks` | an informational `VULNESIS_AIFW_<SLUG>_BASE_URL` | no: set `base_url` in code, see [Snippets](/ai-firewall/cli/snippets/) |
 | `alibaba`, `moonshot`, `minimax`, `kiro`, custom providers | nothing | no |
 
 `ANTHROPIC_AUTH_TOKEN` is used rather than `ANTHROPIC_API_KEY` because it makes the SDK send `Authorization: Bearer`. Both header forms are accepted by the gateway.
@@ -63,11 +63,11 @@ Every provider needs a stored key before it proxies anything (`403 provider_key_
 
 ## Kiro
 
-Kiro has no API key. `vulnetix ai-firewall kiro login` signs in with an AWS Builder ID (default) or an IAM Identity Center start URL and stores the sign-in in the [secrets vault](https://www.vulnetix.com/resolve/vault) as the `kiro` key. The gateway mints a short-lived access token from it on every request.
+Kiro has no API key. `vulnetix ai-firewall kiro login` signs in with an AWS Builder ID (default) or an IAM Identity Center start URL and stores the sign-in in the [secrets vault](https://www.vulnes.is/resolve/vault) as the `kiro` key. The gateway mints a short-lived access token from it on every request.
 
 | Item | Value |
 |---|---|
-| Base URL | `https://guardrails.vulnetix.com/kiro/{org}/v1` |
+| Base URL | `https://guardrails.vulnes.is/kiro/{org}/v1` |
 | Inference | `POST …/generateAssistantResponse` |
 | Models | `GET …/ListAvailableModels` |
 | Seeded models | `auto`, `claude-opus-4.5`, `claude-sonnet-4.5`, `claude-sonnet-4`, `claude-haiku-4.5` |
@@ -78,7 +78,7 @@ See [Kiro](/ai-firewall/clients/kiro/) for client setup.
 
 ## Custom providers
 
-An organisation on Pro or above can register its own endpoint on the Connect tab of the [AI Firewall page](https://www.vulnetix.com/resolve/ai-firewall). It is addressed by its slug like a built-in and gets the same authentication, provider policy, model policy and guardrails.
+An organisation on Pro or above can register its own endpoint on the Connect tab of the [AI Firewall page](https://www.vulnes.is/resolve/ai-firewall). It is addressed by its slug like a built-in and gets the same authentication, provider policy, model policy and guardrails.
 
 | Setting | Allowed values |
 |---|---|

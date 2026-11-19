@@ -7,7 +7,7 @@ checked: [cli@4c8c3b71c, vdb-api@4145f0a]
 updated: 02 Nov 2026
 ---
 
-Every recipe assumes `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` are set (see the [quickstart](/vdb-api/get-started/quickstart/)), and `jq` is installed. Each API call counts against your [daily quota](/vdb-api/api/rate-limits/).
+Every recipe assumes `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` are set (see the [quickstart](/vdb-api/get-started/quickstart/)), and `jq` is installed. Each API call counts against your [daily quota](/vdb-api/api/rate-limits/).
 
 ## Fail a CI job when a pinned package has advisories
 
@@ -19,9 +19,9 @@ set -euo pipefail
 PURL="${1:?usage: $0 pkg:npm/express@4.17.1}"
 
 ids=$(curl -sf \
-  -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
+  -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
   --get --data-urlencode "purl=${PURL}" \
-  https://api.vdb.vulnetix.com/v2/inputs/resolve | jq -r '.resolved.vulnIds[]')
+  https://api.vdb.vulnes.is/v2/inputs/resolve | jq -r '.resolved.vulnIds[]')
 
 if [ -n "$ids" ]; then
   echo "$PURL is affected by:"
@@ -68,7 +68,7 @@ done < ids.txt
 ## Export the KEV catalogue
 
 ```bash
-vulnetix vdb kev download -o kev.csv                         # Vulnetix KEV, CSV
+vulnetix vdb kev download -o kev.csv                         # Vulnesis KEV, CSV
 vulnetix vdb kev list --source CISA --source enisa -o json --silent > kev.json
 vulnetix vdb kev list --reason known_ransomware -o json --silent   # `vdb kev reasons` lists the values
 ```

@@ -10,7 +10,7 @@ updated: 02 Nov 2026
 ## 1. Install
 
 ```sh
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 ```
 
 Other methods are on [Install](/cli/get-started/install/).
@@ -21,7 +21,7 @@ Other methods are on [Install](/cli/get-started/install/).
 vulnetix auth login
 ```
 
-This opens a browser, asks you to approve a code, and stores an API key for your organisation. Skip it and the CLI uses the shared community credential: lookups work, but nothing is stored in Vulnetix and no snapshot links are printed. A free Community plan gives you your own quota: [register](https://www.vulnetix.com/resolve/register), then log in.
+This opens a browser, asks you to approve a code, and stores an API key for your organisation. Skip it and the CLI uses the shared community credential: lookups work, but nothing is stored in Vulnesis and no snapshot links are printed. A free Community plan gives you your own quota: [register](https://www.vulnes.is/resolve/register), then log in.
 
 ## 3. Scan
 

@@ -17,7 +17,7 @@ updated: 02 Nov 2026
 MCP client
   |  POST /mcp   Authorization: ApiKey <orgId>:<hex>
   v
-Cloudflare Worker (mcp.vulnetix.com)
+Cloudflare Worker (mcp.vulnes.is)
   |- checks       Host, Origin, path, method, content type
   |- tools        31, some composing several upstream calls
   |- resources    4 record templates (your credential), 1 skill-file template
@@ -74,4 +74,4 @@ Cloudflare Workers Builds deploys from the repository on every push to `main`. G
 
 ## Source
 
-[github.com/Vulnetix/mcp-server](https://github.com/Vulnetix/mcp-server), including the conformance script, the jq parity tests and the live smoke test.
+[github.com/Vulnesis/mcp-server](https://github.com/Vulnesis/mcp-server), including the conformance script, the jq parity tests and the live smoke test.

@@ -46,7 +46,7 @@ The CLI uses `github.com/smacker/go-tree-sitter`, which ships each grammar's C s
 1. Queries are grouped by language and deduplicated by query hash, so a query shared by several CVEs runs once.
 2. Direct mode: the package's install directory is found and walked.
 3. Transitive mode: the project root is walked with the install directory and the skipped directories pruned.
-4. The walk collects files first, in a fixed order, then analyses them in parallel (`VULNETIX_REACHABILITY_CONCURRENCY`, default `GOMAXPROCS`, 1 to 32). Files over 4 MiB are skipped.
+4. The walk collects files first, in a fixed order, then analyses them in parallel (`VULNESIS_REACHABILITY_CONCURRENCY`, default `GOMAXPROCS`, 1 to 32). Files over 4 MiB are skipped.
 5. CVEs still without a verdict and with affected routine, file or module names from the VDB go through the semantic fallback, which builds one literal regex per file extension and walks the same tree.
 
 Parse and permission errors are not fatal; the run continues with the other files.

@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 status: available
 ---
 
-Start with **Vulnetix: Show Output** (or click the status bar item). The first lines name the extension version, the protocol and CLI range it expects, the binary it chose and where that came from.
+Start with **Vulnesis: Show Output** (or click the status bar item). The first lines name the extension version, the protocol and CLI range it expects, the binary it chose and where that came from.
 
 For a protocol trace, set `"vulnetix.trace.server": "verbose"`, reproduce the problem, and copy the output channel.
 
@@ -16,18 +16,18 @@ For a protocol trace, set `"vulnetix.trace.server": "verbose"`, reproduce the pr
 
 | Message | Cause | Fix |
 |---|---|---|
-| `Vulnetix needs the Vulnetix CLI to scan. Download it now?` | No usable CLI on `PATH` or in storage | **Download**, or **Set Path** to a binary you have |
-| `The Vulnetix CLI configured at "<path>" cannot be used: it does not exist or is not executable` | `vulnetix.cli.path` is wrong | Fix the path, or clear it to let the extension manage a binary |
-| `... it did not respond to "lsp --version"` | The configured binary is older than 3.100.0, or not the Vulnetix CLI | Use CLI 3.100.0 or later |
+| `Vulnesis needs the Vulnesis CLI to scan. Download it now?` | No usable CLI on `PATH` or in storage | **Download**, or **Set Path** to a binary you have |
+| `The Vulnesis CLI configured at "<path>" cannot be used: it does not exist or is not executable` | `vulnetix.cli.path` is wrong | Fix the path, or clear it to let the extension manage a binary |
+| `... it did not respond to "lsp --version"` | The configured binary is older than 3.100.0, or not the Vulnesis CLI | Use CLI 3.100.0 or later |
 | `... speaks protocol v<n>, but this extension needs v1. Update the CLI.` | CLI too old | Update the CLI |
 | `... which is newer than this extension understands (v1). Update the extension.` | Extension too old | Update the extension |
-| `Vulnetix does not publish a CLI binary for <platform>/<arch>` | No release asset for your machine | Build from source and set `vulnetix.cli.path` |
+| `Vulnesis does not publish a CLI binary for <platform>/<arch>` | No release asset for your machine | Build from source and set `vulnetix.cli.path` |
 | `Checksum mismatch for <asset>` | The downloaded bytes do not match `checksums.txt`, usually a rewriting proxy | Use `vulnetix.cli.path` with a vetted binary, or a mirror |
 | `checksums.txt has no entry for "<asset>"` | A mirror without that asset in `checksums.txt` | Fix the mirror |
 | `checksums.txt line <n>: expected "<64 hex> <filename>"` | A malformed `checksums.txt` | Fix the mirror |
 | `fetching <url> returned 404 Not Found` | Wrong `vulnetix.cli.downloadBaseUrl` layout | Serve `<base>/<tag>/<asset>` |
-| `The Vulnetix language server keeps crashing. Scanning is disabled for this session.` | More than three crashes in three minutes | **Show Log**; the crash breadcrumb is in `~/.cache/vulnetix/lsp-crash.json` on Linux. **Restart** to try again. |
-| `Vulnetix is not running.` | **Restart Language Server** before a CLI was resolved, or with no folder open | Open a folder; install the CLI |
+| `The Vulnesis language server keeps crashing. Scanning is disabled for this session.` | More than three crashes in three minutes | **Show Log**; the crash breadcrumb is in `~/.cache/vulnetix/lsp-crash.json` on Linux. **Restart** to try again. |
+| `Vulnesis is not running.` | **Restart Language Server** before a CLI was resolved, or with no folder open | Open a folder; install the CLI |
 
 ## Nothing appears
 

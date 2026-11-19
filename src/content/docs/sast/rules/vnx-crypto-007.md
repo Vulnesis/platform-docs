@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1110.002](https://attack.mitre.org/techniques/T1110/002/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `crypto` `password-hashing` `weak-crypto` |
-| Source | [`internal/sast/rules/vnx-crypto-007.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-crypto-007.rego) |
+| Source | [`internal/sast/rules/vnx-crypto-007.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-crypto-007.rego) |
 
 ## Overview
 

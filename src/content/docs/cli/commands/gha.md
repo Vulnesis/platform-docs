@@ -21,7 +21,7 @@ These commands run the [GitHub posture rules](/cli/github-rules/overview/) (`VNX
 | Command | Checks | Reads | Token needed |
 |---|---|---|---|
 | `workflows` | Injection, privilege and trust flaws in workflow and composite action files | Local `.github/` files, or the API | Optional. With one, the repository's settings rate each finding up or down. |
-| `actions` | Every `uses:` reference: SHA pinning, pin and comment mismatch, impostor commits, repo-jacking, vulnerable versions, retired runtimes, typosquats, allowed-actions policy, unpinned images, remote scripts piped to a shell | Local files and the API | Yes, to resolve references. Vulnerable action versions come from Vulnetix (community access when not signed in). |
+| `actions` | Every `uses:` reference: SHA pinning, pin and comment mismatch, impostor commits, repo-jacking, vulnerable versions, retired runtimes, typosquats, allowed-actions policy, unpinned images, remote scripts piped to a shell | Local files and the API | Yes, to resolve references. Vulnerable action versions come from Vulnesis (community access when not signed in). |
 | `settings` | Default-branch protection (rulesets and classic), Actions token defaults, fork approval, allowed actions, secret scanning, Dependabot, environments, deploy keys, webhooks, outside admins, policy files, secret age | The API | Yes, with read access to the repository's administration settings |
 | `org` | Two-factor enforcement, default member permission, public repository creation, Actions policy and token, organisation secrets, runner groups, webhooks | The API | Yes, an organisation owner's |
 | `audit` | All of the above (`org` when `--org` is given or the owner is an organisation) as one report | Both | As above |
@@ -53,7 +53,7 @@ All five commands take the same flags.
 | `--format <f>` | `table` | `table`, `json` or `sarif` |
 | `--json` | | Same as `--format json` |
 | `-o`, `--output <file>` | stdout | Write the report to a file |
-| `--upload` | off | Publish the SARIF to Vulnetix as a snapshot. Needs Vulnetix credentials. |
+| `--upload` | off | Publish the SARIF to Vulnesis as a snapshot. Needs Vulnesis credentials. |
 
 `--fail-on` ends with `Error: found <n> finding(s) at or above <severity>` and exit `1`. A bad `--format`, `--min-severity` or `--fail-on` value also exits `1`.
 
@@ -87,9 +87,9 @@ jobs:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
-      - name: Install Vulnetix CLI
+      - name: Install Vulnesis CLI
         run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+          curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Check workflows and actions
         env:

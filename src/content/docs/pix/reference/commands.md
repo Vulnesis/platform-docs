@@ -35,7 +35,7 @@ updated: 02 Nov 2026
 Claude Code
   hooks    configured ~/.claude/settings.json
   skills   ~/.claude/skills
-  mcp      https://mcp.vulnetix.com/mcp
+  mcp      https://mcp.vulnes.is/mcp
 ```
 
 `hooks` reads `would configure <file>` with `--dry-run`, `already configured` when nothing changed, or a `note` line when the host's hooks are not verified. With no agents detected it says so and suggests `--agent`.
@@ -44,12 +44,12 @@ Claude Code
 
 | Command | Flags | Does |
 |---|---|---|
-| `install` | `--agent <id>`, `--skill <name>` | Installs the skills. Without flags: `npx skills add --all -y Vulnetix/pix-ai-coding-assistant`, else the Claude Code marketplace, else `gh skills add` per agent and skill. With flags, every available tool is used for that agent or skill. |
-| `check` | | Lists Vulnetix skills in each detected agent's directories, dangling links, skills the release no longer ships, and skills it ships that are missing |
+| `install` | `--agent <id>`, `--skill <name>` | Installs the skills. Without flags: `npx skills add --all -y Vulnesis/pix-ai-coding-assistant`, else the Claude Code marketplace, else `gh skills add` per agent and skill. With flags, every available tool is used for that agent or skill. |
+| `check` | | Lists Vulnesis skills in each detected agent's directories, dangling links, skills the release no longer ships, and skills it ships that are missing |
 | `update` | | `npx skills update -y`, else `gh skills update --all`, else `claude plugin marketplace update`; then lists retired skills left behind |
-| `uninstall` | | `npx skills remove --all` (every skill the `skills` tool installed, not only Vulnetix's); without `npx`, prints the directories to clean |
-| `prune [skill...]` | `--yes` | Removes Vulnetix skills the latest release no longer ships, or the named ones. Without `--yes`, prints what it would remove. |
+| `uninstall` | | `npx skills remove --all` (every skill the `skills` tool installed, not only Vulnesis's); without `npx`, prints the directories to clean |
+| `prune [skill...]` | `--yes` | Removes Vulnesis skills the latest release no longer ships, or the named ones. Without `--yes`, prints what it would remove. |
 
-`prune` compares `~/.agents/.skill-lock.json` with the release's `skills/` directory. It removes each host symlink into the skill's store directory, the store directory and the lock entry, only for entries the lock attributes to a Vulnetix source, and never a real directory in a host's skills folder.
+`prune` compares `~/.agents/.skill-lock.json` with the release's `skills/` directory. It removes each host symlink into the skill's store directory, the store directory and the lock entry, only for entries the lock attributes to a Vulnesis source, and never a real directory in a host's skills folder.
 
 See [Install, update and verify](/pix/get-started/install/) for the order to run these in.

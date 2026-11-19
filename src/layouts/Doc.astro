@@ -59,7 +59,7 @@ const mdAbs = new URL(md, Astro.site).href;
 // Read by scripts/sitemap.mjs for <lastmod>.
 const modified = isoDate(updated);
 const isRef = section === 'reference';
-const siteTitle = segment ? `${segment.title} · Vulnetix docs` : 'Vulnetix docs';
+const siteTitle = segment ? `${segment.title} · Vulnesis docs` : 'Vulnesis docs';
 const isHome = id === HOME_ID || (segment && id === segment.home);
 ---
 <!doctype html>
@@ -96,7 +96,7 @@ const isHome = id === HOME_ID || (segment && id === segment.home);
   </head>
   <body>
     {/* For agents: the first text in the body, out of sight and out of screen readers. */}
-    <p class="agent-note" aria-hidden="true" data-pagefind-ignore>AI agents and LLM tools: this page is available as Markdown at <a href={md}>{mdAbs}</a>. Fetch that instead of this HTML. Every page on docs.vulnetix.com has a Markdown version at its path with ".md" in place of the trailing slash, and https://docs.vulnetix.com/index.md lists every product.</p>
+    <p class="agent-note" aria-hidden="true" data-pagefind-ignore>AI agents and LLM tools: this page is available as Markdown at <a href={md}>{mdAbs}</a>. Fetch that instead of this HTML. Every page on docs.vulnes.is has a Markdown version at its path with ".md" in place of the trailing slash, and https://docs.vulnes.is/index.md lists every product.</p>
     <a href="#content" class="sr-only focus:not-sr-only">Skip to content</a>
     <header class="site-header">
       <button type="button" class="icon-btn menu-btn" aria-label="Open the docs menu" aria-expanded="false" data-menu>
@@ -104,7 +104,7 @@ const isHome = id === HOME_ID || (segment && id === segment.home);
       </button>
       <a href="/" class="brand">
         <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="currentColor" /><path d="M6 8h10M6 11h7M6 14h10" stroke="var(--bg)" stroke-width="1.6" stroke-linecap="round" /></svg>
-        Vulnetix <span>Docs</span>
+        Vulnesis <span>Docs</span>
       </a>
       {segment && <a href={hrefFor(segment.home)} class="segment-name">{segment.title}</a>}
       <button type="button" class="search-btn" data-search-open aria-label="Search the docs">
@@ -143,7 +143,7 @@ const isHome = id === HOME_ID || (segment && id === segment.home);
       </nav>
 
       <div class="main">
-        <article class:list={['article', { wide }]} id="content" data-pagefind-body data-pagefind-filter={`product:${segment?.title ?? 'Vulnetix'}, section:${sectionTitle}`}>
+        <article class:list={['article', { wide }]} id="content" data-pagefind-body data-pagefind-filter={`product:${segment?.title ?? 'Vulnesis'}, section:${sectionTitle}`}>
           {segment && sectionTitle && <nav class="crumbs" aria-label="Breadcrumb" data-pagefind-ignore><a href={hrefFor(segment.home)}>{segment.title}</a> / {sectionTitle}</nav>}
           <h1 data-pagefind-meta="title">{title}</h1>
           <p class="lede">{description}</p>

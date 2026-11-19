@@ -8,7 +8,7 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-The Resolve Platform calls these on the Vulnetix site API, under `https://www.vulnetix.com/api/site`. They authenticate with the signed-in Resolve Platform session, not an API key, and every one needs the Pro plan or above. Routes marked *probe* are called by the probe in your account with the API key pair from `vulnetix/vdb-credentials`; you do not call them.
+The Resolve Platform calls these on the Vulnesis site API, under `https://www.vulnes.is/api/site`. They authenticate with the signed-in Resolve Platform session, not an API key, and every one needs the Pro plan or above. Routes marked *probe* are called by the probe in your account with the API key pair from `vulnetix/vdb-credentials`; you do not call them.
 
 ## AWS
 

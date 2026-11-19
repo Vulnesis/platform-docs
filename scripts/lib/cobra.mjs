@@ -1,6 +1,6 @@
 // cobra.mjs: read a Cobra command tree from Go source without a Go toolchain.
 //
-// The Vulnetix CLI declares its commands in cmd/*.go in a few shapes, and this
+// The Vulnesis CLI declares its commands in cmd/*.go in a few shapes, and this
 // reads each of them with regular expressions:
 //
 //   var fooCmd = &cobra.Command{ Use: "foo ..." }        package-level command

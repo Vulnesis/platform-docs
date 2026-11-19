@@ -40,7 +40,7 @@ What was added to the KEV catalogue recently?
 ```
 
 > [!CAREFUL] Only CISA rows carry `dueDate`
-> VulnCheck, ENISA and Vulnetix rows record membership with no deadline. A null `dueDate` means that source issues none. If BOD 22-01 applies to you, the CISA row is the one that binds.
+> VulnCheck, ENISA and Vulnesis rows record membership with no deadline. A null `dueDate` means that source issues none. If BOD 22-01 applies to you, the CISA row is the one that binds.
 
 ## Does it apply to you
 

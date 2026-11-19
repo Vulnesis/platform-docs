@@ -21,17 +21,17 @@ It writes two files, both user scope:
 | File | Content |
 |---|---|
 | `~/.continue/config.yaml` | One entry in `models`, matched by its `name`. Comments and the other entries are kept. If only a legacy `~/.continue/config.json` exists, the entry goes there, matched by `title`. |
-| `~/.continue/.env` | `VULNETIX_API_KEY=<your key>`, mode `600` |
+| `~/.continue/.env` | `VULNESIS_API_KEY=<your key>`, mode `600` |
 
 The entry it writes:
 
 ```yaml
 models:
-  - name: Vulnetix AI Firewall (openai)
+  - name: Vulnesis AI Firewall (openai)
     provider: openai
     model: gpt-4o-mini
-    apiBase: https://guardrails.vulnetix.com/openai/<uuid>/v1
-    apiKey: ${{ secrets.VULNETIX_API_KEY }}
+    apiBase: https://guardrails.vulnes.is/openai/<uuid>/v1
+    apiKey: ${{ secrets.VULNESIS_API_KEY }}
     roles:
       - chat
       - edit
@@ -41,18 +41,18 @@ models:
 Without `--model` the entry uses `gpt-4o`. Reload the Continue extension, or restart the IDE, after installing.
 
 > [!WHY] Why the key is written to disk here
-> Continue resolves `${{ secrets.VULNETIX_API_KEY }}` from `~/.continue/.env`, not from the shell. It is the one client where the CLI writes the literal key without `--embed-key`. The file holds a Vulnetix key, not a provider key: a lost laptop means rotating one Vulnetix key.
+> Continue resolves `${{ secrets.VULNESIS_API_KEY }}` from `~/.continue/.env`, not from the shell. It is the one client where the CLI writes the literal key without `--embed-key`. The file holds a Vulnesis key, not a provider key: a lost laptop means rotating one Vulnesis key.
 
 ## By hand
 
 Add the entry above to `~/.continue/config.yaml`, then:
 
 ```bash
-printf 'VULNETIX_API_KEY=%s\n' "$VULNETIX_API_KEY" > ~/.continue/.env
+printf 'VULNESIS_API_KEY=%s\n' "$VULNESIS_API_KEY" > ~/.continue/.env
 chmod 600 ~/.continue/.env
 ```
 
-`provider: openai` names the wire protocol, not the vendor. To use another `chat` provider, change the slug in `apiBase` and use that provider's own model name, for example `apiBase: https://guardrails.vulnetix.com/openrouter/<uuid>/v1` with `model: openai/gpt-4o-mini`. Keep the `name` if you want `install` and `uninstall` to keep managing the entry.
+`provider: openai` names the wire protocol, not the vendor. To use another `chat` provider, change the slug in `apiBase` and use that provider's own model name, for example `apiBase: https://guardrails.vulnes.is/openrouter/<uuid>/v1` with `model: openai/gpt-4o-mini`. Keep the `name` if you want `install` and `uninstall` to keep managing the entry.
 
 ## Verify
 

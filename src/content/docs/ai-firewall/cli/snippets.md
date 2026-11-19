@@ -16,7 +16,7 @@ updated: 02 Nov 2026
 
 ```bash
 vulnetix ai-firewall snippet > hello.py
-VULNETIX_API_KEY=... python hello.py
+VULNESIS_API_KEY=... python hello.py
 ```
 
 For some clients this is the only way through the firewall: the Vercel AI SDK ignores `OPENAI_BASE_URL`, and Mistral, xAI, OpenRouter, Together, Fireworks and DeepSeek have no base-URL variable any SDK reads. For them the base URL is set in code.
@@ -60,13 +60,13 @@ import os
 
 from openai import OpenAI
 
-# Every request goes through the Vulnetix AI Firewall, which applies this org's
+# Every request goes through the Vulnesis AI Firewall, which applies this org's
 # provider, model, and guardrail policy before forwarding it to openrouter.
 # The openrouter key is held server-side: the only credential here is the
-# Vulnetix API key.
+# Vulnesis API key.
 client = OpenAI(
-    base_url="https://guardrails.vulnetix.com/openrouter/<org-uuid>/v1",
-    api_key=os.environ["VULNETIX_API_KEY"],
+    base_url="https://guardrails.vulnes.is/openrouter/<org-uuid>/v1",
+    api_key=os.environ["VULNESIS_API_KEY"],
 )
 
 response = client.chat.completions.create(
@@ -82,8 +82,8 @@ print(response.choices[0].message.content)
 #!/bin/sh
 set -eu
 
-curl -s https://guardrails.vulnetix.com/openai/<org-uuid>/v1/chat/completions \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s https://guardrails.vulnes.is/openai/<org-uuid>/v1/chat/completions \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o","messages":[{"role":"user","content":"hello"}]}'
 ```

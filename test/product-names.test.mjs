@@ -1,5 +1,5 @@
-// The signed-in product at www.vulnetix.com/resolve/ is the Resolve Platform.
-// "The console", "the Vulnetix console" and "the Resolve console" are not
+// The signed-in product at www.vulnes.is/resolve/ is the Resolve Platform.
+// "The console", "the Vulnesis console" and "the Resolve console" are not
 // used in prose. Routes and API names keep the word (`/resolve/console`,
 // `console-routes`, a `console` field), so code spans, fenced code and link
 // targets are not checked.
@@ -49,7 +49,7 @@ test('pages call the signed-in product the Resolve Platform, not the console', (
 
 test('the guard allows routes, code and API names, and catches prose', () => {
   assert.ok(BANNED.test('Open Integrations in the console.'));
-  assert.ok(BANNED.test('Pages in the Vulnetix console'));
+  assert.ok(BANNED.test('Pages in the Vulnesis console'));
   assert.ok(BANNED.test('Every route needs a signed-in console session.'));
   assert.ok(BANNED.test('Other console pages link here.'));
   assert.ok(!BANNED.test(prose('See [Console pages](/software-factory/reference/console-routes/).')));

@@ -58,7 +58,7 @@ updated: 28 Oct 2026
 
 **Pix.** The factory coordinator you talk to on a call. Also the name of the sandbox product and of the model allocation in your plan. See [Calling Pix](/software-factory/pix/calling-pix/).
 
-**Pix Sandbox.** A container Vulnetix runs for you as a host. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+**Pix Sandbox.** A container Vulnesis runs for you as a host. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
 
 **Read-back.** What Pix says before it starts or stops anything on a call. It acts only on a plain yes to the read-back.
 
@@ -72,7 +72,7 @@ updated: 28 Oct 2026
 
 **Template.** A ready-made workflow you can start from. See [Templates](/software-factory/workflows/templates/).
 
-**Tenant.** Your Vulnetix organisation. Every factory record belongs to one.
+**Tenant.** Your Vulnesis organisation. Every factory record belongs to one.
 
 **Trigger.** What starts a run. See [Triggers](/software-factory/workflows/triggers/).
 

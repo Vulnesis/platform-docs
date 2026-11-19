@@ -11,7 +11,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-export const HOST = 'docs.vulnetix.com';
+export const HOST = 'docs.vulnes.is';
 export const KEY = '53f8b42dfe8ecaf54afee3866f5fc6cd';
 export const KEY_FILE = fileURLToPath(new URL(`../public/${KEY}.txt`, import.meta.url));
 const SITEMAP = `https://${HOST}/sitemap-0.xml`;

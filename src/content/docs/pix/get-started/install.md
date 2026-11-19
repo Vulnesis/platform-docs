@@ -20,15 +20,15 @@ Pix has three install surfaces, and each is a separate step:
 
 ## 1. Install the CLI
 
-Every hook and skill runs the Vulnetix CLI, which must be on the `PATH` of the process that starts your agent.
+Every hook and skill runs the Vulnesis CLI, which must be on the `PATH` of the process that starts your agent.
 
 ```bash
-brew install Vulnetix/tap/vulnetix
+brew install Vulnesis/tap/vulnetix
 # or
-curl -fsSL https://cli.vulnetix.com/install.sh | sh
+curl -fsSL https://cli.vulnes.is/install.sh | sh
 ```
 
-Scoop and Nix also work (`scoop bucket add vulnetix https://github.com/Vulnetix/scoop-bucket; scoop install vulnetix/vulnetix`, `nix profile install github:Vulnetix/cli`). See [Install the CLI](/cli/get-started/install/) for Windows and CI.
+Scoop and Nix also work (`scoop bucket add vulnetix https://github.com/Vulnesis/scoop-bucket; scoop install vulnetix/vulnetix`, `nix profile install github:Vulnesis/cli`). See [Install the CLI](/cli/get-started/install/) for Windows and CI.
 
 ## 2. Wire the hooks
 
@@ -66,16 +66,16 @@ It uses the first tool it finds, in this order:
 
 | Tool found | Runs |
 |---|---|
-| `npx` | `npx skills add --all -y Vulnetix/pix-ai-coding-assistant` |
-| `claude` (no `npx`) | `claude plugin marketplace add Vulnetix/pix-ai-coding-assistant`, then `claude plugin install vulnetix@vulnetix-plugins` |
-| `gh` (neither) | `gh skills add Vulnetix/claude-code-plugin <skill> --agent <agent> -f --scope user` for each detected agent and each skill in the latest release |
+| `npx` | `npx skills add --all -y Vulnesis/pix-ai-coding-assistant` |
+| `claude` (no `npx`) | `claude plugin marketplace add Vulnesis/pix-ai-coding-assistant`, then `claude plugin install vulnetix@vulnetix-plugins` |
+| `gh` (neither) | `gh skills add Vulnesis/claude-code-plugin <skill> --agent <agent> -f --scope user` for each detected agent and each skill in the latest release |
 
-`--agent <id>` and `--skill <name>` target one agent or one skill, and then every tool that is present is used (`npx skills add Vulnetix/pix-ai-coding-assistant --agent <id>` for `npx`).
+`--agent <id>` and `--skill <name>` target one agent or one skill, and then every tool that is present is used (`npx skills add Vulnesis/pix-ai-coding-assistant --agent <id>` for `npx`).
 
 Either registry tool works directly too, because the skills live at `skills/` in the repository root:
 
 ```bash
-npx skills add Vulnetix/pix-ai-coding-assistant
+npx skills add Vulnesis/pix-ai-coding-assistant
 ```
 
 ### Claude Code plugin
@@ -83,7 +83,7 @@ npx skills add Vulnetix/pix-ai-coding-assistant
 Inside Claude Code:
 
 ```
-/plugin marketplace add Vulnetix/pix-ai-coding-assistant
+/plugin marketplace add Vulnesis/pix-ai-coding-assistant
 /plugin install vulnetix@vulnetix-plugins
 ```
 
@@ -109,9 +109,9 @@ From `vulnetix agent hosts`, the table the installer acts on. `vulnetix agent ho
 An agent counts as installed when its configuration directory exists (`~/.claude`, `~/.codex`, `~/.cursor` and so on). "Not verified" means the host documents hooks but this CLI has not been run against them, so `agent install` wires nothing and says `hooks not configured: <agent>'s hook contract has not been verified against this CLI`.
 
 > [!CAREFUL] Codex reads `~/.agents/skills`
-> Codex does not read `~/.codex/skills`. Skills copied there are never loaded. Codex also skips a hook it has not been told to trust, with no error and no output, so approve the Vulnetix hook when Codex asks.
+> Codex does not read `~/.codex/skills`. Skills copied there are never loaded. Codex also skips a hook it has not been told to trust, with no error and no output, so approve the Vulnesis hook when Codex asks.
 
-For MCP, point the agent at `https://mcp.vulnetix.com/mcp`. See [MCP server](/mcp-server/).
+For MCP, point the agent at `https://mcp.vulnes.is/mcp`. See [MCP server](/mcp-server/).
 
 ## Update
 
@@ -128,10 +128,10 @@ vulnetix skills prune          # print what would be removed
 vulnetix skills prune --yes    # remove it
 ```
 
-Prune reads `~/.agents/.skill-lock.json` and only touches entries the lock attributes to a Vulnetix source. Name skills (`vulnetix skills prune fix verify-fix --yes`) to remove those even if the release still ships them.
+Prune reads `~/.agents/.skill-lock.json` and only touches entries the lock attributes to a Vulnesis source. Name skills (`vulnetix skills prune fix verify-fix --yes`) to remove those even if the release still ships them.
 
 > [!CAREFUL] `vulnetix skills uninstall` removes every npx-installed skill
-> With `npx` present it runs `npx skills remove --all`, which removes all skills the `skills` tool installed, not only Vulnetix's. To remove only Vulnetix skills, name them to `vulnetix skills prune --yes`. Without `npx` it prints each agent's skills directory for you to clean by hand.
+> With `npx` present it runs `npx skills remove --all`, which removes all skills the `skills` tool installed, not only Vulnesis's. To remove only Vulnesis skills, name them to `vulnetix skills prune --yes`. Without `npx` it prints each agent's skills directory for you to clean by hand.
 
 ## Verify
 
@@ -141,14 +141,14 @@ Prune reads `~/.agents/.skill-lock.json` and only touches entries the lock attri
 | Which credential | `vulnetix auth status` | Your org, or the Community tier |
 | Hosts and surfaces | `vulnetix agent hosts` | `INSTALLED yes` for your agent, `HOOKS yes` for Claude Code and Codex |
 | Hooks wired | `vulnetix agent install --dry-run` | `hooks    already configured` |
-| Skills present | `vulnetix skills check` | The Vulnetix skills in each directory, and any missing or retired ones |
+| Skills present | `vulnetix skills check` | The Vulnesis skills in each directory, and any missing or retired ones |
 | Hook answers | `echo '{"hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":"npm i left-pad"},"cwd":"'"$PWD"'"}' \| vulnetix agent hook` | Usually nothing: silence is a pass. See [Hooks](/pix/hooks/overview/). |
 
 In Claude Code, `/hooks` lists three `vulnetix agent hook` entries (`PreToolUse`, `SessionStart`, `UserPromptSubmit`) and `/plugin` lists `vulnetix` as enabled.
 
 ## Credentials
 
-None are required. The CLI looks for one in this order and uses the first it finds: `VULNETIX_API_TOKEN`; `VULNETIX_API_KEY` with `VULNETIX_ORG_ID`; `VVD_ORG` with `VVD_SECRET`; `./.vulnetix/credentials.json`; `~/.vulnetix/credentials.json`; the OS keyring; `.netrc`. With none, it runs on the shared Community credentials. A free Community key with its own quota is at `https://www.vulnetix.com/resolve/register`, then:
+None are required. The CLI looks for one in this order and uses the first it finds: `VULNESIS_API_TOKEN`; `VULNESIS_API_KEY` with `VULNESIS_ORG_ID`; `VVD_ORG` with `VVD_SECRET`; `./.vulnetix/credentials.json`; `~/.vulnetix/credentials.json`; the OS keyring; `.netrc`. With none, it runs on the shared Community credentials. A free Community key with its own quota is at `https://www.vulnes.is/resolve/register`, then:
 
 ```bash
 vulnetix auth login

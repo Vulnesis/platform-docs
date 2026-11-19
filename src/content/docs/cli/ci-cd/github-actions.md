@@ -1,6 +1,6 @@
 ---
 title: GitHub Actions
-description: The Vulnetix GitHub Actions, the root action's inputs, outputs, credentials and permissions, and complete workflows for scanning, gating and publishing.
+description: The Vulnesis GitHub Actions, the root action's inputs, outputs, credentials and permissions, and complete workflows for scanning, gating and publishing.
 order: 2
 sources: [cli/action.yml, cli/action-lib/run.sh, cli/action-lib/install.sh, cli/action-lib/finish.sh, cli/action-lib/config.sh, cli/action-lib/publish.sh, cli/tools/actiongen/spec.go, cli/docs/github-actions.md, cli/cmd/gha.go, cli/cmd/upload.go, cli/cmd/gha_submit.go, cli/install.sh]
 checked: [cli@v4.24.2]
@@ -11,14 +11,14 @@ There are three ways to run the CLI in a workflow:
 
 | Approach | Use it for |
 |---|---|
-| A per-command action, `uses: Vulnetix/cli/<name>@v4` | One command, with publishing to GitHub, an artifact upload, attestation and release assets in the same step. [Table below](#an-action-for-each-command). |
-| The root action, `uses: Vulnetix/cli@v4` with `task:` | The same commands behind one action reference. |
+| A per-command action, `uses: Vulnesis/cli/<name>@v4` | One command, with publishing to GitHub, an artifact upload, attestation and release assets in the same step. [Table below](#an-action-for-each-command). |
+| The root action, `uses: Vulnesis/cli@v4` with `task:` | The same commands behind one action reference. |
 | The install script in a `run:` step | Any command or flag the actions do not expose. |
 
 All three install the released binary; none needs a Go toolchain. The per-command actions and the root action share the same scripts, so the same inputs behave the same way.
 
 ```yaml
-name: Vulnetix
+name: Vulnesis
 on: [push, pull_request]
 permissions:
   contents: read
@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli@v4
+      - uses: Vulnesis/cli@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 With the default `task: info` the root action installs the CLI and runs `vulnetix`, the authentication health check. Without `org-id` and a credential the CLI runs in community mode.
@@ -60,8 +60,8 @@ With the default `task: info` the root action installs the CLI and runs `vulneti
 | [`gha-audit`](/cli/github-actions/gha-audit/) | Run every GitHub posture check: workflows, actions, settings and organisation (vulnetix gha audit). |
 | [`gha-org`](/cli/github-actions/gha-org/) | Check organisation settings (vulnetix gha org). Needs a token that can read them. |
 | [`gha-settings`](/cli/github-actions/gha-settings/) | Check the repository settings that protect the code and CI (vulnetix gha settings). |
-| [`gha-status`](/cli/github-actions/gha-status/) | Report what this workflow run published to Vulnetix (vulnetix gha status). |
-| [`gha-upload`](/cli/github-actions/gha-upload/) | Upload every artifact of this workflow run to Vulnetix (vulnetix gha upload). |
+| [`gha-status`](/cli/github-actions/gha-status/) | Report what this workflow run published to Vulnesis (vulnetix gha status). |
+| [`gha-upload`](/cli/github-actions/gha-upload/) | Upload every artifact of this workflow run to Vulnesis (vulnetix gha upload). |
 | [`gha-workflows`](/cli/github-actions/gha-workflows/) | Find injection, privilege and trust flaws in this repository's GitHub Actions workflows (vulnetix gha workflows). |
 | [`github-advisories`](/cli/github-actions/github-advisories/) | Draft GitHub repository security advisories for this repository's SAST findings (vulnetix gha publish advisories). |
 | [`github-publish`](/cli/github-actions/github-publish/) | Publish existing results into GitHub: code scanning, the dependency graph, release assets and security campaigns (vulnetix gha publish). |
@@ -74,7 +74,7 @@ With the default `task: info` the root action installs the CLI and runs `vulneti
 | [`license-policy-validate`](/sca/github-actions/license-policy-validate/) | Check a licence policy document for problems (vulnetix license policy validate). |
 | [`license`](/sca/github-actions/license/) | Evaluate dependency licences against the licence policy (vulnetix license). |
 | [`malscan`](/malware/github-actions/malscan/) | Scan installed dependencies for malicious code (vulnetix malscan). |
-| [`package-firewall`](/cli/github-actions/package-firewall/) | Point a package manager on this runner at the Vulnetix Package Firewall, so later install steps go through it (vulnetix package-firewall <ecosystem>). |
+| [`package-firewall`](/cli/github-actions/package-firewall/) | Point a package manager on this runner at the Vulnesis Package Firewall, so later install steps go through it (vulnetix package-firewall <ecosystem>). |
 | [`report`](/cli/github-actions/report/) | Render the stored scan results of an earlier step without rescanning (vulnetix report). |
 | [`sast`](/sast/github-actions/sast/) | Scan source code with the SAST rules (vulnetix sast). |
 | [`sast/c-cpp`](/sast/github-actions/c-cpp/) | Scan the C and C++ files of a repository with the SAST rules (vulnetix sast --language c-cpp). |
@@ -112,11 +112,11 @@ With the default `task: info` the root action installs the CLI and runs `vulneti
 | [`sca/yarn`](/sca/github-actions/yarn/) | Scan the Yarn dependencies of a repository for known vulnerabilities (vulnetix sca --package-manager yarn). |
 | [`scan`](/cli/github-actions/scan/) | Run every scanner in one job (vulnetix scan). For a monorepo with three or more languages; otherwise use the granular actions. |
 | [`secrets`](/secrets/github-actions/secrets/) | Scan for committed secrets (vulnetix secrets). |
-| [`setup`](/cli/github-actions/setup/) | Install the Vulnetix CLI and put it on PATH for later steps. |
+| [`setup`](/cli/github-actions/setup/) | Install the Vulnesis CLI and put it on PATH for later steps. |
 | [`surface-liveness`](/cli/github-actions/surface-liveness/) | Check that registered routes and hosts still answer, from inside your network (vulnetix surface liveness). |
 | [`tea-release`](/tea/github-actions/tea-release/) | Publish a product release and its artifacts to the Transparency Exchange API (vulnetix tea release). |
-| [`triage`](/cli/github-actions/triage/) | Triage this repository's GitHub or Vulnetix alerts into a report (vulnetix triage --format json). |
-| [`upload`](/cli/github-actions/upload/) | Upload one artifact file to Vulnetix (vulnetix upload). |
+| [`triage`](/cli/github-actions/triage/) | Triage this repository's GitHub or Vulnesis alerts into a report (vulnetix triage --format json). |
+| [`upload`](/cli/github-actions/upload/) | Upload one artifact file to Vulnesis (vulnetix upload). |
 | [`vex`](/vex/github-actions/vex/) | Work with VEX documents: validate, list, merge or apply (vulnetix vex <vex-command>). |
 <!-- catalogue:end -->
 
@@ -126,10 +126,10 @@ Add under **Settings > Secrets and variables > Actions**:
 
 | Secret | Value |
 |---|---|
-| `VULNETIX_ORG_ID` | Organisation UUID |
-| `VULNETIX_API_KEY` | ApiKey |
+| `VULNESIS_ORG_ID` | Organisation UUID |
+| `VULNESIS_API_KEY` | ApiKey |
 
-`api-token` is an alternative to `org-id` plus `api-key`: the server resolves the organisation from the token. Store it as `VULNETIX_API_TOKEN` if you use it.
+`api-token` is an alternative to `org-id` plus `api-key`: the server resolves the organisation from the token. Store it as `VULNESIS_API_TOKEN` if you use it.
 
 ## Credentials
 
@@ -137,9 +137,9 @@ The actions pass credentials to the CLI only as environment variables of the ste
 
 | Input | Environment variable |
 |---|---|
-| `org-id` | `VULNETIX_ORG_ID` |
-| `api-key` | `VULNETIX_API_KEY` |
-| `api-token` | `VULNETIX_API_TOKEN` |
+| `org-id` | `VULNESIS_ORG_ID` |
+| `api-key` | `VULNESIS_API_KEY` |
+| `api-token` | `VULNESIS_API_TOKEN` |
 | `github-token` | `GITHUB_TOKEN` |
 
 The CLI reads these before any stored file. The actions never run `vulnetix auth login`, so no `.vulnetix/credentials.json` is written into the workspace and no credential appears on a command line or in an uploaded artifact. If a credentials file is present in the workspace anyway, the run step prints a warning.
@@ -151,7 +151,7 @@ The CLI reads these before any stored file. The actions never run `vulnetix auth
 
 ## An action for each command
 
-Each command has an action in a subdirectory of `Vulnetix/cli`. Its page lists the inputs, outputs, permissions and a complete workflow.
+Each command has an action in a subdirectory of `Vulnesis/cli`. Its page lists the inputs, outputs, permissions and a complete workflow.
 
 | Action | Runs | Page |
 |---|---|---|
@@ -179,7 +179,7 @@ Each command has an action in a subdirectory of `Vulnetix/cli`. Its page lists t
 
 Every action does the same things around its command, in this order:
 
-1. Installs the CLI (skipped when an earlier Vulnetix action in the job already installed the same version).
+1. Installs the CLI (skipped when an earlier Vulnesis action in the job already installed the same version).
 2. Runs the command with `--artifact-manifest`, so the files it wrote are known. The step itself exits `0` when the command ran.
 3. Publishes to GitHub when asked: `github-code-scanning`, `dependency-graph`.
 4. Uploads the written files as a workflow artifact when `artifact-name` is set.
@@ -195,7 +195,7 @@ Steps 3 to 6 run whether or not the command failed, so a breached gate still lea
 ### Scan, publish, upload and attest
 
 ```yaml
-name: Vulnetix
+name: Vulnesis
 on:
   push:
     branches: [main]
@@ -211,15 +211,15 @@ jobs:
       attestations: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sca@v4
+      - uses: Vulnesis/cli/sca@v4
         id: sca
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           args: --fail-on high,kev,malware
           artifact-name: vulnetix-sca
           attest: true
-      - uses: Vulnetix/cli/github-publish@v4
+      - uses: Vulnesis/cli/github-publish@v4
         if: ${{ !cancelled() }}
         with:
           sarif: .vulnetix/sca.sarif
@@ -236,10 +236,10 @@ jobs:
       attestations: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sast@v4
+      - uses: Vulnesis/cli/sast@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           args: --fail-on high
           github-code-scanning: true
           artifact-name: vulnetix-sast
@@ -255,7 +255,7 @@ To publish results a scan already produced, or to publish from a different job t
 The install script gives access to every flag. This is the pattern for any command:
 
 ```yaml
-name: Vulnetix
+name: Vulnesis
 on:
   push:
     branches: [main]
@@ -267,13 +267,13 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     env:
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+      VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+      VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
     steps:
       - uses: actions/checkout@v5
-      - name: Install Vulnetix CLI
+      - name: Install Vulnesis CLI
         run: |
-          curl -fsSL --retry 5 --retry-all-errors -o "$RUNNER_TEMP/vulnetix-install.sh" https://cli.vulnetix.com/install.sh
+          curl -fsSL --retry 5 --retry-all-errors -o "$RUNNER_TEMP/vulnetix-install.sh" https://cli.vulnes.is/install.sh
           sh "$RUNNER_TEMP/vulnetix-install.sh" --install-dir "$HOME/.local/bin" --version v4
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - run: vulnetix auth verify
@@ -312,13 +312,13 @@ jobs:
           - "aibom --output-file dist/aibom.cdx.json"
     runs-on: ubuntu-latest
     env:
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+      VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+      VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
     steps:
       - uses: actions/checkout@v5
-      - name: Install Vulnetix CLI
+      - name: Install Vulnesis CLI
         run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+          curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - run: mkdir -p dist && vulnetix ${{ matrix.run }}
 ```
@@ -342,7 +342,7 @@ jobs:
 
 ## Third-party scanners
 
-`vulnetix gha setup` writes a workflow that runs gosec, Trivy, Semgrep, Checkov and others as separate jobs, and one publish job that sends every report to Vulnetix under the tool that produced it. See [Third-party scanners](/cli/ci-cd/third-party-scanners/) and [gha upload and status](/cli/ci-cd/gha-command/).
+`vulnetix gha setup` writes a workflow that runs gosec, Trivy, Semgrep, Checkov and others as separate jobs, and one publish job that sends every report to Vulnesis under the tool that produced it. See [Third-party scanners](/cli/ci-cd/third-party-scanners/) and [gha upload and status](/cli/ci-cd/gha-command/).
 
 ## Release artifacts
 
@@ -361,10 +361,10 @@ jobs:
       attestations: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/sbom@v4
+      - uses: Vulnesis/cli/sbom@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           sign: true
           attest: true
           artifact-name: sbom
@@ -378,10 +378,10 @@ To publish a release to the Transparency Exchange API instead, use the [`tea-rel
 ## The root action
 
 ```yaml
-      - uses: Vulnetix/cli@v4
+      - uses: Vulnesis/cli@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           task: sast
           github-code-scanning: true
 ```
@@ -392,9 +392,9 @@ The action installs the CLI with the install script (checking its checksum and, 
 
 | Input | Required | Default | Meaning |
 |---|---|---|---|
-| `org-id` | No | | Organisation UUID, used with `api-key`. Passed as `VULNETIX_ORG_ID`. Without credentials the CLI runs in community mode. |
-| `api-key` | No | | ApiKey. Passed as `VULNETIX_API_KEY`, never on the command line. |
-| `api-token` | No | | API token. The server resolves the organisation. Passed as `VULNETIX_API_TOKEN`. |
+| `org-id` | No | | Organisation UUID, used with `api-key`. Passed as `VULNESIS_ORG_ID`. Without credentials the CLI runs in community mode. |
+| `api-key` | No | | ApiKey. Passed as `VULNESIS_API_KEY`, never on the command line. |
+| `api-token` | No | | API token. The server resolves the organisation. Passed as `VULNESIS_API_TOKEN`. |
 | `version` | No | `v4` | CLI release to install: an exact tag (`v4.0.0`), a major channel (`v4`, the newest v4 release) or `latest`. A `v` is added if missing. |
 | `binary-path` | No | | Use this already-built binary instead of downloading a release, for example one built earlier in the job. |
 | `verify-provenance` | No | `true` | Install cosign and require the release's signed SLSA provenance to verify for the downloaded binary (`install.sh --require-provenance`; see [Verify a download](/cli/get-started/install/#verify-a-download)). Every v4 release is signed. Set `false` for a v3 release without `provenance.sigstore.json`. Skipped with `binary-path`. The SHA-256 checksum is checked either way. Every subdirectory action takes the same input. |
@@ -421,7 +421,7 @@ The action installs the CLI with the install script (checking its checksum and, 
 | `config-prune` | No | `false` | Delete objects this manager owns that the documents no longer declare |
 | `validate-only` | No | `false` | `config-plan` only: validate the documents offline instead of planning |
 
-The default `version` is the major channel that matches the action ref, so `Vulnetix/cli@v4` installs the newest v4 release and a workflow still pinned to `@v3` keeps a v3 binary, which is unchanged since v3.169.2. Change the ref to `@v4` to move; see [Migrating from v3 to v4](/cli/get-started/migrating-to-v4/). See [Versions and release channels](/cli/ci-cd/versions-and-channels/).
+The default `version` is the major channel that matches the action ref, so `Vulnesis/cli@v4` installs the newest v4 release and a workflow still pinned to `@v3` keeps a v3 binary, which is unchanged since v3.169.2. Change the ref to `@v4` to move; see [Migrating from v3 to v4](/cli/get-started/migrating-to-v4/). See [Versions and release channels](/cli/ci-cd/versions-and-channels/).
 
 ### Tasks
 
@@ -475,10 +475,10 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli@v4
+      - uses: Vulnesis/cli@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           task: ${{ github.event_name == 'pull_request' && 'config-plan' || 'config-apply' }}
 ```
 
@@ -517,5 +517,5 @@ Give each job only what it uses. The permissions of a workflow's top-level `perm
 | The SARIF upload step fails on a clean `scan -o results.sarif` | That file is written only when there are findings: guard with `hashFiles(...)` or `if-no-files-found: warn`. `sca.sarif` and `license.sarif` are always written; see [SARIF reference](/cli/reference/sarif/). |
 | `gha upload` finds nothing | It sees only artifacts already uploaded in this run: put it in a job that `needs:` every producer, with `if: ${{ !cancelled() }}`. |
 | Results look unauthenticated | A secret name is wrong or the secret is not available to forks. Assert the source: [Precedence](/cli/authentication/precedence/#asserting-the-source-in-a-pipeline) |
-| The install step fails | The runner must reach `cli.vulnetix.com` and `github.com` release downloads. Behind a proxy, set `HTTPS_PROXY` at job level. |
+| The install step fails | The runner must reach `cli.vulnes.is` and `github.com` release downloads. Behind a proxy, set `HTTPS_PROXY` at job level. |
 | A step after the action does not run | The action fails the job with the command's exit code. Add `if: ${{ !cancelled() }}` to later steps, or set `fail-on-findings: false`. |

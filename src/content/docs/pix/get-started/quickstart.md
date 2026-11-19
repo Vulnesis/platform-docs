@@ -12,7 +12,7 @@ This page puts Pix into the coding agent you already use: the hooks that stop a 
 
 ## Prerequisites
 
-- The Vulnetix CLI on the `PATH` of the process that starts your agent: `brew install Vulnetix/tap/vulnetix`, or see [Install the CLI](/cli/get-started/install/).
+- The Vulnesis CLI on the `PATH` of the process that starts your agent: `brew install Vulnesis/tap/vulnetix`, or see [Install the CLI](/cli/get-started/install/).
 - A coding agent on this machine. Hooks are wired for Claude Code and OpenAI Codex. Skills reach every agent in [What each agent gets](/pix/get-started/install/#what-each-agent-gets).
 - No credential. Without one the CLI uses the shared Community tier.
 
@@ -28,7 +28,7 @@ It detects each agent and writes one `vulnetix agent hook` entry per event into 
 Claude Code
   hooks    configured ~/.claude/settings.json
   skills   ~/.claude/skills
-  mcp      https://mcp.vulnetix.com/mcp
+  mcp      https://mcp.vulnes.is/mcp
 ```
 
 A second run prints `hooks    already configured`. Add `--dry-run` to see the change first.
@@ -39,7 +39,7 @@ A second run prints `hooks    already configured`. Add `--dry-run` to see the ch
 vulnetix skills install
 ```
 
-`vulnetix pix install` does the same. It uses `npx skills add`, else the `claude` plugin commands, else `gh skills add`, whichever it finds first. In Claude Code you can instead run `/plugin marketplace add Vulnetix/pix-ai-coding-assistant` and `/plugin install vulnetix@vulnetix-plugins`, which also brings the hooks and the 5 subagents.
+`vulnetix pix install` does the same. It uses `npx skills add`, else the `claude` plugin commands, else `gh skills add`, whichever it finds first. In Claude Code you can instead run `/plugin marketplace add Vulnesis/pix-ai-coding-assistant` and `/plugin install vulnetix@vulnetix-plugins`, which also brings the hooks and the 5 subagents.
 
 ## 3. Check both are live
 
@@ -48,7 +48,7 @@ vulnetix agent hosts
 vulnetix skills check
 ```
 
-`agent hosts` should show `INSTALLED yes` for your agent, and `HOOKS yes` for Claude Code and Codex. `skills check` lists the Vulnetix skills in each skills directory, and any that are missing or retired. In Claude Code, `/hooks` lists three `vulnetix agent hook` entries.
+`agent hosts` should show `INSTALLED yes` for your agent, and `HOOKS yes` for Claude Code and Codex. `skills check` lists the Vulnesis skills in each skills directory, and any that are missing or retired. In Claude Code, `/hooks` lists three `vulnetix agent hook` entries.
 
 ## 4. Run a skill
 

@@ -34,7 +34,7 @@ On success it prints, for example, `GitHub authentication: ok (octocat via gh CL
 
 **A clone or a worktree.** Both work: a worktree's history is read from the main repository's git directory, so history metrics match the main checkout. A shallow clone has less history; increase the fetch depth for the window you want.
 
-**Vulnetix credentials (optional).** Dependency staleness needs registry metadata from Vulnetix. Without credentials those metrics are `null` with a reason, and the report is not uploaded.
+**Vulnesis credentials (optional).** Dependency staleness needs registry metadata from Vulnetix. Without credentials those metrics are `null` with a reason, and the report is not uploaded.
 
 ## Flags
 
@@ -59,7 +59,7 @@ Global flags apply; `--silent` also suppresses the `Wrote analysis report to ...
 
 ## What it produces
 
-- `.vulnetix/analyze.report.json`, validated against [the report schema](https://www.vulnetix.com/schemas/vulnetix-analyze-report.schema.json) before it is written.
+- `.vulnetix/analyze.report.json`, validated against [the report schema](https://www.vulnes.is/schemas/vulnetix-analyze-report.schema.json) before it is written.
 - A terminal summary grouped by metric family.
 - When signed in, an upload to `/v2/cli.insights`, which feeds the Resolve Platform graph. The upload is best effort: a failure is reported and the command still succeeds, unless `--fail-on-upload-error` is set.
 
@@ -81,15 +81,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ github.token }}
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+      VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+      VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Install Vulnetix CLI
+      - name: Install Vulnesis CLI
         run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+          curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - run: vulnetix analyze --fail-on-upload-error
 ```

@@ -8,14 +8,14 @@ checked: [cli@4c8c3b7, config-schemas@9bda9e1]
 updated: 02 Nov 2026
 ---
 
-You need the Vulnetix CLI v3.153.0 or later (`vulnetix version --short`). Validation needs no login. Step 4 needs `vulnetix auth login` with an organization that is not the community org.
+You need the Vulnesis CLI v3.153.0 or later (`vulnetix version --short`). Validation needs no login. Step 4 needs `vulnetix auth login` with an organization that is not the community org.
 
 ## 1. Write the document
 
 ```sh
 mkdir -p .vulnetix/config
 cat > .vulnetix/config/quality-gate.yaml <<'EOF'
-# yaml-language-server: $schema=https://github.com/Vulnetix/config-schemas/releases/download/v1.0.1/QualityGate.schema.json
+# yaml-language-server: $schema=https://github.com/Vulnesis/config-schemas/releases/download/v1.0.1/QualityGate.schema.json
 apiVersion: vulnetix.com/v1
 kind: QualityGate
 metadata:
@@ -43,7 +43,7 @@ vulnetix config validate
 A mistake is reported with the file, the document number and the JSON pointer of each failure, and the command exits 1:
 
 ```text
-.vulnetix/config/quality-gate.yaml (document 1): jsonschema validation failed with 'https://github.com/Vulnetix/config-schemas/releases/download/v0.0.0-dev/QualityGate.schema.json#'
+.vulnetix/config/quality-gate.yaml (document 1): jsonschema validation failed with 'https://github.com/Vulnesis/config-schemas/releases/download/v0.0.0-dev/QualityGate.schema.json#'
     - at '/spec/severity': value must be one of 'low', 'medium', 'high', 'critical'
 Error: 1 of 1 documents invalid
 ```
@@ -53,9 +53,9 @@ Error: 1 of 1 documents invalid
 `vulnetix config validate` exits 0 when every document is valid and 1 otherwise, so it works as a plain pipeline step. In GitHub Actions:
 
 ```yaml
-- name: Validate Vulnetix config
+- name: Validate Vulnesis config
   run: |
-    curl -fsSL -o vulnetix https://github.com/Vulnetix/cli/releases/latest/download/vulnetix-linux-amd64
+    curl -fsSL -o vulnetix https://github.com/Vulnesis/cli/releases/latest/download/vulnetix-linux-amd64
     chmod +x vulnetix
     ./vulnetix config validate
 ```

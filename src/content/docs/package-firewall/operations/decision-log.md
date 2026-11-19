@@ -7,7 +7,7 @@ checked: [package-firewall@333285f, vdb-site@1a06d67, saas@50cedf37]
 updated: 02 Nov 2026
 ---
 
-Every request the firewall decides on writes a row to the organization's decision log. Open it at [www.vulnetix.com/resolve/logs#package](https://www.vulnetix.com/resolve/logs#package). Links from the Package Firewall page open it already filtered.
+Every request the firewall decides on writes a row to the organization's decision log. Open it at [www.vulnes.is/resolve/logs#package](https://www.vulnes.is/resolve/logs#package). Links from the Package Firewall page open it already filtered.
 
 ## Fields
 

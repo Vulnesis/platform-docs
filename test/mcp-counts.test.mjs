@@ -1,7 +1,7 @@
 // The MCP server's tool and prompt counts are quoted in prose on several
 // mcp-server pages ("31 tools and 18 prompts"). Those numbers drift when the
 // server gains a tool or the prompt corpus is regenerated, so this test counts
-// the registrations in a sibling checkout of Vulnetix/mcp-server and compares.
+// the registrations in a sibling checkout of Vulnesis/mcp-server and compares.
 //
 // The checkout is found at ../mcp-server, or at $SF_SRC_MCP_SERVER. Without it
 // the source-backed tests skip; the pages are still checked to agree with each

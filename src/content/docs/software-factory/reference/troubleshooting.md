@@ -34,7 +34,7 @@ Start here when a run does not start, sits waiting, or fails. The API refuses a 
 |---|---|---|
 | A crew step is `waiting` with `host_offline`, `stopped_by_user` or `repo_not_cloned` | No host can take the step yet. A stopped sandbox is never woken. | Start `belai rc` on the machine, or start the sandbox. Every reason is in [Waiting for a machine](/software-factory/runs/waiting-for-a-machine/#reasons). |
 | The run fails with `no_host_timeout:<node>` or `no_host:<node>` | The step waited longer than `autonomy.no_host_ttl_hours` (6 by default), or was pinned with `runOnFallback: none` and had no host | Connect a host that has the repository, or change the step's `runOn`. Check with `GET /v1/factory/hosts/eligibility`. |
-| Your own machine runs `belai rc`, but the factory never uses it | `belai rc` registered the host under whoever is signed in to the Vulnetix CLI. Only the run's principal's hosts are candidates. | Sign in as the workflow's author, or the member who made the organisation managed. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/#which-hosts-are-candidates). |
+| Your own machine runs `belai rc`, but the factory never uses it | `belai rc` registered the host under whoever is signed in to the Vulnesis CLI. Only the run's principal's hosts are candidates. | Sign in as the workflow's author, or the member who made the organisation managed. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/#which-hosts-are-candidates). |
 | A run is `paused` and nobody paused it | A budget's `pause_run` action reached its limit | Resume it, or raise the budget. See [Budgets](/software-factory/cost/budgets/#at-the-limit). |
 
 ## belai rc will not start
@@ -43,7 +43,7 @@ Start here when a run does not start, sits waiting, or fails. The API refuses a 
 
 | Message | Cause | Fix |
 |---|---|---|
-| `the Vulnetix CLI is logged in with an API token, which the website does not accept for remote control` | Remote control needs a browser login | Run `vulnetix auth login` without `--token`, and unset `VULNETIX_API_TOKEN`. See [CLI authentication troubleshooting](/cli/authentication/troubleshooting/). |
+| `the Vulnesis CLI is logged in with an API token, which the website does not accept for remote control` | Remote control needs a browser login | Run `vulnetix auth login` without `--token`, and unset `VULNESIS_API_TOKEN`. See [CLI authentication troubleshooting](/cli/authentication/troubleshooting/). |
 | `session sync is off, so the website cannot see or start sessions` | `sync.enabled` is off | Run `/sync on` in Belai, or set `"sync": {"enabled": true}` in `~/.vulnetix/belai/settings.json` |
 | `no directory to offer: nothing is trusted yet and no --dir was given` | No trusted project and no `--dir` | Run `belai rc --dir <path>`, or open `belai` in the project once and trust it |
 

@@ -15,7 +15,7 @@ updated: 02 Nov 2026
 | Value | Writes |
 |---|---|
 | `json-cyclonedx` | CycloneDX 1.7 JSON to stdout |
-| `json-report` | The Vulnetix JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
+| `json-report` | The Vulnesis JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
 | `json-sarif` | SARIF 2.1.0 to stdout. It holds rule findings only (SAST, secrets, containers, IaC). For `vulnetix sca` it is an empty SARIF log. |
 | `*.cdx.json`, `*.cdx`, `*.bom.json`, `*.sbom.json` | CycloneDX 1.7 file, with the dependency tree |
 | `*.report.json` | JSON report file |
@@ -99,6 +99,6 @@ These still work, are hidden from `--help`, and print one note at an interactive
 
 | Flag | Effect |
 |---|---|
-| `--project`, `--cluster`, `--namespace`, `--environment`, `--tag key=value` | Deployment context on the SBOM and the snapshot. When a flag is absent the first set variable fills it: `VULNETIX_PROJECT`, `CI_PROJECT_NAME`; `VULNETIX_ENVIRONMENT`, `CI_ENVIRONMENT_NAME`, `ENVIRONMENT_NAME`; `VULNETIX_CLUSTER`, `CLUSTER_NAME`, `KUBERNETES_CLUSTER_NAME`; `VULNETIX_NAMESPACE`, `POD_NAMESPACE`, `KUBERNETES_NAMESPACE`. |
+| `--project`, `--cluster`, `--namespace`, `--environment`, `--tag key=value` | Deployment context on the SBOM and the snapshot. When a flag is absent the first set variable fills it: `VULNESIS_PROJECT`, `CI_PROJECT_NAME`; `VULNESIS_ENVIRONMENT`, `CI_ENVIRONMENT_NAME`, `ENVIRONMENT_NAME`; `VULNESIS_CLUSTER`, `CLUSTER_NAME`, `KUBERNETES_CLUSTER_NAME`; `VULNESIS_NAMESPACE`, `POD_NAMESPACE`, `KUBERNETES_NAMESPACE`. |
 | `--bom-manufacturer`, `--lifecycle` | BOM authoring identity. See [SBOM](/sbom/). |
 | `--vex-file <path>`, `--vex <path or https URL>` | Apply third-party VEX before gates are evaluated. Repeatable. A scan also reads the `VexSource` documents declared in `.vulnetix/config` (CLI v4.2.0). `--no-vex` ignores all of it. See [VEX in a scan](/vex/scans/vex-file/). |

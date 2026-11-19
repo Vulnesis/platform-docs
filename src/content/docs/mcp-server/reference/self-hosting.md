@@ -16,14 +16,14 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-The hosted endpoint at `https://mcp.vulnetix.com/mcp` is the supported deployment. The source is a Cloudflare Worker in [Vulnetix/mcp-server](https://github.com/Vulnetix/mcp-server), and you can run your own copy. It still calls vdb-api with each caller's credential.
+The hosted endpoint at `https://mcp.vulnes.is/mcp` is the supported deployment. The source is a Cloudflare Worker in [Vulnesis/mcp-server](https://github.com/Vulnesis/mcp-server), and you can run your own copy. It still calls vdb-api with each caller's credential.
 
 Workers Paid is required. The free tier's 10 ms CPU limit cannot parse and shape a 2.6 MB vdb-api response.
 
 ## Run locally
 
 ```bash
-git clone https://github.com/Vulnetix/mcp-server.git
+git clone https://github.com/Vulnesis/mcp-server.git
 cd mcp-server
 yarn install
 yarn dev
@@ -50,8 +50,8 @@ Set in `vars` in `wrangler.jsonc`.
 | `CF_AIG_ACCOUNT_ID` | Cloudflare account id | unset, which disables AI analysis | set |
 | `CF_AIG_GATEWAY` | AI Gateway name | `default` | `default` |
 | `CF_AIG_MODEL` | `{provider}/{model}` | `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast` | same |
-| `VULNETIX_API_URL` | vdb-api base URL | `https://api.vdb.vulnetix.com` | a CloudFront hostname (see below) |
-| `VULNETIX_WEB_URL` | Vulnetix web app base URL for the device grant | `https://www.vulnetix.com` | unset |
+| `VULNESIS_API_URL` | vdb-api base URL | `https://api.vdb.vulnes.is` | a CloudFront hostname (see below) |
+| `VULNESIS_WEB_URL` | Vulnesis web app base URL for the device grant | `https://www.vulnes.is` | unset |
 | `ALLOWED_HOSTS` | comma-separated hostnames | none | unset |
 
 Add your own hostname to `ALLOWED_HOSTS`, or every request is refused with 403 by the `Host` check.
@@ -78,7 +78,7 @@ Recorded per call: tool name, plan tier, credential scheme (`ApiKey`, `Bearer` o
 
 ## Why the hosted deployment points at CloudFront
 
-When the Worker runs on `mcp.vulnetix.com`, a subrequest to `api.vdb.vulnetix.com` stays inside the same Cloudflare zone and lands on an S3-backed zone origin, which answers every tool with an HTTP 400 S3 error (`Unsupported Authorization Type`). The hosted `VULNETIX_API_URL` uses the CloudFront distribution hostname, which is outside the zone. A self-hosted Worker on a different zone can use the default.
+When the Worker runs on `mcp.vulnes.is`, a subrequest to `api.vdb.vulnes.is` stays inside the same Cloudflare zone and lands on an S3-backed zone origin, which answers every tool with an HTTP 400 S3 error (`Unsupported Authorization Type`). The hosted `VULNESIS_API_URL` uses the CloudFront distribution hostname, which is outside the zone. A self-hosted Worker on a different zone can use the default.
 
 ## Deployment
 

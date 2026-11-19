@@ -7,12 +7,12 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-Three identities matter. Only the first is used by Vulnetix from outside your account.
+Three identities matter. Only the first is used by Vulnesis from outside your account.
 
 | Identity | Created by | Used by | Can write |
 |---|---|---|---|
-| `VulnetixSecurityAuditor` | Bootstrap stack | Vulnetix, from its own AWS account, with your organisation id as the external id | Only the resources the two stacks own, by name |
-| `vulnetix-reporter-execution` | Pipeline stack | The probe function, inside your account | Its own log group, its state prefix in the Vulnetix bucket, its own queue |
+| `VulnetixSecurityAuditor` | Bootstrap stack | Vulnesis, from its own AWS account, with your organisation id as the external id | Only the resources the two stacks own, by name |
+| `vulnetix-reporter-execution` | Pipeline stack | The probe function, inside your account | Its own log group, its state prefix in the Vulnesis bucket, its own queue |
 | Deploy policy (`VulnetixCloudscanDeploy` role or your IAM user) | You, or the drawer | The bootstrap deploy | The two stacks and what they declare |
 
 ## VulnetixSecurityAuditor
@@ -36,7 +36,7 @@ This role is not read-only: CloudFormation runs as it when it builds the pipelin
 | `LogsDescribe` | `logs:DescribeLogGroups` | `*` |
 | `CallerIdentity` | `sts:GetCallerIdentity` | `*` |
 
-`lambda:InvokeFunction` is how Vulnetix starts a sweep and how support runs the probe on demand. The probe reads only, so an invocation changes nothing in the account.
+`lambda:InvokeFunction` is how Vulnesis starts a sweep and how support runs the probe on demand. The probe reads only, so an invocation changes nothing in the account.
 
 ## vulnetix-reporter-execution
 
@@ -47,8 +47,8 @@ The probe's role. It always carries the AWS managed policies **`SecurityAudit`**
 | `vulnetix-reporter-logs` | Write to its own log group |
 | `vulnetix-reporter-secrets` | Read `vulnetix/vdb-credentials` |
 | `vulnetix-reporter-queue` | Receive, delete and send on its own queue |
-| `vulnetix-reporter-logdata` | `cloudtrail:GetTrailStatus`, `DescribeTrails`; list the Vulnetix bucket and read its objects |
-| `vulnetix-reporter-state` | Write and delete under `vulnetix/state/` in the Vulnetix bucket |
+| `vulnetix-reporter-logdata` | `cloudtrail:GetTrailStatus`, `DescribeTrails`; list the Vulnesis bucket and read its objects |
+| `vulnetix-reporter-state` | Write and delete under `vulnetix/state/` in the Vulnesis bucket |
 | `vulnetix-reporter-discovery` | `tag:GetResources`, `GetTagKeys`, `GetTagValues`, `ec2:DescribeRegions`, `cloudtrail:LookupEvents`, `cloudformation:DescribeStacks` |
 
 ### Per-source inline policies
@@ -67,7 +67,7 @@ Each is attached only while its source is on, and the presence of the policy on 
 | `vulnetix-reporter-eks-workloads` | EKS workloads | `eks:ListAccessEntries` |
 
 > [!CAREFUL] The managed policies already read a lot
-> `SecurityAudit` and `ViewOnlyAccess` are attached whatever you turn on, and they already allow many describe and list calls, including some that overlap the per-source policies. The per-source control is enforced in two places: the inline policy that grants the reads `SecurityAudit` lacks, and the source list Vulnetix passes on each invocation. The probe does not call a source that is not in that list.
+> `SecurityAudit` and `ViewOnlyAccess` are attached whatever you turn on, and they already allow many describe and list calls, including some that overlap the per-source policies. The per-source control is enforced in two places: the inline policy that grants the reads `SecurityAudit` lacks, and the source list Vulnesis passes on each invocation. The probe does not call a source that is not in that list.
 
 ## The deploy policy
 

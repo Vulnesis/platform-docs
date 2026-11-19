@@ -7,7 +7,7 @@ checked: [vdb-site@d2ea72f23, website@7f3b734cd, cli@v4.17.1]
 updated: 04 Nov 2026
 ---
 
-An organisation is on one Resolve Platform plan, and can add the Package Firewall and SOC Intelligence add-ons on top. This page covers what each one unlocks, how a locked feature answers, and where to manage billing. Everything here is on **Billing** in the Resolve Platform ([www.vulnetix.com/resolve/billing](https://www.vulnetix.com/resolve/billing)).
+An organisation is on one Resolve Platform plan, and can add the Package Firewall and SOC Intelligence add-ons on top. This page covers what each one unlocks, how a locked feature answers, and where to manage billing. Everything here is on **Billing** in the Resolve Platform ([www.vulnes.is/resolve/billing](https://www.vulnes.is/resolve/billing)).
 
 ## Plans
 
@@ -84,7 +84,7 @@ The `402` body:
 
 `requiredPlan` is the feature's plan floor; the add-on is needed as well. A `DELETE` is never refused for a missing add-on, so an organisation whose add-on has lapsed can still remove what it configured. In [Platform IaC](/platform-iac/), a document whose kind needs an add-on you do not hold (`DetectionRuleFeed`, `RuntimeSensorPolicy`) is listed under `skipped` with code `addon_required`, and the rest of the request still applies.
 
-The CLI never decides entitlement itself. On a `402` or a `planLocked` answer, the Vulnetix sensor keeps its last good configuration and its queued events, retries with backoff, and logs once, naming the add-on. `vulnetix auth status` prints "requires the Package Firewall add-on" only when the API says so.
+The CLI never decides entitlement itself. On a `402` or a `planLocked` answer, the Vulnesis sensor keeps its last good configuration and its queued events, retries with backoff, and logs once, naming the add-on. `vulnetix auth status` prints "requires the Package Firewall add-on" only when the API says so.
 
 ## Reading entitlement
 
@@ -104,7 +104,7 @@ The CLI never decides entitlement itself. On a `402` or a `planLocked` answer, t
 | `enforced` | Whether add-on rules are applied to your requests. The Resolve Platform locks a page only when `enforced` is true and `entitled` is false. |
 | `pending` | A checkout started in the last ten minutes has not produced a subscription yet |
 | `entitled` | You hold the add-on |
-| `source` | `stripe` (bought), `grant` (granted by Vulnetix) or `enterprise` (included in the plan). Empty when not entitled. |
+| `source` | `stripe` (bought), `grant` (granted by Vulnesis) or `enterprise` (included in the plan). Empty when not entitled. |
 | `status` | The subscription status. Enterprise reports `active`. |
 | `currentPeriodEnd` | Unix milliseconds |
 
@@ -112,7 +112,7 @@ A `503` means the add-on state could not be read. Try again.
 
 ## Billing routes
 
-Base URL `https://www.vulnetix.com/api/site/v1/`. Except for `GET /v1/billing/addons`, these take the Resolve Platform session only.
+Base URL `https://www.vulnes.is/api/site/v1/`. Except for `GET /v1/billing/addons`, these take the Resolve Platform session only.
 
 | Method | Path | Who | Does |
 |---|---|---|---|
@@ -138,10 +138,10 @@ A member who is not an owner or admin sees "Only an owner or admin can see payme
 
 ## Invoice recipients
 
-An owner or admin can choose members to receive a copy of every invoice, in **People and billing access** on **Billing**. Each recipient gets an email titled `Vulnetix invoice <number>: <amount>` with links to the hosted invoice and its PDF, for every invoice across every subscription of the organisation.
+An owner or admin can choose members to receive a copy of every invoice, in **People and billing access** on **Billing**. Each recipient gets an email titled `Vulnesis invoice <number>: <amount>` with links to the hosted invoice and its PDF, for every invoice across every subscription of the organisation.
 
 ```bash
-curl -X PUT https://www.vulnetix.com/api/site/v1/billing/invoice-recipients \
+curl -X PUT https://www.vulnes.is/api/site/v1/billing/invoice-recipients \
   -H "Authorization: Bearer $SESSION_JWT" \
   -H 'Content-Type: application/json' \
   -d '{"principalUuids": ["<principal uuid>", "<principal uuid>"]}'

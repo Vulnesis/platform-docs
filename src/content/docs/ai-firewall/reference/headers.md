@@ -31,8 +31,8 @@ Decode a rule list in a shell:
 
 ```bash
 curl -s -D - -o /dev/null \
-  "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+  "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"hello"}]}' \
   | grep -i '^x-vulnetix-firewall'
@@ -44,8 +44,8 @@ The provider's own `X-Vulnetix-*` headers, if it sent any, are dropped from the 
 
 | Header | Purpose |
 |---|---|
-| `Authorization: Bearer <key>` | Vulnetix API key (OpenAI SDKs, curl) |
-| `x-api-key: <key>` | Vulnetix API key (Anthropic SDKs) |
+| `Authorization: Bearer <key>` | Vulnesis API key (OpenAI SDKs, curl) |
+| `x-api-key: <key>` | Vulnesis API key (Anthropic SDKs) |
 | `X-Organisation-UUID` | Legacy: the org UUID when the URL has no org segment (`/{provider}/v1/...`). The URL form wins when both are present. |
 | `X-Vulnetix-Nonce-Mode` | `enforce` or `canonical` (case-insensitive). Anything else, or absent, is `observe`. |
 | `User-Agent` and client headers | Client identification (`claude-code`, `codex-cli`, `curl`, `unknown` and others). Attribution only; see [Client identity](/ai-firewall/policy/client-identity/). |
@@ -54,7 +54,7 @@ The provider's own `X-Vulnetix-*` headers, if it sent any, are dropped from the 
 
 | Header | Why |
 |---|---|
-| `Authorization`, `x-api-key` | They hold your Vulnetix credential. The provider gets the org's stored key, rendered into the provider's own credential headers. |
+| `Authorization`, `x-api-key` | They hold your Vulnesis credential. The provider gets the org's stored key, rendered into the provider's own credential headers. |
 | `Accept-Encoding` | Removed so the gateway can read token counts off the response |
 | Any `X-Vulnetix-*` | Gateway control headers, such as `X-Vulnetix-Nonce-Mode` |
 | Hop-by-hop headers | RFC 7230 |

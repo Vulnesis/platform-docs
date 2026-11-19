@@ -87,7 +87,7 @@ That is why a dependency bump reads as one upgrade rather than an add plus a rem
     vulnetix bom diff base.cdx.json head.cdx.json -o markdown --fail-on vuln-added,downgraded >> "$GITHUB_STEP_SUMMARY"
 ```
 
-`bom diff` makes no network calls, so this step needs no Vulnetix credentials. A vulnerability can only be counted as added when the documents carry `vulnerabilities`, for example after [`bom enrich`](/sbom/read/enrich/).
+`bom diff` makes no network calls, so this step needs no Vulnesis credentials. A vulnerability can only be counted as added when the documents carry `vulnerabilities`, for example after [`bom enrich`](/sbom/read/enrich/).
 
 ## bom merge
 

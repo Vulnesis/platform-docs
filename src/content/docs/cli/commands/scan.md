@@ -94,7 +94,7 @@ Under GitHub Actions the plain view is followed by workflow-command annotations 
 ```sh
 vulnetix scan --explain CVE-2021-23337
 vulnetix scan --explain lodash@4.17.20
-vulnetix iac --rule Vulnetix/opa-cigna-tf --explain CIGNA-TF-AWS-RDS-02
+vulnetix iac --rule Vulnesis/opa-cigna-tf --explain CIGNA-TF-AWS-RDS-02
 ```
 
 `--explain` runs only what the query needs: a package query sends only that package to the VDB and runs no rules; an advisory id looks up the packages it affects (from the last `.vulnetix/sbom.cdx.json`, else the VDB); a rule id runs that rule alone; a file path runs the rules and skips the dependency lookup. It writes no memory, SBOM, SARIF or VEX, uploads nothing, fails no gate, and exits `1` only when nothing matches. The `NEXT` commands it prints name the owning scanner and repeat your `--path`, `--exclude`, `--rule`, `--rule-registry` and `--vex-file` flags.
@@ -157,7 +157,7 @@ They still work and are hidden from `--help`. On a terminal outside CI the first
 | `--no-sca`, `--no-sast`, `--no-secrets`, `--no-licenses`, `--no-iac`, `--no-containers` | `--skip <kind>` |
 | `--from-memory`, with `--fresh-exploits`, `--fresh-advisories`, `--fresh-vulns` | [`vulnetix report`](/cli/commands/replay/) |
 | `-f`, `--format` | `-o`, `--output` |
-| `--concurrency` | Never had an effect; set `VULNETIX_SCA_CONCURRENCY` |
+| `--concurrency` | Never had an effect; set `VULNESIS_SCA_CONCURRENCY` |
 
 `--fix`, `--fix-strategy`, `--fix-manifest` and `--fix-max-major-bump` are aliases of the `--sca-autofix*` flags, not superseded.
 
@@ -207,14 +207,14 @@ Labels stamped on the SBOM and the published snapshot. Flags win; otherwise the 
 
 | Flag | Environment fallback | Meaning |
 |---|---|---|
-| `--project` | `VULNETIX_PROJECT`, `CI_PROJECT_NAME` | What this is and who owns it |
-| `--environment` | `VULNETIX_ENVIRONMENT`, `CI_ENVIRONMENT_NAME`, `ENVIRONMENT_NAME` | `production`, `staging`, ... |
-| `--cluster` | `VULNETIX_CLUSTER`, `CLUSTER_NAME`, `KUBERNETES_CLUSTER_NAME` | Where it runs |
-| `--namespace` | `VULNETIX_NAMESPACE`, `POD_NAMESPACE`, `KUBERNETES_NAMESPACE` | Namespace within the cluster |
+| `--project` | `VULNESIS_PROJECT`, `CI_PROJECT_NAME` | What this is and who owns it |
+| `--environment` | `VULNESIS_ENVIRONMENT`, `CI_ENVIRONMENT_NAME`, `ENVIRONMENT_NAME` | `production`, `staging`, ... |
+| `--cluster` | `VULNESIS_CLUSTER`, `CLUSTER_NAME`, `KUBERNETES_CLUSTER_NAME` | Where it runs |
+| `--namespace` | `VULNESIS_NAMESPACE`, `POD_NAMESPACE`, `KUBERNETES_NAMESPACE` | Namespace within the cluster |
 | `--tag key=value` | | Extra label, repeatable. A pair with no `=` is dropped. |
-| `--bom-manufacturer` | `VULNETIX_BOM_MANUFACTURER` | CycloneDX `metadata.manufacturer`. Defaults to the repository owner the CI system reports. |
+| `--bom-manufacturer` | `VULNESIS_BOM_MANUFACTURER` | CycloneDX `metadata.manufacturer`. Defaults to the repository owner the CI system reports. |
 | `--lifecycle` | | Comma list of `design`, `pre-build`, `build`, `post-build`, `operations`, `discovery`, `decommission`. An unknown phase is an error. Default: derived from what was read. |
-| `--bom-author`, `--bom-supplier`, `--bom-serial`, `--bom-version`, `--bom-license`, `--bom-property`, `--bom-overlay`, `--component-*` | `VULNETIX_BOM_*`, `VULNETIX_COMPONENT_*` | The rest of the document's identity and content. See [Author and customise](/sbom/author/overview/). |
+| `--bom-author`, `--bom-supplier`, `--bom-serial`, `--bom-version`, `--bom-license`, `--bom-property`, `--bom-overlay`, `--component-*` | `VULNESIS_BOM_*`, `VULNESIS_COMPONENT_*` | The rest of the document's identity and content. See [Author and customise](/sbom/author/overview/). |
 
 Nothing is inferred from branch names.
 
@@ -251,11 +251,11 @@ For an authenticated organization that has stored an [`SsvcPolicy`](/platform-ia
 
 | Variable | Effect |
 |---|---|
-| `VULNETIX_SCA_CONCURRENCY` | Parallel `cli.sca` batches. Default `6`, clamped to 1 to 16. |
-| `VULNETIX_SCA_TIMEOUT` | Seconds per `cli.sca` request. Default `75`, clamped to 10 to 300. |
-| `VULNETIX_SAST_WORKERS` | Concurrent rule evaluations. Default: CPU count, up to the shard ceiling. |
-| `VULNETIX_SAST_SHARDS` | Concurrent compile and evaluate shards; `1` forces a single compile |
-| `VULNETIX_SAST_CACHE_DIR` | Rule-result cache location (default `<user cache dir>/vulnetix/sast`), for a CI cache step |
-| `VULNETIX_REACHABILITY_CONCURRENCY` | Files analysed in parallel by reachability. Default: CPU count, clamped to 1 to 32. |
+| `VULNESIS_SCA_CONCURRENCY` | Parallel `cli.sca` batches. Default `6`, clamped to 1 to 16. |
+| `VULNESIS_SCA_TIMEOUT` | Seconds per `cli.sca` request. Default `75`, clamped to 10 to 300. |
+| `VULNESIS_SAST_WORKERS` | Concurrent rule evaluations. Default: CPU count, up to the shard ceiling. |
+| `VULNESIS_SAST_SHARDS` | Concurrent compile and evaluate shards; `1` forces a single compile |
+| `VULNESIS_SAST_CACHE_DIR` | Rule-result cache location (default `<user cache dir>/vulnetix/sast`), for a CI cache step |
+| `VULNESIS_REACHABILITY_CONCURRENCY` | Files analysed in parallel by reachability. Default: CPU count, clamped to 1 to 32. |
 
 All environment variables: [Environment variables](/cli/reference/environment-variables/).

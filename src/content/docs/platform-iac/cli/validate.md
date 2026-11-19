@@ -45,7 +45,7 @@ cat gate.yaml | vulnetix config validate -f -
 
 ### What it checks
 
-1. Each document has a `kind`. A document without one is reported as `not a Vulnetix config document: no kind`.
+1. Each document has a `kind`. A document without one is reported as `not a Vulnesis config document: no kind`.
 2. The `kind` is one this CLI knows. Otherwise: `unknown kind "X"` followed by the list of known kinds.
 3. The document is valid against that kind's schema, including formats such as `uuid`. All `$ref`s resolve against the copy built into the CLI.
 4. No two valid documents have the same `kind` and `metadata.name`. The second is reported as `<Kind> "<name>" is already defined in <file> (document <n>)`.
@@ -57,7 +57,7 @@ A `# yaml-language-server: $schema=` comment or a `$schema` key is not used to c
 Each problem is one entry on standard output, starting with the file and the document's position in it. Schema failures list the JSON pointer of every failing value, indented:
 
 ```text
-- (document 2): jsonschema validation failed with 'https://github.com/Vulnetix/config-schemas/releases/download/v0.0.0-dev/QualityGate.schema.json#'
+- (document 2): jsonschema validation failed with 'https://github.com/Vulnesis/config-schemas/releases/download/v0.0.0-dev/QualityGate.schema.json#'
     - at '/metadata': 'allOf' failed
       - at '/metadata/name': value must be 'default'
     - at '/spec/severity': value must be one of 'low', 'medium', 'high', 'critical'

@@ -24,8 +24,8 @@ Publish it in your account, matching the function's architecture (`arm64` is Gra
 
 ```bash
 VERSION=v3.154.0 ARCH=arm64
-curl -fsSLO "https://github.com/Vulnetix/cli/releases/download/$VERSION/vulnetix-sensor-lambda-layer-$ARCH.zip"
-curl -fsSL "https://github.com/Vulnetix/cli/releases/download/$VERSION/checksums.txt" | grep "lambda-layer-$ARCH.zip" | sha256sum -c -
+curl -fsSLO "https://github.com/Vulnesis/cli/releases/download/$VERSION/vulnetix-sensor-lambda-layer-$ARCH.zip"
+curl -fsSL "https://github.com/Vulnesis/cli/releases/download/$VERSION/checksums.txt" | grep "lambda-layer-$ARCH.zip" | sha256sum -c -
 
 aws lambda publish-layer-version \
   --layer-name vulnetix-sensor-$ARCH \
@@ -40,19 +40,19 @@ To build it yourself from the CLI repository: `deploy/sensor/lambda/build-layer.
 | Variable | Value |
 |---|---|
 | `AWS_LAMBDA_EXEC_WRAPPER` | `/opt/vulnetix/wrapper` (required) |
-| `VULNETIX_SENSOR_FEEDS` | Comma-separated feed URLs (required) |
-| `VULNETIX_SENSOR_MODE` | `monitor` (default), `guard` or `enforce` |
-| `VULNETIX_FEED_KEY` | Feed public key, base64; only to override the pinned one |
-| `VULNETIX_SENSOR_PORT` | Runtime API proxy port, default `9009` |
-| `VULNETIX_SENSOR_EGRESS` | A port such as `9010` to also route outbound SDK calls through the egress proxy |
-| `VULNETIX_ORG_ID`, `VULNETIX_API_KEY` | Credentials. Without them rules load and nothing is reported. |
-| `VULNETIX_ENDPOINT` | Reporting endpoint, default `https://www.vulnetix.com/api/site` |
+| `VULNESIS_SENSOR_FEEDS` | Comma-separated feed URLs (required) |
+| `VULNESIS_SENSOR_MODE` | `monitor` (default), `guard` or `enforce` |
+| `VULNESIS_FEED_KEY` | Feed public key, base64; only to override the pinned one |
+| `VULNESIS_SENSOR_PORT` | Runtime API proxy port, default `9009` |
+| `VULNESIS_SENSOR_EGRESS` | A port such as `9010` to also route outbound SDK calls through the egress proxy |
+| `VULNESIS_ORG_ID`, `VULNESIS_API_KEY` | Credentials. Without them rules load and nothing is reported. |
+| `VULNESIS_ENDPOINT` | Reporting endpoint, default `https://www.vulnes.is/api/site` |
 
 ```bash
 aws lambda update-function-configuration \
   --function-name my-api \
   --layers arn:aws:lambda:<region>:<account>:layer:vulnetix-sensor-arm64:1 \
-  --environment 'Variables={AWS_LAMBDA_EXEC_WRAPPER=/opt/vulnetix/wrapper,VULNETIX_SENSOR_FEEDS=https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>,VULNETIX_SENSOR_MODE=monitor,VULNETIX_ORG_ID=<org-uuid>,VULNETIX_API_KEY=<hmac>}'
+  --environment 'Variables={AWS_LAMBDA_EXEC_WRAPPER=/opt/vulnetix/wrapper,VULNESIS_SENSOR_FEEDS=https://vulnes.is/feeds/<org-uuid>/<feed-uuid>,VULNESIS_SENSOR_MODE=monitor,VULNESIS_ORG_ID=<org-uuid>,VULNESIS_API_KEY=<hmac>}'
 ```
 
 `--environment` replaces the whole variable set: include the function's existing variables. Keep the API key out of plain configuration where you can: resolve it from Secrets Manager in your deployment tool (SAM, CDK, Terraform) at deploy time.
@@ -71,18 +71,18 @@ MyApi:
     Environment:
       Variables:
         AWS_LAMBDA_EXEC_WRAPPER: /opt/vulnetix/wrapper
-        VULNETIX_SENSOR_FEEDS: https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>
-        VULNETIX_SENSOR_MODE: guard
-        VULNETIX_ORG_ID: '{{resolve:secretsmanager:vulnetix/sensor:SecretString:orgId}}'
-        VULNETIX_API_KEY: '{{resolve:secretsmanager:vulnetix/sensor:SecretString:apiKey}}'
+        VULNESIS_SENSOR_FEEDS: https://vulnes.is/feeds/<org-uuid>/<feed-uuid>
+        VULNESIS_SENSOR_MODE: guard
+        VULNESIS_ORG_ID: '{{resolve:secretsmanager:vulnetix/sensor:SecretString:orgId}}'
+        VULNESIS_API_KEY: '{{resolve:secretsmanager:vulnetix/sensor:SecretString:apiKey}}'
 ```
 
 ## The wrapper
 
 ```sh
-export AWS_LAMBDA_RUNTIME_API="127.0.0.1:${VULNETIX_SENSOR_PORT:-9009}"
-if [ -n "${VULNETIX_SENSOR_EGRESS:-}" ]; then
-  export HTTPS_PROXY="http://127.0.0.1:${VULNETIX_SENSOR_EGRESS}"
+export AWS_LAMBDA_RUNTIME_API="127.0.0.1:${VULNESIS_SENSOR_PORT:-9009}"
+if [ -n "${VULNESIS_SENSOR_EGRESS:-}" ]; then
+  export HTTPS_PROXY="http://127.0.0.1:${VULNESIS_SENSOR_EGRESS}"
   export HTTP_PROXY="$HTTPS_PROXY"
   export NO_PROXY="localhost,127.0.0.1,169.254.169.254,169.254.170.2${NO_PROXY:+,$NO_PROXY}"
 fi
@@ -98,4 +98,4 @@ It works with any managed runtime that honours `AWS_LAMBDA_EXEC_WRAPPER`, and wi
 | guard | Holds the one invocation with a `403`: a function cannot wait for a person. The event still lands in the hold queue, and your decision applies to later invocations. |
 | Reporting | Flushed on every invoke, because Lambda freezes the environment between them |
 | Sensor key | Kept in `/tmp/vulnetix-sensor` for the life of the execution environment, so each cold start registers a new sensor |
-| Engines | Inbound HTTP rules (`MODSECURITY`, `REGEX_L7`) and, with `VULNETIX_SENSOR_EGRESS`, indicator checks on outbound calls |
+| Engines | Inbound HTTP rules (`MODSECURITY`, `REGEX_L7`) and, with `VULNESIS_SENSOR_EGRESS`, indicator checks on outbound calls |

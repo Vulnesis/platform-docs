@@ -1,16 +1,16 @@
 ---
 title: Migrating from v3 to v4
 nav: Migrating to v4
-description: What changed from Vulnetix CLI v3 to v4.0.0, including the Go module path, config set and ai-firewall aliases, plan and apply, and the action version channel.
+description: What changed from Vulnesis CLI v3 to v4.0.0, including the Go module path, config set and ai-firewall aliases, plan and apply, and the action version channel.
 order: 4
 sources: [cli/docs/platform-iac.md, cli/docs/PUBLISHING.md, cli/cmd/config_engine.go, cli/cmd/config_engine_alias.go, cli/cmd/config_engine_alias_aifw.go, cli/cmd/config_engine_alias_pfw.go, cli/action.yml, cli/install.sh]
 checked: [cli@v4.4.0]
 updated: 03 Nov 2026
 ---
 
-CLI v4.0.0 was released on 3 November 2026. It is the first v4 release and the newest release overall: it is the GitHub Latest release, `install.sh` with no version installs it, and `Vulnetix/cli@v4` follows it. See [the releases](https://github.com/Vulnetix/cli/releases).
+CLI v4.0.0 was released on 3 November 2026. It is the first v4 release and the newest release overall: it is the GitHub Latest release, `install.sh` with no version installs it, and `Vulnesis/cli@v4` follows it. See [the releases](https://github.com/Vulnesis/cli/releases).
 
-Nothing forces a move. v3 is frozen at v3.169.2 (commit `f52af4d`): the `v3` tag stays there, `Vulnetix/cli@v3` keeps installing a v3 binary, and a later v3 patch release would be published without moving `v3`, Latest, Homebrew, Scoop or the Nix flake. See [Versions and release channels](/cli/ci-cd/versions-and-channels/).
+Nothing forces a move. v3 is frozen at v3.169.2 (commit `f52af4d`): the `v3` tag stays there, `Vulnesis/cli@v3` keeps installing a v3 binary, and a later v3 patch release would be published without moving `v3`, Latest, Homebrew, Scoop or the Nix flake. See [Versions and release channels](/cli/ci-cd/versions-and-channels/).
 
 ## What changed
 
@@ -20,7 +20,7 @@ Nothing forces a move. v3 is frozen at v3.169.2 (commit `f52af4d`): the `v3` tag
 | `config plan` and `config apply` input | `.vulnetix/config` only. A well-known file works when named with `-f`. | `.vulnetix/config` and, with no `-f`, the well-known files |
 | `config set` aliases | `set quality-gate` and `set eol-policy` are aliases of the engine, falling back to the legacy endpoint. | `set package-firewall` (policy form) is an alias as well |
 | `ai-firewall apply` and `ai-firewall export` | Call `cli.ai-firewall-*` | Aliases of the config engine for the `AiFirewallPolicy` kind, falling back to the legacy endpoints |
-| Action `version` default | `v3` | `v4` for `Vulnetix/cli@v4`. `@v3` keeps `v3`. |
+| Action `version` default | `v3` | `v4` for `Vulnesis/cli@v4`. `@v3` keeps `v3`. |
 | `install.sh` with no version, `latest` | The newest release, v3 or later | The newest release, v4 |
 
 v4.0.0 embeds `config-schemas` v1.10.0, the same release as the last v3 releases, so the major version added no kind: [`ComplianceTarget`](/platform-iac/kinds/compliance-target/) (config-schemas v1.11.0) is refused as unknown by `config validate`, `plan` and `apply` in v4.0.0 and v4.1.0. v4.1.1 embeds config-schemas v1.12.0 and knows it.
@@ -82,7 +82,7 @@ The legacy fallback applies when the engine answers 401 or 403 (the credential i
 What to expect after the move:
 
 - An alias run makes the object `console`-managed. A later `config apply` from a repository is blocked with `managed_by_other` until the objects are moved to documents in one step.
-- A credential that is not an owner, or a service account with the `developer` role, cannot plan or apply through the engine. Use the ApiKey of a `developer` service account (`VULNETIX_API_KEY` and `VULNETIX_ORG_ID`) in CI so the aliases do not fall back.
+- A credential that is not an owner, or a service account with the `developer` role, cannot plan or apply through the engine. Use the ApiKey of a `developer` service account (`VULNESIS_API_KEY` and `VULNESIS_ORG_ID`) in CI so the aliases do not fall back.
 - The declarative path is `config plan`, `config apply` and `config export`. To move to documents, `vulnetix config export` writes the current state.
 
 ### Commands that stay imperative
@@ -100,11 +100,11 @@ See [Imperative commands](/platform-iac/cli/imperative-commands/) and [AiFirewal
 
 ## GitHub Actions
 
-The `version` input of every action defaults to the major channel that matches the action ref. `Vulnetix/cli@v4` and `Vulnetix/cli/<name>@v4` install the newest v4 release; `@v3` keeps a v3 binary.
+The `version` input of every action defaults to the major channel that matches the action ref. `Vulnesis/cli@v4` and `Vulnesis/cli/<name>@v4` install the newest v4 release; `@v3` keeps a v3 binary.
 
 | If your workflow uses | Do |
 |---|---|
-| `Vulnetix/cli@v3` or `Vulnetix/cli/<name>@v3` | Nothing. It keeps a v3 binary. |
+| `Vulnesis/cli@v3` or `Vulnesis/cli/<name>@v3` | Nothing. It keeps a v3 binary. |
 | An exact `@v3.x.y` ref | Nothing. |
 | `with: { version: latest }` or `install.sh` without `--version` | Pin `version: v3` first if you want to stay on v3, otherwise v4 is installed. |
 
@@ -113,8 +113,8 @@ To move, change the ref to `@v4`. Read [what changed](#what-changed) first, beca
 ## Install channel
 
 ```sh
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --version v3   # stay on v3
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --version v4   # move to v4
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --version v3   # stay on v3
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --version v4   # move to v4
 ```
 
 Homebrew, Scoop and the Nix flake follow the newest release overall, so they install v4. Pin the version there, or install with the script and `--version v3`, to stay on v3.

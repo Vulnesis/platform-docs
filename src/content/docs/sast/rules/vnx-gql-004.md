@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1592](https://attack.mitre.org/techniques/T1592/) |
 | CWSS vector | `CWSS:1.0/TI:L/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:L/DI:H/EX:L/EC:N/P:L` |
 | Tags | `graphql` `information-disclosure` `schema` |
-| Source | [`internal/sast/rules/vnx-gql-004.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-gql-004.rego) |
+| Source | [`internal/sast/rules/vnx-gql-004.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-gql-004.rego) |
 
 ## Overview
 

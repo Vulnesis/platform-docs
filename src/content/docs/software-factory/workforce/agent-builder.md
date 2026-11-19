@@ -14,7 +14,7 @@ The agent builder (`/resolve/factory-agent?new=1`, or `?edit=<name>` for an exis
 
 Describe the agent in a sentence, for example "a worker that fixes failing Go tests and opens a draft pull request". The builder drafts every field: the name, the system prompt, the tools, the mode, the claim lists and labels, where cards go on success and on failure, the workspace and the budget. You keep, change or reject each suggestion.
 
-Drafts are made by a model Vulnetix runs, through `/v1/belai/ai-drafts`. `/v1/belai/ai/status` says whether that model is available for you. The same drafting runs on the command line as `belai agent draft PREMISE`, which writes the profile as Markdown.
+Drafts are made by a model Vulnesis runs, through `/v1/belai/ai-drafts`. `/v1/belai/ai/status` says whether that model is available for you. The same drafting runs on the command line as `belai agent draft PREMISE`, which writes the profile as Markdown.
 
 A draft can also be made by one of your live Belai sessions with its host's own model: the builder sends the premise, the session posts its suggestions back, and you review them as a draft.
 

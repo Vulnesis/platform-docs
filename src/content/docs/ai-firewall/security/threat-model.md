@@ -20,7 +20,7 @@ updated: 02 Nov 2026
 |---|---|
 | Prompts and completions are not stored | No content column in the log table; responses are relayed, not buffered. See [Data handling](/ai-firewall/security/data-handling/). |
 | A database dump does not yield provider keys | Keys are KMS ciphertext bound to organisation and provider by encryption context. See [Key custody](/ai-firewall/security/key-custody/). |
-| Your Vulnetix key never reaches the provider | `Authorization` and `x-api-key` are stripped before the provider's own credential headers are added |
+| Your Vulnesis key never reaches the provider | `Authorization` and `x-api-key` are stripped before the provider's own credential headers are added |
 | Authentication fails closed | A failure to resolve the secret is `503`, whatever `FAIL_OPEN` says |
 | Policy fails closed | A failure to load guardrails is `503` while `FAIL_OPEN` is `false`, the hosted default |
 | No bypass for a valid key | Every inference route runs the same pipeline, including `count_tokens`. There is no exemption list or bypass header. |
@@ -46,13 +46,13 @@ updated: 02 Nov 2026
 | Compromise | Prompts | Provider keys | Policy |
 |---|---|---|---|
 | The gateway database | Not present | Ciphertext only | Readable |
-| A developer's laptop | That developer's traffic | Not present; the laptop holds a Vulnetix key | Unchanged |
-| A leaked Vulnetix API key | Attacker can send requests as that principal and spend your provider quota, still under your policy | Not exposed | Unchanged; the CLI also needs it to edit policy, so treat it as an admin credential |
+| A developer's laptop | That developer's traffic | Not present; the laptop holds a Vulnesis key | Unchanged |
+| A leaked Vulnesis API key | Attacker can send requests as that principal and spend your provider quota, still under your policy | Not exposed | Unchanged; the CLI also needs it to edit policy, so treat it as an admin credential |
 | A leaked provider key | Not through the gateway | That provider key | Bypassed: the key works directly at the provider. Rotate it with `key set`. |
 | The provider | Whatever it retains | Its own copy | n/a |
 | The gateway operator | In flight | Decryptable | Writable |
 
-A leaked Vulnetix key is revoked by regenerating the secret; the gateway stops accepting it within 60 seconds. One revocation cuts off every client using it.
+A leaked Vulnesis key is revoked by regenerating the secret; the gateway stops accepting it within 60 seconds. One revocation cuts off every client using it.
 
 ## Related
 

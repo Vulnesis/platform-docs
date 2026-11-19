@@ -1,7 +1,7 @@
 ---
 title: Attestation
 nav: Overview
-description: Sign the SBOMs the Vulnetix CLI writes with your CI runner's OIDC identity, and verify signatures and in-toto provenance with vulnetix attest verify.
+description: Sign the SBOMs the Vulnesis CLI writes with your CI runner's OIDC identity, and verify signatures and in-toto provenance with vulnetix attest verify.
 order: 1
 sources: [cli/cmd/attest.go, cli/internal/attest/verify.go, cli/internal/attest/roots.go, cli/internal/cdxsign/sign.go, vdb-cyclonedx/fulcio.go]
 checked: [cli@4c8c3b71c, vdb-cyclonedx@eaf787c]
@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 Attestation is for teams that publish SBOMs and other artefacts and need consumers to trust where they came from, and for teams that consume artefacts and need to check that before they use them. It answers who produced a document and what its provenance claims, not what the document says. An [SBOM](/sbom/) lists the components, a [VEX](/vex/) document states whether each vulnerability affects you, and attestation signs and verifies either one.
 
-The CLI signs documents with the identity of the machine that ran it, using public Sigstore, and verifies signatures and provenance on artefacts you consume. Nothing here uses a Vulnetix credential, and the results verify with stock `cosign`.
+The CLI signs documents with the identity of the machine that ran it, using public Sigstore, and verifies signatures and provenance on artefacts you consume. Nothing here uses a Vulnesis credential, and the results verify with stock `cosign`.
 
 | Task | Command | Page |
 |---|---|---|
@@ -60,7 +60,7 @@ To sign and verify your first SBOM step by step, follow the [Attestation quickst
 
 ## GitHub Actions
 
-Verify an artefact in a workflow with the [attest GitHub Action](/attestation/github-actions/attest/). The other Vulnetix actions create GitHub artifact attestations with their `attest` input.
+Verify an artefact in a workflow with the [attest GitHub Action](/attestation/github-actions/attest/). The other Vulnesis actions create GitHub artifact attestations with their `attest` input.
 
 ## Platform IaC
 

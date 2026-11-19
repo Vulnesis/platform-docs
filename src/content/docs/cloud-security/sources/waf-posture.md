@@ -28,7 +28,7 @@ Switch on **AWS WAF** under **Integrations > Cloud** and press **Deploy**. This 
 
 ## Where it shows
 
-The **WAF** tab on the **Virtual patching** page. To push Vulnetix virtual-patch rules into AWS WAF, see [/virtual-patching/](/virtual-patching/).
+The **WAF** tab on the **Virtual patching** page. To push Vulnesis virtual-patch rules into AWS WAF, see [/virtual-patching/](/virtual-patching/).
 
 | Method | Path | Returns |
 |---|---|---|

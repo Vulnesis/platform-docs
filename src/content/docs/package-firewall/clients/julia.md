@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Pkg server | `https://packages.vulnetix.com/julia` |
+| Pkg server | `https://packages.vulnes.is/julia` |
 | Ecosystem ID | `julia` |
 | Plan | Add-on |
 | Mode | gate: `/registries` is streamed unchanged; `/registry`, `/package` and `/artifact` tarballs are checked |
@@ -22,16 +22,16 @@ updated: 03 Nov 2026
 Set the server before Julia starts:
 
 ```bash
-export JULIA_PKG_SERVER="https://packages.vulnetix.com/julia"
+export JULIA_PKG_SERVER="https://packages.vulnes.is/julia"
 ```
 
 Pkg sends the `access_token` from the server's `auth.toml` as a bearer token, and the firewall accepts a bearer token of `base64("<orgUUID>:<apiKey>")`. Write it to the depot's server directory, which is named after the server host:
 
 ```bash
-mkdir -p ~/.julia/servers/packages.vulnetix.com
-TOKEN=$(printf '%s:%s' "$VULNETIX_ORG_ID" "$VULNETIX_API_KEY" | base64 -w0)
-printf 'access_token = "%s"\n' "$TOKEN" > ~/.julia/servers/packages.vulnetix.com/auth.toml
-chmod 600 ~/.julia/servers/packages.vulnetix.com/auth.toml
+mkdir -p ~/.julia/servers/packages.vulnes.is
+TOKEN=$(printf '%s:%s' "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY" | base64 -w0)
+printf 'access_token = "%s"\n' "$TOKEN" > ~/.julia/servers/packages.vulnes.is/auth.toml
+chmod 600 ~/.julia/servers/packages.vulnes.is/auth.toml
 ```
 
 This file was derived from the proxy's accepted header forms. Pkg has no CLI writer for it yet, so confirm with the commands below before relying on it in CI.

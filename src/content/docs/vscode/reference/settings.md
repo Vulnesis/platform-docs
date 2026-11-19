@@ -19,7 +19,7 @@ status: available
 | Setting | Type and values | Default | Scope | Read by | Applies |
 |---|---|---|---|---|---|
 | `vulnetix.cli.path` | string: absolute path to a `vulnetix` binary | `""` | machine | Extension | Next start (set through **Set CLI Path**: at once) |
-| `vulnetix.cli.downloadBaseUrl` | string: base URL serving `<tag>/<asset>` and `<tag>/checksums.txt`. Empty uses `https://github.com/Vulnetix/cli/releases/download` | `""` | machine | Extension | Next download |
+| `vulnetix.cli.downloadBaseUrl` | string: base URL serving `<tag>/<asset>` and `<tag>/checksums.txt`. Empty uses `https://github.com/Vulnesis/cli/releases/download` | `""` | machine | Extension | Next download |
 | `vulnetix.cli.autoUpdate` | enum: `never`, `prompt`, `auto` | `prompt` | machine | Nothing yet | n/a |
 
 ## Language server
@@ -28,7 +28,7 @@ status: available
 |---|---|---|---|---|---|
 | `vulnetix.lsp.enabled` | boolean. `false` stops a running server. | `true` | window | Extension | At once |
 | `vulnetix.lsp.memoryLimitMb` | number: schema minimum 256; passed as `--memory-limit-mb`, any value outside 128 to 16384 or not an integer becomes 2048 | `2048` | machine | Extension, server | Restart |
-| `vulnetix.trace.server` | enum: `off`, `messages`, `verbose`. Traces LSP traffic into the Vulnetix output channel. | `off` | window | Language client | At once |
+| `vulnetix.trace.server` | enum: `off`, `messages`, `verbose`. Traces LSP traffic into the Vulnesis output channel. | `off` | window | Language client | At once |
 
 ## When analysis runs
 
@@ -77,13 +77,13 @@ See [Suppressions](/vscode/findings/suppressions/).
 
 | Setting | Type and values | Default | Scope | Read by | Applies |
 |---|---|---|---|---|---|
-| `vulnetix.api.baseUrl` | string: sets `VULNETIX_API_URL` for the server | `""` | machine | Extension | Restart (run **Restart Language Server**) |
-| `vulnetix.api.webUrl` | string: sets `VULNETIX_WEB_URL` for the server | `""` | machine | Extension | Restart (run **Restart Language Server**) |
-| `vulnetix.telemetry.enabled` | boolean. `false` sets `VULNETIX_NO_ANALYTICS=1` and `DO_NOT_TRACK=1` for the server. Cannot override `telemetry.telemetryLevel: off`. | `true` | machine | Extension | Restart (run **Restart Language Server**) |
+| `vulnetix.api.baseUrl` | string: sets `VULNESIS_API_URL` for the server | `""` | machine | Extension | Restart (run **Restart Language Server**) |
+| `vulnetix.api.webUrl` | string: sets `VULNESIS_WEB_URL` for the server | `""` | machine | Extension | Restart (run **Restart Language Server**) |
+| `vulnetix.telemetry.enabled` | boolean. `false` sets `VULNESIS_NO_ANALYTICS=1` and `DO_NOT_TRACK=1` for the server. Cannot override `telemetry.telemetryLevel: off`. | `true` | machine | Extension | Restart (run **Restart Language Server**) |
 
 ## Invalid values
 
-The server validates every value it reads. A value of the wrong type, out of range, or not in the enum is logged in the Vulnetix output channel and replaced with the default. It never disables analysis. Fractional numbers are treated as absent.
+The server validates every value it reads. A value of the wrong type, out of range, or not in the enum is logged in the Vulnesis output channel and replaced with the default. It never disables analysis. Fractional numbers are treated as absent.
 
 ## Example
 

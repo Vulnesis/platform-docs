@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/maven/` |
+| Repository URL | `https://packages.vulnes.is/maven/` |
 | Ecosystem ID | `maven` |
 | Plan | Add-on |
 | Mode | filter: blocked versions are removed from `maven-metadata.xml` |
@@ -41,7 +41,7 @@ This replaces `~/.m2/settings.xml` with the file below. An existing `settings.xm
     <mirror>
       <id>vulnetix-package-firewall</id>
       <mirrorOf>*</mirrorOf>
-      <url>https://packages.vulnetix.com/maven/</url>
+      <url>https://packages.vulnes.is/maven/</url>
     </mirror>
   </mirrors>
 </settings>
@@ -63,7 +63,7 @@ dependencyResolutionManagement {
     repositories {
         maven {
             name = "vulnetix"
-            url = uri("https://packages.vulnetix.com/maven/")
+            url = uri("https://packages.vulnes.is/maven/")
             credentials(PasswordCredentials::class)
         }
     }

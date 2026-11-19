@@ -15,10 +15,10 @@ Claude Code supports remote HTTP MCP servers with custom headers.
 ## Add it
 
 ```bash
-export VULNETIX_ORG='<orgId>'
-export VULNETIX_KEY='<hex>'
-claude mcp add --scope user --transport http vulnetix https://mcp.vulnetix.com/mcp \
-  --header "Authorization: ApiKey ${VULNETIX_ORG}:${VULNETIX_KEY}"
+export VULNESIS_ORG='<orgId>'
+export VULNESIS_KEY='<hex>'
+claude mcp add --scope user --transport http vulnetix https://mcp.vulnes.is/mcp \
+  --header "Authorization: ApiKey ${VULNESIS_ORG}:${VULNESIS_KEY}"
 claude mcp list
 ```
 
@@ -31,7 +31,7 @@ Or edit `~/.claude.json` directly:
   "mcpServers": {
     "vulnetix": {
       "type": "http",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey <orgId>:<hex>"
       }
@@ -57,16 +57,16 @@ Commit `.mcp.json` with variable references. Claude Code expands `${VAR}` in `.m
   "mcpServers": {
     "vulnetix": {
       "type": "http",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
-        "Authorization": "ApiKey ${VULNETIX_ORG}:${VULNETIX_KEY}"
+        "Authorization": "ApiKey ${VULNESIS_ORG}:${VULNESIS_KEY}"
       }
     }
   }
 }
 ```
 
-Each developer exports `VULNETIX_ORG` and `VULNETIX_KEY` in the shell that starts Claude Code. Claude Code asks for approval the first time it loads a project-scoped server; `claude mcp reset-project-choices` clears that decision.
+Each developer exports `VULNESIS_ORG` and `VULNESIS_KEY` in the shell that starts Claude Code. Claude Code asks for approval the first time it loads a project-scoped server; `claude mcp reset-project-choices` clears that decision.
 
 ## Check it
 
@@ -88,7 +88,7 @@ The 18 prompts appear as `/mcp__vulnetix__<prompt>`:
 
 Each prompt takes one optional string argument, named `arguments`.
 
-Each one runs shell commands with the Vulnetix CLI, which Claude Code can do through its Bash tool. See [Prompts](/mcp-server/prompts/overview/).
+Each one runs shell commands with the Vulnesis CLI, which Claude Code can do through its Bash tool. See [Prompts](/mcp-server/prompts/overview/).
 
 Claude Code does not render [MCP Apps](/mcp-server/protocol/apps/); the tool results are unchanged. The [skills extension](/mcp-server/prompts/skills/) is not used by Claude Code, so use the prompts.
 
@@ -101,6 +101,6 @@ Claude Code does not render [MCP Apps](/mcp-server/protocol/apps/); the tool res
 | Symptom | Fix |
 |---|---|
 | Tools missing | Restart Claude Code; check `/mcp` |
-| 401 or "No Vulnetix credential was supplied" | Header needs `ApiKey <orgId>:<hex>` |
-| `${VULNETIX_KEY}` sent literally | Not exported in the shell that started Claude Code |
+| 401 or "No Vulnesis credential was supplied" | Header needs `ApiKey <orgId>:<hex>` |
+| `${VULNESIS_KEY}` sent literally | Not exported in the shell that started Claude Code |
 | Project server never loads | You declined the approval prompt. Run `claude mcp reset-project-choices`. |

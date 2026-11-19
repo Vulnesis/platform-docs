@@ -1,6 +1,6 @@
 ---
 title: Plans and limits
-description: What each Vulnetix plan changes in tool results, how withheld records are signalled, how daily quota is counted and reported, and how to spend less of it.
+description: What each Vulnesis plan changes in tool results, how withheld records are signalled, how daily quota is counted and reported, and how to spend less of it.
 order: 4
 sources:
   - mcp-server/src/ai/augment.ts
@@ -27,7 +27,7 @@ The server works on every plan. It has no plan logic of its own except the AI an
 | Detection rule text (`rawText`) | Withheld (`gated: true`), rule metadata returned | Yes |
 | AI `analysis` on the five AI tools | Skipped, code `gated` | Yes |
 
-Current prices and quotas: [vulnetix.com/pricing](https://www.vulnetix.com/pricing).
+Current prices and quotas: [vulnes.is/pricing](https://www.vulnes.is/pricing).
 
 ## Withheld is not absent
 
@@ -87,7 +87,7 @@ The limit is set per organisation, so it can differ from the plan's published de
 The tool returns an error result, not an HTTP 429:
 
 ```text
-Vulnetix daily rate limit exhausted for this organisation. The quota resets at 2026-11-03T00:00:00.000Z. Do NOT retry this call. Retrying cannot succeed until the quota resets and only burns further budget. Either wait, or authenticate a higher-tier organisation (run `vulnetix_auth_start`, then `vulnetix_auth_poll` once a human approves).
+Vulnesis daily rate limit exhausted for this organisation. The quota resets at 2026-11-03T00:00:00.000Z. Do NOT retry this call. Retrying cannot succeed until the quota resets and only burns further budget. Either wait, or authenticate a higher-tier organisation (run `vulnetix_auth_start`, then `vulnetix_auth_poll` once a human approves).
 ```
 
 ## AI analysis and plan

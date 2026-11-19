@@ -39,7 +39,7 @@ The hostname is lowercased and a trailing dot removed first. A refused request g
 An exact host beats any wildcard. Between wildcards, the longest pattern wins, so `deny *.example.com` with `allow *.api.example.com` allows `v1.api.example.com` and refuses `www.example.com`.
 
 > [!CAREFUL] You cannot deny the hosts in rules 2 and 3
-> They are checked before your decisions. A `deny` on `www.vulnetix.com`, or a wildcard such as `*.github.com`, does not stop the sandbox syncing or cloning.
+> They are checked before your decisions. A `deny` on `www.vulnes.is`, or a wildcard such as `*.github.com`, does not stop the sandbox syncing or cloning.
 
 ## Host patterns
 
@@ -61,10 +61,10 @@ Only a leading `*.` is a wildcard; `api.*.com`, `*example.com` and a bare `*` ar
 
 | Host | Why | When |
 |---|---|---|
-| `www.vulnetix.com` | `belai rc` sync | Always |
-| `api.vdb.vulnetix.com` | The Vulnetix CLI, and the Package Firewall's sign-in check | Always |
-| `guardrails.vulnetix.com` | The Vulnetix AI Firewall | Always |
-| `packages.vulnetix.com` | The Package Firewall | Always |
+| `www.vulnes.is` | `belai rc` sync | Always |
+| `api.vdb.vulnes.is` | The Vulnesis CLI, and the Package Firewall's sign-in check | Always |
+| `guardrails.vulnes.is` | The Vulnesis AI Firewall | Always |
+| `packages.vulnes.is` | The Package Firewall | Always |
 | `api.typesafe.ai` | Jev, through the Worker's key-swapping gateway | Always |
 | `api.together.xyz` | Tev1, when the launch's decision model is `tev1` | That launch |
 | `flakehub.com`, `api.flakehub.com`, `cache.flakehub.com` | When the launch has a FlakeHub extension | That launch |
@@ -115,8 +115,8 @@ A [workflow](/software-factory/workflows/source-events/) can react to them, for 
 Times are milliseconds since the epoch. URL-encode a wildcard host (`%2A.pythonhosted.org`).
 
 ```bash
-curl -X PATCH "https://www.vulnetix.com/api/site/v1/belai/sandboxes/$SANDBOX_ID/egress/%2A.pythonhosted.org" \
-  -H "Authorization: Bearer $VULNETIX_SESSION_JWT" -H "Content-Type: application/json" \
+curl -X PATCH "https://www.vulnes.is/api/site/v1/belai/sandboxes/$SANDBOX_ID/egress/%2A.pythonhosted.org" \
+  -H "Authorization: Bearer $VULNESIS_SESSION_JWT" -H "Content-Type: application/json" \
   -d '{"decision": "allow"}'
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: VEX and suppression
 nav: Overview
-description: The VEX formats the Vulnetix CLI reads and writes, where VEX changes scan results, and how ignore rules, nosec comments and VEX suppress findings.
+description: The VEX formats the Vulnesis CLI reads and writes, where VEX changes scan results, and how ignore rules, nosec comments and VEX suppress findings.
 order: 1
 sources: [cli/cmd/vex.go, cli/cmd/vex_ingest.go, cli/cmd/suppress.go, cli/cmd/suppress_report.go, cli/internal/vex/read.go, cli/internal/vex/merge.go, cli/internal/triage/vex.go, cli/internal/suppress/suppress.go, vdb-api/internal/handler/v2_cli_vex_ingest.go]
 checked: [cli@v4.4.0, vdb-api@4145f0a]
@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 VEX is for teams that publish software and must tell its users which reported vulnerabilities do not affect it, and for teams that receive those statements and want their scans to stop reporting what a vendor has already ruled out. An [SBOM](/sbom/) lists what is in a product. VEX says which of the vulnerabilities in it matter, and [attestation](/attestation/) proves who signed either one. Use VEX when the question is whether a finding applies, not what is installed.
 
-A VEX statement says whether a product is affected by a vulnerability. The CLI writes VEX for its own triage decisions, reads VEX that anyone else wrote, applies it to SBOMs and scans, and sends it to Vulnetix, where false-positive and won't-fix statements become suppression rules.
+A VEX statement says whether a product is affected by a vulnerability. The CLI writes VEX for its own triage decisions, reads VEX that anyone else wrote, applies it to SBOMs and scans, and sends it to Vulnesis, where false-positive and won't-fix statements become suppression rules.
 
 Two mechanisms hide findings, and they are reported differently:
 
@@ -48,13 +48,13 @@ To state one of these CycloneDX states on a finding in an SBOM the CLI writes, s
 | [`vulnetix vex ls`, `validate`, `merge`](/vex/commands/ls-validate-merge/) | Review, check and combine VEX documents |
 | [`--vex-file` and `--vex`](/vex/scans/vex-file/) on `scan`, `sca`, `sast`, `secrets`, `containers`, `iac` | Apply VEX from files, directories and https URLs before the quality gates. `--vex` needs CLI v4.2.0. An authenticated scan also applies the Resolve Platform's statements (CLI v4.4.0). |
 | [`vulnetix ignore`](/vex/suppression/ignore-rules/) (alias `suppress`) | Add, list, remove and sync ignore rules |
-| `vulnetix vdb vex get`, `vdb vex list` | Read VEX that Vulnetix holds for a CVE. See [VDB API](/vdb-api/). |
+| `vulnetix vdb vex get`, `vdb vex list` | Read VEX that Vulnesis holds for a CVE. See [VDB API](/vdb-api/). |
 
 To apply a vendor's VEX document to a scan and check it step by step, follow the [VEX quickstart](/vex/get-started/quickstart/). Every VEX file the CLI writes under `.vulnetix/` is on [VEX the CLI writes](/vex/reference/files-written/).
 
-## What reaches Vulnetix
+## What reaches Vulnesis
 
-When a command is authenticated, the VEX it read or wrote is sent to `POST /v2/cli.vex-ingest`, and the findings ignore rules and nosec comments hid are reported to `cli.finalize`. See [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/).
+When a command is authenticated, the VEX it read or wrote is sent to `POST /v2/cli.vex-ingest`, and the findings ignore rules and nosec comments hid are reported to `cli.finalize`. See [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/).
 
 A standing source of suppression rules, read from a TEA server, an S3 bucket, a git repository or URLs, is the `VexSource` kind. Since CLI v4.2.0 a scan also reads the `path` and `urls` sources declared under `.vulnetix/config` itself, and since CLI v4.4.0 an authenticated scan applies the statements the Resolve Platform holds for every source type, `tea`, `s3` and `git` included; see [Declared VexSource documents](/vex/scans/vex-file/#declared-vexsource-documents), [Statements the Resolve Platform holds](/vex/scans/vex-file/#statements-the-resolve-platform-holds) and [VEX documents as suppression rules](/platform-iac/guides/vex-sources/).
 

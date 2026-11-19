@@ -12,8 +12,8 @@ A supplier's VEX document says which of its vulnerabilities do not affect your p
 
 ## Prerequisites
 
-- The Vulnetix CLI on your `PATH`, v4.2.0 or later for `--vex` ([installing the CLI](/cli/get-started/install/)).
-- A VEX document in OpenVEX, CycloneDX VEX or CSAF VEX. No Vulnetix credentials are needed to apply it.
+- The Vulnesis CLI on your `PATH`, v4.2.0 or later for `--vex` ([installing the CLI](/cli/get-started/install/)).
+- A VEX document in OpenVEX, CycloneDX VEX or CSAF VEX. No Vulnesis credentials are needed to apply it.
 
 ## 1. Look at the document
 
@@ -90,4 +90,4 @@ It exits `1` on a fatal problem, such as `not_affected` with no justification. R
 - [VEX in a scan](/vex/scans/vex-file/) for directories, URLs and declared VexSource documents.
 - [vex ls, validate and merge](/vex/commands/ls-validate-merge/) for every check.
 - [vulnetix vex apply](/vex/commands/apply/) to apply VEX to an SBOM without scanning.
-- [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/) for what an authenticated scan uploads.
+- [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/) for what an authenticated scan uploads.

@@ -58,10 +58,10 @@ The organization's settings apply automatically once the CLI is authenticated. F
 GitHub Actions:
 
 ```yaml
-- name: Vulnetix scan
+- name: Vulnesis scan
   env:
-    VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-    VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
+    VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
+    VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
   run: vulnetix scan --severity high --block-malware --verbose
 ```
 
@@ -72,8 +72,8 @@ vulnetix:
   script:
     - vulnetix scan --severity high --block-malware --verbose
   variables:
-    VULNETIX_API_KEY: $VULNETIX_API_KEY
-    VULNETIX_ORG_ID: $VULNETIX_ORG_ID
+    VULNESIS_API_KEY: $VULNESIS_API_KEY
+    VULNESIS_ORG_ID: $VULNESIS_ORG_ID
 ```
 
 Rolling out a stricter gate:

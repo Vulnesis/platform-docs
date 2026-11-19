@@ -14,7 +14,7 @@ An `AWS_WAF` feed publishes `wafv2-rules.json`: a JSON array of WAFv2 `Rule` obj
 ## 1. Fetch and check
 
 ```bash
-FEED="https://vulnetix.com/feeds/<org-uuid>/<feed-uuid>"
+FEED="https://vulnes.is/feeds/<org-uuid>/<feed-uuid>"
 curl -fsSLO "$FEED/wafv2-rules.json"
 [ "$(curl -fsSL "$FEED/wafv2-rules.json.sha256")" = "$(sha256sum wafv2-rules.json | cut -d' ' -f1)" ]
 ```
@@ -103,6 +103,6 @@ aws wafv2 update-rule-group --name $NAME --scope $SCOPE --id "$ID" --lock-token 
 > [!CAREFUL] Rules that name your own resources
 > A rule using `RegexPatternSetReferenceStatement` or `IPSetReferenceStatement` carries an `ARN`. Those resources must exist in your account and region, or `create-rule-group` refuses the whole file. Check for them before you load a feed: `jq '.. | .ARN? // empty' wafv2-rules.json`.
 
-## Where to see it in Vulnetix
+## Where to see it in Vulnesis
 
-The **Web App Firewalls** tab of `/resolve/virtual-patching` shows the Web ACLs Vulnetix found in your connected AWS accounts. See [Cloud security](/cloud-security/).
+The **Web App Firewalls** tab of `/resolve/virtual-patching` shows the Web ACLs Vulnesis found in your connected AWS accounts. See [Cloud security](/cloud-security/).

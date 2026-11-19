@@ -55,11 +55,11 @@ jobs:
         run: yarn build
 
       # public/CNAME binds the custom domain. If it goes missing Pages unbinds
-      # docs.vulnetix.com, which looks like DNS but is not.
+      # docs.vulnes.is, which looks like DNS but is not.
       - name: Verify the custom domain survived the build
         run: |
           test -f dist/CNAME || { echo "dist/CNAME missing"; exit 1; }
-          grep -qx 'docs.vulnetix.com' dist/CNAME || { echo "dist/CNAME mismatch:"; cat dist/CNAME; exit 1; }
+          grep -qx 'docs.vulnes.is' dist/CNAME || { echo "dist/CNAME mismatch:"; cat dist/CNAME; exit 1; }
 
       - name: Check internal links
         run: node scripts/check-links.mjs dist
@@ -123,14 +123,14 @@ jobs:
       # cli tag embedded, and which release first had each kind.
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Vulnetix/cli
+          repository: Vulnesis/cli
           path: cli
           fetch-depth: 0
           fetch-tags: true
 
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Vulnetix/config-schemas
+          repository: Vulnesis/config-schemas
           path: config-schemas
           ref: ${{ steps.releases.outputs.schemas }}
           fetch-depth: 0
@@ -138,13 +138,13 @@ jobs:
 
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Vulnetix/terraform-provider-resolve
+          repository: Vulnesis/terraform-provider-resolve
           path: terraform-provider-resolve
           fetch-depth: 0
 
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Vulnetix/malscan-engine
+          repository: Vulnesis/malscan-engine
           path: malscan-engine
           # scanner-catalogues reads patterns.toml at the tag the CLI pins.
           fetch-depth: 0

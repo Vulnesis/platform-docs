@@ -1,7 +1,7 @@
 ---
-title: "Vulnetix/cli/cbom action"
+title: "Vulnesis/cli/cbom action"
 nav: "cbom"
-description: "The Vulnetix/cli/cbom GitHub Action: inputs, outputs, permissions and a complete workflow with artifact upload and attestation."
+description: "The Vulnesis/cli/cbom GitHub Action: inputs, outputs, permissions and a complete workflow with artifact upload and attestation."
 order: 2
 sources: [cli/cbom/action.yml, cli/tools/actiongen/spec.go, cli/action-lib/run.sh, cli/action-lib/finish.sh, cli/docs/github-actions/cbom.md]
 checked: [cli@v4.24.2]
@@ -13,10 +13,10 @@ Installs the CLI and runs [`vulnetix cbom`](/sbom/cbom/overview/), which writes 
 ```yaml
 steps:
   - uses: actions/checkout@v5
-  - uses: Vulnetix/cli/cbom@v4
+  - uses: Vulnesis/cli/cbom@v4
     with:
-      org-id: ${{ secrets.VULNETIX_ORG_ID }}
-      api-key: ${{ secrets.VULNETIX_API_KEY }}
+      org-id: ${{ secrets.VULNESIS_ORG_ID }}
+      api-key: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 Runs `vulnetix cbom --path <path> [--sign]` with the identity inputs below. Credentials are optional: without `org-id` and a credential the CLI runs in community mode. They reach the CLI only as environment variables; see [Credentials](/cli/ci-cd/github-actions/#credentials).
@@ -25,12 +25,12 @@ Runs `vulnetix cbom --path <path> [--sign]` with the identity inputs below. Cred
 
 | Input | Description | Default |
 |---|---|---|
-| `version` | Release of the Vulnetix CLI to install. Empty installs the release this action ref was cut from, which is what a lock file or a SHA pin expects. An exact tag (v4.0.0), a major channel (v4) or latest float instead | - |
+| `version` | Release of the Vulnesis CLI to install. Empty installs the release this action ref was cut from, which is what a lock file or a SHA pin expects. An exact tag (v4.0.0), a major channel (v4) or latest float instead | - |
 | `binary-path` | Path to an already-built vulnetix binary to use instead of downloading a release | - |
 | `verify-provenance` | Verify the downloaded CLI against the signed SLSA provenance of its release with cosign, which this action installs: true or false. Every v4 release is signed; set false to install a v3 release that has no provenance.sigstore.json. The SHA-256 checksum is checked either way | `true` |
-| `org-id` | Vulnetix organization ID (UUID), used with api-key. Optional: without credentials the CLI runs in community mode | - |
-| `api-key` | Vulnetix API key. Passed to the CLI as VULNETIX_API_KEY, never on the command line | - |
-| `api-token` | Vulnetix API token; the server resolves the organization. Passed as VULNETIX_API_TOKEN | - |
+| `org-id` | Vulnesis organization ID (UUID), used with api-key. Optional: without credentials the CLI runs in community mode | - |
+| `api-key` | Vulnesis API key. Passed to the CLI as VULNESIS_API_KEY, never on the command line | - |
+| `api-token` | Vulnesis API token; the server resolves the organization. Passed as VULNESIS_API_TOKEN | - |
 | `path` | Directory to scan | `.` |
 | `args` | Extra arguments for the command, separated by spaces or newlines (no shell quoting is applied) | - |
 | `extra-args` | Extra arguments, one per line, so a value may contain spaces | - |
@@ -50,7 +50,7 @@ Runs `vulnetix cbom --path <path> [--sign]` with the identity inputs below. Cred
 `args` is split on spaces and newlines. No shell quoting is applied, and nothing is evaluated.
 
 
-The identity inputs arrived in CLI v4.15.0. Values without spaces, such as `--bom-serial` and `--component-version`, go in `args` or the `VULNETIX_BOM_*` and `VULNETIX_COMPONENT_*` environment variables. See [Overlay files](/sbom/author/overlay/#github-actions).
+The identity inputs arrived in CLI v4.15.0. Values without spaces, such as `--bom-serial` and `--component-version`, go in `args` or the `VULNESIS_BOM_*` and `VULNESIS_COMPONENT_*` environment variables. See [Overlay files](/sbom/author/overlay/#github-actions).
 
 ## Outputs
 
@@ -73,7 +73,7 @@ The identity inputs arrived in CLI v4.15.0. Values without spaces, such as `--bo
 ## Example workflow
 
 ```yaml
-name: Vulnetix CBOM
+name: Vulnesis CBOM
 on:
   push:
     branches: [main]
@@ -86,10 +86,10 @@ jobs:
       attestations: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/cbom@v4
+      - uses: Vulnesis/cli/cbom@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           artifact-name: vulnetix-cbom
           attest: true
 ```
@@ -106,11 +106,11 @@ jobs:
 The built-in `artifact-name` and `attest` inputs are the short form. To control those steps yourself, use the outputs. The action's last step fails the job with the command's exit code, so later steps need `if: ${{ !cancelled() }}`; the example turns the failure off and re-raises it at the end.
 
 ```yaml
-      - uses: Vulnetix/cli/cbom@v4
+      - uses: Vulnesis/cli/cbom@v4
         id: vulnetix
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           fail-on-findings: false
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
@@ -135,5 +135,5 @@ Verify an attestation made this way with `gh attestation verify <file> --repo <o
 
 - [CBOM overview](/sbom/cbom/overview/)
 - [CBOM catalogue format](/sbom/cbom/catalog-format/)
-- [All Vulnetix actions](/cli/ci-cd/github-actions/#an-action-for-each-command)
+- [All Vulnesis actions](/cli/ci-cd/github-actions/#an-action-for-each-command)
 - [Versions and release channels](/cli/ci-cd/versions-and-channels/)

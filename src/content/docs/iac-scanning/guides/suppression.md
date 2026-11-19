@@ -14,7 +14,7 @@ Three methods, applied in this order before the report, SARIF, upload and gates:
 |---|---|---|
 | Path exclusion | Files never read | `--exclude`, `.gitignore` |
 | `nosec` comment | One line, or one file | The source file |
-| Ignore rule | Rule, file or both, in one repository | `.vulnetix/memory.yaml` and, when authenticated, your Vulnetix organisation |
+| Ignore rule | Rule, file or both, in one repository | `.vulnetix/memory.yaml` and, when authenticated, your Vulnesis organisation |
 
 ## Exclude paths
 
@@ -50,7 +50,7 @@ resource "aws_security_group" "bastion" {
 
 The finding is reported on the line the rule names. For `VNX-TF-002` that is the `cidr_blocks` line; for a rule that reports a missing setting (`VNX-TF-006` on an instance with no `metadata_options` block) it is the resource's header line. Check the line in the report before adding the comment.
 
-Each suppressed finding is recorded in `.vulnetix/memory.yaml` and, when authenticated, sent to Vulnetix as a suppression of type `nosec`.
+Each suppressed finding is recorded in `.vulnetix/memory.yaml` and, when authenticated, sent to Vulnesis as a suppression of type `nosec`.
 
 ## Ignore rules
 

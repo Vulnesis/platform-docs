@@ -21,7 +21,7 @@ A block returns the same status, body and headers for every ecosystem. Most pack
 | `422 Unprocessable Content` | `eol` | End of life, or more than the version lag behind the newest. Also any unmapped reason. | Move to a supported version. |
 | `403 Forbidden` | `denylisted` | The package or version is on your deny list. | Ask whoever owns curation. |
 | `403 Forbidden` | `not_allowlisted` | The ecosystem is in `allowlist_only` and the package has no allow entry. | Request an allow entry. |
-| `402 Payment Required` | `plan` | The ecosystem needs the Package Firewall add-on, which your organization does not have. The pkg.go.dev API and the AUR are free. | Add it under [Billing](https://www.vulnetix.com/resolve/billing#addons). Enterprise includes it. |
+| `402 Payment Required` | `plan` | The ecosystem needs the Package Firewall add-on, which your organization does not have. The pkg.go.dev API and the AUR are free. | Add it under [Billing](https://www.vulnes.is/resolve/billing#addons). Enterprise includes it. |
 
 In filtered ecosystems a blocked version is usually removed from the metadata, so a normal resolve never sees an error. You get the status when you request that exact version, for example from a lockfile.
 
@@ -55,7 +55,7 @@ Message: `Package published <RFC 3339 time> is within <N> days cooldown period`.
 
 ### plan
 
-`<Display> firewall requires the Package Firewall add-on`, for example `npm firewall requires the Package Firewall add-on`. The body adds `"upgrade": "https://www.vulnetix.com/resolve/billing#addons"`. The reason stays `plan` so the decision log and existing filters keep working.
+`<Display> firewall requires the Package Firewall add-on`, for example `npm firewall requires the Package Firewall add-on`. The body adds `"upgrade": "https://www.vulnes.is/resolve/billing#addons"`. The reason stays `plan` so the decision log and existing filters keep working.
 
 ## JSON body
 
@@ -67,13 +67,13 @@ Message: `Package published <RFC 3339 time> is within <N> days cooldown period`.
 }
 ```
 
-A plan block has `"error": "upgrade required"` and `"upgrade": "https://www.vulnetix.com/resolve/billing#addons"`.
+A plan block has `"error": "upgrade required"` and `"upgrade": "https://www.vulnes.is/resolve/billing#addons"`.
 
 ## Other statuses
 
 | Status | Meaning |
 |---|---|
-| `401 Unauthorized` | No `Authorization` header, an unparseable one, or wrong or inactive credentials. Carries `WWW-Authenticate: Basic realm="Vulnetix Package Firewall"`. |
+| `401 Unauthorized` | No `Authorization` header, an unparseable one, or wrong or inactive credentials. Carries `WWW-Authenticate: Basic realm="Vulnesis Package Firewall"`. |
 | `404 Not Found` | The adapter does not recognise the path, or the upstream said `404`. |
 | `410 Gone` | Passed through from upstream. |
 | `500 Internal Server Error` | The organization config could not be loaded, or an upstream body could not be read. |

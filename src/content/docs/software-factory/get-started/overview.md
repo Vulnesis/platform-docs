@@ -7,7 +7,7 @@ checked: [vdb-site@fe1ff17, website@a31d470]
 updated: 05 Nov 2026
 ---
 
-Software Factory is for engineering and security teams that want routine work on their GitHub repositories, such as fixing a vulnerable package or answering a failed check, done by agents without anyone starting each job by hand. The factory starts work from repository events and keeps a person in the loop wherever a workflow asks for one. Use it for work that should happen on its own. Use [Pix](/pix/) when you are working with a coding agent yourself and want Vulnetix inside that session.
+Software Factory is for engineering and security teams that want routine work on their GitHub repositories, such as fixing a vulnerable package or answering a failed check, done by agents without anyone starting each job by hand. The factory starts work from repository events and keeps a person in the loop wherever a workflow asks for one. Use it for work that should happen on its own. Use [Pix](/pix/) when you are working with a coding agent yourself and want Vulnesis inside that session.
 
 Software Factory turns events in your repositories into work done by agents. A pull request opens, a check fails, a scanner finds a vulnerable package, a label is added, a schedule fires: the factory matches the event to a **workflow**, starts a **run**, and walks the run through the workflow's graph. Some steps are decided by a fast classifier model, some are deterministic checks, some dispatch a **crew** of agents to a machine, and some wait for a person. The last step writes the result back to GitHub.
 
@@ -18,7 +18,7 @@ Everything the factory does is recorded. Every step lands in the [event stream](
 
 ## Core objects
 
-Most pages in these docs describe one of these. The Resolve Platform column is the page you see it on, under `https://www.vulnetix.com/resolve/`.
+Most pages in these docs describe one of these. The Resolve Platform column is the page you see it on, under `https://www.vulnes.is/resolve/`.
 
 | Object | What it is | Resolve Platform |
 |---|---|---|
@@ -45,7 +45,7 @@ Most pages in these docs describe one of these. The Resolve Platform column is t
 
 ## Where the work runs
 
-Crews run on **hosts**: machines running the [Belai](/software-factory/belai/install-and-sign-in/) agent harness. A host is either a [Pix Sandbox](/software-factory/workforce/pix-sandboxes/), a container Vulnetix runs for you, or a machine of your own connected with `belai rc`. The factory picks the host for each step from the step's `runOn` setting and the [placement rules](/software-factory/workforce/hosts-and-placement/).
+Crews run on **hosts**: machines running the [Belai](/software-factory/belai/install-and-sign-in/) agent harness. A host is either a [Pix Sandbox](/software-factory/workforce/pix-sandboxes/), a container Vulnesis runs for you, or a machine of your own connected with `belai rc`. The factory picks the host for each step from the step's `runOn` setting and the [placement rules](/software-factory/workforce/hosts-and-placement/).
 
 ## Who can use it
 
@@ -56,7 +56,7 @@ The Software Factory (`/v1/factory/*`) and the Belai console (`/v1/belai/*`) are
 | Community | One, free | Any number, each billed on its own subscription, from $85 a month |
 | Pro, Business, Enterprise | Any number | Any number, each billed on its own subscription |
 
-On Community the factory runs on one machine of your own with `belai rc`, with no Vulnetix charge. A second self-hosted host is refused while the first is active, with `403`, `"code": "host_limit"` and `"requiredPlan": "pro"`, and Belai prints "Community includes one self-hosted host; add more with Pro or a Pix Sandbox". A host counts as active while it has been seen in the last 45 seconds, so when the first machine stops, another can take its place. Your own Pix Sandboxes never count against the limit. A sandbox counts while its subscription is active or past due.
+On Community the factory runs on one machine of your own with `belai rc`, with no Vulnesis charge. A second self-hosted host is refused while the first is active, with `403`, `"code": "host_limit"` and `"requiredPlan": "pro"`, and Belai prints "Community includes one self-hosted host; add more with Pro or a Pix Sandbox". A host counts as active while it has been seen in the last 45 seconds, so when the first machine stops, another can take its place. Your own Pix Sandboxes never count against the limit. A sandbox counts while its subscription is active or past due.
 
 On Community, decision steps (the System One classifier calls a workflow makes) have a smaller daily allowance than on a paid plan or a Pix Sandbox. Crew steps on your own machine run on your own models and keys.
 
@@ -97,10 +97,10 @@ On Community, decision steps (the System One classifier calls a workflow makes) 
 
 ## Elsewhere
 
-- The [Software Factory product page](https://www.vulnetix.com/features/software-factory) explains what it is for and how it is priced.
-- [Pix Sandbox](https://www.vulnetix.com/features/pix-sandbox) describes the machines crews run on.
-- [Belai](https://belai.vulnetix.com/) is the agent harness inside every session.
-- [Announcing Software Factory](https://www.vulnetix.com/articles/announcing-software-factory) gives the reasoning behind the design.
+- The [Software Factory product page](https://www.vulnes.is/features/software-factory) explains what it is for and how it is priced.
+- [Pix Sandbox](https://www.vulnes.is/features/pix-sandbox) describes the machines crews run on.
+- [Belai](https://belai.vulnes.is/) is the agent harness inside every session.
+- [Announcing Software Factory](https://www.vulnes.is/articles/announcing-software-factory) gives the reasoning behind the design.
 
 ## Platform IaC
 

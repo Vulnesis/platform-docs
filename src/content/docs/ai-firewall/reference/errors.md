@@ -87,12 +87,12 @@ These are written in the plain error envelope with `type: "policy_violation"` or
 | `provider_key_missing` | `policy_violation` | `no <Name> API key configured for your organisation: …` | `vulnetix ai-firewall key set <slug>`. For Kiro: `vulnetix ai-firewall kiro login`. |
 | `model_denied` | `policy_violation` | `model <model> is denied by organisation policy` | Remove the deny entry, or use another model. |
 | `model_not_allowed` | `policy_violation` | `model <model> is not in the organisation allowlist` | The provider has at least one `allow` entry, so only listed models pass. Add this one. See [Models](/ai-firewall/policy/models/). |
-| `vault_no_grant` | `permission_error` | `no <slug> key in the secrets vault is allowed for this API key owner` | The provider's key is a vault bundle and none of its keys is granted to the principal whose Vulnetix key made the call. Grant it in the [secrets vault](https://www.vulnetix.com/resolve/vault). |
+| `vault_no_grant` | `permission_error` | `no <slug> key in the secrets vault is allowed for this API key owner` | The provider's key is a vault bundle and none of its keys is granted to the principal whose Vulnesis key made the call. Grant it in the [secrets vault](https://www.vulnes.is/resolve/vault). |
 | `vault_key_expired` | `permission_error` | `the <slug> key for this API key owner has expired; …` | Extend or replace the key in the vault. |
 | `vault_kiro_relogin` | `permission_error` | AWS no longer accepts the stored Kiro sign-in | Run `vulnetix ai-firewall kiro login` again. |
 
 > [!CAREFUL] The provider_key_missing message names an old Resolve Platform path
-> The message points at `https://www.vulnetix.com/vdb-ai-firewall#byok`. The Resolve Platform page is now [/resolve/ai-firewall](https://www.vulnetix.com/resolve/ai-firewall), and keys are stored on its Connect tab.
+> The message points at `https://www.vulnes.is/vdb-ai-firewall#byok`. The Resolve Platform page is now [/resolve/ai-firewall](https://www.vulnes.is/resolve/ai-firewall), and keys are stored on its Connect tab.
 
 ## Authentication (401)
 
@@ -100,10 +100,10 @@ All four use `type: "invalid_request_error"` and code `invalid_api_key`.
 
 | Message | Cause |
 |---|---|
-| `missing organisation: use https://guardrails.vulnetix.com/{providerSlug}/{orgUuid}/v1 as the base URL` | No org UUID in the path and no `X-Organisation-UUID` header |
+| `missing organisation: use https://guardrails.vulnes.is/{providerSlug}/{orgUuid}/v1 as the base URL` | No org UUID in the path and no `X-Organisation-UUID` header |
 | `unknown organisation` | The org segment is not a UUID, or no active organisation has it |
-| `missing Vulnetix API key: send it as Authorization: Bearer or x-api-key` | No credential header |
-| `invalid Vulnetix API key` | The key is not the HMAC of this org UUID. Most often a provider key (`sk-…`) sent instead of the Vulnetix key, or a key for a different principal than the UUID in the URL. |
+| `missing Vulnesis API key: send it as Authorization: Bearer or x-api-key` | No credential header |
+| `invalid Vulnesis API key` | The key is not the HMAC of this org UUID. Most often a provider key (`sk-…`) sent instead of the Vulnesis key, or a key for a different principal than the UUID in the URL. |
 
 ## Routing and request shape (400, 404, 413)
 

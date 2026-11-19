@@ -45,7 +45,7 @@ test('the generators job checks out the pins and does not ask GitHub for the lat
   const yml = readFileSync(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8');
   const job = yml.slice(yml.indexOf('\n  generators:'), yml.indexOf('\n  deploy:'));
   assert.doesNotMatch(job, /releases\/latest/);
-  assert.doesNotMatch(job, /VULNETIX_CLI_VERSION/);
+  assert.doesNotMatch(job, /VULNESIS_CLI_VERSION/);
   assert.match(job, /releases\.json/);
   assert.match(job, /ref: \$\{\{ steps\.releases\.outputs\.schemas \}\}/);
 });
@@ -80,20 +80,20 @@ test('latest() sends the bearer token only when a token env var is set', () => w
     seen.push({ url, headers: opts.headers });
     return { json: async () => ({ tag_name: 'v4.10.2' }) };
   };
-  await latest('Vulnetix/cli');
+  await latest('Vulnesis/cli');
   assert.equal(seen[0].headers.Authorization, undefined);
-  assert.equal(seen[0].url, 'https://api.github.com/repos/Vulnetix/cli/releases/latest');
+  assert.equal(seen[0].url, 'https://api.github.com/repos/Vulnesis/cli/releases/latest');
   process.env.GITHUB_TOKEN = 'sekrit';
   seen.length = 0;
-  await latest('Vulnetix/cli');
+  await latest('Vulnesis/cli');
   assert.equal(seen[0].headers.Authorization, 'Bearer sekrit');
 }));
 
 test('latest() throws naming the repo on a non-semver or missing tag', () => withStubs(async () => {
   globalThis.fetch = async () => ({ json: async () => ({ tag_name: 'main' }) });
-  await assert.rejects(latest('Vulnetix/cli'), /Vulnetix\/cli: no release/);
+  await assert.rejects(latest('Vulnesis/cli'), /Vulnetix\/cli: no release/);
   globalThis.fetch = async () => ({ json: async () => ({}) });
-  await assert.rejects(latest('Vulnetix/config-schemas'), /Vulnetix\/config-schemas: no release/);
+  await assert.rejects(latest('Vulnesis/config-schemas'), /Vulnetix\/config-schemas: no release/);
 }));
 
 test('the CLI prints the pins JSON with no arguments and exits 0', () => {

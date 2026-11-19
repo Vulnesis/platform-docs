@@ -8,7 +8,7 @@ checked: [cli@v4.13.1]
 updated: 04 Nov 2026
 ---
 
-`vulnetix surface liveness` checks that the routes and hosts on your organisation's attack surface still answer. It runs on your infrastructure, so it can reach internal hosts that Vulnetix's own checker cannot.
+`vulnetix surface liveness` checks that the routes and hosts on your organisation's attack surface still answer. It runs on your infrastructure, so it can reach internal hosts that Vulnesis's own checker cannot.
 
 ```bash
 vulnetix surface liveness [flags]

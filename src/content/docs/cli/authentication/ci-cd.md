@@ -12,8 +12,8 @@ updated: 02 Nov 2026
 
 ```sh
 # job environment, from secrets
-VULNETIX_ORG_ID=...
-VULNETIX_API_KEY=...
+VULNESIS_ORG_ID=...
+VULNESIS_API_KEY=...
 
 # first step of the job
 vulnetix auth verify
@@ -25,8 +25,8 @@ vulnetix auth verify
 
 | Credential | Variables | For CI |
 |---|---|---|
-| ApiKey | `VULNETIX_API_KEY` + `VULNETIX_ORG_ID` | The usual choice. The org ID is not secret. |
-| Bearer token | `VULNETIX_API_TOKEN` | One variable; outranks everything, so a wrong value cannot be rescued by another source. |
+| ApiKey | `VULNESIS_API_KEY` + `VULNESIS_ORG_ID` | The usual choice. The org ID is not secret. |
+| Bearer token | `VULNESIS_API_TOKEN` | One variable; outranks everything, so a wrong value cannot be rescued by another source. |
 | SigV4 secret | `VVD_ORG` + `VVD_SECRET` | Avoid on shared runners. The secret derives request keys. |
 
 Give each pipeline its own key where your plan allows, so one can be revoked without breaking the rest.
@@ -35,11 +35,11 @@ Give each pipeline its own key where your plan allows, so one can be revoked wit
 
 | Platform | Where the secret lives | Expose it as |
 |---|---|---|
-| GitHub Actions | Repository or organisation secrets | `env: { VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }} }` on the job |
+| GitHub Actions | Repository or organisation secrets | `env: { VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }} }` on the job |
 | GitLab CI | CI/CD variables, masked and protected | Variables are exported to every job automatically |
 | Bitbucket Pipelines | Repository or deployment variables, secured | Exported automatically |
 | Azure Pipelines | A variable group or Key Vault, marked secret | Secret variables are not exported: map them with `env:` on the step |
-| Jenkins | Credentials store | `withCredentials([string(credentialsId: '...', variable: 'VULNETIX_API_KEY')])` |
+| Jenkins | Credentials store | `withCredentials([string(credentialsId: '...', variable: 'VULNESIS_API_KEY')])` |
 | Kubernetes | A `Secret` | `env[].valueFrom.secretKeyRef` |
 
 Platform pages with complete pipelines: [CI/CD](/cli/ci-cd/overview/).
@@ -50,13 +50,13 @@ Platform pages with complete pipelines: [CI/CD](/cli/ci-cd/overview/).
 
 ```sh
 vulnetix auth login --api-key 6e40f1c3...   # visible in ps and logs
-vulnetix auth verify                        # reads VULNETIX_API_KEY from the environment
+vulnetix auth verify                        # reads VULNESIS_API_KEY from the environment
 ```
 
 **Never echo it.** Print its length or the source instead:
 
 ```sh
-echo "key length: ${#VULNETIX_API_KEY}"
+echo "key length: ${#VULNESIS_API_KEY}"
 vulnetix auth status | head -n 8
 ```
 
@@ -95,9 +95,9 @@ spec:
             allowPrivilegeEscalation: false
             capabilities: { drop: ["ALL"] }
           env:
-            - name: VULNETIX_ORG_ID
+            - name: VULNESIS_ORG_ID
               valueFrom: { secretKeyRef: { name: vulnetix, key: org-id } }
-            - name: VULNETIX_API_KEY
+            - name: VULNESIS_API_KEY
               valueFrom: { secretKeyRef: { name: vulnetix, key: api-key } }
             - name: HOME
               value: /tmp

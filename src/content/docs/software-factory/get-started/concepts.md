@@ -37,7 +37,7 @@ A **run** is one execution of a published version. It is made of **steps**, one 
 | Node | Decides with | Typical use |
 |---|---|---|
 | [Trigger](/software-factory/workflows/nodes/trigger/) | The event it matches | Starts the run. |
-| [Scan](/software-factory/workflows/nodes/scan/) | Vulnetix scanners | Find vulnerable packages, secrets, malware. |
+| [Scan](/software-factory/workflows/nodes/scan/) | Vulnesis scanners | Find vulnerable packages, secrets, malware. |
 | [Decision](/software-factory/workflows/nodes/decision/) | A System One classifier with a confidence threshold | Triage: fix now, schedule, ignore. |
 | [Gate](/software-factory/workflows/nodes/gate/) | Deterministic checks, with no model | Tests pass, release jail clean, quality gate. |
 | [Crew](/software-factory/workflows/nodes/crew/) | Agents on a host | Write the fix, the test, the review. |
@@ -50,7 +50,7 @@ A **run** is one execution of a published version. It is made of **steps**, one 
 
 ## Hosts, crews and agents
 
-An **agent** is a Belai profile: a model, a system prompt, tools and limits. A **crew** is a set of agents dispatched together, up to 8 replicas, to one **host** for one step. A host is a machine running Belai: a [Pix Sandbox](/software-factory/workforce/pix-sandboxes/) that Vulnetix runs, or your own machine connected with `belai rc`. The factory picks a host for each crew step from its `runOn` rule. If no host can take it, the step waits and the card says why. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
+An **agent** is a Belai profile: a model, a system prompt, tools and limits. A **crew** is a set of agents dispatched together, up to 8 replicas, to one **host** for one step. A host is a machine running Belai: a [Pix Sandbox](/software-factory/workforce/pix-sandboxes/) that Vulnesis runs, or your own machine connected with `belai rc`. The factory picks a host for each crew step from its `runOn` rule. If no host can take it, the step waits and the card says why. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
 
 ## The board
 

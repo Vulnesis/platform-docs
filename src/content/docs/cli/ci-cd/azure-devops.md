@@ -1,7 +1,7 @@
 ---
 title: Azure Pipelines
 nav: Azure DevOps
-description: Run Vulnetix in Azure Pipelines with secrets from a variable group or Key Vault mapped into the step, gates, SARIF artifacts and soft failure.
+description: Run Vulnesis in Azure Pipelines with secrets from a variable group or Key Vault mapped into the step, gates, SARIF artifacts and soft failure.
 order: 7
 sources: [cli/internal/config/config.go, cli/install.sh, cli/cmd/scan.go]
 checked: [cli@24498404a]
@@ -10,7 +10,7 @@ updated: 02 Nov 2026
 
 ## Secrets
 
-Create a variable group (**Pipelines > Library**), for example `vulnetix`, with `VULNETIX_ORG_ID` and `VULNETIX_API_KEY`, the key marked secret. A group can also be linked to Azure Key Vault.
+Create a variable group (**Pipelines > Library**), for example `vulnetix`, with `VULNESIS_ORG_ID` and `VULNESIS_API_KEY`, the key marked secret. A group can also be linked to Azure Key Vault.
 
 > [!CAREFUL] Secret variables are not in the environment
 > Azure Pipelines does not export secret variables to scripts. Map each one with `env:` on the step, or the CLI runs as community and nothing is published.
@@ -36,19 +36,19 @@ variables:
 steps:
   - checkout: self
   - bash: |
-      curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+      curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
       echo "##vso[task.prependpath]$HOME/.local/bin"
-    displayName: Install Vulnetix CLI
+    displayName: Install Vulnesis CLI
   - bash: |
       vulnetix auth verify
       mkdir -p "$(Build.ArtifactStagingDirectory)/vulnetix"
       vulnetix scan --fail-on high \
         -o "$(Build.ArtifactStagingDirectory)/vulnetix/sbom.cdx.json" \
         -o "$(Build.ArtifactStagingDirectory)/vulnetix/results.sarif"
-    displayName: Vulnetix scan
+    displayName: Vulnesis scan
     env:
-      VULNETIX_ORG_ID: $(VULNETIX_ORG_ID)
-      VULNETIX_API_KEY: $(VULNETIX_API_KEY)
+      VULNESIS_ORG_ID: $(VULNESIS_ORG_ID)
+      VULNESIS_API_KEY: $(VULNESIS_API_KEY)
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
@@ -64,11 +64,11 @@ On Windows agents (`vmImage: windows-latest`) the `bash` step runs Git Bash. The
 
 ```yaml
   - bash: vulnetix scan --fail-on high
-    displayName: Vulnetix gate (report only)
+    displayName: Vulnesis gate (report only)
     continueOnError: true
     env:
-      VULNETIX_ORG_ID: $(VULNETIX_ORG_ID)
-      VULNETIX_API_KEY: $(VULNETIX_API_KEY)
+      VULNESIS_ORG_ID: $(VULNESIS_ORG_ID)
+      VULNESIS_API_KEY: $(VULNESIS_API_KEY)
 ```
 
 The step shows as succeeded with issues; the run is not failed.
@@ -89,14 +89,14 @@ parameters:
 
 steps:
   - bash: |
-      curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+      curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
       echo "##vso[task.prependpath]$HOME/.local/bin"
-    displayName: Install Vulnetix CLI
+    displayName: Install Vulnesis CLI
   - bash: vulnetix ${{ parameters.command }}
     displayName: vulnetix ${{ parameters.command }}
     env:
-      VULNETIX_ORG_ID: $(VULNETIX_ORG_ID)
-      VULNETIX_API_KEY: $(VULNETIX_API_KEY)
+      VULNESIS_ORG_ID: $(VULNESIS_ORG_ID)
+      VULNESIS_API_KEY: $(VULNESIS_API_KEY)
 ```
 
 ```yaml

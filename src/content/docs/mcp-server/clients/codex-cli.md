@@ -15,7 +15,7 @@ Codex CLI configures MCP servers in TOML.
 
 ```toml
 [mcp_servers.vulnetix]
-url = "https://mcp.vulnetix.com/mcp"
+url = "https://mcp.vulnes.is/mcp"
 http_headers = { Authorization = "ApiKey <orgId>:<hex>" }
 ```
 
@@ -23,7 +23,7 @@ The sub-table form is equivalent:
 
 ```toml
 [mcp_servers.vulnetix]
-url = "https://mcp.vulnetix.com/mcp"
+url = "https://mcp.vulnes.is/mcp"
 
 [mcp_servers.vulnetix.http_headers]
 Authorization = "ApiKey <orgId>:<hex>"
@@ -32,7 +32,7 @@ Authorization = "ApiKey <orgId>:<hex>"
 The table is `mcp_servers` with an underscore. Every string is double-quoted, including the header value with its colon.
 
 > [!CAREFUL] `codex mcp add` cannot set this header
-> Its only auth option is `--bearer-token-env-var`, which always sends `Authorization: Bearer <token>`. A Vulnetix API key uses the `ApiKey` scheme, so write `http_headers` in the file. `codex mcp add` works only with a genuine Bearer credential: an identity-provider API token or a `vdb_token` session JWT.
+> Its only auth option is `--bearer-token-env-var`, which always sends `Authorization: Bearer <token>`. A Vulnesis API key uses the `ApiKey` scheme, so write `http_headers` in the file. `codex mcp add` works only with a genuine Bearer credential: an identity-provider API token or a `vdb_token` session JWT.
 
 ## Check it
 

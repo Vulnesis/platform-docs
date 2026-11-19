@@ -1,6 +1,6 @@
 ---
 title: Publication targets
-description: Publication targets are remote TEA servers a publisher mirrors to, defined by the schema and overlay; the Vulnetix server answers MIRRORING_UNSUPPORTED today.
+description: Publication targets are remote TEA servers a publisher mirrors to, defined by the schema and overlay; the Vulnesis server answers MIRRORING_UNSUPPORTED today.
 order: 3
 sources: [saas/prisma/models/tea-publisher.prisma, tea-spec/spec/publisher/overlay.yaml, vdb-site/api/internal/handler/tea_publisher_access.go, vdb-site/api/internal/handler/tea_publisher_spec_test.go, vdb-site/api/internal/handler/tea_routes.go]
 checked: [saas@50cedf37, tea-spec@6c93819, vdb-site@1a06d67]
@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 ---
 
 > [!CAREFUL] Not served yet
-> The Vulnetix TEA server does not mirror. The four `/publicationTargets` operations are not routed, and naming a target in an access policy's `publishTo` is refused with `501 MIRRORING_UNSUPPORTED`. This page describes the model so you know what the field means and what will be stored when mirroring ships.
+> The Vulnesis TEA server does not mirror. The four `/publicationTargets` operations are not routed, and naming a target in an access policy's `publishTo` is refused with `501 MIRRORING_UNSUPPORTED`. This page describes the model so you know what the field means and what will be stored when mirroring ships.
 
 A publication target is another TEA server your organisation copies objects to, for example a customer's or a regulator's TEA server. Targets are registered once and then named by UUID in an object's `publishTo`.
 
@@ -38,7 +38,7 @@ Each mirroring attempt would be recorded per object and target with state `PENDI
 
 ## Operations in the overlay
 
-| Method and path | operationId | On the Vulnetix server |
+| Method and path | operationId | On the Vulnesis server |
 |---|---|---|
 | `GET /publicationTargets` | `listTeaPublicationTargets` | not routed (`404`) |
 | `POST /publicationTargets` | `createTeaPublicationTarget` | not routed (`404`) |

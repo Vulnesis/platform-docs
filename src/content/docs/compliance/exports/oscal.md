@@ -8,12 +8,12 @@ updated: 02 Nov 2026
 ---
 
 ```bash
-curl -s -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
+curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
   -o report-oscal.json \
-  "https://www.vulnetix.com/api/site/v1/compliance/reports/$REPORT_ID/export.oscal.json"
+  "https://www.vulnes.is/api/site/v1/compliance/reports/$REPORT_ID/export.oscal.json"
 ```
 
-The export is one OSCAL **assessment-results** document, `oscal-version` `1.1.2`, the same for all ten frameworks. Vulnetix's tests validate it against the official OSCAL 1.1.2 complete JSON schema. `?includeArchived=true` adds archived notes and evidence.
+The export is one OSCAL **assessment-results** document, `oscal-version` `1.1.2`, the same for all ten frameworks. Vulnesis's tests validate it against the official OSCAL 1.1.2 complete JSON schema. `?includeArchived=true` adds archived notes and evidence.
 
 ## Document structure
 
@@ -22,7 +22,7 @@ The export is one OSCAL **assessment-results** document, `oscal-version` `1.1.2`
 | `metadata.title` | Report name and framework name |
 | `metadata.last-modified` | Export time |
 | `import-ap.href` | `#<uuid>` of a back-matter resource (see below) |
-| `back-matter.resources[0]` | The assessment approach: no separate assessment plan is published; the approach is Vulnetix's control mapping for the framework, run over the report's period and scope. Props `type: assessment-approach` and `framework: <framework id>` |
+| `back-matter.resources[0]` | The assessment approach: no separate assessment plan is published; the approach is Vulnesis's control mapping for the framework, run over the report's period and scope. Props `type: assessment-approach` and `framework: <framework id>` |
 | `results[0].start`, `.end` | The report's period |
 | `results[0].reviewed-controls` | Every control in the report, as `include-controls` |
 | `results[0].observations` | One per evidence item and per uploaded file |
@@ -40,8 +40,8 @@ Each control becomes a finding:
 | `target.type` | `objective-id` |
 | `target.target-id` | The control id as an OSCAL token (below) |
 | `target.title` | The status label shown in the Resolve Platform and PDF |
-| `target.status` | `state` and `reason`, mapped from the Vulnetix status (below) |
-| `props` | `assessment-status`: the Vulnetix status token; `control-label`: the original control label. Both in namespace `https://vulnetix.com/ns/oscal` |
+| `target.status` | `state` and `reason`, mapped from the Vulnesis status (below) |
+| `props` | `assessment-status`: the Vulnesis status token; `control-label`: the original control label. Both in namespace `https://vulnes.is/ns/oscal` |
 | `remarks` | Each gap, as `Gap: ...`, and each note with its author |
 | `related-observations` | The observations behind the control |
 
@@ -49,14 +49,14 @@ Each control becomes a finding:
 
 OSCAL's objective status is binary. `reason` carries the distinction, so a not-applicable or informational control never reads as a failure:
 
-| Vulnetix status | `state` | `reason` |
+| Vulnesis status | `state` | `reason` |
 |---|---|---|
 | `satisfied` | `satisfied` | `pass` |
 | `gap` | `not-satisfied` | `fail` |
 | `partial`, `informational`, `not-applicable` | `not-satisfied` | `other` |
 | none set | `not-satisfied` | `other`, with `assessment-status` = `unassessed` |
 
-Read the `assessment-status` prop when you need the exact Vulnetix status.
+Read the `assessment-status` prop when you need the exact Vulnesis status.
 
 ### Control ids
 
@@ -83,7 +83,7 @@ The original label is kept in the finding's `title` and in the `control-label` p
 
 ## Stable UUIDs
 
-Every UUID is a version 5 UUID over the report id and the control or element it names, in the namespace `https://vulnetix.com/ns/oscal`. Exporting an unchanged report again gives the same UUIDs, so a GRC tool can match findings across exports and a re-export can be diffed against the one an assessor filed.
+Every UUID is a version 5 UUID over the report id and the control or element it names, in the namespace `https://vulnes.is/ns/oscal`. Exporting an unchanged report again gives the same UUIDs, so a GRC tool can match findings across exports and a re-export can be diffed against the one an assessor filed.
 
 ## Threat models
 

@@ -7,7 +7,7 @@ checked: [cloudscan@67eeabb, vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-The compute source (`compute`) reads what the account already records about its compute and reports two things: the software running on it, and the controls it fails. It uses the AWS API only. Nothing is installed on a workload and no volume is snapshotted. Results appear on **Resolve > Runtime** (`/resolve/runtime`), grouped by resource family, and are filed under the scanner run `Vulnetix AWS Compute`.
+The compute source (`compute`) reads what the account already records about its compute and reports two things: the software running on it, and the controls it fails. It uses the AWS API only. Nothing is installed on a workload and no volume is snapshotted. Results appear on **Resolve > Runtime** (`/resolve/runtime`), grouped by resource family, and are filed under the scanner run `Vulnesis AWS Compute`.
 
 ## What it reads
 

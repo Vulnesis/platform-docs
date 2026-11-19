@@ -50,6 +50,6 @@ vulnetix sast --suppress-test-code
 
 These are written to `.vulnetix/memory.yaml` and synced like nosec rules. See [SAST](/sast/) for how test files are detected.
 
-## Reported to Vulnetix
+## Reported to Vulnesis
 
 Every finding an ignore rule or a nosec comment hid before upload is listed in `localSuppressions` on the run's `cli.finalize` call, with the rule's uuid, source (`memory`, `remote` or `nosec`), type and reason. The platform records which rule hid which finding. Findings hidden by a `--vex-file` statement are not in that list, because a VEX statement is not a rule.

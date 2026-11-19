@@ -8,9 +8,9 @@ checked: [vdb-site@1a06d67, website@ad775f37, vdb-cyclonedx@eaf787c]
 updated: 04 Nov 2026
 ---
 
-Compliance reports are for security, risk and GRC staff who must show an assessor or auditor how the organisation meets a framework such as PCI DSS, ISO/IEC 27001 or the EU AI Act. They turn evidence Vulnetix already holds into a per-control status, so the work left is adding what telemetry cannot show. Use a report for a fixed period you hand to a reviewer. Use a [compliance target](/compliance/get-started/targets/) when you want reports made on a cadence, or to measure a SLSA level, NIST SSDF practices or a cryptography policy.
+Compliance reports are for security, risk and GRC staff who must show an assessor or auditor how the organisation meets a framework such as PCI DSS, ISO/IEC 27001 or the EU AI Act. They turn evidence Vulnesis already holds into a per-control status, so the work left is adding what telemetry cannot show. Use a report for a fixed period you hand to a reviewer. Use a [compliance target](/compliance/get-started/targets/) when you want reports made on a cadence, or to measure a SLSA level, NIST SSDF practices or a cryptography policy.
 
-A compliance report is a named, dated view of one framework over your organisation. You choose the framework, the reporting period and which repositories are in scope. Vulnetix maps the evidence it already holds for that scope and period (scanner runs, findings and their triage, VEX, SBOMs, AI and crypto inventories, KEV and end-of-life exposure, quality-gate and firewall policy, provenance) onto the framework's controls, and marks each control with a status. You add what telemetry cannot show: uploaded documents, notes, and for the assessor-driven frameworks, an assessor's finding per control.
+A compliance report is a named, dated view of one framework over your organisation. You choose the framework, the reporting period and which repositories are in scope. Vulnesis maps the evidence it already holds for that scope and period (scanner runs, findings and their triage, VEX, SBOMs, AI and crypto inventories, KEV and end-of-life exposure, quality-gate and firewall policy, provenance) onto the framework's controls, and marks each control with a status. You add what telemetry cannot show: uploaded documents, notes, and for the assessor-driven frameworks, an assessor's finding per control.
 
 Evidence is computed when you open or export the report, not stored. Your uploads, notes, scope, settings and assessor findings are stored with the report.
 
@@ -18,16 +18,16 @@ Evidence is computed when you open or export the report, not stored. Your upload
 
 | Framework | `framework` id | Resolve Platform page | What it maps |
 |---|---|---|---|
-| EU Artificial Intelligence Act | `eu_ai_act` | [/resolve/eu-ai-act](https://www.vulnetix.com/resolve/eu-ai-act) | 21 articles, from Article 4 to Article 73 |
-| NIST AI Risk Management Framework 1.0 | `nist_ai_rmf` | [/resolve/nist-ai-rmf](https://www.vulnetix.com/resolve/nist-ai-rmf) | 22 of the 72 core subcategories |
-| ISO/IEC 42001:2023 | `iso_42001` | [/resolve/iso-42001](https://www.vulnetix.com/resolve/iso-42001) | 21 of 38 Annex A controls and 6 of 25 clause requirements |
-| OWASP Top 10 (2025) | `owasp_top_10` | [/resolve/owasp-top-10](https://www.vulnetix.com/resolve/owasp-top-10) | The 10 categories, by CWE, plus program-assurance controls |
-| PCI DSS v4.0.1 | `pci_dss` | [/resolve/pci-dss](https://www.vulnetix.com/resolve/pci-dss) | 250 requirements in 12 families, with assessor findings |
-| ISO/IEC 27001:2022 | `iso_27001` | [/resolve/iso-27001](https://www.vulnetix.com/resolve/iso-27001) | Statement of Applicability: 93 Annex A controls and 25 clause requirements |
-| OWASP DevSecOps Maturity Model | `owasp_dsomm` | [/resolve/owasp-dsomm](https://www.vulnetix.com/resolve/owasp-dsomm) | 193 activities in 5 dimensions, levels 1 to 5 |
-| EU Cyber Resilience Act | `eu_cra` | [/resolve/eu-cra](https://www.vulnetix.com/resolve/eu-cra) | 34 of about 65 obligations (Annex I, Annex II, Articles 13 and 14) |
-| Scan Coverage | `coverage` | [/resolve/coverage](https://www.vulnetix.com/resolve/coverage) | 26 scanner and assurance categories |
-| Exposure & Remediation Performance | `exposure` | [/resolve/exposure](https://www.vulnetix.com/resolve/exposure) | 15 sections of exposure and remediation metrics |
+| EU Artificial Intelligence Act | `eu_ai_act` | [/resolve/eu-ai-act](https://www.vulnes.is/resolve/eu-ai-act) | 21 articles, from Article 4 to Article 73 |
+| NIST AI Risk Management Framework 1.0 | `nist_ai_rmf` | [/resolve/nist-ai-rmf](https://www.vulnes.is/resolve/nist-ai-rmf) | 22 of the 72 core subcategories |
+| ISO/IEC 42001:2023 | `iso_42001` | [/resolve/iso-42001](https://www.vulnes.is/resolve/iso-42001) | 21 of 38 Annex A controls and 6 of 25 clause requirements |
+| OWASP Top 10 (2025) | `owasp_top_10` | [/resolve/owasp-top-10](https://www.vulnes.is/resolve/owasp-top-10) | The 10 categories, by CWE, plus program-assurance controls |
+| PCI DSS v4.0.1 | `pci_dss` | [/resolve/pci-dss](https://www.vulnes.is/resolve/pci-dss) | 250 requirements in 12 families, with assessor findings |
+| ISO/IEC 27001:2022 | `iso_27001` | [/resolve/iso-27001](https://www.vulnes.is/resolve/iso-27001) | Statement of Applicability: 93 Annex A controls and 25 clause requirements |
+| OWASP DevSecOps Maturity Model | `owasp_dsomm` | [/resolve/owasp-dsomm](https://www.vulnes.is/resolve/owasp-dsomm) | 193 activities in 5 dimensions, levels 1 to 5 |
+| EU Cyber Resilience Act | `eu_cra` | [/resolve/eu-cra](https://www.vulnes.is/resolve/eu-cra) | 34 of about 65 obligations (Annex I, Annex II, Articles 13 and 14) |
+| Scan Coverage | `coverage` | [/resolve/coverage](https://www.vulnes.is/resolve/coverage) | 26 scanner and assurance categories |
+| Exposure & Remediation Performance | `exposure` | [/resolve/exposure](https://www.vulnes.is/resolve/exposure) | 15 sections of exposure and remediation metrics |
 
 Details of each are in [AI governance frameworks](/compliance/frameworks/ai-governance/), [Security standards](/compliance/frameworks/security-standards/) and [Coverage and Exposure](/compliance/frameworks/coverage-and-exposure/). SLSA, NIST SSDF and a cryptography policy over your CBOM are measured as [compliance targets](/compliance/get-started/targets/), not reports. Report frameworks that are not supported yet are listed on [Planned frameworks](/compliance/frameworks/planned/).
 

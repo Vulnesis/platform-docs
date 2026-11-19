@@ -7,7 +7,7 @@ checked: [package-firewall@77cd1a5, cli@4c8c3b7, vdb-site@1a06d67, saas@50cedf37
 updated: 03 Nov 2026
 ---
 
-One policy per organization applies to every ecosystem your organization can use (the free ones and, with the Package Firewall add-on, the rest). Set it in the Resolve Platform at [www.vulnetix.com/resolve/package-firewall](https://www.vulnetix.com/resolve/package-firewall) on the **Policies** tab, or with `vulnetix config set package-firewall`. The proxy picks up a change within 60 seconds.
+One policy per organization applies to every ecosystem your organization can use (the free ones and, with the Package Firewall add-on, the rest). Set it in the Resolve Platform at [www.vulnes.is/resolve/package-firewall](https://www.vulnes.is/resolve/package-firewall) on the **Policies** tab, or with `vulnetix config set package-firewall`. The proxy picks up a change within 60 seconds.
 
 ## Settings
 
@@ -45,7 +45,7 @@ The order these are checked in, and what an allow entry waives, is on [Evaluatio
 
 ### Per-ecosystem mode
 
-An ecosystem can override the org mode, for example `npm` in `allowlist_only` while `go` stays in `warn`. Set it in the Resolve Platform. The Resolve Platform calls `PUT package-firewall/ecosystem-policy` on the Vulnetix API with `{"ecosystem": "npm", "enforcementMode": "allowlist_only"}`; `"enforcementMode": null` clears the override and the ecosystem inherits the org mode.
+An ecosystem can override the org mode, for example `npm` in `allowlist_only` while `go` stays in `warn`. Set it in the Resolve Platform. The Resolve Platform calls `PUT package-firewall/ecosystem-policy` on the Vulnesis API with `{"ecosystem": "npm", "enforcementMode": "allowlist_only"}`; `"enforcementMode": null` clears the override and the ecosystem inherits the org mode.
 
 ## Cooldown
 

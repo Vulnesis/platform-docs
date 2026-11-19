@@ -26,7 +26,7 @@ The same flags work on all of them. Commands that change a document somebody els
 | Way | Best for |
 |---|---|
 | A flag, such as `--bom-supplier "Acme Ltd"` | One value on one run |
-| An environment variable, such as `VULNETIX_BOM_SUPPLIER` | A value a CI job sets once for every step |
+| An environment variable, such as `VULNESIS_BOM_SUPPLIER` | A value a CI job sets once for every step |
 | An overlay file, `--bom-overlay acme.cdx.json` | Anything with structure: a supplier with a URL, services, compositions, annotations, an analysis on a vulnerability |
 
 Each member is decided on its own, first answer wins:
@@ -60,7 +60,7 @@ So a supplier in an overlay survives a `--bom-author` flag, because the two set 
 | `signature` | A signature covers the finished document. Sign the output with `--sign` instead. See [Signing documents](/attestation/sign/signing-documents/). |
 
 > [!WHY] Why the tool is not the manufacturer
-> CycloneDX defines `metadata.manufacturer` as "the organization that created the BOM". When your pipeline runs the CLI on your code, that organisation is you, and the CLI is the tool. A document that names Vulnetix as the manufacturer of an inventory of your repository says something untrue, so the CLI never writes it.
+> CycloneDX defines `metadata.manufacturer` as "the organization that created the BOM". When your pipeline runs the CLI on your code, that organisation is you, and the CLI is the tool. A document that names Vulnesis as the manufacturer of an inventory of your repository says something untrue, so the CLI never writes it.
 
 ## Validation
 
@@ -98,14 +98,14 @@ In GitHub Actions the same values go in inputs or `env:`. See [GitHub Actions](/
 
 | Variable | Flag |
 |---|---|
-| `VULNETIX_BOM_MANUFACTURER` | `--bom-manufacturer` |
-| `VULNETIX_BOM_MANUFACTURER_URL` | `--bom-manufacturer-url` |
-| `VULNETIX_BOM_AUTHORS` | `--bom-author`, comma- or semicolon-separated |
-| `VULNETIX_BOM_SUPPLIER`, `VULNETIX_BOM_SUPPLIER_URL` | `--bom-supplier`, `--bom-supplier-url` |
-| `VULNETIX_BOM_SERIAL`, `VULNETIX_BOM_VERSION` | `--bom-serial`, `--bom-version` |
-| `VULNETIX_BOM_LICENSES` | `--bom-license`, comma- or semicolon-separated |
-| `VULNETIX_BOM_PROPERTIES` | `--bom-property`, comma- or semicolon-separated `name=value` |
-| `VULNETIX_BOM_OVERLAY` | `--bom-overlay`, comma- or semicolon-separated paths |
-| `VULNETIX_COMPONENT_NAME`, `_VERSION`, `_TYPE`, `_GROUP`, `_PURL` | `--component-name`, `-version`, `-type`, `-group`, `-purl` |
+| `VULNESIS_BOM_MANUFACTURER` | `--bom-manufacturer` |
+| `VULNESIS_BOM_MANUFACTURER_URL` | `--bom-manufacturer-url` |
+| `VULNESIS_BOM_AUTHORS` | `--bom-author`, comma- or semicolon-separated |
+| `VULNESIS_BOM_SUPPLIER`, `VULNESIS_BOM_SUPPLIER_URL` | `--bom-supplier`, `--bom-supplier-url` |
+| `VULNESIS_BOM_SERIAL`, `VULNESIS_BOM_VERSION` | `--bom-serial`, `--bom-version` |
+| `VULNESIS_BOM_LICENSES` | `--bom-license`, comma- or semicolon-separated |
+| `VULNESIS_BOM_PROPERTIES` | `--bom-property`, comma- or semicolon-separated `name=value` |
+| `VULNESIS_BOM_OVERLAY` | `--bom-overlay`, comma- or semicolon-separated paths |
+| `VULNESIS_COMPONENT_NAME`, `_VERSION`, `_TYPE`, `_GROUP`, `_PURL` | `--component-name`, `-version`, `-type`, `-group`, `-purl` |
 
 A list variable splits on commas and semicolons, so a value that contains either belongs in a flag or an overlay instead.

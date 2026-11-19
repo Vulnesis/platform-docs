@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description: Connect one AWS account through IAM Identity Center, let Vulnetix deploy the probe, confirm it can read the account, and turn on a first extra source.
+description: Connect one AWS account through IAM Identity Center, let Vulnesis deploy the probe, confirm it can read the account, and turn on a first extra source.
 order: 2
 sources: [website/src/components/integrations/console/IntegrationAwsDrawer.vue, vdb-site/api/internal/handler/integrations_aws_sso.go, vdb-site/api/internal/handler/integrations_aws_stack.go, vdb-site/api/internal/handler/integrations_aws_verify.go]
 checked: [vdb-site@1a06d67, website@ad775f37]
@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 
 You need:
 
-- a Vulnetix organisation on the Pro plan or above;
+- a Vulnesis organisation on the Pro plan or above;
 - an AWS access portal URL (`https://<your-portal>.awsapps.com/start`) and a permission set in the target account that can create IAM roles, an S3 bucket, a trail, a queue, a secret and a Lambda function. An administrator set works; [Deploy role](/cloud-security/aws/connect-identity-center/#when-no-permission-set-can-deploy) covers the case where none can.
 
 ## 1. Sign in to AWS from the Resolve Platform
@@ -41,7 +41,7 @@ When the deploy completes, press **Verify**. Each check is `ok`, `warn` or `fail
 
 | Check | Passes when |
 |---|---|
-| Cross-account access | Vulnetix can assume `VulnetixSecurityAuditor` with your organisation id as the external id |
+| Cross-account access | Vulnesis can assume `VulnetixSecurityAuditor` with your organisation id as the external id |
 | CloudTrail delivering | The `vulnetix-management-events` trail is logging |
 | Log data readable | A CloudTrail object can be listed and read back from the bucket |
 | Event stream wired | The EventBridge rule targets the reporter queue |

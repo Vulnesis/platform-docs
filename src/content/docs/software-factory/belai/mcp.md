@@ -20,7 +20,7 @@ Servers live under `mcp.servers` in your global settings. Each entry is keyed by
 | Server | Offers | Switch |
 |---|---|---|
 | `clef` | A decision tool: the decision model answers a closed question, and can answer an ask when it is confident enough | `mcp.builtin.clef.enabled` (on), `mcp.builtin.clef.skip_ask` (on), `mcp.builtin.clef.skip_ask_at` (0.90) |
-| `vulnetix` | The hosted Vulnetix tools, while you are signed in | `mcp.builtin.vulnetix.enabled` (on) |
+| `vulnetix` | The hosted Vulnesis tools, while you are signed in | `mcp.builtin.vulnetix.enabled` (on) |
 
 Neither can be replaced or removed, and only your global settings can switch them.
 

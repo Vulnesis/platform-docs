@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1059.007](https://attack.mitre.org/techniques/T1059/007/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `logging` `sensitive-data` `information-disclosure` |
-| Source | [`internal/sast/rules/vnx-go-040.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-go-040.rego) |
+| Source | [`internal/sast/rules/vnx-go-040.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-go-040.rego) |
 
 ## Overview
 

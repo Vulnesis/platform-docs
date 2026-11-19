@@ -1,6 +1,6 @@
 ---
 title: Forwarding to Guardian
-description: Copy every DNS lookup and egress connection the sensor decides to Guardian, the Vulnetix SIEM, with an events ingest token.
+description: Copy every DNS lookup and egress connection the sensor decides to Guardian, the Vulnesis SIEM, with an events ingest token.
 order: 7
 nav: Forwarding to Guardian
 sources: [cli/internal/sensor/siem/siem.go, cli/cmd/vulnetix-sensor/main.go, cli/deploy/sensor/README.md, siem/worker/src/ingest/routes.ts, siem/worker/src/normalise/events.ts]
@@ -11,9 +11,9 @@ updated: 02 Nov 2026
 With `--forward siem`, the sensor sends every DNS lookup the DNS guard answers and every connection the egress proxy carries or refuses to Guardian, matched or not. The Sensors page still gets only the matches. Guardian gets the whole stream, so a detection can look at the clean traffic around a hit.
 
 ```bash
-export VULNETIX_SIEM_TOKEN=gdn_...
+export VULNESIS_SIEM_TOKEN=gdn_...
 vulnetix-sensor --mode guard \
-  --feed https://vulnetix.com/feeds/<org-uuid>/<feed-uuid> \
+  --feed https://vulnes.is/feeds/<org-uuid>/<feed-uuid> \
   --dns-listen 127.0.0.1:53 --egress-listen 127.0.0.1:3128 \
   --forward siem
 ```
@@ -24,8 +24,8 @@ Create an **Events API** ingest token on Guardian's Sources page (`/resolve/guar
 
 | Setting | Flag | Environment | Default |
 |---|---|---|---|
-| Ingest token | `--siem-token` | `VULNETIX_SIEM_TOKEN` | none; required |
-| Events route | `--siem-url` | `VULNETIX_SIEM_URL` | `https://ingest.vulnetix.com/v1/ingest/events` |
+| Ingest token | `--siem-token` | `VULNESIS_SIEM_TOKEN` | none; required |
+| Events route | `--siem-url` | `VULNESIS_SIEM_URL` | `https://ingest.vulnes.is/v1/ingest/events` |
 
 Use the environment variable for the token: a flag shows in `ps`. In Kubernetes, add it to the sensor's secret.
 
@@ -33,7 +33,7 @@ The sensor refuses to start when:
 
 | Error | Fix |
 |---|---|
-| `--forward siem needs a Guardian ingest token: …` | Set `VULNETIX_SIEM_TOKEN` or `--siem-token` |
+| `--forward siem needs a Guardian ingest token: …` | Set `VULNESIS_SIEM_TOKEN` or `--siem-token` |
 | `--forward siem sends DNS and egress decisions: set --dns-listen, --egress-listen or both` | Forwarding covers only those two; add one |
 | `--forward "<x>": the only destination is siem` | `siem` is the only value |
 

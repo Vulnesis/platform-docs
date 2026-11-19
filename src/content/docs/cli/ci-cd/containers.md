@@ -1,22 +1,22 @@
 ---
 title: Docker, Podman and Kubernetes
 nav: Containers
-description: Build an image with the Vulnetix CLI, run it against a mounted project with Docker or rootless Podman, and run scans as Kubernetes Jobs and CronJobs.
+description: Build an image with the Vulnesis CLI, run it against a mounted project with Docker or rootless Podman, and run scans as Kubernetes Jobs and CronJobs.
 order: 9
 sources: [cli/install.sh, cli/Dockerfile, cli/internal/config/config.go, cli/cmd/memory_limit.go]
 checked: [cli@24498404a]
 updated: 02 Nov 2026
 ---
 
-Vulnetix does not publish a CLI container image. The repository's `Dockerfile` builds from source, which needs access to a private module, so build an image from the release binary instead.
+Vulnesis does not publish a CLI container image. The repository's `Dockerfile` builds from source, which needs access to a private module, so build an image from the release binary instead.
 
 ## An image with the CLI
 
 ```dockerfile
 FROM alpine:3.20
-ARG VULNETIX_VERSION=v3.154.0
+ARG VULNESIS_VERSION=v3.154.0
 RUN apk add --no-cache ca-certificates curl git \
- && curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir /usr/local/bin --version "${VULNETIX_VERSION}" \
+ && curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir /usr/local/bin --version "${VULNESIS_VERSION}" \
  && adduser -D -u 10001 scanner
 USER scanner
 WORKDIR /workspace
@@ -33,7 +33,7 @@ The install step verifies the binary against the release checksums. Rebuild to u
 
 ```sh
 docker run --rm \
-  -e VULNETIX_ORG_ID -e VULNETIX_API_KEY \
+  -e VULNESIS_ORG_ID -e VULNESIS_API_KEY \
   -v "$PWD:/workspace" \
   registry.example.com/ci/vulnetix:3.154.0 \
   scan --fail-on high -o /workspace/dist/sbom.cdx.json
@@ -49,7 +49,7 @@ Rootless Podman runs the same image. On SELinux hosts, label the mount:
 
 ```sh
 podman run --rm \
-  -e VULNETIX_ORG_ID -e VULNETIX_API_KEY \
+  -e VULNESIS_ORG_ID -e VULNESIS_API_KEY \
   -v "$PWD:/workspace:Z" \
   --userns=keep-id \
   registry.example.com/ci/vulnetix:3.154.0 \
@@ -94,11 +94,11 @@ spec:
           env:
             - name: HOME
               value: /tmp
-            - name: VULNETIX_ORG_ID
+            - name: VULNESIS_ORG_ID
               valueFrom: { secretKeyRef: { name: vulnetix, key: org-id } }
-            - name: VULNETIX_API_KEY
+            - name: VULNESIS_API_KEY
               valueFrom: { secretKeyRef: { name: vulnetix, key: api-key } }
-            - name: VULNETIX_NAMESPACE
+            - name: VULNESIS_NAMESPACE
               valueFrom: { fieldRef: { fieldPath: metadata.namespace } }
           resources:
             limits: { memory: 2Gi }
@@ -116,5 +116,5 @@ spec:
 
 - `HOME=/tmp` on an `emptyDir` gives the CLI a writable home for its caches with a read-only root.
 - The CLI sets a soft Go memory limit at 75% of the container's cgroup limit, so set a memory limit rather than relying on node memory. An explicit `GOMEMLIMIT` overrides it.
-- `VULNETIX_NAMESPACE`, `VULNETIX_CLUSTER` and `VULNETIX_ENVIRONMENT` label the results; `POD_NAMESPACE` is also read. See [scan](/cli/commands/scan/#deployment-context-and-bom-identity).
+- `VULNESIS_NAMESPACE`, `VULNESIS_CLUSTER` and `VULNESIS_ENVIRONMENT` label the results; `POD_NAMESPACE` is also read. See [scan](/cli/commands/scan/#deployment-context-and-bom-identity).
 - For a schedule, wrap the same pod spec in a `CronJob` (`schedule: "0 3 * * *"`, `concurrencyPolicy: Forbid`).

@@ -12,7 +12,7 @@ IaC scanning is for engineers who write Terraform and other infrastructure code 
 
 `vulnetix iac` checks infrastructure-as-code files for security misconfigurations: a public S3 ACL, a security group open to `0.0.0.0/0`, an IAM policy that allows `*`, an unencrypted EBS volume. It runs the Rego rules of kind `iac` over your files on your machine and reports each problem against the resource you would change. Credentials are optional.
 
-This segment is about scanning your own Terraform, Kubernetes and similar code. Vulnetix's own configuration documents (`QualityGate`, `AiFirewallPolicy`) are covered under [Platform IaC](/platform-iac/).
+This segment is about scanning your own Terraform, Kubernetes and similar code. Vulnesis's own configuration documents (`QualityGate`, `AiFirewallPolicy`) are covered under [Platform IaC](/platform-iac/).
 
 The command is the IaC stage of `vulnetix scan` on its own. These two run the same rules:
 
@@ -40,10 +40,10 @@ The CLI ships seven rules of kind `iac`, all for Terraform (and OpenTofu) on AWS
 For Kubernetes manifests, Helm output, CloudFormation, Azure Resource Manager templates, Ansible, Dockerfiles and wider Terraform coverage (Azure, GCP), add an external rule pack:
 
 ```bash
-vulnetix iac --rule Vulnetix/opa-fugue-regula --rule Vulnetix/opa-aquasecurity-trivy
+vulnetix iac --rule Vulnesis/opa-fugue-regula --rule Vulnesis/opa-aquasecurity-trivy
 ```
 
-[Rule packs](/iac-scanning/guides/rule-packs/) lists the packs Vulnetix publishes and what each covers.
+[Rule packs](/iac-scanning/guides/rule-packs/) lists the packs Vulnesis publishes and what each covers.
 
 ## What a run does
 

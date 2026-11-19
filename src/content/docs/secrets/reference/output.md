@@ -15,7 +15,7 @@ updated: 02 Nov 2026
 | Value | Writes |
 |---|---|
 | `json-sarif` | SARIF 2.1.0 to stdout |
-| `json-report` | The Vulnetix JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
+| `json-report` | The Vulnesis JSON report (`"schema": "vulnetix/report/v1"`) to stdout |
 | `*.sarif`, `*.sarif.json` | SARIF 2.1.0 file |
 | `*.report.json` | JSON report file |
 
@@ -48,7 +48,7 @@ The SARIF `level` is the level the rule declares. Every built-in secrets rule de
 | `medium` | `warning` |
 | `low` | `note` |
 
-The `ruleId` is the Vulnetix rule id (`VNX-SEC-001`). Findings from history, binaries and image metadata keep their synthetic paths (`__git_history__/a1b2c3d/.env`), which a code-scanning dashboard shows as a file it cannot open.
+The `ruleId` is the Vulnesis rule id (`VNX-SEC-001`). Findings from history, binaries and image metadata keep their synthetic paths (`__git_history__/a1b2c3d/.env`), which a code-scanning dashboard shows as a file it cannot open.
 
 ## What is uploaded
 
@@ -66,7 +66,7 @@ For a finding whose file cannot be read (history, binary strings, image metadata
 Most rules mask the credential in their own snippet: the catalogue rules and many hand-written ones such as `VNX-SEC-001` replace every run of 12 or more token characters with `***REDACTED***`, and others replace the matched value with `***`. These eight copy the line unmasked into both the local SARIF file and the upload: `VNX-ANDROID-006`, `VNX-CS-010`, `VNX-JAVA-019`, `VNX-JAVA-021`, `VNX-JAVA-025`, `VNX-JWT-003`, `VNX-SEC-022`, `VNX-TF-008`.
 
 > [!CAREFUL] Send no source lines from CI
-> To keep credential values out of Vulnetix, run authenticated scans with `--snippet-context 0`. Treat `.vulnetix/sast.sarif` and any `-o` SARIF file as sensitive while the eight rules above copy the line.
+> To keep credential values out of Vulnesis, run authenticated scans with `--snippet-context 0`. Treat `.vulnetix/sast.sarif` and any `-o` SARIF file as sensitive while the eight rules above copy the line.
 
 ## Exit codes
 

@@ -39,8 +39,8 @@ Every response that passes through the gateway, allowed or refused, carries:
 The request id is set on every inference response, including early refusals; the decision headers appear once the guardrails have run. A response with no `X-Vulnetix-Firewall-Request-Id` did not come from the gateway.
 
 ```bash
-curl -s -o /dev/null -D - "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s -o /dev/null -D - "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"hello"}]}' \
   | grep -i '^x-vulnetix-firewall'
@@ -66,8 +66,8 @@ Guardrail changes reach the gateway within 30 seconds, the policy cache lifetime
 `POST /guardrails/{orgUuid}/v1/evaluate` runs the org's guardrails on an OpenAI chat request and returns the decision without forwarding it. It needs no provider key, so you can test rules before any key is stored.
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/guardrails/$VULNETIX_ORG_ID/v1/evaluate" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s "https://guardrails.vulnes.is/guardrails/$VULNESIS_ORG_ID/v1/evaluate" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"test","messages":[{"role":"user","content":"key AKIAABCDEFGHIJKLMNOP"}]}'
 ```

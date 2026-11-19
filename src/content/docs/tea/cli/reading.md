@@ -8,17 +8,17 @@ checked: [cli@4c8c3b71c]
 updated: 02 Nov 2026
 ---
 
-`vulnetix tea` reads any conformant TEA server, not only Vulnetix's.
+`vulnetix tea` reads any conformant TEA server, not only Vulnesis's.
 
 ## Global flags
 
 | Flag | Default | Description |
 |---|---|---|
-| `--server` | `https://www.vulnetix.com/tea/v1.0.0` | TEA root URL. A supplier's server works for every read. |
+| `--server` | `https://www.vulnes.is/tea/v1.0.0` | TEA root URL. A supplier's server works for every read. |
 | `--catalogue` | `first-party` | `first-party` or `public` (the open source catalogue). Not combinable with `--server`. |
 | `--json` | `false` | Print raw JSON instead of a table |
 
-The CLI reads TEA 1.0.0 and 0.4.0. To get the 0.4.0 shapes, use `--server https://www.vulnetix.com/tea/v0.4.0`.
+The CLI reads TEA 1.0.0 and 0.4.0. To get the 0.4.0 shapes, use `--server https://www.vulnes.is/tea/v0.4.0`.
 
 ## Commands
 
@@ -33,12 +33,12 @@ The CLI reads TEA 1.0.0 and 0.4.0. To get the 0.4.0 shapes, use `--server https:
 | `tea distribution list <component-release-uuid>` (alias `dist`) | Where a component release can be obtained |
 
 ```bash
-vulnetix tea discover vulnetix.com
-vulnetix tea products --purl pkg:github/Vulnetix/cli
+vulnetix tea discover vulnes.is
+vulnetix tea products --purl pkg:github/Vulnesis/cli
 vulnetix tea product 54e8820d-0803-5a4f-858d-88a279486564
 vulnetix tea collection 959d737f-7a54-51b7-b236-6ed079105345
 vulnetix tea distribution list e5a33f26-8056-5f16-a950-41a0db12d48f
-vulnetix tea resolve tei://vulnetix.com/uuid/54e8820d-0803-5a4f-858d-88a279486564
+vulnetix tea resolve tei://vulnes.is/uuid/54e8820d-0803-5a4f-858d-88a279486564
 vulnetix tea --catalogue public products --search pixi
 ```
 

@@ -78,7 +78,7 @@ A request to a denied provider is refused before its body is read:
 ```
 
 > [!CAREFUL] New providers arrive allowed
-> When Vulnetix adds a provider to the catalog it has no entry in your policy, so it is allowed. Re-check the list against `vulnetix ai-firewall get` when the catalog changes. A custom provider your organisation adds is also allowed until denied.
+> When Vulnesis adds a provider to the catalog it has no entry in your policy, so it is allowed. Re-check the list against `vulnetix ai-firewall get` when the catalog changes. A custom provider your organisation adds is also allowed until denied.
 
 ## OpenRouter and other routers
 

@@ -27,7 +27,7 @@ You do not need this page to connect a client. It is for writing a client, or re
 ## Endpoint
 
 ```text
-POST https://mcp.vulnetix.com/mcp
+POST https://mcp.vulnes.is/mcp
 ```
 
 Responses are JSON or an SSE stream, chosen per request (`responseMode: "auto"`). There is no standalone event stream and no session to tear down.
@@ -36,7 +36,7 @@ Responses are JSON or an SSE stream, chosen per request (`responseMode: "auto"`)
 
 ```http
 POST /mcp HTTP/1.1
-Host: mcp.vulnetix.com
+Host: mcp.vulnes.is
 Content-Type: application/json
 Accept: application/json, text/event-stream
 MCP-Protocol-Version: 2026-07-28
@@ -90,7 +90,7 @@ A missing key returns `-32602 Invalid _meta envelope`, which is checked before t
 | `resources` | `{}` |
 | `extensions` | `io.modelcontextprotocol/skills`, `io.modelcontextprotocol/ui` |
 
-Server info: name `vulnetix`, title `Vulnetix`, version `0.1.0`, `websiteUrl` and two PNG icons. The `instructions` string tells the model that responses are shaped, that every request needs a credential, and that empty plan-gated lists mean withheld.
+Server info: name `vulnetix`, title `Vulnesis`, version `0.1.0`, `websiteUrl` and two PNG icons. The `instructions` string tells the model that responses are shaped, that every request needs a credential, and that empty plan-gated lists mean withheld.
 
 The Tasks extension is not advertised. Tasks need status held across polls, and the server holds nothing between requests.
 
@@ -114,6 +114,6 @@ A tool failure is a result with `isError: true` and HTTP 200, not a JSON-RPC err
 `scripts/conformance.sh` in the repository checks the wire contract with curl: 405 for GET and DELETE, 415, 403 for a hostile `Origin`, `-32022`, `-32020`, `-32601`, tool and prompt listing, resources and skills.
 
 ```bash
-git clone https://github.com/Vulnetix/mcp-server.git && cd mcp-server
-bash scripts/conformance.sh https://mcp.vulnetix.com
+git clone https://github.com/Vulnesis/mcp-server.git && cd mcp-server
+bash scripts/conformance.sh https://mcp.vulnes.is
 ```

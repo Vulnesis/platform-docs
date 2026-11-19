@@ -16,16 +16,16 @@ Run the four checks in [Verify your setup](/mcp-server/get-started/verify/) firs
 
 | Symptom | Cause | Check or fix |
 |---|---|---|
-| No Vulnetix tools in the client | Client was reloaded, not restarted | Quit the app fully and reopen. Most clients read MCP config once at launch. |
-| No Vulnetix tools in the client | Invalid JSON (trailing comma, smart quotes) | `jq . <file>` |
-| No Vulnetix tools in the client | Wrong key names for this client | See the table below |
+| No Vulnesis tools in the client | Client was reloaded, not restarted | Quit the app fully and reopen. Most clients read MCP config once at launch. |
+| No Vulnesis tools in the client | Invalid JSON (trailing comma, smart quotes) | `jq . <file>` |
+| No Vulnesis tools in the client | Wrong key names for this client | See the table below |
 | Every VDB tool returns 401 | Header has only the hex half of the key | Value must be `ApiKey <orgId>:<hex>` |
-| Every VDB tool returns "Vulnetix request failed: No Vulnetix credential was supplied" | Header missing, or not in a format the server parses | See [header formats](#header-formats) |
-| Results contain a literal `${VULNETIX_KEY}` | The client did not expand the variable, or the app did not inherit your shell environment | Use the client's own interpolation syntax, or a literal value in a user-scoped file |
+| Every VDB tool returns "Vulnesis request failed: No Vulnesis credential was supplied" | Header missing, or not in a format the server parses | See [header formats](#header-formats) |
+| Results contain a literal `${VULNESIS_KEY}` | The client did not expand the variable, or the app did not inherit your shell environment | Use the client's own interpolation syntax, or a literal value in a user-scoped file |
 | `-32602 Invalid _meta envelope` | Hand-built request is missing an `io.modelcontextprotocol/*` key | Add all three `_meta` keys. See [Transport](/mcp-server/protocol/transport/). |
 | `-32020` | `Mcp-Name` or `Mcp-Method` differs from the body | Set them to the body's `method` and `params.name` |
 | `-32022` | Client asked for a protocol version the server does not serve | Use `2026-07-28` or `2025-11-25` |
-| 403 with no body | `Origin` or `Host` not allowed, often a proxy rewriting `Host` | Call `https://mcp.vulnetix.com/health` directly |
+| 403 with no body | `Origin` or `Host` not allowed, often a proxy rewriting `Host` | Call `https://mcp.vulnes.is/health` directly |
 | An exploit or IOC list is empty | Records are withheld below Pro | Check the count and `gated`/`note` before concluding there are none |
 | "Do NOT retry this call" | Daily quota exhausted | Wait for the reset time in the message |
 | HTTP 429 with `-32000` | Edge flood guard: more than 100 requests in 10 s from one IP | Slow down; it clears after 10 s |
@@ -62,4 +62,4 @@ The server parses `Authorization` in two forms and forwards it unchanged to vdb-
 
 ## Still stuck
 
-Open an issue at [Vulnetix/mcp-server](https://github.com/Vulnetix/mcp-server/issues) with the client and version, the config block with the key removed, the error text, and the `_meta` object from the failing result.
+Open an issue at [Vulnesis/mcp-server](https://github.com/Vulnesis/mcp-server/issues) with the client and version, the config block with the key removed, the error text, and the `_meta` object from the failing result.

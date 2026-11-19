@@ -21,7 +21,7 @@ generated: true
 | ATT&CK | [T1499.004](https://attack.mitre.org/techniques/T1499/004/) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:A/AL:A/IC:N/FC:LT/RP:N/RL:A/AV:I/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `redos` `regex` `dos` |
-| Source | [`internal/sast/rules/vnx-node-016.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-node-016.rego) |
+| Source | [`internal/sast/rules/vnx-node-016.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-node-016.rego) |
 
 ## Overview
 

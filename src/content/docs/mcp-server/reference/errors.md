@@ -56,24 +56,24 @@ This is separate from your daily vdb-api quota, which is never returned as HTTP 
 
 | Situation | Message starts with |
 |---|---|
-| No `Authorization` header, or one that does not parse | `Vulnetix request failed: No Vulnetix credential was supplied.` |
-| vdb-api returned 401 | `Vulnetix rejected the credential (HTTP 401).` |
-| vdb-api returned 403 | `Vulnetix denied access (HTTP 403): ... The organisation may be inactive.` |
-| vdb-api returned 404 | `Not found in the Vulnetix VDB: ...` |
-| vdb-api returned 429 | `Vulnetix daily rate limit exhausted for this organisation. The quota resets at <ISO time>. Do NOT retry this call.` |
-| vdb-api returned 503 with `X-Maintenance-Mode: true` | `Vulnetix is in maintenance mode and is refusing writes right now.` |
-| Any other upstream status | `Vulnetix returned HTTP <status>: ...` |
-| Network failure or timeout | `Vulnetix request failed: ...` |
+| No `Authorization` header, or one that does not parse | `Vulnesis request failed: No Vulnesis credential was supplied.` |
+| vdb-api returned 401 | `Vulnesis rejected the credential (HTTP 401).` |
+| vdb-api returned 403 | `Vulnesis denied access (HTTP 403): ... The organisation may be inactive.` |
+| vdb-api returned 404 | `Not found in the Vulnesis VDB: ...` |
+| vdb-api returned 429 | `Vulnesis daily rate limit exhausted for this organisation. The quota resets at <ISO time>. Do NOT retry this call.` |
+| vdb-api returned 503 with `X-Maintenance-Mode: true` | `Vulnesis is in maintenance mode and is refusing writes right now.` |
+| Any other upstream status | `Vulnesis returned HTTP <status>: ...` |
+| Network failure or timeout | `Vulnesis request failed: ...` |
 | `vulnetix_vuln` `raw` over 524,288 bytes | `The raw record for <id> is <n> bytes ...` |
 | `vulnetix_purl` input is not a purl | `Not a Package URL: ...` |
 | `vdb_request` path not allowlisted | `Path '<path>' is not on the allowlist for this tool.` |
-| `vulnetix_auth_start`/`_poll` with no `MCP_AEAD_KEY` | `This Vulnetix MCP server cannot run a login because MCP_AEAD_KEY is not configured.` |
+| `vulnetix_auth_start`/`_poll` with no `MCP_AEAD_KEY` | `This Vulnesis MCP server cannot run a login because MCP_AEAD_KEY is not configured.` |
 | `vulnetix_auth_poll` handle older than 5 minutes | `That login handle has expired` |
 | Argument fails the input schema | The SDK's validation message, naming the field (a tool result, not a JSON-RPC error) |
 
 ```json
 {
-  "content": [{ "type": "text", "text": "Not found in the Vulnetix VDB: ..." }],
+  "content": [{ "type": "text", "text": "Not found in the Vulnesis VDB: ..." }],
   "isError": true,
   "_meta": { "vulnetix/plan": "community", "vulnetix/upstream": { "calls": 1, "ms": 210, "bytes": 0, "cached": false } }
 }

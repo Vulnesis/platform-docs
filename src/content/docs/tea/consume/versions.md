@@ -1,7 +1,7 @@
 ---
 title: TEA 1.0.0 and 0.4.0
 nav: Versions
-description: The differences between the TEA 1.0.0 and 0.4.0 responses the Vulnetix server returns, and where the publication operations are served for each.
+description: The differences between the TEA 1.0.0 and 0.4.0 responses the Vulnesis server returns, and where the publication operations are served for each.
 order: 4
 sources: [vdb-site/api/internal/handler/tea_v1_routes.go, vdb-site/api/internal/handler/tea_v1_common.go, vdb-site/api/internal/handler/tea_routes.go, vdb-site/api/internal/handler/tea_versions.go, cli/pkg/tea/versions.go]
 checked: [vdb-site@1a06d67, cli@4c8c3b71c]
@@ -27,7 +27,7 @@ The server serves both versions, and its discovery document lists both. Use 1.0.
 
 ## Where publication lives
 
-Publication is a Vulnetix extension, not part of either version.
+Publication is a Vulnesis extension, not part of either version.
 
 | Root | Publication operations |
 |---|---|

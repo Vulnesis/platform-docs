@@ -54,8 +54,8 @@ A flag records **that** a rule matched and which rule. It never records **what**
 Test a rule against a sample without calling a provider:
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/guardrails/$VULNETIX_ORG_ID/v1/evaluate" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s "https://guardrails.vulnes.is/guardrails/$VULNESIS_ORG_ID/v1/evaluate" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"test","messages":[{"role":"user","content":"why does postgres://svc:hunter2@db.internal:5432/prod time out?"}]}'
 ```

@@ -21,7 +21,7 @@ A data source reads something a plan can refer to. All six use the same [credent
 
 ## vulnetix_kinds
 
-The config kinds the Vulnetix server applies, with their JSON Schemas, in dependency order, and the `config-schemas` release it validates against. Use it to check that a kind is served before applying it.
+The config kinds the Vulnesis server applies, with their JSON Schemas, in dependency order, and the `config-schemas` release it validates against. Use it to check that a kind is served before applying it.
 
 ```hcl
 data "vulnetix_kinds" "all" {}
@@ -67,10 +67,10 @@ output "lodash_not_affected" {
 
 ## vulnetix_github_installation_repos
 
-The repositories the tenant's active GitHub App installations reach, ordered by full name. It reads Vulnetix's cache, which GitHub webhooks keep current, so a plan never calls GitHub. Use `full_names` to scope a resource to every repository the App can see. Filter by `installation_id` and `query` (a substring of `owner/name`); archived repositories are left out unless `include_archived` is set.
+The repositories the tenant's active GitHub App installations reach, ordered by full name. It reads Vulnesis's cache, which GitHub webhooks keep current, so a plan never calls GitHub. Use `full_names` to scope a resource to every repository the App can see. Filter by `installation_id` and `query` (a substring of `owner/name`); archived repositories are left out unless `include_archived` is set.
 
 ```hcl
-# Every repository the Vulnetix GitHub App can see in the acme organisation,
+# Every repository the Vulnesis GitHub App can see in the acme organisation,
 # archived ones left out.
 data "vulnetix_github_installation_repos" "acme" {
   query = "acme/"

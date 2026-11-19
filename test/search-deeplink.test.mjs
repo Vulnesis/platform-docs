@@ -1,4 +1,4 @@
-// The www.vulnetix.com footer links to https://docs.vulnetix.com/?search. The
+// The www.vulnes.is footer links to https://docs.vulnes.is/?search. The
 // search dialog must open on arrival for that link, take any terms given as
 // ?search=<terms>, and drop the parameter so a reload does not reopen it.
 

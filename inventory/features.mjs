@@ -178,7 +178,7 @@ f('belai-voice', 'belai', 'belai/voice-and-tts', 'Voice input and speech', [pkg(
 f('belai-git', 'belai', 'belai/git', 'Git sync and repository info', [pkg('gitsync', 'gitinfo', 'repos', 'projectregistry'), doc('belai/git-sync\\.md'), tui('gitsync'), cfg('projectprefs', 'projectprefs_keys')]);
 f('belai-budgets', 'belai', 'belai/token-budgets', 'Token budgets and session intelligence', [pkg('budget'), doc('belai/token-budgets\\.md'), tui('budgets', 'intel'), cfg('budgets'), sub('budget')], { foundIn: '2026-10-28' });
 f('belai-quality', 'belai', 'belai/tests-and-lint', 'Tests, lint and build detection', [pkg('testdetect', 'testrun', 'testpass', 'lintdetect', 'builddetect', 'quality', 'proserules', 'depwatch'), doc('belai/lint\\.md', 'belai/testing\\.md')]);
-f('belai-vulnetix', 'belai', 'belai/vulnetix', 'Vulnetix scanning inside sessions', [pkg('vulnetixcli', 'vulnid', 'scanartifacts'), doc('belai/vulnetix\\.md', 'belai/vulnetix-review\\.md', 'belai/vuln-row\\.md'), tui('vulnetix')]);
+f('belai-vulnetix', 'belai', 'belai/vulnetix', 'Vulnesis scanning inside sessions', [pkg('vulnetixcli', 'vulnid', 'scanartifacts'), doc('belai/vulnetix\\.md', 'belai/vulnetix-review\\.md', 'belai/vuln-row\\.md'), tui('vulnetix')]);
 f('belai-telemetry', 'belai', 'belai/telemetry', 'Telemetry and tracing', [pkg('otel', 'trace', 'calltrace', 'activity'), doc('belai/telemetry\\.md')]);
 f('belai-tui', 'belai', 'belai/tui', 'The terminal UI', [pkg('tui'), doc('belai/tui-design\\.md', 'belai/screenshots\\.md'), '^tui-key:', tui('help', 'welcome', 'settings', 'fuzzy'), pkg('fuzzy'), doc('belai/settings\\.md')]);
 f('belai-tui-commands', 'belai', 'belai/tui-commands', 'TUI slash commands reference', ['^tui-cmd:']);

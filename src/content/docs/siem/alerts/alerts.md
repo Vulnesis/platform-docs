@@ -65,7 +65,7 @@ The event's dedupe key is the alert's key, so a repeat delivery is dropped.
 
 ## Email
 
-A rule with email targets sends one email per run listing that run's new alerts. Emails come from the Vulnetix mail sender.
+A rule with email targets sends one email per run listing that run's new alerts. Emails come from the Vulnesis mail sender.
 
 ## API
 

@@ -11,7 +11,7 @@ updated: 03 Nov 2026
 Every platform page assumes this page. The pattern is the same everywhere: install the binary, give the job two environment variables, verify, scan with a gate, keep the files.
 
 ```sh
-curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
 vulnetix auth verify
 vulnetix scan --fail-on high -o dist/sbom.cdx.json -o dist/results.sarif
@@ -27,14 +27,14 @@ The install script needs `sh`, `curl` or `wget`, and CA certificates. It verifie
 | Debian, Ubuntu slim | `apt-get update && apt-get install -y --no-install-recommends curl ca-certificates` |
 | UBI, Fedora | `microdnf install -y curl` or `dnf install -y curl` |
 
-Pin a release for reproducible pipelines (`--version v4.0.0`), take the newest release of a major with a channel (`--version v4`), or leave it unpinned to get fixes without editing pipelines. See [Versions and release channels](/cli/ci-cd/versions-and-channels/). There is no published Vulnetix CLI container image: install into your build image, or bake an image of your own once (see [Containers](/cli/ci-cd/containers/)).
+Pin a release for reproducible pipelines (`--version v4.0.0`), take the newest release of a major with a channel (`--version v4`), or leave it unpinned to get fixes without editing pipelines. See [Versions and release channels](/cli/ci-cd/versions-and-channels/). There is no published Vulnesis CLI container image: install into your build image, or bake an image of your own once (see [Containers](/cli/ci-cd/containers/)).
 
 ## Credentials
 
 | Variable | Value |
 |---|---|
-| `VULNETIX_ORG_ID` | Organisation UUID |
-| `VULNETIX_API_KEY` | ApiKey |
+| `VULNESIS_ORG_ID` | Organisation UUID |
+| `VULNESIS_API_KEY` | ApiKey |
 
 Set them from the platform's secret store. Do not run `vulnetix auth login` on a runner. `vulnetix auth verify` as the first command fails the job at once when they are missing or revoked. Details: [Authentication in CI/CD](/cli/authentication/ci-cd/).
 
@@ -91,7 +91,7 @@ See [Exit codes](/cli/reference/exit-codes/).
 
 ## Pipeline context
 
-The CLI detects GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines and Jenkins from their environment variables and records the repository, commit, branch and pull or merge request with each result. Elsewhere it reads the local git checkout. Deployment labels (`--environment`, `--cluster`, `--namespace`, `--project`, `--tag`) can be set once per job with `VULNETIX_ENVIRONMENT` and similar; see [scan](/cli/commands/scan/#deployment-context-and-bom-identity).
+The CLI detects GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines and Jenkins from their environment variables and records the repository, commit, branch and pull or merge request with each result. Elsewhere it reads the local git checkout. Deployment labels (`--environment`, `--cluster`, `--namespace`, `--project`, `--tag`) can be set once per job with `VULNESIS_ENVIRONMENT` and similar; see [scan](/cli/commands/scan/#deployment-context-and-bom-identity).
 
 ## Proxies
 
@@ -99,7 +99,7 @@ The CLI uses Go's standard proxy handling: `HTTPS_PROXY`, `HTTP_PROXY` and `NO_P
 
 ## GitHub Actions: one action per command
 
-On GitHub, each command has a composite action, `uses: Vulnetix/cli/<name>@v4`. It installs the CLI, runs the command, and can publish to code scanning and the dependency graph, upload the files it wrote as an artifact, attest them and attach them to a release. Credentials are passed as environment variables only.
+On GitHub, each command has a composite action, `uses: Vulnesis/cli/<name>@v4`. It installs the CLI, runs the command, and can publish to code scanning and the dependency graph, upload the files it wrote as an artifact, attest them and attach them to a release. Credentials are passed as environment variables only.
 
 | Action | Page |
 |---|---|

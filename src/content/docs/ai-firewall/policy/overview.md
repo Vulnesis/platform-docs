@@ -37,7 +37,7 @@ Each step either passes the request on or answers it. Status codes and `code` va
 | 1 | The provider slug in the path resolves for this organisation | `404 unknown_provider` |
 | 2 | The provider is enabled in the catalog | `403 provider_disabled` |
 | 3 | The provider serves the surface the route speaks (chat, responses, messages, kiro) | `404 unsupported_api` |
-| 4 | The Vulnetix API key is valid for the org UUID in the path | `401 invalid_api_key`, or `503` when the auth backend is unreachable |
+| 4 | The Vulnesis API key is valid for the org UUID in the path | `401 invalid_api_key`, or `503` when the auth backend is unreachable |
 | 5 | Provider policy: the tenant has not denied the provider (Pro and above) | `403 provider_denied` |
 | 6 | A provider key (or Kiro sign-in) is stored | `403 provider_key_missing` |
 | 7 | The body is at most 8 MiB and parses | `413 request_too_large`, `400` |
@@ -93,7 +93,7 @@ Guardrails, capability rules, hold settings and review approvals are cached per 
 
 ## Where to configure each layer
 
-| Layer | Resolve Platform tab (`https://www.vulnetix.com/resolve/ai-firewall`) | CLI | Policy file |
+| Layer | Resolve Platform tab (`https://www.vulnes.is/resolve/ai-firewall`) | CLI | Policy file |
 |---|---|---|---|
 | Providers | Govern (`#govern`) | `vulnetix ai-firewall policy provider` | `spec.providers` |
 | Models | Govern (`#govern`) | `vulnetix ai-firewall policy model` | `spec.models` |

@@ -135,7 +135,7 @@ vulnetix bom validate .vulnetix/sbom.cdx.json
 The [sbom](/sbom/github-actions/sbom/), [aibom](/sbom/github-actions/aibom/) and [cbom](/sbom/github-actions/cbom/) actions take the values that contain spaces as inputs, one per line where several are allowed:
 
 ```yaml
-- uses: Vulnetix/cli/sbom@v4
+- uses: Vulnesis/cli/sbom@v4
   with:
     bom-manufacturer: Acme Ltd
     bom-author: |
@@ -149,8 +149,8 @@ The [sbom](/sbom/github-actions/sbom/), [aibom](/sbom/github-actions/aibom/) and
       .vulnetix/overlay.cdx.json
     sign: true
   env:
-    VULNETIX_BOM_SERIAL: payment-service-${{ github.ref_name }}
-    VULNETIX_COMPONENT_VERSION: ${{ github.ref_name }}
+    VULNESIS_BOM_SERIAL: payment-service-${{ github.ref_name }}
+    VULNESIS_COMPONENT_VERSION: ${{ github.ref_name }}
 ```
 
 The `--bom-serial`, `--bom-version`, `--component-*` and `--bom-*-url` flags have no inputs. Set them through `env:` as above, or `args`. `args` is split on spaces, so a value with a space must go in an input or `env:`.

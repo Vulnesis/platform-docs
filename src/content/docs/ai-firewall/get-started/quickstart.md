@@ -12,13 +12,13 @@ checked: [cli@4c8c3b7, ai-firewall@339de55]
 updated: 02 Nov 2026
 ---
 
-You need the [Vulnetix CLI](/cli/get-started/install/), your org UUID and your Vulnetix API key. Both are on [Resolve > AI Firewall](https://www.vulnetix.com/resolve/ai-firewall) when you are signed in. Which key is which is on [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/).
+You need the [Vulnesis CLI](/cli/get-started/install/), your org UUID and your Vulnesis API key. Both are on [Resolve > AI Firewall](https://www.vulnes.is/resolve/ai-firewall) when you are signed in. Which key is which is on [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/).
 
 ## 1. Sign the CLI in
 
 ```bash
-export VULNETIX_ORG_ID=<org-uuid>
-export VULNETIX_API_KEY=<vulnetix-api-key>
+export VULNESIS_ORG_ID=<org-uuid>
+export VULNESIS_API_KEY=<vulnetix-api-key>
 vulnetix auth status
 ```
 
@@ -31,13 +31,13 @@ export OPENAI_PROVIDER_KEY=sk-proj-...
 vulnetix ai-firewall key set openai --from-env OPENAI_PROVIDER_KEY
 ```
 
-The key is encrypted with KMS and cannot be read back. From now on your applications carry only the Vulnetix key. See [Provider keys](/ai-firewall/get-started/provider-keys/).
+The key is encrypted with KMS and cannot be read back. From now on your applications carry only the Vulnesis key. See [Provider keys](/ai-firewall/get-started/provider-keys/).
 
 ## 3. Send a request
 
 ```bash
-curl -s "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Say hello"}]}'
 ```
@@ -49,8 +49,8 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url=f"https://guardrails.vulnetix.com/openai/{os.environ['VULNETIX_ORG_ID']}/v1",
-    api_key=os.environ["VULNETIX_API_KEY"],
+    base_url=f"https://guardrails.vulnes.is/openai/{os.environ['VULNESIS_ORG_ID']}/v1",
+    api_key=os.environ["VULNESIS_API_KEY"],
 )
 resp = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -67,8 +67,8 @@ Guardrails need the Business plan. Add a rule that blocks the word `hunter2`, th
 vulnetix ai-firewall policy guardrail canary \
   --rule-type blocked_pattern --action block --pattern 'hunter2' --priority 1
 
-curl -s -i "https://guardrails.vulnetix.com/openai/$VULNETIX_ORG_ID/v1/chat/completions" \
-  -H "Authorization: Bearer $VULNETIX_API_KEY" \
+curl -s -i "https://guardrails.vulnes.is/openai/$VULNESIS_ORG_ID/v1/chat/completions" \
+  -H "Authorization: Bearer $VULNESIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"my password is hunter2"}]}'
 ```

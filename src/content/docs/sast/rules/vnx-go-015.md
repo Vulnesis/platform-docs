@@ -19,7 +19,7 @@ generated: true
 | CWE | [CWE-362](https://cwe.mitre.org/data/definitions/362.html), [CWE-667](https://cwe.mitre.org/data/definitions/667.html) |
 | CWSS vector | `CWSS:1.0/TI:H/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:H/DI:H/EX:H/EC:N/P:H` |
 | Tags | `go` `waitgroup` `race-condition` `concurrency` |
-| Source | [`internal/sast/rules/vnx-go-015.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-go-015.rego) |
+| Source | [`internal/sast/rules/vnx-go-015.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-go-015.rego) |
 
 ## Overview
 

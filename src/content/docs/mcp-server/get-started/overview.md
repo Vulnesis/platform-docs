@@ -1,6 +1,6 @@
 ---
-title: Vulnetix MCP server
-description: A hosted Model Context Protocol server giving any MCP client 31 tools over the Vulnetix VDB, plus local-workflow prompts, templates and views.
+title: Vulnesis MCP server
+description: A hosted Model Context Protocol server giving any MCP client 31 tools over the Vulnesis VDB, plus local-workflow prompts, templates and views.
 order: 1
 nav: Overview
 sources:
@@ -15,10 +15,10 @@ updated: 04 Nov 2026
 
 The MCP server is for developers and security engineers who work through an AI coding agent and want vulnerability answers in that conversation: is this CVE exploited, is this package safe to install, which version fixes it. Your agent calls it as a tool. For the same data from a script or service, call the [VDB API](/vdb-api/) directly or use `vulnetix vdb` from the [CLI](/cli/). To control what your agents send to model providers, use the [AI Firewall](/ai-firewall/), which is a gateway rather than a data source.
 
-The Vulnetix MCP server is a remote MCP endpoint that an AI coding agent calls for vulnerability data. It answers from the Vulnetix VDB, which aggregates CVE.org, NVD, VulnCheck, CISA KEV, GitHub and OSV advisories, EUVD and other sources. There is nothing to install: you add a URL and a header to your client.
+The Vulnesis MCP server is a remote MCP endpoint that an AI coding agent calls for vulnerability data. It answers from the Vulnesis VDB, which aggregates CVE.org, NVD, VulnCheck, CISA KEV, GitHub and OSV advisories, EUVD and other sources. There is nothing to install: you add a URL and a header to your client.
 
 ```text
-URL     https://mcp.vulnetix.com/mcp
+URL     https://mcp.vulnes.is/mcp
 Header  Authorization: ApiKey <orgId>:<hex>
 ```
 
@@ -44,7 +44,7 @@ Server name `vulnetix`, version `0.1.0`. Protocol revision `2026-07-28`, with `2
 | Return detection rules, workarounds, vendor advisories and VEX | Remember anything between requests |
 | Add an optional model-written analysis on Pro plans | Supply a credential for you |
 
-Every prompt is a procedure your own agent runs locally with the [Vulnetix CLI](/cli/). See [Local workflows](/mcp-server/prompts/local-workflows/).
+Every prompt is a procedure your own agent runs locally with the [Vulnesis CLI](/cli/). See [Local workflows](/mcp-server/prompts/local-workflows/).
 
 ## Responses are shaped
 

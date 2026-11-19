@@ -15,14 +15,14 @@ vulnetix ai-firewall install windsurf
 
 ```text
 Windsurf: Settings > Cascade > Model Provider (custom OpenAI endpoint)
-    Base URL: https://guardrails.vulnetix.com/openai/<uuid>/v1
-    API key:  your $VULNETIX_API_KEY
+    Base URL: https://guardrails.vulnes.is/openai/<uuid>/v1
+    API key:  your $VULNESIS_API_KEY
 ```
 
 ## Set it up
 
 1. Store the provider key once: `vulnetix ai-firewall key set openai --from-env OPENAI_KEY`.
-2. In the model provider settings, add a custom OpenAI-compatible endpoint with the base URL above (with `/v1`) and your Vulnetix API key.
+2. In the model provider settings, add a custom OpenAI-compatible endpoint with the base URL above (with `/v1`) and your Vulnesis API key.
 3. Add the model ids you will use. Windsurf does not read them from the gateway.
 4. Select one of those models explicitly.
 

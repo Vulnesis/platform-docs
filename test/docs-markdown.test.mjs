@@ -53,7 +53,7 @@ test('a link to an unwritten docs page renders as text', () => {
 });
 
 test('external, protocol-relative and non-docs links are never touched', () => {
-  assert.equal(visitLink('https://belai.vulnetix.com/'), undefined);
+  assert.equal(visitLink('https://belai.vulnes.is/'), undefined);
   assert.equal(visitLink('//example.com/x/y'), undefined);
   assert.equal(visitLink('/'), undefined);
   assert.equal(visitLink('/img/sf-board.webp'), undefined);

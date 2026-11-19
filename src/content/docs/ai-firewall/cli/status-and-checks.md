@@ -50,7 +50,7 @@ vulnetix ai-firewall status -o json
 | `model_denied` | error | The model pinned in a wired client is on the deny list | Pin another model, or remove the entry |
 | `model_not_allowed` | error | The provider is in allowlist mode and the pinned model is not on the list | Pin an allowed model, or add it with `policy model <id> --allow --provider <slug>` |
 | `wire_unsupported` | warning | The client needs a surface (`messages`, `responses`) the gateway does not serve for its provider | Use a provider that serves it; see [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/) |
-| `key_env_unset` | warning | A base URL points at the gateway but the provider's key variable (such as `OPENAI_API_KEY`) is empty | Export `VULNETIX_API_KEY`, or re-run `install` |
+| `key_env_unset` | warning | A base URL points at the gateway but the provider's key variable (such as `OPENAI_API_KEY`) is empty | Export `VULNESIS_API_KEY`, or re-run `install` |
 | `guardrail_pattern_invalid` | warning | An enabled guardrail's regex does not compile in Go RE2. The gateway skips it, so it is not enforced. | Rewrite the pattern without lookaround |
 
 Only clients in state `wired` get the policy checks. The model checks use the model pinned in the client's config; a client with no pinned model is not checked.

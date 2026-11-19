@@ -20,7 +20,7 @@ generated: true
 | CAPEC | [CAPEC-92](https://capec.mitre.org/data/definitions/92.html) |
 | CWSS vector | `CWSS:1.0/TI:M/AP:RU/AL:S/IC:N/FC:LT/RP:RU/RL:S/AV:L/AS:N/IN:A/SC:A/BI:M/DI:H/EX:M/EC:N/P:C` |
 | Tags | `rust` `integer-truncation` `type-cast` `numeric-safety` |
-| Source | [`internal/sast/rules/vnx-rust-006.rego`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/vnx-rust-006.rego) |
+| Source | [`internal/sast/rules/vnx-rust-006.rego`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/vnx-rust-006.rego) |
 
 ## Overview
 

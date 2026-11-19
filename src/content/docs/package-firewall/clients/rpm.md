@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/rpm/<path on the mirror>` |
+| Repository URL | `https://packages.vulnes.is/rpm/<path on the mirror>` |
 | Ecosystem ID | `rpm` |
 | Plan | Add-on |
 | Mode | gate: anything under `repodata/` is streamed unchanged; `<name>-<version>-<release>.<arch>.rpm` is checked |
@@ -26,8 +26,8 @@ The path after `/rpm` is appended to the mirror URL unchanged. With the default 
 
 ```ini
 [vulnetix]
-name=Vulnetix Package Firewall
-baseurl=https://packages.vulnetix.com/rpm/pub/fedora/linux/releases/$releasever/Everything/$basearch/os/
+name=Vulnesis Package Firewall
+baseurl=https://packages.vulnes.is/rpm/pub/fedora/linux/releases/$releasever/Everything/$basearch/os/
 enabled=1
 gpgcheck=1
 username=YOUR_ORG_UUID

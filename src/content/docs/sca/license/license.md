@@ -47,12 +47,12 @@ Each step runs only for packages still unknown.
 | 2 | LICENSE and COPYING files in the Go module cache (`~/go/pkg/mod/`), classified by text, plus `SPDX-License-Identifier` headers | `filesystem` |
 | 3 | Containers and IaC: OCI image labels via `podman inspect` or `docker inspect`, well-known images, Docker Hub; Terraform Registry; `nix eval` | `container` |
 | 4 | Embedded mapping of popular packages to SPDX ids | `embedded-db` |
-| 5 | Licences earlier Vulnetix scans stored, one `POST /v2/cli.licenses` request (10 second limit) | `vulnetix` |
+| 5 | Licences earlier Vulnesis scans stored, one `POST /v2/cli.licenses` request (10 second limit) | `vulnetix` |
 | 6 | Package registries: RubyGems, Hex, pub, Hackage, CRAN, Packagist, CocoaPods, Julia, Crystal, opam | `registry` |
 | 7 | deps.dev for Go, npm, PyPI, Cargo, Maven, NuGet | `deps.dev` |
 | 8 | GitHub: the repository's licence via `gh` when signed in, else the REST API with `GITHUB_TOKEN` or `GH_TOKEN` | `github` |
 
-Results from steps 6 to 8 are cached under `~/.vulnetix/cache/licenses/` for seven days. Set `VULNETIX_NO_LICENSE_CACHE=1` to turn the cache off.
+Results from steps 6 to 8 are cached under `~/.vulnetix/cache/licenses/` for seven days. Set `VULNESIS_NO_LICENSE_CACHE=1` to turn the cache off.
 
 ## Rules
 

@@ -1,6 +1,6 @@
-# Vulnetix documentation welcomes search engines, AI search, AI agents and AI
+# Vulnesis documentation welcomes search engines, AI search, AI agents and AI
 # training. Every page is Markdown at its path with ".md" in place of the
-# trailing slash; https://docs.vulnetix.com/llms.txt lists every product and
+# trailing slash; https://docs.vulnes.is/llms.txt lists every product and
 # section. Rules: README.md, "Search engines and AI crawlers".
 #
 # Content signals (contentsignals.org): yes to search, to use as AI input
@@ -43,4 +43,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://docs.vulnetix.com/sitemap-index.xml
+Sitemap: https://docs.vulnes.is/sitemap-index.xml

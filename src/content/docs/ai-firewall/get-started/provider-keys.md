@@ -15,16 +15,16 @@ checked: [cli@4c8c3b7, vdb-api@4145f0a, vdb-site@1a06d67, ai-firewall@339de55, w
 updated: 02 Nov 2026
 ---
 
-Your applications send only the Vulnetix API key. The provider key, such as your OpenAI or Anthropic key, is stored once per organisation and provider, and the gateway adds it to the upstream request after the request clears policy. You keep your own account and billing with each provider; the gateway does not resell tokens.
+Your applications send only the Vulnesis API key. The provider key, such as your OpenAI or Anthropic key, is stored once per organisation and provider, and the gateway adds it to the upstream request after the request clears policy. You keep your own account and billing with each provider; the gateway does not resell tokens.
 
 ## Two ways a key is stored
 
 | Stored with | Holds | Scope | Change it with |
 |---|---|---|---|
 | `vulnetix ai-firewall key set`, or the Resolve Platform key field | One key | Every API key owner in the organisation | `key set` again, or `key remove` |
-| The [secrets vault](https://www.vulnetix.com/resolve/vault), including keys added from the Connect tab | One or more keys, each with an expiry and the API key owners who may use it | Per owner | The Vault page |
+| The [secrets vault](https://www.vulnes.is/resolve/vault), including keys added from the Connect tab | One or more keys, each with an expiry and the API key owners who may use it | Per owner | The Vault page |
 
-Both are stored as one KMS-encrypted value per organisation and provider. A vault-managed key cannot be changed from the CLI or the old Resolve Platform field: `key set` and `key remove` answer `409 the <slug> key is managed in the secrets vault; change it at https://www.vulnetix.com/resolve/vault`, so a CLI write cannot replace a multi-owner bundle with one key and drop its expiry.
+Both are stored as one KMS-encrypted value per organisation and provider. A vault-managed key cannot be changed from the CLI or the old Resolve Platform field: `key set` and `key remove` answer `409 the <slug> key is managed in the secrets vault; change it at https://www.vulnes.is/resolve/vault`, so a CLI write cannot replace a multi-owner bundle with one key and drop its expiry.
 
 Storing keys is available on every plan.
 
@@ -56,7 +56,7 @@ The gateway reads the stored value on every request, so the next request through
 ```json
 {
   "error": {
-    "message": "no OpenAI API key configured for your organisation: add one with 'vulnetix ai-firewall key set openai' or at https://www.vulnetix.com/vdb-ai-firewall#byok",
+    "message": "no OpenAI API key configured for your organisation: add one with 'vulnetix ai-firewall key set openai' or at https://www.vulnes.is/vdb-ai-firewall#byok",
     "type": "policy_violation",
     "code": "provider_key_missing"
   }
@@ -74,7 +74,7 @@ More on the threat model is in [Key custody](/ai-firewall/security/key-custody/)
 
 ## Vault keys: expiry and owners
 
-A vault entry for a provider can hold several keys. Each has an expiry (or none) and a set of principals who may use it: everyone, everyone except a list, or only listed owners. The gateway picks the first live key that covers the owner of the calling Vulnetix API key, on every request.
+A vault entry for a provider can hold several keys. Each has an expiry (or none) and a set of principals who may use it: everyone, everyone except a list, or only listed owners. The gateway picks the first live key that covers the owner of the calling Vulnesis API key, on every request.
 
 | Refusal | Status | Cause | Fix |
 |---|---|---|---|

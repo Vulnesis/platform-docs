@@ -10,13 +10,13 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-## Does my code get sent to Vulnetix?
+## Does my code get sent to Vulnesis?
 
 No. No tool accepts file content. What crosses the wire is an advisory id, a package name, a version or a purl. The prompts that read your code tell your own agent to run the CLI locally.
 
 ## Do I need the CLI?
 
-Not for the 31 tools. All 18 prompts run on your machine and expect the [Vulnetix CLI](/cli/). See [Local workflows](/mcp-server/prompts/local-workflows/).
+Not for the 31 tools. All 18 prompts run on your machine and expect the [Vulnesis CLI](/cli/). See [Local workflows](/mcp-server/prompts/local-workflows/).
 
 ## Is it free?
 
@@ -64,4 +64,4 @@ Yes, if the client supports remote MCP and the model supports tool calling. Smal
 
 ## Where do I report a bug or a security issue?
 
-Bugs: [GitHub issues](https://github.com/Vulnetix/mcp-server/issues). Security issues: follow `SECURITY.md` in the repository, not a public issue.
+Bugs: [GitHub issues](https://github.com/Vulnesis/mcp-server/issues). Security issues: follow `SECURITY.md` in the repository, not a public issue.

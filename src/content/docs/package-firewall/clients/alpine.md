@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/alpine/<branch>/<repo>` |
+| Repository URL | `https://packages.vulnes.is/alpine/<branch>/<repo>` |
 | Ecosystem ID | `alpine` |
 | Plan | Add-on |
 | Mode | gate: `APKINDEX.tar.gz` is streamed unchanged; `<name>-<version>-r<n>.apk` is checked |
@@ -23,8 +23,8 @@ updated: 03 Nov 2026
 Replace `/etc/apk/repositories` with the firewall URLs. Match the branch to your image (`v3.22`, `edge`, ...):
 
 ```text
-https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/alpine/v3.22/main
-https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/alpine/v3.22/community
+https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/alpine/v3.22/main
+https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/alpine/v3.22/community
 ```
 
 In a Dockerfile, pass the credentials as a build secret rather than baking them into a layer:

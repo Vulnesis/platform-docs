@@ -16,7 +16,7 @@ vulnetix ignore remove [flags]    # deactivate a rule
 vulnetix ignore sync [flags]      # pull the organisation's rules into .vulnetix/memory.yaml
 ```
 
-Credentials are optional. Without them, rules live in `.vulnetix/memory.yaml` and work offline. When you are authenticated, `add` also saves the rule to Vulnetix, and every scan reads the organisation's active rules for the repository and branch alongside the local ones.
+Credentials are optional. Without them, rules live in `.vulnetix/memory.yaml` and work offline. When you are authenticated, `add` also saves the rule to Vulnesis, and every scan reads the organisation's active rules for the repository and branch alongside the local ones.
 
 ## ignore add
 
@@ -100,7 +100,7 @@ A rule a `VexSource` owns cannot be removed here, since the source's next refres
 
 ## ignore sync
 
-Pulls every rule the organisation holds for this repository into `.vulnetix/memory.yaml`, except the rules a `VexSource` owns: those stay where they are, a scan reads them from Vulnetix, and the command prints how many it left. It needs credentials and does not push local rules: a rule reaches Vulnetix when `ignore add` runs authenticated.
+Pulls every rule the organisation holds for this repository into `.vulnetix/memory.yaml`, except the rules a `VexSource` owns: those stay where they are, a scan reads them from Vulnesis, and the command prints how many it left. It needs credentials and does not push local rules: a rule reaches Vulnesis when `ignore add` runs authenticated.
 
 ## .vulnetix/memory.yaml
 
@@ -146,4 +146,4 @@ vulnetix ignore remove --finding CVE-2024-0001 --reason "fixed upstream"
 
 ## In the Resolve Platform
 
-The Suppression Policies page lists every rule by repository and category, with extend, deactivate and delete actions. The "Ignore this finding" action on a finding creates a rule. Rules created from VEX documents appear there too; see [VEX sent to Vulnetix](/vex/suppression/sent-to-vulnetix/).
+The Suppression Policies page lists every rule by repository and category, with extend, deactivate and delete actions. The "Ignore this finding" action on a finding creates a rule. Rules created from VEX documents appear there too; see [VEX sent to Vulnesis](/vex/suppression/sent-to-vulnetix/).

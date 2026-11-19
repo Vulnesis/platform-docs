@@ -8,7 +8,7 @@ checked: [ai-firewall@339de55]
 updated: 02 Nov 2026
 ---
 
-Every client here speaks the `chat` surface. Set the base URL to the gateway and the key to your Vulnetix API key; nothing else changes. Each example reads `VULNETIX_API_KEY` and `VULNETIX_ORG_ID`.
+Every client here speaks the `chat` surface. Set the base URL to the gateway and the key to your Vulnesis API key; nothing else changes. Each example reads `VULNESIS_API_KEY` and `VULNESIS_ORG_ID`.
 
 | Language | Package | Base URL setting | Quirk |
 |---|---|---|---|
@@ -37,10 +37,10 @@ use async_openai::{
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let org = std::env::var("VULNETIX_ORG_ID")?;
+    let org = std::env::var("VULNESIS_ORG_ID")?;
     let config = OpenAIConfig::new()
-        .with_api_base(format!("https://guardrails.vulnetix.com/openai/{org}/v1"))
-        .with_api_key(std::env::var("VULNETIX_API_KEY")?);
+        .with_api_base(format!("https://guardrails.vulnes.is/openai/{org}/v1"))
+        .with_api_key(std::env::var("VULNESIS_API_KEY")?);
     let client = Client::with_config(config);
 
     let request = CreateChatCompletionRequestArgs::default()
@@ -70,11 +70,11 @@ using System.ClientModel;
 using OpenAI;
 using OpenAI.Chat;
 
-string org = Environment.GetEnvironmentVariable("VULNETIX_ORG_ID")!;
+string org = Environment.GetEnvironmentVariable("VULNESIS_ORG_ID")!;
 ChatClient client = new(
     model: "gpt-4o-mini",
-    credential: new ApiKeyCredential(Environment.GetEnvironmentVariable("VULNETIX_API_KEY")!),
-    options: new OpenAIClientOptions { Endpoint = new Uri($"https://guardrails.vulnetix.com/openai/{org}/v1") });
+    credential: new ApiKeyCredential(Environment.GetEnvironmentVariable("VULNESIS_API_KEY")!),
+    options: new OpenAIClientOptions { Endpoint = new Uri($"https://guardrails.vulnes.is/openai/{org}/v1") });
 
 ChatCompletion completion = client.CompleteChat("Hello");
 Console.WriteLine(completion.Content[0].Text);
@@ -92,8 +92,8 @@ bundle add openai
 require "openai"
 
 client = OpenAI::Client.new(
-  base_url: "https://guardrails.vulnetix.com/openai/#{ENV.fetch("VULNETIX_ORG_ID")}/v1",
-  api_key: ENV.fetch("VULNETIX_API_KEY")
+  base_url: "https://guardrails.vulnes.is/openai/#{ENV.fetch("VULNESIS_ORG_ID")}/v1",
+  api_key: ENV.fetch("VULNESIS_API_KEY")
 )
 chat = client.chat.completions.create(
   model: "gpt-4o-mini",
@@ -114,10 +114,10 @@ composer require openai-php/client
 <?php
 require 'vendor/autoload.php';
 
-$org = getenv('VULNETIX_ORG_ID');
+$org = getenv('VULNESIS_ORG_ID');
 $client = OpenAI::factory()
-    ->withApiKey(getenv('VULNETIX_API_KEY'))
-    ->withBaseUri("guardrails.vulnetix.com/openai/{$org}/v1") // no scheme: the client adds https://
+    ->withApiKey(getenv('VULNESIS_API_KEY'))
+    ->withBaseUri("guardrails.vulnes.is/openai/{$org}/v1") // no scheme: the client adds https://
     ->make();
 
 $result = $client->chat()->create([
@@ -140,12 +140,12 @@ defp deps, do: [{:openai_ex, "~> 0.9"}]
 alias OpenaiEx.Chat
 alias OpenaiEx.ChatMessage
 
-org = System.fetch_env!("VULNETIX_ORG_ID")
+org = System.fetch_env!("VULNESIS_ORG_ID")
 
 openai =
-  System.fetch_env!("VULNETIX_API_KEY")
+  System.fetch_env!("VULNESIS_API_KEY")
   |> OpenaiEx.new()
-  |> OpenaiEx.with_base_url("https://guardrails.vulnetix.com/openai/#{org}/v1")
+  |> OpenaiEx.with_base_url("https://guardrails.vulnes.is/openai/#{org}/v1")
 
 req = Chat.Completions.new(model: "gpt-4o-mini", messages: [ChatMessage.user("Hello")])
 {:ok, response} = Chat.Completions.create(openai, req)
@@ -167,16 +167,16 @@ import OpenAI
 
 let env = ProcessInfo.processInfo.environment
 let openAI = OpenAI(configuration: OpenAI.Configuration(
-    token: env["VULNETIX_API_KEY"]!,
-    host: "guardrails.vulnetix.com",
-    basePath: "/openai/\(env["VULNETIX_ORG_ID"]!)"   // the client appends /v1/...
+    token: env["VULNESIS_API_KEY"]!,
+    host: "guardrails.vulnes.is",
+    basePath: "/openai/\(env["VULNESIS_ORG_ID"]!)"   // the client appends /v1/...
 ))
 let query = ChatQuery(messages: [.user(.init(content: .string("Hello")))], model: "gpt-4o-mini")
 let result = try await openAI.chats(query: query)
 print(result.choices.first?.message.content ?? "")
 ```
 
-Without a library, `URLSession` works the same as [curl](/ai-firewall/clients/curl/): `POST https://guardrails.vulnetix.com/openai/<uuid>/v1/chat/completions` with `Authorization: Bearer <key>`, and check for `statusCode == 403`.
+Without a library, `URLSession` works the same as [curl](/ai-firewall/clients/curl/): `POST https://guardrails.vulnes.is/openai/<uuid>/v1/chat/completions` with `Authorization: Bearer <key>`, and check for `statusCode == 403`.
 
 ## Dart / Flutter
 
@@ -192,8 +192,8 @@ Future<void> main() async {
   final env = Platform.environment;
   final client = OpenAIClient(
     config: OpenAIConfig(
-      authProvider: ApiKeyProvider(env['VULNETIX_API_KEY']!),
-      baseUrl: 'https://guardrails.vulnetix.com/openai/${env['VULNETIX_ORG_ID']}/v1',
+      authProvider: ApiKeyProvider(env['VULNESIS_API_KEY']!),
+      baseUrl: 'https://guardrails.vulnes.is/openai/${env['VULNESIS_ORG_ID']}/v1',
     ),
   );
   final response = await client.chat.completions.create(
@@ -204,4 +204,4 @@ Future<void> main() async {
 ```
 
 > [!CAREFUL] Do not ship the key in a mobile or desktop app
-> A Vulnetix API key compiled into an app can be extracted. Call the gateway from your own backend, and let the app talk to that.
+> A Vulnesis API key compiled into an app can be extracted. Call the gateway from your own backend, and let the app talk to that.

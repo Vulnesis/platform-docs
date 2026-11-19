@@ -11,8 +11,8 @@ Claude Code speaks the Anthropic Messages API (`POST /v1/messages` and `POST /v1
 
 | Setting | Value |
 |---|---|
-| `ANTHROPIC_BASE_URL` | `https://guardrails.vulnetix.com/anthropic/{uuid}`, no `/v1` |
-| `ANTHROPIC_AUTH_TOKEN` | Your Vulnetix API key |
+| `ANTHROPIC_BASE_URL` | `https://guardrails.vulnes.is/anthropic/{uuid}`, no `/v1` |
+| `ANTHROPIC_AUTH_TOKEN` | Your Vulnesis API key |
 | `ANTHROPIC_API_KEY` | Empty, or unset |
 | `ANTHROPIC_MODEL` | Optional. A model your policy allows. |
 
@@ -27,7 +27,7 @@ vulnetix ai-firewall install claude-code shell
 
 `install claude-code` merges `ANTHROPIC_BASE_URL` (and `ANTHROPIC_MODEL` with `--model`) into the `env` object of `.claude/settings.json`, keeping every other key in the file. Its default scope is `project`: `<git root>/.claude/settings.json`, or `~/.claude/settings.json` outside a repository or with `--scope user`.
 
-The token is not written to `settings.json`, because that file is often committed. `install shell` puts `export ANTHROPIC_AUTH_TOKEN="$VULNETIX_API_KEY"` in your shell rc. With `--embed-key` the literal key goes into `.claude/settings.local.json` instead, mode `600`, and the CLI refuses if that file is in a repository and not git-ignored.
+The token is not written to `settings.json`, because that file is often committed. `install shell` puts `export ANTHROPIC_AUTH_TOKEN="$VULNESIS_API_KEY"` in your shell rc. With `--embed-key` the literal key goes into `.claude/settings.local.json` instead, mode `600`, and the CLI refuses if that file is in a repository and not git-ignored.
 
 ```bash
 vulnetix ai-firewall install claude-code --scope user --model claude-sonnet-4-5 --dry-run
@@ -40,9 +40,9 @@ A `--model` the policy would refuse is an error before anything is written. A pr
 Shell profile:
 
 ```bash
-export VULNETIX_API_KEY="<your Vulnetix API key>"
-export ANTHROPIC_BASE_URL="https://guardrails.vulnetix.com/anthropic/<uuid>"
-export ANTHROPIC_AUTH_TOKEN="$VULNETIX_API_KEY"
+export VULNESIS_API_KEY="<your Vulnesis API key>"
+export ANTHROPIC_BASE_URL="https://guardrails.vulnes.is/anthropic/<uuid>"
+export ANTHROPIC_AUTH_TOKEN="$VULNESIS_API_KEY"
 export ANTHROPIC_API_KEY=""
 ```
 
@@ -51,7 +51,7 @@ Or `.claude/settings.json`:
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://guardrails.vulnetix.com/anthropic/<uuid>",
+    "ANTHROPIC_BASE_URL": "https://guardrails.vulnes.is/anthropic/<uuid>",
     "ANTHROPIC_API_KEY": ""
   }
 }
@@ -64,7 +64,7 @@ with `ANTHROPIC_AUTH_TOKEN` in the environment, or in `.claude/settings.local.js
 
 ## Verify
 
-In Claude Code, `/status` shows the auth token source and the base URL. You want `ANTHROPIC_AUTH_TOKEN` and `https://guardrails.vulnetix.com/anthropic/<uuid>`. An OAuth login or `https://api.anthropic.com` means the gateway is not in the path.
+In Claude Code, `/status` shows the auth token source and the base URL. You want `ANTHROPIC_AUTH_TOKEN` and `https://guardrails.vulnes.is/anthropic/<uuid>`. An OAuth login or `https://api.anthropic.com` means the gateway is not in the path.
 
 From a terminal, `vulnetix ai-firewall status` should show `claude-code` as `wired`. `points elsewhere` raises `bypasses_firewall`.
 
@@ -91,12 +91,12 @@ A local MCP server is only visible through the `mcp__` prefix, which is a Claude
 
 | Status | `code` | Cause | Fix |
 |---|---|---|---|
-| `401` | `invalid_api_key` | The token is a provider key, or empty | Set `ANTHROPIC_AUTH_TOKEN` to your Vulnetix key and empty `ANTHROPIC_API_KEY` |
+| `401` | `invalid_api_key` | The token is a provider key, or empty | Set `ANTHROPIC_AUTH_TOKEN` to your Vulnesis key and empty `ANTHROPIC_API_KEY` |
 | `403` | `provider_key_missing` | No Anthropic key in the vault | `vulnetix ai-firewall key set anthropic` |
 | `403` | `model_not_allowed` | The provider is in allowlist mode and this model is not listed | Pick an allowed model with `/model`, or allow it |
 | `403` | `model_denied` | The model is denied | Pick another model |
 | `403` | `request_blocked`, `tool_denied`, `mcp_denied`, `skill_denied`, `client_denied` | A rule matched. `blocked_by` names it. | See [Errors](/ai-firewall/reference/errors/) |
-| `404` | `unsupported_api` | The slug is not `anthropic`, or the base URL ends in `/v1` | Use `https://guardrails.vulnetix.com/anthropic/<uuid>` |
+| `404` | `unsupported_api` | The slug is not `anthropic`, or the base URL ends in `/v1` | Use `https://guardrails.vulnes.is/anthropic/<uuid>` |
 
 Errors arrive in the Anthropic envelope, so Claude Code prints the message:
 

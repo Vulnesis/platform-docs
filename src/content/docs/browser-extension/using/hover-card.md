@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 
 ## Detection
 
-The content script runs at `document_idle` in the top frame of every `http` and `https` page, except `https://*.vulnetix.com/*` and `https://vulnetix.com/*` (the site already renders this data). Its first step is to check the page's origin against your [site list](/browser-extension/reference/settings/#sites); on a disabled origin it stops there.
+The content script runs at `document_idle` in the top frame of every `http` and `https` page, except `https://*.vulnes.is/*` and `https://vulnes.is/*` (the site already renders this data). Its first step is to check the page's origin against your [site list](/browser-extension/reference/settings/#sites); on a disabled origin it stops there.
 
 It walks the page text and matches the [identifier formats](/browser-extension/reference/identifiers/). An identifier split across elements, such as `<a>CVE-2024-<b>3094</b></a>`, is still one match. Unicode dashes are folded to `-`.
 
@@ -46,6 +46,6 @@ Hovering fetches that one identifier, unless it is already cached.
 | Affected | `vendor / product @ version (ecosystem)` |
 | Age | Time since publication |
 | Exploits | Exploit maturity, and `N PoC refs` |
-| Link | **Open in Resolve Platform**: `https://www.vulnetix.com/resolve/lookup?q=vuln%20<ID>&tab=output` |
+| Link | **Open in Resolve Platform**: `https://www.vulnes.is/resolve/lookup?q=vuln%20<ID>&tab=output` |
 
 When a lookup fails the card shows the error and keeps the Resolve Platform link. When the daily quota is exhausted it says how long until the reset; see [Quota and cache](/browser-extension/using/quota-and-cache/).

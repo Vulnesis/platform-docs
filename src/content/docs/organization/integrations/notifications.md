@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-Vulnetix tells people about events in two ways:
+Vulnesis tells people about events in two ways:
 
 | Channel | Who decides | Set up in |
 |---|---|---|

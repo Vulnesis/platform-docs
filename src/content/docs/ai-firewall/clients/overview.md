@@ -8,9 +8,9 @@ checked: [ai-firewall@339de55, cli@4c8c3b7, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-Every client is wired the same way: its base URL points at the gateway, and its API key is your **Vulnetix API key**, not a provider key. The provider key stays in the vault and the gateway adds it on the way upstream. See [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/) for the two keys and the URL shapes.
+Every client is wired the same way: its base URL points at the gateway, and its API key is your **Vulnesis API key**, not a provider key. The provider key stays in the vault and the gateway adds it on the way upstream. See [Keys and base URLs](/ai-firewall/get-started/keys-and-base-urls/) for the two keys and the URL shapes.
 
-A client is only wired when **both** halves are right. A base URL that points at the gateway with a provider key in the key field fails with `401 invalid_api_key`. A Vulnetix key with the provider's own base URL sends your Vulnetix key to the provider.
+A client is only wired when **both** halves are right. A base URL that points at the gateway with a provider key in the key field fails with `401 invalid_api_key`. A Vulnesis key with the provider's own base URL sends your Vulnesis key to the provider.
 
 ## Clients
 
@@ -33,7 +33,7 @@ The SDK pages: [curl](/ai-firewall/clients/curl/), [Python](/ai-firewall/clients
 
 The route decides the surface. A provider serves only the surfaces listed for it in the provider catalogue; a request on any other surface is refused with `404 unsupported_api`, and the message names the route to use instead.
 
-| Surface | Route under `https://guardrails.vulnetix.com/{provider}/{uuid}` | Spoken by | Served by |
+| Surface | Route under `https://guardrails.vulnes.is/{provider}/{uuid}` | Spoken by | Served by |
 |---|---|---|---|
 | `chat` | `POST /v1/chat/completions` | OpenAI SDKs, LangChain, LlamaIndex, Continue, aider, Cursor, curl | Every provider except `anthropic` and `kiro` |
 | `responses` | `POST /v1/responses` | Codex CLI | `openai` |
@@ -46,30 +46,30 @@ The route decides the surface. A provider serves only the surfaces listed for it
 
 | Client family | Base URL |
 |---|---|
-| OpenAI-shaped (OpenAI SDKs, Codex, Continue, aider, Cursor, Windsurf, LangChain, LlamaIndex) | `https://guardrails.vulnetix.com/{provider}/{uuid}/v1` |
-| Anthropic-shaped (Anthropic SDKs, Claude Code, Claude Desktop) | `https://guardrails.vulnetix.com/anthropic/{uuid}`, no `/v1` |
-| Spring AI | `https://guardrails.vulnetix.com/{provider}/{uuid}`, no `/v1` (Spring AI appends `/v1/chat/completions`) |
+| OpenAI-shaped (OpenAI SDKs, Codex, Continue, aider, Cursor, Windsurf, LangChain, LlamaIndex) | `https://guardrails.vulnes.is/{provider}/{uuid}/v1` |
+| Anthropic-shaped (Anthropic SDKs, Claude Code, Claude Desktop) | `https://guardrails.vulnes.is/anthropic/{uuid}`, no `/v1` |
+| Spring AI | `https://guardrails.vulnes.is/{provider}/{uuid}`, no `/v1` (Spring AI appends `/v1/chat/completions`) |
 
-`{uuid}` is the UUID your Vulnetix API key belongs to: your own principal UUID, or the organisation UUID for a single-user organisation. Policy always comes from the organisation. `vulnetix ai-firewall status` prints it as the gateway `org`.
+`{uuid}` is the UUID your Vulnesis API key belongs to: your own principal UUID, or the organisation UUID for a single-user organisation. Policy always comes from the organisation. `vulnetix ai-firewall status` prints it as the gateway `org`.
 
 > [!CAREFUL] `/v1/v1` is the most common mistake
 > The OpenAI SDKs expect the version in the base URL. The Anthropic SDKs add `/v1` themselves. Putting `/v1` on an Anthropic base URL produces `/v1/v1/messages`, which is a `404`.
 
 ## Environment variables the CLI sets
 
-`vulnetix ai-firewall install shell` writes a managed block, fenced by `# Vulnetix AI Firewall` and `# End Vulnetix AI Firewall`, into your shell rc (or the Windows user environment). `install env` writes the same variables into an existing `.env`, `.envrc` or `Makefile` at the git root. Only providers with a stored key, and not denied by policy, are written.
+`vulnetix ai-firewall install shell` writes a managed block, fenced by `# Vulnesis AI Firewall` and `# End Vulnesis AI Firewall`, into your shell rc (or the Windows user environment). `install env` writes the same variables into an existing `.env`, `.envrc` or `Makefile` at the git root. Only providers with a stored key, and not denied by policy, are written.
 
 | Provider | Base-URL variables | Key variable | Value of the key variable |
 |---|---|---|---|
-| `openai` | `OPENAI_BASE_URL`, `OPENAI_API_BASE` | `OPENAI_API_KEY` | `$VULNETIX_API_KEY` |
-| `anthropic` | `ANTHROPIC_BASE_URL` | `ANTHROPIC_AUTH_TOKEN` | `$VULNETIX_API_KEY` |
-| `groq` | `GROQ_BASE_URL` | `GROQ_API_KEY` | `$VULNETIX_API_KEY` |
+| `openai` | `OPENAI_BASE_URL`, `OPENAI_API_BASE` | `OPENAI_API_KEY` | `$VULNESIS_API_KEY` |
+| `anthropic` | `ANTHROPIC_BASE_URL` | `ANTHROPIC_AUTH_TOKEN` | `$VULNESIS_API_KEY` |
+| `groq` | `GROQ_BASE_URL` | `GROQ_API_KEY` | `$VULNESIS_API_KEY` |
 | `mistral`, `deepseek`, `xai`, `openrouter`, `together`, `fireworks` | none | none | none |
 
-`OPENAI_BASE_URL` is read by `openai-python` 1.x and `openai-node`; `OPENAI_API_BASE` by `langchain-openai` and LlamaIndex. No SDK reads a base-URL variable for the providers in the last row, so the CLI writes only an informational `VULNETIX_AIFW_<PROVIDER>_BASE_URL` (for example `VULNETIX_AIFW_MISTRAL_BASE_URL`). Nothing reads it: set `base_url` in code for those providers.
+`OPENAI_BASE_URL` is read by `openai-python` 1.x and `openai-node`; `OPENAI_API_BASE` by `langchain-openai` and LlamaIndex. No SDK reads a base-URL variable for the providers in the last row, so the CLI writes only an informational `VULNESIS_AIFW_<PROVIDER>_BASE_URL` (for example `VULNESIS_AIFW_MISTRAL_BASE_URL`). Nothing reads it: set `base_url` in code for those providers.
 
-> [!CAREFUL] The block does not set `VULNETIX_API_KEY`
-> The managed block references `$VULNETIX_API_KEY`; it never contains the key. Export `VULNETIX_API_KEY` earlier in the rc file than the block, or the variables it sets expand to an empty string and every request fails with `401`. `status` reports this as `key_env_unset`.
+> [!CAREFUL] The block does not set `VULNESIS_API_KEY`
+> The managed block references `$VULNESIS_API_KEY`; it never contains the key. Export `VULNESIS_API_KEY` earlier in the rc file than the block, or the variables it sets expand to an empty string and every request fails with `401`. `status` reports this as `key_env_unset`.
 
 ## Install and uninstall
 

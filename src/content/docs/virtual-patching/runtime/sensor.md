@@ -81,11 +81,11 @@ A Linux host can get its credential in two ways:
 | Way | Credential | Configuration | Page |
 |---|---|---|---|
 | Enroll with `vulnetix-sensor enroll` | Issued by a [provisioning profile](/virtual-patching/sensor/provisioning-profiles/): a per-device key by default, or the enrolling person's key, or the org key. Kept in `/etc/vulnetix-sensor/credential`. | Pulled from the profile within seconds of an edit, and every 5 minutes | [Choose a path](/virtual-patching/get-started/choose-a-sensor-path/) |
-| Set it yourself | `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` (the hex HMAC-SHA256 of the org id, keyed by the org secret), or the file `vulnetix auth login` writes | Flags on the command line | This page and the deploy pages |
+| Set it yourself | `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` (the hex HMAC-SHA256 of the org id, keyed by the org secret), or the file `vulnetix auth login` writes | Flags on the command line | This page and the deploy pages |
 
 Containers and Lambda functions use the second way. The order the sensor looks in is on [Sensor flags](/virtual-patching/reference/sensor-flags/#precedence). Without any credential it refuses to start unless `--offline` is set, in which case rules load from the feeds and nothing is reported.
 
-It registers itself and reports to `--endpoint` (default `https://www.vulnetix.com/api/site`), at `/v1/runtime/*`. Its own key is kept in `--state-dir` (default `/var/lib/vulnetix-sensor`).
+It registers itself and reports to `--endpoint` (default `https://www.vulnes.is/api/site`), at `/v1/runtime/*`. Its own key is kept in `--state-dir` (default `/var/lib/vulnetix-sensor`).
 
 ## Package inventory
 

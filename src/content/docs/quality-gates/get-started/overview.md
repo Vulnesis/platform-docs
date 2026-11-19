@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 Quality gates are for the people who own CI policy for an organisation and want every build held to the same rules, whatever flags a pipeline passes. Use the Quality Gate to fail a build on what one scan just found. Use Jail to hold a repository to policy over time, across every tool that reports for it, such as fixing vulnerabilities within a remediation window.
 
-Vulnetix has two organization policies that decide whether CI goes red. They answer different questions and are configured separately.
+Vulnesis has two organization policies that decide whether CI goes red. They answer different questions and are configured separately.
 
 | | Quality Gate | Jail |
 |---|---|---|
@@ -19,7 +19,7 @@ Vulnetix has two organization policies that decide whether CI goes red. They ans
 | Configured as | Nine settings plus four EOL severities, one row per organization | An ordered list of rules, an org default plus optional per-repository overrides |
 | Runs in | `vulnetix scan`, `sca`, `sast`, `secrets`, `containers`, `iac` | `vulnetix jail`, or `--jail` on the scan commands |
 | Exit codes | `0` pass, `1` a gate breached | `0` clear, `1` jailed, `2` usage error, `3` indeterminate |
-| Resolve Platform | [www.vulnetix.com/resolve/quality-gate](https://www.vulnetix.com/resolve/quality-gate) | [www.vulnetix.com/resolve/jail](https://www.vulnetix.com/resolve/jail) |
+| Resolve Platform | [www.vulnes.is/resolve/quality-gate](https://www.vulnes.is/resolve/quality-gate) | [www.vulnes.is/resolve/jail](https://www.vulnes.is/resolve/jail) |
 | CLI | `vulnetix config set quality-gate`, `config set eol-policy` | `vulnetix jail`, `jail exempt` |
 
 Both belong to the organization (the tenant), so every member of a Business organization is held to the same policy.

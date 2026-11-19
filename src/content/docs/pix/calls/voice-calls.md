@@ -29,7 +29,7 @@ This page is the product reference: limits, settings, storage, access and API.
 
 ## How a call connects
 
-1. The page posts your session token to `POST /api/call/ticket` on `www.vulnetix.com`. The Worker checks it against your account and returns a ticket valid for **60 seconds**, bound to your own call agent (one per signed-in person).
+1. The page posts your session token to `POST /api/call/ticket` on `www.vulnes.is`. The Worker checks it against your account and returns a ticket valid for **60 seconds**, bound to your own call agent (one per signed-in person).
 2. The page opens the voice WebSocket, `GET /agents/call-agent/<name>?ticket=<ticket>`. A missing, expired or mismatched ticket gets `401 The call ticket is missing or expired.`
 3. Speech is transcribed, PixCommander picks tools and a reply, and the reply is spoken back. Canned phrases and hold music are served from `/api/call/audio/`.
 
@@ -107,7 +107,7 @@ Each Pix reply has a thumbs up and down. One rating per person per reply; pressi
 
 ## API
 
-The call history routes are on the Resolve Platform API (`https://www.vulnetix.com/api/site`), with your session token.
+The call history routes are on the Resolve Platform API (`https://www.vulnes.is/api/site`), with your session token.
 
 | Method | Path | Parameters or body | Answer |
 |---|---|---|---|
@@ -122,8 +122,8 @@ The call history routes are on the Resolve Platform API (`https://www.vulnetix.c
 `POST /v1/pix-call/history` is the call Worker's own write, idempotent on call and sequence number; it is not for clients.
 
 ```bash
-curl "https://www.vulnetix.com/api/site/v1/pix-call/history?kind=call&range=7d&per_page=10" \
-  -H "Authorization: Bearer $VULNETIX_SESSION_JWT"
+curl "https://www.vulnes.is/api/site/v1/pix-call/history?kind=call&range=7d&per_page=10" \
+  -H "Authorization: Bearer $VULNESIS_SESSION_JWT"
 ```
 
 > [!PIX] Asking about a past call

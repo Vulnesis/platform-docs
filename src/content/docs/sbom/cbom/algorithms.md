@@ -8,7 +8,7 @@ updated: 02 Nov 2026
 ---
 Each algorithm below maps to a CycloneDX `cryptographic-asset` component. Aliases are matched case/separator-insensitively and stored under the canonical SPDX name.
 
-> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.
+> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.
 
 | Algorithm | Primitive | PQC Status | Q-Level | Classical | OID |
 |-----------|-----------|------------|---------|-----------|-----|

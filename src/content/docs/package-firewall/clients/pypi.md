@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Index URL | `https://packages.vulnetix.com/pypi/simple/` |
+| Index URL | `https://packages.vulnes.is/pypi/simple/` |
 | Ecosystem ID | `pypi` |
 | Plan | Add-on |
 | Mode | filter: blocked files are removed from the Simple index |
@@ -32,14 +32,14 @@ vulnetix package-firewall pypi
 
 ```ini
 [global]
-index-url = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/pypi/simple/
+index-url = https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/pypi/simple/
 ```
 
 `uv.toml` gets:
 
 ```toml
 [[index]]
-url = "https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnetix.com/pypi/simple/"
+url = "https://YOUR_ORG_UUID:YOUR_API_KEY@packages.vulnes.is/pypi/simple/"
 default = true
 ```
 
@@ -50,8 +50,8 @@ default = true
 Poetry reads neither file. Add a primary source and its credentials:
 
 ```bash
-poetry source add --priority=primary vulnetix https://packages.vulnetix.com/pypi/simple/
-poetry config http-basic.vulnetix "$VULNETIX_ORG_ID" "$VULNETIX_API_KEY"
+poetry source add --priority=primary vulnetix https://packages.vulnes.is/pypi/simple/
+poetry config http-basic.vulnetix "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY"
 ```
 
 ## Use and verify

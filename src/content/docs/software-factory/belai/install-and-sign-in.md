@@ -1,22 +1,22 @@
 ---
 title: Install, update and sign in
 nav: Install and sign in
-description: Install Belai on macOS, Linux or Windows, choose a build, keep it up to date, and sign in to Vulnetix and to model providers.
+description: Install Belai on macOS, Linux or Windows, choose a build, keep it up to date, and sign in to Vulnesis and to model providers.
 order: 1
 sources: [belai/README.md, belai/install.sh, belai/docs/kiro.md, belai/cmd/belai/login.go]
 checked: [belai@35506b9]
 updated: 28 Oct 2026
 ---
 
-Belai is the agent harness inside every factory session, and a terminal coding agent you can run yourself. It is one binary: the TUI, the headless runner, the remote control daemon and the editor bridge. The [Belai site](https://belai.vulnetix.com/) describes what it is for; these pages are the reference.
+Belai is the agent harness inside every factory session, and a terminal coding agent you can run yourself. It is one binary: the TUI, the headless runner, the remote control daemon and the editor bridge. The [Belai site](https://belai.vulnes.is/) describes what it is for; these pages are the reference.
 
 ## Install
 
 | Platform | Command |
 |---|---|
 | macOS, Linux (Homebrew) | `brew install vulnetix/tap/belai` |
-| Windows (Scoop) | `scoop bucket add vulnetix https://github.com/Vulnetix/scoop-bucket` then `scoop install belai` |
-| Any (script) | `curl -fsSL https://raw.githubusercontent.com/Vulnetix/belai/main/install.sh \| sh` |
+| Windows (Scoop) | `scoop bucket add vulnetix https://github.com/Vulnesis/scoop-bucket` then `scoop install belai` |
+| Any (script) | `curl -fsSL https://raw.githubusercontent.com/Vulnesis/belai/main/install.sh \| sh` |
 | From source | `go install github.com/vulnetix/belai/cmd/belai@latest` |
 
 Upgrade with Homebrew by the tapped name, `brew upgrade --formula vulnetix/tap/belai`, because Homebrew also knows an unrelated cask called `belai`.
@@ -38,15 +38,15 @@ The install script checks the download against the release checksums and refuses
 
 At start, Belai checks for a newer release and, if there is one, prints the upgrade command for how you installed it. It never downloads anything itself. The check is cached for six hours, and `update_check: false` in settings or `BELAI_NO_UPDATE_CHECK=1` turns it off.
 
-## Sign in to Vulnetix
+## Sign in to Vulnesis
 
-Belai uses the Vulnetix CLI's login for session sync, the library, remote control and the Vulnetix AI Firewall. Sign in with the browser:
+Belai uses the Vulnesis CLI's login for session sync, the library, remote control and the Vulnesis AI Firewall. Sign in with the browser:
 
 ```sh
 vulnetix auth login
 ```
 
-An API-token login works for scanning but not for remote control, which needs a browser login. Your first `belai` opens **Getting started**, which offers to install the Vulnetix CLI and sign you in; `/welcome` reopens it.
+An API-token login works for scanning but not for remote control, which needs a browser login. Your first `belai` opens **Getting started**, which offers to install the Vulnesis CLI and sign you in; `/welcome` reopens it.
 
 ## Sign in to providers
 

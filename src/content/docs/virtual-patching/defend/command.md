@@ -86,7 +86,7 @@ Each lookup ends in one of these, and they are never merged: "we did not ask" is
 | State | Shown as | `--for` then fails with |
 |---|---|---|
 | available | The rules, with bodies (Pro) | |
-| gated | Counts and formats only | `rule bodies and downloads need a Pro plan (https://www.vulnetix.com/pricing)` |
+| gated | Counts and formats only | `rule bodies and downloads need a Pro plan (https://www.vulnes.is/pricing)` |
 | none | `nothing published for this yet` | `nothing is published for <id> yet` |
 | not indexed | `not indexed: … is not an advisory identifier the database can look up` | `<id> is not an advisory identifier the database can look up` |
 | not checked, failed | `not checked (…)`, `lookup failed (…)` | `that format is not among the rules found` |
@@ -115,7 +115,7 @@ See [Recording a control](/virtual-patching/defend/recording-controls/).
 
 ## API calls
 
-`defend` calls the Vulnetix API (`api.vdb.vulnetix.com`) with your CLI credentials:
+`defend` calls the Vulnesis API (`api.vdb.vulnes.is`) with your CLI credentials:
 
 | Call | Plan |
 |---|---|

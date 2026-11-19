@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-The vault is one place for the secrets Vulnetix uses on your behalf. Every value is encrypted with AWS KMS before it is stored and is never shown again after you save it. Each entry says exactly where it may be used; Belai hosts, Pix Sandboxes and the AI Firewall read from it and keep no copy of their own.
+The vault is one place for the secrets Vulnesis uses on your behalf. Every value is encrypted with AWS KMS before it is stored and is never shown again after you save it. Each entry says exactly where it may be used; Belai hosts, Pix Sandboxes and the AI Firewall read from it and keep no copy of their own.
 
 Open it at **Configuration › Secrets Vault** (`/resolve/vault`). Anyone in the organisation can read the list (names, last four characters, grants, status); only an owner can add, change, revoke, rotate or test.
 
@@ -18,7 +18,7 @@ Open it at **Configuration › Secrets Vault** (`/resolve/vault`). Anyone in the
 | `provider_key` | An AI provider API key, labelled with the provider slug | any surface | the vault page |
 | `env` | An environment variable for Pix Sandboxes and Belai hosts | `pix_sandbox`, `belai_host` | the vault page |
 | `management` | A provider admin key, used only to create and delete provider keys during rotation | never | the vault page |
-| `connector` | A credential Vulnetix itself uses to reach your tools (Slack bot token, webhook URL and signing secret, Jira token, AWS, Wiz, registry login) | never; opened only by Vulnetix's own services | **Integrations** and **Messaging**, not the vault page |
+| `connector` | A credential Vulnesis itself uses to reach your tools (Slack bot token, webhook URL and signing secret, Jira token, AWS, Wiz, registry login) | never; opened only by Vulnesis's own services | **Integrations** and **Messaging**, not the vault page |
 | `signing_key`, `github_user` | One person's commit signing key and GitHub sign-in | never | `/v1/signing/*`, by their owner |
 
 ### Environment variables
@@ -27,7 +27,7 @@ Open it at **Configuration › Secrets Vault** (`/resolve/vault`). Anyone in the
 |---|---|
 | Name | `^[A-Z_][A-Z0-9_]{0,63}$` |
 | Refused names | `PATH`, `HOME`, `USER`, `SHELL`, `PWD`, `OLDPWD`, `IFS`, `TERM`, `TMPDIR`, `LANG`, `LD_PRELOAD`, `LD_LIBRARY_PATH`, `LD_AUDIT`, `DYLD_INSERT_LIBRARIES`, `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`, `ALL_PROXY` (and their lowercase forms) |
-| Refused prefixes | `LD_`, `BELAI_`, `VULNETIX_`, `VX_`, `BASH_`, `SSH_` |
+| Refused prefixes | `LD_`, `BELAI_`, `VULNESIS_`, `VX_`, `BASH_`, `SSH_` |
 | Minimum value length | 8 characters. A shorter value cannot be scrubbed from output without hiding ordinary words. |
 
 A Pix Sandbox receives its variables on a 15 minute lease. A Belai host you run yourself takes an `env` entry only through an MCP secrets install request that names it, and only with a `belai_host` grant for that host.

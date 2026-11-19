@@ -43,7 +43,7 @@ Your Docker credentials stay on your machine. Only the inventory is sent.
 
 When you are signed in, `vulnetix image` first tries the organization's own [registry connection](/organization/integrations/private-registries/) for the registry and repository it is about to read. This is in the CLI release after v4.5.0: v4.5.0 and earlier use your Docker credentials only.
 
-It asks Vulnetix for a pull token with `POST /v1/scan-registries/oci-token`, naming the registry and the repository. Vulnetix answers with the registry's own short-lived token for that one repository, which the registry expires within minutes and the CLI refreshes during a long pull. The stored login never reaches your machine.
+It asks Vulnesis for a pull token with `POST /v1/scan-registries/oci-token`, naming the registry and the repository. Vulnesis answers with the registry's own short-lived token for that one repository, which the registry expires within minutes and the CLI refreshes during a long pull. The stored login never reaches your machine.
 
 | Answer | What the CLI does |
 |---|---|
@@ -72,7 +72,7 @@ The server resolves the base image and links cloud workloads (EKS, ECS, ECR, Lam
 | Message | Meaning |
 |---|---|
 | `Recorded. Built FROM <ref> (matched by <method>).` | Base identified |
-| `Recorded. Its base image is not one Vulnetix has crawled yet.` | Recorded, base unknown |
+| `Recorded. Its base image is not one Vulnesis has crawled yet.` | Recorded, base unknown |
 | `Inventory checked; your plan does not record images.` | The plan does not include image recording |
 | `No credentials: nothing recorded.` | Not signed in. Exit `0`. |
 | `Running in N place(s) found by your cloud scans.` | Linked workloads |

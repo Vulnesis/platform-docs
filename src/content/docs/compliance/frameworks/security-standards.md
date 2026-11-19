@@ -10,11 +10,11 @@ updated: 02 Nov 2026
 Two kinds of report are on this page.
 
 - **Computed**: OWASP Top 10 and EU CRA. Every status comes from evidence and uploads; there is no assessor form.
-- **Assessor-driven**: PCI DSS, ISO/IEC 27001 and OWASP DSOMM. Vulnetix pre-fills each control with the telemetry it holds and suggests a status. An assessor records the finding, the method or justification, and the reporting details. The assessor's finding is what the export reports.
+- **Assessor-driven**: PCI DSS, ISO/IEC 27001 and OWASP DSOMM. Vulnesis pre-fills each control with the telemetry it holds and suggests a status. An assessor records the finding, the method or justification, and the reporting details. The assessor's finding is what the export reports.
 
 ## OWASP Top 10:2025 (`owasp_top_10`)
 
-Resolve Platform: [/resolve/owasp-top-10](https://www.vulnetix.com/resolve/owasp-top-10).
+Resolve Platform: [/resolve/owasp-top-10](https://www.vulnes.is/resolve/owasp-top-10).
 
 Findings in the period are placed in categories by their CWEs.
 
@@ -40,7 +40,7 @@ A **Program assurance** section qualifies the category verdicts: Analysis breadt
 
 ## PCI DSS v4.0.1 (`pci_dss`)
 
-Resolve Platform: [/resolve/pci-dss](https://www.vulnetix.com/resolve/pci-dss). The catalogue holds all 12 requirement families and 250 requirements, each with its testing procedures.
+Resolve Platform: [/resolve/pci-dss](https://www.vulnes.is/resolve/pci-dss). The catalogue holds all 12 requirement families and 250 requirements, each with its testing procedures.
 
 | Family | Requirements |
 |---|---|
@@ -66,14 +66,14 @@ Per requirement, the assessor records:
 | `procedureDetails` | Reporting details per testing procedure id |
 | `scopeConfirmed` | The repositories the assessor confirmed in scope |
 
-Vulnetix telemetry for a family (scanning for Requirement 11, secure development for Requirement 6, and so on) is shown as a separate "Requirement N telemetry" entry, not attached to any single requirement. An **In Place** finding is shown as **In Place \*** when none of its testing procedures has reporting details.
+Vulnesis telemetry for a family (scanning for Requirement 11, secure development for Requirement 6, and so on) is shown as a separate "Requirement N telemetry" entry, not attached to any single requirement. An **In Place** finding is shown as **In Place \*** when none of its testing procedures has reporting details.
 
 > [!CAREFUL] This is assessment evidence, not a Report on Compliance
 > The PCI DSS export carries the requirements, testing procedures and the assessor's findings. It does not carry ROC Part I or Part II, the executive summary, the scope and segmentation statement, the sampling rationale, ASV scan results, or Appendices A1, A2 and A3. Read the appendices' absence as not assessed, not as not applicable. Do not hand the export to an acquirer as a ROC.
 
 ## ISO/IEC 27001:2022 Statement of Applicability (`iso_27001`)
 
-Resolve Platform: [/resolve/iso-27001](https://www.vulnetix.com/resolve/iso-27001). The report is a Statement of Applicability over all 93 Annex A controls and the 25 clause requirements of clauses 4 to 10.
+Resolve Platform: [/resolve/iso-27001](https://www.vulnes.is/resolve/iso-27001). The report is a Statement of Applicability over all 93 Annex A controls and the 25 clause requirements of clauses 4 to 10.
 
 | Theme | Controls |
 |---|---|
@@ -95,7 +95,7 @@ The export opens with a completion table per theme: Implemented, Partial, Not im
 
 ## OWASP DevSecOps Maturity Model (`owasp_dsomm`)
 
-Resolve Platform: [/resolve/owasp-dsomm](https://www.vulnetix.com/resolve/owasp-dsomm). The catalogue is DSOMM `activities-2026-07` from [dsomm.owasp.org](https://dsomm.owasp.org/): 193 activities at levels 1 to 5.
+Resolve Platform: [/resolve/owasp-dsomm](https://www.vulnes.is/resolve/owasp-dsomm). The catalogue is DSOMM `activities-2026-07` from [dsomm.owasp.org](https://dsomm.owasp.org/): 193 activities at levels 1 to 5.
 
 | Dimension | Sub-dimensions | Activities |
 |---|---|---|
@@ -110,15 +110,15 @@ Per activity the assessor records `status` (`implemented`, `partially_implemente
 Set target levels in the report's settings: a level from 1 to 5 keyed by dimension (`"Implementation"`) or `dimension/sub-dimension` (`"Implementation/Infrastructure Hardening"`), at most 64 keys. The export's maturity matrix shows target, score, level-by-level progress and gaps.
 
 ```bash
-curl -s -X PATCH -H "Authorization: ApiKey ${VULNETIX_ORG_ID}:${VULNETIX_API_KEY}" \
+curl -s -X PATCH -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
   -H 'Content-Type: application/json' \
   -d '{"settings":{"targets":{"Implementation":3,"Test and Verification/Static depth for applications":4}}}' \
-  "https://www.vulnetix.com/api/site/v1/compliance/reports/$REPORT_ID"
+  "https://www.vulnes.is/api/site/v1/compliance/reports/$REPORT_ID"
 ```
 
 ## EU Cyber Resilience Act readiness (`eu_cra`)
 
-Resolve Platform: [/resolve/eu-cra](https://www.vulnetix.com/resolve/eu-cra). The report assesses 34 obligations of Regulation (EU) 2024/2847, out of about 65 identifiable in the regulation.
+Resolve Platform: [/resolve/eu-cra](https://www.vulnes.is/resolve/eu-cra). The report assesses 34 obligations of Regulation (EU) 2024/2847, out of about 65 identifiable in the regulation.
 
 | Section | Ids | Count |
 |---|---|---|

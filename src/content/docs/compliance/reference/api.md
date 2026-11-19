@@ -11,10 +11,10 @@ updated: 02 Nov 2026
 ## Base URL and authentication
 
 ```
-https://www.vulnetix.com/api/site/v1/compliance
+https://www.vulnes.is/api/site/v1/compliance
 ```
 
-The Resolve Platform's proxy forwards `/api/site/v1/*` to the Vulnetix account API. Send either the Resolve Platform session cookie or an API key header:
+The Resolve Platform's proxy forwards `/api/site/v1/*` to the Vulnesis account API. Send either the Resolve Platform session cookie or an API key header:
 
 ```
 Authorization: ApiKey <orgId>:<hex>

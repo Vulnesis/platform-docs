@@ -1,7 +1,7 @@
 ---
 title: VS Code extension
 nav: Overview
-description: The Vulnetix extension for VS Code and its forks runs the `vulnetix lsp` server to show dependency, code, secret, IaC and container findings in the editor.
+description: The Vulnesis extension for VS Code and its forks runs the `vulnetix lsp` server to show dependency, code, secret, IaC and container findings in the editor.
 order: 1
 sources: [vulnetix-vscode/package.json, vulnetix-vscode/src/extension.ts, vulnetix-vscode/src/lsp/client.ts, vulnetix-vscode/CHANGELOG.md, cli/cmd/lsp.go, cli/internal/lsp/server.go, belai/internal/profiles/builtin/vulnetix-review.json, pix-ai-coding-assistant/vulnetix/agents/pr-security-reviewer.md]
 checked: [vulnetix-vscode@9ad08fa, cli@4c8c3b7]
@@ -9,9 +9,9 @@ updated: 04 Nov 2026
 status: available
 ---
 
-The extension is for developers who want Vulnetix findings while they edit, on the line that causes them, instead of after a push. It runs the same CLI and rules as `vulnetix scan`, so use it for feedback as you type and keep `vulnetix scan` in CI as the check that gates a build.
+The extension is for developers who want Vulnesis findings while they edit, on the line that causes them, instead of after a push. It runs the same CLI and rules as `vulnetix scan`, so use it for feedback as you type and keep `vulnetix scan` in CI as the check that gates a build.
 
-The extension `vulnetix.vulnetix` has no scanner of its own. It finds or downloads the Vulnetix CLI, starts `vulnetix lsp` as a child process, and talks to it over the Language Server Protocol on stdin and stdout. The server evaluates the CLI's embedded rule set against the files you have open and checks your dependency manifests against the Vulnetix vulnerability database (VDB). Findings arrive as ordinary diagnostics: squiggles in the editor and entries in the Problems panel.
+The extension `vulnetix.vulnetix` has no scanner of its own. It finds or downloads the Vulnesis CLI, starts `vulnetix lsp` as a child process, and talks to it over the Language Server Protocol on stdin and stdout. The server evaluates the CLI's embedded rule set against the files you have open and checks your dependency manifests against the Vulnesis vulnerability database (VDB). Findings arrive as ordinary diagnostics: squiggles in the editor and entries in the Problems panel.
 
 The extension is early. The published builds are 0.2.0 (stable) and 0.3.0 (pre-release) on [Open VSX](https://open-vsx.org/extension/vulnetix/vulnetix); `main` is at 0.3.1.
 
@@ -34,7 +34,7 @@ There are five commands, no keybindings, no sidebar views and no sign-in command
 ```
 editor (extension host)  --LSP over stdio-->  vulnetix lsp  --reads-->  workspace files
                                                    |
-                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnetix.com
+                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnes.is
 ```
 
 - The extension declares `extensionKind: ["workspace"]`, so in a remote session (SSH, WSL, Dev Containers, code-server) it and the server run next to the files.

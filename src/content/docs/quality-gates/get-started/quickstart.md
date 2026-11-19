@@ -12,8 +12,8 @@ The Quality Gate decides whether one scan's findings fail a build, for every aut
 
 ## Prerequisites
 
-- The Vulnetix CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)).
-- `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` for an owner, or for a service account with the developer role. A member is refused with `403`.
+- The Vulnesis CLI on your `PATH` ([installing the CLI](/cli/get-started/install/)).
+- `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` for an owner, or for a service account with the developer role. A member is refused with `403`.
 - An unauthenticated scan skips the organisation's gate and uses only its own flags.
 
 ## 1. Declare the gate

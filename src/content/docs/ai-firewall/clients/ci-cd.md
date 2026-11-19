@@ -8,7 +8,7 @@ checked: [ai-firewall@339de55, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-A runner needs only your **Vulnetix API key**. The provider key stays in the vault, so it is never a repository secret, never in a log and never exposed to a fork's pull request. Store the provider key once from a workstation:
+A runner needs only your **Vulnesis API key**. The provider key stays in the vault, so it is never a repository secret, never in a log and never exposed to a fork's pull request. Store the provider key once from a workstation:
 
 ```bash
 vulnetix ai-firewall key set anthropic --from-env ANTHROPIC_KEY
@@ -18,10 +18,10 @@ In the repository (or organisation) settings:
 
 | Kind | Name | Value |
 |---|---|---|
-| Secret | `VULNETIX_API_KEY` | Your Vulnetix API key |
-| Variable | `VULNETIX_ORG_ID` | The UUID the key belongs to. It is part of a URL, not a secret. |
+| Secret | `VULNESIS_API_KEY` | Your Vulnesis API key |
+| Variable | `VULNESIS_ORG_ID` | The UUID the key belongs to. It is part of a URL, not a secret. |
 
-The CLI authenticates from `VULNETIX_API_KEY` plus `VULNETIX_ORG_ID`, so the same two values serve both the CLI and the agent.
+The CLI authenticates from `VULNESIS_API_KEY` plus `VULNESIS_ORG_ID`, so the same two values serve both the CLI and the agent.
 
 ## Claude Code in GitHub Actions
 
@@ -43,8 +43,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: anthropics/claude-code-action@v1
         env:
-          ANTHROPIC_BASE_URL: https://guardrails.vulnetix.com/anthropic/${{ vars.VULNETIX_ORG_ID }}
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.VULNETIX_API_KEY }}
+          ANTHROPIC_BASE_URL: https://guardrails.vulnes.is/anthropic/${{ vars.VULNESIS_ORG_ID }}
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.VULNESIS_API_KEY }}
           ANTHROPIC_API_KEY: ""
 ```
 
@@ -58,9 +58,9 @@ No `/v1` on `ANTHROPIC_BASE_URL`, and `ANTHROPIC_API_KEY` empty so a stale Anthr
 ```yaml
       - name: Run aider
         env:
-          OPENAI_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
         run: |
-          aider --openai-api-base "https://guardrails.vulnetix.com/openai/${{ vars.VULNETIX_ORG_ID }}/v1" \
+          aider --openai-api-base "https://guardrails.vulnes.is/openai/${{ vars.VULNESIS_ORG_ID }}/v1" \
                 --model openai/gpt-4o-mini \
                 --yes --message "Fix the failing test in tests/test_parser.py"
 ```
@@ -74,10 +74,10 @@ OpenAI-shaped base URLs end in `/v1`; Anthropic-shaped ones stop at the UUID. Fo
 ```yaml
       - name: AI Firewall posture
         env:
-          VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-          VULNETIX_ORG_ID: ${{ vars.VULNETIX_ORG_ID }}
-          ANTHROPIC_BASE_URL: https://guardrails.vulnetix.com/anthropic/${{ vars.VULNETIX_ORG_ID }}
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.VULNETIX_API_KEY }}
+          VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
+          VULNESIS_ORG_ID: ${{ vars.VULNESIS_ORG_ID }}
+          ANTHROPIC_BASE_URL: https://guardrails.vulnes.is/anthropic/${{ vars.VULNESIS_ORG_ID }}
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.VULNESIS_API_KEY }}
         run: vulnetix ai-firewall status --strict
 ```
 
@@ -106,7 +106,7 @@ To fail on warnings too, read the JSON summary:
 | Status | `code` | Usual CI cause |
 |---|---|---|
 | `401` | `invalid_api_key` | The secret holds a provider key, or the job cannot see it (an environment it did not name, or a fork pull request) so it expands to an empty string |
-| varies | varies | `vars.VULNETIX_ORG_ID` is empty, so the URL has `//` where the UUID should be. Print the URL the job uses. |
+| varies | varies | `vars.VULNESIS_ORG_ID` is empty, so the URL has `//` where the UUID should be. Print the URL the job uses. |
 | `403` | `provider_key_missing` | The workflow was written before anyone stored the provider key |
 | `403` | `model_not_allowed` | The action's default model changed in a new release. Pin the model. |
 | `404` | `unsupported_api` | `/v1` on an Anthropic URL, or a provider that does not serve the surface |

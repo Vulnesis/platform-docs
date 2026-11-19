@@ -24,7 +24,7 @@ Prices are the Resolve Platform's fallback; the Stripe price shown at checkout i
 
 - **Buy.** An owner or admin presses **Start Guardian** (on a Guardian page that answered `402`, or the Integrations page's log sources). Checkout uses your organisation's existing Stripe customer.
 - **Change or cancel.** **Change pack** opens the Stripe portal, which offers only the three packs. A switch takes effect when Stripe reports it.
-- **Enterprise.** Quoted and set up by Vulnetix, not sold through checkout. A later checkout replaces it.
+- **Enterprise.** Quoted and set up by Vulnesis, not sold through checkout. A later checkout replaces it.
 
 ## The daily ingest cap
 
@@ -38,7 +38,7 @@ Ingest tokens are checked against the pack on every batch (the entitlement is ca
 | 150% | `refusing`. Ingest answers `429` `ingest_cap` until 00:00 UTC. Firehose and Logpush keep the batch and retry; Firehose parks it in your error bucket after 300 s. |
 | No pack | Ingest answers `402` `plan`, and the token's last error says Guardian is not active. |
 
-Vulnetix product sources (Package Firewall, AI Firewall, Pix Sandbox, the Vulnetix API) do not count against the cap.
+Vulnesis product sources (Package Firewall, AI Firewall, Pix Sandbox, the Vulnesis API) do not count against the cap.
 
 ## The query budget
 

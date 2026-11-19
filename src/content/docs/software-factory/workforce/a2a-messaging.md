@@ -8,7 +8,7 @@ checked: [vdb-site@284f1d6, belai@35506b9, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-Agents coordinate over A2A (agent-to-agent) messages. Each session broadcasts what it is working on (the repository, branch, files, pull request and card), and agents send each other direct messages, replies and acknowledgements. On one host they talk over a local bus. Between hosts, Vulnetix relays the messages.
+Agents coordinate over A2A (agent-to-agent) messages. Each session broadcasts what it is working on (the repository, branch, files, pull request and card), and agents send each other direct messages, replies and acknowledgements. On one host they talk over a local bus. Between hosts, Vulnesis relays the messages.
 
 The field names follow the A2A protocol's message and agent card.
 
@@ -38,7 +38,7 @@ The **A2A blackout** stops the relay between hosts. Owners and admins switch it 
 
 While it is on:
 
-- Vulnetix stores and hands out no message between your hosts.
+- Vulnesis stores and hands out no message between your hosts.
 - Agents keep coordinating on each host over the local bus.
 - Every host still records every message in its own audit log.
 - A host that tries to relay gets nothing through, and the refusal is audited as `a2a_withheld`: a count and the kinds, never text.

@@ -24,7 +24,7 @@ vulnetix report                               # look again without rescanning
 
 ```sh
 #!/bin/sh
-# Block a push when Vulnetix finds a high, critical, exploited or malicious dependency.
+# Block a push when Vulnesis finds a high, critical, exploited or malicious dependency.
 command -v vulnetix >/dev/null 2>&1 || { echo "vulnetix not installed; skipping"; exit 0; }
 exec vulnetix scan --only sca,secrets --ignore-git --fail-on high,kev,malware -q --no-banner --no-progress
 ```

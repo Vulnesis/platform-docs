@@ -47,7 +47,7 @@ An item is identified by its kind and name, so the same skill on two machines is
 
 ## How items travel
 
-All of these need `belai rc` running and the Vulnetix CLI signed in.
+All of these need `belai rc` running and the Vulnesis CLI signed in.
 
 | Action | Does |
 |---|---|

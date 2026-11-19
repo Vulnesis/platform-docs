@@ -40,15 +40,15 @@ updated: 02 Nov 2026
 | `--host-root` | `/` | Where the host filesystem is mounted, for hashing what a process ran and for the inventory |
 | `--inventory-every` | `6h` | How often the package inventory is reported |
 | `--bpf-lsm` | `false` | Refuse execs of exact paths block-mode rules name, with a BPF LSM program. Needs root and the bpf LSM. |
-| `--feed` | required | Repeatable. A signed feed's base URL (`https://vulnetix.com/feeds/<org>/<feed>`), `catalog:<id>` or `org:<uuid>` ([Rule feeds](/virtual-patching/sensor/feeds/#reference-forms)). `catalog:` and `org:` lists come from the site with the sensor's credential, report and never block, and are skipped with `--offline`. |
-| `--feed-key` | `VULNETIX_FEED_KEY`, else the key pinned at build | Base64 Ed25519 public key feeds are signed with. Without one every rule reports and never blocks. |
+| `--feed` | required | Repeatable. A signed feed's base URL (`https://vulnes.is/feeds/<org>/<feed>`), `catalog:<id>` or `org:<uuid>` ([Rule feeds](/virtual-patching/sensor/feeds/#reference-forms)). `catalog:` and `org:` lists come from the site with the sensor's credential, report and never block, and are skipped with `--offline`. |
+| `--feed-key` | `VULNESIS_FEED_KEY`, else the key pinned at build | Base64 Ed25519 public key feeds are signed with. Without one every rule reports and never blocks. |
 | `--state-dir` | `/var/lib/vulnetix-sensor` | Where the sensor keeps its key |
 | `--config-dir` | `/etc/vulnetix-sensor` | Where an enrolled sensor's credential and profile config are. The profile's config is the default for every flag not given. |
-| `--endpoint` | `https://www.vulnetix.com/api/site` | Vulnetix site API the sensor reports to |
+| `--endpoint` | `https://www.vulnes.is/api/site` | Vulnesis site API the sensor reports to |
 | `--offline` | `false` | Load rules from the feeds and report nothing; no credentials needed |
 | `--forward` | none | Repeatable. `siem` sends every DNS and egress decision to Guardian |
-| `--siem-token` | `VULNETIX_SIEM_TOKEN` | Guardian events ingest token (`gdn_…`) |
-| `--siem-url` | `VULNETIX_SIEM_URL`, else `https://ingest.vulnetix.com/v1/ingest/events` | Guardian events route |
+| `--siem-token` | `VULNESIS_SIEM_TOKEN` | Guardian events ingest token (`gdn_…`) |
+| `--siem-url` | `VULNESIS_SIEM_URL`, else `https://ingest.vulnes.is/v1/ingest/events` | Guardian events route |
 | `--version` | | Print the version and exit |
 
 At least one of `--listen`, `--egress-listen`, `--dns-listen`, `--tetragon-export` or `--bpf-lsm` is required, except under `run`. An enrolled sensor needs neither a feed nor a listener: it still reports its inventory, and a profile edit can add either later.
@@ -57,19 +57,19 @@ At least one of `--listen`, `--egress-listen`, `--dns-listen`, `--tetragon-expor
 
 ### `enroll` flags
 
-Enroll needs root. It uses `--mdm-key` when given; otherwise `--api-key` (or `VULNETIX_API_KEY`); otherwise the CLI sign-in, so `--from-cli-login` is the default. `status`, `config`, `uninstall`, `goodbye` and `guard-check` also take `--config-dir`, `--state-dir` and `--endpoint`.
+Enroll needs root. It uses `--mdm-key` when given; otherwise `--api-key` (or `VULNESIS_API_KEY`); otherwise the CLI sign-in, so `--from-cli-login` is the default. `status`, `config`, `uninstall`, `goodbye` and `guard-check` also take `--config-dir`, `--state-dir` and `--endpoint`.
 
 | Flag | Default | Description |
 |---|---|---|
 | `--from-cli-login` | on when nothing else is given | Enroll as the person signed in with `vulnetix auth login`. Under `sudo`, reads the invoking user's `~/.vulnetix/credentials.json`; the keyring is not reachable ([Your own laptop](/virtual-patching/sensor/byod-laptop/)) |
-| `--api-key` | `VULNETIX_API_KEY` | Enroll with a person's API key. Prefer the environment: a flag shows in `ps`. An org key or service account is refused. |
-| `--org-id` | `VULNETIX_ORG_ID` | The API key's organisation; required with `--api-key` |
+| `--api-key` | `VULNESIS_API_KEY` | Enroll with a person's API key. Prefer the environment: a flag shows in `ps`. An org key or service account is refused. |
+| `--org-id` | `VULNESIS_ORG_ID` | The API key's organisation; required with `--api-key` |
 | `--mdm-key <file>` | | The MDM integration's private key (base64 Ed25519 seed), mode `0600`. Signs the enrollment; no person needed ([MDM](/virtual-patching/sensor/mdm/)). |
 | `--integration <uuid>` | | The MDM integration, with `--mdm-key` |
 | `--kid <kid>` | | Which of the integration's keys `--mdm-key` is, with `--mdm-key` |
 | `--mdm-device-id` | `/sys/class/dmi/id/product_serial`, else `/etc/machine-id` | The device's serial or MDM device id, with `--mdm-key` |
 | `--profile <uuid>` | the first enabled match | Ask for a profile. It must still match. |
-| `--endpoint` | `https://www.vulnetix.com/api/site` | Site API to enroll with. The other subcommands default to the endpoint the device enrolled with. |
+| `--endpoint` | `https://www.vulnes.is/api/site` | Site API to enroll with. The other subcommands default to the endpoint the device enrolled with. |
 | `--config-dir` | `/etc/vulnetix-sensor` | Where the credential and config are written |
 | `--state-dir` | `/var/lib/vulnetix-sensor` | Where the sensor key is kept |
 | `--no-start` | `false` | Write the credential, config and units; do not enable or start them |
@@ -101,7 +101,7 @@ Downloads `vulnetix-sensor-linux-<arch>` for the script's release, checks it aga
 | | First wins |
 |---|---|
 | Each setting | A flag on the command line, then the profile's config snapshot in `config.json`, then the built-in default |
-| Credential | `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` in the environment (including `/etc/vulnetix-sensor.env`), then `/etc/vulnetix-sensor/credential`, then the file `vulnetix auth login` writes |
+| Credential | `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` in the environment (including `/etc/vulnetix-sensor.env`), then `/etc/vulnetix-sensor/credential`, then the file `vulnetix auth login` writes |
 
 ### Fixed behaviour of an enrolled sensor
 
@@ -117,14 +117,14 @@ Downloads `vulnetix-sensor-linux-<arch>` for the script's release, checks it aga
 
 | Variable | Used by | Meaning |
 |---|---|---|
-| `VULNETIX_ORG_ID`, `VULNETIX_API_KEY` | all | Credentials. The API key is the hex HMAC-SHA256 of the org id keyed by the org secret. The file `vulnetix auth login` writes works too. |
-| `VULNETIX_FEED_KEY` | all | Feed public key, overriding the pinned one |
-| `VULNETIX_SIEM_TOKEN`, `VULNETIX_SIEM_URL` | `--forward siem` | As the flags |
-| `VULNETIX_SENSOR_FEEDS` | Lambda | Comma-separated feed URLs (required) |
-| `VULNETIX_SENSOR_MODE` | Lambda | `monitor` (default), `guard`, `enforce` |
-| `VULNETIX_SENSOR_PORT` | Lambda | Runtime API proxy port, default `9009` |
-| `VULNETIX_SENSOR_EGRESS` | Lambda | Egress proxy port; unset means no egress proxy |
-| `VULNETIX_ENDPOINT` | Lambda | Reporting endpoint, default `https://www.vulnetix.com/api/site` |
+| `VULNESIS_ORG_ID`, `VULNESIS_API_KEY` | all | Credentials. The API key is the hex HMAC-SHA256 of the org id keyed by the org secret. The file `vulnetix auth login` writes works too. |
+| `VULNESIS_FEED_KEY` | all | Feed public key, overriding the pinned one |
+| `VULNESIS_SIEM_TOKEN`, `VULNESIS_SIEM_URL` | `--forward siem` | As the flags |
+| `VULNESIS_SENSOR_FEEDS` | Lambda | Comma-separated feed URLs (required) |
+| `VULNESIS_SENSOR_MODE` | Lambda | `monitor` (default), `guard`, `enforce` |
+| `VULNESIS_SENSOR_PORT` | Lambda | Runtime API proxy port, default `9009` |
+| `VULNESIS_SENSOR_EGRESS` | Lambda | Egress proxy port; unset means no egress proxy |
+| `VULNESIS_ENDPOINT` | Lambda | Reporting endpoint, default `https://www.vulnes.is/api/site` |
 | `AWS_LAMBDA_EXEC_WRAPPER` | Lambda | Must be `/opt/vulnetix/wrapper` |
 
 ## Fixed behaviour
@@ -144,7 +144,7 @@ Downloads `vulnetix-sensor-linux-<arch>` for the script's release, checks it aga
 | `set --listen with --upstream, --egress-listen, --dns-listen, --tetragon-export, or a combination` | Nothing to intercept |
 | `--upstream must be a URL such as http://127.0.0.1:8081` | `--upstream` is not a URL |
 | `--dns-listen needs --dns-upstream: /etc/resolv.conf names no nameserver` | No resolver to forward to |
-| `no Vulnetix credentials: run vulnetix-sensor enroll, set VULNETIX_ORG_ID and VULNETIX_API_KEY, or run with --offline` | No credentials |
+| `no Vulnesis credentials: run vulnetix-sensor enroll, set VULNESIS_ORG_ID and VULNESIS_API_KEY, or run with --offline` | No credentials |
 | `run needs a command after --` | `run` with no workload |
 | `a feed key is required: an unverified rule never blocks` | `tetragon-policy` with no key |
 

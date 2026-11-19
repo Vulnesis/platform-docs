@@ -16,7 +16,7 @@ The posture subcommands (`gha workflows`, `actions`, `settings`, `org`, `audit`)
 vulnetix gha upload [--org-id <uuid>] [flags]
 ```
 
-Lists the current run's artifacts, downloads and extracts each, classifies every file as SARIF, CycloneDX or SPDX, validates it, and publishes it to Vulnetix in the category the report implies, under the tool that produced it (a gosec report is recorded as gosec). It then prints the ingestion snapshot for each file.
+Lists the current run's artifacts, downloads and extracts each, classifies every file as SARIF, CycloneDX or SPDX, validates it, and publishes it to Vulnesis in the category the report implies, under the tool that produced it (a gosec report is recorded as gosec). It then prints the ingestion snapshot for each file.
 
 | Flag | Default | Effect |
 |---|---|---|
@@ -27,7 +27,7 @@ Lists the current run's artifacts, downloads and extracts each, classifies every
 | `--fail-on-empty` | off | Fail when the run produced no publishable artifact. Without it, an empty run succeeds. |
 | `--no-github-api` | off | Do not call the GitHub REST API to enrich the CI context |
 
-It reads `GITHUB_TOKEN` (required), `GITHUB_REPOSITORY`, `GITHUB_RUN_ID` and `GITHUB_API_URL` from the environment. Reports written by Vulnetix's own scanners are skipped: the command that wrote them published them when it ran.
+It reads `GITHUB_TOKEN` (required), `GITHUB_REPOSITORY`, `GITHUB_RUN_ID` and `GITHUB_API_URL` from the environment. Reports written by Vulnesis's own scanners are skipped: the command that wrote them published them when it ran.
 
 **It exits `1` if any file fails to publish.** A file that cannot be published says why, for example an empty SARIF left by a shell redirect that captured nothing.
 
@@ -42,17 +42,17 @@ It reads `GITHUB_TOKEN` (required), `GITHUB_REPOSITORY`, `GITHUB_RUN_ID` and `GI
       contents: read
       actions: read                # to list the run's artifacts
     env:
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
+      VULNESIS_ORG_ID: ${{ secrets.VULNESIS_ORG_ID }}
+      VULNESIS_API_KEY: ${{ secrets.VULNESIS_API_KEY }}
     steps:
-      - name: Install Vulnetix CLI
+      - name: Install Vulnesis CLI
         run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
+          curl -fsSL https://cli.vulnes.is/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Publish scanner reports
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: vulnetix gha upload --org-id "$VULNETIX_ORG_ID" --json --no-banner --no-progress
+        run: vulnetix gha upload --org-id "$VULNESIS_ORG_ID" --json --no-banner --no-progress
 ```
 
 `needs` and `if: always()` both matter, and both fail silently when wrong: a job missing from `needs` may finish after the publish job and is never sent, and without `always()` one failed scanner stops every other report being published.
@@ -119,4 +119,4 @@ Writes a repository's managed `.github/workflows/vulnetix.yml` from what it cont
 | `GITHUB_TOKEN environment variable is required` | Add `GITHUB_TOKEN: ${{ github.token }}` to the step's `env`; it is not in the environment by default |
 | `no artifacts found` | The publish job ran before the scanners finished, or they are missing from `needs`. Add `--fail-on-empty` to make this fail the job. |
 | A tool is missing from `gha status` | Its artifact was absent, empty or not SARIF, CycloneDX or SPDX. `gha upload --json` names the file and the reason. |
-| `--org-id is required` | Set `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` on the job |
+| `--org-id is required` | Set `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` on the job |

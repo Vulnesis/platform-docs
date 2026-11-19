@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 ---
 Each entry below is detected by the environment and filesystem passes. The **Detection signals** column lists the catalog rules: environment-variable names and repo-relative path globs.
 
-> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.
+> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.
 
 | Tool | Vendor | Type | Detection signals |
 |------|--------|------|-------------------|

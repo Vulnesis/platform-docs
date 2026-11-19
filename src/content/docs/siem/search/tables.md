@@ -14,10 +14,10 @@ Guardian stores seven tables. A search starts with a table name; a Sigma rule's 
 | `net_events` | Flow records and connection decisions | AWS VPC flow logs, Cloudflare `gateway_network` and `network_analytics_logs`, Pix Sandbox egress, the runtime sensor egress proxy |
 | `dns_events` | DNS queries | Route 53 Resolver query logs, Cloudflare `dns_logs`, `gateway_dns`, `dns_firewall_logs`, the runtime sensor DNS guard |
 | `waf_events` | WAF matches | Cloudflare `firewall_events` |
-| `http_events` | HTTP requests | Cloudflare `http_requests` and `workers_trace_events` fetches, the Vulnetix API access log |
+| `http_events` | HTTP requests | Cloudflare `http_requests` and `workers_trace_events` fetches, the Vulnesis API access log |
 | `cloud_audit` | Control-plane changes | AWS CloudTrail management events, Cloudflare `audit_logs_v2` |
-| `product_events` | Vulnetix product decisions | Package Firewall, AI Firewall, Cloudflare Worker invocations other than fetch |
-| `ioc_indicators` | The daily Vulnetix indicator snapshot | Loaded by Guardian each day |
+| `product_events` | Vulnesis product decisions | Package Firewall, AI Firewall, Cloudflare Worker invocations other than fetch |
+| `ioc_indicators` | The daily Vulnesis indicator snapshot | Loaded by Guardian each day |
 
 ## Common columns
 
@@ -112,7 +112,7 @@ WAF events. One row per WAF match: Cloudflare firewall events; AWS WAF logs when
 
 ## `http_events`
 
-HTTP requests. One row per request: Cloudflare HTTP requests (sampled when the tenant asks) and Vulnetix API access logs.
+HTTP requests. One row per request: Cloudflare HTTP requests (sampled when the tenant asks) and Vulnesis API access logs.
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -156,7 +156,7 @@ Cloud audit. Control-plane changes: AWS CloudTrail management events and Cloudfl
 
 ## `product_events`
 
-Vulnetix product events. Decisions and audit from Vulnetix itself: Package Firewall, AI Firewall, runtime sensor matches, Software Factory and Belai audit.
+Vulnesis product events. Decisions and audit from Vulnesis itself: Package Firewall, AI Firewall, runtime sensor matches, Software Factory and Belai audit.
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -171,7 +171,7 @@ Vulnetix product events. Decisions and audit from Vulnetix itself: Package Firew
 
 ## `ioc_indicators`
 
-Indicators. The daily snapshot of Vulnetix indicators of compromise (malicious domains, addresses and hashes).
+Indicators. The daily snapshot of Vulnesis indicators of compromise (malicious domains, addresses and hashes).
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -181,7 +181,7 @@ Indicators. The daily snapshot of Vulnetix indicators of compromise (malicious d
 | `event_id` | string | Row id. |
 | `kind` | string | domain, ipv4, ipv6, sha256. |
 | `value` | string | The indicator, lower case. |
-| `ioc_source` | string | Where Vulnetix learned it. |
+| `ioc_source` | string | Where Vulnesis learned it. |
 | `first_seen` | timestamp | First sighting. |
 | `label` | string | Malware family or campaign, when known. |
 

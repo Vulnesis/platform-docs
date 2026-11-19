@@ -1,7 +1,7 @@
 ---
-title: "Vulnetix/cli/package-firewall action"
+title: "Vulnesis/cli/package-firewall action"
 nav: "package-firewall"
-description: "The Vulnetix/cli/package-firewall GitHub Action: inputs, outputs and a workflow."
+description: "The Vulnesis/cli/package-firewall GitHub Action: inputs, outputs and a workflow."
 order: 61
 sources: [cli/package-firewall/action.yml, cli/tools/actiongen/spec.go, cli/tools/actiongen/catalog.go]
 checked: [cli@v4.24.2]
@@ -9,7 +9,7 @@ updated: 06 Nov 2026
 generated: true
 ---
 
-Point a package manager on this runner at the Vulnetix Package Firewall, so later install steps go through it (vulnetix package-firewall <ecosystem>).
+Point a package manager on this runner at the Vulnesis Package Firewall, so later install steps go through it (vulnetix package-firewall <ecosystem>).
 
 ```yaml
 jobs:
@@ -19,10 +19,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4
+      - uses: Vulnesis/cli/package-firewall@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           ecosystem: <ecosystem>
 ```
 
@@ -40,10 +40,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4
+      - uses: Vulnesis/cli/package-firewall@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           fail-on-findings: false
 ```
 
@@ -61,10 +61,10 @@ jobs:
       attestations: write
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4
+      - uses: Vulnesis/cli/package-firewall@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
           attest: true
           release-tag: ${{ github.event.release.tag_name }}
 ```
@@ -81,10 +81,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4
+      - uses: Vulnesis/cli/package-firewall@v4
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 ### Pin the CLI for a locked workflow
@@ -99,10 +99,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4.24.2
+      - uses: Vulnesis/cli/package-firewall@v4.24.2
         with:
-          org-id: ${{ secrets.VULNETIX_ORG_ID }}
-          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          org-id: ${{ secrets.VULNESIS_ORG_ID }}
+          api-key: ${{ secrets.VULNESIS_API_KEY }}
 ```
 
 ### Pull requests from forks
@@ -117,7 +117,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: Vulnetix/cli/package-firewall@v4
+      - uses: Vulnesis/cli/package-firewall@v4
         with:
           fail-on-findings: false
 ```
@@ -126,12 +126,12 @@ jobs:
 
 | Input | Description | Default |
 |---|---|---|
-| `version` | Release of the Vulnetix CLI to install. Empty installs the release this action ref was cut from, which is what a lock file or a SHA pin expects. An exact tag (v4.0.0), a major channel (v4) or latest float instead | - |
+| `version` | Release of the Vulnesis CLI to install. Empty installs the release this action ref was cut from, which is what a lock file or a SHA pin expects. An exact tag (v4.0.0), a major channel (v4) or latest float instead | - |
 | `binary-path` | Path to an already-built vulnetix binary to use instead of downloading a release | - |
 | `verify-provenance` | Verify the downloaded CLI against the signed SLSA provenance of its release with cosign, which this action installs: true or false. Every v4 release is signed; set false to install a v3 release that has no provenance.sigstore.json. The SHA-256 checksum is checked either way | `true` |
-| `org-id` | Vulnetix organization ID (UUID), used with api-key. Optional: without credentials the CLI runs in community mode | - |
-| `api-key` | Vulnetix API key. Passed to the CLI as VULNETIX_API_KEY, never on the command line | - |
-| `api-token` | Vulnetix API token; the server resolves the organization. Passed as VULNETIX_API_TOKEN | - |
+| `org-id` | Vulnesis organization ID (UUID), used with api-key. Optional: without credentials the CLI runs in community mode | - |
+| `api-key` | Vulnesis API key. Passed to the CLI as VULNESIS_API_KEY, never on the command line | - |
+| `api-token` | Vulnesis API token; the server resolves the organization. Passed as VULNESIS_API_TOKEN | - |
 | `args` | Extra arguments for the command, separated by spaces or newlines (no shell quoting is applied) | - |
 | `extra-args` | Extra arguments, one per line, so a value may contain spaces | - |
 | `artifact-name` | Upload every file the command wrote as a workflow artifact with this name | - |

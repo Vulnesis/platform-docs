@@ -8,7 +8,7 @@ checked: [vdb-site@3c8c323, cli@5e0116312]
 updated: 04 Nov 2026
 ---
 
-The config engine is served by the Vulnetix site API, not the VDB API. The CLI calls it at `https://www.vulnetix.com/api/site/v1/config/...` (the host is `VULNETIX_WEB_URL` when that is set). The paths below are written from `/v1`.
+The config engine is served by the Vulnesis site API, not the VDB API. The CLI calls it at `https://www.vulnes.is/api/site/v1/config/...` (the host is `VULNESIS_WEB_URL` when that is set). The paths below are written from `/v1`.
 
 ## Who may call it
 
@@ -58,7 +58,7 @@ A request body is limited to 4 MiB.
 
 ## Credentials for automation
 
-A Terraform provider, a CI job or a GitOps controller should not hold a person's session. The config engine takes the credentials Vulnetix already issues; there is no separate machine token.
+A Terraform provider, a CI job or a GitOps controller should not hold a person's session. The config engine takes the credentials Vulnesis already issues; there is no separate machine token.
 
 | Credential | Sent as | Use it for |
 |---|---|---|
@@ -66,7 +66,7 @@ A Terraform provider, a CI job or a GitOps controller should not hold a person's
 | An **Authentik access token** (OAuth2 client credentials) for such a service account | `Authorization: Bearer <jwt>` | Where your identity setup already issues short-lived tokens. |
 | A **person's** ApiKey or `vulnetix auth login` session | `ApiKey` or `Bearer`, as above | Working from your own machine. The person must be an owner. |
 
-The environment variables are `VULNETIX_ORG_ID` and `VULNETIX_API_KEY` for the ApiKey, and `VULNETIX_API_TOKEN` for a bearer token. The [CLI](/platform-iac/cli/plan/) and the [Terraform provider](/platform-iac/terraform/) read the same names.
+The environment variables are `VULNESIS_ORG_ID` and `VULNESIS_API_KEY` for the ApiKey, and `VULNESIS_API_TOKEN` for a bearer token. The [CLI](/platform-iac/cli/plan/) and the [Terraform provider](/platform-iac/terraform/) read the same names.
 
 Rules that follow:
 
@@ -74,6 +74,6 @@ Rules that follow:
 - A person with the `developer` role signs in as themselves (`vulnetix auth login`) and can plan, apply and export like a `developer` service account. In the Resolve Platform they cannot invite or remove people, change roles, create service accounts, or manage billing or the vault; as code they can, up to `developer`.
 - A service account with the `member` role can read but not plan, apply or export. It is refused with `403`.
 - A `developer` credential maintains every kind as code, `Organization`, `Member`, `ServiceAccount` and `VaultEntry` included. On people and service accounts it grants `member` or `developer`, never `owner`, and it cannot change or remove an owner (`403`), so a leaked CI credential can never make, demote or remove an owner. In the Resolve Platform the same developer cannot manage people, service accounts, the vault or Drift protection.
-- An Authentik token comes from the `platform-iac` application at `https://auth.vulnetix.com/application/o/platform-iac/` (client id `vulnetix-platform-iac`, `client_credentials` grant, one hour). Authentik only issues one to a service account that is stamped as a Vulnetix principal and holds the `developer` or `owner` role; a `member` is refused at the token endpoint. The server then requires the user to be active and in the organisation's group. The token's claims never name the organisation; the server looks the user up.
+- An Authentik token comes from the `platform-iac` application at `https://auth.vulnes.is/application/o/platform-iac/` (client id `vulnetix-platform-iac`, `client_credentials` grant, one hour). Authentik only issues one to a service account that is stamped as a Vulnesis principal and holds the `developer` or `owner` role; a `member` is refused at the token endpoint. The server then requires the user to be active and in the organisation's group. The token's claims never name the organisation; the server looks the user up.
 - Deactivating the service account stops its ApiKey and its tokens working.
 - The five SIEM kinds (`SavedSearch`, `DetectionRule`, `AlertTrigger`, `ScheduledReport` and `LogSource`) are written in Guardian. The server vouches for the caller to Guardian with a short-lived signed assertion, so the same credentials work for them.

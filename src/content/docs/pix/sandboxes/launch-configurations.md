@@ -159,11 +159,11 @@ Provider keys are sent only when you tick **Also send the keys for ...**.
 | DELETE | `/v1/belai/library/items/launches/{id}` | | Deletes the configuration |
 | GET | `/v1/belai/library/item-names/check?kind=launch&name=<n>` | | Whether a name is free |
 
-`{kind}` takes `launches` or `launch`. `body` is the JSON object itself, not a string. The Resolve Platform calls these at `https://www.vulnetix.com/api/site` with its session token as a bearer token:
+`{kind}` takes `launches` or `launch`. `body` is the JSON object itself, not a string. The Resolve Platform calls these at `https://www.vulnes.is/api/site` with its session token as a bearer token:
 
 ```bash
-curl -X POST "https://www.vulnetix.com/api/site/v1/belai/library/items/launches" \
-  -H "Authorization: Bearer $VULNETIX_SESSION_JWT" -H "Content-Type: application/json" \
+curl -X POST "https://www.vulnes.is/api/site/v1/belai/library/items/launches" \
+  -H "Authorization: Bearer $VULNESIS_SESSION_JWT" -H "Content-Type: application/json" \
   -d '{"body": {"name": "payments-node", "items": [], "machine": {"packs": ["node"], "egress_allow": ["registry.npmjs.org"]}}}'
 ```
 

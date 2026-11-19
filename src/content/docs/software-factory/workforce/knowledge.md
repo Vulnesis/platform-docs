@@ -1,6 +1,6 @@
 ---
 title: Knowledge
-description: How agents search reference material by meaning alongside file tools, with profile knowledge, project knowledge from Vulnetix scans, and index upkeep.
+description: How agents search reference material by meaning alongside file tools, with profile knowledge, project knowledge from Vulnesis scans, and index upkeep.
 order: 24
 sources: [belai/docs/knowledge.md, vdb-site/api/internal/handler/belai_rc_knowledge.go]
 checked: [belai@35506b9]
@@ -12,7 +12,7 @@ An agent that calls `Grep`, `Glob` or `Read` gets its usual answer from the file
 | Knowledge | Is | Searched by |
 |---|---|---|
 | Profile knowledge | The documents an agent profile lists: a handbook, a style guide, runbooks, a standards folder | Workers and background agents running that profile, and a session while that agent is engaged |
-| Project knowledge | The scanner output the Vulnetix tools leave in the project's `.vulnetix` directory (SARIF, CycloneDX, OpenVEX and the rest), and files you attach to a session with `@` | Any session in the project |
+| Project knowledge | The scanner output the Vulnesis tools leave in the project's `.vulnetix` directory (SARIF, CycloneDX, OpenVEX and the rest), and files you attach to a session with `@` | Any session in the project |
 
 Everything runs inside Belai: no embedding model to download and no service to call, so it works offline.
 
@@ -29,4 +29,4 @@ belai agent knowledge -json
 ## Related
 
 - [Agents](/software-factory/workforce/agents/)
-- [Vulnetix scanning inside sessions](/software-factory/belai/vulnetix/)
+- [Vulnesis scanning inside sessions](/software-factory/belai/vulnetix/)

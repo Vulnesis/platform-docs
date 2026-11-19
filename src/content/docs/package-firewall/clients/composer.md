@@ -9,7 +9,7 @@ updated: 03 Nov 2026
 
 | | |
 |---|---|
-| Repository URL | `https://packages.vulnetix.com/composer` |
+| Repository URL | `https://packages.vulnes.is/composer` |
 | Ecosystem ID | `composer` |
 | Plan | Add-on |
 | Mode | filter: Packagist v2 metadata is filtered |
@@ -32,7 +32,7 @@ This writes two whole files under `~/.composer/`, backing up existing ones to `.
     "packagist.org": false,
     "vulnetix": {
       "type": "composer",
-      "url": "https://packages.vulnetix.com/composer"
+      "url": "https://packages.vulnes.is/composer"
     }
   }
 }
@@ -43,7 +43,7 @@ This writes two whole files under `~/.composer/`, backing up existing ones to `.
 ```json
 {
   "http-basic": {
-    "packages.vulnetix.com": {
+    "packages.vulnes.is": {
       "password": "YOUR_API_KEY",
       "username": "YOUR_ORG_UUID"
     }
@@ -60,8 +60,8 @@ Composer reads credentials only from `auth.json` (or `config.http-basic`). `http
 
 ```bash
 composer config --global repositories.packagist.org false
-composer config --global repositories.vulnetix composer https://packages.vulnetix.com/composer
-composer config --global http-basic.packages.vulnetix.com "$VULNETIX_ORG_ID" "$VULNETIX_API_KEY"
+composer config --global repositories.vulnetix composer https://packages.vulnes.is/composer
+composer config --global http-basic.packages.vulnes.is "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY"
 ```
 
 ## Use and verify

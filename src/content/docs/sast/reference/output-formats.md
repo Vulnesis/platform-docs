@@ -26,7 +26,7 @@ Only one stdout format is allowed per run: `-o json-sarif -o json-report` is an 
 
 ## SARIF document
 
-One run, tool `vulnetix`, version = the CLI version, `informationUri: https://vulnetix.com`, `$schema` the OASIS SARIF 2.1.0 errata 01 schema.
+One run, tool `vulnetix`, version = the CLI version, `informationUri: https://vulnes.is`, `$schema` the OASIS SARIF 2.1.0 errata 01 schema.
 
 ### `runs[0].tool.driver.rules[]`
 
@@ -47,7 +47,7 @@ One descriptor per rule loaded for this run, after the kind lock and the languag
 | `properties.cwss` | `cwss`, when set |
 
 > [!CAREFUL] Built-in `helpUri` values point at the old docs host
-> Built-in rules still carry `help_uri: https://docs.cli.vulnetix.com/docs/sast-rules/<id>/`. Those URLs redirect to the pages under [/sast/rules/](/sast/rules/).
+> Built-in rules still carry `help_uri: https://docs.cli.vulnes.is/docs/sast-rules/<id>/`. Those URLs redirect to the pages under [/sast/rules/](/sast/rules/).
 
 ### `runs[0].results[]`
 
@@ -66,7 +66,7 @@ One descriptor per rule loaded for this run, after the kind lock and the languag
 | `properties["vulnetix/test-suite"]` | `true` when the file is test code. |
 | `properties["vulnetix/test-framework"]`, `test-language`, `test-confidence`, `test-matched-pattern`, `test-evidence` | How the test file was recognised. `test-confidence` is `confirmed`, `high`, `medium` or `low`. |
 
-`result.kind` is not written, so it is the SARIF default, `fail`. The Vulnetix rule kind is in `properties["vulnetix/kind"]` because `result.kind` is a SARIF enum.
+`result.kind` is not written, so it is the SARIF default, `fail`. The Vulnesis rule kind is in `properties["vulnetix/kind"]` because `result.kind` is a SARIF enum.
 
 ### `runs[0].invocations[0].toolExecutionNotifications[]`
 
@@ -113,7 +113,7 @@ vulnetix sast -q -o json-sarif 2>/dev/null \
 
 ## Resolve Platform snapshot
 
-When the CLI has credentials, findings are uploaded per kind and the run prints `SAST snapshot: https://www.vulnetix.com/resolve/scanner-results/<uuid>`. The upload carries each finding with `--snippet-context` lines of surrounding source, its test-suite attribution, the suppressions recorded this run, and the test-runner config files found (path, framework, size and SHA-256, not their contents).
+When the CLI has credentials, findings are uploaded per kind and the run prints `SAST snapshot: https://www.vulnes.is/resolve/scanner-results/<uuid>`. The upload carries each finding with `--snippet-context` lines of surrounding source, its test-suite attribution, the suppressions recorded this run, and the test-runner config files found (path, framework, size and SHA-256, not their contents).
 
 ## `.vulnetix/memory.yaml`
 

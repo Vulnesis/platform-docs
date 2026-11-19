@@ -22,14 +22,14 @@ VS Code runs MCP servers for GitHub Copilot in agent mode. Its `inputs` mechanis
     {
       "id": "vulnetix-key",
       "type": "promptString",
-      "description": "Vulnetix API key as orgId:hex",
+      "description": "Vulnesis API key as orgId:hex",
       "password": true
     }
   ],
   "servers": {
     "vulnetix": {
       "type": "http",
-      "url": "https://mcp.vulnetix.com/mcp",
+      "url": "https://mcp.vulnes.is/mcp",
       "headers": {
         "Authorization": "ApiKey ${input:vulnetix-key}"
       }
@@ -75,5 +75,5 @@ VS Code with Copilot is on the MCP Apps client matrix, so the KEV board, triage 
 |---|---|
 | Server not listed | Use `servers` and `"type": "http"` |
 | Asked for the key every session | The workspace is not trusted, so the input is not stored |
-| Tools present, never called | Agent mode; check the tools picker has Vulnetix enabled |
+| Tools present, never called | Agent mode; check the tools picker has Vulnesis enabled |
 | 401 | The input must be `<orgId>:<hex>` |

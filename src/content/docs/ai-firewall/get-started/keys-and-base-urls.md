@@ -16,27 +16,27 @@ Three credentials are involved and each goes to a different place. Most `401`s c
 
 | Credential | Sent by | Sent to | Where it lives |
 |---|---|---|---|
-| Vulnetix API key | Your application or agent | The gateway | `VULNETIX_API_KEY` by convention |
+| Vulnesis API key | Your application or agent | The gateway | `VULNESIS_API_KEY` by convention |
 | Provider key (OpenAI, Anthropic, ...) | The gateway | The provider | Stored once, encrypted. See [Provider keys](/ai-firewall/get-started/provider-keys/). |
-| CLI login | You, at a terminal | The Vulnetix API, to manage policy | `vulnetix auth login` or `VULNETIX_API_KEY` with `VULNETIX_ORG_ID` |
+| CLI login | You, at a terminal | The Vulnesis API, to manage policy | `vulnetix auth login` or `VULNESIS_API_KEY` with `VULNESIS_ORG_ID` |
 
-## The Vulnetix API key
+## The Vulnesis API key
 
-The gateway authenticates a request with two values: the org UUID in the URL path and the Vulnetix API key in a header.
+The gateway authenticates a request with two values: the org UUID in the URL path and the Vulnesis API key in a header.
 
 - The key is `hex(HMAC-SHA256(secret, orgUuid))`, where `secret` is the HMAC secret of that org UUID. It is checked against the UUID in the URL, so the UUID and the key must belong together.
 - Send it as `Authorization: Bearer <key>` or `x-api-key: <key>`. Both are accepted on every route, so OpenAI SDKs (Bearer) and Anthropic SDKs (`x-api-key` by default) both work.
 - In a Business organisation each member signs in as their own principal with their own UUID and key, and all of them share the organisation's policy. Use your own UUID in the URL with your own key.
-- A provider key in the `api_key` field is `401 invalid Vulnetix API key`. The gateway never passes a caller's credential upstream.
+- A provider key in the `api_key` field is `401 invalid Vulnesis API key`. The gateway never passes a caller's credential upstream.
 
-Both values are on [Resolve > AI Firewall](https://www.vulnetix.com/resolve/ai-firewall) when you are signed in.
+Both values are on [Resolve > AI Firewall](https://www.vulnes.is/resolve/ai-firewall) when you are signed in.
 
 | `401` message | Cause |
 |---|---|
-| `missing organisation: use https://guardrails.vulnetix.com/{providerSlug}/{orgUuid}/v1 as the base URL` | No UUID in the path and no `X-Organisation-UUID` header |
+| `missing organisation: use https://guardrails.vulnes.is/{providerSlug}/{orgUuid}/v1 as the base URL` | No UUID in the path and no `X-Organisation-UUID` header |
 | `unknown organisation` | The UUID is malformed, unknown or inactive |
-| `missing Vulnetix API key: send it as Authorization: Bearer or x-api-key` | No credential reached the gateway. Check the variable is exported where the client runs. |
-| `invalid Vulnetix API key` | A credential arrived and it is not the key for that UUID. Often a provider key. |
+| `missing Vulnesis API key: send it as Authorization: Bearer or x-api-key` | No credential reached the gateway. Check the variable is exported where the client runs. |
+| `invalid Vulnesis API key` | A credential arrived and it is not the key for that UUID. Often a provider key. |
 
 All four carry `code: invalid_api_key`. A `503 authentication backend unavailable` is a gateway-side outage; authentication does not fail open.
 
@@ -46,13 +46,13 @@ OpenAI's SDKs expect `/v1` in the base URL and append `/chat/completions`. Anthr
 
 | Client | Base URL |
 |---|---|
-| OpenAI SDKs, LangChain, LlamaIndex, Codex, Cursor, Continue, aider, curl | `https://guardrails.vulnetix.com/{provider}/{orgUuid}/v1` |
-| Anthropic SDKs, Claude Code, Claude Desktop | `https://guardrails.vulnetix.com/anthropic/{orgUuid}` |
-| Kiro (through Belai) | `https://guardrails.vulnetix.com/kiro/{orgUuid}/v1` |
+| OpenAI SDKs, LangChain, LlamaIndex, Codex, Cursor, Continue, aider, curl | `https://guardrails.vulnes.is/{provider}/{orgUuid}/v1` |
+| Anthropic SDKs, Claude Code, Claude Desktop | `https://guardrails.vulnes.is/anthropic/{orgUuid}` |
+| Kiro (through Belai) | `https://guardrails.vulnes.is/kiro/{orgUuid}/v1` |
 
 `{provider}` is a slug from the [Provider catalog](/ai-firewall/reference/provider-catalog/). An Anthropic base URL ending in `/v1` makes the SDK call `/v1/v1/messages`, which is a `404`.
 
-The older form, `https://guardrails.vulnetix.com/{provider}/v1` with the org UUID in an `X-Organisation-UUID` header, still works. Prefer the URL form: most clients cannot send custom headers.
+The older form, `https://guardrails.vulnes.is/{provider}/v1` with the org UUID in an `X-Organisation-UUID` header, still works. Prefer the URL form: most clients cannot send custom headers.
 
 ## Request surfaces
 
