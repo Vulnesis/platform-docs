@@ -93,7 +93,7 @@ test('latest() throws naming the repo on a non-semver or missing tag', () => wit
   globalThis.fetch = async () => ({ json: async () => ({ tag_name: 'main' }) });
   await assert.rejects(latest('Vulnesis/cli'), /Vulnesis\/cli: no release/);
   globalThis.fetch = async () => ({ json: async () => ({}) });
-  await assert.rejects(latest('Vulnesis/config-schemas'), /Vulnetix\/config-schemas: no release/);
+  await assert.rejects(latest('Vulnesis/config-schemas'), /Vulnesis\/config-schemas: no release/);
 }));
 
 test('the CLI prints the pins JSON with no arguments and exits 0', () => {
@@ -117,8 +117,8 @@ test('--check warns when a newer release exists and is silent when the pins are 
   assert.equal(warned.status, 0, warned.stderr);
   const warnings = warned.stdout.split('\n').filter((l) => l.startsWith('::warning::'));
   assert.equal(warnings.length, 2);
-  assert.match(warnings[0], /Vulnetix\/cli has released v99\.0\.0/);
-  assert.match(warnings[1], /Vulnetix\/config-schemas has released v99\.1\.0/);
+  assert.match(warnings[0], /Vulnesis\/cli has released v99\.0\.0/);
+  assert.match(warnings[1], /Vulnesis\/config-schemas has released v99\.1\.0/);
 });
 
 test('--bump writes the fetched releases to releases.json', () => {

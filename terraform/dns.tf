@@ -12,7 +12,7 @@
 # The retired docs hostnames are not here. Each is a proxied placeholder record
 # in vdb-site/terraform/dns.tf (var.retired_docs_hosts). software-factory is
 # answered by a host-level rule in vdb-site's redirect ruleset; the old product
-# docs hosts are answered by the vulnesis-docs-redirects Worker in redirects/,
+# docs hosts are answered by the vulnetix-docs-redirects Worker in redirects/,
 # which maps every old URL to its page. The two-level ones need the advanced
 # certificate in certificates.tf before they can be proxied.
 
