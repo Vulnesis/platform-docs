@@ -1,7 +1,7 @@
 """Copy the AIBOM and CBOM catalog pages from the CLI's Hugo site into platform-docs.
 
 The CLI generates these pages from its embedded detection catalogs
-(`just gen-aibom`, `just gen-cbom` in Vulnesis/cli). Until those generators
+(`just gen-aibom`, `just gen-cbom` in Vulnetix/cli). Until those generators
 write here directly, rerun this after regenerating them:
 
     uv run migration/generators/sbom-catalog-pages.py /path/to/cli <cli-short-sha>
@@ -79,7 +79,7 @@ def clean(body: str, dest: str) -> str:
     # A generated-page note, rewritten to name the generator.
     body = re.sub(
         r"^> (?:\*\*)?Generated from the catalog\.?(?:\*\*)?.*$",
-        lambda m: "> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnesis/cli` and run `just gen-aibom` or `just gen-cbom`.",
+        lambda m: "> Generated from the CLI's embedded catalog. To change an entry, edit the catalog file named at the foot of this page in `Vulnetix/cli` and run `just gen-aibom` or `just gen-cbom`.",
         body,
         flags=re.M,
     )

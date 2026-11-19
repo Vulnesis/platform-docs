@@ -42,7 +42,7 @@ test('the key gate passes only for a file holding exactly the key', () => {
 test('a non-ok sitemap fetch stops the run with its HTTP status', () => {
   const r = runCli(`async (url) => ({ ok: false, status: 503 })`);
   assert.equal(r.status, 1, r.stderr);
-  assert.match(r.stderr, /\[indexnow\] ERROR: https:\/\/docs\.vulnetix\.com\/sitemap-0\.xml: HTTP 503/);
+  assert.match(r.stderr, /\[indexnow\] ERROR: https:\/\/docs\.vulnes\.is\/sitemap-0\.xml: HTTP 503/);
 });
 
 test('a sitemap with no pages on this host stops the run', () => {
@@ -60,11 +60,11 @@ test('--dry-run prints the summary and the first ten URLs and posts nothing', ()
   }`, ['--dry-run']);
   assert.equal(r.status, 0, r.stderr);
   assert.match(r.stdout, /\[indexnow\] 12 URLs/);
-  assert.match(r.stdout, /"host": "docs\.vulnetix\.com"/);
+  assert.match(r.stdout, /"host": "docs\.vulnes\.is"/);
   assert.match(r.stdout, /"key": "[0-9a-f]{32}"/);
-  assert.match(r.stdout, /"keyLocation": "https:\/\/docs\.vulnetix\.com\/[0-9a-f]{32}\.txt"/);
+  assert.match(r.stdout, /"keyLocation": "https:\/\/docs\.vulnes\.is\/[0-9a-f]{32}\.txt"/);
   assert.match(r.stdout, /"urlCount": 12/);
-  const printed = r.stdout.match(/^  https:\/\/docs\.vulnetix\.com\/p\d+\/$/gm);
+  const printed = r.stdout.match(/^  https:\/\/docs\.vulnes\.is\/p\d+\/$/gm);
   assert.deepEqual(printed, urls.slice(0, 10).map((u) => `  ${u}`));
 });
 

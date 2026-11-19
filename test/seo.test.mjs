@@ -62,8 +62,8 @@ test('lastmod is the page date, else the source file’s last commit, else none'
 
 test('a sitemap entry carries <lastmod> only when there is a date', () => {
   const xml = sitemapXml([{ loc: 'https://docs.vulnes.is/a/', lastmod: '2026-11-05' }, { loc: 'https://docs.vulnes.is/b/', lastmod: null }]);
-  assert.match(xml, /<url><loc>https:\/\/docs\.vulnetix\.com\/a\/<\/loc><lastmod>2026-11-05<\/lastmod><\/url>/);
-  assert.match(xml, /<url><loc>https:\/\/docs\.vulnetix\.com\/b\/<\/loc><\/url>/);
+  assert.match(xml, /<url><loc>https:\/\/docs\.vulnes\.is\/a\/<\/loc><lastmod>2026-11-05<\/lastmod><\/url>/);
+  assert.match(xml, /<url><loc>https:\/\/docs\.vulnes\.is\/b\/<\/loc><\/url>/);
 });
 
 // Characterisation test: the current sitemapXml() output is the oracle.
@@ -98,10 +98,10 @@ const groups = [{
 test('llms.txt is the llmstxt.org shape, every link absolute and to a Markdown twin', () => {
   const txt = llmsTxt(groups);
   assert.match(txt, /^# Vulnetix documentation\n\n> /);
-  assert.match(txt, /\n## Scanners\n\n- \[SCA\]\(https:\/\/docs\.vulnetix\.com\/sca\.md\): Dependencies\.\n {2}- \[Get started\]/);
+  assert.match(txt, /\n## Scanners\n\n- \[SCA\]\(https:\/\/docs\.vulnes\.is\/sca\.md\): Dependencies\.\n {2}- \[Get started\]/);
   const links = [...txt.matchAll(/\]\(([^)]+)\)/g)].map((m) => m[1]);
   assert.equal(links.length, 3);
-  for (const l of links) assert.match(l, /^https:\/\/docs\.vulnetix\.com\/.+\.md$/);
+  for (const l of links) assert.match(l, /^https:\/\/docs\.vulnes\.is\/.+\.md$/);
 });
 
 test('index.md lists the same products with root-relative twin links', () => {

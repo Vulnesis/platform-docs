@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// sast-rules.mjs: write the SAST rule pages from the Vulnesis CLI repository.
+// sast-rules.mjs: write the SAST rule pages from the Vulnetix CLI repository.
 //
 // Inputs, all in the cli repository:
 //   internal/sast/rules/*.rego             each rule's `metadata := {...}` block
@@ -22,7 +22,7 @@
 // Usage:
 //   node migration/generators/sast-rules.mjs [--cli <path>] [--prose <dir>] [--out <dir>]
 //
-//   --cli    cli repository checkout (default: $VULNESIS_CLI_REPO, else ../cli
+//   --cli    cli repository checkout (default: $VULNETIX_CLI_REPO, else ../cli
 //            next to this repository)
 //   --prose  directory of hand-written rule pages (default:
 //            <cli>/internal/sast/docs). A rule without a prose
@@ -52,7 +52,7 @@ const opt = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 && args[i + 1] ? resolve(args[i + 1]) : fallback;
 };
-const cli = opt('cli', process.env.VULNESIS_CLI_REPO ? resolve(process.env.VULNESIS_CLI_REPO) : resolve(root, '..', 'cli'));
+const cli = opt('cli', process.env.VULNETIX_CLI_REPO ? resolve(process.env.VULNETIX_CLI_REPO) : resolve(root, '..', 'cli'));
 const proseDir = opt('prose', join(cli, 'internal', 'sast', 'docs'));
 const outRoot = opt('out', join(root, 'src', 'content', 'docs'));
 const rulesDir = join(cli, 'internal', 'sast', 'rules');
@@ -257,7 +257,7 @@ function metaTable(r) {
   if (r.cwss) rows.push(['CWSS vector', `\`${r.cwss}\``]);
   if (r.cvssv4) rows.push(['CVSS v4', `\`${r.cvssv4}\``]);
   if (r.tags?.length) rows.push(['Tags', r.tags.map((t) => `\`${t}\``).join(' ')]);
-  rows.push(['Source', `[\`internal/sast/rules/${r.file}\`](https://github.com/Vulnesis/cli/blob/main/internal/sast/rules/${r.file})`]);
+  rows.push(['Source', `[\`internal/sast/rules/${r.file}\`](https://github.com/Vulnetix/cli/blob/main/internal/sast/rules/${r.file})`]);
   return ['| Field | Value |', '|---|---|', ...rows.map(([k, v]) => `| ${k} | ${v} |`)].join('\n');
 }
 
@@ -397,7 +397,7 @@ for (const [key, c] of cats) {
   });
 
   const page = [
-    frontmatter({ title: 'SAST rules index', nav: 'Rules index', description: 'Every built-in Rego rule the Vulnesis CLI ships, filterable by language, severity, kind and CWE.', order: 1, sources: ['cli/internal/sast/rules/', 'cli/internal/sast/language_filter.go', 'cli/internal/sast/kinds.go'] }),
+    frontmatter({ title: 'SAST rules index', nav: 'Rules index', description: 'Every built-in Rego rule the Vulnetix CLI ships, filterable by language, severity, kind and CWE.', order: 1, sources: ['cli/internal/sast/rules/', 'cli/internal/sast/language_filter.go', 'cli/internal/sast/kinds.go'] }),
     `The CLI embeds ${all.length} rules from \`internal/sast/rules/\`. \`vulnetix sast\` runs the ${kindCount.sast ?? 0} of kind \`sast\`; the other kinds run under their own commands and under \`vulnetix scan\`. Print the same list from the binary you have with \`vulnetix sast --list-default-rules\`.`,
     '',
     '| Kind | Rules | Command |',

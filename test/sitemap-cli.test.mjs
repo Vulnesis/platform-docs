@@ -50,7 +50,7 @@ test('the CLI walk: skips pagefind/_astro, non-index files and meta-refresh stub
     assert.equal(byLoc.get('https://docs.vulnes.is/sub/').lastmod, '2026-01-02', 'article:modified_time wins over the git fallback');
     assert.equal(byLoc.get('https://docs.vulnes.is/sub/nested/').lastmod, null, 'the fixture has no git history, so the edit-link fallback gets no date');
     assert.ok(!readFileSync(join(dist, 'sitemap-0.xml'), 'utf8').includes('/moved/') && !readFileSync(join(dist, 'sitemap-0.xml'), 'utf8').includes('old.html'), 'meta-refresh stubs and non-index files are not entries');
-    assert.match(readFileSync(join(dist, 'sitemap-index.xml'), 'utf8'), /<sitemap><loc>https:\/\/docs\.vulnetix\.com\/sitemap-0\.xml<\/loc><\/sitemap>/);
+    assert.match(readFileSync(join(dist, 'sitemap-index.xml'), 'utf8'), /<sitemap><loc>https:\/\/docs\.vulnes\.is\/sitemap-0\.xml<\/loc><\/sitemap>/);
     assert.match(r.stdout, new RegExp(`sitemap: ${entries.length} urls, ${entries.filter((e) => e.lastmod).length} with lastmod`));
   } finally {
     rmSync(dist, { recursive: true, force: true });

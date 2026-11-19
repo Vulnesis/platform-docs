@@ -51,5 +51,5 @@ test('robots.txt disallows nothing for anyone', () => {
 
 test('robots.txt signals yes to search, AI input and AI training, and names the sitemap', () => {
   assert.match(TEXT, /^Content-Signal: search=yes, ai-input=yes, ai-train=yes$/m);
-  assert.match(TEXT, /^Sitemap: https:\/\/docs\.vulnetix\.com\/sitemap-index\.xml$/m);
+  assert.match(TEXT, /^Sitemap: https:\/\/docs\.vulnes\.is\/sitemap-index\.xml$/m);
 });

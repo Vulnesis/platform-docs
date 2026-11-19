@@ -27,7 +27,7 @@ export const GROUPS = [
   ['Pix', 'Pix sandbox launch settings and egress.', ['SandboxLaunchProfile', 'SandboxEgressPolicy']],
   ['TEA', 'Products, components and collections published through the Transparency Exchange API.', ['TeaProduct', 'TeaComponent', 'TeaCollection', 'TeaAccessPolicy', 'TeaPublicationTarget']],
   ['SIEM', 'Guardian searches, detection rules, alerts, reports and log sources.', ['SavedSearch', 'DetectionRule', 'AlertTrigger', 'ScheduledReport', 'LogSource']],
-  ['Cloud', 'How Vulnesis reaches an AWS estate and what it reads there.', ['AwsConnection', 'AwsAccount', 'CloudSensors']],
+  ['Cloud', 'How Vulnetix reaches an AWS estate and what it reads there.', ['AwsConnection', 'AwsAccount', 'CloudSensors']],
   ['API inventory', 'Where OpenAPI and Swagger descriptions are read from.', ['ApiSpecSource']],
   ['Virtual patching', 'Published rule feeds and the configuration runtime sensors enroll with.', ['DetectionRuleFeed', 'RuntimeSensorPolicy']],
   ['Compliance', 'Compliance obligations measured on a cadence: report frameworks, SLSA, NIST SSDF and a cryptography policy.', ['ComplianceTarget']],
@@ -98,7 +98,7 @@ export const CEL_WHERE = {
     fail: 'In the VDB API a rule whose `when` does not compile, or uses a variable its rule kind lacks, is skipped with a warning, and a fact the expression errors on makes the rule `indeterminate` (`vulnetix jail` exits 3). In the factory gate the rule **fails closed**: it breaches, labelled "when could not be evaluated".',
   },
   RiskStrategy: {
-    where: 'by the ranking ladder in the Vulnesis site API, over the tenant\'s open findings (at most 5000, most severe first)',
+    where: 'by the ranking ladder in the Vulnetix site API, over the tenant\'s open findings (at most 5000, most severe first)',
     fail: '**Fails open.** A rule that does not compile matches nothing and is logged. A finding the expression errors on does not match.',
   },
   Suppression: {
@@ -114,15 +114,15 @@ export const CEL_WHERE = {
     fail: 'The rule is skipped, named in the decision\'s skipped list, and the gateway logs it.',
   },
   SsvcPolicy: {
-    where: 'by the SSVC decision in the Vulnesis site API, on every decision and summary (the summary covers at most 5000 open findings, most severe first, cached for 60 seconds), and by the VDB API for the CLI scan and the remediation plan',
+    where: 'by the SSVC decision in the Vulnetix site API, on every decision and summary (the summary covers at most 5000 open findings, most severe first, cached for 60 seconds), and by the VDB API for the CLI scan and the remediation plan',
     fail: 'The decision point takes its lower value and the decision is still made. An override that fails does not hold.',
   },
   ComplianceTarget: {
-    where: 'by the Vulnesis site API at every run of the target, once for each component of the newest CBOM of each repository in scope (at most 20000 components)',
+    where: 'by the Vulnetix site API at every run of the target, once for each component of the newest CBOM of each repository in scope (at most 20000 components)',
     fail: '**Fails closed** for `crypto.allow`: a component it cannot be evaluated for is a violation, because an unassessed algorithm must not pass a policy. A `crypto.appliesTo` that fails leaves the component in scope.',
   },
   DetectionRuleFeed: {
-    where: 'by the Vulnesis site API at every publish of the feed, once for each candidate rule and CVE',
+    where: 'by the Vulnetix site API at every publish of the feed, once for each candidate rule and CVE',
     fail: 'The pair does not match. When every pair fails, the publish is refused.',
   },
 };
@@ -369,7 +369,7 @@ A named standard links the published policy row. Custom windows save a new row a
     sources: ['vdb-site/api/internal/config/ssvcpolicy.go', 'vdb-site/api/internal/handler/ssvc.go', 'vdb-site/docs/ssvc.md', 'config-schemas/ssvc/policy.go', 'config-schemas/ssvc/ssvc.go'],
     after: `## How the decision is made
 
-Vulnesis makes the [CISA SSVC](https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc) decision, Track, Track*, Attend or Act, for a finding from four decision points. The decision table is the CISA Coordinator table 2.0.3 (CERT/CC) and is fixed. This kind configures how Vulnesis's signals become the four values, which table cells the organization reads differently, which findings it decides by rule, and what each outcome asks of it.
+Vulnetix makes the [CISA SSVC](https://www.cisa.gov/stakeholder-specific-vulnerability-categorization-ssvc) decision, Track, Track*, Attend or Act, for a finding from four decision points. The decision table is the CISA Coordinator table 2.0.3 (CERT/CC) and is fixed. This kind configures how Vulnetix's signals become the four values, which table cells the organization reads differently, which findings it decides by rule, and what each outcome asks of it.
 
 | Decision point | Values | Default |
 |---|---|---|
@@ -378,7 +378,7 @@ Vulnesis makes the [CISA SSVC](https://www.cisa.gov/stakeholder-specific-vulnera
 | Technical impact | partial, total | total: \`cvss >= 9.0 \\|\\| malicious\` |
 | Mission and well-being | low, medium, high | The repository's criticality: low, medium, high, and critical (high). A repository with no criticality is medium. |
 
-The expressions are CEL over the \`finding\` context, so a policy can use any finding variable, including the repository's \`labels\`, \`owner\` and \`criticality\`. The defaults approximate CISA's definitions from the signals Vulnesis holds. Automatable in particular is defined by the kill chain, and the finding context carries no CVSS vector, so the default reads a critical score or a high EPSS as automatable. A tenant that holds better information tightens the expression. \`mapping[]\` reads cells of the table differently for the whole tenant (the last matching rule wins), \`overrides[]\` decides by rule after the table and the mapping (the first match wins, and the decision records which rule set it), and \`outcomes\` sets each outcome's priority and \`dueDays\` (0 is the standard update cycle).
+The expressions are CEL over the \`finding\` context, so a policy can use any finding variable, including the repository's \`labels\`, \`owner\` and \`criticality\`. The defaults approximate CISA's definitions from the signals Vulnetix holds. Automatable in particular is defined by the kill chain, and the finding context carries no CVSS vector, so the default reads a critical score or a high EPSS as automatable. A tenant that holds better information tightens the expression. \`mapping[]\` reads cells of the table differently for the whole tenant (the last matching rule wins), \`overrides[]\` decides by rule after the table and the mapping (the first match wins, and the decision records which rule set it), and \`outcomes\` sets each outcome's priority and \`dueDays\` (0 is the standard update cycle).
 
 ## How apply treats it
 
@@ -501,7 +501,7 @@ Written in Guardian, in the second phase; see [SIEM kinds](${ENGINE_PAGE}#siem-k
 
 - This is a [provisioning profile](/virtual-patching/sensor/provisioning-profiles/) as code. \`metadata.name\` is the profile name.
 - The Resolve Platform's normalisation and feed reference checks run on every document, so a document is refused where the provisioning form is.
-- \`feeds\` items are one of: \`feedRef\` (a [\`DetectionRuleFeed\`](/platform-iac/kinds/detection-rule-feed/), stored as its \`https://vulnes.is/feeds/<org>/<feed>\` URL, which must be published when the policy is applied; a feed in the same apply is published first), \`sensorFeed\` (an indicator feed, stored as \`org:<uuid>\`), or an https URL (a published Vulnesis rule feed or a catalogue feed, stored as \`catalog:<id>\`). Read renders each stored reference back in that order. Left out, \`feeds\` are the catalogue defaults, as for a console-created profile.
+- \`feeds\` items are one of: \`feedRef\` (a [\`DetectionRuleFeed\`](/platform-iac/kinds/detection-rule-feed/), stored as its \`https://vulnetix.com/feeds/<org>/<feed>\` URL, which must be published when the policy is applied; a feed in the same apply is published first), \`sensorFeed\` (an indicator feed, stored as \`org:<uuid>\`), or an https URL (a published Vulnetix rule feed or a catalogue feed, stored as \`catalog:<id>\`). Read renders each stored reference back in that order. Left out, \`feeds\` are the catalogue defaults, as for a console-created profile.
 - A profile with enrolled, unrevoked devices cannot be deleted or pruned. Plan blocks it and names the count.`,
   },
 

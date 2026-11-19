@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // gha-scanners.mjs: write the third-party scanner catalogue page for
-// `vulnetix gha setup` from the Vulnesis CLI repository.
+// `vulnetix gha setup` from the Vulnetix CLI repository.
 //
 // Where it comes from:
 //   The catalogue is internal/ghasetup/catalog (embedded in the CLI). The CLI
@@ -34,7 +34,7 @@ const opt = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
 };
-const cli = resolve(opt('cli', process.env.VULNESIS_CLI_REPO || resolve(root, '..', 'cli')));
+const cli = resolve(opt('cli', process.env.VULNETIX_CLI_REPO || resolve(root, '..', 'cli')));
 const ref = opt('ref', 'origin/main');
 const outRoot = resolve(opt('out', join(root, 'src', 'content', 'docs')));
 const srcPath = 'docs/generated/ci-cd/third-party-scanners.md';

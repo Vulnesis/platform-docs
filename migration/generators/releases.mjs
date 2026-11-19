@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url';
 
 export const SEMVER = /^v\d+\.\d+\.\d+$/;
 export const PINS_FILE = fileURLToPath(new URL('./releases.json', import.meta.url));
-const REPOS = { cli: 'Vulnesis/cli', configSchemas: 'Vulnesis/config-schemas' };
+const REPOS = { cli: 'Vulnetix/cli', configSchemas: 'Vulnetix/config-schemas' };
 
 export function parsePins(text) {
   const pins = JSON.parse(text);
