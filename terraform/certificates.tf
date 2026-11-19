@@ -30,9 +30,9 @@ resource "cloudflare_certificate_pack" "retired_docs" {
   validity_days         = 90
   hosts = [
     "vulnes.is",
-    "docs.cli.vulnes.is",
-    "docs.code.vulnes.is",
-    "docs.guardrails.vulnes.is",
-    "docs.mcp.vulnes.is",
+    "docs-cli.vulnes.is",
+    "docs-code.vulnes.is",
+    "docs-guardrails.vulnes.is",
+    "docs-mcp.vulnes.is",
   ]
 }

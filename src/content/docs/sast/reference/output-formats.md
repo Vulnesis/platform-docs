@@ -47,7 +47,7 @@ One descriptor per rule loaded for this run, after the kind lock and the languag
 | `properties.cwss` | `cwss`, when set |
 
 > [!CAREFUL] Built-in `helpUri` values point at the old docs host
-> Built-in rules still carry `help_uri: https://docs.cli.vulnes.is/docs/sast-rules/<id>/`. Those URLs redirect to the pages under [/sast/rules/](/sast/rules/).
+> Built-in rules still carry `help_uri: https://docs-cli.vulnes.is/docs/sast-rules/<id>/`. Those URLs redirect to the pages under [/sast/rules/](/sast/rules/).
 
 ### `runs[0].results[]`
 

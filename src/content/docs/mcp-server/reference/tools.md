@@ -21,7 +21,7 @@ updated: 02 Nov 2026
 
 The server registers 31 tools on every request: 27 that read the Vulnesis VDB, 1 escape hatch (`vdb_request`) and 3 sign-in tools. The list does not vary by caller or plan. `tools/list` carries a cache hint of 300,000 ms with `cacheScope: "public"`.
 
-Every input schema is a Zod object. A parameter marked optional can be left out; there are no nullable parameters. "Route" is the path below `https://api.vdb.vulnes.is/v2` that the tool calls with your credential. "Cache" is the edge-cache TTL for that call, keyed per principal (see [Architecture](/mcp-server/design/architecture/)).
+Every input schema is a Zod object. A parameter marked optional can be left out; there are no nullable parameters. "Route" is the path below `https://api-vdb.vulnes.is/v2` that the tool calls with your credential. "Cache" is the edge-cache TTL for that call, keyed per principal (see [Architecture](/mcp-server/design/architecture/)).
 
 ## Annotations
 

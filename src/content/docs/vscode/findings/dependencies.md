@@ -89,4 +89,4 @@ An out-of-range or unknown value is logged and replaced with the default; it nev
 
 ## Network use
 
-Only package coordinates (name, version, ecosystem as a package URL) are sent to `api.vdb.vulnes.is`, from the server process. Responses are cached on disk under `~/.vulnetix/cache/vdb/`, keyed by CLI version. See [Privacy and network use](/vscode/configuration/privacy/).
+Only package coordinates (name, version, ecosystem as a package URL) are sent to `api-vdb.vulnes.is`, from the server process. Responses are cached on disk under `~/.vulnetix/cache/vdb/`, keyed by CLI version. See [Privacy and network use](/vscode/configuration/privacy/).

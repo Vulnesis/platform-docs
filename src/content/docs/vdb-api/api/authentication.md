@@ -29,7 +29,7 @@ Authorization: ApiKey <orgId>:<hex>
 ORG="your-org-uuid"
 SECRET="your-secret"
 HEX=$(printf '%s' "$ORG" | openssl dgst -sha256 -hmac "$SECRET" | sed 's/^.* //')
-curl -s -H "Authorization: ApiKey ${ORG}:${HEX}" https://api.vdb.vulnes.is/v2/sources
+curl -s -H "Authorization: ApiKey ${ORG}:${HEX}" https://api-vdb.vulnes.is/v2/sources
 ```
 
 The API splits the value at the first `:`. Everything before it is the org id; everything after it must equal the HMAC exactly. It does not strip whitespace or a repeated org id.

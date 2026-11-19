@@ -14,8 +14,8 @@ The VDB API is a read API over the Vulnesis Vulnerability Database. You send an 
 
 | | |
 |---|---|
-| Base URL | `https://api.vdb.vulnes.is/v2` |
-| Legacy base URL | `https://api.vdb.vulnes.is/v1` (deprecated; every v1 operation is marked deprecated in `GET /v1/spec`) |
+| Base URL | `https://api-vdb.vulnes.is/v2` |
+| Legacy base URL | `https://api-vdb.vulnes.is/v1` (deprecated; every v1 operation is marked deprecated in `GET /v1/spec`) |
 | OpenAPI document | `GET /v2/spec` (OpenAPI 3.1 JSON), `GET /v2/spec/ui` (interactive reference, Scalar). The CLI's own operations: `GET /v2/spec/cli`, `GET /v2/spec/cli/ui` |
 | Request validation | Requests are checked against the document; one that does not fit answers `400` with the `field` at fault. See [Errors](/vdb-api/api/errors/#request-validation) |
 | Health | `GET /health` returns `{"status":"healthy"}`, no credential |
@@ -35,7 +35,7 @@ export VULNESIS_ORG_ID="your-org-uuid"
 export VULNESIS_API_KEY="your-api-key-hex"
 
 curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
-  "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry?ecosystem=maven&limit=5"
+  "https://api-vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry?ecosystem=maven&limit=5"
 ```
 
 The same lookup with the CLI:

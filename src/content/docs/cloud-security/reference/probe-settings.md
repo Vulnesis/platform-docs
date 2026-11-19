@@ -17,7 +17,7 @@ The pipeline stack sets these on `vulnetix-security-reporter`. Vulnesis fills th
 | `VULNESIS_ACCOUNT_ID` | required | | Scopes the CloudTrail S3 prefix |
 | `VULNESIS_SECRET_NAME` | `vulnetix/vdb-credentials` | | The API key pair the probe reports with |
 | `VULNESIS_ORG_ID` | optional | | When set, the secret must match it |
-| `VULNESIS_ENDPOINT` | `https://api.vdb.vulnes.is` | | The VDB API: CRIT lookups and finding ingest |
+| `VULNESIS_ENDPOINT` | `https://api-vdb.vulnes.is` | | The VDB API: CRIT lookups and finding ingest |
 | `VULNESIS_SITE_ENDPOINT` | `https://www.vulnes.is/api/site` | | The site API: the Wiz work list and verdicts. Must differ from `VULNESIS_ENDPOINT`. |
 | `VULNESIS_STATE_PREFIX` | `vulnetix/state/` | | Where sweep state is kept in the bucket |
 | `VULNESIS_SWEEP_LANES` | `4` | 1 to 16 | Continuation chains a sweep may run at once |

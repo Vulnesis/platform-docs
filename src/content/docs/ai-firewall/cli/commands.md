@@ -53,7 +53,7 @@ Every subcommand except `uninstall` needs a Vulnesis credential, found in this o
 
 | Flag | Default | On | Meaning |
 |---|---|---|---|
-| `--base-url` | `https://api.vdb.vulnes.is` | every subcommand except `uninstall` | Vulnesis API the policy is read from and written to |
+| `--base-url` | `https://api-vdb.vulnes.is` | every subcommand except `uninstall` | Vulnesis API the policy is read from and written to |
 | `--gateway-url` | `https://guardrails.vulnes.is` | `install`, `uninstall`, `status`, `snippet` | Gateway written into client config, and the host `status` and `uninstall` look for |
 | `-o`, `--output` | `pretty` | every subcommand | `pretty` or `json`. Anything else fails with `--output must be one of: pretty, json`. |
 

@@ -55,7 +55,7 @@ curl -s https://mcp.vulnes.is/mcp/server-card
   "version": "0.1.0",
   "title": "Vulnesis",
   "description": "Vulnerability intelligence: CVE triage, exploits, KEV deadlines, remediation, package risk.",
-  "websiteUrl": "https://docs.mcp.vulnes.is",
+  "websiteUrl": "https://docs-mcp.vulnes.is",
   "repository": { "url": "https://github.com/Vulnesis/mcp-server", "source": "github" },
   "remotes": [{
     "type": "streamable-http",
@@ -79,7 +79,7 @@ The `icons` array and the header `description` and `format` fields are omitted a
   "authorization_servers": [],
   "bearer_methods_supported": ["header"],
   "resource_name": "Vulnesis VDB",
-  "resource_documentation": "https://docs.cli.vulnes.is/"
+  "resource_documentation": "https://docs-cli.vulnes.is/"
 }
 ```
 

@@ -174,7 +174,7 @@ The Resolve Platform calls `https://www.vulnes.is/api/site/v1` with the signed-i
 
 ## CLI API
 
-`vulnetix ai-firewall` calls `POST https://api.vdb.vulnes.is/v2/cli.<route>` with the CLI's credential:
+`vulnetix ai-firewall` calls `POST https://api-vdb.vulnes.is/v2/cli.<route>` with the CLI's credential:
 
 | Route | Used by |
 |---|---|

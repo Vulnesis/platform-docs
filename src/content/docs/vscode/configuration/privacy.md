@@ -15,8 +15,8 @@ Scanning is local. File contents, paths and repository names are not sent anywhe
 | Request | From | To | Carries | When |
 |---|---|---|---|---|
 | CLI download | Extension host | `github.com/Vulnetix/cli/releases/download` or `vulnetix.cli.downloadBaseUrl` | The asset name | First run, or **Vulnesis: Install CLI** |
-| Bulk dependency check | `vulnetix lsp` | `api.vdb.vulnes.is` | Package URLs (name, version, ecosystem) | Server start, manifest save, manifest changed on disk |
-| Safe Harbour versions | `vulnetix lsp` | `api.vdb.vulnes.is` | Package URLs of the vulnerable packages in one manifest | When you open that manifest |
+| Bulk dependency check | `vulnetix lsp` | `api-vdb.vulnes.is` | Package URLs (name, version, ecosystem) | Server start, manifest save, manifest changed on disk |
+| Safe Harbour versions | `vulnetix lsp` | `api-vdb.vulnes.is` | Package URLs of the vulnerable packages in one manifest | When you open that manifest |
 
 Set `vulnetix.sca.enabled` to `false` and the server makes no VDB requests; everything else keeps working offline. Point the server at another API with `vulnetix.api.baseUrl` (sets `VULNESIS_API_URL` in its environment). `vulnetix.api.webUrl` sets `VULNESIS_WEB_URL`; nothing in the extension uses it yet.
 

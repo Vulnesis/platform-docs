@@ -63,7 +63,7 @@ vulnetix ai-firewall inventory --clear
 | `--search` | | Substring match on the identity |
 | `--limit` | `200` | 1 to 1000. The output says `Truncated at --limit N` when the limit was reached. |
 | `--clear` | `false` | Delete the whole inventory instead of reading it. There is no confirmation prompt. |
-| `--base-url` | `https://api.vdb.vulnes.is` | VDB API |
+| `--base-url` | `https://api-vdb.vulnes.is` | VDB API |
 | `-o, --output` | `pretty` | `pretty` or `json` |
 
 The pretty output has `KIND`, `NAME`, `CLIENT` and `EVIDENCE` columns, an MCP server's URL on a dimmed line under it, and a footer counting clients, MCP servers, tools and skills.

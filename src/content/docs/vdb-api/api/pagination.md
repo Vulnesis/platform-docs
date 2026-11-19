@@ -66,7 +66,7 @@ When a purl, CPE, TEI or SWID tag sits in a `/v2/vuln/{identifier}/*` path, the 
 AUTH="Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}"
 offset=0
 while :; do
-  page=$(curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/identifiers/2024/3?limit=500&offset=${offset}")
+  page=$(curl -s -H "$AUTH" "https://api-vdb.vulnes.is/v2/identifiers/2024/3?limit=500&offset=${offset}")
   echo "$page" | jq -r '.identifiers[]'
   [ "$(echo "$page" | jq -r '.hasMore')" = "true" ] || break
   offset=$((offset + 500))

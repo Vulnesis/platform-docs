@@ -50,7 +50,7 @@ Linux builds are statically linked against musl, so one binary runs on Alpine an
 | Host | Used for | Needed for |
 |---|---|---|
 | `github.com` (or your mirror) | Downloading the CLI and `checksums.txt` | First run, unless the CLI is already installed |
-| `api.vdb.vulnes.is` | Dependency lookups | Dependency findings only |
+| `api-vdb.vulnes.is` | Dependency lookups | Dependency findings only |
 
 Code, secret, infrastructure and container rules run with no network at all. Details are on [Privacy and network use](/vscode/configuration/privacy/).
 

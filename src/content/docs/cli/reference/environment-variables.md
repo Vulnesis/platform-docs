@@ -25,7 +25,7 @@ Read in this order; the first complete source wins. See [Credential precedence](
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `VULNESIS_API_URL` | `https://api.vdb.vulnes.is` | VDB API base for `scan` and the language server, for a mock or self-hosted API. `upload --base-url` sets it for that run. |
+| `VULNESIS_API_URL` | `https://api-vdb.vulnes.is` | VDB API base for `scan` and the language server, for a mock or self-hosted API. `upload --base-url` sets it for that run. |
 | `VULNESIS_WEB_URL` | `https://www.vulnes.is` | Site base for the browser login's device endpoints |
 | `GITHUB_API_URL` | `https://api.github.com` | GitHub API for `gha upload` and the `gha` posture commands (GitHub Enterprise Server) |
 
@@ -98,7 +98,7 @@ Fallbacks for the flags of the `scan` family, `cdx`, `aibom` and `cbom`. A flag 
 
 | Variable | Effect |
 |---|---|
-| `VULNESIS_HTTP_TRACE` | Any value: one stderr line per VDB request with start offset, duration, status, method, URL and connection setup time, e.g. `[http#5] + 2241ms 3836ms 200 POST api.vdb.vulnes.is/v2/cli.sca net=0ms` |
+| `VULNESIS_HTTP_TRACE` | Any value: one stderr line per VDB request with start offset, duration, status, method, URL and connection setup time, e.g. `[http#5] + 2241ms 3836ms 200 POST api-vdb.vulnes.is/v2/cli.sca net=0ms` |
 | `VULNESIS_PPROF_DIR` | Write `cpu.pprof` (and other profiles) for the run into this directory |
 
 ## Install script

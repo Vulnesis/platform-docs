@@ -23,7 +23,7 @@ Detection runs locally and costs nothing. Looking an identifier up spends a VDB 
 | Browsers | Chromium 116+ (Chrome, Edge, Brave, Arc, Opera, Vivaldi), Firefox 128 ESR+ (also Zen, LibreWolf, Waterfox) |
 | Manifest | MV3 on both |
 | Runs on | Every `http` and `https` page except `*.vulnes.is` |
-| Talks to | `api.vdb.vulnes.is` and `www.vulnes.is`, from the background worker only |
+| Talks to | `api-vdb.vulnes.is` and `www.vulnes.is`, from the background worker only |
 | Telemetry | None |
 | Shortcut | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> opens the sidebar |
 

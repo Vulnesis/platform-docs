@@ -50,7 +50,7 @@ Set in `vars` in `wrangler.jsonc`.
 | `CF_AIG_ACCOUNT_ID` | Cloudflare account id | unset, which disables AI analysis | set |
 | `CF_AIG_GATEWAY` | AI Gateway name | `default` | `default` |
 | `CF_AIG_MODEL` | `{provider}/{model}` | `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast` | same |
-| `VULNESIS_API_URL` | vdb-api base URL | `https://api.vdb.vulnes.is` | a CloudFront hostname (see below) |
+| `VULNESIS_API_URL` | vdb-api base URL | `https://api-vdb.vulnes.is` | a CloudFront hostname (see below) |
 | `VULNESIS_WEB_URL` | Vulnesis web app base URL for the device grant | `https://www.vulnes.is` | unset |
 | `ALLOWED_HOSTS` | comma-separated hostnames | none | unset |
 
@@ -78,7 +78,7 @@ Recorded per call: tool name, plan tier, credential scheme (`ApiKey`, `Bearer` o
 
 ## Why the hosted deployment points at CloudFront
 
-When the Worker runs on `mcp.vulnes.is`, a subrequest to `api.vdb.vulnes.is` stays inside the same Cloudflare zone and lands on an S3-backed zone origin, which answers every tool with an HTTP 400 S3 error (`Unsupported Authorization Type`). The hosted `VULNESIS_API_URL` uses the CloudFront distribution hostname, which is outside the zone. A self-hosted Worker on a different zone can use the default.
+When the Worker runs on `mcp.vulnes.is`, a subrequest to `api-vdb.vulnes.is` stays inside the same Cloudflare zone and lands on an S3-backed zone origin, which answers every tool with an HTTP 400 S3 error (`Unsupported Authorization Type`). The hosted `VULNESIS_API_URL` uses the CloudFront distribution hostname, which is outside the zone. A self-hosted Worker on a different zone can use the default.
 
 ## Deployment
 

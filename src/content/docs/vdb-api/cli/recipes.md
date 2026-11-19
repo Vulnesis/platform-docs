@@ -21,7 +21,7 @@ PURL="${1:?usage: $0 pkg:npm/express@4.17.1}"
 ids=$(curl -sf \
   -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
   --get --data-urlencode "purl=${PURL}" \
-  https://api.vdb.vulnes.is/v2/inputs/resolve | jq -r '.resolved.vulnIds[]')
+  https://api-vdb.vulnes.is/v2/inputs/resolve | jq -r '.resolved.vulnIds[]')
 
 if [ -n "$ids" ]; then
   echo "$PURL is affected by:"

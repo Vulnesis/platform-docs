@@ -18,7 +18,7 @@ Every `vulnetix vdb` command takes these.
 | `--api-key <hex>` | | API key. Overrides `VULNESIS_API_KEY` |
 | `--secret <secret>` | | SigV4 secret. Overrides `VVD_SECRET` |
 | `--method apikey\|sigv4` | from the flags given | Auth method |
-| `--base-url <url>` | `https://api.vdb.vulnes.is` | API host |
+| `--base-url <url>` | `https://api-vdb.vulnes.is` | API host |
 | `-V, --api-version v2\|v1` | `v2` | `v1` is deprecated and prints a notice |
 | `-o, --output json\|yaml\|pretty` | `pretty` | Output format. On commands that write files, any other value is a file path |
 | `--compact`, `--comfortable`, `--sparse` | `--comfortable` | JSON indent of 2, 4 or 8 spaces. Only with `-o json`, and only one of them |

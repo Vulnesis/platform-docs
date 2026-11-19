@@ -27,7 +27,7 @@ Every command here has these two flags:
 
 | Flag | Default | Meaning |
 |---|---|---|
-| `--base-url` | `https://api.vdb.vulnes.is` | VDB API base URL. |
+| `--base-url` | `https://api-vdb.vulnes.is` | VDB API base URL. |
 | `-o`, `--output` | `pretty` | `pretty` or `json`. `json` prints the response's `data` object. |
 
 > [!CAREFUL] Any member can change org policy

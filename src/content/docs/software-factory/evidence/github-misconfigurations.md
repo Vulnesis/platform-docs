@@ -19,7 +19,7 @@ The factory checks the GitHub side of every repository it manages: the workflows
 | Repository settings | Branch protection and rulesets on the default branch, Actions token defaults and approvals, fork pull request approval, secret scanning and push protection, environments holding secrets with no reviewers, deploy keys, webhooks, outside admins |
 | Organisation settings | Two-factor enforcement, default member permission, organisation secrets visible to every repository, runner groups open to public repositories |
 
-The full list, with what each rule needs and how to fix it, is the [GitHub rules](https://docs.cli.vulnes.is/docs/github-rules/) reference.
+The full list, with what each rule needs and how to fix it, is the [GitHub rules](https://docs-cli.vulnes.is/docs/github-rules/) reference.
 
 ## When it runs
 

@@ -34,7 +34,7 @@ There are five commands, no keybindings, no sidebar views and no sign-in command
 ```
 editor (extension host)  --LSP over stdio-->  vulnetix lsp  --reads-->  workspace files
                                                    |
-                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnes.is
+                                                   +--HTTPS (package coordinates only)--> api-vdb.vulnes.is
 ```
 
 - The extension declares `extensionKind: ["workspace"]`, so in a remote session (SSH, WSL, Dev Containers, code-server) it and the server run next to the files.

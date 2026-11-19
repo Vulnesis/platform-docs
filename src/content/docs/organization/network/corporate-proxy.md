@@ -16,7 +16,7 @@ All on port 443.
 
 | Host | Used by |
 |---|---|
-| `api.vdb.vulnes.is` | `scan`, `vdb`, `upload`, `gha`, `auth verify`, and every other call to the vulnerability database |
+| `api-vdb.vulnes.is` | `scan`, `vdb`, `upload`, `gha`, `auth verify`, and every other call to the vulnerability database |
 | `www.vulnes.is` | `auth login` (the browser device flow) and the Resolve Platform |
 | `packages.vulnes.is` | The [package firewall](/package-firewall/) registry proxy |
 | `guardrails.vulnes.is` | The [AI firewall](/ai-firewall/) gateway |
@@ -74,7 +74,7 @@ There is no way to turn TLS verification off: no `--skip-tls-verify`, no `--inse
 vulnetix auth status                     # which credential is active, and where it came from
 vulnetix -v auth verify                  # does it reach the API through the proxy
 VULNESIS_HTTP_TRACE=1 vulnetix scan      # every request, with timing
-curl -x "$HTTPS_PROXY" -sI https://api.vdb.vulnes.is/ | head -1   # the proxy itself, without the CLI
+curl -x "$HTTPS_PROXY" -sI https://api-vdb.vulnes.is/ | head -1   # the proxy itself, without the CLI
 ```
 
 ## Installing behind a proxy

@@ -19,7 +19,7 @@ status: available
 ```
 editor (extension host)  --LSP over stdio-->  vulnetix lsp  --reads-->  workspace files
                                                    |
-                                                   +--HTTPS (package coordinates only)--> api.vdb.vulnes.is
+                                                   +--HTTPS (package coordinates only)--> api-vdb.vulnes.is
 ```
 
 There is no sign-in in the editor. The server uses the CLI's own credentials (`vulnetix auth login`), or the community key when there are none. See [Privacy and network use](/vscode/configuration/privacy/#credentials).

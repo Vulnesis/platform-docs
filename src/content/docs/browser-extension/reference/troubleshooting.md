@@ -28,7 +28,7 @@ The extension shows its errors in the sidebar, on the options page and in the ho
 | `VDB daily quota reached`, or the sidebar note `Daily quota reached` | The key got `429`. New lookups pause until `RateLimit-Reset`, or 60 s when that header is missing | Wait for the reset, or use a key on a plan with a larger quota. Cached cards and the **Open in Resolve Platform** link still work. See [Quota and cache](/browser-extension/using/quota-and-cache/) |
 | Quota runs out quickly | **Prefetch on page load** is on, or **Batch size** is high. One advisory page can carry more than 60 identifiers | Turn prefetch off and lower the batch size in [Settings](/browser-extension/reference/settings/) |
 | `Not found in VDB` | The VDB has no record for that identifier | Check it in the [Resolve Platform](https://www.vulnes.is/resolve/lookup). The result is cached for 1 hour, so a newly published CVE appears after that |
-| `Lookup failed` or `Network error` | The background worker could not reach `api.vdb.vulnes.is`, after one retry | Check a proxy or firewall allows `api.vdb.vulnes.is`. Hover again: failures are not cached |
+| `Lookup failed` or `Network error` | The background worker could not reach `api-vdb.vulnes.is`, after one retry | Check a proxy or firewall allows `api-vdb.vulnes.is`. Hover again: failures are not cached |
 | `Exported without exploit intelligence`, after an export | The nine enrichment requests for the CSV could not run | The file carries cached data only. Export again after the quota resets. See [Export to CSV](/browser-extension/using/sidebar/#export-to-csv) |
 
 ## Nothing is underlined

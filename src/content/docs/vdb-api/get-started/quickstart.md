@@ -61,7 +61,7 @@ With curl, an authenticated route that returns quickly is a good probe. `401` me
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' \
   -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
-  https://api.vdb.vulnes.is/v2/ecosystems
+  https://api-vdb.vulnes.is/v2/ecosystems
 ```
 
 ## 4. First queries
@@ -94,9 +94,9 @@ The same three calls with curl:
 
 ```bash
 AUTH="Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}"
-curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/exploits/CVE-2021-44228?limit=10"
-curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry"
-curl -s -H "$AUTH" "https://api.vdb.vulnes.is/v2/vuln/CVE-2021-44228/kev"
+curl -s -H "$AUTH" "https://api-vdb.vulnes.is/v2/exploits/CVE-2021-44228?limit=10"
+curl -s -H "$AUTH" "https://api-vdb.vulnes.is/v2/vuln/CVE-2021-44228/fixes/registry"
+curl -s -H "$AUTH" "https://api-vdb.vulnes.is/v2/vuln/CVE-2021-44228/kev"
 ```
 
 ## Next

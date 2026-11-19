@@ -72,7 +72,7 @@ A literal advisory id is passed straight through, and the route answers exactly 
 
 ```bash
 curl -s -H "Authorization: ApiKey ${VULNESIS_ORG_ID}:${VULNESIS_API_KEY}" \
-  "https://api.vdb.vulnes.is/v2/inputs/resolve?purl=pkg:npm/lodash@4.17.20"
+  "https://api-vdb.vulnes.is/v2/inputs/resolve?purl=pkg:npm/lodash@4.17.20"
 ```
 
 `resolved.truncated` is `true` when a TEI or CEL selection was capped at 500 packages, or a CEL evaluation at 5,000 matches.

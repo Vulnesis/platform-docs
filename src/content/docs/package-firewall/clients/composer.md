@@ -61,7 +61,7 @@ Composer reads credentials only from `auth.json` (or `config.http-basic`). `http
 ```bash
 composer config --global repositories.packagist.org false
 composer config --global repositories.vulnetix composer https://packages.vulnes.is/composer
-composer config --global http-basic.packages.vulnes.is "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY"
+composer config --global http-basic-packages.vulnes.is "$VULNESIS_ORG_ID" "$VULNESIS_API_KEY"
 ```
 
 ## Use and verify

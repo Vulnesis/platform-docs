@@ -115,7 +115,7 @@ See [Recording a control](/virtual-patching/defend/recording-controls/).
 
 ## API calls
 
-`defend` calls the Vulnesis API (`api.vdb.vulnes.is`) with your CLI credentials:
+`defend` calls the Vulnesis API (`api-vdb.vulnes.is`) with your CLI credentials:
 
 | Call | Plan |
 |---|---|

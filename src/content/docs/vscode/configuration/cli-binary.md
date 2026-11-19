@@ -83,7 +83,7 @@ https://artifacts.internal/vulnetix/v3.100.0/vulnetix-linux-amd64
 { "vulnetix.cli.downloadBaseUrl": "https://artifacts.internal/vulnetix" }
 ```
 
-With no route to `api.vdb.vulnes.is`, code, secret, infrastructure and container findings still work, because they are local rule evaluation. Dependency findings do not appear.
+With no route to `api-vdb.vulnes.is`, code, secret, infrastructure and container findings still work, because they are local rule evaluation. Dependency findings do not appear.
 
 ## Proxies
 

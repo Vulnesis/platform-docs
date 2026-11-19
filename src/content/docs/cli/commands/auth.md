@@ -35,7 +35,7 @@ vulnetix auth [flags]          # the same
 vulnetix auth status [--base-url <url>]
 ```
 
-Prints the credential in use (organisation, method, source, plan, masked secret), every source's state, and the Package Firewall ecosystems. `--base-url` (default `https://api.vdb.vulnes.is/v1`) is where the plan is looked up, with a 3-second limit. Always exits `0`; it does not prove the credential works.
+Prints the credential in use (organisation, method, source, plan, masked secret), every source's state, and the Package Firewall ecosystems. `--base-url` (default `https://api-vdb.vulnes.is/v1`) is where the plan is looked up, with a 3-second limit. Always exits `0`; it does not prove the credential works.
 
 ## auth verify
 
@@ -45,7 +45,7 @@ vulnetix auth verify
 
 Loads the credential in use and calls an authenticated VDB endpoint (a full token exchange for SigV4). Writes nothing. Exits `0` when accepted, `1` when nothing is found (`no credentials found`) or the API refuses it (`verification failed: ...`).
 
-`auth verify` accepts `--base-url` (default `https://api.vdb.vulnes.is/v1`), but the value is not used: verification always goes to the default API.
+`auth verify` accepts `--base-url` (default `https://api-vdb.vulnes.is/v1`), but the value is not used: verification always goes to the default API.
 
 ## auth logout
 

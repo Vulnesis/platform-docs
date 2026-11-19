@@ -62,7 +62,7 @@ Only a leading `*.` is a wildcard; `api.*.com`, `*example.com` and a bare `*` ar
 | Host | Why | When |
 |---|---|---|
 | `www.vulnes.is` | `belai rc` sync | Always |
-| `api.vdb.vulnes.is` | The Vulnesis CLI, and the Package Firewall's sign-in check | Always |
+| `api-vdb.vulnes.is` | The Vulnesis CLI, and the Package Firewall's sign-in check | Always |
 | `guardrails.vulnes.is` | The Vulnesis AI Firewall | Always |
 | `packages.vulnes.is` | The Package Firewall | Always |
 | `api.typesafe.ai` | Jev, through the Worker's key-swapping gateway | Always |
