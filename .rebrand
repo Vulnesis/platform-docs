@@ -1,6 +1,8 @@
 # scripts/rebrand.py config (Vulnesis/ops).
-# Shared Cloudflare account: the redirects Worker must not replace the Vulnetix script.
-rewrite vulnetix-docs-redirects => vulnesis-docs-redirects
+# redirects/ serves only the retired Vulnetix doc hosts (they never existed on
+# vulnes.is): it stays an exact Vulnetix copy, so a deploy from either repo is
+# the same script with the same routes.
+ignore redirects/*
 # Redirect maps for the retired Vulnetix doc hosts: file names are those hosts (data).
 ignore migration/*
 # The redirects Worker is generated from those maps plus this host table; all
@@ -10,5 +12,4 @@ ignore redirects/worker.js
 # Brand names inside JavaScript regular expressions (tests), which the display
 # rule does not treat as strings.
 rewrite (?:Vulnetix|Resolve) [Cc]onsole => (?:Vulnesis|Vulnetix|Resolve) [Cc]onsole
-rewrite /Vulnetix\/cli: no release/ => /Vulnesis\/cli: no release/
 rewrite /^# Vulnetix documentation => /^# Vulnesis documentation
