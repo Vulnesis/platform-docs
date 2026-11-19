@@ -3,3 +3,12 @@
 rewrite vulnetix-docs-redirects => vulnesis-docs-redirects
 # Redirect maps for the retired Vulnetix doc hosts: file names are those hosts (data).
 ignore migration/*
+# The redirects Worker is generated from those maps plus this host table; all
+# three describe the retired Vulnetix hosts, so they stay together as data.
+ignore scripts/lib/redirects.mjs
+ignore redirects/worker.js
+# Brand names inside JavaScript regular expressions (tests), which the display
+# rule does not treat as strings.
+rewrite (?:Vulnetix|Resolve) [Cc]onsole => (?:Vulnesis|Vulnetix|Resolve) [Cc]onsole
+rewrite /Vulnetix\/cli: no release/ => /Vulnesis\/cli: no release/
+rewrite /^# Vulnetix documentation => /^# Vulnesis documentation
