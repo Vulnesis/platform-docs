@@ -1,0 +1,3 @@
+# scripts/rebrand.py config (Vulnesis/ops).
+# Shared Cloudflare account: the redirects Worker must not replace the Vulnetix script.
+rewrite vulnetix-docs-redirects => vulnesis-docs-redirects
