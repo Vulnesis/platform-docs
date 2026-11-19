@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // github-rules.mjs: write the GitHub posture rule pages (VNX-GH-*) from the
-// Vulnetix CLI repository.
+// Vulnesis CLI repository.
 //
 // Where the rules come from:
 //   The rule catalogue lives in vdb-sca-match/ghaudit (rules_workflows.go,
@@ -26,7 +26,7 @@
 // Usage:
 //   node migration/generators/github-rules.mjs [--cli <path>] [--ref <git ref>] [--out <dir>] [--verify]
 //
-//   --cli     cli repository checkout (default: $VULNETIX_CLI_REPO, else ../cli
+//   --cli     cli repository checkout (default: $VULNESIS_CLI_REPO, else ../cli
 //             next to this repository)
 //   --ref     git ref to read the rendered pages from (default: origin/main;
 //             run `git -C <cli> fetch` first)
@@ -49,7 +49,7 @@ const opt = (name, fallback) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
 };
-const cli = resolve(opt('cli', process.env.VULNETIX_CLI_REPO || resolve(root, '..', 'cli')));
+const cli = resolve(opt('cli', process.env.VULNESIS_CLI_REPO || resolve(root, '..', 'cli')));
 const ref = opt('ref', 'origin/main');
 const outRoot = resolve(opt('out', join(root, 'src', 'content', 'docs')));
 const outDir = join(outRoot, 'cli', 'github-rules');
@@ -82,7 +82,7 @@ const updated = (() => {
   return `${String(d.getUTCDate()).padStart(2, '0')} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 })();
 const gomod = git('show', `${ref}:go.mod`);
-const matchVersion = (gomod.match(/github\.com\/Vulnetix\/vdb-sca-match\s+(v[^\s]+)/) ?? [])[1] ?? 'unknown';
+const matchVersion = (gomod.match(/github\.com\/Vulnesis\/vdb-sca-match\s+(v[^\s]+)/) ?? [])[1] ?? 'unknown';
 const checked = [`cli@${sha}`, `vdb-sca-match@${matchVersion}`];
 
 const TASKS = {
