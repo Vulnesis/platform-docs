@@ -4,8 +4,8 @@ nav: "VNX-PHP-010"
 description: "Detects loose comparisons (==, !=, <>) that decide an authentication or integrity check."
 order: 838
 sources: ["cli/internal/sast/rules/vnx-php-010.rego", "cli/internal/sast/docs/vnx-php-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

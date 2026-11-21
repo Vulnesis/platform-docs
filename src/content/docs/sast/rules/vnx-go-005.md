@@ -4,8 +4,8 @@ nav: "VNX-GO-005"
 description: "Reports http.Redirect, gin/echo/fiber Redirect and hand-written Location headers whose destination starts with a request value, directly, through a variable."
 order: 707
 sources: ["cli/internal/sast/rules/vnx-go-005.rego", "cli/internal/sast/docs/vnx-go-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

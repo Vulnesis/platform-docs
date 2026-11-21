@@ -4,8 +4,8 @@ nav: "VNX-SEC-019"
 description: "Reports a committed Google Cloud service account key: a private_key PEM with a real body near type service_account, in JSON, escaped JSON, YAML."
 order: 913
 sources: ["cli/internal/sast/rules/vnx-sec-019.rego", "cli/internal/sast/docs/vnx-sec-019.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

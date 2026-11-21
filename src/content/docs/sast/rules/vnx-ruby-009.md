@@ -4,8 +4,8 @@ nav: "VNX-RUBY-009"
 description: "Reports send, public_send, __send__ and try calls whose method name comes from params, request or cookies data, directly or through a variable assigned nearby."
 order: 885
 sources: ["cli/internal/sast/rules/vnx-ruby-009.rego", "cli/internal/sast/docs/vnx-ruby-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-SWIFT-003"
 description: "Detects a password, token, secret, API key, PIN or other credential written to UserDefaults/NSUserDefaults (set, setValue."
 order: 977
 sources: ["cli/internal/sast/rules/vnx-swift-003.rego", "cli/internal/sast/docs/vnx-swift-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

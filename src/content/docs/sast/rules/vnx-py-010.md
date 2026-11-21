@@ -4,8 +4,8 @@ nav: "VNX-PY-010"
 description: "Detect TLS certificate verification turned off in requests or httpx."
 order: 864
 sources: ["cli/internal/sast/rules/vnx-py-010.rego", "cli/internal/sast/docs/vnx-py-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

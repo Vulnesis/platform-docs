@@ -4,8 +4,8 @@ nav: "VNX-TF-004"
 description: "Detect IAM policy statements in Terraform that allow every action (Action \"*\" in jsonencode, heredoc or one-line escaped JSON policies."
 order: 984
 sources: ["cli/internal/sast/rules/vnx-tf-004.rego", "cli/internal/sast/docs/vnx-tf-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-009"
 description: "Detects a value from rand(), random(), the drand48 family, std::rand() or a <random> engine such as std::mt19937 becoming a token, nonce, salt, IV, key."
 order: 683
 sources: ["cli/internal/sast/rules/vnx-crypto-009.rego", "cli/internal/sast/docs/vnx-crypto-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-SWIFT-001"
 description: "Detects passwords, API keys, client secrets, tokens and private keys given as string literals in Swift declarations, assignments, argument labels."
 order: 975
 sources: ["cli/internal/sast/rules/vnx-swift-001.rego", "cli/internal/sast/docs/vnx-swift-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

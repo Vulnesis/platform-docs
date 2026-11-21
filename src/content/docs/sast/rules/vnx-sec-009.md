@@ -4,8 +4,8 @@ nav: "VNX-SEC-009"
 description: "Detects a full SendGrid API key (SG.<22>.<43>, delimited and high-entropy) in any file outside tests, fixtures, lock files and minified bundles."
 order: 903
 sources: ["cli/internal/sast/rules/vnx-sec-009.rego", "cli/internal/sast/docs/vnx-sec-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

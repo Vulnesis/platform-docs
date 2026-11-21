@@ -4,8 +4,8 @@ nav: "VNX-59"
 description: "A fixed file name in a shared temporary directory is written or chmod'ed without O_EXCL/O_NOFOLLOW."
 order: 103
 sources: ["cli/internal/sast/rules/vnx-59.rego", "cli/internal/sast/docs/vnx-59.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

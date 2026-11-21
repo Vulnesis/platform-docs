@@ -4,8 +4,8 @@ nav: "VNX-PHP-026"
 description: "Reports session writes whose key comes from the request: $_SESSION[$_GET[...]] =."
 order: 854
 sources: ["cli/internal/sast/rules/vnx-php-026.rego", "cli/internal/sast/docs/vnx-php-026.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-JAVA-024"
 description: "Detects DocumentBuilderFactory, SAXParserFactory, dom4j SAXReader."
 order: 772
 sources: ["cli/internal/sast/rules/vnx-java-024.rego", "cli/internal/sast/docs/vnx-java-024.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

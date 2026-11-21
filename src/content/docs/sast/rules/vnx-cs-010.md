@@ -4,8 +4,8 @@ nav: "VNX-CS-010"
 description: "Reports C# source that hardcodes the password of a database or cache connection."
 order: 694
 sources: ["cli/internal/sast/rules/vnx-cs-010.rego", "cli/internal/sast/docs/vnx-cs-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

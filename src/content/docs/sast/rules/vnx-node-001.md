@@ -4,8 +4,8 @@ nav: "VNX-NODE-001"
 description: "A package.json that declares dependencies has no committed lock file (package-lock.json, npm-shrinkwrap.json, yarn.lock, pnpm-lock.yaml, bun.lock."
 order: 797
 sources: ["cli/internal/sast/rules/vnx-node-001.rego", "cli/internal/sast/docs/vnx-node-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

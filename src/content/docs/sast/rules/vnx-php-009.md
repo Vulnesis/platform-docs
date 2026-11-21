@@ -4,8 +4,8 @@ nav: "VNX-PHP-009"
 description: "Detects preg_replace() and preg_filter() calls whose pattern literal (inline, split across lines, in an array of patterns."
 order: 837
 sources: ["cli/internal/sast/rules/vnx-php-009.rego", "cli/internal/sast/docs/vnx-php-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

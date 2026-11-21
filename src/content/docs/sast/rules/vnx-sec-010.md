@@ -4,8 +4,8 @@ nav: "VNX-SEC-010"
 description: "Detects npm access tokens (npm_ + 36 characters), PyPI and TestPyPI API tokens, literal auth tokens in .npmrc and .yarnrc.yml (npmAuthToken."
 order: 904
 sources: ["cli/internal/sast/rules/vnx-sec-010.rego", "cli/internal/sast/docs/vnx-sec-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-CS-006"
 description: "Detects C# calls to System.Random (Next, NextInt64, NextDouble, NextBytes, GetItems) whose result becomes a password, token, key, salt, nonce, IV."
 order: 690
 sources: ["cli/internal/sast/rules/vnx-cs-006.rego", "cli/internal/sast/docs/vnx-cs-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

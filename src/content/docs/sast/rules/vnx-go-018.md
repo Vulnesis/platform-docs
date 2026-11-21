@@ -4,8 +4,8 @@ nav: "VNX-GO-018"
 description: "Detects files created, written, renamed or linked (os.Create, os.WriteFile, os.OpenFile with a write flag, os.MkdirAll, os.Rename."
 order: 720
 sources: ["cli/internal/sast/rules/vnx-go-018.rego", "cli/internal/sast/docs/vnx-go-018.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-CS-009"
 description: "Reports C# code that creates or invokes MD5, SHA-1, DES, 3DES, RC2, RC4, MD4/MD2 or PBKDF1 through the .NET or BouncyCastle crypto APIs."
 order: 693
 sources: ["cli/internal/sast/rules/vnx-cs-009.rego", "cli/internal/sast/docs/vnx-cs-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

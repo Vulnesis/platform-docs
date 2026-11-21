@@ -4,8 +4,8 @@ nav: "VNX-KOTLIN-005"
 description: "Detects MD5, SHA-1, MD2 and MD4 hashing in Kotlin through MessageDigest, Signature, Apache Commons DigestUtils, Guava Hashing."
 order: 789
 sources: ["cli/internal/sast/rules/vnx-kotlin-005.rego", "cli/internal/sast/docs/vnx-kotlin-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

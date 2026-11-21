@@ -4,8 +4,8 @@ nav: "VNX-PY-011"
 description: "Detect SQL text built with an f-string, % formatting, .format() or + from a variable and passed to execute(), asyncpg fetch(), pandas read_sql()."
 order: 865
 sources: ["cli/internal/sast/rules/vnx-py-011.rego", "cli/internal/sast/docs/vnx-py-011.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

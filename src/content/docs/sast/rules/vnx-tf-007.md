@@ -4,8 +4,8 @@ nav: "VNX-TF-007"
 description: "Detect EKS clusters in Terraform whose Kubernetes API endpoint is public to the whole internet."
 order: 987
 sources: ["cli/internal/sast/rules/vnx-tf-007.rego", "cli/internal/sast/docs/vnx-tf-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

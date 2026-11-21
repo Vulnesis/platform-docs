@@ -4,8 +4,8 @@ nav: "VNX-GO-037"
 description: "Detects Go web applications that serve HTML pages, templates or static files while no production Go file sets browser security headers directly."
 order: 739
 sources: ["cli/internal/sast/rules/vnx-go-037.rego", "cli/internal/sast/docs/vnx-go-037.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

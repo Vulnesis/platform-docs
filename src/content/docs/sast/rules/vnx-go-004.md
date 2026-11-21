@@ -4,8 +4,8 @@ nav: "VNX-GO-004"
 description: "Reports InsecureSkipVerify set to the constant true in a tls.Config literal or assignment. A value from a variable, flag or environment."
 order: 706
 sources: ["cli/internal/sast/rules/vnx-go-004.rego", "cli/internal/sast/docs/vnx-go-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

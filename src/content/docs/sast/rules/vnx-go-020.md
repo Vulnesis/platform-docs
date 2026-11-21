@@ -4,8 +4,8 @@ nav: "VNX-GO-020"
 description: "Detects template.HTML, HTMLAttr, JS, CSS, URL and Srcset conversions applied to request data, markup built with Sprintf or concatenation, a function parameter."
 order: 722
 sources: ["cli/internal/sast/rules/vnx-go-020.rego", "cli/internal/sast/docs/vnx-go-020.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

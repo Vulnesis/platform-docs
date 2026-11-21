@@ -4,8 +4,8 @@ nav: "VNX-NODE-008"
 description: "Reports redirects (res.redirect, ctx.redirect, reply.redirect, NextResponse.redirect, res.location, Location headers."
 order: 804
 sources: ["cli/internal/sast/rules/vnx-node-008.rego", "cli/internal/sast/docs/vnx-node-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

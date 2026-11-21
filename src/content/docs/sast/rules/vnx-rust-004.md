@@ -4,8 +4,8 @@ nav: "VNX-RUST-004"
 description: "Reports std/tokio process::Command that runs a shell (sh, bash, cmd, powershell) with -c//C/-Command and a non-literal command string."
 order: 890
 sources: ["cli/internal/sast/rules/vnx-rust-004.rego", "cli/internal/sast/docs/vnx-rust-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

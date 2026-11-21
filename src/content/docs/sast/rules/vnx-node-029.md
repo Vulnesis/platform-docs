@@ -4,8 +4,8 @@ nav: "VNX-NODE-029"
 description: "Reports session and credential cookies set from Node.js without HttpOnly: res.cookie()/cookie.serialize() calls lacking httpOnly."
 order: 825
 sources: ["cli/internal/sast/rules/vnx-node-029.rego", "cli/internal/sast/docs/vnx-node-029.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

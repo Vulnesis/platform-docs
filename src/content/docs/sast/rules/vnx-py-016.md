@@ -4,8 +4,8 @@ nav: "VNX-PY-016"
 description: "Detect Python web code that writes the whole request body to a model."
 order: 870
 sources: ["cli/internal/sast/rules/vnx-py-016.rego", "cli/internal/sast/docs/vnx-py-016.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

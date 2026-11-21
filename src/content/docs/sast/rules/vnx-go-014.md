@@ -4,8 +4,8 @@ nav: "VNX-GO-014"
 description: "Detects sync.Mutex.Lock() or sync.RWMutex.RLock() calls that can leave the mutex held."
 order: 716
 sources: ["cli/internal/sast/rules/vnx-go-014.rego", "cli/internal/sast/docs/vnx-go-014.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

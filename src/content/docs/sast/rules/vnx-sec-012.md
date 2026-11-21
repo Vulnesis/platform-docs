@@ -4,8 +4,8 @@ nav: "VNX-SEC-012"
 description: "Detects a server that answers cross-origin requests from any website."
 order: 906
 sources: ["cli/internal/sast/rules/vnx-sec-012.rego", "cli/internal/sast/docs/vnx-sec-012.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

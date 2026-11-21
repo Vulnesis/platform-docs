@@ -4,8 +4,8 @@ nav: "VNX-LLM-001"
 description: "Reports user input read from an HTTP request, or a variable named as user input, spliced into the instruction text of an LLM prompt (f-string, template literal."
 order: 790
 sources: ["cli/internal/sast/rules/vnx-llm-001.rego", "cli/internal/sast/docs/vnx-llm-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

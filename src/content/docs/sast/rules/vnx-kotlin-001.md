@@ -4,8 +4,8 @@ nav: "VNX-KOTLIN-001"
 description: "Detects Kotlin Cipher.getInstance() calls that select ECB mode for any block cipher (AES, DES, DESede, Blowfish and others)."
 order: 785
 sources: ["cli/internal/sast/rules/vnx-kotlin-001.rego", "cli/internal/sast/docs/vnx-kotlin-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

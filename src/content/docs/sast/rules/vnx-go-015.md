@@ -4,8 +4,8 @@ nav: "VNX-GO-015"
 description: "Detects a positive WaitGroup.Add() inside the go func literal it counts, where the parent's Wait() can run first and return early."
 order: 717
 sources: ["cli/internal/sast/rules/vnx-go-015.rego", "cli/internal/sast/docs/vnx-go-015.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-C-004"
 description: "Reports a C, C++ or Objective-C pointer used after free(), g_free, kfree, OPENSSL_free or delete."
 order: 672
 sources: ["cli/internal/sast/rules/vnx-c-004.rego", "cli/internal/sast/docs/vnx-c-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

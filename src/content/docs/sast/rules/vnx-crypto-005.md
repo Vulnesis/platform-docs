@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-005"
 description: "Reports TLS clients told to accept any certificate or host name in Python (verify=False, CERT_NONE, unverified contexts), Node.js (rejectUnauthorized."
 order: 679
 sources: ["cli/internal/sast/rules/vnx-crypto-005.rego", "cli/internal/sast/docs/vnx-crypto-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

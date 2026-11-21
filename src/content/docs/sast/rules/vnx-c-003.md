@@ -4,8 +4,8 @@ nav: "VNX-C-003"
 description: "Reports C and C++ calls that hand a non-constant string to a shell (system, popen, _popen, _wsystem, p2open, std::system."
 order: 671
 sources: ["cli/internal/sast/rules/vnx-c-003.rego", "cli/internal/sast/docs/vnx-c-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

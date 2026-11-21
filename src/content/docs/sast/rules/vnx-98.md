@@ -4,8 +4,8 @@ nav: "VNX-98"
 description: "PHP include/require statements whose path carries request data (superglobals, php://input, filter_input, $request->input), inline or through a variable."
 order: 111
 sources: ["cli/internal/sast/rules/vnx-98.rego", "cli/internal/sast/docs/vnx-98.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

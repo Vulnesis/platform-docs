@@ -40,7 +40,10 @@
 // against jail_when.go. A page whose front matter lacks `generated: true` is
 // hand-written and is never overwritten.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync as writeRaw, readdirSync, existsSync, mkdirSync } from 'node:fs';
+import { vulnesisSurface } from '../../scripts/lib/brand.mjs';
+// Pages are written as the Vulnesis surface of the shared sources (scripts/lib/brand.mjs).
+const writeFileSync = (path, text) => writeRaw(path, vulnesisSurface(text));
 import { metaDescription, MAX_DESCRIPTION } from './description.mjs';
 
 // Generated text comes partly from other repositories, written for their

@@ -4,8 +4,8 @@ nav: "VNX-GO-028"
 description: "Detects a password hashed with a fast unsalted digest (md5, sha1, sha256, sha512 Sum or a hasher written with it, an MD5/SHA helper."
 order: 730
 sources: ["cli/internal/sast/rules/vnx-go-028.rego", "cli/internal/sast/docs/vnx-go-028.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

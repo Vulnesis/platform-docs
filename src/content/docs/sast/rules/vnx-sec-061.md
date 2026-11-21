@@ -4,8 +4,8 @@ nav: "VNX-SEC-061"
 description: "Reports a PostgreSQL connection URL (postgres://, postgresql+driver://, jdbc:postgresql) that embeds a literal password."
 order: 955
 sources: ["cli/internal/sast/rules/vnx-sec-061.rego", "cli/internal/sast/docs/vnx-sec-061.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

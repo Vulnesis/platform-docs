@@ -4,8 +4,8 @@ nav: "VNX-SEC-001"
 description: "Reports a hard-coded AWS access key ID (AKIA, ASIA, ABIA, ACCA or A3T prefix plus 16 base32 characters), excluding AWS's documented EXAMPLE keys, placeholders."
 order: 895
 sources: ["cli/internal/sast/rules/vnx-sec-001.rego", "cli/internal/sast/docs/vnx-sec-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

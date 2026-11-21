@@ -4,8 +4,8 @@ nav: "VNX-CS-002"
 description: "Detects C# Process.Start, ProcessStartInfo FileName/Arguments and PowerShell AddScript calls that receive HTTP request data or action parameters."
 order: 686
 sources: ["cli/internal/sast/rules/vnx-cs-002.rego", "cli/internal/sast/docs/vnx-cs-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

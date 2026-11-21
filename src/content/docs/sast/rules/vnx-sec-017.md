@@ -4,8 +4,8 @@ nav: "VNX-SEC-017"
 description: "Reports redis://, amqp://, ftp://, telnet:// and ldap:// connection URLs that point at a remote host or carry a password."
 order: 911
 sources: ["cli/internal/sast/rules/vnx-sec-017.rego", "cli/internal/sast/docs/vnx-sec-017.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

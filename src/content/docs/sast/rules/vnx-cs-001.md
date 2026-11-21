@@ -4,8 +4,8 @@ nav: "VNX-CS-001"
 description: "Detects C# SQL statements whose text is built from non-constant values (concatenation, interpolation, string.Format."
 order: 685
 sources: ["cli/internal/sast/rules/vnx-cs-001.rego", "cli/internal/sast/docs/vnx-cs-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

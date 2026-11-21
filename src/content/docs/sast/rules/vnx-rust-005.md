@@ -4,8 +4,8 @@ nav: "VNX-RUST-005"
 description: "Reports panic!(), and .unwrap()/.expect() on a fallible I/O, parse, decode, database or await result."
 order: 891
 sources: ["cli/internal/sast/rules/vnx-rust-005.rego", "cli/internal/sast/docs/vnx-rust-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

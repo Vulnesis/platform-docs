@@ -4,8 +4,8 @@ nav: "VNX-BASH-007"
 description: "Reports an unquoted $(...) or backtick substitution used as a command argument, or a for loop over a file or text listing."
 order: 668
 sources: ["cli/internal/sast/rules/vnx-bash-007.rego", "cli/internal/sast/docs/vnx-bash-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

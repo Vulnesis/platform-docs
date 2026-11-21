@@ -4,8 +4,8 @@ nav: "VNX-PHP-014"
 description: "Detects session IDs a client can choose: session_id() given a $_GET/$_POST/$_REQUEST/$_COOKIE value (directly or via a variable read from one)."
 order: 842
 sources: ["cli/internal/sast/rules/vnx-php-014.rego", "cli/internal/sast/docs/vnx-php-014.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

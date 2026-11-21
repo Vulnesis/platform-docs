@@ -4,8 +4,8 @@ nav: "VNX-GO-017"
 description: "Detects fmt.Sprintf SQL that puts a string verb where SQL expects a literal (quoted, or after a comparison) and is run by Exec/Query/QueryRow/Prepare."
 order: 719
 sources: ["cli/internal/sast/rules/vnx-go-017.rego", "cli/internal/sast/docs/vnx-go-017.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

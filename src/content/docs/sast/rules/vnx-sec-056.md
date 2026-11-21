@@ -4,8 +4,8 @@ nav: "VNX-SEC-056"
 description: "Reports Sentry user (sntryu_ + 64 hex), organisation (sntrys_eyJ…) and legacy 64-hex auth tokens assigned to SENTRY_AUTH_TOKEN."
 order: 950
 sources: ["cli/internal/sast/rules/vnx-sec-056.rego", "cli/internal/sast/docs/vnx-sec-056.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

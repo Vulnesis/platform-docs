@@ -4,8 +4,8 @@ nav: "VNX-PY-003"
 description: "Detect pickle-format deserialization (pickle, cPickle, _pickle, dill, cloudpickle load/loads/Unpickler, including aliases and imported names."
 order: 857
 sources: ["cli/internal/sast/rules/vnx-py-003.rego", "cli/internal/sast/docs/vnx-py-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

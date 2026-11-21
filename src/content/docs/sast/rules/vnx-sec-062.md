@@ -4,8 +4,8 @@ nav: "VNX-SEC-062"
 description: "Reports a MySQL or MariaDB connection URL (mysql://, mariadb://, mysql+driver://, jdbc:mysql) that embeds a literal password."
 order: 956
 sources: ["cli/internal/sast/rules/vnx-sec-062.rego", "cli/internal/sast/docs/vnx-sec-062.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

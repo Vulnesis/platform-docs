@@ -4,8 +4,8 @@ nav: "VNX-NODE-027"
 description: "Reports innerHTML/outerHTML assignments (= or +=) in JavaScript."
 order: 823
 sources: ["cli/internal/sast/rules/vnx-node-027.rego", "cli/internal/sast/docs/vnx-node-027.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

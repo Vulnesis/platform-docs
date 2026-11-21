@@ -4,8 +4,8 @@ nav: "VNX-DOCKER-003"
 description: "Reports credential-named Dockerfile ARG and ENV instructions."
 order: 697
 sources: ["cli/internal/sast/rules/vnx-docker-003.rego", "cli/internal/sast/docs/vnx-docker-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

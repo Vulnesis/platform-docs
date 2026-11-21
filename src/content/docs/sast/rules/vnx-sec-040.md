@@ -4,8 +4,8 @@ nav: "VNX-SEC-040"
 description: "Reports a GitLab infrastructure token by its documented prefix and body shape."
 order: 934
 sources: ["cli/internal/sast/rules/vnx-sec-040.rego", "cli/internal/sast/docs/vnx-sec-040.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

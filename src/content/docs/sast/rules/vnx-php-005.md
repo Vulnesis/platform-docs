@@ -4,8 +4,8 @@ nav: "VNX-PHP-005"
 description: "Detect file_get_contents(), fopen(), copy(), image readers, curl_init(), CURLOPT_URL, get_headers(), fsockopen(), wp_remote_get()."
 order: 833
 sources: ["cli/internal/sast/rules/vnx-php-005.rego", "cli/internal/sast/docs/vnx-php-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

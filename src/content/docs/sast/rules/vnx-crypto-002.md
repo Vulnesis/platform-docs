@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-002"
 description: "Reports SHA-1 computed through a hash or signature API in Python, Node.js, Go, Java, Ruby and PHP (hashlib.sha1, createHash('sha1'), sha1.Sum, x509.SHA1WithRSA."
 order: 676
 sources: ["cli/internal/sast/rules/vnx-crypto-002.rego", "cli/internal/sast/docs/vnx-crypto-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

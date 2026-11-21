@@ -4,8 +4,8 @@ nav: "VNX-PY-015"
 description: "Detect request data (Flask, Django, DRF or a Flask/FastAPI route parameter) used as the pattern of re or regex compile, match, search, findall."
 order: 869
 sources: ["cli/internal/sast/rules/vnx-py-015.rego", "cli/internal/sast/docs/vnx-py-015.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-DOCKER-001"
 description: "Reports a Dockerfile whose final stage runs as root: no USER in the stage that becomes the image (USER does not carry across FROM), or a last USER of root."
 order: 695
 sources: ["cli/internal/sast/rules/vnx-docker-001.rego", "cli/internal/sast/docs/vnx-docker-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

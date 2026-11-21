@@ -4,8 +4,8 @@ nav: "VNX-ANDROID-005"
 description: "Detects cleartextTrafficPermitted=\"true\" on the base-config, or on a domain-config naming a non-loopback host, of an Android network security configuration."
 order: 659
 sources: ["cli/internal/sast/rules/vnx-android-005.rego", "cli/internal/sast/docs/vnx-android-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

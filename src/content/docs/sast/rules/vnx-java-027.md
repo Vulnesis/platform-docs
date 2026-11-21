@@ -4,8 +4,8 @@ nav: "VNX-JAVA-027"
 description: "Detects Spring Security configurations that disable all default security headers, X-Frame-Options, HSTS or X-Content-Type-Options, in the chained."
 order: 775
 sources: ["cli/internal/sast/rules/vnx-java-027.rego", "cli/internal/sast/docs/vnx-java-027.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

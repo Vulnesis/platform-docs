@@ -4,8 +4,8 @@ nav: "VNX-GO-008"
 description: "Reports a math/rand or math/rand/v2 call (Read, Intn, Int63, Uint64, IntN...) whose line, the line its value flows into."
 order: 710
 sources: ["cli/internal/sast/rules/vnx-go-008.rego", "cli/internal/sast/docs/vnx-go-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-JAVA-014"
 description: "Reports archive extraction code that builds an output path (new File, FileOutputStream, Paths.get, Path.resolve, Files.copy and similar) from a ZipEntry."
 order: 762
 sources: ["cli/internal/sast/rules/vnx-java-014.rego", "cli/internal/sast/docs/vnx-java-014.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

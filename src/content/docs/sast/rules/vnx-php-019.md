@@ -4,8 +4,8 @@ nav: "VNX-PHP-019"
 description: "Detects openssl_encrypt()/openssl_decrypt() with an AES/ARIA/Camellia CBC method (literal, variable."
 order: 847
 sources: ["cli/internal/sast/rules/vnx-php-019.rego", "cli/internal/sast/docs/vnx-php-019.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

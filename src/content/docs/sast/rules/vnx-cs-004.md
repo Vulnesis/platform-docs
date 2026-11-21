@@ -4,8 +4,8 @@ nav: "VNX-CS-004"
 description: "Detects C# deserialisation through BinaryFormatter, SoapFormatter, NetDataContractSerializer, LosFormatter and ObjectStateFormatter."
 order: 688
 sources: ["cli/internal/sast/rules/vnx-cs-004.rego", "cli/internal/sast/docs/vnx-cs-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

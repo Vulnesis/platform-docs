@@ -4,8 +4,8 @@ nav: "VNX-CS-007"
 description: "Detects C# Path.Combine/Path.Join, MapPath and file-system APIs (File, Directory, FileStream, StreamReader, PhysicalFile, TransmitFile."
 order: 691
 sources: ["cli/internal/sast/rules/vnx-cs-007.rego", "cli/internal/sast/docs/vnx-cs-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

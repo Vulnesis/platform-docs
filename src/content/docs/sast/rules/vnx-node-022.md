@@ -4,8 +4,8 @@ nav: "VNX-NODE-022"
 description: "Reports shelljs exec() whose command carries an Express/Koa/Lambda request value, directly or through variables assigned from one. Not reported."
 order: 818
 sources: ["cli/internal/sast/rules/vnx-node-022.rego", "cli/internal/sast/docs/vnx-node-022.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

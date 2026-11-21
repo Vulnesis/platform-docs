@@ -4,8 +4,8 @@ nav: "VNX-SEC-052"
 description: "Reports a JFrog Artifactory API key (AKCp + 69 alphanumerics) or reference token (cmVmd + 59 alphanumerics) as a whole token in any file."
 order: 946
 sources: ["cli/internal/sast/rules/vnx-sec-052.rego", "cli/internal/sast/docs/vnx-sec-052.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-C-001"
 description: "Reports C and C++ copies of unknown length into a buffer without a size: gets() and _getws() always."
 order: 669
 sources: ["cli/internal/sast/rules/vnx-c-001.rego", "cli/internal/sast/docs/vnx-c-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

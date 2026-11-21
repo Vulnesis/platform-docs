@@ -4,8 +4,8 @@ nav: "VNX-PHP-015"
 description: "Detects uploads stored under a client-chosen name with no extension allowlist."
 order: 843
 sources: ["cli/internal/sast/rules/vnx-php-015.rego", "cli/internal/sast/docs/vnx-php-015.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

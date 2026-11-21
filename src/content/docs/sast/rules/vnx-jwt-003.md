@@ -4,8 +4,8 @@ nav: "VNX-JWT-003"
 description: "A JWT signing or verification key is a string literal: passed straight to jwt.sign/verify, express-jwt, jwt.encode/decode, JWT.encode/decode, JWT::encode."
 order: 781
 sources: ["cli/internal/sast/rules/vnx-jwt-003.rego", "cli/internal/sast/docs/vnx-jwt-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

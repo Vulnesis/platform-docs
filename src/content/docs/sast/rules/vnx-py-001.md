@@ -4,8 +4,8 @@ nav: "VNX-PY-001"
 description: "Detect a Pipfile without Pipfile.lock, and a pyproject.toml managed by Poetry, PDM or uv that declares dependencies but has no lock file."
 order: 855
 sources: ["cli/internal/sast/rules/vnx-py-001.rego", "cli/internal/sast/docs/vnx-py-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

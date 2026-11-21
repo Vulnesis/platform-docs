@@ -4,8 +4,8 @@ nav: "VNX-JAVA-029"
 description: "Detects DocumentBuilderFactory, SAXParserFactory and XMLReaderFactory parsers that are never hardened (disallow-doctype-decl, external-general-entities false."
 order: 777
 sources: ["cli/internal/sast/rules/vnx-java-029.rego", "cli/internal/sast/docs/vnx-java-029.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

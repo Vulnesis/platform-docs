@@ -4,8 +4,8 @@ nav: "VNX-RUST-008"
 description: "Reports an axum or actix-web request value (Path/Query/Json/Form extractor, web::Path, match_info) that reaches .join, Path::new, File::open."
 order: 894
 sources: ["cli/internal/sast/rules/vnx-rust-008.rego", "cli/internal/sast/docs/vnx-rust-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

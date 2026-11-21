@@ -4,8 +4,8 @@ nav: "VNX-73"
 description: "The path argument of a Python or PHP file-system call (open, send_file, os.remove, include, file_get_contents...) comes from the HTTP request."
 order: 105
 sources: ["cli/internal/sast/rules/vnx-73.rego", "cli/internal/sast/docs/vnx-73.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-GO-007"
 description: "Reports a file read, listed or served (os.Open, os.ReadFile, os.ReadDir, ioutil.ReadFile, http.ServeFile."
 order: 709
 sources: ["cli/internal/sast/rules/vnx-go-007.rego", "cli/internal/sast/docs/vnx-go-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

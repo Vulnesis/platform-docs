@@ -4,8 +4,8 @@ nav: "VNX-NODE-009"
 description: "Reports a server-side HTTP request (fetch, axios, http(s).get/request, got, needle, superagent, undici, request."
 order: 805
 sources: ["cli/internal/sast/rules/vnx-node-009.rego", "cli/internal/sast/docs/vnx-node-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

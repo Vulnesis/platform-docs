@@ -4,8 +4,8 @@ nav: "VNX-JAVA-013"
 description: "Reports XPath.evaluate/compile, dom4j selectNodes/selectSingleNode and Jaxen XPath constructors whose expression carries HTTP request data."
 order: 761
 sources: ["cli/internal/sast/rules/vnx-java-013.rego", "cli/internal/sast/docs/vnx-java-013.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

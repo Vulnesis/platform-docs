@@ -4,8 +4,8 @@ nav: "VNX-94"
 description: "HTTP request data reaches eval, new Function, vm, string setTimeout, Python eval/exec/compile, PHP eval/assert/create_function/call_user_func."
 order: 109
 sources: ["cli/internal/sast/rules/vnx-94.rego", "cli/internal/sast/docs/vnx-94.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

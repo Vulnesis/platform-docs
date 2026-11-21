@@ -4,8 +4,8 @@ nav: "VNX-RUBY-010"
 description: "Reports Ruby code that sets or passes OpenSSL::SSL::VERIFY_NONE (or verify_mode = 0), disabling TLS certificate verification."
 order: 886
 sources: ["cli/internal/sast/rules/vnx-ruby-010.rego", "cli/internal/sast/docs/vnx-ruby-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-KOTLIN-002"
 description: "Detects RSA, DSA and Diffie-Hellman key pairs and DSA/DH domain parameters generated with fewer than 2048 bits in Kotlin."
 order: 786
 sources: ["cli/internal/sast/rules/vnx-kotlin-002.rego", "cli/internal/sast/docs/vnx-kotlin-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

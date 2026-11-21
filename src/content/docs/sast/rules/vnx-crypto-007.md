@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-007"
 description: "Reports a password-named value hashed with a fast general-purpose hash (MD5, SHA-1, SHA-2, SHA-3, BLAKE2) in Python, Node.js, Java, PHP, Ruby and Go."
 order: 681
 sources: ["cli/internal/sast/rules/vnx-crypto-007.rego", "cli/internal/sast/docs/vnx-crypto-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-NODE-005"
 description: "Reports HTML written into the DOM of a JavaScript or TypeScript file from a non-constant value (insertAdjacentHTML, document.write."
 order: 801
 sources: ["cli/internal/sast/rules/vnx-node-005.rego", "cli/internal/sast/docs/vnx-node-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-GO-031"
 description: "Detects JWT claims used without signature verification in Go."
 order: 733
 sources: ["cli/internal/sast/rules/vnx-go-031.rego", "cli/internal/sast/docs/vnx-go-031.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

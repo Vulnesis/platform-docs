@@ -4,8 +4,8 @@ nav: "Secret rules"
 description: "The built-in rules of kind secrets: hand-written rules with their own pages, and the catalog-generated rules grouped by provider category."
 order: 1
 sources: ["cli/internal/sast/secretsgen/catalog.json", "cli/internal/sast/secretsgen/main.go", "cli/internal/sast/kinds.go"]
-checked: ["cli@1700795"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

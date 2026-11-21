@@ -4,8 +4,8 @@ nav: "VNX-95"
 description: "HTTP request data becomes the source of a Jinja2, Mako, Django, EJS, Pug, Handlebars, Nunjucks, lodash, ERB, Erubi, Haml, Slim or Rails render inline."
 order: 110
 sources: ["cli/internal/sast/rules/vnx-95.rego", "cli/internal/sast/docs/vnx-95.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

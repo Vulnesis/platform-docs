@@ -4,8 +4,8 @@ nav: "VNX-TF-005"
 description: "Detect EBS volumes in Terraform created without encryption at rest."
 order: 985
 sources: ["cli/internal/sast/rules/vnx-tf-005.rego", "cli/internal/sast/docs/vnx-tf-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

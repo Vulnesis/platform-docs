@@ -4,8 +4,8 @@ nav: "VNX-JAVA-015"
 description: "Reports EntityManager and Hibernate Session createQuery/createNativeQuery calls whose JPQL, HQL or SQL text carries HTTP request data."
 order: 763
 sources: ["cli/internal/sast/rules/vnx-java-015.rego", "cli/internal/sast/docs/vnx-java-015.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

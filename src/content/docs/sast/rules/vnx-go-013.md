@@ -4,8 +4,8 @@ nav: "VNX-GO-013"
 description: "Detect Go code that extracts a zip or tar entry to a path built from the entry's name (or writes its Linkname as a symlink) without checking the result stays…"
 order: 715
 sources: ["cli/internal/sast/rules/vnx-go-013.rego", "cli/internal/sast/docs/vnx-go-013.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

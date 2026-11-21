@@ -4,8 +4,8 @@ nav: "VNX-SEC-067"
 description: "Detects curl invocations that pass a literal user:password (or an API key as the user) with -u/--user."
 order: 961
 sources: ["cli/internal/sast/rules/vnx-sec-067.rego", "cli/internal/sast/docs/vnx-sec-067.md"]
-checked: ["cli@1700795"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-JAVA-012"
 description: "Reports JNDI DirContext.search, Spring LdapTemplate search/find and LdapQueryBuilder filter."
 order: 760
 sources: ["cli/internal/sast/rules/vnx-java-012.rego", "cli/internal/sast/docs/vnx-java-012.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-C-006"
 description: "Reports C, C++ and Objective-C stack allocations with an unbounded run-time size."
 order: 674
 sources: ["cli/internal/sast/rules/vnx-c-006.rego", "cli/internal/sast/docs/vnx-c-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

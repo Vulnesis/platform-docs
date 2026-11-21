@@ -4,8 +4,8 @@ nav: "VNX-GQL-002"
 description: "Reports unbounded GraphQL operation batching switched on with a literal true."
 order: 745
 sources: ["cli/internal/sast/rules/vnx-gql-002.rego", "cli/internal/sast/docs/vnx-gql-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

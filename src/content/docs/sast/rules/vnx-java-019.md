@@ -4,8 +4,8 @@ nav: "VNX-JAVA-019"
 description: "Detects symmetric and signing keys written into Java source: SecretKeySpec, PBEKeySpec, JJWT signWith/setSigningKey."
 order: 767
 sources: ["cli/internal/sast/rules/vnx-java-019.rego", "cli/internal/sast/docs/vnx-java-019.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-RUBY-002"
 description: "Reports eval/instance_eval/class_eval/module_eval and shell-string system, exec, spawn, Kernel#open, IO.popen."
 order: 878
 sources: ["cli/internal/sast/rules/vnx-ruby-002.rego", "cli/internal/sast/docs/vnx-ruby-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

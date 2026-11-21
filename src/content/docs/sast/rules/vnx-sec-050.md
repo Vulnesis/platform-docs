@@ -4,8 +4,8 @@ nav: "VNX-SEC-050"
 description: "Reports a Google API key (AIza + 35 characters) on or within eight lines of a Gemini, PaLM, Vertex AI or Google GenAI SDK reference."
 order: 944
 sources: ["cli/internal/sast/rules/vnx-sec-050.rego", "cli/internal/sast/docs/vnx-sec-050.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

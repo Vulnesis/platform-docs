@@ -4,8 +4,8 @@ nav: "VNX-JAVA-028"
 description: "Detects JDBC Statement/Connection, Spring JdbcTemplate and Android SQLiteDatabase calls whose SQL is assembled in a StringBuilder."
 order: 776
 sources: ["cli/internal/sast/rules/vnx-java-028.rego", "cli/internal/sast/docs/vnx-java-028.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

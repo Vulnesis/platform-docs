@@ -4,8 +4,8 @@ nav: "VNX-JAVA-001"
 description: "Reports Runtime.exec() commands and shell ProcessBuilder scripts built at run time from concatenation, String.format or request values."
 order: 749
 sources: ["cli/internal/sast/rules/vnx-java-001.rego", "cli/internal/sast/docs/vnx-java-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

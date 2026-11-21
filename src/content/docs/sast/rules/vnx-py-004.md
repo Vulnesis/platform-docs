@@ -4,8 +4,8 @@ nav: "VNX-PY-004"
 description: "Detect yaml.unsafe_load() and yaml.load() calls with no Loader or with Loader/UnsafeLoader/CLoader."
 order: 858
 sources: ["cli/internal/sast/rules/vnx-py-004.rego", "cli/internal/sast/docs/vnx-py-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

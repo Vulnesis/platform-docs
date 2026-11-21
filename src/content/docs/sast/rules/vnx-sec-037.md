@@ -4,8 +4,8 @@ nav: "VNX-SEC-037"
 description: "Reports a HashiCorp Vault token: a standalone hvs. service token (24 or more base62 characters, so root and namespaced tokens are included)."
 order: 931
 sources: ["cli/internal/sast/rules/vnx-sec-037.rego", "cli/internal/sast/docs/vnx-sec-037.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

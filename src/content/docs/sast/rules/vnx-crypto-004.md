@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-004"
 description: "Reports construction of DES, Triple DES, RC4, RC2, Blowfish, CAST5 or IDEA ciphers in Python, Node.js, Go, Java, Ruby and PHP (PyCryptodome/cryptography."
 order: 678
 sources: ["cli/internal/sast/rules/vnx-crypto-004.rego", "cli/internal/sast/docs/vnx-crypto-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

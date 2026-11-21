@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-003"
 description: "Reports block ciphers set up in ECB mode in Python, Node.js, Go, Java, Ruby and PHP."
 order: 677
 sources: ["cli/internal/sast/rules/vnx-crypto-003.rego", "cli/internal/sast/docs/vnx-crypto-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

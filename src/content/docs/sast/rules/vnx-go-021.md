@@ -4,8 +4,8 @@ nav: "VNX-GO-021"
 description: "Detects HTML written to an http.ResponseWriter (fmt.Fprintf/Fprint/Fprintln, io.WriteString, w.Write, gin c.Data."
 order: 723
 sources: ["cli/internal/sast/rules/vnx-go-021.rego", "cli/internal/sast/docs/vnx-go-021.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

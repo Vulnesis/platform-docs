@@ -4,8 +4,8 @@ nav: "VNX-SEC-023"
 description: "Reports attacker-controlled github.event data (PR title/body/head ref, issue and comment bodies, commit messages and authors."
 order: 917
 sources: ["cli/internal/sast/rules/vnx-sec-023.rego", "cli/internal/sast/docs/vnx-sec-023.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-NODE-023"
 description: "Reports js-yaml 3 load()/loadAll() of request data or an uploaded file without a safe schema, and load() with DEFAULT_FULL_SCHEMA. Not reported."
 order: 819
 sources: ["cli/internal/sast/rules/vnx-node-023.rego", "cli/internal/sast/docs/vnx-node-023.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

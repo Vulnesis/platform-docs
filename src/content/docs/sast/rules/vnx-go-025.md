@@ -4,8 +4,8 @@ nav: "VNX-GO-025"
 description: "Detects a redirect (http.Redirect, gin/echo/fiber Redirect, a Location header) whose target is a query, form or route parameter."
 order: 727
 sources: ["cli/internal/sast/rules/vnx-go-025.rego", "cli/internal/sast/docs/vnx-go-025.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

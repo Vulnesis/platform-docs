@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-001"
 description: "MD5 is computed through a hash or signature API: Python hashlib.md5()/hashlib.new('md5') (module and from-import aliases resolved)."
 order: 675
 sources: ["cli/internal/sast/rules/vnx-crypto-001.rego", "cli/internal/sast/docs/vnx-crypto-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

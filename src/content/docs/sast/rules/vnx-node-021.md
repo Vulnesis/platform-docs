@@ -4,8 +4,8 @@ nav: "VNX-NODE-021"
 description: "Reports noent: true (inline, across lines or in an options object) in files using libxmljs/libxmljs2, and libxml2-wasm's XML_PARSE_NOENT flag. Not reported."
 order: 817
 sources: ["cli/internal/sast/rules/vnx-node-021.rego", "cli/internal/sast/docs/vnx-node-021.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

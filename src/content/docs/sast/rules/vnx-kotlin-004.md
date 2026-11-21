@@ -4,8 +4,8 @@ nav: "VNX-KOTLIN-004"
 description: "Detects Kotlin plain TCP sockets (java.net.Socket, ServerSocket, NIO channels, SocketFactory.getDefault()."
 order: 788
 sources: ["cli/internal/sast/rules/vnx-kotlin-004.rego", "cli/internal/sast/docs/vnx-kotlin-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

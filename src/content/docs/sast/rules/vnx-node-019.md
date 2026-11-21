@@ -4,8 +4,8 @@ nav: "VNX-NODE-019"
 description: "Reports a string literal used as the key of jwt.sign/verify, session/JWT middleware, cookieParser, Koa/cookie-session keys or createHmac."
 order: 815
 sources: ["cli/internal/sast/rules/vnx-node-019.rego", "cli/internal/sast/docs/vnx-node-019.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

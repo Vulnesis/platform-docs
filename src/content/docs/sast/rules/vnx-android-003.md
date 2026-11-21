@@ -4,8 +4,8 @@ nav: "VNX-ANDROID-003"
 description: "Detects an activity, activity-alias, service, receiver or provider in a production AndroidManifest.xml that is exported (android:exported=\"true\"."
 order: 657
 sources: ["cli/internal/sast/rules/vnx-android-003.rego", "cli/internal/sast/docs/vnx-android-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

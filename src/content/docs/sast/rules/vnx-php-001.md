@@ -4,8 +4,8 @@ nav: "VNX-PHP-001"
 description: "Detect an application's composer.json that requires Composer packages but has no composer.lock committed beside it, so every install re-resolves version ranges."
 order: 829
 sources: ["cli/internal/sast/rules/vnx-php-001.rego", "cli/internal/sast/docs/vnx-php-001.md"]
-checked: ["cli@1700795"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

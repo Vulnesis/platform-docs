@@ -4,8 +4,8 @@ nav: "VNX-SEC-003"
 description: "Reports a hard-coded, high-entropy 40-character AWS secret access key assigned to an AWS secret-key name, a Terraform AWS secret_key, Go's NewStaticCredentials."
 order: 897
 sources: ["cli/internal/sast/rules/vnx-sec-003.rego", "cli/internal/sast/docs/vnx-sec-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

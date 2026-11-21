@@ -4,8 +4,8 @@ nav: "VNX-SEC-033"
 description: "Reports an AWS Bedrock long-term API key: the ABSK prefix followed by 109 to 269 base64 characters."
 order: 927
 sources: ["cli/internal/sast/rules/vnx-sec-033.rego", "cli/internal/sast/docs/vnx-sec-033.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

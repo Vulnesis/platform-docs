@@ -4,8 +4,8 @@ nav: "VNX-PY-021"
 description: "Detect Python code that selects or allows SSLv2, SSLv3, TLS 1.0 or TLS 1.1."
 order: 875
 sources: ["cli/internal/sast/rules/vnx-py-021.rego", "cli/internal/sast/docs/vnx-py-021.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-GO-001"
 description: "Reports a go.mod that requires a remote module but has no go.sum beside it, or whose go.sum is excluded by a .gitignore."
 order: 703
 sources: ["cli/internal/sast/rules/vnx-go-001.rego", "cli/internal/sast/docs/vnx-go-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

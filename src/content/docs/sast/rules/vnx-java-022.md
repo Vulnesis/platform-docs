@@ -4,8 +4,8 @@ nav: "VNX-JAVA-022"
 description: "Detects File.createTempFile() in the shared temp directory (created with umask permissions."
 order: 770
 sources: ["cli/internal/sast/rules/vnx-java-022.rego", "cli/internal/sast/docs/vnx-java-022.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

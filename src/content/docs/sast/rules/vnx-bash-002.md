@@ -4,8 +4,8 @@ nav: "VNX-BASH-002"
 description: "Reports a shell script that runs code it has just downloaded with curl or wget without verifying it."
 order: 663
 sources: ["cli/internal/sast/rules/vnx-bash-002.rego", "cli/internal/sast/docs/vnx-bash-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

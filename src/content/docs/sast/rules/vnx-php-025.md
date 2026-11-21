@@ -4,8 +4,8 @@ nav: "VNX-PHP-025"
 description: "Reports calls to the PHP mcrypt functions that encrypt, decrypt or set up a cipher (mcrypt_encrypt/decrypt, mcrypt_cbc/cfb/ecb/ofb, mcrypt_module_open."
 order: 853
 sources: ["cli/internal/sast/rules/vnx-php-025.rego", "cli/internal/sast/docs/vnx-php-025.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

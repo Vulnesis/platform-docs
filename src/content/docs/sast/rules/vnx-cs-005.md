@@ -4,8 +4,8 @@ nav: "VNX-CS-005"
 description: "Detects ASP.NET MVC and ASP.NET Core MVC controller actions reachable by a cross-site form ([HttpPost], [AcceptVerbs(HttpVerbs.Post)]."
 order: 689
 sources: ["cli/internal/sast/rules/vnx-cs-005.rego", "cli/internal/sast/docs/vnx-cs-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

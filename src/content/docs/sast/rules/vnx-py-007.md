@@ -4,8 +4,8 @@ nav: "VNX-PY-007"
 description: "Detect subprocess calls that run a non-constant command line through the shell (shell=True, getoutput, create_subprocess_shell, or an explicit sh -c list)."
 order: 861
 sources: ["cli/internal/sast/rules/vnx-py-007.rego", "cli/internal/sast/docs/vnx-py-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

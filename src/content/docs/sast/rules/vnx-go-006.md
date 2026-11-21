@@ -4,8 +4,8 @@ nav: "VNX-GO-006"
 description: "Reports outbound HTTP requests, reverse proxies, net/tls dials and websocket dials whose URL or address starts with a request value (query, form."
 order: 708
 sources: ["cli/internal/sast/rules/vnx-go-006.rego", "cli/internal/sast/docs/vnx-go-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

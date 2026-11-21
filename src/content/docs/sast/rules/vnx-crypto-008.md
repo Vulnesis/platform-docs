@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-008"
 description: "Reports a MAC, signature, digest or secret token checked with ordinary equality (==, !=, ===, !==, Java equals/Arrays.equals, Go bytes.Equal) in Python."
 order: 682
 sources: ["cli/internal/sast/rules/vnx-crypto-008.rego", "cli/internal/sast/docs/vnx-crypto-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

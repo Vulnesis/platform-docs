@@ -4,8 +4,8 @@ nav: "VNX-TF-006"
 description: "Detect EC2 instances and launch templates in Terraform that leave the token-less IMDSv1 enabled (http_tokens = \"optional\" in resources."
 order: 986
 sources: ["cli/internal/sast/rules/vnx-tf-006.rego", "cli/internal/sast/docs/vnx-tf-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

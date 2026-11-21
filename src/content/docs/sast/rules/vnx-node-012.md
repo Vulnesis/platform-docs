@@ -4,8 +4,8 @@ nav: "VNX-NODE-012"
 description: "Reports raw HTML written into the DOM by jQuery .html(), Vue v-html and Svelte {@html}."
 order: 808
 sources: ["cli/internal/sast/rules/vnx-node-012.rego", "cli/internal/sast/docs/vnx-node-012.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

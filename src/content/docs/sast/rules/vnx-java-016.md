@@ -4,8 +4,8 @@ nav: "VNX-JAVA-016"
 description: "Reports values drawn from java.util.Random, ThreadLocalRandom, Math.random or RandomStringUtils that are used as tokens, session IDs, nonces, passwords, salts."
 order: 764
 sources: ["cli/internal/sast/rules/vnx-java-016.rego", "cli/internal/sast/docs/vnx-java-016.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-SEC-080"
 description: "Reports a whole GitHub OAuth (gho_), App user-to-server (ghu_), installation (ghs_) or refresh (ghr_) token in any file."
 order: 974
 sources: ["cli/internal/sast/rules/vnx-sec-080.rego", "cli/internal/sast/docs/vnx-sec-080.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

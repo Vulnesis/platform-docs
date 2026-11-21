@@ -31,7 +31,10 @@
 //
 // No dependencies beyond Node 20.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync as writeRaw, readdirSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
+import { vulnesisSurface } from '../../scripts/lib/brand.mjs';
+// Pages are written as the Vulnesis surface of the shared sources (scripts/lib/brand.mjs).
+const writeFileSync = (path, text) => writeRaw(path, vulnesisSurface(text));
 import { metaDescription } from './description.mjs';
 import { join, resolve, dirname, basename } from 'node:path';
 import { execFileSync } from 'node:child_process';

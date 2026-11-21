@@ -4,8 +4,8 @@ nav: "VNX-PHP-020"
 description: "Detects disabled TLS verification in PHP HTTP clients: CURLOPT_SSL_VERIFYPEER/VERIFYHOST set to false, 0 or ''."
 order: 848
 sources: ["cli/internal/sast/rules/vnx-php-020.rego", "cli/internal/sast/docs/vnx-php-020.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

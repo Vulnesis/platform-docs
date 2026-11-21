@@ -4,8 +4,8 @@ nav: "VNX-JAVA-026"
 description: "Detects Spring and servlet handlers that serve a file (FileSystemResource, UrlResource, PathResource, InputStreamResource, copyToByteArray."
 order: 774
 sources: ["cli/internal/sast/rules/vnx-java-026.rego", "cli/internal/sast/docs/vnx-java-026.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

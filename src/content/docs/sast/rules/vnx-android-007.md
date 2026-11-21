@@ -4,8 +4,8 @@ nav: "VNX-ANDROID-007"
 description: "Detects Java and Kotlin Cipher.getInstance() calls that select AES in ECB mode."
 order: 661
 sources: ["cli/internal/sast/rules/vnx-android-007.rego", "cli/internal/sast/docs/vnx-android-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

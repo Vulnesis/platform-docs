@@ -4,8 +4,8 @@ nav: "VNX-15"
 description: "A value read from an HTTP request is written into a process-wide setting."
 order: 100
 sources: ["cli/internal/sast/rules/vnx-15.rego", "cli/internal/sast/docs/vnx-15.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

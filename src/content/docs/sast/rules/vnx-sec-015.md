@@ -4,8 +4,8 @@ nav: "VNX-SEC-015"
 description: "Detects JWTs issued unsigned or accepted as unsigned: the none algorithm among the allowed or signing algorithms, an alg none header."
 order: 909
 sources: ["cli/internal/sast/rules/vnx-sec-015.rego", "cli/internal/sast/docs/vnx-sec-015.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-91"
 description: "An XML document is assembled as text with an HTTP request value spliced into a tag literal (concatenation, interpolation, format strings)."
 order: 107
 sources: ["cli/internal/sast/rules/vnx-91.rego", "cli/internal/sast/docs/vnx-91.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

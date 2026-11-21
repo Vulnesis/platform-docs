@@ -4,8 +4,8 @@ nav: "VNX-ANDROID-001"
 description: "Detects a production Android build made debuggable (android:debuggable=\"true\" in AndroidManifest.xml."
 order: 655
 sources: ["cli/internal/sast/rules/vnx-android-001.rego", "cli/internal/sast/docs/vnx-android-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

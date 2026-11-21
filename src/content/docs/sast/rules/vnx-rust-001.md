@@ -4,8 +4,8 @@ nav: "VNX-RUST-001"
 description: "Reports a Cargo.toml that declares dependencies but has no Cargo.lock in its own or any ancestor directory."
 order: 887
 sources: ["cli/internal/sast/rules/vnx-rust-001.rego", "cli/internal/sast/docs/vnx-rust-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

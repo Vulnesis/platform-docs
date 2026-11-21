@@ -4,8 +4,8 @@ nav: "VNX-RUBY-007"
 description: "Reports YAML.load (and YAML::load), Psych.load, YAML.unsafe_load, load_stream, load_documents, load_file and unsafe_load_file when request input, an upload."
 order: 883
 sources: ["cli/internal/sast/rules/vnx-ruby-007.rego", "cli/internal/sast/docs/vnx-ruby-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

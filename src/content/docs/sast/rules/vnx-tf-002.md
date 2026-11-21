@@ -4,8 +4,8 @@ nav: "VNX-TF-002"
 description: "Detect AWS security group ingress in Terraform that admits any address (0.0.0.0/0 or ::/0) through inline ingress blocks (block or attribute form)."
 order: 982
 sources: ["cli/internal/sast/rules/vnx-tf-002.rego", "cli/internal/sast/docs/vnx-tf-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

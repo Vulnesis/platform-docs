@@ -4,8 +4,8 @@ nav: "VNX-PY-018"
 description: "Detect Python code that generates a temporary file name without creating the file."
 order: 872
 sources: ["cli/internal/sast/rules/vnx-py-018.rego", "cli/internal/sast/docs/vnx-py-018.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-TF-001"
 description: "Detect S3 buckets and objects in Terraform whose ACL grants access to everyone."
 order: 981
 sources: ["cli/internal/sast/rules/vnx-tf-001.rego", "cli/internal/sast/docs/vnx-tf-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

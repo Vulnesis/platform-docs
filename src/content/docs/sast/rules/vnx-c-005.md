@@ -4,8 +4,8 @@ nav: "VNX-C-005"
 description: "Reports a C or C++ allocation (malloc, realloc, calloc, aligned_alloc and common wrappers) whose size multiplies or adds a count parsed."
 order: 673
 sources: ["cli/internal/sast/rules/vnx-c-005.rego", "cli/internal/sast/docs/vnx-c-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

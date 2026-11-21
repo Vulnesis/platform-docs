@@ -4,8 +4,8 @@ nav: "VNX-LLM-007"
 description: "Reports torch.load() calls, including multi-line calls and aliases, that do not pass weights_only=True or pass weights_only=False."
 order: 796
 sources: ["cli/internal/sast/rules/vnx-llm-007.rego", "cli/internal/sast/docs/vnx-llm-007.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

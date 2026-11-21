@@ -4,8 +4,8 @@ nav: "VNX-NODE-011"
 description: "Reports a template engine (ejs, pug/jade, Handlebars, nunjucks, lodash _.template, doT, Mustache, Eta, Squirrelly."
 order: 807
 sources: ["cli/internal/sast/rules/vnx-node-011.rego", "cli/internal/sast/docs/vnx-node-011.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-LLM-004"
 description: "Reports user input read from an HTTP request, or a variable named as user data, interpolated into an LLM system prompt (system role, system= argument."
 order: 793
 sources: ["cli/internal/sast/rules/vnx-llm-004.rego", "cli/internal/sast/docs/vnx-llm-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

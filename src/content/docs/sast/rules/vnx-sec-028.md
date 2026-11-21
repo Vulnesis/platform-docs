@@ -4,8 +4,8 @@ nav: "VNX-SEC-028"
 description: "Detect npm access tokens (npm_ followed by exactly 36 letters or digits) in any file."
 order: 922
 sources: ["cli/internal/sast/rules/vnx-sec-028.rego", "cli/internal/sast/docs/vnx-sec-028.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-010"
 description: "Detects a constant IV, nonce or salt (a string or byte literal, a literal byte array, or a zero-filled buffer) passed to a cipher."
 order: 684
 sources: ["cli/internal/sast/rules/vnx-crypto-010.rego", "cli/internal/sast/docs/vnx-crypto-010.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

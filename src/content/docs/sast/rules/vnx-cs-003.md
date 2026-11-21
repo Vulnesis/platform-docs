@@ -4,8 +4,8 @@ nav: "VNX-CS-003"
 description: "Detects C# XML parsers given an XmlUrlResolver, DTD processing enabled without XmlResolver = null on frameworks where the default resolver fetches entities."
 order: 687
 sources: ["cli/internal/sast/rules/vnx-cs-003.rego", "cli/internal/sast/docs/vnx-cs-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-SEC-053"
 description: "Reports a SonarQube or SonarCloud token (squ_, sqp_ or sqa_ + exactly 40 hex characters) in any file."
 order: 947
 sources: ["cli/internal/sast/rules/vnx-sec-053.rego", "cli/internal/sast/docs/vnx-sec-053.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

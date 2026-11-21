@@ -4,8 +4,8 @@ nav: "VNX-KOTLIN-003"
 description: "Detects Kotlin session and credential cookies sent without HttpOnly (servlet, Spring ResponseCookie, Ktor, Javalin, http4k, Micronaut."
 order: 787
 sources: ["cli/internal/sast/rules/vnx-kotlin-003.rego", "cli/internal/sast/docs/vnx-kotlin-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

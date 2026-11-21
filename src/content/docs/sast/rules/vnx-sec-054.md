@@ -4,8 +4,8 @@ nav: "VNX-SEC-054"
 description: "Reports a Datadog API key (32 hex) or application key (40 hex) assigned to a Datadog key name."
 order: 948
 sources: ["cli/internal/sast/rules/vnx-sec-054.rego", "cli/internal/sast/docs/vnx-sec-054.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

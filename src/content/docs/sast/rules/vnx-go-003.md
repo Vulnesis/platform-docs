@@ -4,8 +4,8 @@ nav: "VNX-GO-003"
 description: "Reports database/sql, sqlx, pgx and GORM query calls whose SQL is built with fmt.Sprintf."
 order: 705
 sources: ["cli/internal/sast/rules/vnx-go-003.rego", "cli/internal/sast/docs/vnx-go-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

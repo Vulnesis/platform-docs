@@ -4,8 +4,8 @@ nav: "VNX-JAVA-017"
 description: "Detects Java code that passes a request parameter, header, query string or path info (or a Spring @RequestParam, @PathVariable."
 order: 765
 sources: ["cli/internal/sast/rules/vnx-java-017.rego", "cli/internal/sast/docs/vnx-java-017.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

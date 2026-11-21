@@ -4,8 +4,8 @@ nav: "VNX-RUBY-003"
 description: "Reports Marshal.load/restore, Oj.load in object mode, Oj.object_load, JSON.load and JSON.parse with create_additions when request input, a Base64-decoded blob."
 order: 879
 sources: ["cli/internal/sast/rules/vnx-ruby-003.rego", "cli/internal/sast/docs/vnx-ruby-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

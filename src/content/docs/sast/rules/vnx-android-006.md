@@ -4,8 +4,8 @@ nav: "VNX-ANDROID-006"
 description: "Detects a <string> resource in an Android res/values*/ file whose name marks it as a credential (api key, secret, token, password."
 order: 660
 sources: ["cli/internal/sast/rules/vnx-android-006.rego", "cli/internal/sast/docs/vnx-android-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

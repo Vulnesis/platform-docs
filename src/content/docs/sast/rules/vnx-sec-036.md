@@ -4,8 +4,8 @@ nav: "VNX-SEC-036"
 description: "Reports a Heroku platform API key: a standalone v2 key (HRKU-AA followed by 58 characters)."
 order: 930
 sources: ["cli/internal/sast/rules/vnx-sec-036.rego", "cli/internal/sast/docs/vnx-sec-036.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

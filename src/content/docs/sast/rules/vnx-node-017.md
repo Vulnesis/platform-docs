@@ -4,8 +4,8 @@ nav: "VNX-NODE-017"
 description: "Reports node-serialize unserialize() and serialize-to-js deserialize() called with a non-constant value."
 order: 813
 sources: ["cli/internal/sast/rules/vnx-node-017.rego", "cli/internal/sast/docs/vnx-node-017.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

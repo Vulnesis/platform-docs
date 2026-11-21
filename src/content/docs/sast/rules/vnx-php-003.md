@@ -4,8 +4,8 @@ nav: "VNX-PHP-003"
 description: "Detect include, require, include_once and require_once statements whose path contains a request value, inline or through a variable assigned from one."
 order: 831
 sources: ["cli/internal/sast/rules/vnx-php-003.rego", "cli/internal/sast/docs/vnx-php-003.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

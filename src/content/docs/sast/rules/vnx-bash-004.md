@@ -4,8 +4,8 @@ nav: "VNX-BASH-004"
 description: "Reports an unquoted expansion of a value the script's caller controls (a script-level positional parameter, or a variable assigned from one."
 order: 665
 sources: ["cli/internal/sast/rules/vnx-bash-004.rego", "cli/internal/sast/docs/vnx-bash-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

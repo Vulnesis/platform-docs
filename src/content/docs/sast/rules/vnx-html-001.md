@@ -4,8 +4,8 @@ nav: "VNX-HTML-001"
 description: "Reports Jinja2, Django and Nunjucks templates that mark an output expression |safe or |safeseq, or switch autoescape off, unless the value is a literal."
 order: 748
 sources: ["cli/internal/sast/rules/vnx-html-001.rego", "cli/internal/sast/docs/vnx-html-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

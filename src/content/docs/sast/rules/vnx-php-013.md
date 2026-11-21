@@ -4,8 +4,8 @@ nav: "VNX-PHP-013"
 description: "Detects XML parsing configured for entity expansion: simplexml_load_*(), new SimpleXMLElement()."
 order: 841
 sources: ["cli/internal/sast/rules/vnx-php-013.rego", "cli/internal/sast/docs/vnx-php-013.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

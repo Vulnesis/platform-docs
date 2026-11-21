@@ -4,8 +4,8 @@ nav: "VNX-PHP-004"
 description: "Detect header('Location: ...') and Refresh headers, wp_redirect() and PSR-7 withHeader('Location') whose destination is decided by a request value."
 order: 832
 sources: ["cli/internal/sast/rules/vnx-php-004.rego", "cli/internal/sast/docs/vnx-php-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

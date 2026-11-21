@@ -4,8 +4,8 @@ nav: "VNX-NODE-014"
 description: "Reports a MongoDB query filter (find, findOne, update*, delete*, count, aggregate...) taken from req.query/body or Koa ctx."
 order: 810
 sources: ["cli/internal/sast/rules/vnx-node-014.rego", "cli/internal/sast/docs/vnx-node-014.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

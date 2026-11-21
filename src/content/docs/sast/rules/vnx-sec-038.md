@@ -4,8 +4,8 @@ nav: "VNX-SEC-038"
 description: "Reports a Terraform Cloud / Terraform Enterprise API token: a standalone token of 14 letters and digits, .atlasv1."
 order: 932
 sources: ["cli/internal/sast/rules/vnx-sec-038.rego", "cli/internal/sast/docs/vnx-sec-038.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-GO-039"
 description: "Detects Go HTTP login handlers (declared Login/SignIn/Authenticate handlers."
 order: 741
 sources: ["cli/internal/sast/rules/vnx-go-039.rego", "cli/internal/sast/docs/vnx-go-039.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

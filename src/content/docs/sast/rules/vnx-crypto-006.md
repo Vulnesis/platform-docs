@@ -4,8 +4,8 @@ nav: "VNX-CRYPTO-006"
 description: "Reports RSA key generation with a modulus below 2048 bits, given literally or through a constant in the same file, in Python (cryptography, PyCryptodome."
 order: 680
 sources: ["cli/internal/sast/rules/vnx-crypto-006.rego", "cli/internal/sast/docs/vnx-crypto-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

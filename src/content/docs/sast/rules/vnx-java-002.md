@@ -4,8 +4,8 @@ nav: "VNX-JAVA-002"
 description: "Reports Spring Boot configuration that exposes all or sensitive actuator endpoints over HTTP (include=*, env, heapdump, shutdown, jolokia...), enables shutdown."
 order: 750
 sources: ["cli/internal/sast/rules/vnx-java-002.rego", "cli/internal/sast/docs/vnx-java-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

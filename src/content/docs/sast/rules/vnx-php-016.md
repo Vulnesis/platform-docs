@@ -4,8 +4,8 @@ nav: "VNX-PHP-016"
 description: "A password is hashed with MD5 or SHA-1, fast unsalted digests that GPUs and rainbow tables reverse in bulk. Reported."
 order: 844
 sources: ["cli/internal/sast/rules/vnx-php-016.rego", "cli/internal/sast/docs/vnx-php-016.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

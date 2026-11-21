@@ -4,8 +4,8 @@ nav: "VNX-RUBY-006"
 description: "Reports request parameters reaching ActiveRecord create/update/new/assign_attributes/find_or_create_by and similar calls without a strong-parameters allowlist."
 order: 882
 sources: ["cli/internal/sast/rules/vnx-ruby-006.rego", "cli/internal/sast/docs/vnx-ruby-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

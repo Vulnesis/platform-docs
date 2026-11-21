@@ -4,8 +4,8 @@ nav: "VNX-SEC-022"
 description: "Reports logging and print calls across 14 languages whose arguments carry a password, secret, API key."
 order: 916
 sources: ["cli/internal/sast/rules/vnx-sec-022.rego", "cli/internal/sast/docs/vnx-sec-022.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

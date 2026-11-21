@@ -4,8 +4,8 @@ nav: "VNX-SEC-032"
 description: "Detect PGP/GPG private key blocks committed to a repository: the BEGIN PGP PRIVATE KEY BLOCK header followed by armoured key material."
 order: 926
 sources: ["cli/internal/sast/rules/vnx-sec-032.rego", "cli/internal/sast/docs/vnx-sec-032.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "VNX-JAVA-018"
 description: "Detects javax.crypto.Cipher instances created for RSA with PKCS#1 v1.5 padding or no padding (including the bare \"RSA\" transformation."
 order: 766
 sources: ["cli/internal/sast/rules/vnx-java-018.rego", "cli/internal/sast/docs/vnx-java-018.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

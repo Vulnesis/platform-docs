@@ -4,8 +4,8 @@ nav: "VNX-JWT-002"
 description: "A JWT is issued with no expiry: jwt.sign / new SignJWT (JS/TS), jwt.encode (Python), Jwts.builder() / JWT.create() (Java), jwt.NewWithClaims (Go)."
 order: 780
 sources: ["cli/internal/sast/rules/vnx-jwt-002.rego", "cli/internal/sast/docs/vnx-jwt-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

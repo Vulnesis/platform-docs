@@ -4,8 +4,8 @@ nav: "VNX-SEC-075"
 description: "Reports a literal WireGuard private or preshared key (a 32-byte base64 key) in a wg-quick configuration."
 order: 969
 sources: ["cli/internal/sast/rules/vnx-sec-075.rego", "cli/internal/sast/docs/vnx-sec-075.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

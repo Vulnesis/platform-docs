@@ -4,8 +4,8 @@ nav: "VNX-SEC-030"
 description: "Detect Google OAuth client secrets (GOCSPX- followed by 28 characters."
 order: 924
 sources: ["cli/internal/sast/rules/vnx-sec-030.rego", "cli/internal/sast/docs/vnx-sec-030.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

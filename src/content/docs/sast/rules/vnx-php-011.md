@@ -4,8 +4,8 @@ nav: "VNX-PHP-011"
 description: "Detects request input concatenated or interpolated into SQL text passed to mysql(i)_query(), pg_query(), PDO/mysqli/SQLite3 query/exec/prepare."
 order: 839
 sources: ["cli/internal/sast/rules/vnx-php-011.rego", "cli/internal/sast/docs/vnx-php-011.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

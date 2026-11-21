@@ -4,8 +4,8 @@ nav: "VNX-SEC-060"
 description: "Reports a hard-coded Airtable personal access token (pat + 14 alphanumerics + . + 64 hex) or a legacy key-prefixed API key when Airtable is named on that line."
 order: 954
 sources: ["cli/internal/sast/rules/vnx-sec-060.rego", "cli/internal/sast/docs/vnx-sec-060.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

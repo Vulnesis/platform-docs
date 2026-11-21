@@ -4,8 +4,8 @@ nav: "VNX-NODE-024"
 description: "Reports window 'message' handlers (inline or a named function in the same file) that never read event.origin or event.source."
 order: 820
 sources: ["cli/internal/sast/rules/vnx-node-024.rego", "cli/internal/sast/docs/vnx-node-024.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

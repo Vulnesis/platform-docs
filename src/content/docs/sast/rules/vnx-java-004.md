@@ -4,8 +4,8 @@ nav: "VNX-JAVA-004"
 description: "Reports Java XML parser factories (DOM, SAX, StAX, dom4j, JDOM."
 order: 752
 sources: ["cli/internal/sast/rules/vnx-java-004.rego", "cli/internal/sast/docs/vnx-java-004.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

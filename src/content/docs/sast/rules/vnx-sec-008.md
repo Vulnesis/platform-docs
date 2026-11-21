@@ -4,8 +4,8 @@ nav: "VNX-SEC-008"
 description: "Reports a database connection URL that embeds a literal password (PostgreSQL, MySQL, MongoDB, Redis, SQL Server, CockroachDB."
 order: 902
 sources: ["cli/internal/sast/rules/vnx-sec-008.rego", "cli/internal/sast/docs/vnx-sec-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

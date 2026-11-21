@@ -4,8 +4,8 @@ nav: "VNX-TF-008"
 description: "Detect literal AWS access key ids (AKIA/ASIA) and 40-character secret keys hardcoded in Terraform provider blocks, s3 backends, .tfvars files."
 order: 988
 sources: ["cli/internal/sast/rules/vnx-tf-008.rego", "cli/internal/sast/docs/vnx-tf-008.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

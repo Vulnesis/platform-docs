@@ -4,8 +4,8 @@ nav: "VNX-SEC-063"
 description: "Reports a MongoDB connection URL (mongodb://, mongodb+srv://) that embeds a literal password, but not interpolated or default passwords, localhost servers."
 order: 957
 sources: ["cli/internal/sast/rules/vnx-sec-063.rego", "cli/internal/sast/docs/vnx-sec-063.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

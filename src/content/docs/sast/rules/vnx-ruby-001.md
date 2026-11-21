@@ -4,8 +4,8 @@ nav: "VNX-RUBY-001"
 description: "Reports an application Gemfile with no Gemfile.lock beside it (or a gems.rb with no gems.locked), so every bundle install resolves floating ranges afresh."
 order: 877
 sources: ["cli/internal/sast/rules/vnx-ruby-001.rego", "cli/internal/sast/docs/vnx-ruby-001.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

@@ -4,8 +4,8 @@ nav: "Database Credentials"
 description: "PostgreSQL, MySQL, MongoDB, Redis and other connection strings with embedded credentials."
 order: 10
 sources: ["cli/internal/sast/secretsgen/catalog.json", "cli/internal/sast/secretsgen/main.go"]
-checked: ["cli@1700795"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

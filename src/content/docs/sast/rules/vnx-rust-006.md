@@ -4,8 +4,8 @@ nav: "VNX-RUST-006"
 description: "Reports a lossy `as` cast (narrowing, signed to unsigned, or unsigned to signed of the same width) of an integer just parsed."
 order: 892
 sources: ["cli/internal/sast/rules/vnx-rust-006.rego", "cli/internal/sast/docs/vnx-rust-006.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

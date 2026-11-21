@@ -4,8 +4,8 @@ nav: "VNX-JWT-005"
 description: "A password, password hash, secret, API key, SSN or card number is put into JWT claims."
 order: 783
 sources: ["cli/internal/sast/rules/vnx-jwt-005.rego", "cli/internal/sast/docs/vnx-jwt-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

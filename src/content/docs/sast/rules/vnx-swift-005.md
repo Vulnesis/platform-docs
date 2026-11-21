@@ -4,8 +4,8 @@ nav: "VNX-SWIFT-005"
 description: "Detects WKPreferences.javaScriptCanOpenWindowsAutomatically assigned true."
 order: 979
 sources: ["cli/internal/sast/rules/vnx-swift-005.rego", "cli/internal/sast/docs/vnx-swift-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

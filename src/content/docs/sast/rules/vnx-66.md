@@ -4,8 +4,8 @@ nav: "VNX-66"
 description: "An uploaded file is stored under the name the client sent, so a name such as CON, NUL, AUX."
 order: 104
 sources: ["cli/internal/sast/rules/vnx-66.rego", "cli/internal/sast/docs/vnx-66.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

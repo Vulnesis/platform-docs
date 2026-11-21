@@ -4,8 +4,8 @@ nav: "VNX-RUST-002"
 description: "Reports .unwrap() or .expect() applied directly to parsing, deserialising or decoding a runtime value (str::parse, serde_json/toml from_str, String::from_utf8."
 order: 888
 sources: ["cli/internal/sast/rules/vnx-rust-002.rego", "cli/internal/sast/docs/vnx-rust-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

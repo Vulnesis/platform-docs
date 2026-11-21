@@ -4,8 +4,8 @@ nav: "VNX-PHP-002"
 description: "Detect a request value ($_GET, $_POST, $_COOKIE, php://input, Laravel request accessors) reaching exec(), system(), passthru(), shell_exec(), popen()."
 order: 830
 sources: ["cli/internal/sast/rules/vnx-php-002.rego", "cli/internal/sast/docs/vnx-php-002.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

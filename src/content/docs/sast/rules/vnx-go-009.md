@@ -4,8 +4,8 @@ nav: "VNX-GO-009"
 description: "Detect Go code that renders a text/template template into an HTTP response, or loads .html files with text/template."
 order: 711
 sources: ["cli/internal/sast/rules/vnx-go-009.rego", "cli/internal/sast/docs/vnx-go-009.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

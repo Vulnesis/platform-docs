@@ -4,8 +4,8 @@ nav: "VNX-JAVA-011"
 description: "Reports SpEL, OGNL, Jakarta EL, ScriptEngine, MVEL, JEXL and Bean Validation message-template calls whose expression argument carries HTTP request data."
 order: 759
 sources: ["cli/internal/sast/rules/vnx-java-011.rego", "cli/internal/sast/docs/vnx-java-011.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 

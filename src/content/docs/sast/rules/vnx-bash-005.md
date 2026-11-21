@@ -4,8 +4,8 @@ nav: "VNX-BASH-005"
 description: "Reports a literal credential in a shell script or .env file: an assignment or command-prefix assignment to a PASSWORD/SECRET/TOKEN/API_KEY-style name."
 order: 666
 sources: ["cli/internal/sast/rules/vnx-bash-005.rego", "cli/internal/sast/docs/vnx-bash-005.md"]
-checked: ["cli@308165d"]
-updated: "05 Nov 2026"
+checked: ["cli@5301e4f"]
+updated: "21 Nov 2026"
 generated: true
 ---
 
