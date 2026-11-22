@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><rect width="22" height="22" rx="6" fill="#001614"/><path d="M6 8h10M6 11h7M6 14h10" stroke="#66DCC8" stroke-width="1.6" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t">
+<title id="t">Vulnesis</title>
+<rect width="512" height="512" rx="112.64" fill="#05080d"/>
+<g fill="#ffc400" transform="translate(79.20 138.24) scale(1.36)"><rect x="0.5" y="52.5" width="25" height="25" rx="4"/><rect x="26.5" y="78.5" width="51" height="51" rx="4"/><rect x="78.5" y="130.5" width="51" height="51" rx="4"/><rect x="130.5" y="78.5" width="51" height="51" rx="4"/><rect x="182.5" y="26.5" width="51" height="51" rx="4"/><rect x="234.5" y="0.5" width="25" height="25" rx="4"/></g>
+</svg>

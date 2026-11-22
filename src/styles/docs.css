@@ -1,52 +1,58 @@
 @import "tailwindcss";
 
-/* Colours are the Belai and Vulnesis brand values (belai/site/src/styles/
-   brand.css), tuned for long reading: a warm paper ground in light, a deep
-   ink ground in dark. Every text colour passes 4.5:1 on its ground. */
+/* Colours are the keleustes palette (keleustes/crates/kls-ui/src/theme.rs),
+   tuned for long reading: a white page on cool grey chrome in light, the
+   near-black blue panels in dark. Canary gold is the brand accent; links are
+   keleustes cyan, as its hyperlinks are. Every text colour passes 4.5:1 on
+   its ground. */
 :root {
   color-scheme: light;
-  --bg: #FFFCF6;
-  --bg-side: #FAF4E8;
+  --bg: #FFFFFF;
+  --bg-side: #F4F6F9;
   --bg-raised: #FFFFFF;
-  --bg-code: #F6EFE1;
-  --bg-hover: #F1E8D6;
-  --bg-current: #EADFC8;
-  --line: #E8DFCC;
-  --line-soft: #EFE7D6;
-  --line-strong: #DCD1BA;
-  --text: #001614;
-  --text-2: #2F4340;
-  --text-3: #4A6560;
-  --link: #00695E;
-  --accent: #009484;
-  --mark: #FDE0B5;
-  --why-bg: #FCF1DE; --why-bar: #B86E00; --why-title: #6B4100; --why-text: #3D2A00;
-  --careful-bg: #FBEDEB; --careful-bar: #B8332E; --careful-title: #8A1F1B; --careful-text: #4A1210;
-  --pix-bg: #E6F5F1; --pix-bar: #009484; --pix-title: #00574E; --pix-text: #00332D;
-  --shadow: 0 30px 80px rgba(0, 22, 20, 0.25);
+  --bg-code: #F4F6F9;
+  --bg-hover: #EAEEF4;
+  --bg-current: #FFECB0;
+  --line: #D5DCE6;
+  --line-soft: #E4E9F0;
+  --line-strong: #C3CCD8;
+  --text: #0A111A;
+  --text-2: #2E3A4A;
+  --text-3: #4F5D6D;
+  --link: #076D7C;
+  --accent: #8A5300;
+  --brand: #FFC400;
+  --mark: #FFECB0;
+  --why-bg: #FFF4E0; --why-bar: #B35F00; --why-title: #7A4100; --why-text: #3D2A00;
+  --careful-bg: #FBEDEE; --careful-bar: #B3121E; --careful-title: #8A0E17; --careful-text: #4A0A0F;
+  --pix-bg: #E6F6EF; --pix-bar: #08734C; --pix-title: #065A3B; --pix-text: #03301F;
+  --shadow: 0 30px 80px rgba(5, 8, 13, 0.25);
+  --backdrop: rgba(5, 8, 13, 0.55);
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #06100F;
-  --bg-side: #091615;
-  --bg-raised: #0C1918;
-  --bg-code: #0A1716;
-  --bg-hover: #10221F;
-  --bg-current: #13302C;
-  --line: #1C2B29;
-  --line-soft: #172523;
-  --line-strong: #263634;
-  --text: #F3EEE2;
-  --text-2: #C3CECB;
-  --text-3: #93A5A1;
-  --link: #66DCC8;
-  --accent: #66DCC8;
-  --mark: #5B4210;
-  --why-bg: #1B1608; --why-bar: #FCA326; --why-title: #FCC36B; --why-text: #E6D9BC;
-  --careful-bg: #1E0F0E; --careful-bar: #FA5C57; --careful-title: #FA8A85; --careful-text: #EBD3D0;
-  --pix-bg: #0B1F1D; --pix-bar: #66DCC8; --pix-title: #66DCC8; --pix-text: #C3DCD7;
+  --bg: #05080D;
+  --bg-side: #0B111A;
+  --bg-raised: #0B111A;
+  --bg-code: #0B111A;
+  --bg-hover: #101824;
+  --bg-current: #373115;
+  --line: #1F2B3A;
+  --line-soft: #172130;
+  --line-strong: #2A3849;
+  --text: #F4F7FB;
+  --text-2: #C3CCD8;
+  --text-3: #8E9BAC;
+  --link: #11D9F2;
+  --accent: #FFC400;
+  --brand: #FFC400;
+  --mark: #5C4A10;
+  --why-bg: #1B1406; --why-bar: #FF8A00; --why-title: #FFB866; --why-text: #EADCC4;
+  --careful-bg: #1E0D10; --careful-bar: #FF6B73; --careful-title: #FF9AA0; --careful-text: #EED3D5;
+  --pix-bg: #071A14; --pix-bar: #2BE39B; --pix-title: #2BE39B; --pix-text: #C6EBDC;
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  --backdrop: rgba(0, 0, 0, 0.6);
 }
 
 /* Geist as one variable woff2 per script (every weight in one file), from
@@ -86,6 +92,9 @@ code, kbd, pre { font-family: var(--font-mono); }
 .brand { display: flex; align-items: center; gap: 8px; color: var(--text); font-weight: 600; white-space: nowrap; }
 .brand:hover { text-decoration: none; }
 .brand span { font-weight: 400; color: var(--text-3); }
+.brand .brand-icon { flex: none; display: block; }
+.brand .wordmark { display: block; height: 15px; width: auto; color: var(--text); }
+.brand .wordmark .accent { fill: var(--brand); }
 .segment-name { color: var(--text-2); font-size: 14px; white-space: nowrap; padding-left: 10px; border-left: 1px solid var(--line); }
 .segment-name:hover { color: var(--text); text-decoration: none; }
 .crumbs a { color: inherit; }
@@ -262,7 +271,7 @@ kbd { font-size: 11px; padding: 1px 6px; border: 1px solid var(--line-strong); b
   background: var(--bg-raised); color: var(--text); box-shadow: var(--shadow);
 }
 .search-dialog[open] { display: flex; flex-direction: column; }
-.search-dialog::backdrop { background: rgba(0, 22, 20, 0.55); }
+.search-dialog::backdrop { background: var(--backdrop); }
 .search-input-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
 .search-input-row input { flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 18px; color: var(--text); }
 .search-filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
