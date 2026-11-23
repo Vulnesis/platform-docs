@@ -66,16 +66,16 @@ It uses the first tool it finds, in this order:
 
 | Tool found | Runs |
 |---|---|
-| `npx` | `npx skills add --all -y Vulnesis/pix-ai-coding-assistant` |
-| `claude` (no `npx`) | `claude plugin marketplace add Vulnesis/pix-ai-coding-assistant`, then `claude plugin install vulnetix@vulnetix-plugins` |
+| `npx` | `npx skills add --all -y Vulnesis/strix-ai-coding-assistant` |
+| `claude` (no `npx`) | `claude plugin marketplace add Vulnesis/strix-ai-coding-assistant`, then `claude plugin install vulnetix@vulnetix-plugins` |
 | `gh` (neither) | `gh skills add Vulnesis/claude-code-plugin <skill> --agent <agent> -f --scope user` for each detected agent and each skill in the latest release |
 
-`--agent <id>` and `--skill <name>` target one agent or one skill, and then every tool that is present is used (`npx skills add Vulnesis/pix-ai-coding-assistant --agent <id>` for `npx`).
+`--agent <id>` and `--skill <name>` target one agent or one skill, and then every tool that is present is used (`npx skills add Vulnesis/strix-ai-coding-assistant --agent <id>` for `npx`).
 
 Either registry tool works directly too, because the skills live at `skills/` in the repository root:
 
 ```bash
-npx skills add Vulnesis/pix-ai-coding-assistant
+npx skills add Vulnesis/strix-ai-coding-assistant
 ```
 
 ### Claude Code plugin
@@ -83,7 +83,7 @@ npx skills add Vulnesis/pix-ai-coding-assistant
 Inside Claude Code:
 
 ```
-/plugin marketplace add Vulnesis/pix-ai-coding-assistant
+/plugin marketplace add Vulnesis/strix-ai-coding-assistant
 /plugin install vulnetix@vulnetix-plugins
 ```
 

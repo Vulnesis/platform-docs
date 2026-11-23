@@ -44,7 +44,7 @@ Claude Code
 
 | Command | Flags | Does |
 |---|---|---|
-| `install` | `--agent <id>`, `--skill <name>` | Installs the skills. Without flags: `npx skills add --all -y Vulnesis/pix-ai-coding-assistant`, else the Claude Code marketplace, else `gh skills add` per agent and skill. With flags, every available tool is used for that agent or skill. |
+| `install` | `--agent <id>`, `--skill <name>` | Installs the skills. Without flags: `npx skills add --all -y Vulnesis/strix-ai-coding-assistant`, else the Claude Code marketplace, else `gh skills add` per agent and skill. With flags, every available tool is used for that agent or skill. |
 | `check` | | Lists Vulnesis skills in each detected agent's directories, dangling links, skills the release no longer ships, and skills it ships that are missing |
 | `update` | | `npx skills update -y`, else `gh skills update --all`, else `claude plugin marketplace update`; then lists retired skills left behind |
 | `uninstall` | | `npx skills remove --all` (every skill the `skills` tool installed, not only Vulnesis's); without `npx`, prints the directories to clean |

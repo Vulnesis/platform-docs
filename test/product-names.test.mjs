@@ -70,7 +70,7 @@ test('the retired-name guard allows identifiers written as code, and catches pro
   for (const s of ['Ask Pix on a call.', 'A Pix Sandbox is online all month.', 'PixCommander picks the model.', 'Publish to the Pix Registry.', 'Commits are made by Pix [bot].']) {
     assert.ok(RETIRED.test(prose(s)), s);
   }
-  for (const s of ['The `pix.size` key and `PixLaunchConfig`.', 'Routes under `/v1/pix-call` and `/v1/admin/pix-sandboxes`.', 'The image is `ghcr.io/vulnesis/pix-sandbox`.', 'Set `PIX_SANDBOX_ID`, or run `vulnetix pix`.', 'See [the plugin](https://github.com/Vulnesis/pix-ai-coding-assistant).', 'Strix runs pix-smart and pix-fast.']) {
+  for (const s of ['The `pix.size` key and `PixLaunchConfig`.', 'Routes under `/v1/pix-call` and `/v1/admin/pix-sandboxes`.', 'The image is `ghcr.io/vulnesis/pix-sandbox`.', 'Set `PIX_SANDBOX_ID`, or run `vulnetix pix`.', 'See [the plugin](https://github.com/Vulnesis/strix-ai-coding-assistant).', 'Strix runs pix-smart and pix-fast.']) {
     assert.ok(!RETIRED.test(prose(s)), s);
   }
 });

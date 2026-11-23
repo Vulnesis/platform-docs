@@ -8,7 +8,7 @@ checked: [pix-ai-coding-assistant@7aebf02]
 updated: 02 Nov 2026
 ---
 
-A skill is a procedure the agent follows in your repository. Each one is an Agent Skills `SKILL.md` under [`skills/`](https://github.com/Vulnesis/pix-ai-coding-assistant/tree/main/skills), installed by [`vulnetix skills install`](/strix/get-started/install/#3-install-the-skills).
+A skill is a procedure the agent follows in your repository. Each one is an Agent Skills `SKILL.md` under [`skills/`](https://github.com/Vulnesis/strix-ai-coding-assistant/tree/main/skills), installed by [`vulnetix skills install`](/strix/get-started/install/#3-install-the-skills).
 
 A skill earns its place only if it needs **the repository**, needs **you**, or needs **a sequence** a model would not compose correctly alone. Fetching one record is none of those, so lookups are MCP tools and `vulnetix vdb` subcommands, not skills.
 
@@ -69,7 +69,7 @@ Each skill also names a model: `haiku` for `dashboard`, `sonnet` for the rest. A
 
 ## Rules every skill follows
 
-These come from the shared contract, [`skills/_lib/contract.md`](https://github.com/Vulnesis/pix-ai-coding-assistant/blob/main/skills/_lib/contract.md):
+These come from the shared contract, [`skills/_lib/contract.md`](https://github.com/Vulnesis/strix-ai-coding-assistant/blob/main/skills/_lib/contract.md):
 
 1. **MCP first, CLI otherwise.** If `vulnetix_*` tools are present, use them for data. Anything that touches the working tree uses the CLI even when MCP is there.
 2. **Install the CLI if it is missing**, with Homebrew, Scoop, Nix or the install script, then `vulnetix agent install`.

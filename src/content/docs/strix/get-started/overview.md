@@ -37,7 +37,7 @@ No credential is needed. The CLI falls back to the shared Community tier: reads 
 ## How the parts connect
 
 - The hooks and skills call the [Vulnesis CLI](/cli/) on your machine. The CLI is the only surface that reads your working tree, edits a manifest or runs without a credential. Dependency names and versions are sent to Vulnesis; source code is not.
-- A skill uses the MCP tools (`vulnetix_*`) when the agent has them, and the CLI otherwise. This rule is written once in [`skills/_lib/contract.md`](https://github.com/Vulnesis/pix-ai-coding-assistant/blob/main/skills/_lib/contract.md).
+- A skill uses the MCP tools (`vulnetix_*`) when the agent has them, and the CLI otherwise. This rule is written once in [`skills/_lib/contract.md`](https://github.com/Vulnesis/strix-ai-coding-assistant/blob/main/skills/_lib/contract.md).
 - State a skill or hook writes lives in `.vulnetix/` in the repository. See [Repository files](/strix/reference/repository-files/).
 - A Keleustes Sandbox runs [Belai](/software-factory/belai/install-and-sign-in/), the agent harness the Software Factory dispatches to. Its machine settings and installed items come from a [launch configuration](/keleustes/sandboxes/launch-configurations/); its outbound traffic goes through the [egress policy](/keleustes/sandboxes/egress/).
 - A Strix call drives the same factory by voice. The factory's own docs cover [what you can ask on a call](/software-factory/strix/calling-strix/) and [every voice tool](/software-factory/strix/voice-tools/).

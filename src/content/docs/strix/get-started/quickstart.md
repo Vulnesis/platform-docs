@@ -39,7 +39,7 @@ A second run prints `hooks    already configured`. Add `--dry-run` to see the ch
 vulnetix skills install
 ```
 
-`vulnetix pix install` does the same. It uses `npx skills add`, else the `claude` plugin commands, else `gh skills add`, whichever it finds first. In Claude Code you can instead run `/plugin marketplace add Vulnesis/pix-ai-coding-assistant` and `/plugin install vulnetix@vulnetix-plugins`, which also brings the hooks and the 5 subagents.
+`vulnetix pix install` does the same. It uses `npx skills add`, else the `claude` plugin commands, else `gh skills add`, whichever it finds first. In Claude Code you can instead run `/plugin marketplace add Vulnesis/strix-ai-coding-assistant` and `/plugin install vulnetix@vulnetix-plugins`, which also brings the hooks and the 5 subagents.
 
 ## 3. Check both are live
 
