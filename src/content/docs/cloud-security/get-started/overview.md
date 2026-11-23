@@ -10,7 +10,7 @@ updated: 04 Nov 2026
 
 Cloud security is for teams that run workloads in AWS and need findings that name the affected resource, not only the vulnerable package. It answers which ARN in which account is exposed to which CVE or fails which control, and checks Wiz claims from inside the account. Use it for the state of your resources. Use the [SIEM](/siem/) to collect, search and alert on the logs those resources produce.
 
-Cloud security connects your AWS accounts to Vulnesis. A small function, the **probe** (`vulnetix-security-reporter`), runs inside each account, enumerates its resources, and reports findings that name a resource ARN and the CVE or control it fails. The probe is the only thing that reads your account's data. Vulnesis assumes a role in the account to deploy and maintain it, and to start a sweep.
+Cloud security connects your AWS accounts to Vulnetix. A small function, the **probe** (`vulnetix-security-reporter`), runs inside each account, enumerates its resources, and reports findings that name a resource ARN and the CVE or control it fails. The probe is the only thing that reads your account's data. Vulnesis assumes a role in the account to deploy and maintain it, and to start a sweep.
 
 ## What you get
 

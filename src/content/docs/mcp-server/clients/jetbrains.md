@@ -42,7 +42,7 @@ Junie, JetBrains' separate agent, has its own MCP support. If it cannot add a re
 
 ## Check it
 
-Open the AI Assistant tool window in a mode that allows tools. The tools list includes Vulnesis.
+Open the AI Assistant tool window in a mode that allows tools. The tools list includes Vulnetix.
 
 ```text
 Do this project's Maven dependencies include anything in the CISA KEV catalogue?

@@ -38,7 +38,7 @@ Pin a release for reproducible pipelines (`--version v4.0.0`), take the newest r
 
 Set them from the platform's secret store. Do not run `vulnetix auth login` on a runner. `vulnetix auth verify` as the first command fails the job at once when they are missing or revoked. Details: [Authentication in CI/CD](/cli/authentication/ci-cd/).
 
-Without credentials, scans still run against the community tier, but nothing is stored in Vulnesis.
+Without credentials, scans still run against the community tier, but nothing is stored in Vulnetix.
 
 ## Which command
 

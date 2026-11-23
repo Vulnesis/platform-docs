@@ -14,7 +14,7 @@ To deploy the bootstrap stack with Terraform or OpenTofu instead, use the [`aws-
 
 ## Device authorization
 
-The flow is the OAuth device authorization grant (RFC 8628). Your browser never redirects back to Vulnesis.
+The flow is the OAuth device authorization grant (RFC 8628). Your browser never redirects back to Vulnetix.
 
 1. Vulnesis registers an OIDC client named `vulnetix-resolve` against your access portal and starts device authorization.
 2. You approve the user code on AWS's own page.

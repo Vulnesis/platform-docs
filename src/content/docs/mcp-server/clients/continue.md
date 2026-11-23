@@ -32,7 +32,7 @@ Continue spells the type `streamable-http` with a hyphen. The header sits under 
 
 ## Check it
 
-Switch the chat to Agent mode. MCP tools are not offered in Chat or Edit. The tools dropdown lists Vulnesis.
+Switch the chat to Agent mode. MCP tools are not offered in Chat or Edit. The tools dropdown lists Vulnetix.
 
 ```text
 Is there a version of lodash without known vulnerabilities?

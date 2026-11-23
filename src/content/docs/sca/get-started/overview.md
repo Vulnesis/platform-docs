@@ -1,7 +1,7 @@
 ---
 title: Software composition analysis
 nav: Overview
-description: What vulnetix sca finds, the commands in the SCA family, what runs locally and what is sent to Vulnesis.
+description: What vulnetix sca finds, the commands in the SCA family, what runs locally and what is sent to Vulnetix.
 order: 1
 sources: [cli/cmd/specialized_scans.go, cli/cmd/fix.go, cli/cmd/image.go, cli/cmd/license.go, cli/cmd/scan.go, cli/cmd/cli_sca.go, cli/cmd/quality_gate_enforce.go]
 checked: [cli@4c8c3b7]

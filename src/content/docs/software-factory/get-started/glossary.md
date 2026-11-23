@@ -6,7 +6,7 @@ checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
-**A2A.** Agent-to-agent messages between hosts, relayed by Vulnesis. The A2A blackout stops the relay. See [A2A messaging](/software-factory/workforce/a2a-messaging/).
+**A2A.** Agent-to-agent messages between hosts, relayed by Vulnetix. The A2A blackout stops the relay. See [A2A messaging](/software-factory/workforce/a2a-messaging/).
 
 **Agent.** A Belai profile: a model, a system prompt, tools and limits. Only worker-mode agents can be dispatched by the factory. See [Agents](/software-factory/workforce/agents/).
 

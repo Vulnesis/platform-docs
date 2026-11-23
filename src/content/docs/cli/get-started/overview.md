@@ -20,7 +20,7 @@ vulnetix auth login
 vulnetix scan
 ```
 
-Without signing in, VDB lookups use the shared community credential at community rate limits, and nothing is stored in Vulnesis. See [Credential methods](/cli/authentication/methods/#community-fallback).
+Without signing in, VDB lookups use the shared community credential at community rate limits, and nothing is stored in Vulnetix. See [Credential methods](/cli/authentication/methods/#community-fallback).
 
 ## Product map
 

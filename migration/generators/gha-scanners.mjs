@@ -101,7 +101,7 @@ if (/\{\{</.test(body)) {
 const fm = [
   '---',
   'title: "Third-party scanners"',
-  'description: "Every scanner vulnetix gha setup can add to a GitHub Actions workflow, the job it writes, and how each report reaches Vulnesis."',
+  'description: "Every scanner vulnetix gha setup can add to a GitHub Actions workflow, the job it writes, and how each report reaches Vulnetix."',
   'order: 3',
   'sources: ["cli/internal/ghasetup/catalog", "cli/internal/ghasetup/render.go", "cli/internal/ghasetup/ghasetupgen/main.go"]',
   `checked: ["cli@${sha}"]`,
