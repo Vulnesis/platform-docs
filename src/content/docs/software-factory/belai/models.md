@@ -28,9 +28,9 @@ From the command line: `belai -provider P -model M -effort E`.
 
 `ollama` and `llama-server` run models on your own machine, and any OpenAI-compatible server works as a custom provider. `/providers report` probes your local model servers and lists what they offer.
 
-## Built-in models in a Pix Sandbox
+## Built-in models in a Keleustes Sandbox
 
-In a Pix Sandbox, Pix Smart and Pix Fast are available as providers with no key. See [Built-in models](/software-factory/workforce/built-in-models/).
+In a Keleustes Sandbox, Strix Smart and Strix Fast are available as providers with no key. See [Built-in models](/software-factory/workforce/built-in-models/).
 
 ## Decision models
 

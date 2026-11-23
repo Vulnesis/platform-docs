@@ -16,7 +16,7 @@ Open the sidebar and choose **Sign in**, or open the extension's options page. T
 The device-code flow, the same one `vulnetix auth login` uses.
 
 1. Choose **Sign in with browser**. The extension calls `POST https://www.vulnes.is/api/site/v1/cli/device/authorize`.
-2. It shows a user code and **Open verification page**. Approve the code from a browser session that is already signed in to Vulnetix. The code can be copied, or entered at the shown address on another device.
+2. It shows a user code and **Open verification page**. Approve the code from a browser session that is already signed in to Vulnesis. The code can be copied, or entered at the shown address on another device.
 3. The sidebar or options page polls `POST .../cli/device/token` every 5 seconds (longer if the server asks it to slow down).
 4. On approval it stores the returned API key. The JWT in the response is discarded.
 

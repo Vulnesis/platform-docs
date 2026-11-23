@@ -15,7 +15,7 @@ Silence is the normal answer. `vulnetix agent hook` prints nothing when:
 |---|---|
 | The package satisfies your policy, which is nearly always | Expected. Try a package with a known advisory to see a warning. |
 | `enabled: false` in `.vulnetix/agent.yaml` | `grep enabled .vulnetix/agent.yaml` |
-| The command is not an install the guard recognises | See [recognised commands](/pix/hooks/dependency-guard/#commands-it-reads) |
+| The command is not an install the guard recognises | See [recognised commands](/strix/hooks/dependency-guard/#commands-it-reads) |
 | The edited file is not a manifest the CLI parses, or the edit does not parse yet | Only a parseable manifest is assessed |
 | The API was unreachable, the lookup timed out (12 seconds) or nothing is known about the package | No verdict is given on missing data |
 | The payload had no event name and no `--event` was passed | Run the test below |
@@ -47,7 +47,7 @@ Add the CLI's directory to the environment that starts the agent, then restart i
 
 ## `vulnetix agent: ... using defaults` on stderr
 
-`.vulnetix/agent.yaml` could not be read or parsed, so the hook is running on the default policy, not on what the file says. Fix the YAML. The top-level key must be `agent:`. See [Policy file](/pix/hooks/policy-file/).
+`.vulnetix/agent.yaml` could not be read or parsed, so the hook is running on the default policy, not on what the file says. Fix the YAML. The top-level key must be `agent:`. See [Policy file](/strix/hooks/policy-file/).
 
 ## The change guard says it stopped at its cap
 
@@ -88,7 +88,7 @@ head -5 .vulnetix/memory.yaml    # what wrote it last
 | First lines | Meaning |
 |---|---|
 | `version: "1"` | Written by the CLI (`vulnetix scan`, triage). This is the current format. |
-| `schema_version: 1` with `manifests:` or `vulnerabilities:` | Written by the `fix` skill in the older plugin format. The next `vulnetix scan` keeps only the CLI's keys; see [Repository files](/pix/reference/repository-files/#the-fix-skills-older-format). |
+| `schema_version: 1` with `manifests:` or `vulnerabilities:` | Written by the `fix` skill in the older plugin format. The next `vulnetix scan` keeps only the CLI's keys; see [Repository files](/strix/reference/repository-files/#the-fix-skills-older-format). |
 | No file | Nothing has written it yet. Run `vulnetix scan` to create it. |
 
 | Problem | Fix |

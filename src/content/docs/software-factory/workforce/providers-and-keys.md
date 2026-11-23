@@ -48,7 +48,7 @@ Provider keys never go into a settings file:
 
 ## Vault environment variables
 
-A Pix Sandbox can have environment variables from your Secrets Vault, for the commands agents run, such as a registry token. They are held so that **neither the agent nor the model ever sees a value**:
+A Keleustes Sandbox can have environment variables from your Secrets Vault, for the commands agents run, such as a registry token. They are held so that **neither the agent nor the model ever sees a value**:
 
 - Each session asks the vault for its host's variables every minute, and holds them in memory only, for a lease of up to 15 minutes.
 - A variable is set only on the child process of a tool call.

@@ -25,4 +25,4 @@ Configure it under `telemetry` in your settings:
 
 A header value of `env:NAME` is read from that environment variable, so a key is never written in settings. Belai also keeps a local trace of each turn for its own diagnostics, separate from what it exports.
 
-A Pix Sandbox can send its logs and metrics to your collector too. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+A Keleustes Sandbox can send its logs and metrics to your collector too. See [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).

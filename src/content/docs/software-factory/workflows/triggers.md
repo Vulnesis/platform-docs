@@ -93,7 +93,7 @@ A delivery that matches can still be stopped. Each stop is recorded as a `trigge
 | Reason | Why |
 |---|---|
 | `own_branch` | The head branch starts with the factory's own branch prefix (`forge.branch_prefix`, `belai/K-` by default). |
-| `own_identity` | The author or sender is the Vulnesis App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Pix [bot]` or `security@vulnes.is`. |
+| `own_identity` | The author or sender is the Vulnesis App's bot, `pix[bot]` or `pix-bot[bot]`, or the head commit is by `Vulnesis [bot]` or `security@vulnes.is`. |
 | `coalesced` | Another delivery in the same debounce window already started the run. |
 | `rate_limited` | The trigger hit `maxRunsPerHour`. |
 | `fanout_cap` | The delivery already started the most runs one delivery may start. |

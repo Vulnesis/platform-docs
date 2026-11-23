@@ -10,14 +10,18 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { vulnesisSurface } from './lib/brand.mjs';
 
 const root = new URL('..', import.meta.url).pathname;
 const { atoms, repos } = JSON.parse(readFileSync(join(root, 'inventory', 'atoms.json'), 'utf8'));
 const features = (await import(join(root, 'inventory', 'features.mjs'))).default;
 for (const ft of features) ft._re = ft.match.map((p) => new RegExp(p));
 
-// Feature pages are relative to the Software Factory segment of the site.
+// Feature pages are relative to the Software Factory segment of the site; a
+// page that starts with "/" is in another segment (inventory-check.mjs reads
+// them the same way).
 const docs = join(root, 'src', 'content', 'docs', 'software-factory');
+const fileOf = (page) => (page.startsWith('/') ? join(root, 'src', 'content', 'docs', `${page.slice(1)}.md`) : join(docs, `${page}.md`));
 const GENERATED = new Set(['reference/forge-capabilities', 'reference/settings', 'reference/validation-codes', 'reference/enums', 'reference/http-api', 'reference/console-routes', 'reference/templates', 'reference/voice-tools', 'belai/cli-reference', 'belai/tui-commands', 'belai/settings-file']);
 // The reference pages are the Software Factory's; atoms.json also records the
 // CLI, config-schemas and siem commits, which these pages are not built from.
@@ -30,12 +34,13 @@ const short = (repo) => checked.filter((c) => c.startsWith(`${repo}@`));
 function guideFor(a) {
   for (const ft of features) {
     if (GENERATED.has(ft.page)) continue;
-    if (ft._re.some((re) => re.test(a.id)) && existsSync(join(docs, `${ft.page}.md`))) return ft;
+    if (ft._re.some((re) => re.test(a.id)) && existsSync(fileOf(ft.page))) return ft;
   }
   return null;
 }
 // The segment's home page is served at /software-factory/, not at its path.
-const href = (page) => (page === 'get-started/overview' ? '/software-factory/' : `/software-factory/${page}/`);
+// A page in another segment is named from the site root.
+const href = (page) => (page.startsWith('/') ? `${page}/` : page === 'get-started/overview' ? '/software-factory/' : `/software-factory/${page}/`);
 // A link to a guide page, or plain text while that page is still to be written.
 const pageLink = (page, text) => (existsSync(join(docs, `${page}.md`)) ? `[${text}](${href(page)})` : text);
 const link = (ft) => (ft ? `[${ft.title}](${href(ft.page)})` : '');
@@ -64,15 +69,17 @@ function write(page, fm, body) {
 }
 
 // Descriptions are read from the code, where an example may name an internal
-// repository. Readers are customers, so the example names one of theirs.
+// repository. Readers are customers, so the example names one of theirs. The
+// code may also carry a retired product name, so the text is written as the
+// current surface (scripts/lib/brand.mjs).
 function customerWording(text) {
-  return text.replace(/plan mode on vdb-site/g, 'plan mode on the payments repository');
+  return vulnesisSurface(text.replace(/plan mode on vdb-site/g, 'plan mode on the payments repository'));
 }
 
 // ── Settings ────────────────────────────────────────────────────────────────
 {
   const sections = groupBy(by('setting'), (a) => (a.value.includes('.') ? a.value.split('.')[0] : 'other'));
-  let body = 'Factory settings are one revisioned document per tenant. Change them on the Resolve Platform\'s Factory settings page or with `PUT /v1/factory/settings`. Keys stored on **sandbox** belong to the Pix Sandbox and are edited here for convenience. A key marked **locked** cannot be changed.\n\n';
+  let body = 'Factory settings are one revisioned document per tenant. Change them on the Resolve Platform\'s Factory settings page or with `PUT /v1/factory/settings`. Keys stored on **sandbox** belong to the Keleustes Sandbox and are edited here for convenience. A key marked **locked** cannot be changed.\n\n';
   body += 'Sections: ' + Object.keys(sections).map((s) => `[${s}](#${s})`).join(' · ') + '\n';
   for (const [sec, rows] of Object.entries(sections)) {
     body += `\n## ${sec}\n\n| Key | Type and values | Default | Stored | Explained in |\n|---|---|---|---|---|\n`;
@@ -111,12 +118,12 @@ function customerWording(text) {
 {
   const routes = by('route').map((a) => ({ a, method: a.value.split(' ')[0], path: a.value.split(' ')[1] }));
   const groups = groupBy(routes, (r) => r.path.split('/').slice(0, 4).join('/').replace(/\{[^}]+\}/g, '{…}'));
-  let body = 'Every Software Factory, Belai and Pix route the API serves. Routes under `/v1/factory` and `/v1/belai` need a signed-in Resolve Platform session (or an API key) and act on the caller\'s tenant. Internal routes are called by schedulers and the Pix call worker with a signed header, not by people.\n';
+  let body = 'Every Software Factory, Belai and Strix route the API serves. Routes under `/v1/factory` and `/v1/belai` need a signed-in Resolve Platform session (or an API key) and act on the caller\'s tenant. Internal routes are called by schedulers and the Strix call worker with a signed header, not by people.\n';
   for (const [g, rows] of Object.entries(groups).sort(([a], [b]) => a.localeCompare(b))) {
     body += `\n## ${g}\n\n| Method | Path | Explained in |\n|---|---|---|\n`;
     for (const { a, method, path } of rows.sort((x, y) => x.path.localeCompare(y.path) || x.method.localeCompare(y.method))) body += `| ${method} | ${code(path)} | ${link(guideFor(a))} |\n`;
   }
-  write('reference/http-api', { title: 'HTTP API', description: `All ${routes.length} factory, Belai and Pix routes, grouped by resource, with the guide that explains each.`, order: 4, checked: short('vdb-site') }, body);
+  write('reference/http-api', { title: 'HTTP API', description: `All ${routes.length} factory, Belai and Strix routes, grouped by resource, with the guide that explains each.`, order: 4, checked: short('vdb-site') }, body);
 }
 
 // ── Console routes ─────────────────────────────────────────────────────────
@@ -139,9 +146,9 @@ function customerWording(text) {
 
 // ── Voice tools ────────────────────────────────────────────────────────────
 {
-  let body = 'The tools Pix can call during a voice call. Pix speaks only figures these tools return. Tools that start or stop work need you to confirm a read-back first; see ' + pageLink('pix/calling-pix', 'Calling Pix') + '.\n\n| Tool | What it does |\n|---|---|\n';
+  let body = 'The tools Strix can call during a voice call. Strix speaks only figures these tools return. Tools that start or stop work need you to confirm a read-back first; see ' + pageLink('strix/calling-strix', 'Calling Strix') + '.\n\n| Tool | What it does |\n|---|---|\n';
   for (const a of by('voice-tool')) body += `| <span id="${a.value}"></span>${code(a.value)} | ${cell(a.detail?.description)} |\n`;
-  write('reference/voice-tools', { title: 'Voice tools reference', description: `The ${by('voice-tool').length} tools Pix uses on a call, and what each one reads or does.`, order: 7, checked: short('website') }, body);
+  write('reference/voice-tools', { title: 'Voice tools reference', description: `The ${by('voice-tool').length} tools Strix uses on a call, and what each one reads or does.`, order: 7, checked: short('website') }, body);
 }
 
 // ── Belai CLI ──────────────────────────────────────────────────────────────

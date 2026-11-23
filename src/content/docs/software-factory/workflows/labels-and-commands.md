@@ -75,5 +75,5 @@ One delivery can match several triggers, for example a label that two workflows 
 
 Every run and event records the GitHub delivery id that caused it, so `GET /v1/factory/events/unanswered` can list deliveries that started nothing.
 
-> [!PIX] Labels by phone
-> You do not need a label to start work from your phone. On a call, ask Pix to start a session on a repository. Pix proposes it with `propose_session`, reads it back, and starts it with `start_session` when you say yes.
+> [!STRIX] Labels by phone
+> You do not need a label to start work from your phone. On a call, ask Strix to start a session on a repository. Strix proposes it with `propose_session`, reads it back, and starts it with `start_session` when you say yes.

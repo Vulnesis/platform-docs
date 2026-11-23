@@ -7,7 +7,7 @@ checked: [vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
-Sometimes a worker finishes a card but cannot publish it: the machine has no `gh`, no push credentials, GitHub is down, or a rate limit hit. Instead of failing, it hands the job to a **coordinator**. For a Pix Sandbox, the coordinator is the sandbox's own controller: it pushes the card's branch from the worker's git bundle with a GitHub App installation token, and finds or opens the draft pull request.
+Sometimes a worker finishes a card but cannot publish it: the machine has no `gh`, no push credentials, GitHub is down, or a rate limit hit. Instead of failing, it hands the job to a **coordinator**. For a Keleustes Sandbox, the coordinator is the sandbox's own controller: it pushes the card's branch from the worker's git bundle with a GitHub App installation token, and finds or opens the draft pull request.
 
 ```
 worker  ->  belai rc  ->  Vulnesis  ->  coordinator: push, open draft PR  ->  Vulnesis  ->  belai rc  ->  worker

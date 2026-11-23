@@ -35,7 +35,7 @@ All keys sit under `agent:`.
 | Key | Type | Default | Meaning |
 |---|---|---|---|
 | `enabled` | bool | `true` | `false` turns every hook off without uninstalling it. Each call returns nothing. |
-| `safeHarbourStrategy` | `safest`, `stable`, `latest`, `rolling` | `safest` | The target the dependency guard compares against. Case-insensitive; an unknown value falls back to `safest`. See [the Safe Harbour target](/pix/hooks/dependency-guard/#the-safe-harbour-target). |
+| `safeHarbourStrategy` | `safest`, `stable`, `latest`, `rolling` | `safest` | The target the dependency guard compares against. Case-insensitive; an unknown value falls back to `safest`. See [the Safe Harbour target](/strix/hooks/dependency-guard/#the-safe-harbour-target). |
 | `maxMajorBump` | int | `0` | How many major versions a recommended target may move. `0` never recommends a new major. A negative value reads as `0`. |
 | `cooldownDays` | int | `0` (off) | A version published fewer than this many days ago raises `cooldown`. A negative value reads as `0`. |
 | `dependencyGuard.block` | list of signals | `[malware, kev-critical]` | Signals that deny the tool call |
@@ -43,7 +43,7 @@ All keys sit under `agent:`.
 | `changeGuard.block` | list of signals | `[secret]` | Signals that deny a `git commit` or `git push` |
 | `changeGuard.warn` | list of signals | `[severity-high, kev-critical]` | Reported, not blocked. Only `secret` is evaluated by the change guard today. |
 
-Signals: `malware`, `kev-critical`, `malware-unresolved`, `severity-high`, `below-target`, `eol`, `unpinned`, `cooldown`, `secret`. What each means is on [Dependency guard](/pix/hooks/dependency-guard/#signals).
+Signals: `malware`, `kev-critical`, `malware-unresolved`, `severity-high`, `below-target`, `eol`, `unpinned`, `cooldown`, `secret`. What each means is on [Dependency guard](/strix/hooks/dependency-guard/#signals).
 
 A signal in neither list is silent. If a signal is in both, block wins.
 

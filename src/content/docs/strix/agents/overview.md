@@ -1,7 +1,7 @@
 ---
 title: Subagents
 nav: Overview
-description: The five Claude Code subagents in the Pix plugin, from bulk-triage to incident-responder, with their inputs, stages, outputs and limits.
+description: The five Claude Code subagents in the Strix plugin, from bulk-triage to incident-responder, with their inputs, stages, outputs and limits.
 order: 1
 sources: [pix-ai-coding-assistant/vulnetix/agents/bulk-triage.md, pix-ai-coding-assistant/vulnetix/agents/dep-upgrade-orchestrator.md, pix-ai-coding-assistant/vulnetix/agents/pr-security-reviewer.md, pix-ai-coding-assistant/vulnetix/agents/compliance-bundler.md, pix-ai-coding-assistant/vulnetix/agents/incident-responder.md]
 checked: [pix-ai-coding-assistant@7aebf02]
@@ -16,7 +16,7 @@ Claude Code picks a subagent from its description, or you name it: *use the bulk
 |---|---|---|---|
 | [`bulk-triage`](#bulk-triage) | Scores many vulnerabilities and groups them P1 to P4 | `sonnet`, medium, 15 | `.vulnetix/memory.yaml`, once |
 | [`dep-upgrade-orchestrator`](#dep-upgrade-orchestrator) | Upgrades every vulnerable dependency, manifest by manifest, verifying each | `sonnet`, high, 25 | `.vulnetix/upgrade/`, manifests |
-| [`pr-security-reviewer`](/pix/agents/pr-security-reviewer/) | Runs the scanners that apply to a pull request and writes one review | `sonnet`, medium, 18 | `.vulnetix/review/` |
+| [`pr-security-reviewer`](/strix/agents/pr-security-reviewer/) | Runs the scanners that apply to a pull request and writes one review | `sonnet`, medium, 18 | `.vulnetix/review/` |
 | [`compliance-bundler`](#compliance-bundler) | Builds an audit bundle: SBOM, licences, SARIF, VEX, checksums | `sonnet`, medium, 12 | `.vulnetix/compliance/<timestamp>/` |
 | [`incident-responder`](#incident-responder) | Runs the playbook for an actively exploited CVE | `sonnet`, high, 20 | `.vulnetix/detection/`, `.vulnetix/iocs/`, `.vulnetix/vex/` |
 

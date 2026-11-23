@@ -8,7 +8,7 @@ checked: [vdb-site@fe1ff17]
 updated: 03 Nov 2026
 ---
 
-Besides GitHub and schedules, four sources can start a run: the **Package Firewall**, the **AI Firewall**, **egress** from your Pix Sandboxes, and **Guardian**, the Vulnesis SIEM ([below](#guardian-fires)). Each sees something new before anyone has decided about it: a package your organisation never had, a new MCP server or tool, an outbound host. A firewall trigger lets a workflow research it and file a review ticket. The rule you write to allow or deny it closes the ticket.
+Besides GitHub and schedules, four sources can start a run: the **Package Firewall**, the **AI Firewall**, **egress** from your Keleustes Sandboxes, and **Guardian**, the Vulnesis SIEM ([below](#guardian-fires)). Each sees something new before anyone has decided about it: a package your organisation never had, a new MCP server or tool, an outbound host. A firewall trigger lets a workflow research it and file a review ticket. The rule you write to allow or deny it closes the ticket.
 
 The firewalls only publish what they saw, from writers they already run. Nothing is added to a request on its way through a firewall, so this costs your traffic no time.
 

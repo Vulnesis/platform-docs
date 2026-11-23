@@ -37,7 +37,7 @@ const SOFTWARE_FACTORY: Segment = {
       { id: 'workforce', title: 'Workforce' },
       { id: 'cost', title: 'Cost' },
       { id: 'evidence', title: 'Evidence' },
-      { id: 'pix', title: 'Pix calls' },
+      { id: 'strix', title: 'Strix calls' },
       { id: 'belai', title: 'Belai CLI and TUI' },
       { id: 'reference', title: 'Reference' },
     ],
@@ -46,11 +46,11 @@ const SOFTWARE_FACTORY: Segment = {
 // The home page lists the segments under these headings, in this order.
 export interface SegmentGroup { title: string; ids: string[] }
 export const GROUPS: SegmentGroup[] = [
-  { title: 'CLI, configuration as code and Software Factory', ids: ['cli', 'platform-iac', 'software-factory'] },
+  { title: 'CLI, configuration as code and Software Factory', ids: ['cli', 'platform-iac', 'software-factory', 'keleustes'] },
   { title: 'Scanners', ids: ['sca', 'sast', 'secrets', 'iac-scanning', 'malware'] },
   { title: 'SBOM, VEX and attestation', ids: ['sbom', 'vex', 'attestation', 'tea'] },
   { title: 'Firewalls and policy gates', ids: ['package-firewall', 'quality-gates', 'ai-firewall'] },
-  { title: 'Agents, editors and the browser', ids: ['pix', 'mcp-server', 'vscode', 'browser-extension'] },
+  { title: 'Agents, editors and the browser', ids: ['strix', 'mcp-server', 'vscode', 'browser-extension'] },
   { title: 'Findings, runtime and cloud', ids: ['vulnerability-management', 'virtual-patching', 'siem', 'cloud-security'] },
   { title: 'Compliance, your organization and the VDB API', ids: ['compliance', 'organization', 'vdb-api'] },
 ];

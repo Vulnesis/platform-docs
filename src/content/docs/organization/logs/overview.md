@@ -1,7 +1,7 @@
 ---
 title: Logs
 nav: Logs overview
-description: The Resolve Platform Logs page, with one stream per product such as API usage, Pix Sandbox and the firewalls, the shared time range, plan limits and the API.
+description: The Resolve Platform Logs page, one stream per product such as API usage, Keleustes Sandbox and the firewalls, the shared time range, plan limits and the API.
 order: 1
 sources: [website/src/pages/resolve/logs.vue, website/src/components/account-logs/logs-streams.ts, website/src/components/account-logs/ApiUsageStream.vue, website/src/components/account-logs/PackageFirewallStream.vue, website/src/components/account-logs/SandboxStream.vue, website/src/components/review/review-actions.ts, website/src/shared/plan-features.ts, vdb-site/docs/account-logs-and-billing.md]
 checked: [website@d56e8be1, vdb-site@8209415]
@@ -17,13 +17,13 @@ The stream bar at the top shows each stream's headline figure for the selected r
 | Stream | Address | What it shows | Read more |
 |---|---|---|---|
 | API usage (default) | `/resolve/logs` | Requests to the VDB API against the daily quota of each key: status split, the busiest key, the top routes with p95 latency, and the request log | [Rate limits](/vdb-api/api/rate-limits/) |
-| Pix Sandbox | `/resolve/logs#sandbox` | Compute: sessions, agents and session hours per sandbox, and CPU samples. Model calls made inside a session are in the AI Firewall stream | [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/) |
-| Pix calls | `/resolve/logs#calls` | Every call with Pix, what was said and what Pix did, and the conversations of the retired Pix chat | [Call history](/software-factory/pix/call-history/) |
+| Keleustes Sandbox | `/resolve/logs#sandbox` | Compute: sessions, agents and session hours per sandbox, and CPU samples. Model calls made inside a session are in the AI Firewall stream | [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/) |
+| Strix calls | `/resolve/logs#calls` | Every call with Strix, what was said and what Strix did, and the conversations of the retired Strix chat | [Call history](/software-factory/strix/call-history/) |
 | AI Firewall | `/resolve/logs#aifw` | Inference metadata while inference logging is on: decisions, the guardrails that blocked or redacted, providers and clients. Prompts and completions are never stored | [Inference logs](/ai-firewall/operations/logs/) |
 | Package Firewall | `/resolve/logs#package` | Every decision the proxy made: actions per ecosystem, the most blocked packages, and the decision log | [Decision log](/package-firewall/operations/decision-log/) |
-| Reviews | `/resolve/logs#reviews` | Who decided what, one card per kind: firewall decisions, new dependencies, triage, recast scores, suppression reviews and Pix call ratings | [Triage](/vulnerability-management/findings/triage/) |
+| Reviews | `/resolve/logs#reviews` | Who decided what, one card per kind: firewall decisions, new dependencies, triage, recast scores, suppression reviews and Strix call ratings | [Triage](/vulnerability-management/findings/triage/) |
 
-Older links keep working: `#pix` and `#assistant` open Pix calls, `#reviewers` opens Reviews, and `#audit` or any unknown hash opens API usage.
+Older links keep working: `#pix` and `#assistant` open Strix calls, `#reviewers` opens Reviews, and `#audit` or any unknown hash opens API usage.
 
 ## Time range
 
@@ -50,7 +50,7 @@ Each stream reads a stats route for its charts and a list route for its log. Eve
 | Stream | Charts | Log |
 |---|---|---|
 | API usage | `GET /v1/usage/stats` | `GET /v1/usage` |
-| Pix Sandbox | `GET /v1/belai/sandboxes/usage/stats` | `GET /v1/belai/sandboxes/usage` |
+| Keleustes Sandbox | `GET /v1/belai/sandboxes/usage/stats` | `GET /v1/belai/sandboxes/usage` |
 | AI Firewall | `GET /v1/ai-firewall/logs/stats` | `GET /v1/ai-firewall/logs` |
 | Package Firewall | `GET /v1/package-firewall/logs/stats` | `GET /v1/package-firewall/logs` |
 | Reviews | `GET /v1/review/audit/summary?kind=` | `GET /v1/review/audit?kind=` |

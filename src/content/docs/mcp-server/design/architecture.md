@@ -22,7 +22,7 @@ Cloudflare Worker (mcp.vulnes.is)
   |- tools        31, some composing several upstream calls
   |- resources    4 record templates (your credential), 1 skill-file template
   |- apps         3 ui:// views, no network origin allowed
-  |- prompts      18, generated from the Pix skills
+  |- prompts      18, generated from the Strix skills
   |- skills       the same 18, verbatim, with digests
   |- shaping      response reduction before serialisation
   '- inference    AI Gateway over HTTPS, Pro and above, optional

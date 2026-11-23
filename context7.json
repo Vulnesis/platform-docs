@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "Vulnesis",
-  "description": "User and reference documentation for every Vulnesis product: the vulnetix CLI and its scanners (SCA, SAST, secrets, IaC, malware), SBOM, VEX, attestation, Package Firewall, AI Firewall, quality gates, Platform IaC, Software Factory, Pix, the MCP server and the VDB API.",
+  "description": "User and reference documentation for every Vulnesis product: the vulnetix CLI and its scanners (SCA, SAST, secrets, IaC, malware), SBOM, VEX, attestation, Package Firewall, AI Firewall, quality gates, Platform IaC, Software Factory, Strix, the MCP server and the VDB API.",
   "folders": ["src/content/docs"],
   "excludeFolders": ["dist", "node_modules", "migration", "inventory", "redirects", "terraform", "scripts", "test", "public"],
   "rules": [

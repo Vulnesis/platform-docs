@@ -105,7 +105,7 @@ On Pro and above the list is filtered by the organisation's model policy, so a p
 
 ## Evaluate
 
-`POST /guardrails/{org}/v1/evaluate` applies the organisation's guardrails to an OpenAI Chat Completions request without forwarding it. It exists for inference the gateway cannot proxy, such as the Workers AI models a Pix sandbox calls; its log and inventory rows use the provider slug `workers-ai`. No provider or model policy runs.
+`POST /guardrails/{org}/v1/evaluate` applies the organisation's guardrails to an OpenAI Chat Completions request without forwarding it. It exists for inference the gateway cannot proxy, such as the Workers AI models a Keleustes sandbox calls; its log and inventory rows use the provider slug `workers-ai`. No provider or model policy runs.
 
 ```bash
 curl -s "https://guardrails.vulnes.is/guardrails/$VULNESIS_ORG_ID/v1/evaluate" \

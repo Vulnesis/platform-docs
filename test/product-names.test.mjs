@@ -31,8 +31,15 @@ export const prose = (text) => text
   .replace(/`[^`\n]*`/g, '')
   .replace(/\]\([^)]*\)/g, ']');
 
-const hitsIn = (rel, text) => prose(text).split('\n').flatMap((line, i) =>
-  BANNED.test(line) ? [`${rel}: ${line.trim().slice(0, 120)}`] : []);
+// Names retired when the assistant became Strix and its hosted machines became
+// Keleustes Sandboxes: "Pix", "Pix Sandbox", "Pix Registry", "Pix [bot]" and
+// "PixCommander". Identifiers keep the old spelling (`pix_sandbox`, `pix-smart`,
+// `/v1/pix-call`, `PIX_*`, `ghcr.io/vulnesis/pix-sandbox`, the `pix:` YAML key,
+// `vulnetix pix`), and they are written as code, which prose() drops.
+const RETIRED = /\bPix(?:Commander)?\b/;
+
+const hitsIn = (rel, text, banned = BANNED) => prose(text).split('\n').flatMap((line) =>
+  banned.test(line) ? [`${rel}: ${line.trim().slice(0, 120)}`] : []);
 
 test('pages call the signed-in product the Resolve Platform, not the console', () => {
   const hits = [];
@@ -45,6 +52,27 @@ test('pages call the signed-in product the Resolve Platform, not the console', (
   }
   for (const rel of GENERATORS) hits.push(...hitsIn(rel, readFileSync(join(ROOT, rel), 'utf8')));
   assert.deepEqual(hits, [], `write "the Resolve Platform":\n${hits.join('\n')}`);
+});
+
+test('pages say Strix, Keleustes Sandbox and Registry, not the retired Pix names', () => {
+  const hits = [];
+  for (const file of walk(join(ROOT, 'src/content/docs'))) {
+    const rel = relative(ROOT, file);
+    if (!/\.(md|mdx)$/.test(rel) || SKIP.some((r) => r.test(rel))) continue;
+    hits.push(...hitsIn(rel, readFileSync(file, 'utf8'), RETIRED));
+  }
+  for (const file of walk(join(ROOT, 'src/segments'))) hits.push(...hitsIn(relative(ROOT, file), readFileSync(file, 'utf8'), RETIRED));
+  for (const rel of GENERATORS) hits.push(...hitsIn(rel, readFileSync(join(ROOT, rel), 'utf8'), RETIRED));
+  assert.deepEqual(hits, [], `write "Strix", "Keleustes Sandbox", "Registry" or "StrixCommander":\n${hits.join('\n')}`);
+});
+
+test('the retired-name guard allows identifiers written as code, and catches prose', () => {
+  for (const s of ['Ask Pix on a call.', 'A Pix Sandbox is online all month.', 'PixCommander picks the model.', 'Publish to the Pix Registry.', 'Commits are made by Pix [bot].']) {
+    assert.ok(RETIRED.test(prose(s)), s);
+  }
+  for (const s of ['The `pix.size` key and `PixLaunchConfig`.', 'Routes under `/v1/pix-call` and `/v1/admin/pix-sandboxes`.', 'The image is `ghcr.io/vulnesis/pix-sandbox`.', 'Set `PIX_SANDBOX_ID`, or run `vulnetix pix`.', 'See [the plugin](https://github.com/Vulnesis/pix-ai-coding-assistant).', 'Strix runs pix-smart and pix-fast.']) {
+    assert.ok(!RETIRED.test(prose(s)), s);
+  }
 });
 
 test('the guard allows routes, code and API names, and catches prose', () => {

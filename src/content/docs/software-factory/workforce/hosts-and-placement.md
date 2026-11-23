@@ -11,12 +11,12 @@ A **host** is a machine running Belai in remote control mode (`belai rc`). It ke
 
 | Kind | Is |
 |---|---|
-| Pix Sandbox | A container Vulnesis runs for you. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/). |
+| Keleustes Sandbox | A container Vulnesis runs for you. See [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/). |
 | Self-hosted | Your own machine running `belai rc`. See [Remote control](/software-factory/workforce/remote-control/). |
 
-How many self-hosted hosts you can run depends on the plan. Community includes one, free; a second one is refused with `"code": "host_limit"` while the first is active (seen in the last 45 seconds). Pro, Business and Enterprise enrol any number. Pix Sandboxes never count against the limit. See [Who can use it](/software-factory/#who-can-use-it).
+How many self-hosted hosts you can run depends on the plan. Community includes one, free; a second one is refused with `"code": "host_limit"` while the first is active (seen in the last 45 seconds). Pro, Business and Enterprise enrol any number. Keleustes Sandboxes never count against the limit. See [Who can use it](/software-factory/#who-can-use-it).
 
-The Pix Sandboxes page (`/resolve/belai-hosts`) lists both, with each host's status, workers, sessions and version.
+The Keleustes Sandboxes page (`/resolve/belai-hosts`) lists both, with each host's status, workers, sessions and version.
 
 ## Placement
 
@@ -30,7 +30,7 @@ A crew step says where it may run with `runOn`, and the tenant sets a default:
 | `runOn` | Means |
 |---|---|
 | `auto` | Any online host that offers the agent or crew and has the repository, or can clone it |
-| `pix_sandbox` | Only a Pix Sandbox |
+| `pix_sandbox` | Only a Keleustes Sandbox |
 | `self_hosted` | Only your own machines |
 | `host:<uuid>` | Exactly that host |
 | `label:<name>` | The host whose hostname, or whose sandbox name, is `<name>`. Name a sandbox by its sandbox name: every sandbox's hostname is the same. |
@@ -46,7 +46,7 @@ Only the hosts of the run's principal: the workflow's author, or for a default w
 
 ### Eligible and ranked
 
-A host is eligible when it advertises the agent or crew, and either offers a directory whose git remote is the run's repository, or is a self-hosted machine that can clone it (`agents.clone`, on by default) and the GitHub App can read the repository. Pix Sandboxes never clone; they work on the repositories you added.
+A host is eligible when it advertises the agent or crew, and either offers a directory whose git remote is the run's repository, or is a self-hosted machine that can clone it (`agents.clone`, on by default) and the GitHub App can read the repository. Keleustes Sandboxes never clone; they work on the repositories you added.
 
 Eligible hosts are tried in this order:
 
@@ -55,7 +55,7 @@ Eligible hosts are tried in this order:
 3. Then the most free worker slots
 4. Then the most recently seen
 
-A full host stays in the list, last in its class. A Pix Sandbox draining for an update in its maintenance window is skipped.
+A full host stays in the list, last in its class. A Keleustes Sandbox draining for an update in its maintenance window is skipped.
 
 When no host can take a step, see [Waiting for a machine](/software-factory/runs/waiting-for-a-machine/).
 
@@ -75,7 +75,7 @@ Every host you have, with its state for a step on that repository, eligible host
 | `no_profile` | Does not offer the agent or crew |
 | `offline` | Not running |
 | `full` | No free worker slots |
-| `draining` | A Pix Sandbox draining for an update in its maintenance window: online, but takes no new step |
+| `draining` | A Keleustes Sandbox draining for an update in its maintenance window: online, but takes no new step |
 
 ## Workers on a host
 

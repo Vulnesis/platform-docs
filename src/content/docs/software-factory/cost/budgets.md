@@ -1,13 +1,13 @@
 ---
 title: Budgets
-description: How factory budgets nest from the Pix allowance down to a single step, what happens at a limit, alerts, per-card agent limits, and the Budgets page.
+description: How factory budgets nest from the Strix allowance down to a single step, what happens at a limit, alerts, per-card agent limits, and the Budgets page.
 order: 1
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_budgets.go, vdb-site/api/internal/handler/factory_engine_budget.go, vdb-site/api/internal/handler/factory_agent_budget.go, website/src/shared/factory-settings.ts]
 checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-Budgets limit what the factory spends. They nest, and **the tightest one wins**: a step's budget inside its run's, inside its workflow's, inside the tenant's month, all inside your plan's Pix allowance. The engine checks before every model call and every step, and records what it spent in a ledger.
+Budgets limit what the factory spends. They nest, and **the tightest one wins**: a step's budget inside its run's, inside its workflow's, inside the tenant's month, all inside your plan's Strix allowance. The engine checks before every model call and every step, and records what it spent in a ledger.
 
 The Budgets page (`/resolve/factory-budgets`) shows the tiers as nested bars, every budget, model routing, providers and usage.
 
@@ -17,7 +17,7 @@ The Budgets page (`/resolve/factory-budgets`) shows the tiers as nested bars, ev
 
 | Tier | Limit |
 |---|---|
-| Pix allowance | The tokens your plan includes this month, and when they reset |
+| Strix allowance | The tokens your plan includes this month, and when they reset |
 | Factory share | The part of the allowance the factory may use, `budget.factory_share` (75% by default). The rest is left for interactive sessions. |
 | Workflow | A workflow's month budget, and its per-run budget |
 | Run | One run |
@@ -44,7 +44,7 @@ A repository's **monthly token cap**, set on the Repos page, shows here as a `re
 |---|---|
 | `pause_run` | The run is parked as `paused` until someone resumes it or the budget changes. |
 | `downgrade_to_fast` | The rest of the run uses the fast model route. |
-| `switch_to_pix_allocation` | The rest of the run uses the Pix allocation instead of your own key. |
+| `switch_to_pix_allocation` | The rest of the run uses the Strix allocation instead of your own key. |
 | `escalate_human` | An approval of kind `budget` is created. |
 | `hard_stop` | The step fails, and so the run, with no retry. |
 | `alert_only` | A `budget` event is emitted and the run continues. |
@@ -56,7 +56,7 @@ Every budget write is audited and emits a `budget` event. Alerts fire as events 
 | Setting | Default | Effect |
 |---|---|---|
 | `budget.month` | 30,000,000 tokens | The tenant's monthly factory budget, all providers |
-| `budget.factory_share` | 75 | The percentage of the Pix allowance the factory may use |
+| `budget.factory_share` | 75 | The percentage of the Strix allowance the factory may use |
 | `budget.on_exceed` | `switch_to_pix_allocation` | The action when `budget.month` is reached: `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human` or `hard_stop` |
 | `budget.alerts` | `[50, 80, 100]` | Alert thresholds, ascending |
 

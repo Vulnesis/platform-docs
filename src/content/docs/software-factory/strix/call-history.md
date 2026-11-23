@@ -1,7 +1,7 @@
 ---
 title: Call history, memory and review
 nav: Call history
-description: What is kept from a call and what never is, the call archive, rating a call and calling about it again, and the notes Pix keeps between calls.
+description: What is kept from a call and what never is, the call archive, rating a call and calling about it again, and the notes Strix keeps between calls.
 order: 3
 sources: [website/.repo/pix-call.md, vdb-site/docs/pix-call-history.md, vdb-site/api/internal/handler/pix_call_history.go, vdb-site/api/internal/handler/pix_call_memory.go, vdb-site/api/internal/handler/pix_call_review.go]
 checked: [vdb-site@284f1d6, website@a31d470]
@@ -16,18 +16,18 @@ What was said on a call, and the cards the page showed (actions, tables, read-ba
 
 ## The archive
 
-Past calls are in **Logs › Pix calls**, and in the call page's **Past calls** chip. Both list calls, newest first, with search and a date range. Older Pix chats from the retired chat drawer are listed too, marked as such.
+Past calls are in **Logs › Strix calls**, and in the call page's **Past calls** chip. Both list calls, newest first, with search and a date range. Older Strix chats from the retired chat drawer are listed too, marked as such.
 
-Each past call has **Call Pix**, which starts a new call about it: Pix knows what was said and can pick up where it left off.
+Each past call has **Call Strix**, which starts a new call about it: Strix knows what was said and can pick up where it left off.
 
-You can give a thumbs up or down on each of Pix's replies; a thumbs down offers an optional note.
+You can give a thumbs up or down on each of Strix's replies; a thumbs down offers an optional note.
 
 ## Memory
 
-Pix keeps notes between calls only when you ask, or when you state a lasting preference: "remember that I always want plan mode on the payments repository". It can search them and delete one when you ask, saying which note first. The 15 most recent notes go into each call. Notes never hold anything Pix overheard; only what you asked it to keep or told it as a standing preference.
+Strix keeps notes between calls only when you ask, or when you state a lasting preference: "remember that I always want plan mode on the payments repository". It can search them and delete one when you ask, saying which note first. The 15 most recent notes go into each call. Notes never hold anything Strix overheard; only what you asked it to keep or told it as a standing preference.
 
-> [!WHY] Why Pix remembers only on request
-> A call often includes things you would not want repeated next week. Keeping only what you ask for means you always know what Pix knows.
+> [!WHY] Why Strix remembers only on request
+> A call often includes things you would not want repeated next week. Keeping only what you ask for means you always know what Strix knows.
 
 ## Every call is a record
 

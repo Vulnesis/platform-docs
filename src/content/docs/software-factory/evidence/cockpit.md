@@ -65,7 +65,7 @@ Where the cockpit counts repositories, it counts them by signal: `app`, `scanned
 | Health | Host health over time |
 | Delivery | What the factory delivered. See [Delivery](/software-factory/evidence/delivery/). |
 
-> [!PIX] The cockpit by phone
+> [!STRIX] The cockpit by phone
 > "How's the factory doing?" gets the same headline figures from `factory_stats`, and "what needs me?" reads Needs you with `needs_attention`.
 
 ## API

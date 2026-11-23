@@ -33,7 +33,7 @@ The Checkpoints page (`/resolve/factory-checkpoints`) is one queue of everything
 
 A pull request or issue linked to a card is shown as one row for the card, with the pull request or issue folded in. A row that is several kinds at once shows its most urgent kind, in this order: `approval`, `question`, `firewall_review`, `deploy_gate`, `card_held`, `card_blocked`, `card_confirm`, `pr_ready`, `pr_draft`, `issue_external`, `claim_lapsed`, `host_offline`. Within a kind, the newest rows come first.
 
-It covers the repositories your GitHub App installations reach, those attached to your Pix Sandboxes, and those your boards are bound to.
+It covers the repositories your GitHub App installations reach, those attached to your Keleustes Sandboxes, and those your boards are bound to.
 
 ## Filtering
 
@@ -43,7 +43,7 @@ The kind filter shows each kind that has rows, with counts. You can also filter 
 
 | Row | Actions |
 |---|---|
-| Pull request | Mark ready, convert to draft, update branch, request reviewers. Up to 50 at once from the bulk bar. Start a session on it in the Pix Sandbox that has the repository. |
+| Pull request | Mark ready, convert to draft, update branch, request reviewers. Up to 50 at once from the bulk bar. Start a session on it in the Keleustes Sandbox that has the repository. |
 | Conflicting pull request | **Resolve conflicts** files a [merge conflict](/software-factory/decisions/merge-conflicts/) card, or opens the one already filed. The inspector shows its attempts. |
 | Card | Unblock (moves it to backlog with a note), Approve, Reject (blocks it with your reason), open it on the board |
 | Issue | Open on GitHub, or **File a card** for it and link the two |
@@ -57,8 +57,8 @@ The page reloads when the event stream reports card, GitHub or approval events.
 
 The cockpit shows the head of the queue, plus merge conflicts and any signing keys that dropped off GitHub. Its footer links here with the kinds it showed.
 
-> [!PIX] What is waiting, by phone
-> Ask Pix "what needs me?". It reads this queue with `needs_attention` and the oldest items with `oldest_checkpoints`, and can answer an agent's question for you with `answer_agent_question`.
+> [!STRIX] What is waiting, by phone
+> Ask Strix "what needs me?". It reads this queue with `needs_attention` and the oldest items with `oldest_checkpoints`, and can answer an agent's question for you with `answer_agent_question`.
 
 ## API
 

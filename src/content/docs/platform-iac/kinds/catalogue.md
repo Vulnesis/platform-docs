@@ -37,7 +37,7 @@ Secrets the organization keeps for its other settings.
 
 | Kind | Objects | Status | Terraform | What it declares |
 |---|---|---|---|---|
-| [`VaultEntry`](/platform-iac/kinds/vault-entry/) | many | Served | `vulnetix_vault_entry` | One secret in the tenant's vault: an AI provider key, an environment variable for Pix sandboxes and Belai hosts, or a provider management key. |
+| [`VaultEntry`](/platform-iac/kinds/vault-entry/) | many | Served | `vulnetix_vault_entry` | One secret in the tenant's vault: an AI provider key, an environment variable for Keleustes sandboxes and Belai hosts, or a provider management key. |
 
 ## Integrations
 
@@ -151,14 +151,14 @@ Belai agents, crews and library items.
 | [`Crew`](/platform-iac/kinds/crew/) | many | Served | `vulnetix_crew` | A crew of the organisation's Belai library: a named set of worker agents a host runs together. |
 | [`LibraryItem`](/platform-iac/kinds/library-item/) | many | Served | `vulnetix_library_item` | One item of the organisation's Belai library that is not an agent or a crew: a skill (an Agent Skills SKILL.md), prompt, command, process, MCP server, repo, budget set. |
 
-## Pix
+## Keleustes Sandboxes
 
-Pix sandbox launch settings and egress.
+Launch settings and egress for Keleustes Sandboxes.
 
 | Kind | Objects | Status | Terraform | What it declares |
 |---|---|---|---|---|
-| [`SandboxLaunchProfile`](/platform-iac/kinds/sandbox-launch-profile/) | many | Served | `vulnetix_sandbox_launch_profile` | The launch configuration of one Pix sandbox: what the next launch or relaunch of the sandbox installs and how Belai runs on it. |
-| [`SandboxEgressPolicy`](/platform-iac/kinds/sandbox-egress-policy/) | many | Served | `vulnetix_sandbox_egress_policy` | The outbound network policy of one Pix sandbox: its egress mode and the hostnames allowed or denied, the same two things the console's egress page sets. |
+| [`SandboxLaunchProfile`](/platform-iac/kinds/sandbox-launch-profile/) | many | Served | `vulnetix_sandbox_launch_profile` | The launch configuration of one Keleustes sandbox: what the next launch or relaunch of the sandbox installs and how Belai runs on it. |
+| [`SandboxEgressPolicy`](/platform-iac/kinds/sandbox-egress-policy/) | many | Served | `vulnetix_sandbox_egress_policy` | The outbound network policy of one Keleustes sandbox: its egress mode and the hostnames allowed or denied, the same two things the console's egress page sets. |
 
 ## TEA
 

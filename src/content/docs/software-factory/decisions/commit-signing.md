@@ -12,7 +12,7 @@ Three kinds of commit come out of the factory, and each is signed differently:
 | Who commits | Signed by | GitHub shows |
 |---|---|---|
 | You, from a factory page (the conflict editor, a resolution you commit by hand) | Your own key, held in AWS KMS | Verified, as you |
-| An agent in a Pix Sandbox | Pix's sandbox key, as `Pix [bot]` | Verified, as `Pix [bot]` |
+| An agent in a Keleustes Sandbox | Strix's sandbox key, as `Vulnesis [bot]` | Verified, as `Vulnesis [bot]` |
 | The Vulnesis GitHub App on its own | GitHub, as the App | Verified, as the App |
 
 Agents never use a person's key.
@@ -78,4 +78,4 @@ A signing key that drops off GitHub shows in the cockpit's Needs you list.
 ## Related
 
 - [Merge conflicts](/software-factory/decisions/merge-conflicts/) for the conflict editor.
-- [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/) for agent signing.
+- [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/) for agent signing.

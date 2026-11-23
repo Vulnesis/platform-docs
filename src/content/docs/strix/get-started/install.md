@@ -1,14 +1,14 @@
 ---
 title: Install, update and verify
 nav: Install
-description: Wire the Pix hooks with vulnetix agent install, install the skills with vulnetix skills install or the Claude Code marketplace, and check each surface is live.
+description: Wire the Strix hooks with vulnetix agent install, install the skills with vulnetix skills install or the Claude Code marketplace, and check each one is live.
 order: 2
 sources: [cli/cmd/agent.go, cli/internal/agent/hosts.go, cli/internal/agent/install.go, cli/cmd/skills.go, cli/cmd/skills_prune.go, pix-ai-coding-assistant/.claude-plugin/marketplace.json, pix-ai-coding-assistant/vulnetix/hooks/hooks.json, pix-ai-coding-assistant/skills/_lib/contract.md]
 checked: [cli@4c8c3b7, pix-ai-coding-assistant@7aebf02]
 updated: 02 Nov 2026
 ---
 
-Pix has three install surfaces, and each is a separate step:
+Strix has three install surfaces, and each is a separate step:
 
 | Surface | Installed by | Reaches |
 |---|---|---|
@@ -48,9 +48,9 @@ Each host gets one entry per event, all running the same command, `vulnetix agen
 
 | Event | Matcher | Answers |
 |---|---|---|
-| `PreToolUse` | `Bash\|Edit\|Write\|MultiEdit` (Codex: `*`) | [Dependency guard](/pix/hooks/dependency-guard/), [change guard](/pix/hooks/change-guard/) |
-| `SessionStart` | none | [Session context](/pix/hooks/session-context/) |
-| `UserPromptSubmit` | none | [Session context](/pix/hooks/session-context/) |
+| `PreToolUse` | `Bash\|Edit\|Write\|MultiEdit` (Codex: `*`) | [Dependency guard](/strix/hooks/dependency-guard/), [change guard](/strix/hooks/change-guard/) |
+| `SessionStart` | none | [Session context](/strix/hooks/session-context/) |
+| `UserPromptSubmit` | none | [Session context](/strix/hooks/session-context/) |
 
 The entry is recognised by its command, so a re-run replaces this CLI's entry in place and never touches your other hooks. The Claude Code plugin ships the same three entries in `vulnetix/hooks/hooks.json`, so a marketplace install has the hooks without running `agent install`.
 
@@ -142,7 +142,7 @@ Prune reads `~/.agents/.skill-lock.json` and only touches entries the lock attri
 | Hosts and surfaces | `vulnetix agent hosts` | `INSTALLED yes` for your agent, `HOOKS yes` for Claude Code and Codex |
 | Hooks wired | `vulnetix agent install --dry-run` | `hooks    already configured` |
 | Skills present | `vulnetix skills check` | The Vulnesis skills in each directory, and any missing or retired ones |
-| Hook answers | `echo '{"hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":"npm i left-pad"},"cwd":"'"$PWD"'"}' \| vulnetix agent hook` | Usually nothing: silence is a pass. See [Hooks](/pix/hooks/overview/). |
+| Hook answers | `echo '{"hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":"npm i left-pad"},"cwd":"'"$PWD"'"}' \| vulnetix agent hook` | Usually nothing: silence is a pass. See [Hooks](/strix/hooks/overview/). |
 
 In Claude Code, `/hooks` lists three `vulnetix agent hook` entries (`PreToolUse`, `SessionStart`, `UserPromptSubmit`) and `/plugin` lists `vulnetix` as enabled.
 

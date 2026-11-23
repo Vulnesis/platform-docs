@@ -13,7 +13,7 @@ updated: 04 Nov 2026
 | Field | What the CLI writes |
 |---|---|
 | `metadata.tools.components` | The command that wrote it, at the CLI version: `vulnetix-cdx`, `vulnetix-cbom`, `vulnetix-aibom`, `vulnetix-vex`, `vulnetix-bom-import`, `vulnetix-bom-enrich` |
-| `metadata.manufacturer` | The organisation that ran the scan, not Vulnetix. Omitted when nothing resolves it. |
+| `metadata.manufacturer` | The organisation that ran the scan, not Vulnesis. Omitted when nothing resolves it. |
 | `metadata.authors`, `metadata.supplier` | Only what you state. VEX documents from `triage` and `jail` name `Vulnesis` as the author. |
 | `metadata.lifecycles` | The phases the data was captured at |
 

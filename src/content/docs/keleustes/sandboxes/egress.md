@@ -1,13 +1,13 @@
 ---
 title: Egress policy
-description: How a Pix Sandbox decides each outbound request by hostname, the two modes, allow and deny rules with *. wildcards, rule order, and the hosts you cannot deny.
-order: 3
+description: How a Keleustes Sandbox decides each outbound request by hostname, the two modes, allow and deny rules with *. wildcards, rule order and hosts you cannot deny.
+order: 4
 sources: [website/sandbox-worker/src/egress.ts, website/sandbox-worker/src/gateways.ts, website/sandbox-worker/src/sandbox.ts, website/sandbox-worker/src/launch.ts, website/sandbox-worker/src/nix-extension.ts, website/sandbox-worker/src/db.ts, website/src/components/belai/BelaiSandboxEgress.vue, vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_prefs.go, vdb-site/api/internal/handler/factory_sightings.go, vdb-site/api/internal/handler/factory_settings_store.go, saas/prisma/models/pix-sandbox.prisma, saas/prisma/migrations/20261007000001_add_pix_sandboxes/migration.sql]
 checked: [website@ad775f3, vdb-site@1a06d67, saas@50cedf3]
 updated: 02 Nov 2026
 ---
 
-A Pix Sandbox's container starts with the internet off. Every HTTP and HTTPS request a process makes is intercepted and handed to the sandbox Worker's egress gateway, which reads **the hostname and nothing else**, decides, counts the request, and forwards it unchanged or refuses it. Headers and bodies are never read, except on the two model hosts the Worker answers itself (`api.typesafe.ai` for Jev and `api.cloudflare.com` for Workers AI). With no route out, other protocols and ports do not leave the container.
+A Keleustes Sandbox's container starts with the internet off. Every HTTP and HTTPS request a process makes is intercepted and handed to the sandbox Worker's egress gateway, which reads **the hostname and nothing else**, decides, counts the request, and forwards it unchanged or refuses it. Headers and bodies are never read, except on the two model hosts the Worker answers itself (`api.typesafe.ai` for Jev and `api.cloudflare.com` for Workers AI). With no route out, other protocols and ports do not leave the container.
 
 ## Modes
 
@@ -19,7 +19,7 @@ A Pix Sandbox's container starts with the internet off. Every HTTP and HTTPS req
 The mode is the sandbox draft's `egressMode`, or the product default when the draft has none. The product default is seeded as `allow_all_logged`; the sandbox's Egress tab shows the mode in force as "allow all, logged", "deny everything except allowed hosts" or "product default".
 
 > [!CAREFUL] The Software Factory setting `pix.egressMode` does not set this today
-> Settings lists `pix.egressMode` with a default of `deny_except_allow`, but sandbox settings are only kept in the settings document and reported as pending; the factory writes through only its own store. A sandbox follows its launch draft, then the product default, `allow_all_logged`. To deny by default, set **Egress** on the sandbox's Launch tab (or `machine.egress_mode` in a [launch configuration](/pix/sandboxes/launch-configurations/)) and relaunch.
+> Settings lists `pix.egressMode` with a default of `deny_except_allow`, but sandbox settings are only kept in the settings document and reported as pending; the factory writes through only its own store. A sandbox follows its launch draft, then the product default, `allow_all_logged`. To deny by default, set **Egress** on the sandbox's Launch tab (or `machine.egress_mode` in a [launch configuration](/keleustes/sandboxes/launch-configurations/)) and relaunch.
 
 ## How a request is decided
 

@@ -1,21 +1,22 @@
 ---
-title: Pix Sandboxes
+title: Keleustes Sandboxes
 nav: Overview
-description: What a Pix Sandbox is, the launch draft every relaunch builds from, how its fields override the product defaults, and the routes that read and write it.
+description: What a Keleustes Sandbox is, the launch draft every relaunch builds from, how its fields override the product defaults, and the routes that read and write it.
 order: 1
 sources: [vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_prefs.go, vdb-site/api/internal/handler/pix_sandbox_extensions.go, vdb-site/api/internal/handler/pix_sandbox_version_policy.go, vdb-site/api/internal/handler/pix_sandbox_provisioning.go, vdb-site/api/main.go, saas/prisma/models/pix-sandbox.prisma, website/sandbox-worker/src/launch.ts, website/sandbox-worker/src/packs.ts, website/src/pages/resolve/belai-hosts.vue]
 checked: [vdb-site@1a06d67, saas@50cedf3, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-A Pix Sandbox is a Cloudflare container Vulnesis runs for you, one per purchase, running `belai rc` with your repositories cloned. It registers as a [Belai host](/software-factory/workforce/hosts-and-placement/) under the sandbox's own id and is online all month. Sizes, prices, repositories, Safe Harbour, maintenance windows, wakes and telemetry are on the factory's [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/) page. This section covers what a sandbox is built from and what it may reach.
+A Keleustes Sandbox is a Cloudflare container Vulnesis runs for you, one per purchase, running `belai rc` with your repositories cloned. It registers as a [Belai host](/software-factory/workforce/hosts-and-placement/) under the sandbox's own id and is online all month. Keleustes Sandboxes are the hosted side of Keleustes: Vulnesis runs the machine, and the Software Factory dispatches work to it. This page covers what a sandbox is built from.
 
 | Page | Covers |
 |---|---|
-| [Launch configurations](/pix/sandboxes/launch-configurations/) | The `launch` library item: a versioned, reusable set of items and machine settings to put on a sandbox or a host |
-| [Egress policy](/pix/sandboxes/egress/) | The egress mode, the per-host allow and deny list with `*.` wildcards, and how each request is decided |
+| [Managing sandboxes](/keleustes/sandboxes/managing-sandboxes/) | Sizes and prices, repositories, Safe Harbour version policy, maintenance windows, wakes, telemetry and usage |
+| [Launch configurations](/keleustes/sandboxes/launch-configurations/) | The `launch` library item: a versioned, reusable set of items and machine settings to put on a sandbox or a host |
+| [Egress policy](/keleustes/sandboxes/egress/) | The egress mode, the per-host allow and deny list with `*.` wildcards, and how each request is decided |
 
-In the Resolve Platform: **Hosts** (`/resolve/belai-hosts`), tab **Pix Sandboxes** (the default) for a sandbox's Launch, Repositories and Egress tabs, and tab **Launch configs** (`?tab=launch`) for launch configurations.
+In the Resolve Platform: **Hosts** (`/resolve/belai-hosts`), tab **Keleustes Sandboxes** (the default) for a sandbox's Launch, Repositories and Egress tabs, and tab **Launch configs** (`?tab=launch`) for launch configurations.
 
 ## The launch draft
 
@@ -83,7 +84,7 @@ All under `/v1/belai/sandboxes`, with a signed-in Resolve Platform session. Read
 |---|---|---|
 | GET | `/{id}/launch-config` | `{config, defaults}`: the draft and the product defaults a tenant may see |
 | PUT | `/{id}/launch-config` | The whole draft. Answers `{config}`. A `400` carries `{"error": "<reason>"}`. |
-| GET | `/{id}/egress` | `{hosts: [...]}`; see [Egress policy](/pix/sandboxes/egress/#api) |
+| GET | `/{id}/egress` | `{hosts: [...]}`; see [Egress policy](/keleustes/sandboxes/egress/#api) |
 | PATCH | `/{id}/egress/{host}` | `{"decision": "allow"\|"deny"\|"unset"}` |
 | PUT | `/{id}/providers` | Provider keys and provider sets every launch installs |
 

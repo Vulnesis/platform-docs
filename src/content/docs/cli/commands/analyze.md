@@ -34,7 +34,7 @@ On success it prints, for example, `GitHub authentication: ok (octocat via gh CL
 
 **A clone or a worktree.** Both work: a worktree's history is read from the main repository's git directory, so history metrics match the main checkout. A shallow clone has less history; increase the fetch depth for the window you want.
 
-**Vulnesis credentials (optional).** Dependency staleness needs registry metadata from Vulnetix. Without credentials those metrics are `null` with a reason, and the report is not uploaded.
+**Vulnesis credentials (optional).** Dependency staleness needs registry metadata from Vulnesis. Without credentials those metrics are `null` with a reason, and the report is not uploaded.
 
 ## Flags
 

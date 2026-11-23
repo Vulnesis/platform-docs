@@ -1,5 +1,5 @@
 ---
-title: Model routing and the Pix allowance
+title: Model routing and the Strix allowance
 nav: Model routing
 description: Which model each kind of factory work uses, routing to your own key in the Secrets Vault, what happens when the allowance runs out, and the interactive reserve.
 order: 2
@@ -24,7 +24,7 @@ A crew step chooses `smart`, `fast` or a vault key with its `codeTier`.
 
 | Provider | What it is | Billed to |
 |---|---|---|
-| Pix Fast, Pix Smart | The models included with your plan | Your Pix allowance |
+| Strix Fast, Strix Smart | The models included with your plan | Your Strix allowance |
 | System One, Clef Flash | The decision classifier | The daily decision cap |
 | `vault:<entry>` | A key you keep in the Secrets Vault, such as your own Anthropic or OpenRouter key | Your provider account |
 | Cloudflare AI Gateway | Calls routed through Cloudflare's gateway (off for the factory by default) | |
@@ -57,7 +57,7 @@ Two settings in Settings › Providers and secrets:
 
 ## Model labels
 
-Wherever the Resolve Platform shows a model, it uses one label per model across pages. Spend is grouped by those labels, so "Pix Smart" in Usage is the same thing as "Pix Smart" in routing. A Pix model is never shown as a bare "Pix".
+Wherever the Resolve Platform shows a model, it uses one label per model across pages. Spend is grouped by those labels, so "Strix Smart" in Usage is the same thing as "Strix Smart" in routing. A Strix model is never shown as a bare "Strix".
 
 ## API
 

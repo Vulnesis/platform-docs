@@ -54,9 +54,9 @@ No. The RFC 9728 metadata is published with an empty `authorization_servers` lis
 
 The Worker writes one metrics data point per tool call: the tool name, plan, credential scheme, outcome, timings and sizes. It does not record the credential, the organisation id or any argument. vdb-api records usage for quota and billing.
 
-## How is this different from Pix?
+## How is this different from Strix?
 
-[Pix](/pix/) is an AI coding assistant plugin with hooks and local skills. The MCP server needs no install and works in any MCP client. Its prompts and skills are generated from the Pix skill files. They share one database and one credential.
+[Strix](/strix/) is an AI coding assistant plugin with hooks and local skills. The MCP server needs no install and works in any MCP client. Its prompts and skills are generated from the Strix skill files. They share one database and one credential.
 
 ## Can I use it with a local model?
 

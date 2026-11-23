@@ -6,7 +6,7 @@ checked: [vdb-site@284f1d6, belai@35506b9]
 updated: 28 Oct 2026
 ---
 
-**A2A.** Agent-to-agent messages between hosts, relayed by Vulnetix. The A2A blackout stops the relay. See [A2A messaging](/software-factory/workforce/a2a-messaging/).
+**A2A.** Agent-to-agent messages between hosts, relayed by Vulnesis. The A2A blackout stops the relay. See [A2A messaging](/software-factory/workforce/a2a-messaging/).
 
 **Agent.** A Belai profile: a model, a system prompt, tools and limits. Only worker-mode agents can be dispatched by the factory. See [Agents](/software-factory/workforce/agents/).
 
@@ -48,7 +48,7 @@ updated: 28 Oct 2026
 
 **Held.** Waiting for a hold to lift: a pause, stop, maintenance window or blackout. Held work is never dropped.
 
-**Host.** A machine running Belai that can take dispatches: a Pix Sandbox or your own. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
+**Host.** A machine running Belai that can take dispatches: a Keleustes Sandbox or your own. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
 
 **Kill switch.** Pause or stop the whole factory. See [Pause, stop and resume](/software-factory/control/pause-and-stop/).
 
@@ -56,11 +56,11 @@ updated: 28 Oct 2026
 
 **Needs you.** The head of the checkpoint queue, shown on the cockpit.
 
-**Pix.** The factory coordinator you talk to on a call. Also the name of the sandbox product and of the model allocation in your plan. See [Calling Pix](/software-factory/pix/calling-pix/).
+**Strix.** The factory coordinator you talk to on a call. Also the name of the sandbox product and of the model allocation in your plan. See [Calling Strix](/software-factory/strix/calling-strix/).
 
-**Pix Sandbox.** A container Vulnesis runs for you as a host. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+**Keleustes Sandbox.** A container Vulnesis runs for you as a host. See [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
-**Read-back.** What Pix says before it starts or stops anything on a call. It acts only on a plain yes to the read-back.
+**Read-back.** What Strix says before it starts or stops anything on a call. It acts only on a plain yes to the read-back.
 
 **Run.** One execution of a published workflow version. See [Runs and steps](/software-factory/runs/runs-and-steps/).
 

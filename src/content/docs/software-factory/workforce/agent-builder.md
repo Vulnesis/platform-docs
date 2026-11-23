@@ -34,7 +34,7 @@ Each check is `ok`, `warn` or `error`. The panel also shows **Who hands work to 
 
 ## Avatars
 
-Each agent can have an avatar, drawn as a variant of Pix. See [Avatars](/software-factory/workforce/avatars/).
+Each agent can have an avatar, drawn as a variant of Strix. See [Avatars](/software-factory/workforce/avatars/).
 
 ## API
 

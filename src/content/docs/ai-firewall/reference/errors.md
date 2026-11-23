@@ -83,7 +83,7 @@ These are written in the plain error envelope with `type: "policy_violation"` or
 | `code` | `type` | Message | Fix |
 |---|---|---|---|
 | `provider_denied` | `policy_violation` | `provider <slug> is denied by organisation policy` | `vulnetix ai-firewall policy provider <slug> --clear` or `--allow`. Enforced on Pro and above only. |
-| `provider_disabled` | `policy_violation` | `provider <slug> is disabled` | Disabled for every organisation by Vulnetix. Use another provider. |
+| `provider_disabled` | `policy_violation` | `provider <slug> is disabled` | Disabled for every organisation by Vulnesis. Use another provider. |
 | `provider_key_missing` | `policy_violation` | `no <Name> API key configured for your organisation: …` | `vulnetix ai-firewall key set <slug>`. For Kiro: `vulnetix ai-firewall kiro login`. |
 | `model_denied` | `policy_violation` | `model <model> is denied by organisation policy` | Remove the deny entry, or use another model. |
 | `model_not_allowed` | `policy_violation` | `model <model> is not in the organisation allowlist` | The provider has at least one `allow` entry, so only listed models pass. Add this one. See [Models](/ai-firewall/policy/models/). |

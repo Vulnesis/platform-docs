@@ -25,7 +25,7 @@
   --mark: #FFECB0;
   --why-bg: #FFF4E0; --why-bar: #B35F00; --why-title: #7A4100; --why-text: #3D2A00;
   --careful-bg: #FBEDEE; --careful-bar: #B3121E; --careful-title: #8A0E17; --careful-text: #4A0A0F;
-  --pix-bg: #E6F6EF; --pix-bar: #08734C; --pix-title: #065A3B; --pix-text: #03301F;
+  --strix-bg: #E6F6EF; --strix-bar: #08734C; --strix-title: #065A3B; --strix-text: #03301F;
   --shadow: 0 30px 80px rgba(5, 8, 13, 0.25);
   --backdrop: rgba(5, 8, 13, 0.55);
 }
@@ -50,7 +50,7 @@
   --mark: #5C4A10;
   --why-bg: #1B1406; --why-bar: #FF8A00; --why-title: #FFB866; --why-text: #EADCC4;
   --careful-bg: #1E0D10; --careful-bar: #FF6B73; --careful-title: #FF9AA0; --careful-text: #EED3D5;
-  --pix-bg: #071A14; --pix-bar: #2BE39B; --pix-title: #2BE39B; --pix-text: #C6EBDC;
+  --strix-bg: #071A14; --strix-bar: #2BE39B; --strix-title: #2BE39B; --strix-text: #C6EBDC;
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   --backdrop: rgba(0, 0, 0, 0.6);
 }
@@ -167,7 +167,7 @@ kbd { font-size: 11px; padding: 1px 6px; border: 1px solid var(--line-strong); b
 /* Delivery status (front matter `status`): colour plus the label, never colour alone. */
 .status { margin: 12px 0 0; max-width: var(--measure); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 13px; color: var(--text-3); }
 .status-badge { display: inline-block; padding: 1px 8px; border: 1px solid; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }
-.status-available .status-badge { background: var(--pix-bg); border-color: var(--pix-bar); color: var(--pix-title); }
+.status-available .status-badge { background: var(--strix-bg); border-color: var(--strix-bar); color: var(--strix-title); }
 .status-in-development .status-badge { background: var(--why-bg); border-color: var(--why-bar); color: var(--why-title); }
 .status-planned .status-badge { background: var(--careful-bg); border-color: var(--careful-bar); color: var(--careful-title); }
 .status-planned .status-note, .status-in-development .status-note { color: var(--text-2); }
@@ -233,6 +233,7 @@ kbd { font-size: 11px; padding: 1px 6px; border: 1px solid var(--line-strong); b
   .table-stack td span[id] { scroll-margin-top: 72px; }
 }
 .prose img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
+.prose img.mascot { border: 0; border-radius: 0; }
 .prose figcaption { margin-top: 8px; font-size: 13px; color: var(--text-3); }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
 .prose dt { font-weight: 600; color: var(--text); }
@@ -251,8 +252,8 @@ kbd { font-size: 11px; padding: 1px 6px; border: 1px solid var(--line-strong); b
 .callout-why .callout-title { color: var(--why-title); }
 .callout-careful { background: var(--careful-bg); border-color: var(--careful-bar); color: var(--careful-text); }
 .callout-careful .callout-title { color: var(--careful-title); }
-.callout-pix { background: var(--pix-bg); border-color: var(--pix-bar); color: var(--pix-text); }
-.callout-pix .callout-title { color: var(--pix-title); }
+.callout-strix { background: var(--strix-bg); border-color: var(--strix-bar); color: var(--strix-text); }
+.callout-strix .callout-title { color: var(--strix-title); }
 .callout code { background: transparent; border-color: currentColor; border-color: color-mix(in srgb, currentColor 25%, transparent); }
 .callout strong { color: inherit; }
 

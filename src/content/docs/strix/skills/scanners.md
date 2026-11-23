@@ -35,7 +35,7 @@ With Semgrep and a Semgrep config present, it runs `semgrep --config .semgrep --
 | Default scope | Files changed against the main branch, else the whole repository |
 | `--staged-only` | `git diff --cached --name-only`; needs `git` |
 
-Each finding is shown with 60% of the value replaced by `*`; the full secret is never printed and the summary file holds counts and paths, no values. It lists rotation steps per credential type and never rotates anything itself. For a secret already committed it recommends rotating, and `git filter-repo` or BFG to clean history. The [change guard](/pix/hooks/change-guard/) runs the same rules automatically on `git commit` and `git push`.
+Each finding is shown with 60% of the value replaced by `*`; the full secret is never printed and the summary file holds counts and paths, no values. It lists rotation steps per credential type and never rotates anything itself. For a secret already committed it recommends rotating, and `git filter-repo` or BFG to clean history. The [change guard](/strix/hooks/change-guard/) runs the same rules automatically on `git commit` and `git push`.
 
 ## iac-scan
 

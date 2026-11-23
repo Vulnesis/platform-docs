@@ -72,7 +72,7 @@ jq -r '.files[] | select(.filename=="suricata.rules") | .sha256 + "  suricata.ru
     | sha256sum -c -
 ```
 
-The `<file>.sha256` beside each file is a convenience for scripts that do not check the signature. It is not signed, so it proves the download is intact, not that it came from Vulnetix.
+The `<file>.sha256` beside each file is a convenience for scripts that do not check the signature. It is not signed, so it proves the download is intact, not that it came from Vulnesis.
 
 ## What the sensor does with each case
 

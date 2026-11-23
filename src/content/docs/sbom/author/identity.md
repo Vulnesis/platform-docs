@@ -12,7 +12,7 @@ CycloneDX splits "who made this" across several members, and each answers a diff
 
 | Member | CycloneDX definition | The CLI writes |
 |---|---|---|
-| `metadata.manufacturer` | "The organization that created the BOM. Manufacturer is common in BOMs created through automated processes." | Your organisation, resolved as below. Never Vulnetix. |
+| `metadata.manufacturer` | "The organization that created the BOM. Manufacturer is common in BOMs created through automated processes." | Your organisation, resolved as below. Never Vulnesis. |
 | `metadata.authors` | "The person(s) who created the BOM. Authors are common in BOMs created through manual processes." | Nothing, unless you state it |
 | `metadata.supplier` | "The organization that supplied the component that the BOM describes. The supplier may often be the manufacturer, but may also be a distributor or repackager." | Nothing, unless you state it |
 | `metadata.tools` | "The tool(s) used in the creation, enrichment, and validation of the BOM." | The command that wrote it, at its version. Not settable. |
@@ -77,7 +77,7 @@ vulnetix cdx --bom-serial "payment-service-$VERSION" --bom-version 1
 The scan family is different. `.vulnetix/sbom.cdx.json` is the same document rewritten on every scan, so a rescan keeps its `serialNumber`, adds 1 to its `version`, and records this run's manufacturer, authors, supplier and lifecycles. `--bom-serial` and `--bom-version` apply only to a file that does not exist yet.
 
 > [!CAREFUL] A document another tool wrote keeps its author
-> If `.vulnetix/sbom.cdx.json` was authored by another tool, say a Syft SBOM you placed there, a scan keeps that tool's manufacturer and authors, because that organisation did create the document. The scan adds itself to `metadata.tools` and its phases to `metadata.lifecycles`. Before CLI v4.15.0, a file that already had a `metadata` block kept whatever manufacturer it had, even one written by Vulnetix.
+> If `.vulnetix/sbom.cdx.json` was authored by another tool, say a Syft SBOM you placed there, a scan keeps that tool's manufacturer and authors, because that organisation did create the document. The scan adds itself to `metadata.tools` and its phases to `metadata.lifecycles`. Before CLI v4.15.0, a file that already had a `metadata` block kept whatever manufacturer it had, even one written by Vulnesis.
 
 ## Supplier, at two levels
 
@@ -100,5 +100,5 @@ See [Overlay files](/sbom/author/overlay/).
 | Writes | Identity |
 |---|---|
 | `vulnetix image` | No manufacturer |
-| `vulnetix triage --vex-format cdx`, `vulnetix jail --vex-format cyclonedx` | VEX documents with `metadata.authors` of `Vulnesis`, because they carry decisions recorded in Vulnetix. No manufacturer. |
+| `vulnetix triage --vex-format cdx`, `vulnetix jail --vex-format cyclonedx` | VEX documents with `metadata.authors` of `Vulnesis`, because they carry decisions recorded in Vulnesis. No manufacturer. |
 | `bom enrich`, `bom import` | The input's identity, unchanged. The command appends itself to `metadata.tools`. |

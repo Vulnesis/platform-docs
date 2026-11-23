@@ -1,6 +1,6 @@
 ---
-title: Pix buttons in the Resolve Platform
-nav: Pix buttons
+title: Strix buttons in the Resolve Platform
+nav: Strix buttons
 description: Buttons beside a run, finding or pull request that open a session on its repository with the request already written. Nothing starts until you press Start.
 order: 4
 sources: [website/.repo/pix-ask.md, website/src/shared/pix-ask.ts]
@@ -16,9 +16,9 @@ Some Resolve Platform pages have a button beside an object, such as a failed run
 
 | Situation | The button |
 |---|---|
-| One place can run it | Opens the dialog for that host or Pix Sandbox |
-| Several places can | Shows a short menu: Pix Sandbox or self-managed hosts |
-| Nowhere can run a session yet | Says so, with a link to get or open a Pix Sandbox |
+| One place can run it | Opens the dialog for that host or Keleustes Sandbox |
+| Several places can | Shows a short menu: Keleustes Sandbox or self-managed hosts |
+| Nowhere can run a session yet | Says so, with a link to get or open a Keleustes Sandbox |
 | The repository is not on any host | Says so, with a link |
 
 A button only appears when the object names a repository a session could work on.
@@ -27,5 +27,5 @@ The session records that it was started from the Resolve Platform, so it shows a
 
 ## Related
 
-- [Calling Pix](/software-factory/pix/calling-pix/) to start sessions by voice.
-- [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/)
+- [Calling Strix](/software-factory/strix/calling-strix/) to start sessions by voice.
+- [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/)

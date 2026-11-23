@@ -11,7 +11,7 @@ Guardian stores seven tables. A search starts with a table name; a Sigma rule's 
 
 | Table | Holds | Written by |
 |---|---|---|
-| `net_events` | Flow records and connection decisions | AWS VPC flow logs, Cloudflare `gateway_network` and `network_analytics_logs`, Pix Sandbox egress, the runtime sensor egress proxy |
+| `net_events` | Flow records and connection decisions | AWS VPC flow logs, Cloudflare `gateway_network` and `network_analytics_logs`, Keleustes Sandbox egress, the runtime sensor egress proxy |
 | `dns_events` | DNS queries | Route 53 Resolver query logs, Cloudflare `dns_logs`, `gateway_dns`, `dns_firewall_logs`, the runtime sensor DNS guard |
 | `waf_events` | WAF matches | Cloudflare `firewall_events` |
 | `http_events` | HTTP requests | Cloudflare `http_requests` and `workers_trace_events` fetches, the Vulnesis API access log |
@@ -38,7 +38,7 @@ An `ip` column has an integer companion `<column>_v4` holding the IPv4 address a
 
 ## `net_events`
 
-Network flows. One row per flow record or connection decision: AWS VPC flow logs, Cloudflare Gateway network and Network Analytics logs, Pix Sandbox egress.
+Network flows. One row per flow record or connection decision: AWS VPC flow logs, Cloudflare Gateway network and Network Analytics logs, Keleustes Sandbox egress.
 
 | Column | Type | Meaning |
 |---|---|---|

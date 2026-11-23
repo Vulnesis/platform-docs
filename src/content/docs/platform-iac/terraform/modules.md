@@ -13,11 +13,11 @@ updated: 04 Nov 2026
 > [!CAREFUL] Not yet exercised against a real AWS account
 > The Vulnesis build team has not exercised either module against a real AWS account beyond `terraform validate`, `tflint` and read-only plans. Plan in a non-production account first and read what it will create.
 
-These two modules are for AWS, and are separate from the [provider](/platform-iac/terraform/). They work with Terraform and OpenTofu 1.5 or later. The provider manages Vulnesis's own settings; the modules create the AWS resources that connect an account to Vulnetix. The Vulnesis side of both is the [`AwsConnection`](/platform-iac/kinds/aws-connection/), [`AwsAccount`](/platform-iac/kinds/aws-account/), [`CloudSensors`](/platform-iac/kinds/cloud-sensors/) and [`LogSource`](/platform-iac/kinds/log-source/) kinds.
+These two modules are for AWS, and are separate from the [provider](/platform-iac/terraform/). They work with Terraform and OpenTofu 1.5 or later. The provider manages Vulnesis's own settings; the modules create the AWS resources that connect an account to Vulnesis. The Vulnesis side of both is the [`AwsConnection`](/platform-iac/kinds/aws-connection/), [`AwsAccount`](/platform-iac/kinds/aws-account/), [`CloudSensors`](/platform-iac/kinds/cloud-sensors/) and [`LogSource`](/platform-iac/kinds/log-source/) kinds.
 
 ## aws-onboarding
 
-[`Vulnesis/terraform-vulnetix-aws-onboarding`](https://github.com/Vulnesis/terraform-vulnetix-aws-onboarding) connects an AWS account to Vulnetix. It deploys the same `vulnetix-security-bootstrap` CloudFormation stack the Resolve Platform deploys, which holds two things:
+[`Vulnesis/terraform-vulnetix-aws-onboarding`](https://github.com/Vulnesis/terraform-vulnetix-aws-onboarding) connects an AWS account to Vulnesis. It deploys the same `vulnetix-security-bootstrap` CloudFormation stack the Resolve Platform deploys, which holds two things:
 
 - `vulnetix-cloudtrail-<account id>`: the CloudTrail log bucket, private and encrypted, writable only by this account's Vulnesis trail.
 - `VulnetixSecurityAuditor`: the role Vulnesis assumes. It trusts only the Vulnesis AWS account, and only with your tenant uuid as the external ID.

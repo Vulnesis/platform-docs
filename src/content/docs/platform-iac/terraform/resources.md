@@ -118,7 +118,7 @@ Import takes the object's name (`metadata.name`); a kind with one object per ten
 | <span id="vulnetix_crew"></span>`vulnetix_crew` | [`Crew`](/platform-iac/kinds/crew/) | many | `terraform import vulnetix_crew.review_crew review-crew` | [Minimal](/platform-iac/kinds/crew/#minimal), [Advanced](/platform-iac/kinds/crew/#advanced) |
 | <span id="vulnetix_library_item"></span>`vulnetix_library_item` | [`LibraryItem`](/platform-iac/kinds/library-item/) | many | `terraform import vulnetix_library_item.pdf_tools pdf-tools` | [Minimal](/platform-iac/kinds/library-item/#minimal), [Advanced](/platform-iac/kinds/library-item/#advanced) |
 
-## Pix
+## Keleustes Sandboxes
 
 | Resource | Kind | Objects | Import | Samples |
 |---|---|---|---|---|

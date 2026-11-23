@@ -10,7 +10,7 @@ updated: 28 Oct 2026
 
 ## Shell lines from the web
 
-With `belai rc --web-shell` (on by default on a Pix Sandbox), the session page can run one shell line at a time on the host:
+With `belai rc --web-shell` (on by default on a Keleustes Sandbox), the session page can run one shell line at a time on the host:
 
 - **From the composer**, `!cmd` runs the line and attaches its output to the model's next turn, but only once the classifier has found it safe.
 - **From the Resolve Platform drawer**, the output is for you only and never goes to the model.

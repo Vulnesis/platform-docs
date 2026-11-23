@@ -1,13 +1,13 @@
 ---
 title: Voice tools
-description: Every tool Pix uses on a call, grouped by what it does, with whether it only reads or changes something and what confirmation it needs.
+description: Every tool Strix uses on a call, grouped by what it does, with whether it only reads or changes something and what confirmation it needs.
 order: 2
 sources: [website/src/worker/call/tools.ts, website/.repo/pix-call.md, website/src/shared/pix-pocket.ts]
 checked: [website@bdba7fa]
 updated: 03 Nov 2026
 ---
 
-Pix answers and acts through tools. Each one calls the Resolve Platform's own API as you, so it can see and do only what you can. Reads run freely. Tools that start or stop work need your yes to a read-back first. See [Calling Pix](/software-factory/pix/calling-pix/).
+Strix answers and acts through tools. Each one calls the Resolve Platform's own API as you, so it can see and do only what you can. Reads run freely. Tools that start or stop work need your yes to a read-back first. See [Calling Strix](/software-factory/strix/calling-strix/).
 
 ## Factory figures
 
@@ -51,7 +51,7 @@ On the Business plan, three read-only tools answer questions about your external
 | `list_sessions` | Sessions, newest first, with filters |
 | `session_facts` | One session: state, repository, branch, pull request, what it last said, any question it is waiting on |
 | `sessions_aggregate` | Totals across recent sessions: how many, live, failed, stopped, tokens, typical length |
-| `list_hosts` | Your Pix Sandboxes and own hosts, whether they are online, and their repositories |
+| `list_hosts` | Your Keleustes Sandboxes and own hosts, whether they are online, and their repositories |
 | `find_repo` | Matches a repository you said aloud to one you can use, and the hosts that can take it |
 
 ## Starting, steering and stopping
@@ -79,7 +79,7 @@ On the Business plan, three read-only tools answer questions about your external
 
 ## Rules every tool keeps
 
-- Arguments are checked. A stage or a checkpoint kind that is not valid makes Pix ask again; a range a tool does not know falls back to that tool's default.
+- Arguments are checked. A stage or a checkpoint kind that is not valid makes Strix ask again; a range a tool does not know falls back to that tool's default.
 - A route an older server lacks is said as "not available from this server yet".
 - Spoken answers never name a model. Model names appear only in the tables on screen.
 - Each tool shows its full table on screen and speaks a short summary.

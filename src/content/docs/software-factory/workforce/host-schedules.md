@@ -7,7 +7,7 @@ checked: [belai@35506b9, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
-While `belai rc` runs, it fires the host's stored schedules. A schedule is a worker profile, a cron expression (five fields, or `@hourly`, `@daily`, `@weekly`, `@monthly`), one of the directories the host offers, and an on/off switch. The Pix Sandboxes page lists each host's schedules and lets you add, edit, pause and delete them; a change reaches the host within about 30 seconds. They also appear on the Workflows page's Schedules tab, as agent schedules. See [Schedules](/software-factory/workflows/schedules/).
+While `belai rc` runs, it fires the host's stored schedules. A schedule is a worker profile, a cron expression (five fields, or `@hourly`, `@daily`, `@weekly`, `@monthly`), one of the directories the host offers, and an on/off switch. The Keleustes Sandboxes page lists each host's schedules and lets you add, edit, pause and delete them; a change reaches the host within about 30 seconds. They also appear on the Workflows page's Schedules tab, as agent schedules. See [Schedules](/software-factory/workflows/schedules/).
 
 ## How they run
 

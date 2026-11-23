@@ -42,8 +42,8 @@ Created in the scanned directory (`--path`, or the current directory). Results a
 | `config/` (`*.yaml`, `*.yml`, `*.json`) | `config validate`, `config plan`, `config apply` | [Platform IaC](/platform-iac/) |
 | `ai-firewall.yaml` | `config validate`, `ai-firewall apply`, `ai-firewall export` | [AI Firewall](/ai-firewall/) |
 | `license-policy.yaml`, `license-exceptions.yaml` | `config validate`, `license`, `scan` | [SCA](/sca/), [LicenseExceptions](/platform-iac/kinds/license-exceptions/) |
-| `agent.yaml` | `agent hook` | [Pix](/pix/) |
-| `capabilities.yaml` | `agent capabilities` (written) | [Pix](/pix/) |
+| `agent.yaml` | `agent hook` | [Strix](/strix/) |
+| `capabilities.yaml` | `agent capabilities` (written) | [Strix](/strix/) |
 | `trusted-root.pem` | `attest` | [Attestation](/attestation/) |
 
 ### Credentials

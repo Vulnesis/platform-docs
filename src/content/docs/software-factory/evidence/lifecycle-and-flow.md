@@ -44,8 +44,8 @@ The ledger is built from the factory's own tables by a sweep every five minutes.
 
 `lifecycle` events (`entered`, `exited`) stream changes from the last hour.
 
-> [!PIX] Queues by phone
-> Ask "is the review queue growing?". Pix answers from this ledger with `queue_flow`, and `lifecycle_coverage` tells it whether the figures are complete.
+> [!STRIX] Queues by phone
+> Ask "is the review queue growing?". Strix answers from this ledger with `queue_flow`, and `lifecycle_coverage` tells it whether the figures are complete.
 
 ## API
 

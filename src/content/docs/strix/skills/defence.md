@@ -21,7 +21,7 @@ Detection content for a CVE when a patch is not available or not deployed yet.
 | Grants | `Write` |
 | Writes | `.vulnetix/detection/<VULN_ID>/`: `snort.rules`, `suricata.rules`, `vuln.yar`, `nuclei-<id>.yaml` |
 
-Only the families in `derived.detection_stack` of [`capabilities.yaml`](/pix/reference/repository-files/#capabilitiesyaml) are fetched; the stack lists whichever of `nuclei`, `semgrep`, `yara`, `snort` and `suricata` are on `PATH`. With none installed it asks whether to fetch Snort, YARA and Nuclei anyway. A CVE with no rules in any family means no community detection content exists, not a failure.
+Only the families in `derived.detection_stack` of [`capabilities.yaml`](/strix/reference/repository-files/#capabilitiesyaml) are fetched; the stack lists whichever of `nuclei`, `semgrep`, `yara`, `snort` and `suricata` are on `PATH`. With none installed it asks whether to fetch Snort, YARA and Nuclei anyway. A CVE with no rules in any family means no community detection content exists, not a failure.
 
 Traffic filters are Snort-format rules tagged for Suricata compatibility; check Suricata accepts each before deploying. YARA rules with hash matchers need YARA built with the hash module.
 

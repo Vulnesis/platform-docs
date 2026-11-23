@@ -17,7 +17,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | workforce | 0 | 0 | 30 | 0 |
 | evidence | 0 | 0 | 12 | 0 |
 | cost | 0 | 0 | 5 | 0 |
-| pix | 0 | 0 | 5 | 0 |
+| strix | 0 | 0 | 5 | 0 |
 | belai | 0 | 0 | 26 | 0 |
 | cli | 0 | 21 | 0 | 0 |
 | platform-iac | 0 | 2 | 0 | 0 |
@@ -28,7 +28,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Feature | Area | Page | Status | Atoms |
 |---|---|---|---|---|
 | Overview | get-started | `get-started/overview` | verified | 3 |
-| Who can use the factory: plans and Pix Sandboxes | get-started | `get-started/overview` | verified | 3 |
+| Who can use the factory: plans and Keleustes Sandboxes | get-started | `get-started/overview` | verified | 3 |
 | Concepts | get-started | `get-started/concepts` | verified | 4 |
 | Quickstart: manage an org and run a workflow | get-started | `get-started/quickstart` | verified | 0 |
 | What the factory never does | get-started | `get-started/what-the-factory-never-does` | verified | 0 |
@@ -86,7 +86,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Role manager | workforce | `workforce/crews` | verified | 2 |
 | Hosts and placement | workforce | `workforce/hosts-and-placement` | verified | 74 |
 | Host attention | workforce | `workforce/hosts-and-placement` | verified | 4 |
-| Pix Sandboxes | workforce | `workforce/pix-sandboxes` | verified | 191 |
+| Keleustes Sandboxes | workforce | `/keleustes/sandboxes/managing-sandboxes` | verified | 191 |
 | Built-in models, quota and windows | workforce | `workforce/built-in-models` | verified | 7 |
 | The board | workforce | `workforce/board` | verified | 74 |
 | The ticket standard for cards | workforce | `workforce/ticket-standard` | verified | 2 |
@@ -111,7 +111,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Knowledge | workforce | `workforce/knowledge` | verified | 8 |
 | Budgets | cost | `cost/budgets` | verified | 26 |
 | Per-agent and per-card limits | cost | `cost/budgets` | verified | 8 |
-| Model routing and the Pix allowance | cost | `cost/model-routing` | verified | 18 |
+| Model routing and the Strix allowance | cost | `cost/model-routing` | verified | 18 |
 | Usage and spend | cost | `cost/usage` | verified | 3 |
 | Forge quota and the data plane | cost | `cost/github-quota` | verified | 29 |
 | The cockpit | evidence | `evidence/cockpit` | verified | 17 |
@@ -125,11 +125,11 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Sightings and detections | evidence | `evidence/sightings` | verified | 9 |
 | Bot attribution | evidence | `evidence/attribution` | verified | 3 |
 | VEX and TEA publishing | evidence | `evidence/vex-and-tea` | verified | 1 |
-| Calling Pix | pix | `pix/calling-pix` | verified | 24 |
-| Voice tools | pix | `pix/voice-tools` | verified | 36 |
-| Call history, memory and review | pix | `pix/call-history` | verified | 15 |
-| Pix buttons in the console | pix | `pix/pix-buttons` | verified | 2 |
-| Stopping work: the five stops | pix | `pix/stopping-work` | verified | 0 |
+| Calling Strix | strix | `strix/calling-strix` | verified | 24 |
+| Voice tools | strix | `strix/voice-tools` | verified | 36 |
+| Call history, memory and review | strix | `strix/call-history` | verified | 15 |
+| Strix buttons in the console | strix | `strix/strix-buttons` | verified | 2 |
+| Stopping work: the five stops | strix | `strix/stopping-work` | verified | 0 |
 | Install, update and sign in | belai | `belai/install-and-sign-in` | verified | 13 |
 | Top-level flags | belai | `belai/cli-reference` | verified | 66 |
 | Modes, plan mode and goals | belai | `belai/modes-and-plans` | verified | 10 |
@@ -156,7 +156,7 @@ Scanned 3644 atoms from vdb-site@857108d, website@bdba7fa, belai@ea3372a, saas@1
 | Retries, resilience and performance | belai | `belai/resilience` | verified | 4 |
 | Todos and per-repo memory in the TUI | belai | `belai/sessions` | verified | 1 |
 | Developing Belai | belai | `belai/contributing` | verified | 6 |
-| vulnetix agent | cli | `/pix/reference/commands` | drafted | 5 |
+| vulnetix agent | cli | `/strix/reference/commands` | drafted | 5 |
 | vulnetix ai-firewall | cli | `/ai-firewall/cli/commands` | drafted | 20 |
 | vulnetix auth | cli | `/cli/authentication/overview` | drafted | 5 |
 | vulnetix scan and the per-scanner commands | cli | `/cli/commands/scan` | drafted | 13 |

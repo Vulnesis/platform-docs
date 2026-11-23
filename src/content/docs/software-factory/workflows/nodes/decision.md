@@ -77,8 +77,8 @@ Each decision writes a ledger row, an audit entry of kind `decision` and a `deci
 
 A person can **override** a decision until the run has moved past it. If the step is waiting on an escalation, the approval is cancelled and the step takes the person's outcome. Once a later step has started, the override is refused with `bad_state`. Overriding an outcome that is not one of the step's outcomes is refused with `invalid_outcome`. See [Human approval](/software-factory/decisions/human-approval/).
 
-> [!PIX] Ask why a run went the way it did
-> On a call, ask "why did triage escalate on the payments pull request?". Pix reads the decision's outcome, confidence and threshold with `run_facts` and says them back.
+> [!STRIX] Ask why a run went the way it did
+> On a call, ask "why did triage escalate on the payments pull request?". Strix reads the decision's outcome, confidence and threshold with `run_facts` and says them back.
 
 ## Related
 

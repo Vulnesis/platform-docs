@@ -9104,7 +9104,7 @@
     "vdb-site/api/internal/handler/factory_workflow_graph.go"
    ],
    "detail": {
-    "message": "In {node}, where the step runs is not set up correctly. Choose Any host, Pix Sandbox, Self-hosted, a host or a host label."
+    "message": "In {node}, where the step runs is not set up correctly. Choose Any host, Keleustes Sandbox, Self-hosted, a host or a host label."
    }
   },
   {
@@ -28064,7 +28064,7 @@
     "vdb-site/docs/factory.md"
    ],
    "detail": {
-    "doc": "pct of the Pix allowance",
+    "doc": "pct of the Strix allowance",
     "docDefault": "75",
     "store": "factory",
     "type": "pct",
@@ -30882,7 +30882,7 @@
    ],
    "detail": {
     "category": "Guardian",
-    "name": "Guardian: Pix Sandbox egress"
+    "name": "Guardian: Keleustes Sandbox egress"
    }
   },
   {
@@ -32700,7 +32700,7 @@
     "website/src/worker/call/tools.ts"
    ],
    "detail": {
-    "description": "The caller's Pix Sandboxes and self-managed hosts, whether they are online, and which repositories they offer."
+    "description": "The caller's Keleustes Sandboxes and self-managed hosts, whether they are online, and which repositories they offer."
    }
   },
   {

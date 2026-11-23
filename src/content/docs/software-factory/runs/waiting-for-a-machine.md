@@ -16,10 +16,10 @@ When several machines have the repository, the one closest to working decides.
 | Reason | When | What happens | What you can do |
 |---|---|---|---|
 | `online_no_workers` | A host is online with the repository and the crew, and runs no worker | Not a wait. The dispatch goes out now. | Nothing |
-| `draining` | A Pix Sandbox with the repository is updating in its maintenance window | Waits 2 minutes at a time, then runs on the first host that is ready | Wait |
+| `draining` | A Keleustes Sandbox with the repository is updating in its maintenance window | Waits 2 minutes at a time, then runs on the first host that is ready | Wait |
 | `launching` | A sandbox launch is in progress | Waits 3 minutes at a time | Wait |
 | `repo_not_cloned` | The host has the repository attached but not checked out yet | Waits 5 minutes at a time. After 30 minutes the step is skipped. | Check the sandbox's repositories |
-| `failed_relaunching` | The sandbox's launch failed, there is none, or its remote control stopped reporting | Asks the sandbox to relaunch, then waits 3 minutes at a time. At most 6 relaunch requests an hour. | Check the sandbox on Pix Sandboxes |
+| `failed_relaunching` | The sandbox's launch failed, there is none, or its remote control stopped reporting | Asks the sandbox to relaunch, then waits 3 minutes at a time. At most 6 relaunch requests an hour. | Check the sandbox on Keleustes Sandboxes |
 | `profile_not_offered` | A machine with the repository is online but does not offer the agent or crew | Skipped at once | Update Belai on that machine, or import the profile |
 | `stopped_by_user` | Someone stopped the sandbox | Waits 10 minutes at a time. **Never woken.** The step names who stopped it. | Start the sandbox |
 | `host_offline` | Your own machine with the repository is not running `belai rc` | Waits 10 minutes at a time. The host can also show in Needs you as `host_offline`. | Start `belai rc` on it |
@@ -61,5 +61,5 @@ Each host comes back with a state (`ready`, `can_clone`, `no_repo`, `no_profile`
 ## Related
 
 - [Crew node](/software-factory/workflows/nodes/crew/)
-- [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/)
+- [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/)
 - [Remote control](/software-factory/workforce/remote-control/)

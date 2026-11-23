@@ -730,13 +730,13 @@ Paths use dots for nesting and `[]` for the items of a list. **Required** means 
 | <span id="spec-severity"></span>`spec.severity` | array of string | no |  | items unique; each item: `low`, `medium`, `high`, `critical` | finding: the finding severities that start the workflow. All of them when left out. |
 | <span id="spec-fromList"></span>`spec.fromList` | string | no |  | length 1 to any | kanban: the board list a card leaves. |
 | <span id="spec-toList"></span>`spec.toList` | string | no |  | length 1 to any | kanban: the board list a card enters. |
-| <span id="spec-source"></span>`spec.source` | string | no |  | `package-firewall`, `ai-firewall`, `egress`, `siem`, `github-risk`, `github-posture` | firewall: where the sighting comes from: the package firewall, the AI firewall, Pix Sandbox egress, Guardian (siem), or the GitHub risk and posture rules. |
+| <span id="spec-source"></span>`spec.source` | string | no |  | `package-firewall`, `ai-firewall`, `egress`, `siem`, `github-risk`, `github-posture` | firewall: where the sighting comes from: the package firewall, the AI firewall, Keleustes Sandbox egress, Guardian (siem), or the GitHub risk and posture rules. |
 | <span id="spec-events"></span>`spec.events` | array of string | no |  | each item: length 1 to any | firewall: the source's events that start the workflow, such as package.first_seen and package.blocked. Every event of the source when neither this nor event is set. |
 | <span id="spec-newTo"></span>`spec.newTo` | string | no |  | `org`, `repo` | firewall: only a first sighting in the organisation (org), or, for packages, in the repository (repo). |
 | <span id="spec-decision"></span>`spec.decision` | array of string | no |  | each item: length 1 to any | firewall: the firewall decisions that start the workflow, such as block or hold. |
 | <span id="spec-ecosystems"></span>`spec.ecosystems` | array of string | no |  | each item: length 1 to any | firewall, package-firewall source: the package ecosystems, such as npm and pypi. |
 | <span id="spec-kinds"></span>`spec.kinds` | array of string | no |  | each item: `tool`, `mcp_server`, `skill`, `client` | firewall, ai-firewall source: the capability kinds. |
-| <span id="spec-sandboxes"></span>`spec.sandboxes` | array of string | no |  | each item: length 1 to any | firewall, egress source: the Pix Sandboxes, by name. |
+| <span id="spec-sandboxes"></span>`spec.sandboxes` | array of string | no |  | each item: length 1 to any | firewall, egress source: the Keleustes Sandboxes, by name. |
 | <span id="spec-categories"></span>`spec.categories` | array of string | no |  | each item: `network`, `dns`, `waf`, `http`, `cloud_audit`, `vulnetix`, `other` | firewall, siem source: the Guardian categories. |
 | <span id="spec-providers"></span>`spec.providers` | array of string | no |  | each item: `aws`, `cloudflare`, `vulnetix`, `mixed` | firewall, siem source: the log providers. |
 | <span id="spec-tables"></span>`spec.tables` | array of string | no |  | each item: `net_events`, `dns_events`, `waf_events`, `http_events`, `cloud_audit`, `product_events` | firewall, siem source: the Guardian tables. |

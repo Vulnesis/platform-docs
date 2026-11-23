@@ -41,7 +41,7 @@ vulnetix env
 vulnetix env -o json
 ```
 
-Prints what the CLI detects about where it runs: CLI version, platform (`cli`, `github`, `gitlab`, `azure`, `bitbucket`, `jenkins`, `kubernetes`, `podman`, `docker`), OS and architecture, shell, the git branch, commit, dirty state and root, the package managers and manifests found in the current directory, and the scan memory file. `-o json` prints the same as JSON; the Pix plugin reads it.
+Prints what the CLI detects about where it runs: CLI version, platform (`cli`, `github`, `gitlab`, `azure`, `bitbucket`, `jenkins`, `kubernetes`, `podman`, `docker`), OS and architecture, shell, the git branch, commit, dirty state and root, the package managers and manifests found in the current directory, and the scan memory file. `-o json` prints the same as JSON; the Strix plugin reads it.
 
 | Platform | Detected from |
 |---|---|

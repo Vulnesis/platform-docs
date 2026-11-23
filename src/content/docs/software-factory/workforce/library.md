@@ -26,7 +26,7 @@ Every item is one small document. Each version is write-once. The website can in
 | `provider` | `belai provider` | `providers` and `firewall` in settings; keys in the credentials store | `sync.providers` |
 | `mcp` | `belai mcp` | one entry of `mcp.servers` in settings; secrets in the credentials store | `sync.mcps` |
 | `hook` | none | a bundle directory, `~/.vulnetix/belai/hooks/<name>/`; installed on request only | `sync.hooks` |
-| `launch` | none | never on a host. See [launch configurations](/software-factory/workforce/pix-sandboxes/). | none |
+| `launch` | none | never on a host. See [launch configurations](/keleustes/sandboxes/managing-sandboxes/). | none |
 
 An item is identified by its kind and name, so the same skill on two machines is one item. An account holds up to 200 live items of one kind.
 

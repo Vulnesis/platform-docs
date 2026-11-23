@@ -42,7 +42,7 @@ const set = (prefix) => `^setting:${prefix.replace(/\./g, '\\.')}`;
 
 // ── Get started ────────────────────────────────────────────────────────────
 f('overview', 'get-started', 'get-started/overview', 'Overview', [doc('vdb-site/factory\\.md', 'website/software-factory\\.md', 'website/software-factory-marketing\\.md')]);
-f('access', 'get-started', 'get-started/overview', 'Who can use the factory: plans and Pix Sandboxes', ['^route:GET /v1/factory/access$', g('factory_access'), doc('vdb-site/factory-access\\.md')], { status: 'verified', foundIn: '2026-11-03' });
+f('access', 'get-started', 'get-started/overview', 'Who can use the factory: plans and Keleustes Sandboxes', ['^route:GET /v1/factory/access$', g('factory_access'), doc('vdb-site/factory-access\\.md')], { status: 'verified', foundIn: '2026-11-03' });
 f('concepts', 'get-started', 'get-started/concepts', 'Concepts', [gp('factory_core_'), g('factory_common'), g('factory_wiring')]);
 f('quickstart', 'get-started', 'get-started/quickstart', 'Quickstart: manage an org and run a workflow', []);
 f('never-does', 'get-started', 'get-started/what-the-factory-never-does', 'What the factory never does', []);
@@ -110,7 +110,7 @@ f('crews', 'workforce', 'workforce/crews', 'Crews', [gp('belai_crews'), g('belai
 f('role-manager', 'workforce', 'workforce/crews', 'Role manager', [pkg('rolemanager'), doc('belai/role-manager\\.md')]);
 f('hosts', 'workforce', 'workforce/hosts-and-placement', 'Hosts and placement', [r('factory/(hosts|fleet)'), r('belai/(hosts|repo-hosts)'), g('factory_host_select'), g('factory_hosts_eligibility'), g('belai_repo_hosts'), g('belai_rc_fleet'), g('factory_summary_hosts'), con('belai-hosts'), set('hosts.'), '^model:(FactoryHostCapability|FactoryHostTag|FactoryHostToolUsage|FactoryPlacementNeed)$', e('belaiWorkerStates'), pkg('fleet', 'machineprobe'), doc('belai/fleet\\.md'), tui('fleet')]);
 f('host-attention', 'workforce', 'workforce/hosts-and-placement', 'Host attention', [g('belai_host_attention'), r('belai/attention'), doc('vdb-site/belai-host-attention\\.md'), pkg('attention')]);
-f('sandboxes', 'workforce', 'workforce/pix-sandboxes', 'Pix Sandboxes', [r('belai/sandboxes'), r('admin/pix-sandboxes'), gp('pix_sandbox_'), '^model:FactorySandboxWake$', set('pix.'), '^tsfile:sandbox/', doc('website/sandbox-worker/.*', 'belai/pix-sandbox\\.md', 'vdb-site/pix-sandbox-safe-harbour\\.md'), e('pixEgressModes'), e('pixEgressDecision'), e('pixVersionStrategies'), e('pixExtensionModes'), e('pixRepoSources'), e('pixItemKinds'), e('pixTelemetrySignals'), e('pixEventAudiences'), e('pixUsageStatuses'), e('pixForbiddenHeaders'), e('pixClassifiers'), e('pixDefaultClassifiers'), e('belaiLaunch\\w+'),]);
+f('sandboxes', 'workforce', '/keleustes/sandboxes/managing-sandboxes', 'Keleustes Sandboxes', [r('belai/sandboxes'), r('admin/pix-sandboxes'), gp('pix_sandbox_'), '^model:FactorySandboxWake$', set('pix.'), '^tsfile:sandbox/', doc('website/sandbox-worker/.*', 'belai/pix-sandbox\\.md', 'vdb-site/pix-sandbox-safe-harbour\\.md'), e('pixEgressModes'), e('pixEgressDecision'), e('pixVersionStrategies'), e('pixExtensionModes'), e('pixRepoSources'), e('pixItemKinds'), e('pixTelemetrySignals'), e('pixEventAudiences'), e('pixUsageStatuses'), e('pixForbiddenHeaders'), e('pixClassifiers'), e('pixDefaultClassifiers'), e('belaiLaunch\\w+'),]);
 f('builtin-models', 'workforce', 'workforce/built-in-models', 'Built-in models, quota and windows', [gp('pix_builtin_'), doc('vdb-site/pix-builtin-models\\.md', 'website/pix-builtin-routing\\.md', 'vdb-site/belai-workers-ai\\.md'), g('belai_rc_models')]);
 f('board', 'workforce', 'workforce/board', 'The board', [r('belai/kanban'), gp('belai_kanban'), g('factory_kanban'), con('factory-board'), e('belaiKanbanLists'), e('belaiKanbanListOrder'), pkg('kanban', 'todos'), doc('belai/kanban\\.md', 'belai/bkan\\.md', 'vdb-site/belai-kanban-classify\\.md'), '^cli-cmd:kanban$', sub('kanban'), sub('kanbanassign'), flags('kanban'), tui('kanban', 'todos'), cfg('kanban')]);
 f('ticket-standard', 'workforce', 'workforce/ticket-standard', 'The ticket standard for cards', [g('factory_ticket'), pkg('ticketrules')], { foundIn: '2026-10-28' });
@@ -137,7 +137,7 @@ f('knowledge', 'workforce', 'workforce/knowledge', 'Knowledge', [pkg('knowledge'
 // ── Cost ───────────────────────────────────────────────────────────────────
 f('budgets', 'cost', 'cost/budgets', 'Budgets', [r('factory/budgets'), gp('factory_budgets'), g('factory_engine_budget'), con('factory-budgets'), '^model:(FactoryBudget|FactoryBudgetLedger)$', set('budget.'), e('fcBudgetActions'), '^code:budget_exceeds_parent$']);
 f('agent-budgets', 'cost', 'cost/budgets', 'Per-agent and per-card limits', [g('factory_agent_budget'), set('agents.')]);
-f('model-routing', 'cost', 'cost/model-routing', 'Model routing and the Pix allowance', [r('factory/budgets/routing'), '^gofile:tenantmodel/', e('fcRouteKeys'), e('fcRouteDefaults'), ts('sandbox/model-routing'), doc('website/tenant-model-labels\\.md'), set('providers.')]);
+f('model-routing', 'cost', 'cost/model-routing', 'Model routing and the Strix allowance', [r('factory/budgets/routing'), '^gofile:tenantmodel/', e('fcRouteKeys'), e('fcRouteDefaults'), ts('sandbox/model-routing'), doc('website/tenant-model-labels\\.md'), set('providers.')]);
 f('usage', 'cost', 'cost/usage', 'Usage and spend', [r('factory/budgets/usage'), r('factory/workforce/usage'), g('factory_summary_usage')]);
 f('github-quota', 'cost', 'cost/github-quota', 'Forge quota and the data plane', [r('factory/quota'), gp('factory_quota'), g('factory_engine_quota'), '^model:(FactoryGithubCall|FactoryGithubQuota)$', set('forge.'), set('github.'), set('githubdata.'), e('factoryOnQuotaLow'), '^code:github_rate_limited$']);
 
@@ -154,12 +154,12 @@ f('sightings', 'evidence', 'evidence/sightings', 'Sightings and detections', [r(
 f('attribution', 'evidence', 'evidence/attribution', 'Bot attribution', [g('belai_github_attribution'), pkg('attribution'), doc('belai/bot-attribution\\.md')]);
 f('vex', 'evidence', 'evidence/vex-and-tea', 'VEX and TEA publishing', [pkg('vex')]);
 
-// ── Pix calls ──────────────────────────────────────────────────────────────
-f('pix-call', 'pix', 'pix/calling-pix', 'Calling Pix', ['^console:/call$', '^tsfile:call/', r('internal/pix-commander'), g('pix_commander'), e('pixCommanderEfforts'), doc('website/pix-call\\.md', 'website/pix-personal-assistant-marketing\\.md', 'vdb-site/pix-commander\\.md')]);
-f('voice-tools', 'pix', 'pix/voice-tools', 'Voice tools', ['^voice-tool:']);
-f('call-history', 'pix', 'pix/call-history', 'Call history, memory and review', [r('pix-call'), r('factory/call-log'), gp('pix_call_'), '^model:PixCallLog$', doc('vdb-site/pix-call-history\\.md')]);
-f('pix-ask', 'pix', 'pix/pix-buttons', 'Pix buttons in the console', [doc('website/pix-ask\\.md', 'website/belai-console\\.md')]);
-f('stops', 'pix', 'pix/stopping-work', 'Stopping work: the five stops', []);
+// ── Strix calls ──────────────────────────────────────────────────────────────
+f('pix-call', 'strix', 'strix/calling-strix', 'Calling Strix', ['^console:/call$', '^tsfile:call/', r('internal/pix-commander'), g('pix_commander'), e('pixCommanderEfforts'), doc('website/pix-call\\.md', 'website/pix-personal-assistant-marketing\\.md', 'vdb-site/pix-commander\\.md')]);
+f('voice-tools', 'strix', 'strix/voice-tools', 'Voice tools', ['^voice-tool:']);
+f('call-history', 'strix', 'strix/call-history', 'Call history, memory and review', [r('pix-call'), r('factory/call-log'), gp('pix_call_'), '^model:PixCallLog$', doc('vdb-site/pix-call-history\\.md')]);
+f('pix-ask', 'strix', 'strix/strix-buttons', 'Strix buttons in the Resolve Platform', [doc('website/pix-ask\\.md', 'website/belai-console\\.md')]);
+f('stops', 'strix', 'strix/stopping-work', 'Stopping work: the five stops', []);
 
 // ── Belai CLI and TUI ──────────────────────────────────────────────────────
 f('belai-install', 'belai', 'belai/install-and-sign-in', 'Install, update and sign in', ['^cli-cmd:login$', flags('login'), sub('login'), pkg('selfupdate', 'version', 'vulnetixcreds', 'vulnetixenroll', 'config', 'desktop'), cfg('paths', 'fleetpaths')]);
@@ -201,7 +201,7 @@ const NOT_YET = UNDOCUMENTED.length ? `(?!(${UNDOCUMENTED.join('|')})$)` : '';
 const cmdx = (...tops) => `^cli-command:${NOT_YET}(${tops.join('|')})( |$)`;
 const cliF = (id, page, title, match, pages = []) => f(id, 'cli', page, title, match, { status: 'drafted', foundIn: '2026-11-03', pages });
 
-cliF('cli-agent', '/pix/reference/commands', 'vulnetix agent', [cmd('agent')]);
+cliF('cli-agent', '/strix/reference/commands', 'vulnetix agent', [cmd('agent')]);
 cliF('cli-ai-firewall', '/ai-firewall/cli/commands', 'vulnetix ai-firewall', [cmd('ai-firewall')]);
 cliF('cli-auth', '/cli/authentication/overview', 'vulnetix auth', [cmd('auth')]);
 cliF('cli-scan', '/cli/commands/scan', 'vulnetix scan and the per-scanner commands', [cmd('scan', 'defend', 'sca', 'sast', 'secrets', 'iac', 'containers', 'malscan', 'cbom', 'aibom', 'image', 'fix', 'report')], ['/cli/commands/analyze', '/cli/ci-cd/overview', '/cli/ci-cd/gitlab-ci', '/ai-firewall/cli/wiring-clients', '/browser-extension/using/sidebar', '/cli/ci-cd/local']);
@@ -216,9 +216,9 @@ cliF('cli-ignore', '/iac-scanning/guides/suppression', 'vulnetix ignore', [cmd('
 cliF('cli-jail', '/quality-gates/reference/commands', 'vulnetix jail', [cmd('jail')]);
 cliF('cli-license', '/sca/license/policy', 'vulnetix license', [cmd('license')]);
 cliF('cli-package-firewall', '/package-firewall/reference/commands', 'vulnetix package-firewall', [cmdx('package-firewall')], ['/cli/authentication/netrc', ...['go', 'go-dev', 'alpine', 'debian', 'rpm', 'arch', 'conan', 'maven', 'cargo', 'chef', 'composer', 'conda', 'cran', 'docker', 'helm', 'hex', 'homebrew', 'julia', 'nuget', 'pub', 'pypi', 'rubygems', 'terraform'].map((c) => `/package-firewall/clients/${c}`)]);
-cliF('cli-pix', '/cli/get-started/overview', 'vulnetix pix and skills', [cmdx('pix', 'skills')], ['/pix/get-started/install']);
+cliF('cli-pix', '/cli/get-started/overview', 'vulnetix pix and skills', [cmdx('pix', 'skills')], ['/strix/get-started/install']);
 cliF('cli-tea', '/tea/cli/publishing', 'vulnetix tea', [cmd('tea')], ['/tea/cli/reading']);
-cliF('cli-triage', '/cli/commands/triage', 'vulnetix triage', [cmdx('triage')], ['/pix/skills/attestations']);
+cliF('cli-triage', '/cli/commands/triage', 'vulnetix triage', [cmdx('triage')], ['/strix/skills/attestations']);
 cliF('cli-api-surface', '/cli/commands/api', 'vulnetix api and surface', [cmd('api', 'surface')], ['/cli/commands/surface', '/cli/get-started/overview']);
 cliF('cli-vdb', '/vdb-api/cli/commands', 'vulnetix vdb', [cmd('vdb')]);
 cliF('cli-vex', '/vex/commands/ls-validate-merge', 'vulnetix vex', [cmd('vex')], ['/vex/get-started/overview']);

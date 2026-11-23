@@ -61,7 +61,7 @@ editor (extension host)  --LSP over stdio-->  vulnetix lsp  --reads-->  workspac
 
 ## Related tools
 
-Belai's `/vulnetix review` and the Pix `pr-security-reviewer` agent review code with the same scanners and VDB. Neither needs the extension, and the extension does not start them. See [Related tools](/vscode/reference/related-tools/), and [Architecture](/vscode/reference/architecture/) for how the extension, the server and the VDB fit together.
+Belai's `/vulnetix review` and the Strix `pr-security-reviewer` agent review code with the same scanners and VDB. Neither needs the extension, and the extension does not start them. See [Related tools](/vscode/reference/related-tools/), and [Architecture](/vscode/reference/architecture/) for how the extension, the server and the VDB fit together.
 
 ## Platform IaC
 

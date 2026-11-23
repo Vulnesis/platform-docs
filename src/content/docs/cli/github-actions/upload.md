@@ -8,7 +8,7 @@ checked: [cli@v4.24.2]
 updated: 03 Nov 2026
 ---
 
-Installs the CLI and runs [`vulnetix upload`](/cli/commands/upload/), which sends one report another tool wrote (CycloneDX, SPDX, SARIF, OpenVEX or CSAF VEX) to Vulnetix. It needs credentials; community mode stores nothing.
+Installs the CLI and runs [`vulnetix upload`](/cli/commands/upload/), which sends one report another tool wrote (CycloneDX, SPDX, SARIF, OpenVEX or CSAF VEX) to Vulnesis. It needs credentials; community mode stores nothing.
 
 ```yaml
 steps:

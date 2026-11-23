@@ -35,7 +35,7 @@ It is a Claude Code subagent from the plugin, `sonnet` at medium effort, at most
    | IaC, `vulnetix iac` | A Terraform or OpenTofu file changed | `iac.json` |
    | Licences, `vulnetix license -o json-spdx` | A manifest changed | `licenses.json` |
 
-3. **Check new dependencies.** Runs [`dependency-choice`](/pix/skills/dependencies/#dependency-choice) for each direct dependency the diff adds. Existing ones are not rechecked.
+3. **Check new dependencies.** Runs [`dependency-choice`](/strix/skills/dependencies/#dependency-choice) for each direct dependency the diff adds. Existing ones are not rechecked.
 4. **Write the review.** One Markdown review, a section per scanner that ran, and a findings table of at most 50 rows sorted by severity and location.
 5. **Post, if you agree.** With a PR number and a working `gh` it asks, then runs `gh pr review "$PR" --comment --body-file .vulnetix/review/<timestamp>.summary.md`. It never posts without asking.
 6. **Record.** One `event: pr-security-review` entry with the counts in `.vulnetix/memory.yaml`. Decisions already recorded for individual vulnerabilities are not changed.

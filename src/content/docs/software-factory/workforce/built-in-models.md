@@ -1,7 +1,7 @@
 ---
 title: Built-in models, quota and windows
 nav: Built-in models
-description: Pix Smart and Pix Fast, the models your plan includes, how calls are routed behind each, your allowance and its windows, and which models each host can use.
+description: Strix Smart and Strix Fast, the models your plan includes, how calls are routed behind each, your allowance and its windows, and which models each host can use.
 order: 8
 sources: [vdb-site/docs/pix-builtin-models.md, website/.repo/pix-builtin-routing.md, vdb-site/docs/belai-workers-ai.md, vdb-site/api/internal/handler/pix_builtin_quota.go, vdb-site/api/internal/handler/pix_builtin_window.go]
 checked: [vdb-site@284f1d6, website@a31d470, belai@35506b9]
@@ -12,8 +12,8 @@ Your plan includes two model **labels**:
 
 | Label | For |
 |---|---|
-| Pix Smart (`pix-smart`) | Harder work: coding, planning, review, images |
-| Pix Fast (`pix-fast`) | Quick work |
+| Strix Smart (`pix-smart`) | Harder work: coding, planning, review, images |
+| Strix Fast (`pix-fast`) | Quick work |
 
 You only ever see the label. Behind each, Vulnesis ranks up to five Workers AI models. Every call is routed across them by recent performance: answers, refusals and speed. If the first is struggling, the call goes to the next. Model ids never appear in the Resolve Platform, sessions or errors.
 
@@ -25,7 +25,7 @@ The factory's share of the allowance is `budget.factory_share` (75%), and `pix.r
 
 ## Hosts
 
-The Belai build in a Pix Sandbox carries a built-in provider that offers Pix Smart and Pix Fast, so its sessions can pick either like any provider. Pix Smart takes image input; Pix Fast does not.
+The Belai build in a Keleustes Sandbox carries a built-in provider that offers Strix Smart and Strix Fast, so its sessions can pick either like any provider. Strix Smart takes image input; Strix Fast does not.
 
 ## Related
 

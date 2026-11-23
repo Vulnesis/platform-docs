@@ -18,9 +18,9 @@ Each managed repository gets a SLSA build level from 0 to 3, with the reason:
 | Level | Reason | Means |
 |---|---|---|
 | 0 | `no_factory_build` | The factory has not built it |
-| 1 | `unsigned_provenance` | Built in a Pix Sandbox whose launch evidence is not attestation verified |
+| 1 | `unsigned_provenance` | Built in a Keleustes Sandbox whose launch evidence is not attestation verified |
 | 2 | `hosted_signed` | Built on a hosted builder, provenance signed. Nothing assigns this level yet. |
-| 3 | `sandbox_isolated` | Built in an isolated Pix Sandbox whose latest launch evidence is attestation verified |
+| 3 | `sandbox_isolated` | Built in an isolated Keleustes Sandbox whose latest launch evidence is attestation verified |
 
 `security.slsa_min` (default `L3`) is the level the factory aims for.
 
@@ -63,7 +63,7 @@ Choosing `custom` without a list is refused with `custom_required`.
 
 ## Export
 
-**Export attestation bundle** downloads a zip that indexes the evidence for your managed repositories, optionally limited to some: `manifest.json` has one entry per Pix Sandbox launch evidence pack (its hash, size, attestation state, image digest and storage key) and `slsa.json` the SLSA summary. The packs themselves stay in storage.
+**Export attestation bundle** downloads a zip that indexes the evidence for your managed repositories, optionally limited to some: `manifest.json` has one entry per Keleustes Sandbox launch evidence pack (its hash, size, attestation state, image digest and storage key) and `slsa.json` the SLSA summary. The packs themselves stay in storage.
 
 ## API
 

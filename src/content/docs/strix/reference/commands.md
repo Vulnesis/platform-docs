@@ -52,4 +52,4 @@ Claude Code
 
 `prune` compares `~/.agents/.skill-lock.json` with the release's `skills/` directory. It removes each host symlink into the skill's store directory, the store directory and the lock entry, only for entries the lock attributes to a Vulnesis source, and never a real directory in a host's skills folder.
 
-See [Install, update and verify](/pix/get-started/install/) for the order to run these in.
+See [Install, update and verify](/strix/get-started/install/) for the order to run these in.

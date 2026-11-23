@@ -26,7 +26,7 @@ Workflow templates you can start from. Using one creates a draft workflow (versi
 
 | Template | Id |
 |---|---|
-| Guardian: Pix Sandbox egress | <span id="guardian-sandbox-egress"></span>`guardian-sandbox-egress` |
+| Guardian: Keleustes Sandbox egress | <span id="guardian-sandbox-egress"></span>`guardian-sandbox-egress` |
 
 ## Hygiene
 

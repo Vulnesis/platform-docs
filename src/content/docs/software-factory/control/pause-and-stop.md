@@ -71,8 +71,8 @@ To stop one run, not the whole factory, open it on the Runs page:
 
 Cancelling withdraws the crew dispatches the run started. Trying either action from any other state is refused with `bad_state`. See [Runs and steps](/software-factory/runs/runs-and-steps/) for resume and retry.
 
-> [!PIX] Stop work by phone
-> On a call, say "stop the session on payments-api" and Pix reads back exactly what it will stop before it does. Pix can stop sessions. Pausing all automations and the kill switch are on the cockpit and in Settings. See [Stopping work](/software-factory/pix/stopping-work/) for all five ways to stop, from one session to destroying a sandbox.
+> [!STRIX] Stop work by phone
+> On a call, say "stop the session on payments-api" and Strix reads back exactly what it will stop before it does. Strix can stop sessions. Pausing all automations and the kill switch are on the cockpit and in Settings. See [Stopping work](/software-factory/strix/stopping-work/) for all five ways to stop, from one session to destroying a sandbox.
 
 ## API
 

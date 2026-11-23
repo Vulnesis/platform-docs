@@ -51,7 +51,7 @@ A repository appears once it has at least one **signal**:
 |---|---|
 | `app` | A GitHub App installation covers it. |
 | `scanned` | Vulnesis scanners have results for it. |
-| `pix` | It is cloned in one of your Pix Sandboxes. |
+| `pix` | It is cloned in one of your Keleustes Sandboxes. |
 | `kanban` | A board is bound to it. |
 | `tea` | Releases of it are published to TEA. |
 | `watched` | A member is watching it. |
@@ -71,7 +71,7 @@ Rows added by a webhook or a new installation show as loading until enrichment f
 | Setting | Resolve Platform label | Default | Effect |
 |---|---|---|---|
 | `scope.orgs` | Managed orgs | managed orgs | The list of managed installation logins, or `"all_active"`. |
-| `scope.interest` | Repos of interest | `any_signal` | Which repositories count as in scope: `any_signal`, `scanned_or_pix` (scanned or in a Pix Sandbox) or `watched_only` (explicitly watched). |
+| `scope.interest` | Repos of interest | `any_signal` | Which repositories count as in scope: `any_signal`, `scanned_or_pix` (scanned or in a Keleustes Sandbox) or `watched_only` (explicitly watched). |
 | `scope.archived` | Include archived repos | `false` | Off: archived repositories are skipped by the defaults. |
 | `scope.dependencies` | Include public dependency repos (SBOM uploads) | `false` | Include public repositories that only appear through SBOM uploads. |
 | `scope.sync` | Installation sync | `6h` | How often installation metadata is re-read: `6h`, `1h` or `webhook_only`. |
@@ -103,7 +103,7 @@ Select repositories in the list to get the **With selected** bar. Up to 100 repo
 | Bind kanban | 0 to 1 per repository | Sets the board mode and, if no binding exists, creates one. That checks once that the sign-in can write issues. |
 | Run scanners now | 0 to 1 per repository | Not available yet: the button is disabled, and the API answers each repository with an error (`pix sandbox not ready`, or that scanner dispatch is not available yet). |
 | Stop watching | 0 | Removes your `watched` signal. Other signals stay. |
-| Add to Pix Sandbox | 0 | Clones the repositories into a sandbox. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/). |
+| Add to Keleustes Sandbox | 0 | Clones the repositories into a sandbox. See [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/). |
 
 Each repository gets its own result, so one failure does not undo the others.
 

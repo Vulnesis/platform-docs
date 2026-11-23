@@ -46,7 +46,7 @@ vulnetix defend CVE-2025-12345 --for modsecurity \
     --record "ModSecurity, prod-eu ingress" --until 2027-01-10
 ```
 
-This writes `.vulnetix/controls.json` and `.vulnetix/vex-compensating-controls.json` and sends the VEX statement to Vulnetix. The finding stays `affected` and counted. The next `vulnetix scan` lists it under **PROTECTED** (a block rule) or **MONITORED** (a detection, or a block rule still in `log` mode) until the date passes. Without `--until` the control lasts 90 days.
+This writes `.vulnetix/controls.json` and `.vulnetix/vex-compensating-controls.json` and sends the VEX statement to Vulnesis. The finding stays `affected` and counted. The next `vulnetix scan` lists it under **PROTECTED** (a block rule) or **MONITORED** (a detection, or a block rule still in `log` mode) until the date passes. Without `--until` the control lasts 90 days.
 
 ## 5. Gate the pipeline
 

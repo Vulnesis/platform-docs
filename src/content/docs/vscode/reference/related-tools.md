@@ -1,6 +1,6 @@
 ---
 title: Related tools
-description: "Two code reviewers that use the same Vulnesis scanners and VDB as the extension: Belai's `/vulnetix review` and the Pix `pr-security-reviewer` agent."
+description: "Two code reviewers that use the same Vulnesis scanners and VDB as the extension: Belai's `/vulnetix review` and the Strix `pr-security-reviewer` agent."
 order: 6
 sources: [belai/docs/vulnetix-review.md, belai/internal/profiles/builtin/vulnetix-review.json, pix-ai-coding-assistant/vulnetix/agents/pr-security-reviewer.md]
 checked: [belai@ea3372a1, pix-ai-coding-assistant@de11107]
@@ -13,7 +13,7 @@ The extension shows findings in the editor as you work. Two other Vulnesis tools
 | Tool | What it does | Docs |
 |---|---|---|
 | Belai `/vulnetix review` | Runs nine CLI scanners on the repository, checks each finding against the code, fixes the ones with one clear fix and writes a report | [Belai and Vulnesis](/software-factory/belai/vulnetix/) |
-| Pix `pr-security-reviewer` | Reviews a pull request before merge and writes one review with an APPROVE or REQUEST_CHANGES verdict | [pr-security-reviewer](/pix/agents/pr-security-reviewer/) |
+| Strix `pr-security-reviewer` | Reviews a pull request before merge and writes one review with an APPROVE or REQUEST_CHANGES verdict | [pr-security-reviewer](/strix/agents/pr-security-reviewer/) |
 
 ## Belai: `/vulnetix review`
 
@@ -33,9 +33,9 @@ Cost:
 - Your own model provider bills the agents' and the session's turns.
 - On Pro, the fix plan also names Safe Harbour target versions. On Community it chooses from the fixed versions the scan reports.
 
-## Pix: `pr-security-reviewer`
+## Strix: `pr-security-reviewer`
 
-Pix brings Vulnesis to coding agents such as Claude Code. Its `pr-security-reviewer` agent reviews a pull request before it merges: it runs the scanners that apply to the changed files, checks each newly added direct dependency, and writes one review with an APPROVE or REQUEST_CHANGES verdict, which it can post with `gh pr review` once you confirm.
+Strix brings Vulnesis to coding agents such as Claude Code. Its `pr-security-reviewer` agent reviews a pull request before it merges: it runs the scanners that apply to the changed files, checks each newly added direct dependency, and writes one review with an APPROVE or REQUEST_CHANGES verdict, which it can post with `gh pr review` once you confirm.
 
 ## Using them alongside the extension
 

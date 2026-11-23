@@ -11,7 +11,7 @@ updated: 05 Nov 2026
 You need:
 
 - A Vulnesis account with the owner or admin role in its organisation. Members can use the factory once it is set up, but only owners and admins can manage orgs, publish workflows and change settings. Any plan works, Community included.
-- A machine for the agents to work on (step 4). On Community that is one machine of your own running `belai rc`, with no Vulnesis charge (the crews use your own model keys), or a Pix Sandbox bought per size from $85 a month. More than one self-hosted machine needs Pro.
+- A machine for the agents to work on (step 4). On Community that is one machine of your own running `belai rc`, with no Vulnesis charge (the crews use your own model keys), or a Keleustes Sandbox bought per size from $85 a month. More than one self-hosted machine needs Pro.
 
 ## 1. Install the GitHub App
 
@@ -64,7 +64,7 @@ To let one repository go further or less far, open it on the Repos page and set 
 Crew steps run on a host with the repository checked out. Choose one:
 
 - **Your own machine, free.** Install [Belai](/software-factory/belai/install-and-sign-in/), sign in, and run `belai rc` in a directory that holds the repository. Add `--detach` to keep it running in the background. Community includes one self-hosted host; more need Pro. See [Remote control](/software-factory/workforce/remote-control/).
-- **A Pix Sandbox, from $85 a month.** Buy one under **Pix Sandboxes** (`/resolve/belai-hosts`), choosing a size: Small, Medium or Large, each billed monthly per sandbox. Then on the Repos page, select repositories and choose **Add to Pix Sandbox**. Vulnesis runs the container and clones the repositories into it. See [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+- **A Keleustes Sandbox, from $85 a month.** Buy one under **Keleustes Sandboxes** (`/resolve/belai-hosts`), choosing a size: Small, Medium or Large, each billed monthly per sandbox. Then on the Repos page, select repositories and choose **Add to Keleustes Sandbox**. Vulnesis runs the container and clones the repositories into it. See [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 With no machine, a crew step waits up to `autonomy.no_host_ttl_hours` (6 hours by default), then the run ends with `no_host_timeout`. The card shows why it is waiting.
 
@@ -92,8 +92,8 @@ If publishing fails, the builder lists each problem with its code, for example `
 
 Open **Budgets** (`/resolve/factory-budgets`). The tenant has a monthly factory budget of 30,000,000 tokens by default (`budget.month`). Add a run or workflow budget to cap a single workflow. See [Budgets](/software-factory/cost/budgets/).
 
-> [!PIX] Check on it from your phone
-> Call Pix from the Resolve Platform header or the app and ask "how is the factory doing?". Pix reads the same figures as the cockpit with `factory_stats` and lists anything waiting on you with `needs_attention`.
+> [!STRIX] Check on it from your phone
+> Call Strix from the Resolve Platform header or the app and ask "how is the factory doing?". Strix reads the same figures as the cockpit with `factory_stats` and lists anything waiting on you with `needs_attention`.
 
 ## Next
 

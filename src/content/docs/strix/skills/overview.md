@@ -1,14 +1,14 @@
 ---
 title: Skills
 nav: Overview
-description: The 18 Pix skills, their arguments, the tools each is allowed to run, what usually follows each one, and the rules every skill shares.
+description: The 18 Strix skills, their arguments, the tools each is allowed to run, what usually follows each one, and the rules every skill shares.
 order: 1
 sources: [pix-ai-coding-assistant/skills/*/SKILL.md, pix-ai-coding-assistant/skills/_lib/contract.md, pix-ai-coding-assistant/justfile]
 checked: [pix-ai-coding-assistant@7aebf02]
 updated: 02 Nov 2026
 ---
 
-A skill is a procedure the agent follows in your repository. Each one is an Agent Skills `SKILL.md` under [`skills/`](https://github.com/Vulnesis/pix-ai-coding-assistant/tree/main/skills), installed by [`vulnetix skills install`](/pix/get-started/install/#3-install-the-skills).
+A skill is a procedure the agent follows in your repository. Each one is an Agent Skills `SKILL.md` under [`skills/`](https://github.com/Vulnesis/pix-ai-coding-assistant/tree/main/skills), installed by [`vulnetix skills install`](/strix/get-started/install/#3-install-the-skills).
 
 A skill earns its place only if it needs **the repository**, needs **you**, or needs **a sequence** a model would not compose correctly alone. Fetching one record is none of those, so lookups are MCP tools and `vulnetix vdb` subcommands, not skills.
 
@@ -27,24 +27,24 @@ Installed through `npx skills` or `gh`, the skill is `/repo-impact` (or however 
 
 | Skill | The question | Arguments | Usually followed by |
 |---|---|---|---|
-| [`dependency-choice`](/pix/skills/dependencies/#dependency-choice) | I need capability X: which package, and what am I trading? | `<capability or package name> [--ecosystem npm\|pypi\|...]` | `typosquat-check`, `fix` |
-| [`typosquat-check`](/pix/skills/dependencies/#typosquat-check) | Is this name impersonating something, or known-malicious? | `[<package-name>] \| [--installed]` | `dependency-choice` |
-| [`dep-resolve`](/pix/skills/dependencies/#dep-resolve) | The bump is blocked by peer dependencies: find a compatible set | `<package-name> [--target-version X]` | `dependency-choice`, `fix`, `verify-fix` |
-| [`eol-check`](/pix/skills/dependencies/#eol-check) | What here is past end of life, or will be within 90 days? | `[--strict]` | `dep-resolve`, `fix` |
-| [`license-check`](/pix/skills/dependencies/#license-check) | Does anything here conflict with our licence policy? | `[--policy permissive\|copyleft-aware\|strict]` | |
-| [`repo-impact`](/pix/skills/vulnerabilities/#repo-impact) | Does this CVE reach anything in this repository? | `<CVE-...\|GHSA-...>` | `fix`, `dependency-choice` |
-| [`fix`](/pix/skills/vulnerabilities/#fix) | Apply a fix for this finding, here, safely | `<vuln-id>` | `verify-fix`, `vex-publish` |
-| [`verify-fix`](/pix/skills/vulnerabilities/#verify-fix) | Did the fix land? | `<vuln-id>` | `vex-publish` |
-| [`dashboard`](/pix/skills/vulnerabilities/#dashboard) | What have we already decided here? | none | `repo-impact` |
-| [`sast-scan`](/pix/skills/scanners/#sast-scan) | Code-level vulnerabilities in changed files | `[--rule-id ID] [--paths file1 file2] [--baseline]` | `secure-code-write`, `verify-fix` |
-| [`secret-scan`](/pix/skills/scanners/#secret-scan) | Hardcoded credentials | `[--paths file1 file2] [--staged-only]` | `verify-fix` |
-| [`iac-scan`](/pix/skills/scanners/#iac-scan) | Terraform, OpenTofu, Nix and Kubernetes misconfigurations | `[--paths file1 file2]` | `verify-fix` |
-| [`container-scan`](/pix/skills/scanners/#container-scan) | Dockerfile, Containerfile and compose risks; image CVEs with Trivy or Grype | `[--paths Dockerfile1 Dockerfile2] [--image registry/img:tag]` | `verify-fix` |
-| [`secure-code-write`](/pix/skills/scanners/#secure-code-write) | I am about to write auth, crypto or SQL: what should I know? | `[<file-path>] \| [<topic: auth\|crypto\|sql\|xss\|deser>]` | `sast-scan` |
-| [`detection-rules`](/pix/skills/defence/#detection-rules) | I cannot patch this: what do I deploy instead? | `<vuln-id>` | `exploit-test`, `verify-fix` |
-| [`exploit-test`](/pix/skills/defence/#exploit-test) | Prove this is or is not exploitable against my authorised target | `<vuln-id> [--target URL]` | `verify-fix` |
-| [`sbom-generate`](/pix/skills/attestations/#sbom-generate) | Produce the SBOM a customer or auditor asked for | `[--format cyclonedx\|spdx\|both] [--sign] [--output PATH]` | `vex-publish` |
-| [`vex-publish`](/pix/skills/attestations/#vex-publish) | Publish our triage decisions as VEX | `[--format openvex\|cyclonedx] [--upload]` | |
+| [`dependency-choice`](/strix/skills/dependencies/#dependency-choice) | I need capability X: which package, and what am I trading? | `<capability or package name> [--ecosystem npm\|pypi\|...]` | `typosquat-check`, `fix` |
+| [`typosquat-check`](/strix/skills/dependencies/#typosquat-check) | Is this name impersonating something, or known-malicious? | `[<package-name>] \| [--installed]` | `dependency-choice` |
+| [`dep-resolve`](/strix/skills/dependencies/#dep-resolve) | The bump is blocked by peer dependencies: find a compatible set | `<package-name> [--target-version X]` | `dependency-choice`, `fix`, `verify-fix` |
+| [`eol-check`](/strix/skills/dependencies/#eol-check) | What here is past end of life, or will be within 90 days? | `[--strict]` | `dep-resolve`, `fix` |
+| [`license-check`](/strix/skills/dependencies/#license-check) | Does anything here conflict with our licence policy? | `[--policy permissive\|copyleft-aware\|strict]` | |
+| [`repo-impact`](/strix/skills/vulnerabilities/#repo-impact) | Does this CVE reach anything in this repository? | `<CVE-...\|GHSA-...>` | `fix`, `dependency-choice` |
+| [`fix`](/strix/skills/vulnerabilities/#fix) | Apply a fix for this finding, here, safely | `<vuln-id>` | `verify-fix`, `vex-publish` |
+| [`verify-fix`](/strix/skills/vulnerabilities/#verify-fix) | Did the fix land? | `<vuln-id>` | `vex-publish` |
+| [`dashboard`](/strix/skills/vulnerabilities/#dashboard) | What have we already decided here? | none | `repo-impact` |
+| [`sast-scan`](/strix/skills/scanners/#sast-scan) | Code-level vulnerabilities in changed files | `[--rule-id ID] [--paths file1 file2] [--baseline]` | `secure-code-write`, `verify-fix` |
+| [`secret-scan`](/strix/skills/scanners/#secret-scan) | Hardcoded credentials | `[--paths file1 file2] [--staged-only]` | `verify-fix` |
+| [`iac-scan`](/strix/skills/scanners/#iac-scan) | Terraform, OpenTofu, Nix and Kubernetes misconfigurations | `[--paths file1 file2]` | `verify-fix` |
+| [`container-scan`](/strix/skills/scanners/#container-scan) | Dockerfile, Containerfile and compose risks; image CVEs with Trivy or Grype | `[--paths Dockerfile1 Dockerfile2] [--image registry/img:tag]` | `verify-fix` |
+| [`secure-code-write`](/strix/skills/scanners/#secure-code-write) | I am about to write auth, crypto or SQL: what should I know? | `[<file-path>] \| [<topic: auth\|crypto\|sql\|xss\|deser>]` | `sast-scan` |
+| [`detection-rules`](/strix/skills/defence/#detection-rules) | I cannot patch this: what do I deploy instead? | `<vuln-id>` | `exploit-test`, `verify-fix` |
+| [`exploit-test`](/strix/skills/defence/#exploit-test) | Prove this is or is not exploitable against my authorised target | `<vuln-id> [--target URL]` | `verify-fix` |
+| [`sbom-generate`](/strix/skills/attestations/#sbom-generate) | Produce the SBOM a customer or auditor asked for | `[--format cyclonedx\|spdx\|both] [--sign] [--output PATH]` | `vex-publish` |
+| [`vex-publish`](/strix/skills/attestations/#vex-publish) | Publish our triage decisions as VEX | `[--format openvex\|cyclonedx] [--upload]` | |
 
 "Usually followed by" is the skill's `metadata.chain`. It is advice to the agent: nothing runs the next skill automatically.
 
@@ -76,7 +76,7 @@ These come from the shared contract, [`skills/_lib/contract.md`](https://github.
 3. **Find credentials, never ask for a key.** The CLI's own lookup order applies. With none, say once that the session is on the shared Community tier.
 4. **`vulnetix auth login` needs you.** The skill shows the URL and code and waits; it cannot approve the device grant.
 5. **Read `.vulnetix/capabilities.yaml` first** where the skill depends on local tools, and skip what is not installed rather than fail. Refresh it with `vulnetix agent capabilities`.
-6. **Write state to `.vulnetix/`**, mostly `memory.yaml`. See [Repository files](/pix/reference/repository-files/).
+6. **Write state to `.vulnetix/`**, mostly `memory.yaml`. See [Repository files](/strix/reference/repository-files/).
 
 ## Checking the skills yourself
 

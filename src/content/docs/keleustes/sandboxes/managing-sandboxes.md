@@ -1,13 +1,14 @@
 ---
-title: Pix Sandboxes
+title: Managing Keleustes Sandboxes
+nav: Managing sandboxes
 description: The machines Vulnesis runs for your factory, covering sizes, repositories, egress, Safe Harbour, extensions, launch configurations, maintenance and usage.
-order: 7
+order: 2
 sources: [belai/docs/pix-sandbox.md, website/sandbox-worker/docs/pricing.md, website/sandbox-worker/docs/factory-wake.md, vdb-site/docs/pix-sandbox-safe-harbour.md, vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_provisioning.go]
 checked: [belai@35506b9, website@a31d470, vdb-site@284f1d6]
 updated: 28 Oct 2026
 ---
 
-A Pix Sandbox is a machine Vulnesis runs for your account: one Cloudflare container per purchase, running `belai rc` with your repositories checked out. It is a [host](/software-factory/workforce/hosts-and-placement/) like any other, but nobody has to keep it running. The Pix Sandboxes page (`/resolve/belai-hosts`) manages them.
+A Keleustes Sandbox is a machine Vulnesis runs for your account: one Cloudflare container per purchase, running `belai rc` with your repositories checked out. It is a [host](/software-factory/workforce/hosts-and-placement/) like any other, but nobody has to keep it running. The Keleustes Sandboxes page (`/resolve/belai-hosts`) manages them.
 
 ## Sizes
 
@@ -21,7 +22,7 @@ A Pix Sandbox is a machine Vulnesis runs for your account: one Cloudflare contai
 
 ## Repositories
 
-Add repositories from the Repos page (**Add to Pix Sandbox**) or the sandbox's own page. Each is cloned into the sandbox, through your GitHub App installation (`app`) or as a public repository (`public`). The sandbox works only on the repositories it has; it never clones on demand for a step.
+Add repositories from the Repos page (**Add to Keleustes Sandbox**) or the sandbox's own page. Each is cloned into the sandbox, through your GitHub App installation (`app`) or as a public repository (`public`). The sandbox works only on the repositories it has; it never clones on demand for a step.
 
 ## Egress
 
@@ -32,7 +33,7 @@ Every outbound request from the sandbox goes through an egress gateway.
 | `deny_except_allow` | Only hosts you allowed. The default. |
 | `allow_all_logged` | Everything, with every request logged |
 
-Each host the sandbox reached has a decision: `allow`, `deny` or `unset`. The sandbox page's Egress view lists them with request counts. A new host can [trigger a workflow](/software-factory/workflows/source-events/) that researches it and files a review card.
+Each host the sandbox reached has a decision: `allow`, `deny` or `unset`. The sandbox page's Egress view lists them with request counts. [Egress policy](/keleustes/sandboxes/egress/) has the rule order, wildcards and the hosts you cannot deny. A new host can [trigger a workflow](/software-factory/workflows/source-events/) that researches it and files a review card.
 
 ## Package versions and Safe Harbour
 
@@ -66,6 +67,8 @@ A launch configuration is a named set of library items, each pinned to a version
 - An item's `kind` is one of `skill`, `prompt`, `command`, `hook`, `process`, `mcp`, `repo`, `budget`, `provider`, `rewrite`, `profile` or `crew`. Skills, prompts, commands, hooks, agent profiles (`profile`) and crews can also come from the public registry.
 - `egress_mode` is `inherit` (keep the sandbox's own), `allow_all_logged` or `deny_except_allow`. `egress_allow` lists up to 64 hosts.
 - A configuration holds up to 128 items and 16 KiB.
+
+[Launch configurations](/keleustes/sandboxes/launch-configurations/) lists every field, its limits and what applying one does.
 
 ## Settings that wait for the next launch
 

@@ -24,7 +24,7 @@ export const GROUPS = [
   ['Malware', 'Indicators of compromise the organization manages.', ['MalwareIoc']],
   ['Factory', 'Software Factory settings, workflows, triggers, schedules and budgets.', ['FactorySettings', 'FactoryWorkflow', 'FactoryTrigger', 'FactorySchedule', 'FactoryBudget']],
   ['AI libraries', 'Belai agents, crews and library items.', ['AgentProfile', 'Crew', 'LibraryItem']],
-  ['Pix', 'Pix sandbox launch settings and egress.', ['SandboxLaunchProfile', 'SandboxEgressPolicy']],
+  ['Keleustes Sandboxes', 'Launch settings and egress for Keleustes Sandboxes.', ['SandboxLaunchProfile', 'SandboxEgressPolicy']],
   ['TEA', 'Products, components and collections published through the Transparency Exchange API.', ['TeaProduct', 'TeaComponent', 'TeaCollection', 'TeaAccessPolicy', 'TeaPublicationTarget']],
   ['SIEM', 'Guardian searches, detection rules, alerts, reports and log sources.', ['SavedSearch', 'DetectionRule', 'AlertTrigger', 'ScheduledReport', 'LogSource']],
   ['Cloud', 'How Vulnesis reaches an AWS estate and what it reads there.', ['AwsConnection', 'AwsAccount', 'CloudSensors']],

@@ -270,7 +270,7 @@ Paths use dots for nesting and `[]` for the items of a list. **Required** means 
 | <span id="spec-unit"></span>`spec.unit` | string | no | `tokens` | `tokens`, `calls` | What the limit counts: model tokens, or calls. Defaults to tokens. |
 | <span id="spec-provider"></span>`spec.provider` | string | no |  | pattern `^[A-Za-z0-9:_.-]{1,64}(,[A-Za-z0-9:_.-]{1,64})*$` | The model providers the budget counts, as one provider id or a comma-separated list, such as anthropic or pix,openai. Every provider when left out. |
 | <span id="spec-alertAt"></span>`spec.alertAt` | array of integer | no |  | 1 to 10 items; each item: 1 to 100 | The percentages of the limit, ascending, from 1 to 100, at which the factory raises an alert. Defaults to 80 and 100. |
-| <span id="spec-actionAtLimit"></span>`spec.actionAtLimit` | string | no | `alert_only` | `alert_only`, `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop` | What the factory does when the limit is reached: pause the run, downgrade to the fast model, switch to the Pix allocation, ask a person, stop hard, or only alert. Defaults to alert_only. |
+| <span id="spec-actionAtLimit"></span>`spec.actionAtLimit` | string | no | `alert_only` | `alert_only`, `pause_run`, `downgrade_to_fast`, `switch_to_pix_allocation`, `escalate_human`, `hard_stop` | What the factory does when the limit is reached: pause the run, downgrade to the fast model, switch to the Strix allocation, ask a person, stop hard, or only alert. Defaults to alert_only. |
 
 ## Applying this kind
 

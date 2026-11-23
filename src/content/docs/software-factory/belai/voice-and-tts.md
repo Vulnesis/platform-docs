@@ -25,4 +25,4 @@ Belai can read replies to you. A turn's final reply is read when it ends, if you
 
 ## Related
 
-- [Calling Pix](/software-factory/pix/calling-pix/), to talk to the factory instead.
+- [Calling Strix](/software-factory/strix/calling-strix/), to talk to the factory instead.

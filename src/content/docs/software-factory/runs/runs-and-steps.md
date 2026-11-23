@@ -84,8 +84,8 @@ The run page shows each action only when it is allowed, with its GitHub price.
 
 An action from the wrong state is refused with `bad_state`. Starting, retrying, pausing or resuming while the factory is stopped is refused with `factory_stopped` (cancel still works).
 
-> [!PIX] Runs by phone
-> Ask Pix "what runs failed today?" (`list_runs`) or "what happened on run 8812?" (`run_facts`). Pix reads the same records as this page.
+> [!STRIX] Runs by phone
+> Ask Strix "what runs failed today?" (`list_runs`) or "what happened on run 8812?" (`run_facts`). Strix reads the same records as this page.
 
 ## Filtering the list
 

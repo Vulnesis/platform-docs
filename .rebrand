@@ -15,3 +15,8 @@ rewrite (?:Vulnetix|Resolve) [Cc]onsole => (?:Vulnesis|Vulnetix|Resolve) [Cc]ons
 rewrite /^# Vulnetix documentation => /^# Vulnesis documentation
 # Its tests exercise that retired-host data.
 ignore test/migration.test.mjs
+# The generators' surface map and its test name the old words on purpose: they
+# are the left side of each rule (Vulnetix hosts, Pix display names). Rewriting
+# them turns every rule into a no-op and regenerated pages lose the rebrand.
+ignore scripts/lib/brand.mjs
+ignore test/brand.test.mjs

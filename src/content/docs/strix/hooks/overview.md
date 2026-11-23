@@ -1,7 +1,7 @@
 ---
 title: Hooks
 nav: Overview
-description: The three Pix hooks, the events they answer, the two response shapes they emit, and why they stay silent when they have no verdict.
+description: The three Strix hooks, the events they answer, the two response shapes they emit, and why they stay silent when they have no verdict.
 order: 1
 sources: [cli/cmd/agent.go, cli/internal/agent/hook.go, cli/internal/agent/run.go, cli/internal/agent/install.go, pix-ai-coding-assistant/vulnetix/hooks/hooks.json]
 checked: [cli@4c8c3b7, pix-ai-coding-assistant@7aebf02]
@@ -12,9 +12,9 @@ All three hooks are one command, `vulnetix agent hook`. The host sends its hook 
 
 | Hook | Fires on | Question it answers | Default when it has something to say |
 |---|---|---|---|
-| [`dependency-guard`](/pix/hooks/dependency-guard/) | `PreToolUse` on a shell install command, or on a write to a dependency manifest | Is the package about to land acceptable under this repository's Safe Harbour policy? | Blocks known malware and a critical advisory being exploited; warns on the rest |
-| [`change-guard`](/pix/hooks/change-guard/) | `PreToolUse` on `git commit` or `git push` | Does the change about to be recorded carry a credential? | Blocks |
-| [`session-context`](/pix/hooks/session-context/) | `SessionStart` and `UserPromptSubmit` | What did the last scan of this repository find, and does a CVE or GHSA the prompt names reach it? | Informs |
+| [`dependency-guard`](/strix/hooks/dependency-guard/) | `PreToolUse` on a shell install command, or on a write to a dependency manifest | Is the package about to land acceptable under this repository's Safe Harbour policy? | Blocks known malware and a critical advisory being exploited; warns on the rest |
+| [`change-guard`](/strix/hooks/change-guard/) | `PreToolUse` on `git commit` or `git push` | Does the change about to be recorded carry a credential? | Blocks |
+| [`session-context`](/strix/hooks/session-context/) | `SessionStart` and `UserPromptSubmit` | What did the last scan of this repository find, and does a CVE or GHSA the prompt names reach it? | Informs |
 
 A shell command is one question, never both: a `git commit` or `git push` goes to the change guard, anything else is parsed for install commands.
 
@@ -58,4 +58,4 @@ While answering a hook the CLI prints no banner, sends no analytics and does not
 
 ## Policy
 
-What blocks, what warns and what stays silent is set per repository in [`.vulnetix/agent.yaml`](/pix/hooks/policy-file/). Without the file the defaults apply.
+What blocks, what warns and what stays silent is set per repository in [`.vulnetix/agent.yaml`](/strix/hooks/policy-file/). Without the file the defaults apply.

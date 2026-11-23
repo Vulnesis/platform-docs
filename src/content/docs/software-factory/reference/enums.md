@@ -167,37 +167,37 @@ Explained in [The board](/software-factory/workforce/board/).
 
 ### belaiLaunchEgressModes
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `allow_all_logged`, `deny_except_allow`, `inherit`
 
 ### belaiLaunchFields
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `description`, `items`, `keys`, `machine`, `name`
 
 ### belaiLaunchItemFields
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `id`, `kind`, `name`, `source`, `version`
 
 ### belaiLaunchItemKinds
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `budget`, `command`, `crew`, `hook`, `mcp`, `process`, `profile`, `prompt`, `provider`, `repo`, `rewrite`, `skill`
 
 ### belaiLaunchMachineFields
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `egress_allow`, `egress_mode`, `extensions`, `packs`, `version_policy`
 
 ### belaiLaunchRegistryKinds
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `agent`, `command`, `crew`, `hook`, `profile`, `prompt`, `skill`
 
@@ -755,13 +755,13 @@ Explained in [Checkpoints and Needs you](/software-factory/decisions/checkpoints
 
 ### fcRouteDefaults
 
-Explained in [Model routing and the Pix allowance](/software-factory/cost/model-routing/).
+Explained in [Model routing and the Strix allowance](/software-factory/cost/model-routing/).
 
 `clef-flash`, `code_fast`, `code_smart`, `images`, `pix-fast`, `pix-smart`, `planner_reviewer`, `systemone_decisions`
 
 ### fcRouteKeys
 
-Explained in [Model routing and the Pix allowance](/software-factory/cost/model-routing/).
+Explained in [Model routing and the Strix allowance](/software-factory/cost/model-routing/).
 
 `code_fast`, `code_smart`, `images`, `planner_reviewer`, `systemone_decisions`
 
@@ -857,78 +857,78 @@ Explained in [Runs and steps](/software-factory/runs/runs-and-steps/).
 
 ### pixClassifiers
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `clef`, `jev`, `tev1`
 
 ### pixCommanderEfforts
 
-Explained in [Calling Pix](/software-factory/pix/calling-pix/).
+Explained in [Calling Strix](/software-factory/strix/calling-strix/).
 
 `high`, `low`, `none`
 
 ### pixDefaultClassifiers
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `clef`, `jev`
 
 ### pixEgressDecision
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `allow`, `deny`, `unset`
 
 ### pixEgressModes
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `allow_all_logged`, `deny_except_allow`
 
 ### pixEventAudiences
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `admin`, `user`
 
 ### pixExtensionModes
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `any_indexed`, `packs_only`
 
 ### pixForbiddenHeaders
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `connection`, `content-length`, `content-type`, `expect`, `host`, `te`, `trailer`, `transfer-encoding`, `upgrade`
 
 ### pixItemKinds
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `command`, `hook`, `mcp`, `prompt`, `skill`
 
 ### pixRepoSources
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `app`, `public`
 
 ### pixTelemetrySignals
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `logs`, `metrics`
 
 ### pixUsageStatuses
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `ended`, `lost`, `running`, `stopped`, `stopping`
 
 ### pixVersionStrategies
 
-Explained in [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/).
+Explained in [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/).
 
 `latest`, `pinned`, `rolling`, `safest`, `stable`

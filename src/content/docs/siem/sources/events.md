@@ -91,5 +91,5 @@ These Vulnesis services send to Guardian on your behalf, with no token to set up
 |---|---|---|
 | Package Firewall decisions | `product_events` | `package-firewall` |
 | AI Firewall decisions | `product_events` | `ai-firewall` |
-| Pix Sandbox egress | `net_events` | `pix` |
+| Keleustes Sandbox egress | `net_events` | `pix` |
 | Vulnesis API access log (authenticated requests; CDN cache hits are left out) | `http_events` | `vdb-api` |

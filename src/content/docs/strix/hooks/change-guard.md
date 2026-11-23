@@ -23,7 +23,7 @@ Only added, copied, modified and renamed files are read, so a finding that was a
 
 ## Decisions
 
-The change guard acts on one signal, `secret`. With the default policy (`changeGuard.block: [secret]`) a credential in the change denies the command, and the reason names each finding. Set `secret` under `changeGuard.warn` to report without blocking, or leave it out of both lists to turn the change guard off. See [Policy file](/pix/hooks/policy-file/).
+The change guard acts on one signal, `secret`. With the default policy (`changeGuard.block: [secret]`) a credential in the change denies the command, and the reason names each finding. Set `secret` under `changeGuard.warn` to report without blocking, or leave it out of both lists to turn the change guard off. See [Policy file](/strix/hooks/policy-file/).
 
 ## Limits
 
@@ -38,5 +38,5 @@ The change guard acts on one signal, `secret`. With the default policy (`changeG
 
 ## Related
 
-- [`secret-scan`](/pix/skills/scanners/#secret-scan): the same rules on demand, staged files only or the whole repository.
+- [`secret-scan`](/strix/skills/scanners/#secret-scan): the same rules on demand, staged files only or the whole repository.
 - [Secrets scanning](/secrets/) for the rules and CI use.

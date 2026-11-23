@@ -43,8 +43,8 @@ From the recorded snapshot. `vulnetix scan` refreshes it.
 
 "Not in this repository's last scan" is said out loud because silence would read as "not affected", which is a stronger claim than the record supports. With no scan on record, a prompt gets no answer.
 
-Other identifier schemes (OSV, RUSTSEC, PYSEC, vendor ids) are not matched. Ask the agent to use [`repo-impact`](/pix/skills/vulnerabilities/#repo-impact) for those.
+Other identifier schemes (OSV, RUSTSEC, PYSEC, vendor ids) are not matched. Ask the agent to use [`repo-impact`](/strix/skills/vulnerabilities/#repo-impact) for those.
 
 ## Keeping it current
 
-The record is whatever the last `vulnetix scan` wrote. Run a scan after a dependency change, or let CI run one. See [Repository files](/pix/reference/repository-files/#memoryyaml) for the fields.
+The record is whatever the last `vulnetix scan` wrote. Run a scan after a dependency change, or let CI run one. See [Repository files](/strix/reference/repository-files/#memoryyaml) for the fields.

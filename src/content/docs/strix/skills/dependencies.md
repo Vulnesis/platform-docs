@@ -7,7 +7,7 @@ checked: [pix-ai-coding-assistant@7aebf02, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-These skills cover the decisions before and around a dependency. The [dependency guard](/pix/hooks/dependency-guard/) is the automatic check at install time; these are the deliberate conversations.
+These skills cover the decisions before and around a dependency. The [dependency guard](/strix/hooks/dependency-guard/) is the automatic check at install time; these are the deliberate conversations.
 
 ## dependency-choice
 
@@ -53,7 +53,7 @@ It proposes, in order of preference:
 1. A single bump to the version Safe Harbour picks under `safeHarbourStrategy` in `.vulnetix/agent.yaml` that satisfies the constraints.
 2. A package-manager override: npm `overrides`, pnpm `pnpm.overrides`, yarn `resolutions`, Go `replace`, Cargo `[patch]`.
 3. Inlining the patched upstream code as first-party code (`fix` type A0). Copy the upstream LICENSE with it.
-4. A workaround only: hand off to [`detection-rules`](/pix/skills/defence/#detection-rules).
+4. A workaround only: hand off to [`detection-rules`](/strix/skills/defence/#detection-rules).
 
 It always stops for approval before editing a manifest, then suggests `verify-fix`. pip has no override mechanism; pinning the transitive in `requirements.txt` with `--no-deps` on the parent is the workaround it offers.
 

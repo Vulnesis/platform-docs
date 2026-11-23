@@ -23,14 +23,14 @@ An agent stops to ask when it needs a person. Its session waits, the question sh
 
 - **The session page** shows the question beside the transcript, with the answers it accepts.
 - **The TUI**: the question appears in the session, and `/inbox` lists every card waiting on you: held at a checkpoint, assigned to you, or blocked.
-- **A Pix call**: Pix reads it to you and answers with `answer_agent_question`. By voice, a permission is allow once or deny, never allow always.
+- **A Strix call**: Strix reads it to you and answers with `answer_agent_question`. By voice, a permission is allow once or deny, never allow always.
 - **A notification** can carry buttons that answer it.
 
 The first answer wins: once one is applied or in flight, a second is refused.
 
 ## When agents do not ask
 
-Workers that a workflow or schedule starts, and sessions Pix starts on a call, run with permission asks off unless `belai.ask_permission` is on: a tool call the rules would ask about is allowed, and guardrails still apply. See [Autonomy](/software-factory/control/autonomy/).
+Workers that a workflow or schedule starts, and sessions Strix starts on a call, run with permission asks off unless `belai.ask_permission` is on: a tool call the rules would ask about is allowed, and guardrails still apply. See [Autonomy](/software-factory/control/autonomy/).
 
 ## Permission rules
 
@@ -38,7 +38,7 @@ Workers that a workflow or schedule starts, and sessions Pix starts on a call, r
 
 ## Permission offers
 
-When a prompt states a permission the AI Firewall can enforce, for example "don't send anything to pastebin", Belai offers matching guardrail rules on a card. It writes the rule to your AI Firewall only when you apply it, or automatically with `firewall.permission_auto_apply` on. A project's settings can switch offers off, never on. A Pix Sandbox lists its offers on its page.
+When a prompt states a permission the AI Firewall can enforce, for example "don't send anything to pastebin", Belai offers matching guardrail rules on a card. It writes the rule to your AI Firewall only when you apply it, or automatically with `firewall.permission_auto_apply` on. A project's settings can switch offers off, never on. A Keleustes Sandbox lists its offers on its page.
 
 ## API
 

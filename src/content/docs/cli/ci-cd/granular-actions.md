@@ -67,7 +67,7 @@ Every file has exactly one language or package manager, so jobs never overlap. F
 
 Each job keeps its own history. A finding missing from a job is only compared with what that job scans, so `sast/python` never closes a JavaScript finding. Code scanning works the same way: an alert closes against a later upload in its own category.
 
-Moving a repository from `sast` to the granular actions starts new histories. Findings recorded under the old tool name are not compared with the new jobs, so close or review them in Vulnetix. Local `.vulnetix/memory.yaml` is not resolved by absence on a scoped `sca` run.
+Moving a repository from `sast` to the granular actions starts new histories. Findings recorded under the old tool name are not compared with the new jobs, so close or review them in Vulnesis. Local `.vulnetix/memory.yaml` is not resolved by absence on a scoped `sca` run.
 
 ## The whole-repository SBOM
 

@@ -7,7 +7,7 @@ checked: [cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The dependency guard runs on `PreToolUse`. It recovers the packages a tool call would add, looks them up in one request, and decides from the repository's [policy](/pix/hooks/policy-file/) whether to stay silent, warn or block.
+The dependency guard runs on `PreToolUse`. It recovers the packages a tool call would add, looks them up in one request, and decides from the repository's [policy](/strix/hooks/policy-file/) whether to stay silent, warn or block.
 
 ## What it reads
 

@@ -9,7 +9,7 @@
 //
 //   WHY      the reason behind a design choice
 //   CAREFUL  something that changes or stops work when you might not expect it
-//   PIX      what to say on a Pix call to do this from a phone
+//   STRIX    what to say on a Strix call to do this from a phone
 //
 // Heading ids are assigned by Astro after these plugins run, so the "#" links
 // next to headings are added by the page script in src/layouts/Doc.astro.
@@ -19,9 +19,9 @@ import { exists } from '../lib/markdown-export.mjs';
 const KINDS = {
   WHY: { cls: 'why', title: 'Why it works this way' },
   CAREFUL: { cls: 'careful', title: 'Careful' },
-  PIX: { cls: 'pix', title: 'On a Pix call' },
+  STRIX: { cls: 'strix', title: 'On a Strix call' },
 };
-const MARKER = /^\s*\[!(WHY|CAREFUL|PIX)\][ \t]*([^\n]*)\n?/;
+const MARKER = /^\s*\[!(WHY|CAREFUL|STRIX)\][ \t]*([^\n]*)\n?/;
 
 const el = (tagName, properties, children) => ({ type: 'element', tagName, properties, children });
 const txt = (value) => ({ type: 'text', value });

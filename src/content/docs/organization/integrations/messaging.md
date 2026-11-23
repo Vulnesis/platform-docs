@@ -44,8 +44,8 @@ Event types are `<domain>.<entity>.<verb>`. A route listens for one type, a fami
 |---|---|
 | Scans and findings | `scan.completed`, `scan.build_broken` (a quality gate failed the build), `findings.auto_resolved`, `scan.ingested` |
 | Uploads | `upload.processed`: an SBOM or results file finished processing |
-| Pix Sandbox | `pix.<kind>`, such as `pix.egress.blocked`, `pix.forge.pr`, `pix.launch.state` |
-| Pix agent activity | `pix.agent.<kind>`, such as `pix.agent.worker.started`, `pix.agent.finding.carded` |
+| Keleustes Sandbox | `pix.<kind>`, such as `pix.egress.blocked`, `pix.forge.pr`, `pix.launch.state` |
+| Strix agent activity | `pix.agent.<kind>`, such as `pix.agent.worker.started`, `pix.agent.finding.carded` |
 | Belai | `belai.<kind>`, `belai.dispatch.<state>`, `belai.session.ended.<outcome>`, `belai.session.ask.<kind>`, `belai.draft.done`, `belai.draft.refused`, `belai.host.attention.<kind>`, `belai.host.rc_online`, `belai.host.rc_offline`, `belai.card.assigned`, `belai.checkpoint.waiting`, `belai.checkpoint.decided`, `belai.github.conflict.escalated` |
 | Software Factory | `factory.approval.requested`, `factory.approval.overdue`, `factory.run.*`, `factory.nohost.*`, `factory.crew.unclaimed`, `factory.card.blocked`, `factory.gate.failed`, `factory.pr.opened`, `factory.budget.*`, `factory.quota.low`. See [the factory's messaging page](/software-factory/workforce/messaging-centre/). |
 | Guardian | `siem.alert.<level>`, `siem.rule.*`, `siem.source.*`, `siem.usage.*`, `siem.trigger.fired`, `siem.report`. See [/siem/](/siem/). |

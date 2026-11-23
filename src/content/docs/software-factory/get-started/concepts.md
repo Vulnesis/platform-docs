@@ -50,7 +50,7 @@ A **run** is one execution of a published version. It is made of **steps**, one 
 
 ## Hosts, crews and agents
 
-An **agent** is a Belai profile: a model, a system prompt, tools and limits. A **crew** is a set of agents dispatched together, up to 8 replicas, to one **host** for one step. A host is a machine running Belai: a [Pix Sandbox](/software-factory/workforce/pix-sandboxes/) that Vulnesis runs, or your own machine connected with `belai rc`. The factory picks a host for each crew step from its `runOn` rule. If no host can take it, the step waits and the card says why. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
+An **agent** is a Belai profile: a model, a system prompt, tools and limits. A **crew** is a set of agents dispatched together, up to 8 replicas, to one **host** for one step. A host is a machine running Belai: a [Keleustes Sandbox](/keleustes/sandboxes/managing-sandboxes/) that Vulnesis runs, or your own machine connected with `belai rc`. The factory picks a host for each crew step from its `runOn` rule. If no host can take it, the step waits and the card says why. See [Hosts and placement](/software-factory/workforce/hosts-and-placement/).
 
 ## The board
 
@@ -58,7 +58,7 @@ Work items are **cards** on a kanban [board](/software-factory/workforce/board/)
 
 ## People in the loop
 
-Anything that waits on a person is a **checkpoint**: an approval, an agent's question, a card held or blocked, a draft pull request ready for review. The [Checkpoints](/software-factory/decisions/checkpoints/) page lists them most urgent kind first and newest first within a kind, and the cockpit's Needs you panel shows the head of that queue. You can answer most of them by voice on a [Pix call](/software-factory/pix/calling-pix/).
+Anything that waits on a person is a **checkpoint**: an approval, an agent's question, a card held or blocked, a draft pull request ready for review. The [Checkpoints](/software-factory/decisions/checkpoints/) page lists them most urgent kind first and newest first within a kind, and the cockpit's Needs you panel shows the head of that queue. You can answer most of them by voice on a [Strix call](/software-factory/strix/calling-strix/).
 
 ## Limits and money
 

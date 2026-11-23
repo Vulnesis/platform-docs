@@ -15,8 +15,8 @@ Software Factory has five parts. You use two of them directly: the Resolve Platf
 | Resolve Platform | Your browser, served from `www.vulnes.is` | The Software Factory pages under `/resolve/factory*` |
 | Factory API and engine | Vulnesis cloud | Stores workflows, runs, settings, budgets, events and the audit ledger. Advances runs. |
 | Schedulers | AWS EventBridge Scheduler, Cloudflare, or a host | Fire cron triggers at the factory API |
-| Hosts | A Pix Sandbox, or your own machine running `belai rc` | Run agent sessions with the repository checked out |
-| Pix call worker | Cloudflare | Voice calls with Pix |
+| Hosts | A Keleustes Sandbox, or your own machine running `belai rc` | Run agent sessions with the repository checked out |
+| Strix call worker | Cloudflare | Voice calls with Strix |
 
 ## The Resolve Platform and the API
 
@@ -39,24 +39,24 @@ The engine has no timer that scans for work. A run moves only when something tel
 - **Scanner results** uploaded by the Vulnesis CLI wake scan steps.
 - **Labels and comments** (`sf:<name>`, `/sf <name>`) on issues and pull requests start a run of the named workflow.
 - **The board**: a card moving list can start a run.
-- **People** start runs by hand in the Resolve Platform or on a Pix call.
+- **People** start runs by hand in the Resolve Platform or on a Strix call.
 
 ## Hosts
 
 A host is any machine running Belai in remote control mode. It keeps a long-poll open to the API, advertises the repositories and directories it has, and takes **dispatches**: requests to start a session with a given agent, brief and limits. The host acknowledges the dispatch, runs the session, streams its transcript back and reports when it ends.
 
-- A **Pix Sandbox** is a container Vulnesis runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, with at most 6 wake requests an hour per sandbox.
+- A **Keleustes Sandbox** is a container Vulnesis runs for you, with Belai, the repositories you added, an egress policy and its own budget. A sandbox that is asleep is woken for factory work, with at most 6 wake requests an hour per sandbox.
 - **Your own machine** joins with `belai rc`. It runs only what its operator allows. See [Remote control](/software-factory/workforce/remote-control/).
 
 Hosts on one tenant can message each other through the [A2A relay](/software-factory/workforce/a2a-messaging/) and share [agent memory](/software-factory/workforce/memory/).
 
 ## Models
 
-Agents call models through the provider routes on the [Budgets](/software-factory/cost/model-routing/) page: the Pix allocation that comes with your plan, or keys you hold in the Secrets Vault. Decision nodes call the System One classifiers (Clef, Clef Flash and Jev) through their own adapters and caps. The AI Firewall sits between Belai and every provider on a factory host.
+Agents call models through the provider routes on the [Budgets](/software-factory/cost/model-routing/) page: the Strix allocation that comes with your plan, or keys you hold in the Secrets Vault. Decision nodes call the System One classifiers (Clef, Clef Flash and Jev) through their own adapters and caps. The AI Firewall sits between Belai and every provider on a factory host.
 
-## Pix calls
+## Strix calls
 
-A call is handled by a Durable Object on Cloudflare. Your speech is transcribed, the Pix coordinator chooses tools, and the answer is spoken back. The tools read the same API the Resolve Platform does. Starting or stopping work needs a read-back and your yes. Call history keeps the words and the cards shown on screen, with no audio. See [Calling Pix](/software-factory/pix/calling-pix/).
+A call is handled by a Durable Object on Cloudflare. Your speech is transcribed, the Strix coordinator chooses tools, and the answer is spoken back. The tools read the same API the Resolve Platform does. Starting or stopping work needs a read-back and your yes. Call history keeps the words and the cards shown on screen, with no audio. See [Calling Strix](/software-factory/strix/calling-strix/).
 
 ## Belai
 

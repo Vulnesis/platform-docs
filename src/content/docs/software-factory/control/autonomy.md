@@ -53,7 +53,7 @@ These settings sit in the Autonomy section of Settings:
 The same section also holds two Belai keys that every factory session reads: `belai.mode` (Default agent mode: `goal`, `agent`, `plan` or `auto`) and `belai.ask_permission`. See [Agents](/software-factory/workforce/agents/).
 
 > [!CAREFUL] Unattended sessions do not stop for permission asks
-> `belai.ask_permission` is off by default. Workers that a workflow or schedule starts, and sessions Pix starts on a call, run tools without stopping to ask. Guardrails still apply. Switch it on if you want workflow workers to stop for approval.
+> `belai.ask_permission` is off by default. Workers that a workflow or schedule starts, and sessions Strix starts on a call, run tools without stopping to ask. Guardrails still apply. Switch it on if you want workflow workers to stop for approval.
 
 ## Related
 

@@ -7,7 +7,7 @@ checked: [pix-ai-coding-assistant@7aebf02, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The usual sequence is `repo-impact`, then `fix`, then `verify-fix`, then [`vex-publish`](/pix/skills/attestations/#vex-publish). `dashboard` shows where a repository stands at any point.
+The usual sequence is `repo-impact`, then `fix`, then `verify-fix`, then [`vex-publish`](/strix/skills/attestations/#vex-publish). `dashboard` shows where a repository stands at any point.
 
 ## repo-impact
 
@@ -93,4 +93,4 @@ Use it when picking triage back up, before a release, or when joining a reposito
 | `risk-accepted` | `affected` (`will_not_fix`) | Accepted |
 
 > [!CAREFUL] Known defects in these skills at pix-ai-coding-assistant@7aebf02
-> `repo-impact` runs `vulnetix scan --sca`, a flag the current CLI does not have (use `vulnetix sca`, or `vulnetix scan --only sca`), and `vulnetix scan --reachability -o json`, where `--reachability` takes a mode (`direct`, `transitive`, `both`, `off`). `dashboard` and `fix` read and write `vulnerabilities:` and `manifests:` sections that the CLI does not keep when it next saves `memory.yaml`; see [Repository files](/pix/reference/repository-files/#memoryyaml). `verify-fix` suggests a `safe-harbor-resolver` agent that does not exist.
+> `repo-impact` runs `vulnetix scan --sca`, a flag the current CLI does not have (use `vulnetix sca`, or `vulnetix scan --only sca`), and `vulnetix scan --reachability -o json`, where `--reachability` takes a mode (`direct`, `transitive`, `both`, `off`). `dashboard` and `fix` read and write `vulnerabilities:` and `manifests:` sections that the CLI does not keep when it next saves `memory.yaml`; see [Repository files](/strix/reference/repository-files/#memoryyaml). `verify-fix` suggests a `safe-harbor-resolver` agent that does not exist.

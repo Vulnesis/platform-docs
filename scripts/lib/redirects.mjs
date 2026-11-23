@@ -18,7 +18,7 @@ export const FALLBACK = {
   'docs.cli.vulnetix.com': '/cli/',
   'docs.guardrails.vulnetix.com': '/ai-firewall/',
   'docs.mcp.vulnetix.com': '/mcp-server/',
-  'ai-docs.vulnetix.com': '/pix/',
+  'ai-docs.vulnetix.com': '/strix/',
   'docs.code.vulnetix.com': '/vscode/',
 };
 

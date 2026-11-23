@@ -14,7 +14,7 @@ Start here when a run does not start, sits waiting, or fails. The API refuses a 
 
 | Symptom or message | Cause | Fix |
 |---|---|---|
-| `403` with `"code": "plan_locked"`: `The Software Factory needs Pro, or a Pix Sandbox on Community.` | A Community organisation with no active Pix Sandbox | Move to Pro, or buy a sandbox, which stays open on Community. See [Who can use it](/software-factory/#who-can-use-it). |
+| `403` with `"code": "plan_locked"`: `The Software Factory needs Pro, or a Keleustes Sandbox on Community.` | A Community organisation with no active Keleustes Sandbox | Move to Pro, or buy a sandbox, which stays open on Community. See [Who can use it](/software-factory/#who-can-use-it). |
 | A trigger never fires, and its webhook row shows `needs_permission` or `needs_webhook_move` | The GitHub App lacks the permission the event needs, or its webhook still points at an old URL | Grant the named permission (for example Actions: read for `workflow_run`), or update the App's webhook URL. See [Managed scope](/software-factory/control/managed-scope/#what-the-organisations-panel-shows). |
 | Connecting a forge fails with `<host> answered as Gitea, not Forgejo`, `the token was refused: ...` or `the token cannot list ...'s repositories` | The wrong forge card, or a bot token without the scopes or repository access the factory needs | Use the card for the forge the host reports. Create the token with the listed scopes. See [Forge connections](/software-factory/control/forge-connections/#connecting). |
 

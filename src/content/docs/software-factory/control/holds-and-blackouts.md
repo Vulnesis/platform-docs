@@ -21,7 +21,7 @@ Pause and stop are covered in [Pause, stop and resume](/software-factory/control
 
 ## Maintenance windows
 
-A maintenance window is a recurring time when your Pix Sandbox may be updated and restarted. While it is open the factory starts no new step. A queued run becomes `held` and is queued again when the window closes; a run already running starts no new step until then.
+A maintenance window is a recurring time when your Keleustes Sandbox may be updated and restarted. While it is open the factory starts no new step. A queued run becomes `held` and is queued again when the window closes; a run already running starts no new step until then.
 
 ```json
 [{ "days": ["sun"], "start": "02:00", "end": "04:00", "tz": "Australia/Melbourne" }]
@@ -75,4 +75,4 @@ The trigger table has no held-fire counter yet, so resume answers `heldFires: 0`
 ## Related
 
 - [Schedules](/software-factory/workflows/schedules/)
-- [Pix Sandboxes](/software-factory/workforce/pix-sandboxes/)
+- [Keleustes Sandboxes](/keleustes/sandboxes/managing-sandboxes/)

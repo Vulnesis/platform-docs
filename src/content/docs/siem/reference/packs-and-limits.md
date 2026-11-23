@@ -38,7 +38,7 @@ Ingest tokens are checked against the pack on every batch (the entitlement is ca
 | 150% | `refusing`. Ingest answers `429` `ingest_cap` until 00:00 UTC. Firehose and Logpush keep the batch and retry; Firehose parks it in your error bucket after 300 s. |
 | No pack | Ingest answers `402` `plan`, and the token's last error says Guardian is not active. |
 
-Vulnesis product sources (Package Firewall, AI Firewall, Pix Sandbox, the Vulnesis API) do not count against the cap.
+Vulnesis product sources (Package Firewall, AI Firewall, Keleustes Sandbox, the Vulnesis API) do not count against the cap.
 
 ## The query budget
 

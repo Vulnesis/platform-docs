@@ -92,9 +92,9 @@ Each one runs shell commands with the Vulnesis CLI, which Claude Code can do thr
 
 Claude Code does not render [MCP Apps](/mcp-server/protocol/apps/); the tool results are unchanged. The [skills extension](/mcp-server/prompts/skills/) is not used by Claude Code, so use the prompts.
 
-## Pix and the MCP server together
+## Strix and the MCP server together
 
-[Pix](/pix/) installs the same skills locally with hooks. Running both works; you will see each workflow twice, once as a Pix skill and once as an MCP prompt.
+[Strix](/strix/) installs the same skills locally with hooks. Running both works; you will see each workflow twice, once as a Strix skill and once as an MCP prompt.
 
 ## Troubleshooting
 

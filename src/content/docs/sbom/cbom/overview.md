@@ -52,7 +52,7 @@ Each algorithm also carries its CycloneDX `nistQuantumSecurityLevel` (0 to 6) an
 | `--no-certs` | bool | `false` | Skip the certificate pass |
 | `--no-deps` | bool | `false` | Skip the library pass |
 | `--fail-on` | string | `none` | Comma-separated statuses that exit `1` when found: `quantum-vulnerable`, `deprecated`, `hybrid`, `quantum-safe` |
-| `--no-upload` | bool | `false` | Do not send the CBOM to Vulnetix. It is sent automatically when you are authenticated. |
+| `--no-upload` | bool | `false` | Do not send the CBOM to Vulnesis. It is sent automatically when you are authenticated. |
 | `--cbom-include-ignored` | bool | `false` | Include files matched by `.gitignore` |
 | `--lifecycle` | string | derived | Comma-separated lifecycle phases, overriding the derived set |
 | `--project`, `--cluster`, `--namespace`, `--environment`, `--tag` | string | inferred | Deployment labels. See [Document identity and deployment labels](/sbom/reference/document-metadata/). |

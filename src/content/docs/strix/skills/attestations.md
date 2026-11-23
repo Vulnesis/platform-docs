@@ -7,7 +7,7 @@ checked: [pix-ai-coding-assistant@7aebf02]
 updated: 02 Nov 2026
 ---
 
-For a full audit deliverable (SBOM, licences, SARIF and VEX with a checksum manifest) use the [`compliance-bundler`](/pix/agents/overview/#compliance-bundler) subagent. For the formats themselves see [SBOM](/sbom/) and [VEX](/vex/).
+For a full audit deliverable (SBOM, licences, SARIF and VEX with a checksum manifest) use the [`compliance-bundler`](/strix/agents/overview/#compliance-bundler) subagent. For the formats themselves see [SBOM](/sbom/) and [VEX](/vex/).
 
 ## sbom-generate
 
@@ -23,7 +23,7 @@ Every run makes a new timestamped directory and never overwrites. `--output` set
 - `--sign` runs `cosign sign-blob --yes <sbom> --bundle <sbom>.sig.bundle`. Without cosign it prints an install hint and skips signing.
 - With `syft` installed it also writes `syft <dir> -o cyclonedx-json` and reports the component-count difference, so you can spot what either tool missed.
 
-For a container image SBOM, use [`container-scan`](/pix/skills/scanners/#container-scan) with `--image`.
+For a container image SBOM, use [`container-scan`](/strix/skills/scanners/#container-scan) with `--image`.
 
 ## vex-publish
 
@@ -33,7 +33,7 @@ For a container image SBOM, use [`container-scan`](/pix/skills/scanners/#contain
 | Runs | `vulnetix triage --provider vulnetix --vex-format <format> -o json`; `vulnetix upload --file <vex>` with `--upload`; `gh pr comment` inside a pull request |
 | Writes | `.vulnetix/vex/<timestamp>.vex.json` and a Markdown summary |
 
-It publishes every finding whose `decision.choice` is set to something other than `investigating`, mapping decisions to VEX status as the CLI does (table on [Vulnerability skills](/pix/skills/vulnerabilities/#decision-values)). Entries still `under_investigation` are left out unless you pass `--include-investigating`.
+It publishes every finding whose `decision.choice` is set to something other than `investigating`, mapping decisions to VEX status as the CLI does (table on [Vulnerability skills](/strix/skills/vulnerabilities/#decision-values)). Entries still `under_investigation` are left out unless you pass `--include-investigating`.
 
 | Flag | Default | Effect |
 |---|---|---|

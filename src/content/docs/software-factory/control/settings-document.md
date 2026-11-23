@@ -54,7 +54,7 @@ A value that is the wrong type or out of range is refused with the key named, so
 
 ## Keys that take effect later
 
-Keys stored on a Pix Sandbox, such as the sandbox size, egress mode and version policy, take effect at the next launch. After a save they are listed as pending, and the page shows them as waiting until then.
+Keys stored on a Keleustes Sandbox, such as the sandbox size, egress mode and version policy, take effect at the next launch. After a save they are listed as pending, and the page shows them as waiting until then.
 
 ## Locked keys
 

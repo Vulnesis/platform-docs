@@ -47,7 +47,7 @@ Some GitHub features have no equivalent. A step that needs one fails with `forge
 - **Security alerts** (Dependabot, code scanning, secret scanning) are GitHub's. On other forges Vulnesis's own scanners report the same findings.
 - **Merge queues** are GitHub's.
 - **Issue close reasons** exist only on GitHub. Elsewhere the card keeps the reason on the board.
-- **Pix Sandboxes** reach repositories through the Vulnesis GitHub App, so they work on github.com only. Belai on your own machines works on every forge.
+- **Keleustes Sandboxes** reach repositories through the Vulnesis GitHub App, so they work on github.com only. Belai on your own machines works on every forge.
 
 The full table, per capability and per trigger event, is [Forge capabilities](/software-factory/reference/forge-capabilities/).
 

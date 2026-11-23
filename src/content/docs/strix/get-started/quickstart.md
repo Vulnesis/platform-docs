@@ -1,19 +1,19 @@
 ---
-title: Pix quickstart
+title: Strix quickstart
 nav: Quickstart
-description: Wire the Pix hooks into Claude Code or Codex, install the 18 skills, check both are live, and run your first skill in the agent.
+description: Wire the Strix hooks into Claude Code or Codex, install the 18 skills, check both are live, and run your first skill in the agent.
 order: 1.5
 sources: [cli/cmd/agent.go, cli/internal/agent/install.go, cli/cmd/skills.go, cli/cmd/pix.go, pix-ai-coding-assistant/skills/typosquat-check/SKILL.md]
 checked: [cli@v4.17.1, pix-ai-coding-assistant@de11107e2]
 updated: 04 Nov 2026
 ---
 
-This page puts Pix into the coding agent you already use: the hooks that stop a malicious install or a committed credential, and the skills you call by name.
+This page puts Strix into the coding agent you already use: the hooks that stop a malicious install or a committed credential, and the skills you call by name.
 
 ## Prerequisites
 
 - The Vulnesis CLI on the `PATH` of the process that starts your agent: `brew install Vulnesis/tap/vulnetix`, or see [Install the CLI](/cli/get-started/install/).
-- A coding agent on this machine. Hooks are wired for Claude Code and OpenAI Codex. Skills reach every agent in [What each agent gets](/pix/get-started/install/#what-each-agent-gets).
+- A coding agent on this machine. Hooks are wired for Claude Code and OpenAI Codex. Skills reach every agent in [What each agent gets](/strix/get-started/install/#what-each-agent-gets).
 - No credential. Without one the CLI uses the shared Community tier.
 
 ## 1. Wire the hooks
@@ -66,7 +66,7 @@ Ask the agent to run `npm i event-stream@3.3.6`. That version is on a malware fe
 
 ## Next
 
-- [Install, update and verify](/pix/get-started/install/) for every agent, updates and pruning.
-- [Skills](/pix/skills/overview/) for all 18 and their arguments.
-- [Dependency guard](/pix/hooks/dependency-guard/) and the [policy file](/pix/hooks/policy-file/) to warn instead of block.
-- [Troubleshooting](/pix/get-started/troubleshooting/) when a hook says nothing.
+- [Install, update and verify](/strix/get-started/install/) for every agent, updates and pruning.
+- [Skills](/strix/skills/overview/) for all 18 and their arguments.
+- [Dependency guard](/strix/hooks/dependency-guard/) and the [policy file](/strix/hooks/policy-file/) to warn instead of block.
+- [Troubleshooting](/strix/get-started/troubleshooting/) when a hook says nothing.

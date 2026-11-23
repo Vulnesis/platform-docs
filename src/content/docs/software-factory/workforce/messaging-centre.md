@@ -40,7 +40,7 @@ On Slack, a digest is grouped by cause, with what needs you first, and **one mes
 
 ## Templates
 
-Each event type renders with a template. System templates cover factory notices, sessions, findings, Pix Sandbox events, agent activity and security alerts. You can write your own, **Preview** it against a sample, keep versions, and restore an old one.
+Each event type renders with a template. System templates cover factory notices, sessions, findings, Keleustes Sandbox events, agent activity and security alerts. You can write your own, **Preview** it against a sample, keep versions, and restore an old one.
 
 A factory notice always carries a one-line headline and detail, links to the page it is about, and may carry buttons, such as Approve, that act straight away.
 

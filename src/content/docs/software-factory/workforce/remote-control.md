@@ -8,7 +8,7 @@ checked: [belai@8aa7760, vdb-site@597344c, website@58b9ffa]
 updated: 05 Nov 2026
 ---
 
-`belai rc` connects a machine to Vulnetix. It then appears on the Pix Sandboxes page as a self-managed host, and the Resolve Platform can start Belai sessions on it, follow them live and prompt them. The factory can dispatch crews to it. Sessions run only in projects already trusted on the machine and in the directories you offer.
+`belai rc` connects a machine to Vulnesis. It then appears on the Keleustes Sandboxes page as a self-managed host, and the Resolve Platform can start Belai sessions on it, follow them live and prompt them. The factory can dispatch crews to it. Sessions run only in projects already trusted on the machine and in the directories you offer.
 
 ```sh
 belai rc --dir ~/src/api --dir ~/src/web --detach
@@ -20,7 +20,7 @@ belai rc --stop
 
 Start with [Install and sign in](/software-factory/belai/install-and-sign-in/) if Belai is not on the machine yet.
 
-**One free host on Community.** Community includes one self-hosted host. While it is running, `belai rc` on a second machine stops at the website check with "Community includes one self-hosted host; add more with Pro or a Pix Sandbox". Stop `belai rc` and Belai on the first machine and the second one can enrol after about 45 seconds. Pro, Business and Enterprise enrol any number of machines.
+**One free host on Community.** Community includes one self-hosted host. While it is running, `belai rc` on a second machine stops at the website check with "Community includes one self-hosted host; add more with Pro or a Keleustes Sandbox". Stop `belai rc` and Belai on the first machine and the second one can enrol after about 45 seconds. Pro, Business and Enterprise enrol any number of machines.
 
 ## What it needs
 

@@ -17,7 +17,7 @@ test('a blockquote starting with a marker becomes that callout, titled by the re
 });
 
 test('each marker has its own class and default title', () => {
-  for (const [marker, cls, title] of [['WHY', 'why', 'Why it works this way'], ['CAREFUL', 'careful', 'Careful'], ['PIX', 'pix', 'On a Pix call']]) {
+  for (const [marker, cls, title] of [['WHY', 'why', 'Why it works this way'], ['CAREFUL', 'careful', 'Careful'], ['STRIX', 'strix', 'On a Strix call']]) {
     const out = visitCallout(quote(el('p', [txt(`[!${marker}]\nBody.`)])));
     assert.deepEqual(out.properties.className, ['callout', `callout-${cls}`]);
     assert.equal(out.children[0].children[0].value, title);

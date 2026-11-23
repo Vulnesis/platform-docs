@@ -85,7 +85,7 @@ The event carries the fire id, the trigger, category, provider, group, row count
 | `guardian-cf-net-newdest` | Cloudflare new external destination |
 | `guardian-cf-audit-change` | Cloudflare risky account change |
 | `guardian-ioc-anywhere` | Indicator seen anywhere |
-| `guardian-sandbox-egress` | Pix Sandbox egress |
+| `guardian-sandbox-egress` | Keleustes Sandbox egress |
 
 AWS investigators read your account through the [read-only role](/siem/sources/aws/#the-investigation-role); Cloudflare investigators use a Cloudflare token saved in the Secrets Vault.
 

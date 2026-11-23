@@ -1,6 +1,6 @@
 ---
 title: Response shaping
-description: How a 2.6 MB vdb-api record shrinks to about 10 KB without dropping a decision field, which tools reduce what, and how the port matches the Pix jq filters.
+description: How a 2.6 MB vdb-api record shrinks to about 10 KB without dropping a decision field, which tools reduce what, and how the port matches the Strix jq filters.
 order: 2
 sources:
   - mcp-server/src/shaping/filters/
@@ -53,7 +53,7 @@ Detection rules are the exception. `vulnetix_detection_rules` returns fewer whol
 
 ## Held to the original filters
 
-The shapers are a TypeScript port of the jq filters the Pix plugin uses. A port that drifts fails silently: different references and different exploit samples for the same input. A differential test runs the original jq filters and the port over recorded fixtures in `fixtures/` and asserts the outputs match byte for byte. A byte budget per tool fails the build if an upstream change brings the bloat back.
+The shapers are a TypeScript port of the jq filters the Strix plugin uses. A port that drifts fails silently: different references and different exploit samples for the same input. A differential test runs the original jq filters and the port over recorded fixtures in `fixtures/` and asserts the outputs match byte for byte. A byte budget per tool fails the build if an upstream change brings the bloat back.
 
 The test found two bugs in the original filters, since fixed upstream: one read a response shape the endpoint does not return and produced 83 bytes of nulls from an 84 KB response; another invented four fields and dropped the timeline, SSVC, severity and KEV entries.
 

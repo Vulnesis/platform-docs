@@ -1,13 +1,13 @@
 ---
 title: Launch configurations
-description: The launch configuration, or launch profile, library item for a Pix Sandbox, its fields, limits and validation, versioning, and what applying it does.
-order: 2
+description: The launch configuration, or launch profile, library item for a Keleustes Sandbox, its fields, limits and validation, versioning, and what applying it does.
+order: 3
 sources: [vdb-site/api/internal/handler/belai_items_validate_launch.go, vdb-site/api/internal/handler/belai_items_kinds.go, vdb-site/api/internal/handler/belai_items.go, vdb-site/api/internal/handler/belai_items_validate.go, vdb-site/api/internal/handler/belai_library_settings.go, vdb-site/api/internal/handler/belai_provider_keys.go, vdb-site/api/internal/handler/marketplace_plan.go, vdb-site/api/internal/handler/pix_sandbox_store.go, vdb-site/api/internal/handler/pix_sandbox_extensions.go, vdb-site/api/internal/handler/pix_sandbox_version_policy.go, website/src/components/belai/belai-launch.ts, website/src/components/belai/belai-launch-provisioning.ts, website/src/components/belai/BelaiLaunchApply.vue, website/src/components/belai/BelaiSandboxLaunch.vue, website/src/components/belai/BelaiLaunchConfigs.vue]
 checked: [vdb-site@1a06d67, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-A launch configuration is a named, versioned JSON document in your library, of kind `launch`. It lists library and registry items, each pinned to a version or following the latest, the machine settings a Pix Sandbox launches with, and the provider keys to send. Build one once and put it on any number of sandboxes or hosts.
+A launch configuration is a named, versioned JSON document in your library, of kind `launch`. It lists library and registry items, each pinned to a version or following the latest, the machine settings a Keleustes Sandbox launches with, and the provider keys to send. Build one once and put it on any number of sandboxes or hosts.
 
 It lives only in the library. No host ever holds one: a host cannot report, back up, sync or be asked to install a `launch` item. Applying it turns into ordinary requests: a draft for a sandbox, install requests for a host.
 
@@ -70,10 +70,10 @@ Each `source`, `kind` and `id` combination appears once. Ids are not looked up w
 | Key | Rule | Absent means |
 |---|---|---|
 | `packs` | Up to 32 pack ids, `^[a-z0-9][a-z0-9-]{0,31}$`, each once | Keep the product's packs. Present, even `[]`, replaces them. |
-| `extensions` | Up to 64 `{name, registry, version, checksum?}`, each registry and name once. Same rules as a [sandbox extension](/pix/sandboxes/overview/#extensions). A bare string is a nixpkgs attribute. | No extensions |
-| `version_policy` | `{strategy, pins?}`, as a [sandbox version policy](/pix/sandboxes/overview/#version-policy). `null` is refused: leave the key out for no policy. | The sandbox keeps its own policy |
+| `extensions` | Up to 64 `{name, registry, version, checksum?}`, each registry and name once. Same rules as a [sandbox extension](/keleustes/sandboxes/overview/#extensions). A bare string is a nixpkgs attribute. | No extensions |
+| `version_policy` | `{strategy, pins?}`, as a [sandbox version policy](/keleustes/sandboxes/overview/#version-policy). `null` is refused: leave the key out for no policy. | The sandbox keeps its own policy |
 | `egress_mode` | `inherit`, `allow_all_logged` or `deny_except_allow` | `inherit`: keep the sandbox's own mode |
-| `egress_allow` | Up to 64 hosts, each a DNS name or `*.` wildcard of at most 253 characters (the [egress host pattern](/pix/sandboxes/egress/#host-patterns)), each once | No hosts are allowed |
+| `egress_allow` | Up to 64 hosts, each a DNS name or `*.` wildcard of at most 253 characters (the [egress host pattern](/keleustes/sandboxes/egress/#host-patterns)), each once | No hosts are allowed |
 
 When saved from the Resolve Platform, empty optional parts are left out so two equal configurations hash alike: no empty `description`, `keys` or `extensions`, no `egress_mode: inherit`, and version pins sorted.
 
@@ -116,7 +116,7 @@ Items inside a configuration follow the same rule: `latest` means the item's lat
 
 Applying always uses the configuration's saved latest version, never an unsaved draft.
 
-### To a Pix Sandbox
+### To a Keleustes Sandbox
 
 The configuration opens in the sandbox's **Launch** tab, which fills its draft for you to review. Nothing is saved until you press **Save draft**; a relaunch then builds the machine from it on a fresh disk.
 

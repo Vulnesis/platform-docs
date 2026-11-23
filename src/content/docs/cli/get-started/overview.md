@@ -20,7 +20,7 @@ vulnetix auth login
 vulnetix scan
 ```
 
-Without signing in, VDB lookups use the shared community credential at community rate limits, and nothing is stored in Vulnetix. See [Credential methods](/cli/authentication/methods/#community-fallback).
+Without signing in, VDB lookups use the shared community credential at community rate limits, and nothing is stored in Vulnesis. See [Credential methods](/cli/authentication/methods/#community-fallback).
 
 ## Product map
 
@@ -28,7 +28,7 @@ Every top-level command in `vulnetix --help`, and the docs segment that owns it.
 
 | Command | What it does | Documented in |
 |---|---|---|
-| `agent` | Wires AI coding agents to Vulnesis and answers their lifecycle hooks | [Pix](/pix/) |
+| `agent` | Wires AI coding agents to Vulnesis and answers their lifecycle hooks | [Strix](/strix/) |
 | `ai-firewall` | Points AI clients at the Vulnesis AI Firewall and manages its policy | [AI Firewall](/ai-firewall/) |
 | `aibom` | Discovers AI agents, SDKs and models; writes a CycloneDX AIBOM | [SBOM](/sbom/) |
 | `analyze` | Builds the repository's tech-stack graph and evidence-backed metrics | [CLI: analyze](/cli/commands/analyze/) |
@@ -54,13 +54,13 @@ Every top-level command in `vulnetix --help`, and the docs segment that owns it.
 | `lsp` | Runs the Vulnesis language server over stdio | [VS Code](/vscode/) |
 | `malscan` | Scans installed dependency directories for malware | [Malware](/malware/) |
 | `package-firewall` | Configures package managers to use the Vulnesis Package Firewall | [Package Firewall](/package-firewall/) |
-| `pix` | Installs the Pix plugin's skills (`vulnetix pix install`, with `--agent` and `--skill`) | [Pix](/pix/) |
+| `pix` | Installs the Strix plugin's skills (`vulnetix pix install`, with `--agent` and `--skill`) | [Strix](/strix/) |
 | `report` | Renders the stored results of the last scan without rescanning | [CLI: report](/cli/commands/replay/) |
 | `sast` | Runs only static analysis | [SAST](/sast/) |
 | `sca` | Runs only dependency (software composition) analysis | [SCA](/sca/) |
 | `scan` | Runs every scanner in one pass and applies one set of gates | [CLI: scan](/cli/commands/scan/) |
 | `secrets` | Runs only secret detection | [Secrets](/secrets/) |
-| `skills` | Installs, checks, updates and removes Vulnesis agent skills | [Pix](/pix/) |
+| `skills` | Installs, checks, updates and removes Vulnesis agent skills | [Strix](/strix/) |
 | `surface` | Checks from inside your network that registered routes and hosts still answer | [CLI: surface](/cli/commands/surface/) |
 | `tea` | Publishes to and reads from the Transparency Exchange API | [TEA](/tea/) |
 | `triage` | Triages GitHub alerts or Vulnesis findings against the VDB and writes VEX | [CLI: triage](/cli/commands/triage/) |

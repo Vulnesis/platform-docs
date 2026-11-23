@@ -14,7 +14,7 @@ There are two ways to resolve a merge conflict: let the `belai:conflict-resolver
 A pull request with conflicts gets a card labelled `merge-conflict`, assigned to `belai:conflict-resolver`. One card is open per pull request at a time. The card is filed:
 
 - by the `conflict-fix` [default workflow](/software-factory/workflows/default-workflows/), on a push to the default branch and when a pull request is opened, synchronized or reopened
-- by a person, with **Resolve conflicts** on Checkpoints or on a Pix Sandbox's Pull requests tab
+- by a person, with **Resolve conflicts** on Checkpoints or on a Keleustes Sandbox's Pull requests tab
 
 A worker on any machine with the repository can claim it.
 
@@ -72,7 +72,7 @@ The conflict editor (`/resolve/factory-conflicts?repo=owner/name&pr=N`) resolves
 3. **Mark as resolved** once no marker is left in the file.
 4. When every file is resolved, **Commit merge**. The dialog shows who you will commit as and how it will be signed. See [Commit signing](/software-factory/decisions/commit-signing/).
 
-Lockfiles are never offered for editing. The base's copy goes into the commit, and nothing regenerates it, so regenerate it locally or send the pull request to Pix. A file the editor cannot merge as text, a fork, a pull request too large, or one with no merge base is named, with the local git commands to use instead.
+Lockfiles are never offered for editing. The base's copy goes into the commit, and nothing regenerates it, so regenerate it locally or send the pull request to Strix. A file the editor cannot merge as text, a fork, a pull request too large, or one with no merge base is named, with the local git commands to use instead.
 
 If the pull request's head or base moved while you worked, nothing is written (`head_moved`, `base_moved`). Reloading keeps the files whose conflict did not change.
 

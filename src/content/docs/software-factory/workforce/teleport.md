@@ -1,14 +1,14 @@
 ---
 title: "Teleport: move a session between hosts"
 nav: Teleport
-description: Continue a session from another host, a Pix Sandbox or the web on the machine in front of you, with its conversation and its uncommitted changes.
+description: Continue a session from another host, a Keleustes Sandbox or the web on the machine in front of you, with its conversation and its uncommitted changes.
 order: 20
 sources: [belai/docs/teleport.md, vdb-site/api/internal/handler/belai_teleport.go, vdb-site/api/internal/handler/belai_teleport_code.go]
 checked: [belai@35506b9, vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-Teleport continues a session of your account on the machine you are at. The session may have run on another host, in a Pix Sandbox or on the web. **The original keeps running where it is.** The copy gets a new session id and opens in the terminal UI.
+Teleport continues a session of your account on the machine you are at. The session may have run on another host, in a Keleustes Sandbox or on the web. **The original keeps running where it is.** The copy gets a new session id and opens in the terminal UI.
 
 ```sh
 cd ~/src/api

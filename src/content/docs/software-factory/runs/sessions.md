@@ -7,7 +7,7 @@ checked: [vdb-site@284f1d6, website@a31d470]
 updated: 28 Oct 2026
 ---
 
-A **session** is one Belai conversation on one host. A crew step's workers are sessions, and so is anything you start by hand: in a terminal, in your editor, on a Pix Sandbox's web page, or on a Pix call. The **Sessions** tab on the Runs page lists them all, and opening one (`/resolve/factory-session`) shows its transcript.
+A **session** is one Belai conversation on one host. A crew step's workers are sessions, and so is anything you start by hand: in a terminal, in your editor, on a Keleustes Sandbox's web page, or on a Strix call. The **Sessions** tab on the Runs page lists them all, and opening one (`/resolve/factory-session`) shows its transcript.
 
 ## Where a session comes from
 
@@ -15,7 +15,7 @@ A **session** is one Belai conversation on one host. A crew step's workers are s
 |---|---|
 | `worker` | A crew step's dispatch |
 | `cloud` | A dispatch to a machine running `belai rc`, other than a crew worker |
-| `sandbox` | A session on a Pix Sandbox |
+| `sandbox` | A session on a Keleustes Sandbox |
 | `tui` | Anything else, such as the Belai terminal UI |
 | `acp` | An editor through ACP |
 
@@ -24,7 +24,7 @@ Each session also records **what started it**, its trigger:
 | Trigger source | Meaning |
 |---|---|
 | `workflow` | A factory run's crew step. Also names the run, the workflow, how it was triggered (`cron`, `webhook` and so on) and the GitHub event and delivery. |
-| `pix_call` | Pix started it on a call |
+| `pix_call` | Strix started it on a call |
 | `console` | Someone started it from the Resolve Platform |
 | `finding` | Started from a finding |
 | `pull_request` | Started from a pull request |
@@ -70,10 +70,10 @@ From the page you can, using the existing session routes:
 
 ## Counting sessions
 
-`GET /v1/factory/sessions/aggregate` counts sessions over `24h`, `7d` or `30d`, optionally for one repository and grouped by `repo`, `state`, `source` or `model`. It gives totals for live, ended, failed and stopped sessions, the tokens they used, and their median length. Pix uses it to answer "how did my sessions go this week?".
+`GET /v1/factory/sessions/aggregate` counts sessions over `24h`, `7d` or `30d`, optionally for one repository and grouped by `repo`, `state`, `source` or `model`. It gives totals for live, ended, failed and stopped sessions, the tokens they used, and their median length. Strix uses it to answer "how did my sessions go this week?".
 
-> [!PIX] Sessions by phone
-> Pix lists sessions with `list_sessions`, sums them with `sessions_aggregate`, and reads one with `session_facts`. It can send a live session a message (`send_followup`), answer its question (`answer_agent_question`), and stop it after a read-back.
+> [!STRIX] Sessions by phone
+> Strix lists sessions with `list_sessions`, sums them with `sessions_aggregate`, and reads one with `session_facts`. It can send a live session a message (`send_followup`), answer its question (`answer_agent_question`), and stop it after a read-back.
 
 ## API
 

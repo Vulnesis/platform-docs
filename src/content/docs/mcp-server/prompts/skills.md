@@ -1,6 +1,6 @@
 ---
 title: Skills over MCP
-description: The 18 Pix skills served verbatim through the io.modelcontextprotocol/skills extension, with skills/list, skills/get, the skill:// template and digest checks.
+description: The 18 Strix skills served verbatim through the io.modelcontextprotocol/skills extension, with skills/list, skills/get, the skill:// template and digest checks.
 order: 2
 nav: Skills
 sources:
@@ -11,7 +11,7 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-The server advertises the `io.modelcontextprotocol/skills` extension (SEP-2640) in its capabilities and serves the same 18 Pix skills as the [prompts](/mcp-server/prompts/overview/), in Agent Skills form. A client that reads skills natively uses these; every other client uses the prompts.
+The server advertises the `io.modelcontextprotocol/skills` extension (SEP-2640) in its capabilities and serves the same 18 Strix skills as the [prompts](/mcp-server/prompts/overview/), in Agent Skills form. A client that reads skills natively uses these; every other client uses the prompts.
 
 ## How skills differ from the prompts
 
@@ -56,4 +56,4 @@ One resource template, `skill://{name}/{+path}`, covers every file of every skil
 Nothing in a skill varies by caller. `skills/list`, `skills/get` and file reads carry `ttlMs: 300000`, `cacheScope: "public"`, and need no credential.
 
 > [!CAREFUL] Client support is partial
-> Few clients implement the skills extension yet, and Claude Code does not. Each skill says it follows `skills/_lib/contract.md`, the Pix shared conventions file. That file sits outside every skill directory, so it is not served.
+> Few clients implement the skills extension yet, and Claude Code does not. Each skill says it follows `skills/_lib/contract.md`, the Strix shared conventions file. That file sits outside every skill directory, so it is not served.

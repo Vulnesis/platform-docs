@@ -36,7 +36,7 @@ A [decision](/software-factory/workflows/nodes/decision/) node chooses only betw
 
 ## It never acts on a voice instruction without a plain yes
 
-On a [Pix call](/software-factory/pix/calling-pix/), anything that starts or stops work is read back to you first, and runs only if your very next answer is yes. A proposal expires after 2 minutes. Pix speaks only figures its tools read from your factory's records. It does not add them up itself, and call history keeps no audio.
+On a [Strix call](/software-factory/strix/calling-strix/), anything that starts or stops work is read back to you first, and runs only if your very next answer is yes. A proposal expires after 2 minutes. Strix speaks only figures its tools read from your factory's records. It does not add them up itself, and call history keeps no audio.
 
 ## It never counts a bot as a person
 

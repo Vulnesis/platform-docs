@@ -42,7 +42,7 @@ The outcomes ledger can be exported as CSV.
 
 ## People are never bots
 
-A person is counted only where a record names a human. Bots, the GitHub App, service accounts and `Pix [bot]` commits are listed under **Seen, and left out**, and never counted. `delivery.companyDomain` (an email domain such as `acme.example`) marks who is internal.
+A person is counted only where a record names a human. Bots, the GitHub App, service accounts and `Vulnesis [bot]` commits are listed under **Seen, and left out**, and never counted. `delivery.companyDomain` (an email domain such as `acme.example`) marks who is internal.
 
 People's time is built from **sittings**: actions close together count as one sitting, and a gap of `delivery.idleGapMin` minutes (5 by default) ends it. The sources of people's actions can each be switched off: `delivery.sources.checkpoint`, `commit`, `comment`, `review`, `chat`, `notification`, `admin` and `pixcall`.
 
@@ -104,7 +104,7 @@ Settings › Delivery estimates. The page previews the result as you change them
 | `delivery.idleGapMin` | 5 | Minutes without an action that end a sitting |
 | `delivery.companyDomain` | none | Your email domain, to tell internal people from external |
 
-> [!PIX] Delivery by phone
+> [!STRIX] Delivery by phone
 > "What did the factory deliver this week?" uses `delivery_value`; "who worked on it?" uses `delivery_people`; "what did System One decide?" uses `delivery_decisions`; and `outcomes_trend` compares periods.
 
 ## API

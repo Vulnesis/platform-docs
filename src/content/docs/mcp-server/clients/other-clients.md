@@ -61,7 +61,7 @@ A client that can only launch a local command can use [`mcp-remote`](https://www
 No space after `Authorization:` in the argument. `mcp-remote` splits on the first colon, and keeping the value in `env` avoids spaces inside an argument, which some platforms split.
 
 > [!CAREFUL] Third-party bridge
-> `mcp-remote` is not maintained by Vulnetix. It adds a Node.js process and a dependency to keep current. Prefer a client that supports remote HTTP.
+> `mcp-remote` is not maintained by Vulnesis. It adds a Node.js process and a dependency to keep current. Prefer a client that supports remote HTTP.
 
 ## Expected to work, not tested
 

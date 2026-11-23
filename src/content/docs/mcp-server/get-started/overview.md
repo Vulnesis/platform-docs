@@ -27,7 +27,7 @@ Header  Authorization: ApiKey <orgId>:<hex>
 | Primitive | Count | Names | Page |
 |---|---|---|---|
 | Tools | 31 | `vulnetix_*` and `vdb_request` | [Tool reference](/mcp-server/reference/tools/) |
-| Prompts | 18 | `vulnetix_*`, generated from the Pix skills | [Prompts](/mcp-server/prompts/overview/) |
+| Prompts | 18 | `vulnetix_*`, generated from the Strix skills | [Prompts](/mcp-server/prompts/overview/) |
 | Agent Skills | 18 | `skill://<name>/SKILL.md` over `io.modelcontextprotocol/skills` | [Skills](/mcp-server/prompts/skills/) |
 | Resource templates | 5 | `vulnetix://vuln/{id}`, `vulnetix://vuln/{id}/full`, `vulnetix://kev/{id}`, `vulnetix://package/{ecosystem}/{name}`, `skill://{name}/{+path}` | [Resources](/mcp-server/protocol/resources/) |
 | App views | 3 | `ui://vulnetix/kev-board`, `ui://vulnetix/triage-queue`, `ui://vulnetix/cve-card` | [Apps](/mcp-server/protocol/apps/) |
@@ -72,7 +72,7 @@ A raw vdb-api record for `CVE-2021-44228` is 2,606,571 bytes. `vulnetix_vuln` re
 | Product | Runs | Use it for |
 |---|---|---|
 | MCP server | Hosted; you connect to it | Vulnerability questions from any MCP client |
-| [Pix](/pix/) | Inside your coding agent | Local skills, hooks and slash commands |
+| [Strix](/strix/) | Inside your coding agent | Local skills, hooks and slash commands |
 | [CLI](/cli/) | Your machine and CI | Scanning, SBOMs, fixes and deterministic gates |
 
 All three use one VDB and one credential.

@@ -113,7 +113,7 @@ jobs:
 - `github-code-scanning: true` adds `--github-publish code-scanning` and `dependency-graph: true` adds `--github-publish dependency-graph`, so the scan would publish at its end. Until `vulnetix sca` accepts that flag, publish in a second step as the example does. See [scan: --github-publish](/cli/commands/gha-publish/#publishing-from-a-scan).
 - `sca.sarif` is written even when the scan is clean, so a code scanning upload closes alerts that are fixed. Its category is `vulnetix/sca/`. See [SARIF reference](/cli/reference/sarif/).
 - A gate is a CLI flag: `args: --fail-on high`. The action fails after publishing, uploading and attesting. See [Gates and exit codes](/sca/gates/fail-on/).
-- Without `org-id` and a credential the scan runs in community mode and nothing is stored in Vulnetix. Publishing to GitHub does not depend on Vulnesis credentials.
+- Without `org-id` and a credential the scan runs in community mode and nothing is stored in Vulnesis. Publishing to GitHub does not depend on Vulnesis credentials.
 - `files` lists the paths of everything the command wrote, one per line. `sarif` and `sbom` narrow that to the SARIF files and the CycloneDX SBOM.
 
 > [!CAREFUL] github-code-scanning and dependency-graph fail on this action in v3.165.0 and earlier

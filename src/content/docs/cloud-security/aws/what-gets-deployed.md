@@ -31,7 +31,7 @@ Parameters:
 | Parameter | Value |
 |---|---|
 | `ExternalId` | Your organisation id. Pattern `^[A-Za-z0-9-]{8,64}$`. |
-| `VulnetixAccountId` | The AWS account the Vulnesis service runs in. Set by Vulnetix. |
+| `VulnetixAccountId` | The AWS account the Vulnesis service runs in. Set by Vulnesis. |
 
 Outputs: `LogBucketName`, `AuditorRoleArn`.
 

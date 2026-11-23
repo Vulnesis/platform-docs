@@ -11,7 +11,7 @@ Pages in the Resolve Platform that belong to Software Factory. All are under `ht
 
 | Path | Explained in |
 |---|---|
-| [`/call`](https://www.vulnes.is/call) | [Calling Pix](/software-factory/pix/calling-pix/) |
+| [`/call`](https://www.vulnes.is/call) | [Calling Strix](/software-factory/strix/calling-strix/) |
 | [`/resolve/belai-hosts`](https://www.vulnes.is/resolve/belai-hosts) | [Hosts and placement](/software-factory/workforce/hosts-and-placement/) |
 | [`/resolve/belai-library`](https://www.vulnes.is/resolve/belai-library) | [The library: skills, prompts, commands, processes, repos and more](/software-factory/workforce/library/) |
 | [`/resolve/factory-agent`](https://www.vulnes.is/resolve/factory-agent) | [The agent builder and drafts](/software-factory/workforce/agent-builder/) |

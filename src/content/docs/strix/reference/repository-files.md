@@ -1,7 +1,7 @@
 ---
 title: Repository files (.vulnetix/)
 nav: Repository files
-description: What the Pix hooks, skills and subagents read and write under .vulnetix/, with the memory.yaml and capabilities.yaml schemas as the CLI defines them.
+description: What the Strix hooks, skills and subagents read and write under .vulnetix/, with the memory.yaml and capabilities.yaml schemas as the CLI defines them.
 order: 1
 sources: [cli/internal/memory/memory.go, cli/internal/agent/capabilities.go, cli/internal/agent/policy.go, cli/cmd/agent.go, pix-ai-coding-assistant/skills/*/SKILL.md, pix-ai-coding-assistant/skills/fix/references/memory-yaml-schema.md, pix-ai-coding-assistant/vulnetix/agents/*.md]
 checked: [cli@0b41bb394, pix-ai-coding-assistant@de11107]
@@ -12,7 +12,7 @@ updated: 02 Nov 2026
 
 | Path | Written by | Holds |
 |---|---|---|
-| `.vulnetix/agent.yaml` | You | The [hook policy](/pix/hooks/policy-file/) |
+| `.vulnetix/agent.yaml` | You | The [hook policy](/strix/hooks/policy-file/) |
 | `.vulnetix/license-policy.yaml` | You | A licence allowlist for `license-check` |
 | `.vulnetix/memory.yaml` | `vulnetix scan`, triage, skills | The last scan, history and per-finding triage ([below](#memoryyaml)) |
 | `.vulnetix/capabilities.yaml` | `vulnetix agent capabilities` | Tools on this machine and markers in this repository ([below](#capabilitiesyaml)) |
@@ -56,7 +56,7 @@ The CLI defines this file (`cli/internal/memory`). Top-level keys:
 
 ### Scan record (`last_scan`, `history[]`)
 
-`timestamp`, `path`, `git_branch`, `git_commit`, `git_remote`, `files_scanned`, `packages`, `vulns`, `critical`, `high`, `medium`, `low`, `sbom_path`, `scope_breakdown`, `ids_rules_path`, `ids_rules_count`, `sast_rules_loaded`, `sast_finding_count`, `sarif_path`. [Session context](/pix/hooks/session-context/) reads this.
+`timestamp`, `path`, `git_branch`, `git_commit`, `git_remote`, `files_scanned`, `packages`, `vulns`, `critical`, `high`, `medium`, `low`, `sbom_path`, `scope_breakdown`, `ids_rules_path`, `ids_rules_count`, `sast_rules_loaded`, `sast_finding_count`, `sarif_path`. [Session context](/strix/hooks/session-context/) reads this.
 
 ### Finding record (`findings.<id>`)
 
@@ -70,7 +70,7 @@ The CLI defines this file (`cli/internal/memory`). Top-level keys:
 | `severity`, `scores` | Severity, and `cvss_score`, `epss_score`, `epss_percentile`, `coalition_ess`, `ssvc_decision`, `threat_exposure`, `max_severity` and their severities |
 | `status` | `not_affected`, `affected`, `fixed`, `under_investigation`, or `inventory` for something the project contains rather than a flaw |
 | `justification`, `action_response` | VEX justification and response |
-| `decision` | `choice` (one of the nine [decision values](/pix/skills/vulnerabilities/#decision-values)), `reason`, `date`, `actor` |
+| `decision` | `choice` (one of the nine [decision values](/strix/skills/vulnerabilities/#decision-values)), `reason`, `date`, `actor` |
 | `cwss` | `score`, `priority`, `factors` |
 | `threat_model` | `techniques`, `tactics`, attack vector and complexity, `reachability`, `exposure`, `reachability_evidence` |
 | `exploits` | `exploit_count`, `sources`, `has_weaponized`, `highest_maturity` |

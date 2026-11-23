@@ -1,6 +1,6 @@
 ---
 title: Prompts
-description: The 18 workflow prompts generated from the Pix skills, their arguments, chains and output budgets, and how to invoke them in each client.
+description: The 18 workflow prompts generated from the Strix skills, their arguments, chains and output budgets, and how to invoke them in each client.
 order: 1
 nav: Overview
 sources:
@@ -11,7 +11,7 @@ checked: [mcp-server@1725a04]
 updated: 02 Nov 2026
 ---
 
-Tools answer one question. Prompts hand your agent a whole procedure. The server serves the 18 Pix skills as MCP prompts, generated from each skill's `SKILL.md` by `scripts/generate-prompts.mjs`. CI runs `yarn prompts:check` and fails when the generated file drifts from the skills.
+Tools answer one question. Prompts hand your agent a whole procedure. The server serves the 18 Strix skills as MCP prompts, generated from each skill's `SKILL.md` by `scripts/generate-prompts.mjs`. CI runs `yarn prompts:check` and fails when the generated file drifts from the skills.
 
 Every prompt needs your machine: it reads or writes files, runs a package manager or calls a scanner. The server has no filesystem, so each prompt body starts with this notice and your agent runs the steps with the [Vulnesis CLI](/cli/):
 

@@ -45,7 +45,7 @@ The built-in catalog is version `2026.06.4`: 84 AI coding agents, 73 AI provider
 | `--include-home` | bool | `false` | Also look for tool config directories in your home directory |
 | `--include-system` | bool | `false` | Look in every account's home (`/home/*`, `/root`), not just yours |
 | `--system-root` | string | `/` | The filesystem `--include-system` describes: a mounted volume, an unpacked image, or `/proc/<pid>/root` |
-| `--no-upload` | bool | `false` | Do not send the AIBOM to Vulnetix. It is sent automatically when you are authenticated. |
+| `--no-upload` | bool | `false` | Do not send the AIBOM to Vulnesis. It is sent automatically when you are authenticated. |
 | `--aibom-include-ignored` | bool | `false` | Include files matched by `.gitignore` |
 | `--lifecycle` | string | derived | Comma-separated lifecycle phases, overriding the derived set |
 | `--project`, `--cluster`, `--namespace`, `--environment`, `--tag` | string | inferred | Deployment labels. See [Document identity and deployment labels](/sbom/reference/document-metadata/). |

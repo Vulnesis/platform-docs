@@ -1,6 +1,6 @@
 ---
 title: Human approval
-description: What an approval is, its kinds and states, who can decide one, how deadlines work, and how to decide from the Resolve Platform, a notification or a Pix call.
+description: What an approval is, its kinds and states, who can decide one, how deadlines work, and how to decide from the Resolve Platform, a notification or a Strix call.
 order: 3
 sources: [vdb-site/docs/factory.md, vdb-site/docs/factory-engine.md, vdb-site/api/internal/handler/factory_approvals.go, vdb-site/api/internal/handler/factory_engine_approval.go]
 checked: [vdb-site@284f1d6, website@a31d470]
@@ -43,7 +43,7 @@ A step's `slaHours` (1 to 720) sets the deadline. When it passes, with `park_and
 
 - **Checkpoints** and the cockpit's **Needs you** list every pending approval. See [Checkpoints](/software-factory/decisions/checkpoints/).
 - **A notification** can carry Approve and Reject buttons that act straight away. See [Notifications](/software-factory/workforce/notifications/).
-- **On a Pix call**, Pix reads you what is waiting with `needs_attention` and `oldest_checkpoints`.
+- **On a Strix call**, Strix reads you what is waiting with `needs_attention` and `oldest_checkpoints`.
 
 > [!CAREFUL] Approving a fork's run runs outside code
 > An approval in front of a crew on a fork's pull request lets an agent check out and run that code on your host. Read the change first.

@@ -54,7 +54,7 @@ Codes the API returns in `issues[].code` when it refuses a request, and the code
 | <span id="required"></span>`required` | In {node}, choose a value for %s. | [Graph limits](/software-factory/workflows/graphs/) |
 | <span id="review_state_unsupported_event"></span>`review_state_unsupported_event` | In {node}, the review state condition only applies to pull request reviews. Remove it or choose the pull request review event. | [Triggers and webhook conditions](/software-factory/workflows/triggers/) |
 | <span id="revision_conflict"></span>`revision_conflict` |  | [The settings document](/software-factory/control/settings-document/) |
-| <span id="runs_on_invalid"></span>`runs_on_invalid` | In {node}, where the step runs is not set up correctly. Choose Any host, Pix Sandbox, Self-hosted, a host or a host label. | [Crew node](/software-factory/workflows/nodes/crew/) |
+| <span id="runs_on_invalid"></span>`runs_on_invalid` | In {node}, where the step runs is not set up correctly. Choose Any host, Keleustes Sandbox, Self-hosted, a host or a host label. | [Crew node](/software-factory/workflows/nodes/crew/) |
 | <span id="scope_unmanaged_repo"></span>`scope_unmanaged_repo` |  | [Graph limits](/software-factory/workflows/graphs/) |
 | <span id="severity_unsupported_event"></span>`severity_unsupported_event` | In {node}, the severity condition only applies to Dependabot alerts, code scanning alerts and posture findings. Remove it or choose one of those events. | [Triggers and webhook conditions](/software-factory/workflows/triggers/) |
 | <span id="slug_taken"></span>`slug_taken` |  |  |

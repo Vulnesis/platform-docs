@@ -48,7 +48,7 @@ The later members of a crew take the card through the crew's own handoffs. A ret
 
 ## Choosing the host
 
-The engine looks at the online hosts of the run's principal: the workflow's author, or for a default, the member who enabled the organisation. A host is eligible if it advertises the crew or agent and either has the repository checked out or can clone it. Pix Sandboxes never clone; they work on the repositories you added. Eligible hosts are tried in this order:
+The engine looks at the online hosts of the run's principal: the workflow's author, or for a default, the member who enabled the organisation. A host is eligible if it advertises the crew or agent and either has the repository checked out or can clone it. Keleustes Sandboxes never clone; they work on the repositories you added. Eligible hosts are tried in this order:
 
 1. hosts that have the repository before hosts that would clone it
 2. within each, the hosts `hosts.runOn` prefers

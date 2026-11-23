@@ -34,7 +34,7 @@ A workflow that answers a sighting files a review card. The card shows the sight
 |---|---|
 | Package | the Package Firewall's curation, with the package and version filled in |
 | AI capability | the AI Firewall's MCP, tools, skills or clients list, with the capability filled in |
-| Egress host | the sandbox's egress view on Pix Sandboxes, with the host filled in |
+| Egress host | the sandbox's egress view on Keleustes Sandboxes, with the host filled in |
 
 Nothing is written until you confirm on that page. When you add the rule, the sighting becomes allowed or denied, and every card its run filed moves to done with a note naming the rule.
 

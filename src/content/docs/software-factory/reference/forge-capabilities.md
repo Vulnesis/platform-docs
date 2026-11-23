@@ -271,17 +271,17 @@ What each forge supports, emulates or lacks, from the factory's capability table
 | Forgejo | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
 | GitLab | Not available: The manifest curator works through the Vulnesis GitHub App on github.com. The factory's own workflows fix dependencies on every forge. |
 
-### Pix Sandbox repositories
+### Keleustes Sandbox repositories
 
-<span id="pix_sandbox"></span>A Pix Sandbox attaches a repository, clones it and opens pull requests from it. (`pix_sandbox`)
+<span id="pix_sandbox"></span>A Keleustes Sandbox attaches a repository, clones it and opens pull requests from it. (`pix_sandbox`)
 
 | Forge | Support |
 |---|---|
 | GitHub | Yes |
-| GitHub Enterprise Server | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
-| Gitea | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
-| Forgejo | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
-| GitLab | Not available: A Pix Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| GitHub Enterprise Server | Not available: A Keleustes Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| Gitea | Not available: A Keleustes Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| Forgejo | Not available: A Keleustes Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
+| GitLab | Not available: A Keleustes Sandbox reaches repositories through the Vulnesis GitHub App on github.com. Belai on your own machines works on every forge. |
 
 ## Trigger events
 
