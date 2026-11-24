@@ -14,10 +14,10 @@ The sidebar shows one product's menu at a time. A switcher at the top of the sid
 
 | Product | What its menu holds | Home |
 |---|---|---|
-| Community | the free public pages: Lookup, Exploit Database, KEV Watch, Bug Bounty, TEA Explorer and the Registry | Lookup |
-| Resolve | Findings, Inventory, Threat Intel and Reports | [Waiting for you](/organization/get-started/waiting-for-you/) |
+| Community | the free public pages: Lookup, Exploit Database, KEV Watch (catalogue, trends and sources), Bug Bounty researchers, platforms and weakness map, TEA Explorer and the AI Registry | Lookup |
+| Resolve | Findings, Inventory, Threat Intel (including KEV Exposure, the known exploited vulnerabilities you have) and Reports | [Waiting for you](/organization/get-started/waiting-for-you/) |
 | Software Factory | Cockpit, Checkpoints, Board and Event stream, then Work, Knowledge and Delivery | Waiting for you (`/resolve/factory-home`) |
-| Guardian | Search, Alert rules, Triggers, Scheduled sends and Workflows | Waiting for you (`/resolve/guardian/home`) |
+| Guardian | Search, Alert rules, Triggers, Scheduled sends and Workflows, then Threat Intel (IoC Catalog, STIX catalogue, Intel Feeds, Exploit Database, Bug Bounty correlations) and Attack surface (API Specs, Attack Surface) | Waiting for you (`/resolve/guardian/home`) |
 
 A product your organisation has not bought opens a page that explains it and links to where it is bought. A page that is in two menus, such as Lookup, keeps the menu you were last in. On a phone, the menu button opens the same sidebar as a drawer.
 
@@ -29,7 +29,7 @@ The last link in a product's menu is its settings.
 |---|---|
 | Resolve settings (`/resolve/settings`) | Policies: Quality Gate, Remediation Policy, Risk Prioritization, SSVC Decisions, Suppression Policies, Release Jails. Protection: Package Firewall, Malware Curation, AI Firewall, Sensor Provisioning, API Specs. Connections: Integrations, Messaging, Private Registries, Secrets Vault. Then logs and quota, and the subscription. |
 | Software Factory settings (`/resolve/factory-settings`) | Factory settings, Keleustes Sandboxes, Budgets and usage, Trust and provenance, Audit ledger, Secrets Vault |
-| Guardian settings (`/resolve/guardian/settings`) | Sources and ingest tokens, today's ingest against the pack, the audit log, the subscription |
+| Guardian settings (`/resolve/guardian/settings`) | Sources and ingest tokens, today's ingest against the pack, the audit log, the subscription; Malware Curation and Sensor Provisioning, shared with Resolve settings |
 
 Every settings page links to the subscription on **Billing and quota**. Only an owner changes it; anyone else is told so.
 
