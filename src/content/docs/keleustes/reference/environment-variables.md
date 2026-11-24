@@ -4,7 +4,7 @@ description: The environment variables Keleustes and its installer read, with th
 order: 2
 sources: [keleustes/crates/kls-app/src/main.rs, keleustes/crates/kls-core/src/vault.rs, keleustes/crates/kls-github/src/forge/kind.rs, keleustes/crates/kls-github/src/forge/push.rs, keleustes/crates/kls-app/src/desktop.rs, keleustes/install.sh, keleustes/nix/module.nix]
 checked: [keleustes@e13fb9b]
-updated: 23 Nov 2026
+updated: 24 Nov 2026
 status: available
 ---
 
@@ -46,11 +46,11 @@ KELEUSTES_GH=/opt/gh/bin/gh keleustes github status
 | Variable | Used for |
 |---|---|
 | `XDG_RUNTIME_DIR` | Where the single-instance socket goes when the data directory path is too long for a Unix socket. Falls back to the system temporary directory. |
-| `WAYLAND_DISPLAY` | Detecting Wayland, where the app cannot raise its own window |
+| `WAYLAND_DISPLAY` | Copying to the clipboard: when it is set, Keleustes copies text with `wl-copy` |
 
 ## The installer
 
-`install.sh` reads these. Each has a matching flag, listed on [Install](/keleustes/get-started/install/#shell-installer-linux-macos).
+`install.sh` reads these. All but `KELEUSTES_DOWNLOAD_BASE` and `KELEUSTES_REPO` have a matching flag, listed on [Install](/keleustes/get-started/install/#shell-installer-linux-macos).
 
 | Variable | Default | Effect |
 |---|---|---|

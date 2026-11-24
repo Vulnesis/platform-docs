@@ -4,7 +4,7 @@ description: Fixes for Keleustes start-up, install, node join, tray, window, vau
 order: 6
 sources: [keleustes/crates/kls-app/src/main.rs, keleustes/crates/kls-app/src/tray.rs, keleustes/crates/kls-app/src/desktop.rs, keleustes/crates/kls-node/src/server.rs, keleustes/crates/kls-node/src/token.rs, keleustes/crates/kls-vault/src/lib.rs, keleustes/crates/kls-store/src/lib.rs, keleustes/install.sh, keleustes/docs/install.md, keleustes/docs/skills/keleustes-operator/SKILL.md]
 checked: [keleustes@e13fb9b]
-updated: 23 Nov 2026
+updated: 24 Nov 2026
 status: available
 ---
 
@@ -16,7 +16,7 @@ Keleustes logs to standard error. Start it from a terminal to read the log, and 
 |---|---|
 | The installer cannot find a release with the default `latest` | The only release is a pre-release, which GitHub's latest release skips. Pass `--version v0.1.0-rc.1`. |
 | `--require-signature` refuses to install | Releases are not signed yet and `install.sh` pins no key. Drop the flag. The SHA-256 and provenance checks still run. |
-| A warning that the signature check was skipped | The `openssl` on `PATH` has no Ed25519 support. The LibreSSL in macOS does not. Install OpenSSL 3 or newer. |
+| A warning that the signature check was skipped | Releases are unsigned today, so this warning does not appear. Once a release key is pinned, it means the `openssl` on `PATH` has no Ed25519 support (the LibreSSL in macOS does not). Install OpenSSL 3 or newer. |
 | The provenance step did not run | `cosign` is not on `PATH`. Install it, or pass `--require-provenance` to make its absence an error. |
 | `keleustes: command not found` after install | The install directory is not on `PATH`. The installer says so when it finishes. |
 | The window does not open on Linux | GTK 3 is missing. Install the [runtime libraries](/keleustes/get-started/requirements/#linux-runtime-libraries). |
