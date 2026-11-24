@@ -5,7 +5,7 @@ order: 1
 nav: Feeds
 sources: [vdb-site/docs/addons.md, saas/prisma/models/detection-rule-feeds.prisma, vdb-site/api/internal/handler/detection_rule_feeds.go, vdb-site/api/internal/handler/detection_rule_feeds_publish.go, vdb-site/api/internal/handler/defence_formats.go, website/src/pages/resolve/virtual-patching.vue]
 checked: [vdb-site@1a06d67, saas@50cedf3, website@ad775f3]
-updated: 05 Nov 2026
+updated: 25 Nov 2026
 ---
 
 A detection rule feed is a set of rules your organisation picks, published as files under one URL. Third-party tools fetch the files without authentication. The Vulnesis runtime sensor fetches the same feed and verifies its signature.
@@ -89,15 +89,15 @@ rm -f "$TMP"
 
 ## Plan and add-on
 
-Feeds come with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of **Your feeds**, whatever its plan, and the feed API answers `planLocked: true` with `addon: "soc_intelligence"` (`402` for a write). Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
+Feeds come with the Guardian Intel+ add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of **Your feeds**, whatever its plan, and the feed API answers `planLocked: true` with `addon: "soc_intelligence"` (`402` for a write). Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
 
-The rule catalogues a feed is curated from (virtual patches, countermeasures, the Snort and YARA catalogues) are part of Pro, and they also open for an organisation on Community that holds SOC Intelligence, so its feeds can be filled.
+The rule catalogues a feed is curated from (virtual patches, countermeasures, the Snort and YARA catalogues) are part of Pro, and they also open for an organisation on Community that holds Guardian Intel+, so its feeds can be filled.
 
 ## Plan limits
 
 | Plan | Feeds of each type |
 |---|---|
-| Community with SOC Intelligence | 1, as on Pro |
+| Community with Guardian Intel+ | 1, as on Pro |
 | Pro | 1 |
 | Business | 50 |
 | Enterprise | no cap |

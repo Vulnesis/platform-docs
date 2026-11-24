@@ -5,7 +5,7 @@ description: Your Vulnesis organisation, the people and service accounts in it, 
 order: 1
 sources: [vdb-site/api/main.go, vdb-site/api/internal/handler/members.go, vdb-site/api/internal/handler/entitlements.go, vdb-site/.repo/org-provisioning.md, website/src/shared/console-nav.ts]
 checked: [vdb-site@1a06d67, website@b548e4c]
-updated: 04 Nov 2026
+updated: 25 Nov 2026
 ---
 
 These pages are for the owners and admins who set up and run a Vulnesis organisation: who is in it, which credentials CI uses, where provider keys and integration secrets are kept, and where alerts are sent. Read them before you connect a product, because every product's data and policy belongs to the organisation and takes its credentials from here.
@@ -30,7 +30,7 @@ An organisation is the tenant everything else belongs to: scan data, policies, v
 - [Quickstart](/organization/get-started/quickstart/): set up a new organisation step by step.
 - [Waiting for you](/organization/get-started/waiting-for-you/): the page you land on after signing in, and how each role's onboarding is counted.
 - [Navigation, settings and preferences](/organization/get-started/settings-and-preferences/): the product switcher, each product's settings, the account menu, and where each old menu entry went.
-- [Plans and add-ons](/organization/billing/plans-and-add-ons/): the plans, the Package Firewall and SOC Intelligence add-ons, invoices and usage.
+- [Plans and add-ons](/organization/billing/plans-and-add-ons/): the plans, the Package Firewall and Guardian Intel+ add-ons, invoices and usage.
 - [HTTP API](/organization/reference/http-api/): every organisation, vault, integration, messaging and notification route, with the credential it takes.
 
 ## Two kinds of credential

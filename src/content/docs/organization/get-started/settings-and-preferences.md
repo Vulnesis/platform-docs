@@ -5,7 +5,7 @@ description: The product switcher, each product's menu and settings, the account
 order: 1.7
 sources: [website/src/shared/console-nav.ts, website/src/shared/products.ts, website/src/layouts/components/AppSidebar.vue, website/src/layouts/components/AppAccountMenu.vue, website/src/pages/resolve/settings.vue, website/src/pages/resolve/preferences.vue]
 checked: [website@c8b7d332]
-updated: 24 Nov 2026
+updated: 25 Nov 2026
 ---
 
 The sidebar shows one product's menu at a time. A switcher at the top of the sidebar picks the product, and organisation and personal pages are in the account menu at the top right. No page moved or changed address; only where its link lives changed.
@@ -15,21 +15,21 @@ The sidebar shows one product's menu at a time. A switcher at the top of the sid
 | Product | What its menu holds | Home |
 |---|---|---|
 | Community | the free public pages: Lookup, Exploit Database, KEV Watch (catalogue, trends and sources), Bug Bounty researchers, platforms and weakness map, TEA Explorer and the AI Registry | Lookup |
-| Resolve | Findings, Inventory, Threat Intel (including KEV Exposure, the known exploited vulnerabilities you have) and Reports | [Waiting for you](/organization/get-started/waiting-for-you/) |
+| Resolve | Findings (including GitHub posture and Risky GitHub events), Inventory, Threat Intel (including KEV Exposure, the known exploited vulnerabilities you have) and Reports | [Waiting for you](/organization/get-started/waiting-for-you/) |
 | Software Factory | Cockpit, Checkpoints, Board and Event stream, then Work, Knowledge and Delivery | Waiting for you (`/resolve/factory-home`) |
-| Guardian | Search, Alert rules, Triggers, Scheduled sends and Workflows, then Threat Intel (IoC Catalog, STIX catalogue, Intel Feeds, Exploit Database, Bug Bounty correlations) and Attack surface (API Specs, Attack Surface) | Waiting for you (`/resolve/guardian/home`) |
+| Guardian | Search, Alert rules, Triggers, Scheduled sends and Workflows, then Threat Intel (IoC Catalog, STIX catalogue, Intel Feeds, Exploit Database, Bug Bounty correlations, Risky GitHub events) and Attack surface (API Specs, Attack Surface, GitHub posture) | Waiting for you (`/resolve/guardian/home`) |
 
-A product your organisation has not bought opens a page that explains it and links to where it is bought. A page that is in two menus, such as Lookup, keeps the menu you were last in. On a phone, the menu button opens the same sidebar as a drawer.
+A product your organisation has not bought opens a page that explains it and links to where it is bought. Guardian's threat intel and attack surface pages need no Guardian pack, so under the pack offer Guardian lists them with what is waiting: no API spec yet, no intel feed published, open attack surface issues and bug bounty matches. A page that is in two menus, such as Lookup, keeps the menu you were last in. On a phone, the menu button opens the same sidebar as a drawer.
 
 ## Each product's settings
 
-The last link in a product's menu is its settings.
+Resolve's settings are the last link in its menu. The Software Factory and Guardian end their menus with a Settings group that links each settings page directly, and their settings pages list the same pages.
 
 | Settings | Pages |
 |---|---|
-| Resolve settings (`/resolve/settings`) | Policies: Quality Gate, Remediation Policy, Risk Prioritization, SSVC Decisions, Suppression Policies, Release Jails. Protection: Package Firewall, Malware Curation, AI Firewall, Sensor Provisioning, API Specs. Connections: Integrations, Messaging, Private Registries, Secrets Vault. Then logs and quota, and the subscription. |
-| Software Factory settings (`/resolve/factory-settings`) | Factory settings, Keleustes Sandboxes, Budgets and usage, Trust and provenance, Audit ledger, Secrets Vault |
-| Guardian settings (`/resolve/guardian/settings`) | Sources and ingest tokens, today's ingest against the pack, the audit log, the subscription; Malware Curation and Sensor Provisioning, shared with Resolve settings |
+| Resolve settings (`/resolve/settings`) | Policies: Quality Gate, Remediation Policy, Risk Prioritization, SSVC Decisions, Suppression Policies, Release Jails. Protection: Package Firewall, Malware Curation, AI Firewall, Sensor Provisioning, API Specs. Connections: Integrations, Messaging, GitHub posture, Risky GitHub events, Private Registries, Secrets Vault. Then logs and quota, and the subscription. |
+| Software Factory settings (`/resolve/factory-settings`) | Factory settings, Keleustes Sandboxes, Machines, Launch configs, Budgets and usage, Trust and provenance, Audit ledger, Secrets Vault. Machines and Launch configs open those tabs of the Keleustes Sandboxes page. |
+| Guardian settings (`/resolve/guardian/settings`) | Sources and ingest tokens, today's ingest against the pack, the audit log, the subscription. Attack surface: API Specs, Attack Surface, GitHub posture. Threat intel: Intel Feeds, Sensor Provisioning, Malware Curation. Connections: Integrations, Messaging. The attack surface and threat intel groups show without a Guardian pack. |
 
 Every settings page links to the subscription on **Billing and quota**. Only an owner changes it; anyone else is told so.
 

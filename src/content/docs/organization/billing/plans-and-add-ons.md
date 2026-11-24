@@ -1,13 +1,13 @@
 ---
 title: Plans and add-ons
-description: The Resolve Platform plans, the Package Firewall and SOC Intelligence add-ons, how a locked feature answers, the Billing page, and invoice recipients.
+description: The Resolve Platform plans, the Package Firewall and Guardian Intel+ add-ons, how a locked feature answers, the Billing page, and invoice recipients.
 order: 1
 sources: [vdb-site/docs/addons.md, vdb-site/api/internal/handler/addons.go, vdb-site/api/internal/handler/addons_checkout.go, vdb-site/api/internal/handler/billing.go, vdb-site/api/internal/handler/entitlements.go, vdb-site/api/main.go, website/src/pages/resolve/billing.vue, website/src/shared/addons.ts, website/src/shared/plan-feature-addons.json, website/src/shared/plan-feature-tiers.json, website/src/components/account-logs/billing-model.ts, cli/AGENTS.md]
 checked: [vdb-site@d2ea72f23, website@7f3b734cd, cli@v4.17.1]
-updated: 04 Nov 2026
+updated: 25 Nov 2026
 ---
 
-An organisation is on one Resolve Platform plan, and can add the Package Firewall and SOC Intelligence add-ons on top. This page covers what each one unlocks, how a locked feature answers, and where to manage billing. Everything here is on **Billing** in the Resolve Platform ([www.vulnes.is/resolve/billing](https://www.vulnes.is/resolve/billing)).
+An organisation is on one Resolve Platform plan, and can add the Package Firewall and Guardian Intel+ add-ons on top. This page covers what each one unlocks, how a locked feature answers, and where to manage billing. Everything here is on **Billing** in the Resolve Platform ([www.vulnes.is/resolve/billing](https://www.vulnes.is/resolve/billing)).
 
 ## Plans
 
@@ -31,17 +31,21 @@ An add-on is its own Stripe subscription, bought on top of the plan. Enterprise 
 | Add-on | `kind` | Price | Unlocks |
 |---|---|---|---|
 | Package Firewall | `package_firewall` | $125 / month | Every Package Firewall registry except the pkg.go.dev API (`go-dev`) and the AUR (`aur`), which are free on every plan |
-| SOC Intelligence | `soc_intelligence` | $399 / month | Attack surface, detection rule feeds and sensor provisioning |
+| Guardian Intel+ | `soc_intelligence` | $399 / month | Attack surface, detection rule feeds and sensor provisioning |
 
-A SOC Intelligence feature needs its plan floor as well as the add-on:
+Guardian Intel+ was called SOC Intelligence; the `kind` is unchanged. It opens its features on any plan, Community included, and a plan above the floor still needs it. Enterprise includes it. Below the floor you get the floor's caps (one feed per format, as on Pro).
 
-| Feature | Plan floor | Add-on |
+| Feature | Floor | Add-on |
 |---|---|---|
-| Detection rule feeds | Pro | SOC Intelligence |
-| Sensor provisioning | Pro | SOC Intelligence |
-| Attack surface | Business | SOC Intelligence |
+| Detection rule feeds | Pro | Guardian Intel+ |
+| Sensor provisioning | Pro | Guardian Intel+ |
+| Attack surface | Business | Guardian Intel+ |
 
-The countermeasure, virtual patch and detection rule catalogues are not behind an add-on. They keep their Pro floor.
+The countermeasure, virtual patch and detection rule catalogues are not behind an add-on. They keep their Pro floor, and Guardian Intel+ also opens them below Pro because feeds are curated from them.
+
+**Plan tiers on this page** (the shield icon on each page) says whether your organisation holds each add-on the page uses: active, not on this organisation, or could not check.
+
+When Guardian Intel+ ends, published feeds are frozen, not removed: the tools fetching them keep getting the last version, nothing updates them, and the feeds page lists them as frozen with the date the add-on ended.
 
 [Guardian](/siem/) is sold separately, as an ingest pack on Business or Enterprise. See [Packs and limits](/siem/reference/packs-and-limits/).
 

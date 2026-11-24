@@ -5,7 +5,7 @@ order: 2
 nav: Provisioning profiles
 sources: [vdb-site/docs/addons.md, vdb-site/docs/sensor-provisioning-api.md, vdb-site/docs/sensor-feeds-api.md, vdb-site/api/internal/handler/sensor_provisioning.go, saas/prisma/models/runtime.prisma, cli/internal/sensor/agent/agent.go, cli/cmd/vulnetix-sensor/selfupdate.go, cli/cmd/vulnetix-sensor/selfupdate_safety.go]
 checked: [cli@d84127e34, vdb-site@07561f7]
-updated: 05 Nov 2026
+updated: 25 Nov 2026
 ---
 
 A profile replaces the hand-written `/etc/vulnetix-sensor.env` and the per-host flags. It is kept on the site; every device enrolled under it pulls its configuration from there.
@@ -14,7 +14,7 @@ Profiles live on **Sensor Provisioning** (`/resolve/sensor-provisioning`, in the
 
 ## Plan and add-on
 
-Sensor provisioning comes with the SOC Intelligence add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of the page, whatever its plan, and its sensors are refused with `402` and keep their last good configuration. Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
+Sensor provisioning comes with the Guardian Intel+ add-on, which works on any plan, Community included. An organisation without it sees the add-on in place of the page, whatever its plan, and its sensors are refused with `402` and keep their last good configuration. Enterprise includes the add-on. An owner or admin adds it on **Billing**, under Add-ons (`/resolve/billing#addons`); the price is on [pricing](https://www.vulnes.is/pricing).
 
 ## Roles
 
