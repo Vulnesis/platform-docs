@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67, cli@4c8c3b7]
 updated: 02 Nov 2026
 ---
 
-The messaging centre (**Configuration › Messaging**, `/resolve/messaging`) sends Vulnesis events to the tools your team uses. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned and which **template** words the message.
+The messaging centre (**Resolve settings › Messaging**, `/resolve/messaging`) sends Vulnesis events to the tools your team uses. A **connection** is one destination. A **route** says which events go to which connections, who is mentioned and which **template** words the message.
 
 Messaging is Pro and above. Members can read every tab; owners create and change connections, routes and templates, send tests, retry deliveries, and see sensitive events.
 

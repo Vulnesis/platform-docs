@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67, website@ad775f3]
 updated: 02 Nov 2026
 ---
 
-People sign in to Vulnesis through its identity provider (Authentik). Each person is a **principal** in exactly one organisation, with a role there. Manage them on **Account › Members** (`/resolve/members`).
+People sign in to Vulnesis through its identity provider (Authentik). Each person is a **principal** in exactly one organisation, with a role there. Manage them on **Account menu › Members** (`/resolve/members`).
 
 ## What your organisation is
 
@@ -62,7 +62,7 @@ Each of these emits a sensitive messaging event (`security.password.reset_by_adm
 
 ## Your own account
 
-**Account › Profile** (`/resolve/account`) shows your API key, MFA devices and active sessions.
+**Account menu › Profile** (`/resolve/account`) shows your API key, MFA devices and active sessions.
 
 | Method | Path | Does |
 |---|---|---|

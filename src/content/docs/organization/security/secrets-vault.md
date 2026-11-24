@@ -9,7 +9,7 @@ updated: 02 Nov 2026
 
 The vault is one place for the secrets Vulnesis uses on your behalf. Every value is encrypted with AWS KMS before it is stored and is never shown again after you save it. Each entry says exactly where it may be used; Belai hosts, Keleustes Sandboxes and the AI Firewall read from it and keep no copy of their own.
 
-Open it at **Configuration › Secrets Vault** (`/resolve/vault`). Anyone in the organisation can read the list (names, last four characters, grants, status); only an owner can add, change, revoke, rotate or test.
+Open it at **Resolve settings › Secrets Vault** (`/resolve/vault`). Anyone in the organisation can read the list (names, last four characters, grants, status); only an owner can add, change, revoke, rotate or test.
 
 ## Entry kinds
 

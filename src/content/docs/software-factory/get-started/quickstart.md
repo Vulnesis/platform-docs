@@ -40,7 +40,7 @@ Some features need optional permissions. The Organisations panel shows which are
 
 ## 2. Make the organisation managed
 
-Open **Software Factory › Repos** in the Resolve Platform (`/resolve/factory-repos`). Every installation is listed under Organisations, and all of them are read-only until you switch **Managed** on for one.
+Open **Software Factory › Work › Repositories** in the Resolve Platform (`/resolve/factory-repos`). Every installation is listed under Organisations, and all of them are read-only until you switch **Managed** on for one.
 
 Managing an organisation does two things:
 

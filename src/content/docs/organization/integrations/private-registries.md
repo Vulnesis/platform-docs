@@ -10,7 +10,7 @@ updated: 03 Nov 2026
 
 A scan can only match what it can read. When your dependencies come from a private npm registry, PyPI index, Maven repository or container registry, a **registry connection** tells Vulnesis where that registry is, which packages it serves, and what credential to use.
 
-Open **Configuration › Private Registries** (`/resolve/registries`). This is not the paid container registry logins on the Integrations page: those let Vulnesis catalogue images you use. A registry connection is your own registry.
+Open **Resolve settings › Private Registries** (`/resolve/registries`). This is not the paid container registry logins on the Integrations page: those let Vulnesis catalogue images you use. A registry connection is your own registry.
 
 ## A connection
 

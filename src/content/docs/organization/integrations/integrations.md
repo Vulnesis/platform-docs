@@ -7,7 +7,7 @@ checked: [vdb-site@1a06d67]
 updated: 02 Nov 2026
 ---
 
-**Configuration › Integrations** (`/resolve/integrations`) connects Vulnesis to your source forges, chat and ticket tools, cloud accounts and registries. Credentials you give it are stored in the [secrets vault](/organization/security/secrets-vault/) as connector entries.
+**Resolve settings › Integrations** (`/resolve/integrations`) connects Vulnesis to your source forges, chat and ticket tools, cloud accounts and registries. Credentials you give it are stored in the [secrets vault](/organization/security/secrets-vault/) as connector entries.
 
 ## Plans
 
@@ -82,4 +82,4 @@ Everything about what is sent where is in the messaging centre: [Messaging](/org
 
 ## Cloud and registries
 
-AWS accounts, Wiz and container registry logins are documented with the products that use them: [/cloud-security/](/cloud-security/) and [/sca/](/sca/). The credentials a scan uses to read your own private npm, PyPI, Maven or OCI registry are a separate list, **Configuration › Private Registries**; see [Private registries for scans](/organization/integrations/private-registries/).
+AWS accounts, Wiz and container registry logins are documented with the products that use them: [/cloud-security/](/cloud-security/) and [/sca/](/sca/). The credentials a scan uses to read your own private npm, PyPI, Maven or OCI registry are a separate list, **Resolve settings › Private Registries**; see [Private registries for scans](/organization/integrations/private-registries/).

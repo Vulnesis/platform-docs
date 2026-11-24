@@ -7,7 +7,7 @@ checked: [website@7f3b734cd, vdb-site@d2ea72f23, cli@v4.17.1]
 updated: 05 Nov 2026
 ---
 
-**Inventory › SBOM Monitoring** (`/resolve/uploads`) lists the SBOMs your organisation keeps under watch, grouped by repository, with the components and vulnerability advisories each one carries. Use it to see which delivered or third-party bill of materials is affected by a vulnerability, and to set an alert on it.
+**Resolve › Inventory › SBOM Monitoring** (`/resolve/uploads`) lists the SBOMs your organisation keeps under watch, grouped by repository, with the components and vulnerability advisories each one carries. Use it to see which delivered or third-party bill of materials is affected by a vulnerability, and to set an alert on it.
 
 ## How documents arrive
 

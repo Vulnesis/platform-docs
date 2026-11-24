@@ -7,7 +7,7 @@ checked: [website@7f3b734cd, vdb-site@d2ea72f23]
 updated: 05 Nov 2026
 ---
 
-**Inventory › AI Inventory** (`/resolve/ai-inventory`) answers "what AI do we have?": the AI coding agents, AI SDKs and models declared across your repositories, and the tools and MCP servers your agents were seen carrying at runtime. Use it to find AI usage nobody declared, and as evidence for an AI framework.
+**Resolve › Inventory › AI Inventory** (`/resolve/ai-inventory`) answers "what AI do we have?": the AI coding agents, AI SDKs and models declared across your repositories, and the tools and MCP servers your agents were seen carrying at runtime. Use it to find AI usage nobody declared, and as evidence for an AI framework.
 
 ## How scans arrive
 

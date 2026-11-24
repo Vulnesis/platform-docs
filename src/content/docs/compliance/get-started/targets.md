@@ -8,7 +8,7 @@ checked: [vdb-site@7b71e88, saas@0b6936a9, config-schemas@v1.11.1]
 updated: 03 Nov 2026
 ---
 
-A **compliance target** is an obligation your organisation holds itself to and how often Vulnesis measures it. Open **Reports › Compliance Targets** (`/resolve/compliance-targets`).
+A **compliance target** is an obligation your organisation holds itself to and how often Vulnesis measures it. Open **Resolve › Reports › Compliance Targets** (`/resolve/compliance-targets`).
 
 ## Report targets
 

@@ -61,7 +61,7 @@ On the Vulnesis sign-in page, **Use a security key** signs you in with a passkey
 
 ## Passkeys and authenticator apps
 
-Open **Account › Profile** (`/resolve/account`) and find **Passkeys & two-factor**. It lists the passkeys and authenticator apps registered to your account, with when each was added and last used.
+Open **Account menu › Profile** (`/resolve/account`) and find **Passkeys & two-factor**. It lists the passkeys and authenticator apps registered to your account, with when each was added and last used.
 
 | Button | Adds |
 |---|---|
@@ -84,8 +84,8 @@ Remove a device with its delete button. The same list and removal are available 
 
 A reset does not sign you in, and it does not reactivate a deactivated account. A link that is invalid or already used takes you to the sign-in page.
 
-If you are already signed in, change your password from **Account › Profile** instead. A password set there, or by an owner for another member, must be at least 12 characters.
+If you are already signed in, change your password from **Account menu › Profile** instead. A password set there, or by an owner for another member, must be at least 12 characters.
 
 ## Sessions
 
-**Account › Profile** lists your active sessions. **Sign out everywhere** ends all of them. Signing out from the Resolve Platform header ends only the session of that browser.
+**Account menu › Profile** lists your active sessions. **Sign out everywhere** ends all of them. Signing out from the Resolve Platform header ends only the session of that browser.

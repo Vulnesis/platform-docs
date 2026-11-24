@@ -8,7 +8,7 @@ checked: [website@d56e8be1, vdb-site@8209415]
 updated: 05 Nov 2026
 ---
 
-The Logs page shows what your organisation did with each Vulnesis product: requests, sessions, decisions and reviews. Open it at **Account › Logs** (`/resolve/logs`). Each product is its own stream with its own charts and log, and a stream reads only its own data, so a slow stream holds up only its own panel.
+The Logs page shows what your organisation did with each Vulnesis product: requests, sessions, decisions and reviews. Open it at **Account menu › Logs** (`/resolve/logs`). Each product is its own stream with its own charts and log, and a stream reads only its own data, so a slow stream holds up only its own panel.
 
 ## Streams
 
@@ -55,4 +55,4 @@ Each stream reads a stats route for its charts and a list route for its log. Eve
 | Package Firewall | `GET /v1/package-firewall/logs/stats` | `GET /v1/package-firewall/logs` |
 | Reviews | `GET /v1/review/audit/summary?kind=` | `GET /v1/review/audit?kind=` |
 
-Billing, invoices and the quota are on **Account › Billing** (`/resolve/billing`).
+Billing, invoices and the quota are on **Account menu › Billing** (`/resolve/billing`).

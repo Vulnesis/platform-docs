@@ -17,7 +17,7 @@ This page sets up an organisation for a team: one colleague invited, and a crede
 
 ## 1. Open the Members page
 
-Go to **Account › Members** (`/resolve/members`). It lists the people, service accounts, pending invitations and access requests.
+Go to **Account menu › Members** (`/resolve/members`). It lists the people, service accounts, pending invitations and access requests.
 
 ## 2. Invite a colleague
 

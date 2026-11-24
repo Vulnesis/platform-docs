@@ -38,7 +38,7 @@ vulnetix auth verify
 
 The CLI reads the two variables directly; they take precedence over a stored login. To store the key instead, run `vulnetix auth login --noninteractive --org-id <principalUuid> --api-key <apiKey>` (`--store home`, `project` or `keyring`; default `home`). `--noninteractive` never opens a browser, and `--org-id` must be a uuid.
 
-Your own key is on **Account › Profile**. `POST /v1/account/regenerate` issues a new secret and key and stops the old one.
+Your own key is on **Account menu › Profile**. `POST /v1/account/regenerate` issues a new secret and key and stops the old one.
 
 ## Service accounts
 

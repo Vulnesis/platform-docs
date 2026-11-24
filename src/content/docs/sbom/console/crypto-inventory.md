@@ -7,7 +7,7 @@ checked: [website@7f3b734cd, vdb-site@d2ea72f23]
 updated: 05 Nov 2026
 ---
 
-**Inventory › Crypto Inventory** (`/resolve/crypto-inventory`) lists the cryptographic algorithms, certificates and crypto libraries found across your repositories, each classified for post-quantum posture. Use it to see which repositories still depend on quantum-vulnerable or deprecated cryptography, and to plan the migration.
+**Resolve › Inventory › Crypto Inventory** (`/resolve/crypto-inventory`) lists the cryptographic algorithms, certificates and crypto libraries found across your repositories, each classified for post-quantum posture. Use it to see which repositories still depend on quantum-vulnerable or deprecated cryptography, and to plan the migration.
 
 ## How scans arrive
 

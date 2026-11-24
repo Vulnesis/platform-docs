@@ -16,18 +16,20 @@ An organisation is the tenant everything else belongs to: scan data, policies, v
 
 | Part | Resolve Platform page | Read |
 |---|---|---|
-| Members, roles, invitations and access requests | Account › Members (`/resolve/members`) | [Members and roles](/organization/people/members-and-roles/) |
-| API keys, service accounts for CI, Business key seats | Account › Members, Account › Profile | [Service accounts and API keys](/organization/people/service-accounts-and-api-keys/) |
-| Secrets vault: AI provider keys, sandbox variables, integration credentials | Configuration › Secrets Vault (`/resolve/vault`) | [Secrets vault](/organization/security/secrets-vault/) |
-| GitHub App, other forges, chat providers, cloud and registry connections | Configuration › Integrations (`/resolve/integrations`) | [Integrations](/organization/integrations/integrations/) |
-| What is sent where: connections, routes, templates, delivery | Configuration › Messaging (`/resolve/messaging`) | [Messaging](/organization/integrations/messaging/), [Signed webhooks](/organization/integrations/signed-webhooks/) |
+| Members, roles, invitations and access requests | Account menu › Members (`/resolve/members`) | [Members and roles](/organization/people/members-and-roles/) |
+| API keys, service accounts for CI, Business key seats | Account menu › Members, Account menu › Profile | [Service accounts and API keys](/organization/people/service-accounts-and-api-keys/) |
+| Secrets vault: AI provider keys, sandbox variables, integration credentials | Resolve settings › Secrets Vault (`/resolve/vault`) | [Secrets vault](/organization/security/secrets-vault/) |
+| GitHub App, other forges, chat providers, cloud and registry connections | Resolve settings › Integrations (`/resolve/integrations`) | [Integrations](/organization/integrations/integrations/) |
+| What is sent where: connections, routes, templates, delivery | Resolve settings › Messaging (`/resolve/messaging`) | [Messaging](/organization/integrations/messaging/), [Signed webhooks](/organization/integrations/signed-webhooks/) |
 | Browser and phone push, preferences, quiet hours | Settings › Notifications | [Notifications](/organization/integrations/notifications/) |
-| API usage, Keleustes Sandbox and Strix calls, AI Firewall and Package Firewall decisions, reviews | Account › Logs (`/resolve/logs`) | [Logs](/organization/logs/overview/) |
+| API usage, Keleustes Sandbox and Strix calls, AI Firewall and Package Firewall decisions, reviews | Account menu › Logs (`/resolve/logs`) | [Logs](/organization/logs/overview/) |
 | Proxies, TLS interception, allowlists | | [Corporate proxy](/organization/network/corporate-proxy/) |
 
 ## In this section
 
 - [Quickstart](/organization/get-started/quickstart/): set up a new organisation step by step.
+- [Waiting for you](/organization/get-started/waiting-for-you/): the page you land on after signing in, and how each role's onboarding is counted.
+- [Navigation, settings and preferences](/organization/get-started/settings-and-preferences/): the product switcher, each product's settings, the account menu, and where each old menu entry went.
 - [Plans and add-ons](/organization/billing/plans-and-add-ons/): the plans, the Package Firewall and SOC Intelligence add-ons, invoices and usage.
 - [HTTP API](/organization/reference/http-api/): every organisation, vault, integration, messaging and notification route, with the credential it takes.
 
