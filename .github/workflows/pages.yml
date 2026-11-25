@@ -21,7 +21,7 @@ env:
 
 jobs:
   build:
-    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    runs-on: [self-hosted, Linux, X64, vulnesis-cf]
     steps:
       # Full history: the sitemap's <lastmod> falls back to each page's last
       # commit when its front matter has no `updated`.
@@ -98,7 +98,7 @@ jobs:
   # `node migration/generators/releases.mjs --bump`, check out those tags,
   # run the generators and commit the pages with the new pins.
   generators:
-    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    runs-on: [self-hosted, Linux, X64, vulnesis-cf]
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -172,7 +172,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    runs-on: [self-hosted, Linux, X64, vulnesis-cf]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -185,7 +185,7 @@ jobs:
   # live sitemap, so it runs after deploy. seo.yml repeats it daily.
   indexnow:
     needs: deploy
-    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    runs-on: [self-hosted, Linux, X64, vulnesis-cf]
     steps:
       - uses: actions/checkout@v7.0.1
 
@@ -200,7 +200,7 @@ jobs:
   # engines and AI crawlers"). Skipped until the CONTEXT7_API_KEY secret exists.
   context7:
     needs: deploy
-    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    runs-on: [self-hosted, Linux, X64, vulnesis-cf]
     steps:
       - name: Refresh the Context7 library
         env:
