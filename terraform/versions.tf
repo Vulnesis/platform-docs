@@ -14,11 +14,17 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "vdb-manager-terraform-state"
-    key          = "platform-docs-site/terraform.tfstate"
-    region       = "ap-southeast-2"
-    encrypt      = true
-    use_lockfile = true
+    bucket                      = "vulnesis-terraform-state"
+    key                         = "platform-docs-site/terraform.tfstate"
+    region                      = "auto"
+    endpoints                   = { s3 = "https://e302589106b4c4287aebe65763eb4f80.r2.cloudflarestorage.com" }
+    use_path_style              = true
+    use_lockfile                = true
+    skip_credentials_validation = true
+    skip_region_validation      = true
+    skip_requesting_account_id  = true
+    skip_metadata_api_check     = true
+    skip_s3_checksum            = true
   }
 }
 
