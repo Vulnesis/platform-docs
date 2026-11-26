@@ -103,4 +103,4 @@ The settings that used to be `github.*` are now `forge.*` and apply to every for
 `forge.calls_per_hour` is new: see [Forge quota](/software-factory/cost/github-quota/).
 
 > [!CAREFUL] One bot, one identity
-> The factory's commits, pull requests and comments on a forge are made as the connection's bot account, not as `vulnetix[bot]`. Give the bot only the repositories you want the factory to touch, and keep its token for the factory alone.
+> The factory's commits, pull requests and comments on a forge are made as the connection's bot account, not as `vulnesis[bot]`. Give the bot only the repositories you want the factory to touch, and keep its token for the factory alone.

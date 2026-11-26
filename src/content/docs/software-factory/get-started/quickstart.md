@@ -18,7 +18,7 @@ You need:
 > [!CAREFUL] On GHES, Gitea, Forgejo or GitLab
 > Connect the forge instead, from the Integrations page: see [Forge connections](/software-factory/control/forge-connections/). Its accounts then appear on the Repos page as below, and every later step is the same. [Supported forges](/software-factory/get-started/forges/) says what differs on each.
 
-Install the Vulnesis GitHub App on the GitHub organisation whose repositories you want the factory to work on: `https://github.com/apps/vulnetix/installations/new`. You can give it all repositories or a selection.
+Install the Vulnesis GitHub App on the GitHub organisation whose repositories you want the factory to work on: `https://github.com/apps/vulnesis/installations/new`. You can give it all repositories or a selection.
 
 The App asks for:
 
